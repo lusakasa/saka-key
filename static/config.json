@@ -1,5 +1,5 @@
 {
-  "commandGroups": {
+  "commandCategories": {
     "Scrolling": [
       "scrollDown", "scrollUp", "scrollLeft", "scrollRight",
       "scrollPageDown", "scrollPageUp", "scrollHalfPageDown", "scrollHalfPageUp",
@@ -17,65 +17,67 @@
       "togglePinTab"
     ]
   },
-  "commands": {
+  "commandDetails": {
     "scrollDown": {
       "description": "Scroll down page by a single step",
       "default_bindings": [
-        "d"
+        "d",
+        "j"
       ]
     },
     "scrollUp": {
       "description": "Scroll up page by a single step",
       "default_bindings": [
-        "s"
+        "s",
+        "k"
       ]
     },
     "scrollLeft": {
       "description": "Scroll left page by a single step",
       "default_bindings": [
-        ""
+        "h"
       ]
     },
     "scrollRight": {
       "description": "Scroll right page by a single step",
       "default_bindings": [
-        ""
+        "l"
       ]
     },
     "scrollPageDown": {
       "description": "Scroll down one page",
       "default_bindings": [
-        ""
+        "J"
       ]
     },
     "scrollPageUp": {
       "description": "Scroll up one page",
       "default_bindings": [
-        ""
+        "K"
       ]
     },
     "scrollHalfPageDown": {
       "description": "Scroll down half a page ",
       "default_bindings": [
-        ""
+        "D"
       ]
     },
     "scrollHalfPageUp": {
       "description": "Scroll up half a page",
       "default_bindings": [
-        ""
+        "S"
       ]
     },
     "scrollToBottom": {
       "description": "Scroll to bottom of page",
       "default_bindings": [
-        ""
+        "G"
       ]
     },
     "scrollToTop": {
       "description": "Scroll to top page",
       "default_bindings": [
-        ""
+        "gg"
       ]
     },
     "scrollToLeft": {
@@ -91,151 +93,157 @@
       ]
     },
     "previousTab": {
-      "description": "",
+      "description": "Activate the tab to the left of the active tab of the current window ",
       "default_bindings": [
         ""
       ]
     },
     "nextTab": {
-      "description": "",
+      "description": "Activate the tab to the right of the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "firstTab": {
-      "description": "",
+      "description": "Activate the first tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "lastTab": {
-      "description": "",
+      "description": "Activate the last tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "moveTabLeft": {
-      "description": "",
+      "description": "Move the active tab of the current window left",
       "default_bindings": [
         ""
       ]
     },
     "moveTabRight": {
-      "description": "",
+      "description": "Move the active tab of the current window right",
       "default_bindings": [
         ""
       ]
     },
     "moveTabFirst": {
-      "description": "",
+      "description": "Move the active tab of the current window to the far left",
       "default_bindings": [
         ""
       ]
     },
     "moveTabLast": {
-      "description": "",
+      "description": "Move the active tab of the current window to the far right",
       "default_bindings": [
         ""
       ]
     },
     "closeTab": {
-      "description": "",
+      "description": "Close the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "closeOtherTabs": {
-      "description": "",
+      "description": "Close all tabs of the current window except the active tab",
       "default_bindings": [
         ""
       ]
     },
     "closeRightTabs": {
-      "description": "",
+      "description": "Close all tabs to the right of the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "closeLeftTabs": {
-      "description": "",
+      "description": "Close all tabs to the left of the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "newTab": {
-      "description": "",
+      "description": "Create and activate a new tab",
       "default_bindings": [
         ""
       ]
     },
     "restoreTab": {
-      "description": "",
+      "description": "Reopen and activate the last closed tab",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "duplicateTab": {
+      "description": "Duplicate and activate the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "newWindow": {
-      "description": "",
+      "description": "Create a new window",
       "default_bindings": [
         ""
       ]
     },
     "switchWindow": {
-      "description": "",
+      "description": "Activate the next window",
       "default_bindings": [
         ""
       ]
     },
     "zoomIn": {
-      "description": "",
+      "description": "Zoom in the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "zoomOut": {
-      "description": "",
+      "description": "Zoom out the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "zoomReset": {
-      "description": "",
+      "description": "Reset the zoom of the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "refreshTab": {
-      "description": "",
+      "description": "Refresh the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "refreshAllTabs": {
-      "description": "",
+      "description": "Refresh all tabs of the current window",
       "default_bindings": [
         ""
       ]
     },
     "toggleMuteTab": {
-      "description": "",
+      "description": "Toggle the mute state of the active tab of the current window",
       "default_bindings": [
         ""
       ]
     },
     "muteAllTabs": {
-      "description": "",
+      "description": "Mute all tabs of all windows",
       "default_bindings": [
         ""
       ]
     },
     "unmuteAllTabs": {
-      "description": "",
+      "description": "Unmute all tabs of all windows",
       "default_bindings": [
         ""
       ]
     },
     "togglePinTab": {
-      "description": "",
+      "description": "Toggle the pin state of the active tab of the current window",
       "default_bindings": [
         ""
       ]

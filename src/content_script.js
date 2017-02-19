@@ -38,6 +38,7 @@ const keyBindings = {
   'n': backgroundPage('closeLeftTabs'),
   'm': backgroundPage('newTab'),
   '1': backgroundPage('restoreTab'),
+  '-': backgroundPage('duplicateTab'),
   '2': backgroundPage('newWindow'),
   '3': backgroundPage('switchWindow'),
   '4': backgroundPage('zoomIn'),
