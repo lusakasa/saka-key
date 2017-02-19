@@ -2,16 +2,21 @@
   "name": "saka-action-test-extension",
   "description": "saka-action-test-extension",
   "scripts": {
-    "build": "rimraf dist && webpack --config webpack.config.js && cp ./src/manifest.json ./dist/manifest.json",
+    "build": "rimraf dist && webpack --config webpack.config.js && cp ./static/* ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "respository": {},
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-react-jsx": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
     "rimraf": "^2.5.4",
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "mosi": "0.0.13"
+    "mosi": "0.0.13",
+    "preact": "^7.2.0"
   }
 }

@@ -1,0 +1,244 @@
+{
+  "commandGroups": {
+    "Scrolling": [
+      "scrollDown", "scrollUp", "scrollLeft", "scrollRight",
+      "scrollPageDown", "scrollPageUp", "scrollHalfPageDown", "scrollHalfPageUp",
+      "scrollToBottom", "scrollToTop", "scrollToLeft", "scrollToRight"
+    ],
+    "Tab Manipulation": [
+      "nextTab", "previousTab", "firstTab", "lastTab",
+      "moveTabLeft", "moveTabRight", "moveTabFirst", "moveTabLast",
+      "closeTab", "closeOtherTabs", "closeRightTabs", "closeLeftTabs",
+      "newTab", "restoreTab",
+      "newWindow", "switchWindow",
+      "zoomIn", "zoomOut", "zoomReset",
+      "refreshTab", "refreshAllTabs",
+      "toggleMuteTab", "muteAllTabs", "unmuteAllTabs",
+      "togglePinTab"
+    ]
+  },
+  "commands": {
+    "scrollDown": {
+      "description": "Scroll down page by a single step",
+      "default_bindings": [
+        "d"
+      ]
+    },
+    "scrollUp": {
+      "description": "Scroll up page by a single step",
+      "default_bindings": [
+        "s"
+      ]
+    },
+    "scrollLeft": {
+      "description": "Scroll left page by a single step",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "scrollRight": {
+      "description": "Scroll right page by a single step",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "scrollPageDown": {
+      "description": "Scroll down one page",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "scrollPageUp": {
+      "description": "Scroll up one page",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "scrollHalfPageDown": {
+      "description": "Scroll down half a page ",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "scrollHalfPageUp": {
+      "description": "Scroll up half a page",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "scrollToBottom": {
+      "description": "Scroll to bottom of page",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "scrollToTop": {
+      "description": "Scroll to top page",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "scrollToLeft": {
+      "description": "Scroll to far left of page",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "scrollToRight": {
+      "description": "Scroll to far right of page",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "previousTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "nextTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "firstTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "lastTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "moveTabLeft": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "moveTabRight": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "moveTabFirst": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "moveTabLast": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "closeTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "closeOtherTabs": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "closeRightTabs": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "closeLeftTabs": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "newTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "restoreTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "newWindow": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "switchWindow": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "zoomIn": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "zoomOut": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "zoomReset": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "refreshTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "refreshAllTabs": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "toggleMuteTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "muteAllTabs": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "unmuteAllTabs": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    },
+    "togglePinTab": {
+      "description": "",
+      "default_bindings": [
+        ""
+      ]
+    }
+  }
+}

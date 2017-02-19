@@ -1,6 +1,5 @@
 import { init, msg } from 'mosi/client';
 import {
-  printMsg,
   scrollDown, scrollUp, scrollLeft, scrollRight,
   scrollPageDown, scrollPageUp, scrollHalfPageDown, scrollHalfPageUp,
   scrollToBottom, scrollToTop, scrollToLeft, scrollToRight
@@ -13,21 +12,21 @@ let enabled = true;
 const backgroundPage = (command, args) => () => { msg(1, command, args); };
 
 const keyBindings = {
-  'w': scrollDown,
-  'e': scrollUp,
-  'r': scrollLeft,
-  't': scrollRight,
-  'y': scrollPageDown,
-  'u': scrollPageUp,
-  'i': scrollHalfPageDown,
-  'p': scrollHalfPageUp,
-  'a': scrollToBottom,
-  's': scrollToTop,
-  'd': scrollToLeft,
-  'f': scrollToRight,
-  'g': backgroundPage('previousTab'),
-  'h': backgroundPage('nextTab'),
-  'i': backgroundPage('firstTab'),
+  'q': scrollDown,
+  'w': scrollUp,
+  'e': scrollLeft,
+  'r': scrollRight,
+  't': scrollPageDown,
+  'y': scrollPageUp,
+  'u': scrollHalfPageDown,
+  'i': scrollHalfPageUp,
+  'o': scrollToBottom,
+  'p': scrollToTop,
+  'a': scrollToLeft,
+  's': scrollToRight,
+  'd': backgroundPage('previousTab'),
+  'f': backgroundPage('nextTab'),
+  'g': backgroundPage('firstTab'),
   'j': backgroundPage('lastTab'),
   'k': backgroundPage('moveTabLeft'),
   'l': backgroundPage('moveTabRight'),
@@ -49,15 +48,15 @@ const keyBindings = {
   '9': backgroundPage('toggleMuteTab'),
   '0': backgroundPage('muteAllTabs'),
   ',': backgroundPage('unmuteAllTabs'),
-  '.': backgroundPage('togglePinTab'),
+  '.': backgroundPage('togglePinTab')
 };
 
 
 document.addEventListener('keydown', (event) => {
-  if (event.key == '`') {
+  if (event.key === '`') {
     enabled = !enabled;
     console.log('saka-actions ' + (enabled ? 'enabled' : 'disabled'));
   } else if (enabled) {
     (keyBindings[event.key] || (() => console.log('pressed ' + event.key)))();
   }
-})
+});
