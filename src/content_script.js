@@ -47,8 +47,7 @@ const keyBindings = {
   '7': backgroundPage('refreshTab'),
   '8': backgroundPage('refreshAllTabs'),
   '9': backgroundPage('toggleMuteTab'),
-  '0': backgroundPage('muteAllTabs'),
-  ',': backgroundPage('unmuteAllTabs'),
+  '0': backgroundPage('toggleMuteAllTabs'),
   '.': backgroundPage('togglePinTab')
 };
 

@@ -13,7 +13,7 @@
       "newWindow", "switchWindow",
       "zoomIn", "zoomOut", "zoomReset",
       "refreshTab", "refreshAllTabs",
-      "toggleMuteTab", "muteAllTabs", "unmuteAllTabs",
+      "toggleMuteTab", "toggleMuteAllTabs",
       "togglePinTab"
     ]
   },
@@ -21,8 +21,8 @@
     "scrollDown": {
       "description": "Scroll down page by a single step",
       "defaultBindings": [
-        ["d", "d"],
-        ["shift+j"]
+        ["d"],
+        ["j"]
       ]
     },
     "scrollUp": {
@@ -47,31 +47,31 @@
     "scrollPageDown": {
       "description": "Scroll down one page",
       "defaultBindings": [
-        ["J"]
+        ["shift+j"]
       ]
     },
     "scrollPageUp": {
       "description": "Scroll up one page",
       "defaultBindings": [
-        ["K"]
+        ["shift+k"]
       ]
     },
     "scrollHalfPageDown": {
       "description": "Scroll down half a page ",
       "defaultBindings": [
-        ["D"]
+        ["shift+d"]
       ]
     },
     "scrollHalfPageUp": {
       "description": "Scroll up half a page",
       "defaultBindings": [
-        ["S"]
+        ["shift+s"]
       ]
     },
     "scrollToBottom": {
       "description": "Scroll to bottom of page",
       "defaultBindings": [
-        ["G"]
+        ["shift+g"]
       ]
     },
     "scrollToTop": {
@@ -83,169 +83,164 @@
     "scrollToLeft": {
       "description": "Scroll to far left of page",
       "defaultBindings": [
-        
+        ["shift+h"]
       ]
     },
     "scrollToRight": {
       "description": "Scroll to far right of page",
       "defaultBindings": [
-        
+        ["shift+l"]
       ]
     },
     "previousTab": {
       "description": "Activate the tab to the left of the active tab of the current window ",
       "defaultBindings": [
-        
+        ["e"]
       ]
     },
     "nextTab": {
       "description": "Activate the tab to the right of the active tab of the current window",
       "defaultBindings": [
-        
+        ["r"]
       ]
     },
     "firstTab": {
       "description": "Activate the first tab of the current window",
       "defaultBindings": [
-        
+        ["1"]
       ]
     },
     "lastTab": {
       "description": "Activate the last tab of the current window",
       "defaultBindings": [
-        
+        ["0"]
       ]
     },
     "moveTabLeft": {
       "description": "Move the active tab of the current window left",
       "defaultBindings": [
-        
+        ["q"]
       ]
     },
     "moveTabRight": {
       "description": "Move the active tab of the current window right",
       "defaultBindings": [
-        
+        ["r"]
       ]
     },
     "moveTabFirst": {
       "description": "Move the active tab of the current window to the far left",
       "defaultBindings": [
-        
+        ["shift+q"]
       ]
     },
     "moveTabLast": {
       "description": "Move the active tab of the current window to the far right",
       "defaultBindings": [
-        
+        ["shift+r"]
       ]
     },
     "closeTab": {
       "description": "Close the active tab of the current window",
       "defaultBindings": [
-        
+        ["x"]
       ]
     },
     "closeOtherTabs": {
       "description": "Close all tabs of the current window except the active tab",
       "defaultBindings": [
-        
+        ["shift+o"]
       ]
     },
     "closeRightTabs": {
       "description": "Close all tabs to the right of the active tab of the current window",
       "defaultBindings": [
-        
+        ["shift+p"]
       ]
     },
     "closeLeftTabs": {
       "description": "Close all tabs to the left of the active tab of the current window",
       "defaultBindings": [
-        
+        ["shift+i"]
       ]
     },
     "newTab": {
       "description": "Create and activate a new tab",
       "defaultBindings": [
-        
+        ["n"]
       ]
     },
     "restoreTab": {
       "description": "Reopen and activate the last closed tab",
       "defaultBindings": [
-        
+        ["shift+x"]
       ]
     },
     "duplicateTab": {
       "description": "Duplicate and activate the active tab of the current window",
       "defaultBindings": [
-        
+        ["b"]
       ]
     },
     "newWindow": {
       "description": "Create a new window",
       "defaultBindings": [
-        
+        ["shift+n"]
       ]
     },
     "switchWindow": {
       "description": "Activate the next window",
       "defaultBindings": [
-        
+        ["u"]
       ]
     },
     "zoomIn": {
       "description": "Zoom in the active tab of the current window",
       "defaultBindings": [
-        
+        ["n"]
       ]
     },
     "zoomOut": {
       "description": "Zoom out the active tab of the current window",
       "defaultBindings": [
-        
+        ["m"]
       ]
     },
     "zoomReset": {
       "description": "Reset the zoom of the active tab of the current window",
       "defaultBindings": [
-        
+        ["shift+n"],
+        ["shift+m"]
       ]
     },
     "refreshTab": {
       "description": "Refresh the active tab of the current window",
       "defaultBindings": [
-        
+        ["t"]
       ]
     },
     "refreshAllTabs": {
       "description": "Refresh all tabs of the current window",
       "defaultBindings": [
-        
+        ["shift+t"]
       ]
     },
     "toggleMuteTab": {
       "description": "Toggle the mute state of the active tab of the current window",
       "defaultBindings": [
-        
+        ["b"]
       ]
     },
-    "muteAllTabs": {
-      "description": "Mute all tabs of all windows",
+    "toggleMuteAllTabs": {
+      "description": "Toggle the mute state of all tabs of all windows",
       "defaultBindings": [
-        
-      ]
-    },
-    "unmuteAllTabs": {
-      "description": "Unmute all tabs of all windows",
-      "defaultBindings": [
-        
+        ["shift+b"]
       ]
     },
     "togglePinTab": {
       "description": "Toggle the pin state of the active tab of the current window",
       "defaultBindings": [
-        
+        ["shift+v"]
       ]
     }
   }

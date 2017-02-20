@@ -7,7 +7,7 @@ import {
   newWindow, switchWindow,
   zoomIn, zoomOut, zoomReset,
   refreshTab, refreshAllTabs,
-  toggleMuteTab, muteAllTabs, unmuteAllTabs,
+  toggleMuteTab, toggleMuteAllTabs,
   togglePinTab
 } from 'saka-actions/background-page';
 
@@ -35,8 +35,7 @@ init({
     refreshTab,
     refreshAllTabs,
     toggleMuteTab,
-    muteAllTabs,
-    unmuteAllTabs,
+    toggleMuteAllTabs,
     togglePinTab
   }
 });

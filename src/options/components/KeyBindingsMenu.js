@@ -4,6 +4,7 @@ import KeyBindingItem from './KeyBindingItem';
 
 class KeyBindingsMenu extends Component {
   render ({ command, defaultBindings }) {
+    if (defaultBindings === undefined) console.log(command);
     return (
       <span>
         { defaultBindings.map((keys, i) =>
