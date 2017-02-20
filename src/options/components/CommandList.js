@@ -5,10 +5,10 @@ import CommandEntry from './CommandEntry';
 class CommandList extends Component {
   render ({ commands, commandDetails }) {
     return (
-      <div>
+      <ul className='mdc-list mdc-list--dense'>
         { commands.map((command) =>
           <CommandEntry command={command} {...commandDetails[command]} />) }
-      </div>
+      </ul>
     );
   }
 }

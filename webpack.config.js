@@ -21,6 +21,10 @@ module.exports = {
           // (e.g. saka-action in development) or build will fail
           // presets: [require.resolve('babel-preset-stage-3')]
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       }
     ]
   }

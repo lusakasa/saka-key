@@ -12,6 +12,7 @@
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.23.0",
+    "css-loader": "^0.26.1",
     "eslint": "^3.15.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-config-standard-preact": "^1.0.1",
@@ -19,9 +20,12 @@
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-standard": "^2.0.1",
     "rimraf": "^2.5.4",
+    "style-loader": "^0.13.1",
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "@material/button": "^0.2.1",
+    "@material/list": "^0.2.1",
     "mosi": "0.0.13",
     "preact": "^7.2.0",
     "preact-redux": "^2.0.0",
