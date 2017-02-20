@@ -1,4 +1,3 @@
-
 import { createStore } from 'redux';
 const rootReducer = (state = {}, action) => {
   console.log('bark');
