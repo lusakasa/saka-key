@@ -1,4 +1,4 @@
-# SakaVim
+# Saka Key
 
 A keyboard interface to the web. Twin to [Saka](https://github.com/lusakasa/saka) - a voice interface to the web.
 

@@ -1,6 +1,6 @@
 {
-  "name": "saka-action-test-extension",
-  "description": "saka-action-test-extension",
+  "name": "SakaKey",
+  "description": "A keyboard interface to the web",
   "scripts": {
     "build": "rimraf dist && webpack --config webpack.config.js && cp ./static/* ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"

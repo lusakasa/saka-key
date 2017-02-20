@@ -1,10 +1,8 @@
 {
-  "name": "SakaVim",
+  "name": "Saka Key",
   "version": "0.0.0",
   "description": "A keyboard interface to the web",
-  "permissions": [
-    "sessions"
-  ],
+  "manifest_version": 2,
   "background": {
     "scripts": ["background_page.js"]
   },
@@ -14,10 +12,22 @@
       "js": ["content_script.js"]
     }
   ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "Saka Key"
+  },
   "options_ui": {
     "page": "options.html",
     "open_in_tab": false
   },
-  "manifest_version": 2,
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+    },
+  "permissions": [
+    "sessions"
+  ],
   "web_accessible_resources": ["background_page.js.map", "content_script.js.map"]
 }
