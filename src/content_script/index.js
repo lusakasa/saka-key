@@ -4,6 +4,7 @@ import {
   scrollPageDown, scrollPageUp, scrollHalfPageDown, scrollHalfPageUp,
   scrollToBottom, scrollToTop, scrollToLeft, scrollToRight
 } from 'saka-actions/content-script';
+import { showHelp } from './showHelp';
 
 console.log('content_script loaded');
 
@@ -14,6 +15,7 @@ let enabled = true;
 const backgroundPage = (command, args) => () => { msg(1, command, args); };
 
 const keyBindings = {
+  ',': showHelp,
   'q': scrollDown,
   'w': scrollUp,
   'e': scrollLeft,

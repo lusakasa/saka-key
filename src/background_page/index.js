@@ -11,18 +11,21 @@ import {
   togglePinTab
 } from 'saka-actions/background-page';
 
-const loadSaka = (_, src) => {
-  const { frameId, tabId } = meta(src);
-  chrome.tabs.executeScript(tabId, {
-    file: 'content_script.js',
-    frameId,
-    runAt: 'document_start'
-  });
+let sakaKeyEnabled = true;
+const loadSakaKey = (_, src) => {
+  if (sakaKeyEnabled) {
+    const { frameId, tabId } = meta(src);
+    chrome.tabs.executeScript(tabId, {
+      file: 'content_script.js',
+      frameId,
+      runAt: 'document_start'
+    });
+  }
 };
 
 init({
   actions: {
-    loadSaka,
+    loadSakaKey,
     // keyboard actions
     nextTab,
     previousTab,

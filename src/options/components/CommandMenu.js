@@ -7,7 +7,7 @@ import CommandList from './CommandList';
 
 class CommandMenu extends Component {
   componentDidMount () {
-    fetch(chrome.extension.getURL('/config.json'))
+    fetch(chrome.runtime.getURL('/config.json'))
       .then((response) => response.json())
       .then((config) => {
         console.log(config);
