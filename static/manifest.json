@@ -9,7 +9,10 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content_script.js"]
+      "js": ["content_script_loader.js"],
+      "all_frames": true,
+      "run_at": "document_start",
+      "match_about_blank": true
     }
   ],
   "browser_action": {
@@ -28,7 +31,16 @@
     "128": "icon.png"
     },
   "permissions": [
-    "sessions"
+    "tabs",
+    "sessions",
+    "<all_urls>"
   ],
-  "web_accessible_resources": ["background_page.js.map", "content_script.js.map"]
+  "web_accessible_resources": [
+    "background_page.js.map",
+    "content_script.js",
+    "content_script.js.map",
+    "content_script_loader.js.map",
+    "options.js.map",
+    "popup.js.map"
+    ]
 }

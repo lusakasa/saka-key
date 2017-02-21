@@ -77,7 +77,7 @@
     "scrollToTop": {
       "description": "Scroll to top page",
       "defaultBindings": [
-        ["gg"]
+        ["g", "g"]
       ]
     },
     "scrollToLeft": {

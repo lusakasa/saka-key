@@ -5,7 +5,10 @@
     "build": "rimraf dist && webpack --config webpack.config.js && cp ./static/* ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "respository": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lusakasa/sakakey.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.23.1",
@@ -26,7 +29,7 @@
   "dependencies": {
     "@material/button": "^0.2.1",
     "@material/list": "^0.2.1",
-    "mosi": "0.0.13",
+    "mosi": "^0.5.1",
     "preact": "^7.2.0",
     "preact-redux": "^2.0.0",
     "redux": "^3.6.0",

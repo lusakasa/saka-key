@@ -3,6 +3,7 @@ module.exports = {
   entry: {
     'background_page': './src/background_page.js',
     'content_script': './src/content_script.js',
+    'content_script_loader': './src/content_script_loader.js',
     'options': './src/options/index.js'
   },
   output: {

@@ -5,6 +5,8 @@ import {
   scrollToBottom, scrollToTop, scrollToLeft, scrollToRight
 } from 'saka-actions/content-script';
 
+console.log('content_script loaded');
+
 init({});
 
 let enabled = true;
