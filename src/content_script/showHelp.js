@@ -1,8 +1,5 @@
 import './help.css';
-
-const counter = document.createElement('div');
-counter.setAttribute('style', 'z-index: 99999; position: fixed; top: 0; right: 0;');
-counter.innerHTML = '<input id="random" disabled placeholder="I EXIST!"/>';
+import { msg } from 'mosi/client';
 
 const iframe = document.createElement('iframe');
 iframe.id = 'popup';
@@ -13,7 +10,7 @@ iframe.setAttribute('height', '600');
 
 let visible = false;
 
-export const showHelp = () => {
+export const showHelpMenu = () => {
   if (visible) {
     document.documentElement.removeChild(iframe);
   } else {

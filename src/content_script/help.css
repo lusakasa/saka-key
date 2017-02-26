@@ -9,4 +9,10 @@
   bottom: 60px;
   border-width: 0;
   background-color: white;
+
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  border-color: #ff4081;
+  opacity: 0.95;
 }

@@ -10,7 +10,6 @@ class CommandMenu extends Component {
     fetch(chrome.runtime.getURL('/config.json'))
       .then((response) => response.json())
       .then((config) => {
-        console.log(config);
         store.dispatch(initConfig(config));
       });
   }
