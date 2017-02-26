@@ -1,4 +1,4 @@
 export const state = {
-  enabled: false,
-  bindings: {}
+  enabled: false
+  // bindings: undefined
 };

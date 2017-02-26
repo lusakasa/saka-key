@@ -1,4 +1,5 @@
 {
+  "version": 1,
   "commandCategories": {
     "Scrolling": [
       "scrollDown", "scrollUp", "scrollLeft", "scrollRight",
@@ -131,119 +132,123 @@
     }
   },
   "defaultBindings": {
-    "scrollDown": [
-      [{ "key": "d" }],
-      [{ "key": "j" }]
-    ],
-    "scrollUp": [
-      [{ "key": "s" }],
-      [{ "key": "k" }]
-    ],
-    "scrollLeft": [
-      [{ "key": "h" }]
-    ],
-    "scrollRight": [
-      [{ "key": "l" }]
-    ],
-    "scrollPageDown": [
-      [{ "key": "J" }]
-    ],
-    "scrollPageUp": [
-      [{ "key": "K" }]
-    ],
-    "scrollHalfPageDown": [
-      [{ "key": "D" }]
-    ],
-    "scrollHalfPageUp": [
-      [{ "key": "S" }]
-    ],
-    "scrollToBottom": [
-      [{ "key": "G" }]
-    ],
-    "scrollToTop": [
-        ["g", "g"]
-    ],
-    "scrollToLeft": [
-      [{ "key": "H" }]
-    ],
-    "scrollToRight": [
-      [{ "key": "L" }]
-    ],
-    "previousTab": [
-      [{ "key": "E" }]
-    ],
-    "nextTab": [
-      [{ "key": "R" }]
-    ],
-    "firstTab": [
-      [{ "key": "1" }]
-    ],
-    "lastTab": [
-      [{ "key": "0" }]
-    ],
-    "moveTabLeft": [
-      [{ "key": "q" }]
-    ],
-    "moveTabRight": [
-      [{ "key": "r" }]
-    ],
-    "moveTabFirst": [
-      [{ "key": "Q" }]
-    ],
-    "moveTabLast": [
-      [{ "key": "R" }]
-    ],
-    "closeTab": [
-      [{ "key": "x" }]
-    ],
-    "closeOtherTabs": [
-      [{ "key": "O" }]
-    ],
-    "closeRightTabs": [
-      [{ "key": "P" }]
-    ],
-    "closeLeftTabs": [
-      [{ "key": "I" }]
-    ],
-    "newTab": [
-      [{ "key": "n" }]
-    ],
-    "restoreTab": [
-      [{ "key": "X" }]
-    ],
-    "duplicateTab": [
-      [{ "key": "b" }]
-    ],
-    "newWindow": [
-      [{ "key": "N" }]
-    ],
-    "switchWindow": [
-      [{ "key": "u" }]
-    ],
-    "zoomIn": [
-      [{ "key": "n" }]
-    ],
-    "zoomOut": [
-      [{ "key": "m" }]
-    ],
-    "zoomReset": [
-      [{ "key": "N" }],
-      [{ "key": "M" }]
-    ],
-    "refreshTab": [
-      [{ "key": "t" }]
-    ],
-    "refreshAllTabs": [
-      [{ "key": "T" }]
-    ],
-    "toggleMuteTab": [
-      [{ "key": "b" }]
-    ],
-    "toggleMuteAllTabs": [
-      [{ "key": "B" }]
-    ],
-    "togglePinTab": [
-      [{ "key": "V" }]
-    ]
+    "name": "Default Key Bindings",
+    "version": 1,
+    "bindings": {
+      "scrollDown": [
+        [{ "key": "d" }],
+        [{ "key": "j" }]
+      ],
+      "scrollUp": [
+        [{ "key": "s" }],
+        [{ "key": "k" }]
+      ],
+      "scrollLeft": [
+        [{ "key": "h" }]
+      ],
+      "scrollRight": [
+        [{ "key": "l" }]
+      ],
+      "scrollPageDown": [
+        [{ "key": "J" }]
+      ],
+      "scrollPageUp": [
+        [{ "key": "K" }]
+      ],
+      "scrollHalfPageDown": [
+        [{ "key": "D" }]
+      ],
+      "scrollHalfPageUp": [
+        [{ "key": "S" }]
+      ],
+      "scrollToBottom": [
+        [{ "key": "G" }]
+      ],
+      "scrollToTop": [
+          [{ "key": "g" }, { "key": "g" }]
+      ],
+      "scrollToLeft": [
+        [{ "key": "H" }]
+      ],
+      "scrollToRight": [
+        [{ "key": "L" }]
+      ],
+      "previousTab": [
+        [{ "key": "e" }]
+      ],
+      "nextTab": [
+        [{ "key": "r" }]
+      ],
+      "firstTab": [
+        [{ "key": "1" }]
+      ],
+      "lastTab": [
+        [{ "key": "0" }]
+      ],
+      "moveTabLeft": [
+        [{ "key": "q" }]
+      ],
+      "moveTabRight": [
+        [{ "key": "w" }]
+      ],
+      "moveTabFirst": [
+        [{ "key": "Q" }]
+      ],
+      "moveTabLast": [
+        [{ "key": "R" }]
+      ],
+      "closeTab": [
+        [{ "key": "x" }]
+      ],
+      "closeOtherTabs": [
+        [{ "key": "O" }]
+      ],
+      "closeRightTabs": [
+        [{ "key": "P" }]
+      ],
+      "closeLeftTabs": [
+        [{ "key": "I" }]
+      ],
+      "newTab": [
+        [{ "key": "n" }]
+      ],
+      "restoreTab": [
+        [{ "key": "X" }]
+      ],
+      "duplicateTab": [
+        [{ "key": "b" }]
+      ],
+      "newWindow": [
+        [{ "key": "N" }]
+      ],
+      "switchWindow": [
+        [{ "key": "u" }]
+      ],
+      "zoomIn": [
+        [{ "key": "z" }]
+      ],
+      "zoomOut": [
+        [{ "key": "Z" }]
+      ],
+      "zoomReset": [
+        [{ "code": "KeyZ", "altKey": true }],
+        [{ "code": "KeyZ", "altKey": true, "shiftKey": true }]
+      ],
+      "refreshTab": [
+        [{ "key": "t" }]
+      ],
+      "refreshAllTabs": [
+        [{ "key": "T" }]
+      ],
+      "toggleMuteTab": [
+        [{ "key": "m" }]
+      ],
+      "toggleMuteAllTabs": [
+        [{ "key": "Mb" }]
+      ],
+      "togglePinTab": [
+        [{ "key": "Ma" }]
+      ]
+    }
   }
 }

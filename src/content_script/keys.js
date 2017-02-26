@@ -5,6 +5,7 @@ import {
   scrollPageDown, scrollPageUp, scrollHalfPageDown, scrollHalfPageUp,
   scrollToBottom, scrollToTop, scrollToLeft, scrollToRight
 } from 'saka-actions/content-script';
+import { keyboardEventString } from '../lib/keys';
 
 
 
@@ -97,23 +98,9 @@ function textElementFocused () {
   return false;
 };
 
-function validKeyEvent (event) {
-  return !(event.ctrlKey || event.altlKey || event.metaKey);
-}
 
 function handledBySakaKey (event) {
-  return state.enabled && !textElementFocused() && validKeyEvent(event);
-}
-
-function getKeyString (event) {
-  return (event.ctrlKey || event.altKey || event.metaKey)
-    ? `${
-      event.code}+${
-      event.shiftKey ? 'S' : ''}${
-      event.ctrlKey ? 'C' : ''}${
-      event.altKey ? 'A' : ''}${
-      event.metaKey ? 'M' : ''}`
-    : event.key;
+  return state.enabled && !textElementFocused();
 }
 
 function handleKeyEvent (keyString) {
@@ -131,7 +118,7 @@ document.addEventListener('keydown', (event) => {
 
 document.addEventListener('keypress', (event) => {
   if (handledBySakaKey(event)) {
-    const key = getKeyString(event);
+    const key = keyboardEventString(event);
     handleKeyEvent(key);
     event.stopPropagation();
   }

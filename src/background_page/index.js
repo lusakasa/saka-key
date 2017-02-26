@@ -10,19 +10,19 @@ import {
   toggleMuteTab, toggleMuteAllTabs,
   togglePinTab
 } from 'saka-actions/background-page';
+import { state } from './state';
+import { install } from './install';
 
-const config = {
-  enabled: true
-};
+install();
 
 
 function getEnabled (_, src) {
-  msg(src, 'setEnabled', config.enabled);
+  msg(src, 'setEnabled', state.enabled);
 };
 
 function toggleEnabled () {
-  config.enabled = !config.enabled;
-  msg('cs;popup', 'setEnabled', config.enabled);
+  state.enabled = !state.enabled;
+  msg('cs;popup', 'setEnabled', state.enabled);
 };
 
 function loadContentScript (_, src) {
@@ -34,20 +34,16 @@ function loadContentScript (_, src) {
   });
 };
 
-function requestShowHelpMenu () {
+function showHelpMenu () {
   chrome.tabs.query({ currentWindow: true, active: true }, ([tab]) => {
     msg(`tab[${tab.id}].topFrame`, 'showHelpMenu');
   });
 };
 
-const bindings = {
-  a: 'asf'
-};
-
 function initContentScript (_, src) {
   msg(src, 'initContentScript', {
-    enabled: config.enabled,
-    bindings
+    enabled: state.enabled,
+    bindings: state.bindings
   });
 };
 
@@ -59,7 +55,7 @@ init({
     // for content scripts
     loadContentScript,
     initContentScript,
-    requestShowHelpMenu,
+    showHelpMenu,
     // keyboard actions
     nextTab,
     previousTab,

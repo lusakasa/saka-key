@@ -1,5 +1,4 @@
 import './help.css';
-import { msg } from 'mosi/client';
 
 const iframe = document.createElement('iframe');
 iframe.id = 'popup';

@@ -12,6 +12,7 @@ function setEnabled (enabled) {
 function initContentScript ({ enabled, bindings }) {
   setEnabled(enabled);
   initKeyHandling(bindings);
+  console.log(bindings);
 };
 
 init({
