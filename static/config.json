@@ -168,7 +168,8 @@
           [{ "key": "g" }, { "key": "g" }]
       ],
       "scrollToLeft": [
-        [{ "key": "H" }]
+        [{ "key": "H" }],
+        [{ "key": "g" }, { "key": "a" }]
       ],
       "scrollToRight": [
         [{ "key": "L" }]
@@ -244,10 +245,10 @@
         [{ "key": "m" }]
       ],
       "toggleMuteAllTabs": [
-        [{ "key": "Mb" }]
+        [{ "key": "M" }]
       ],
       "togglePinTab": [
-        [{ "key": "Ma" }]
+        [{ "key": "p" }]
       ]
     }
   }
