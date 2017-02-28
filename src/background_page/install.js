@@ -1,36 +1,16 @@
-import { keyboardEventString, validateKeyboardEvent } from '../lib/keys';
-import { JSONTrie } from '../lib/trie';
+import { commandTrie } from '../lib/trie';
 import { state } from './state';
 
 function loadDefaultKeyBindings () {
   fetch(chrome.runtime.getURL('/config.json'))
     .then((response) => response.json())
     .then((config) => {
-      const bindingsMap = config.defaultBindings.bindings;
       try {
-        state.bindings = JSONTrie(bindingsList(bindingsMap));
+        state.bindings = commandTrie(config.defaultBindings.bindings);
       } catch (e) {
         console.error(e);
       }
     });
-}
-
-function bindingsList (bindingsMap) {
-  const out = [];
-  for (const [command, bindings] of Object.entries(bindingsMap)) {
-    for (const binding of bindings) {
-      const keySequence = binding.map((key) => {
-        try {
-          validateKeyboardEvent(key);
-        } catch (e) {
-          throw Error(`Invalid KeyboardEvent descriptor for ${command}: ${e.message}`);
-        }
-        return keyboardEventString(key);
-      });
-      out.push([keySequence, command]);
-    }
-  }
-  return out;
 }
 
 export function install () {

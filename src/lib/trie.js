@@ -1,9 +1,41 @@
-/**
- * Given an array of the form: [[binding, string]], converts it to
- * a JSON trie
- */
+import { validateKeyboardEvent, keyboardEventString } from './keys';
 
-export function JSONTrie (bindings) {
+/**
+ * Given an object mapping commands to their key bindings,
+ * returns the trie representation.
+ */
+export function commandTrie (commandMap) {
+  return JSONTrie(bindingsList(commandMap));
+}
+
+/**
+ * Given an object mapping commands to their key bindings,
+ * returns an array of (commands, binding).
+ * A command may have more than one binding, or none at all.
+ */
+function bindingsList (bindingsMap) {
+  const out = [];
+  for (const [command, bindings] of Object.entries(bindingsMap)) {
+    for (const binding of bindings) {
+      const keySequence = binding.map((key) => {
+        try {
+          validateKeyboardEvent(key);
+        } catch (e) {
+          throw Error(`Invalid KeyboardEvent descriptor for ${command}: ${e.message}`);
+        }
+        return keyboardEventString(key);
+      });
+      out.push([keySequence, command]);
+    }
+  }
+  return out;
+}
+
+/**
+ * Given an array of (command, binding),
+ * returns the trie representation.
+ */
+function JSONTrie (bindings) {
   const trie = {};
   bindings.forEach(([key, value]) => {
     addToTrie(trie, 0, key, value);
@@ -32,4 +64,3 @@ function addToTrie (trie, i, key, value) {
     }
   }
 };
-

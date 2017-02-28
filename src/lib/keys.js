@@ -7,12 +7,10 @@
  *      { code, shiftKey, ctrlKey, altKey, metaKey }
  *   2. Otherwise:
  *      { key }
- * Prepends '•' to the code representation to distinguish between the two
- * representation and avoid prefix collisions (e.g. 'K' is a prefix of 'KeyJ')
  */
 export function keyboardEventString (event) {
   return (event.ctrlKey || event.altKey || event.metaKey)
-    ? ('•' + event.code + '+' +
+    ? (event.code + '+' +
       (event.shiftKey ? 'S' : '') +
       (event.ctrlKey ? 'C' : '') +
       (event.altKey ? 'A' : '') +
@@ -20,7 +18,11 @@ export function keyboardEventString (event) {
     : event.key;
 };
 
-
+/**
+ * Validates a user-defined keyboard event descriptor. Do not mistakenly call
+ * this function on a 'natural' keyboard event. The supplied event should
+ * be parsed from a configuration file.
+ */
 export function validateKeyboardEvent (event) {
   if (event.hasOwnProperty('code') === event.hasOwnProperty('key')) {
     throw Error('Either the key or the code property must be specified, but not both');

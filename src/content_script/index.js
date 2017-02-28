@@ -1,9 +1,12 @@
 import { init } from 'mosi/client';
 import { showHelpMenu } from './showHelp';
 import { state } from './state';
-import { initKeyHandling } from './keys';
+import { addKeyEventListeners, initKeyHandling } from './keys';
 
 console.log('content script loaded');
+
+// Add KeyboardEvent listeners ASAP so that page listeners don't get loaded first
+addKeyEventListeners();
 
 function setEnabled (enabled) {
   state.enabled = enabled;
@@ -24,5 +27,3 @@ init({
     showHelpMenu
   }
 });
-
-

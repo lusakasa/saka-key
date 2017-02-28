@@ -1,131 +1,88 @@
-import { msg } from 'mosi/client';
+import { commands } from './commands';
 import { state } from './state';
-import {
-  scrollDown, scrollUp, scrollLeft, scrollRight,
-  scrollPageDown, scrollPageUp, scrollHalfPageDown, scrollHalfPageUp,
-  scrollToBottom, scrollToTop, scrollToLeft, scrollToRight
-} from 'saka-actions/content-script';
 import { keyboardEventString } from '../lib/keys';
-
-
-
-/*
-
-g
-sg
-bb
-ba
-
-{
-  g: ACTION1,
-  sg: ACTION2,
-  b-b: ACTION3,
-  b-a: ACTION4
-}
-*/
 
 export function initKeyHandling (bindings) {
   state.bindings = bindings;
+  state.curNode = bindings;
 };
 
-let seen = '';
-export function processKeyEvent (event) {
-  seen = seen + (seen === '' ? '' : '-') + keyString(event);
-  const action = state.bindings[seen];
-  if (action) {
-    action();
+/**
+ * Advances the input trie based on the input key event.
+ * If a leaf node, corresponding to a command, has been reached,
+ * returns the command.
+ * Otherwise returns undefined
+ */
+function advanceKeyState (event) {
+  const key = keyboardEventString(event);
+  // TODO: Update to use longest viable prefix by trying
+  // longest prefix until a valid path is found
+  const next = state.curNode[key] || state.bindings[key] || state.bindings;
+  // Case 1. A trie node
+  if (typeof next === 'object') {
+    state.curNode = next;
+    return undefined;
+  // Case 2. A trie leaf corresponding to the command reached
+  } else {
+    state.curNode = state.bindings;
+    return next;
   }
-};
-
-const backgroundPage = (command, args) => () => { msg(1, command, args); };
-const actions = {
-  requestShowHelpMenu: backgroundPage('requestShowHelpMenu'),
-  scrollDown,
-  scrollUp,
-  scrollLeft,
-  scrollRight,
-  scrollPageDown,
-  scrollPageUp,
-  scrollHalfPageDown,
-  scrollHalfPageUp,
-  scrollToBottom,
-  scrollToTop,
-  scrollToLeft,
-  scrollToRight,
-  previousTab: backgroundPage('previousTab'),
-  nextTab: backgroundPage('nextTab'),
-  firstTab: backgroundPage('firstTab'),
-  lastTab: backgroundPage('lastTab'),
-  moveTabLeft: backgroundPage('moveTabLeft'),
-  moveTabRight: backgroundPage('moveTabRight'),
-  moveTabFirst: backgroundPage('moveTabFirst'),
-  moveTabLast: backgroundPage('moveTabLast'),
-  closeTab: backgroundPage('closeTab'),
-  closeOtherTabs: backgroundPage('closeOtherTabs'),
-  closeRightTabs: backgroundPage('closeRightTabs'),
-  closeLeftTabs: backgroundPage('closeLeftTabs'),
-  newTab: backgroundPage('newTab'),
-  restoreTab: backgroundPage('restoreTab'),
-  duplicateTab: backgroundPage('duplicateTab'),
-  newWindow: backgroundPage('newWindow'),
-  switchWindow: backgroundPage('switchWindow'),
-  zoomIn: backgroundPage('zoomIn'),
-  zoomOut: backgroundPage('zoomOut'),
-  zoomReset: backgroundPage('zoomReset'),
-  refreshTab: backgroundPage('refreshTab'),
-  refreshAllTabs: backgroundPage('refreshAllTabs'),
-  toggleMuteTab: backgroundPage('toggleMuteTab'),
-  toggleMuteAllTabs: backgroundPage('toggleMuteAllTabs'),
-  togglePinTab: backgroundPage('togglePinTab')
-};
-
-// handle event on bubble down so that key handling suppresses any keyhandling of visited page
-// handle only keypress events, suppress the restoreTab
+}
 
 // TODO: work on case sensitivity
 const textInputTypes = [ 'text', 'search', 'email', 'url', 'number', 'password', 'date', 'tel' ];
 function textElementFocused () {
   const e = document.activeElement;
-  if (e.nodeName === 'INPUT') {
-    if (!e.disabled && !e.readonly && (!e.type || textInputTypes.includes(e.type))) {
+  if (e) {
+    if (e.nodeName === 'INPUT') {
+      if (!e.disabled && !e.readonly && (!e.type || textInputTypes.includes(e.type))) {
+        return true;
+      }
+    } else if (e.nodeName === 'TEXTAREA') {
+      return true;
+    } else if (e.contentEditable === 'true') {
       return true;
     }
-  } else if (e.nodeName === 'TEXTAREA') {
-    return true;
-  } else if (e.contentEditable === 'true') {
-    return true;
+    return false;
   }
   return false;
 };
-
 
 function handledBySakaKey (event) {
   return state.enabled && !textElementFocused();
 }
 
-function handleKeyEvent (keyString) {
-  const action = inputTrie.advance(keyString);
-  if (action) {
-    (actions[action] || (() => console.log('pressed ' + event.key)))();
+function handleKeyEvent (event) {
+  const command = advanceKeyState(event);
+  if (command) {
+    (commands[command] || (() => console.log('pressed ' + event.key)))();
   }
 }
 
-document.addEventListener('keydown', (event) => {
-  if (handledBySakaKey(event)) {
-    event.stopPropagation();
-  }
-}, true);
+/**
+ * Installs keydown, keypress, and keyup event listeners.
+ * Commands are triggered by the keypress handler and ignored  and suppressed
+ * by the keydown and keyup handlers.
+ * Note that the listeners intercept keyboard events in the capturing phase,
+ * not bubbling phase.
+ * http://web.archive.org/web/20170125014918/http://javascript.info/tutorial/bubbling-and-capturing
+ */
+export function addKeyEventListeners () {
+  document.addEventListener('keydown', (event) => {
+    if (handledBySakaKey(event)) {
+      event.stopPropagation();
+    }
+  }, true);
+  document.addEventListener('keypress', (event) => {
+    if (handledBySakaKey(event)) {
+      handleKeyEvent(event);
+      event.stopPropagation();
+    }
+  }, true);
+  document.addEventListener('keyup', (event) => {
+    if (handledBySakaKey(event)) {
+      event.stopPropagation();
+    }
+  }, true);
+}
 
-document.addEventListener('keypress', (event) => {
-  if (handledBySakaKey(event)) {
-    const key = keyboardEventString(event);
-    handleKeyEvent(key);
-    event.stopPropagation();
-  }
-}, true);
-
-document.addEventListener('keyup', (event) => {
-  if (handledBySakaKey(event)) {
-    event.stopPropagation();
-  }
-}, true);
