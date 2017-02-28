@@ -22,7 +22,7 @@ function getEnabled (_, src) {
 
 function toggleEnabled () {
   state.enabled = !state.enabled;
-  msg('client', 'setEnabled', state.enabled);
+  msg('client;popup', 'setEnabled', state.enabled);
 };
 
 function loadClient (_, src) {
