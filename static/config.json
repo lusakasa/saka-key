@@ -2,7 +2,7 @@
   "version": 1,
   "commandCategories": {
     "Misc.": [
-      "showHelpMenu"
+      "toggleHelpMenu"
     ],
     "Scrolling": [
       "scrollDown",
@@ -47,8 +47,8 @@
     ]
   },
   "commandDetails": {
-    "showHelpMenu": {
-      "description": "Show the help menu"
+    "toggleHelpMenu": {
+      "description": "Show/hide the help menu"
     },
     "scrollDown": {
       "description": "Scroll down page by a single step"
@@ -166,7 +166,7 @@
     "name": "Default Key Bindings",
     "version": 1,
     "bindings": {
-      "showHelpMenu": [
+      "toggleHelpMenu": [
         [{ "key": "?" }]
       ],
       "scrollDown": [

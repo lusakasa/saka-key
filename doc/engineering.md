@@ -67,3 +67,10 @@ This document describes design decisions made in Saka Key and why they were made
 * Motivation: As far as I can tell, (code | key) & allModifiers is the only unique way to identify a key without using an attribute that will be depracated. Showing the .key attribute will really confuse people since the option key can affect the value of .key (option + j = ∆; option + shift + j = Ô) and the .code attribute values are too long and complicated. To minimize the size of the bindings trie that must be transfered on every page load, use .key for decoding instead of .code.
 
 ---
+
+* Decision: Scrollable elements are selectable
+
+* Motivation:
+
+---
+

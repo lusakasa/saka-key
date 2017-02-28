@@ -14,10 +14,38 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 ## Development
 
+Run the following commands in your terminal to clone and build Saka Key
+
 ```
+git clone https://github.com/lusakasa/saka-key.git
+cd saka-key
 npm install
 npm run build
 ```
+
+An extension you can run will be generated in the 'dist' directory.
+
+Open Chrome and navigate to chrome://extensions
+
+Enable developer mode and select 'Load unpacked Extension'
+
+Select the dist directory, and &#128640;.
+
+### Development Notes
+
+Check out the [doc](./doc) folder to learn about Saka Key's design.
+
+Saka Key is developed with and reliant on the following libraries:
+* saka-actions: [github](https://github.com/lusakasa/saka-actions), [npm](https://www.npmjs.com/package/saka-actions)
+* mosi: [github](https://github.com/eejdoowad/mosi), [npm](https://www.npmjs.com/package/mosi)
+
+You may have to debug or modify these libraries when contributing to saka key. To use your local copy of these libraries when building saka-key:
+
+1. Navigate to their root directories.
+2. Run `npm link`
+3. Navigate to the root of Saka key.
+4. Run `npm link saka-actions` and/or `npm link mosi`
+
 
 ## Credits
 
