@@ -33,6 +33,7 @@
       "closeLeftTabs",
       "newTab",
       "restoreTab",
+      "duplicateTab",
       "newWindow",
       "switchWindow",
       "zoomIn",

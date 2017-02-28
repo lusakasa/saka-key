@@ -8,6 +8,9 @@ import '@material/list/dist/mdc.list.css';
 import '@material/toolbar/dist/mdc.toolbar.css';
 import './Options.css';
 
+// TODO: change mdc-toolbar__fixed-adjust to mdc-toolbar-fixed-adjust
+// when @material/toolbar package updates
+
 export default class OptionsMenu extends Component {
   componentDidMount () {
     initialize('options');
