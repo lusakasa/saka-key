@@ -2,8 +2,8 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     'background_page': './src/background_page/index.js',
-    'content_script': './src/content_script/index.js',
-    'content_script_loader': './src/content_script_loader/index.js',
+    'client': './src/client/index.js',
+    'client_loader': './src/client_loader/index.js',
     'options': './src/options/index.js',
     'popup': './src/popup/index.js'
   },

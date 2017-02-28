@@ -27,9 +27,7 @@ class CommandMenu extends Component {
       );
     } else {
       return (
-        <div>
-          <span>Not loaded yet</span>
-        </div>
+        <div />
       );
     }
   }

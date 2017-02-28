@@ -4,8 +4,6 @@ const iframe = document.createElement('iframe');
 iframe.id = 'popup';
 iframe.src = chrome.runtime.getURL('options.html');
 iframe.setAttribute('class', 'helpFrame');
-iframe.setAttribute('width', '400');
-iframe.setAttribute('height', '600');
 
 let visible = false;
 
