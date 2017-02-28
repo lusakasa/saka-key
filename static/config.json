@@ -1,24 +1,54 @@
 {
   "version": 1,
   "commandCategories": {
+    "Misc.": [
+      "showHelpMenu"
+    ],
     "Scrolling": [
-      "scrollDown", "scrollUp", "scrollLeft", "scrollRight",
-      "scrollPageDown", "scrollPageUp", "scrollHalfPageDown", "scrollHalfPageUp",
-      "scrollToBottom", "scrollToTop", "scrollToLeft", "scrollToRight"
+      "scrollDown",
+      "scrollUp",
+      "scrollLeft",
+      "scrollRight",
+      "scrollPageDown",
+      "scrollPageUp",
+      "scrollHalfPageDown",
+      "scrollHalfPageUp",
+      "scrollToBottom",
+      "scrollToTop",
+      "scrollToLeft",
+      "scrollToRight"
     ],
     "Tab Manipulation": [
-      "nextTab", "previousTab", "firstTab", "lastTab",
-      "moveTabLeft", "moveTabRight", "moveTabFirst", "moveTabLast",
-      "closeTab", "closeOtherTabs", "closeRightTabs", "closeLeftTabs",
-      "newTab", "restoreTab",
-      "newWindow", "switchWindow",
-      "zoomIn", "zoomOut", "zoomReset",
-      "refreshTab", "refreshAllTabs",
-      "toggleMuteTab", "toggleMuteAllTabs",
+      "nextTab",
+      "previousTab",
+      "firstTab",
+      "lastTab",
+      "moveTabLeft",
+      "moveTabRight",
+      "moveTabFirst",
+      "moveTabLast",
+      "closeTab",
+      "closeOtherTabs",
+      "closeRightTabs",
+      "closeLeftTabs",
+      "newTab",
+      "restoreTab",
+      "newWindow",
+      "switchWindow",
+      "zoomIn",
+      "zoomOut",
+      "zoomReset",
+      "refreshTab",
+      "refreshAllTabs",
+      "toggleMuteTab",
+      "toggleMuteAllTabs",
       "togglePinTab"
     ]
   },
   "commandDetails": {
+    "showHelpMenu": {
+      "description": "Show the help menu"
+    },
     "scrollDown": {
       "description": "Scroll down page by a single step"
     },
@@ -135,6 +165,9 @@
     "name": "Default Key Bindings",
     "version": 1,
     "bindings": {
+      "showHelpMenu": [
+        [{ "key": "?" }]
+      ],
       "scrollDown": [
         [{ "key": "d" }],
         [{ "key": "j" }]
