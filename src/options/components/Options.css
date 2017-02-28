@@ -16,6 +16,15 @@ body {
   line-height: 24px;
 }
 
+.command-list {
+  padding-left: 0px;
+}
+
+.saka-logo {
+  height: 32px;
+  margin-right: 8px;
+}
+
 .key-text {
   padding: 0px 4px;
   border-width: 1px;

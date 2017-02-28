@@ -9,7 +9,7 @@ iframe.setAttribute('height', '600');
 
 let visible = false;
 
-export const showHelpMenu = () => {
+export const toggleHelpMenu = () => {
   if (visible) {
     document.documentElement.removeChild(iframe);
   } else {

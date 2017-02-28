@@ -16,11 +16,12 @@ class CommandMenu extends Component {
   render ({ loaded, commandCategories }) {
     if (loaded) {
       return (
-        <div>
+        <div class='mdc-list-group'>
           { Object.keys(commandCategories).map((category) =>
             <div>
-              <CategoryHeader category={category} />
+              <h3 class='mdc-list-group__subheader'>{category}</h3>
               <CommandList commands={commandCategories[category]} />
+              <hr class='mdc-list-divider' />
             </div>) }
         </div>
       );

@@ -18,12 +18,20 @@ class Popup extends Component {
   toggleEnabled () {
     msg(1, 'toggleEnabled');
   }
+  toggleHelpMenu () {
+    msg(1, 'toggleHelpMenu');
+  }
+  showOptionsPage () {
+
+  }
   render () {
     return (
       <div className='container'>
         { this.state.enabled
-          ? (<button onClick={this.toggleEnabled} className='mdc-button mdc-button--accent disable-button'>Disable Saka Key</button>)
-          : (<button onClick={this.toggleEnabled} className='mdc-button mdc-button--accent enable-button'>Enable Saka Key</button>) }
+          ? (<button onClick={this.toggleEnabled} className='mdc-button mdc-button--accent'>Disable Saka Key</button>)
+          : (<button onClick={this.toggleEnabled} className='mdc-button mdc-button--accent'>Enable Saka Key</button>) }
+        <button onClick={this.toggleHelpMenu} className='mdc-button mdc-button--accent'>Help</button>
+        <button onClick={this.showOptionsPage} className='mdc-button mdc-button--accent'>Options</button>
       </div>
     );
   }

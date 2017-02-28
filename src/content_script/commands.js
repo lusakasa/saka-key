@@ -7,7 +7,7 @@ import {
 
 const backgroundPage = (command, args) => () => { msg(1, command, args); };
 export const commands = {
-  showHelpMenu: backgroundPage('showHelpMenu'),
+  showHelpMenu: backgroundPage('toggleHelpMenu'),
   scrollDown,
   scrollUp,
   scrollLeft,

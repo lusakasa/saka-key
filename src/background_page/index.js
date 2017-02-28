@@ -34,9 +34,9 @@ function loadContentScript (_, src) {
   });
 };
 
-function showHelpMenu () {
+function toggleHelpMenu () {
   chrome.tabs.query({ currentWindow: true, active: true }, ([tab]) => {
-    msg(`tab[${tab.id}].topFrame`, 'showHelpMenu');
+    msg(`tab[${tab.id}].topFrame`, 'toggleHelpMenu');
   });
 };
 
@@ -55,7 +55,7 @@ init({
     // for content scripts
     loadContentScript,
     initContentScript,
-    showHelpMenu,
+    toggleHelpMenu,
     // keyboard actions
     nextTab,
     previousTab,

@@ -1,8 +1,8 @@
 .container {
   width: 200px;
-  /*height: 100px;*/
   display: flex;
   justify-content: center;
+  flex-direction: column
 }
 
 .disable-button {

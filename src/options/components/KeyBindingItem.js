@@ -1,13 +1,14 @@
 import { Component, h } from 'preact';
 import { connect } from 'preact-redux';
+import { friendlyKeyboardEventString } from '../../lib/keys';
 
 class KeyBindingItem extends Component {
-  render ({ keys }) {
+  render ({ binding }) {
     return (
       <span>
-        { keys.map((key) =>
+        { binding.map((key) =>
           <span className={'key-text mdc-typography--body1'}>
-            {key}
+            {friendlyKeyboardEventString(key)}
           </span>) }
       </span>
     );
