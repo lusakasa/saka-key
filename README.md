@@ -6,11 +6,13 @@ Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/sa
 
 ## Intro
 
-Saka Key lets you navigate the web with just your keyboard. It differs from existing vi-inspired chrome extensions on two fronts:
+Saka Key lets you navigate the web with just your keyboard. It differs from existing vi-inspired chrome extensions on three fronts:
 
 1. Its primary focus is ease of use. It's not targeted to developers. Aesthetics matter and graphical menus takes preference over text configuration.
 
 2. Its code is clean and organized to make it easy to understand and contribute to. It's engineered, not hacked together. 
+
+3. Its design is extensible. You can add any features you want. Although modes are built-in for performance, they can all be implemented as external extensions. ** architected, but not yet implemented
 
 ## Development
 

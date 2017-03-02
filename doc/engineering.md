@@ -27,6 +27,11 @@ This document describes design decisions made in Saka Key and why they were made
     * code things the simplest, easiest to understand way possible
     * learn from design of Vimium, cVim, and others
 
+3. 100% Extensible
+    * many modes are built in for performance
+    * but it is possible to implement them all as external extensions
+    * You can use saka key as a generic key mapper for any extension
+
 
 ## Design Decisions and Reasons
 
