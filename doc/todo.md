@@ -13,3 +13,7 @@
 * smarter on/off mosi to save power
 * smarter link hints
 * support for vi-like features
+* consider extensibility, e.g. https://github.com/philc/vimium/pull/1980#issuecomment-183223423
+
+
+* think about whether to handle keyboard events on keydown or keypress

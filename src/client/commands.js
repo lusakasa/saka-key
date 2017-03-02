@@ -1,9 +1,18 @@
 import { msg } from 'mosi/client';
 import {
-  scrollDown, scrollUp, scrollLeft, scrollRight,
-  scrollPageDown, scrollPageUp, scrollHalfPageDown, scrollHalfPageUp,
-  scrollToBottom, scrollToTop, scrollToLeft, scrollToRight
-} from 'saka-actions/content-script';
+  scrollDown,
+  scrollUp,
+  scrollLeft,
+  scrollRight,
+  scrollPageDown,
+  scrollPageUp,
+  scrollHalfPageDown,
+  scrollHalfPageUp,
+  scrollToBottom,
+  scrollToTop,
+  scrollToLeft,
+  scrollToRight
+} from 'saka-commands/scroll-actions';
 
 const backgroundPage = (command, args) => () => { msg(1, command, args); };
 export const commands = {

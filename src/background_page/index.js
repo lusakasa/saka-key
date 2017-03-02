@@ -24,7 +24,7 @@ import {
   toggleMuteTab,
   toggleMuteAllTabs,
   togglePinTab
-} from 'saka-actions/background-page';
+} from 'saka-commands/tab-actions';
 import { state } from './state';
 import { install } from './install';
 
@@ -43,7 +43,7 @@ function toggleEnabled () {
 function loadClient (_, src) {
   const { frameId, tabId } = meta(src);
   chrome.tabs.executeScript(tabId, {
-    file: 'client.js',
+    file: 'content_script.js',
     frameId,
     runAt: 'document_start'
   });

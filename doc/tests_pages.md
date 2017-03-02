@@ -7,3 +7,7 @@
 * scroll box: [http://www.quackit.com/html/codes/html_scroll_box.cfm](http://www.quackit.com/html/codes/html_scroll_box.cfm)
 
 * horizontal scroll: [todo]()
+
+* non-standard scroll: [http://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc](http://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc)
+
+* lose focus during scroll: [https://github.com/philc/vimium/issues/1526]()

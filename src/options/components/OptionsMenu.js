@@ -1,7 +1,6 @@
 import { Component, h } from 'preact';
 // import OptionsMenuHeader from './OptionsMenuHeader';
 import CommandMenu from './CommandMenu';
-import { initialize } from '../../client/initialize';
 
 import '@material/button/dist/mdc.button.css';
 import '@material/list/dist/mdc.list.css';
@@ -12,9 +11,6 @@ import './Options.css';
 // when @material/toolbar package updates
 
 export default class OptionsMenu extends Component {
-  componentDidMount () {
-    initialize('options');
-  }
   render () {
     return (
       <div className={'options-menu'}>

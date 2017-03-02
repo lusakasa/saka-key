@@ -30,6 +30,8 @@ This document describes design decisions made in Saka Key and why they were made
 
 ## Design Decisions and Reasons
 
+### Misc
+
 ---
 
 * Decision: small content_script_loader loads into each frame and only load full content script if frame is large enoough
@@ -56,9 +58,11 @@ This document describes design decisions made in Saka Key and why they were made
 
 ---
 
-* Decision: use a single key event listener
+### Event handling
 
-* Motivation: try to understand Vimium's handler stack
+* Decision: Use a single listener for each type of event (keydown, keypress, keyup, focus, blur) and a state machine.
+
+* Motivation: Try to understand Vimium's handler stack. The wrong data structure led to incomprehensible control flow.
 
 ---
 
@@ -68,9 +72,33 @@ This document describes design decisions made in Saka Key and why they were made
 
 ---
 
-* Decision: Scrollable elements are selectable
+### Scrolling
 
-* Motivation:
+* Decision: Scrolling - do it the Vimium way mostly
+
+* Motivation: Their answer to qustions on scrolling work mostly
+  
+---
+
+* Decision: A scrollable element is determined by attempting to scroll it and seeing if its position changes.
+
+* Motivation: other more straighforward ways don't work according to Vimium's comments and issues.
 
 ---
+
+* Decision: The default scrolling element is the body. If the body isn't scrollable, the default is the largest scrollable element.
+
+* Motivation: The body of some pages doesn't scroll. This is a good alternative selection.
+
+---
+
+* Decision: Scrollable elements are selectable.
+
+* Motivation: This lets you scroll them. Otherwise the scroll focus would be stuck on the body.
+
+---
+
+* Decision: Start smooth scrolling animation on keydown and end smooth scrolling animation on key up.
+
+* Motivation: Smooth scrolling is surprisingly tricky to get 'just right.' My early attempts all resulted in scrolling for a fraction of a second, then a tiny pause, then smooth scrolling as you'd expect. I learned that, calling cancelAnimationFrame was a bad idea. I tried a timeout based solution. 
 
