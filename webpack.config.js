@@ -29,5 +29,11 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       }
     ]
+  },
+  resolve: {
+    modules: [
+      './src',
+      './node_modules'
+    ]
   }
 };

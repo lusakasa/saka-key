@@ -1,4 +1,4 @@
-import { keyboardEventString } from '../lib/keys';
+import { keyboardEventString } from 'lib/keys';
 
 class CommandTrie {
   init (bindings) {

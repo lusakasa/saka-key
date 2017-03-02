@@ -5,7 +5,7 @@ import CommandMenu from './CommandMenu';
 import '@material/button/dist/mdc.button.css';
 import '@material/list/dist/mdc.list.css';
 import '@material/toolbar/dist/mdc.toolbar.css';
-import './Options.css';
+import 'options/style.css';
 
 // TODO: change mdc-toolbar__fixed-adjust to mdc-toolbar-fixed-adjust
 // when @material/toolbar package updates

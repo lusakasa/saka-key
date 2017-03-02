@@ -1,3 +1,3 @@
-import { initialize } from '../client';
+import { initialize } from 'client';
 
 initialize('cs');

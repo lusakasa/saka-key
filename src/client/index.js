@@ -1,7 +1,7 @@
 import { init } from 'mosi/client';
 import { toggleHelpMenu } from './helpMenu';
 import { addEventListeners } from './modes';
-import { commandTrie } from './commandTrie';
+import { commandTrie } from 'modes/command/commandTrie';
 
 /**
  * Initializes a Saka key client with the given type string (typically components

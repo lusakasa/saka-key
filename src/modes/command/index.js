@@ -1,6 +1,6 @@
 import { Mode } from './mode';
-import { commandTrie } from '../client/commandTrie';
-import { commands } from '../client/commands';
+import { commandTrie } from './commandTrie';
+import { commands } from './commands';
 
 class Command extends Mode {
   async keydown (event) {

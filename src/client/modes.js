@@ -1,6 +1,6 @@
-import { DISABLED } from '../modes/disabled';
-import { COMMAND } from '../modes/command';
-import { TEXT } from '../modes/text';
+import { DISABLED } from 'modes/disabled';
+import { COMMAND } from 'modes/command';
+import { TEXT } from 'modes/text';
 
 let mode = 'COMMAND';
 
@@ -37,7 +37,6 @@ export function addEventListeners () {
   eventTypes.forEach((eventType) => {
     document.addEventListener(eventType, eventListener, true);
   });
-  document.addEventListener('keypress', (e) => console.log('got', e), true);
 }
 
 /*

@@ -1,4 +1,4 @@
-import './help.css';
+import './style.css';
 
 const iframe = document.createElement('iframe');
 iframe.id = 'popup';

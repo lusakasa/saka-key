@@ -1,4 +1,3 @@
-
 // TODO: work on case sensitivity
 const textInputTypes = [ 'text', 'search', 'email', 'url', 'number', 'password', 'date', 'tel' ];
 export function textElementFocused () {
