@@ -1,17 +1,26 @@
 import { Mode } from './mode';
 import { commandTrie } from '../client/commandTrie';
+import { commands } from '../client/commands';
 
 class Command extends Mode {
   async keydown (event) {
-    event.stopPropagation();
+    event.stopImmediatePropagation();
     return 'COMMAND';
   }
   async keypress (event) {
-    event.stopPropagation();
-    return commandTrie.handleKeyEvent(event);
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const command = commandTrie.advance(event);
+    if (command) {
+      const nextMode = commands[command]();
+      if (nextMode) {
+        return nextMode;
+      }
+    }
+    return 'COMMAND';
   }
   async keyup (event) {
-    event.stopPropagation();
+    event.stopImmediatePropagation();
     return 'COMMAND';
   }
   async focus (event) {

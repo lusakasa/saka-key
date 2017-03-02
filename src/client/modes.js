@@ -37,6 +37,7 @@ export function addEventListeners () {
   eventTypes.forEach((eventType) => {
     document.addEventListener(eventType, eventListener, true);
   });
+  document.addEventListener('keypress', (e) => console.log('got', e), true);
 }
 
 /*

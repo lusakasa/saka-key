@@ -1,20 +1,9 @@
-import { commands } from './commands';
 import { keyboardEventString } from '../lib/keys';
 
 class CommandTrie {
   init (bindings) {
     this.root = bindings;
     this.curNode = bindings;
-  }
-  handleKeyEvent (event) {
-    const command = this.advance(event);
-    if (command) {
-      const nextMode = commands[command]();
-      if (nextMode) {
-        return nextMode;
-      }
-    }
-    return 'COMMAND';
   }
   /**
    * Advances the command trie based on the command key event.
