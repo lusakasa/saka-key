@@ -1,7 +1,7 @@
 import { commands } from './commands';
 import { keyboardEventString } from '../lib/keys';
 
-class InputTrie {
+class CommandTrie {
   init (bindings) {
     this.root = bindings;
     this.curNode = bindings;
@@ -17,7 +17,7 @@ class InputTrie {
     return 'COMMAND';
   }
   /**
-   * Advances the input trie based on the input key event.
+   * Advances the command trie based on the command key event.
    * If a leaf node, corresponding to a command, has been reached,
    * returns the command.
    * Otherwise returns undefined
@@ -39,4 +39,4 @@ class InputTrie {
   }
 }
 
-export const inputTrie = new InputTrie();
+export const commandTrie = new CommandTrie();

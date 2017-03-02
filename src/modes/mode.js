@@ -1,15 +1,15 @@
-import { state } from '../state';
+const modes = {};
 
 export class Mode {
   constructor (mode) {
     this.mode = mode;
-    state.modes[mode] = true;
+    modes[mode] = true;
   }
   async handleEvent (event) {
     const handler = this[event.type];
     if (handler) {
       const nextMode = await handler(event);
-      if (state.modes[nextMode]) {
+      if (modes[nextMode]) {
         return nextMode;
       }
       throw Error(`Invalid next mode ${nextMode}`);

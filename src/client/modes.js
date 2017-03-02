@@ -1,11 +1,47 @@
-import { state } from './state';
-import { DISABLED } from './modes/disabled';
+import { DISABLED } from '../modes/disabled';
+import { COMMAND } from '../modes/command';
+import { TEXT } from '../modes/text';
+
+let mode = 'COMMAND';
+
+const modes = {
+  DISABLED,
+  COMMAND,
+  TEXT
+};
+
+async function eventListener (event) {
+  mode = await modes[mode].handleEvent(event);
+}
+
+/**
+ * Installs keydown, keypress, and keyup event listeners.
+ * Commands are triggered by the keypress handler and ignored  and suppressed
+ * by the keydown and keyup handlers.
+ * Note that the listeners intercept keyboard events in the capturing phase,
+ * not bubbling phase.
+ * http://web.archive.org/web/20170125014918/http://javascript.info/tutorial/bubbling-and-capturing
+ */
+export function addEventListeners () {
+  const eventTypes = [
+    'keydown',
+    'keypress',
+    'keyup',
+    'focus',
+    'blur',
+    'click',
+    'mousedown',
+    'scroll',
+    'saka'
+  ];
+  eventTypes.forEach((eventType) => {
+    document.addEventListener(eventType, eventListener, true);
+  });
+}
 
 /*
-
 Saka Key handles input and modes using a state machine.
 The states in this state machine corresponds to the modes the user can be in and the state of the document
-
 
 handlers must be async to account for external extension handlers
 
@@ -43,41 +79,3 @@ onExit actions?
 how would external extensions define them?
 handling async
 */
-
-
-// function handledBySakaKey (event) {
-//   return state.enabled && !textElementFocused();
-// }
-
-const modes = {
-  DISABLED
-};
-
-async function eventListener (event) {
-  state.mode = await modes[state.mode].handleEvent(event);
-}
-
-/**
- * Installs keydown, keypress, and keyup event listeners.
- * Commands are triggered by the keypress handler and ignored  and suppressed
- * by the keydown and keyup handlers.
- * Note that the listeners intercept keyboard events in the capturing phase,
- * not bubbling phase.
- * http://web.archive.org/web/20170125014918/http://javascript.info/tutorial/bubbling-and-capturing
- */
-export function addEventListeners () {
-  const eventTypes = [
-    'keydown',
-    'keypress',
-    'keyup',
-    'focus',
-    'blur',
-    'click',
-    'mousedown',
-    'scroll',
-    'saka'
-  ];
-  eventTypes.forEach((eventType) => {
-    document.addEventListener(eventType, eventListener, true);
-  });
-}

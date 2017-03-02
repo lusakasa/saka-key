@@ -1,7 +1,7 @@
 import { init } from 'mosi/client';
 import { toggleHelpMenu } from './helpMenu';
-import { state } from './state';
-import { addKeyEventListeners, initKeyHandling } from './keys';
+import { addEventListeners } from './modes';
+import { commandTrie } from './commandTrie';
 
 /**
  * Initializes a Saka key client with the given type string (typically components
@@ -11,15 +11,21 @@ import { addKeyEventListeners, initKeyHandling } from './keys';
 export function initialize (type) {
   console.log(`${type} client loaded`);
 
-  addKeyEventListeners();
+  addEventListeners();
 
   function setEnabled (enabled) {
-    state.enabled = enabled;
+    const event = new CustomEvent('saka', {
+      detail: {
+        enabled,
+        class: 'toggleEnabled'
+      }
+    });
+    document.dispatchEvent(event);
   };
 
   function initClient ({ enabled, bindings }) {
     setEnabled(enabled);
-    initKeyHandling(bindings);
+    commandTrie.init(bindings);
   };
 
   init({

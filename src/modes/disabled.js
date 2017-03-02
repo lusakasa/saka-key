@@ -26,13 +26,15 @@ class Disabled extends Mode {
     return this.mode;
   }
   async saka (event) {
-    if (event.class === 'toggleEnable') {
-      if (event.enabled) {
-        return 'DOCUMENT_FOCUSED';
+    if (event.detail.class === 'toggleEnabled') {
+      if (event.detail.enabled) {
+        // TODO
+        return 'COMMAND';
       } else {
-        return this.mode;
+        return 'DISABLED';
       }
     }
+    return this.mode;
   }
 }
 

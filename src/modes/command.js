@@ -1,36 +1,43 @@
 import { Mode } from './mode';
-import { inputTrie } from '../client/inputTrie';
+import { commandTrie } from '../client/commandTrie';
 
 class Command extends Mode {
   async keydown (event) {
     event.stopPropagation();
-    return this.mode;
+    return 'COMMAND';
   }
   async keypress (event) {
     event.stopPropagation();
-    return inputTrie.handleKeyEvent(event);
+    return commandTrie.handleKeyEvent(event);
   }
   async keyup (event) {
     event.stopPropagation();
-    return this.mode;
+    return 'COMMAND';
   }
   async focus (event) {
-    return this.mode;
+    return 'COMMAND';
   }
   async blur (event) {
-    return this.mode;
+    return 'COMMAND';
   }
   async click (event) {
-    return this.mode;
+    return 'COMMAND';
   }
   async mousedown (event) {
-    return this.mode;
+    return 'COMMAND';
   }
   async scroll (event) {
-    return this.mode;
+    return 'COMMAND';
   }
   async saka (event) {
-    return this.mode;
+    if (event.detail.class === 'toggleEnabled') {
+      if (event.detail.enabled) {
+        return 'COMMAND';
+      } else {
+        return 'DISABLED';
+      }
+    }
+    return 'COMMAND';
   }
 }
 
