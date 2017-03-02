@@ -11,7 +11,13 @@ const modes = {
 };
 
 async function eventListener (event) {
-  mode = await modes[mode].handleEvent(event);
+  const nextMode = await modes[mode].handleEvent(event);
+  if (nextMode !== mode) {
+    console.log(`mode changed from ${mode} to ${nextMode} on event:`, event);
+    await modes[mode].onExit(event);
+    await modes[mode].onEnter(event);
+  }
+  mode = nextMode;
 }
 
 /**
@@ -27,8 +33,8 @@ export function addEventListeners () {
     'keydown',
     'keypress',
     'keyup',
-    'focus',
-    'blur',
+    'focusin',
+    'focusout',
     'click',
     'mousedown',
     'scroll',

@@ -1,8 +1,15 @@
-import { Mode } from './mode';
+import { Mode } from 'modes/mode';
 import { commandTrie } from './commandTrie';
 import { commands } from './commands';
+import { isTextEditable } from 'lib/dom';
 
 class Command extends Mode {
+  async onEnter (event) {
+    commandTrie.reset();
+  }
+  async onExit (event) {
+    commandTrie.reset();
+  }
   async keydown (event) {
     event.stopImmediatePropagation();
     return 'COMMAND';
@@ -23,10 +30,13 @@ class Command extends Mode {
     event.stopImmediatePropagation();
     return 'COMMAND';
   }
-  async focus (event) {
+  async focusin (event) {
+    if (isTextEditable(event.target)) {
+      return 'TEXT';
+    }
     return 'COMMAND';
   }
-  async blur (event) {
+  async focusout (event) {
     return 'COMMAND';
   }
   async click (event) {

@@ -17,7 +17,7 @@ export function keyboardEventString (event) {
 /**
  * Converts a KeyboardEvent to its user-friendly string representation.
  * This representation is used for user-facing keyboard strings
- * e.g. the help menu.
+ * element.g. the help menu.
  */
 export function friendlyKeyboardEventString (event) {
   return (event.ctrlKey || event.altKey || event.metaKey)
@@ -40,8 +40,8 @@ function friendlyKeyString (key) {
 }
 
 /**
- * Given a code string, e.g. KeyZ or Digit1, returns a friendlier string,
- * e.g. 'z' or '1'.
+ * Given a code string, element.g. KeyZ or Digit1, returns a friendlier string,
+ * element.g. 'z' or '1'.
  * If no simpler string determined, just returns the code string passed in.
  */
 function friendlyCodeString (code, shift) {
@@ -87,7 +87,7 @@ export function validateKeyboardEvent (event) {
   } else {
     for (const [key, value] of Object.entries(event)) {
       if (key === 'shiftKey' || key === 'ctrlKey' || key === 'altKey' || key === 'metaKey') {
-        throw Error(`No modifier properties, (e.g. ${key}) allowed if 'key' is specified`);
+        throw Error(`No modifier properties, (element.g. ${key}) allowed if 'key' is specified`);
       } else if (key === 'key') {
         if (typeof value !== 'string') {
           throw Error('Property code must be a string');

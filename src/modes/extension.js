@@ -2,6 +2,12 @@ import { Mode } from './mode';
 import { get } from 'mosi/client';
 
 export class Extension extends Mode {
+  async onEnter (event) {
+    return await externalEvent(event);
+  }
+  async onExit (event) {
+    return await externalEvent(event);
+  }
   async keydown (event) {
     return await externalEvent(event);
   }
@@ -11,10 +17,10 @@ export class Extension extends Mode {
   async keyup (event) {
     return await externalEvent(event);
   }
-  async focus (event) {
+  async focusin (event) {
     return await externalEvent(event);
   }
-  async blur (event) {
+  async focusout (event) {
     return await externalEvent(event);
   }
   async click (event) {

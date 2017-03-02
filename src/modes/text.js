@@ -1,39 +1,52 @@
 import { Mode } from './mode';
+import { isTextEditable } from 'lib/dom';
 
 class Text extends Mode {
+  async onEnter (event) {
+
+  }
+  async onExit (event) {
+
+  }
   async keydown (event) {
-    return this.mode;
+    return 'TEXT';
   }
   async keypress (event) {
-    return this.mode;
+    return 'TEXT';
   }
   async keyup (event) {
-    return this.mode;
+    return 'TEXT';
   }
-  async focus (event) {
-    return this.mode;
+  async focusin (event) {
+    if (isTextEditable(event.target)) {
+      return 'TEXT';
+    }
+    return 'COMMAND';
   }
-  async blur (event) {
-    return this.mode;
+  async focusout (event) {
+    if (isTextEditable(event.relatedTarget)) {
+      return 'TEXT';
+    }
+    return 'COMMAND';
   }
   async click (event) {
-    return this.mode;
+    return 'TEXT';
   }
   async mousedown (event) {
-    return this.mode;
+    return 'TEXT';
   }
   async scroll (event) {
-    return this.mode;
+    return 'TEXT';
   }
   async saka (event) {
     if (event.detail.class === 'toggleEnabled') {
       if (event.detail.enabled) {
-        return this.mode;
+        return 'TEXT';
       } else {
         return 'DISABLED';
       }
     }
-    return this.mode;
+    return 'TEXT';
   }
 }
 

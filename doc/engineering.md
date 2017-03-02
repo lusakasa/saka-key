@@ -60,9 +60,15 @@ This document describes design decisions made in Saka Key and why they were made
 
 ### Event handling
 
-* Decision: Use a single listener for each type of event (keydown, keypress, keyup, focus, blur) and a state machine.
+* Decision: Use a single listener for each type of event  and a state machine.
 
 * Motivation: Try to understand Vimium's handler stack. The wrong data structure led to incomprehensible control flow.
+
+---
+
+* Decision: Listen for focusin and focusout instead of focus and blur.
+
+* Motivation: unlike focus and blur, focusin and focusout events bubble, allowing a single high level listener to detect focus changes on all elements of the document.
 
 ---
 

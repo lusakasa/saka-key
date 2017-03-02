@@ -116,9 +116,21 @@
  * TODO: Consider using the input and beforeinput events
  */
 
+/**
+ * focus and blur events
+ * use focusin and focusout instead because they bubble
+ * http://javascript.info/tutorial/focus-blur
+ */
+
 import { Mode } from './mode';
 
 class Template extends Mode {
+  async onEnter (event) {
+
+  }
+  async onExit (event) {
+    
+  }
   async keydown (event) {
 
   }
@@ -128,10 +140,10 @@ class Template extends Mode {
   async keyup (event) {
 
   }
-  async focus (event) {
+  async focusin (event) {
 
   }
-  async blur (event) {
+  async focusout (event) {
 
   }
   async click (event) {

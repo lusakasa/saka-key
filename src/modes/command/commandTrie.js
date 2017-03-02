@@ -5,6 +5,9 @@ class CommandTrie {
     this.root = bindings;
     this.curNode = bindings;
   }
+  reset () {
+    this.curNode = this.root;
+  }
   /**
    * Advances the command trie based on the command key event.
    * If a leaf node, corresponding to a command, has been reached,
