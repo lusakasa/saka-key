@@ -2,7 +2,12 @@
   "name": "saka-key",
   "description": "A keyboard interface to the web",
   "scripts": {
-    "build": "rimraf dist && webpack --config webpack.config.js && cp ./static/* ./dist",
+    "build": "npm run clean && webpack --config webpack.config.js --progress --colors && npm run copy-static-assets",
+    "build:prod": "npm run clean && webpack --config webpack.config.js --env=prod --progress --colors && npm run copy-static-assets && npm run zip-dist",
+    "build:profile": "npm run clean && webpack --config webpack.config.js --progress --profile --colors && cp ./static/* ./dist",
+    "clean": "rimraf dist",
+    "zip-dist": "bestzip dist.zip dist/*",
+    "copy-static-assets": "cp ./static/* ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,6 +21,9 @@
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.23.0",
+    "babili": "0.0.11",
+    "babili-webpack-plugin": "0.0.10",
+    "bestzip": "^1.1.3",
     "css-loader": "^0.26.1",
     "eslint": "^3.15.0",
     "eslint-config-standard": "^6.2.1",

@@ -1,6 +1,9 @@
 import { init } from 'mosi/client';
 import { toggleHelpMenu } from './helpMenu';
-import { addEventListeners } from './modes';
+import { modeManager } from './modeManager';
+import { DISABLED } from 'modes/disabled';
+import { TEXT } from 'modes/text';
+import { COMMAND } from 'modes/command';
 import { commandTrie } from 'modes/command/commandTrie';
 
 /**
@@ -11,7 +14,11 @@ import { commandTrie } from 'modes/command/commandTrie';
 export function initialize (type) {
   console.log(`${type} client loaded`);
 
-  addEventListeners();
+  modeManager.init('DISABLED', {
+    DISABLED,
+    COMMAND,
+    TEXT
+  });
 
   function setEnabled (enabled) {
     const event = new CustomEvent('saka', {
