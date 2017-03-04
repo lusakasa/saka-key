@@ -1,20 +1,20 @@
-import { Mode } from 'modes/mode';
 import { commandTrie } from './commandTrie';
 import { commands } from './commands';
 import { isTextEditable } from 'lib/dom';
 
-class Command extends Mode {
-  async onEnter (event) {
+class Command {
+  name = 'COMMAND'
+  onEnter = async (event) => {
     commandTrie.reset();
   }
-  async onExit (event) {
+  onExit = async (event) => {
     commandTrie.reset();
   }
-  async keydown (event) {
+  keydown = async (event) => {
     event.stopImmediatePropagation();
-    return 'COMMAND';
+    return this.name;
   }
-  async keypress (event) {
+  keypress = async (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
     const command = commandTrie.advance(event);
@@ -24,41 +24,45 @@ class Command extends Mode {
         return nextMode;
       }
     }
-    return 'COMMAND';
+    return this.name;
   }
-  async keyup (event) {
+  keyup = async (event) => {
     event.stopImmediatePropagation();
-    return 'COMMAND';
+    return this.name;
   }
-  async focusin (event) {
+  focusin = async (event) => {
     if (isTextEditable(event.target)) {
       return 'TEXT';
     }
-    return 'COMMAND';
+    return this.name;
   }
-  async focusout (event) {
-    return 'COMMAND';
+  focusout = async (event) => {
+    return this.name;
   }
-  async click (event) {
-    return 'COMMAND';
+  click = async (event) => {
+    return this.name;
   }
-  async mousedown (event) {
-    return 'COMMAND';
+  mousedown = async (event) => {
+    return this.name;
   }
-  async scroll (event) {
-    return 'COMMAND';
+  scroll = async (event) => {
+    return this.name;
   }
-  async saka (event) {
-    if (event.detail.class === 'toggleEnabled') {
-      if (event.detail.enabled) {
-        return 'COMMAND';
-      } else {
-        return 'DISABLED';
+  msg = async (event) => {
+    const { detail: { type, arg, src } } = event;
+    return await (this.actions[type](arg, src));
+  }
+  actions = {
+    toggleEnabled: ({ enabled }) => {
+      if (enabled) {
+        if (isTextEditable(event.target)) {
+          return 'TEXT';
+        }
+        return this.name;
       }
+      return 'DISABLED';
     }
-    return 'COMMAND';
   }
-}
+};
 
-export const COMMAND = new Command('COMMAND');
-
+export const COMMAND = new Command();

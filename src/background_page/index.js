@@ -1,4 +1,6 @@
 import { init, msg, meta } from 'mosi/core';
+import { modeMsg } from 'background_page/msg';
+
 import {
   nextTab,
   previousTab,
@@ -51,15 +53,21 @@ function loadClient (_, src) {
 
 function toggleHelpMenu () {
   chrome.tabs.query({ currentWindow: true, active: true }, ([tab]) => {
-    msg(`tab[${tab.id}].topFrame`, 'toggleHelpMenu');
+    msg(`tab[${tab.id}]&topFrame`, 'toggleHelpMenu');
   });
 };
 
-function initClient (_, src) {
-  msg(src, 'initClient', {
-    enabled: state.enabled,
-    bindings: state.bindings
-  });
+function modeAction ({ action, arg }, src) {
+  switch (action) {
+    case 'initClient':
+      modeMsg(src, 'initClient', {
+        enabled: state.enabled,
+        bindings: state.bindings
+      });
+      break;
+    default:
+      throw Error('unhandled action');
+  }
 };
 
 init({
@@ -69,7 +77,7 @@ init({
     toggleEnabled,
     // for content scripts
     loadClient,
-    initClient,
+    modeAction,
     toggleHelpMenu,
     // keyboard actions
     nextTab,

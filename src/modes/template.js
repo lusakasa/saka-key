@@ -2,11 +2,52 @@
  * This file isn't actually a mode. It's just a resource to help construct new modes.
  * Copy and paste its contents into the file of the new mode you want to create.
  * Note that the mode must
- * 1. Define its name in the constructor
+ * 1. Provide onEnter and onExit Handler
  * 2. Provide a handler function for every possible event type
  * 3. Return a valid next mode from every handler
  * Do not attempt to remove 'unused' handlers. Instead, return the mode itself.
  */
+
+class Template {
+  name = 'TEMPLATE'
+  onEnter = async (event) => {
+
+  }
+  onExit = async (event) => {
+
+  }
+  keydown = async (event) => {
+
+  }
+  keypress = async (event) => {
+
+  }
+  keyup = async (event) => {
+
+  }
+  focusin = async (event) => {
+
+  }
+  focusout = async (event) => {
+
+  }
+  click = async (event) => {
+
+  }
+  mousedown = async (event) => {
+
+  }
+  scroll = async (event) => {
+
+  }
+  msg = async (event) => {
+    const { detail: { type, arg, src } } = event;
+    return await (this.actions[type](arg, src));
+  }
+  actions = {}
+}
+
+export const TEMPLATE = new Template();
 
 /**
  * You might wonder why all the handlers are async functions. This is to support
@@ -121,43 +162,3 @@
  * use focusin and focusout instead because they bubble
  * http://javascript.info/tutorial/focus-blur
  */
-
-import { Mode } from './mode';
-
-class Template extends Mode {
-  async onEnter (event) {
-
-  }
-  async onExit (event) {
-    
-  }
-  async keydown (event) {
-
-  }
-  async keypress (event) {
-
-  }
-  async keyup (event) {
-
-  }
-  async focusin (event) {
-
-  }
-  async focusout (event) {
-
-  }
-  async click (event) {
-
-  }
-  async mousedown (event) {
-
-  }
-  async scroll (event) {
-
-  }
-  async saka (event) {
-
-  }
-}
-
-export const TEMPLATE = new Template('TEMPLATE');

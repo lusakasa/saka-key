@@ -1,12 +1,13 @@
+import { commandTrie } from 'modes/command/commandTrie';
 import { isTextEditable } from 'lib/dom';
 
-class Disaled {
-  name = 'DISABLED';
+class Uninitialized {
+  name = 'UNINITIALIZED'
   onEnter = async (event) => {
-
+    return this.name;
   }
   onExit = async (event) => {
-
+    return this.name;
   }
   keydown = async (event) => {
     return this.name;
@@ -32,19 +33,23 @@ class Disaled {
   scroll = async (event) => {
     return this.name;
   }
-  msg = async (event) => {
-    const { detail: { type, arg, src } } = event;
-    return await (this.actions[type](arg, src));
-  }
   actions = {
-    toggleEnabled: ({ enabled }) => {
+    initClient: ({ enabled, bindings }) => {
+      commandTrie.init(bindings);
       if (enabled) {
-        if (isTextEditable(event.target)) {
+        if (isTextEditable(document.activeElement)) {
           return 'TEXT';
+        } else {
+          return 'COMMAND';
         }
-        return 'COMMAND';
       }
-      return this.name;
+      return 'DISABLED';
     }
   }
-};
+  msg = async (event) => {
+    const { action, arg, src } = event;
+    return await (this.actions[action](arg, src));
+  }
+}
+
+export const UNINITIALIZED = new Uninitialized();

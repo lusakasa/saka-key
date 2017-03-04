@@ -1,47 +1,45 @@
-import { Mode } from './mode';
 import { get } from 'mosi/client';
 
-export class Extension extends Mode {
-  async onEnter (event) {
-    return await externalEvent(event);
+export class Extension {
+  constructor (name) {
+    this.name = name;
   }
-  async onExit (event) {
-    return await externalEvent(event);
+  onEnter = async (event) => {
+    return await this.externalEvent(event);
   }
-  async keydown (event) {
-    return await externalEvent(event);
+  onExit = async (event) => {
+    return await this.externalEvent(event);
   }
-  async keypress (event) {
-    return await externalEvent(event);
+  keydown = async (event) => {
+    return await this.externalEvent(event);
   }
-  async keyup (event) {
-    return await externalEvent(event);
+  keypress = async (event) => {
+    return await this.externalEvent(event);
   }
-  async focusin (event) {
-    return await externalEvent(event);
+  keyup = async (event) => {
+    return await this.externalEvent(event);
   }
-  async focusout (event) {
-    return await externalEvent(event);
+  focusin = async (event) => {
+    return await this.externalEvent(event);
   }
-  async click (event) {
-    return await externalEvent(event);
+  focusout = async (event) => {
+    return await this.externalEvent(event);
   }
-  async mousedown (event) {
-    return await externalEvent(event);
+  click = async (event) => {
+    return await this.externalEvent(event);
   }
-  async scroll (event) {
-    return await externalEvent(event);
+  mousedown = async (event) => {
+    return await this.externalEvent(event);
   }
-  async saka (event) {
-    return await externalEvent(event);
+  scroll = async (event) => {
+    return await this.externalEvent(event);
   }
-}
-
-async function externalEvent (event) {
-  try {
-    return await (get(1, 'externalEvent', { mode: this.mode, event: serializeEvent(event) })).v;
-  } catch (e) {
-    throw e;
+  msg = async (event) => {
+    const { action, arg, src } = event;
+    return await (this.actions[action](arg, src));
+  }
+  externalEvent = async (event) => {
+    return await (get(1, 'externalEvent', { name: this.name, event: serializeEvent(event) })).v;
   }
 }
 

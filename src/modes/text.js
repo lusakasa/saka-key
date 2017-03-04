@@ -1,54 +1,55 @@
-import { Mode } from './mode';
 import { isTextEditable } from 'lib/dom';
 
-class Text extends Mode {
-  async onEnter (event) {
+export const TEXT = {
+  onEnter: async function (event) {
 
-  }
-  async onExit (event) {
+  },
+  onExit: async function (event) {
 
-  }
-  async keydown (event) {
+  },
+  keydown: async function (event) {
     return 'TEXT';
-  }
-  async keypress (event) {
+  },
+  keypress: async function (event) {
     return 'TEXT';
-  }
-  async keyup (event) {
+  },
+  keyup: async function (event) {
     return 'TEXT';
-  }
-  async focusin (event) {
+  },
+  focusin: async function (event) {
     if (isTextEditable(event.target)) {
       return 'TEXT';
     }
     return 'COMMAND';
-  }
-  async focusout (event) {
+  },
+  focusout: async function (event) {
     if (isTextEditable(event.relatedTarget)) {
       return 'TEXT';
     }
     return 'COMMAND';
-  }
-  async click (event) {
+  },
+  click: async function (event) {
     return 'TEXT';
-  }
-  async mousedown (event) {
+  },
+  mousedown: async function (event) {
     return 'TEXT';
-  }
-  async scroll (event) {
+  },
+  scroll: async function (event) {
     return 'TEXT';
-  }
-  async saka (event) {
-    if (event.detail.class === 'toggleEnabled') {
-      if (event.detail.enabled) {
-        return 'TEXT';
-      } else {
-        return 'DISABLED';
+  },
+  msg: async function (event) {
+    const { detail: { type, arg, src } } = event;
+    return await (this.actions[type](arg, src));
+  },
+  actions: {
+    toggleEnabled: ({ enabled }) => {
+      if (enabled) {
+        if (isTextEditable(event.target)) {
+          return 'TEXT';
+        }
+        return 'COMMAND';
       }
+      return 'DISABLED';
     }
-    return 'TEXT';
   }
-}
-
-export const TEXT = new Text('TEXT');
-
+};

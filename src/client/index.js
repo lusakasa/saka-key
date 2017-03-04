@@ -1,10 +1,10 @@
 import { init } from 'mosi/client';
 import { toggleHelpMenu } from './helpMenu';
-import { modeManager } from './modeManager';
+import { initModes, modeAction } from './modes';
+import { UNINITIALIZED } from 'modes/uninitialized';
 import { DISABLED } from 'modes/disabled';
 import { TEXT } from 'modes/text';
 import { COMMAND } from 'modes/command';
-import { commandTrie } from 'modes/command/commandTrie';
 
 /**
  * Initializes a Saka key client with the given type string (typically components
@@ -14,7 +14,8 @@ import { commandTrie } from 'modes/command/commandTrie';
 export function initialize (type) {
   console.log(`${type} client loaded`);
 
-  modeManager.init('DISABLED', {
+  initModes('UNINITIALIZED', {
+    UNINITIALIZED,
     DISABLED,
     COMMAND,
     TEXT
@@ -30,16 +31,16 @@ export function initialize (type) {
     document.dispatchEvent(event);
   };
 
-  function initClient ({ enabled, bindings }) {
-    setEnabled(enabled);
-    commandTrie.init(bindings);
-  };
+  // function initClient ({ enabled, bindings }) {
+  //   setEnabled(enabled);
+  // };
 
   init({
     subscriptions: ['client', type],
-    onConnect: [{ action: 'initClient' }],
+    onConnect: [{ action: 'modeAction', arg: { action: 'initClient' } }],
     actions: {
-      initClient,
+      // initClient,
+      modeAction,
       setEnabled,
       toggleHelpMenu
     }

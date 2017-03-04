@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const BabiliPlugin = require('babili-webpack-plugin');
 
 module.exports = function (env) {
@@ -41,10 +42,22 @@ module.exports = function (env) {
   // Enable minification with Babili for production
   // Enable source maps for development
   if (env === 'prod') {
-    config.plugins = [new BabiliPlugin()];
+    config.plugins = [
+      new BabiliPlugin(),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('production'),
+        'SAKA_DEBUG': JSON.stringify(false)
+      })
+    ];
   } else {
     config.devtool = 'source-map';
     config.output.sourceMapFilename = '[name].js.map';
+    config.plugins = [
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify('development'),
+        'SAKA_DEBUG': JSON.stringify(true)
+      })
+    ];
   }
   return config;
 };

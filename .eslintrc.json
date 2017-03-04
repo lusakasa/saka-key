@@ -30,7 +30,8 @@
   "globals": {
     "document": true,
     "navigator": false,
-    "window": true
+    "window": true,
+    "SAKA_DEBUG": true
   },
 
   "ecmaFeatures": {
