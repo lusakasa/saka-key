@@ -32,17 +32,7 @@ class Disabled extends Mode {
   scroll = async (event) => {
     return this.name;
   }
-  actions = {
-    setEnabled: (enabled) => {
-      if (enabled) {
-        if (isTextEditable(document.activeElement)) {
-          return 'TEXT';
-        }
-        return 'COMMAND';
-      }
-      return this.name;
-    }
-  }
+  actions = {}
 };
 
 export const DISABLED = new Disabled('DISABLED');

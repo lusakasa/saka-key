@@ -55,7 +55,7 @@ function loadClient (_, src) {
 
 function toggleHelpMenu () {
   chrome.tabs.query({ currentWindow: true, active: true }, ([tab]) => {
-    msg(`tab[${tab.id}]&topFrame`, 'toggleHelpMenu');
+    modeMsg(`tab[${tab.id}]&topFrame`, 'toggleHelpMenu');
   });
 };
 

@@ -48,17 +48,7 @@ class Command extends Mode {
   scroll = async (event) => {
     return this.name;
   }
-  actions = {
-    setEnabled: (enabled) => {
-      if (enabled) {
-        if (isTextEditable(document.activeElement)) {
-          return 'TEXT';
-        }
-        return this.name;
-      }
-      return 'DISABLED';
-    }
-  }
+  actions = {}
 };
 
 export const COMMAND = new Command('COMMAND');

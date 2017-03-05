@@ -39,12 +39,23 @@ function installEventListeners () {
 }
 
 async function handleEvent (event) {
-  const handler = modes[currentMode][event.type];
-  if (SAKA_DEBUG && !handler) throw Error(`Mode ${currentMode} is missing a handler for ${event.type} events`);
-  const nextMode = await handler(event);
-  if (SAKA_DEBUG && !modes[nextMode]) throw Error(`Invalid next mode ${nextMode}`);
+  let nextMode = await (modes[currentMode].handle(event));
+  if (!nextMode) {
+    for (const fallback of modes[currentMode].fallbacks) {
+      nextMode = await (modes[fallback].handle(event));
+      if (nextMode) break;
+    }
+  }
+  if (SAKA_DEBUG && !nextMode) {
+    throw Error(`Mode ${currentMode} is missing a handler for ${event.type} events`);
+  }
+  if (SAKA_DEBUG && !modes[nextMode]) {
+    throw Error(`Event ${event.type} in mode ${currentMode} results in invalid next mode ${nextMode}`);
+  }
   if (nextMode !== currentMode) {
-    if (SAKA_DEBUG) console.log(`mode changed from ${currentMode} to ${nextMode} on event:`, event);
+    if (SAKA_DEBUG) {
+      console.log(`mode changed from ${currentMode} to ${nextMode} on event:`, event);
+    }
     await modes[currentMode].onExit(event);
     await modes[nextMode].onEnter(event);
   }

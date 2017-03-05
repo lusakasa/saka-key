@@ -1,4 +1,5 @@
 import './style.css';
+import { isTextEditable } from 'lib/dom';
 
 const iframe = document.createElement('iframe');
 iframe.id = 'popup';
@@ -16,4 +17,8 @@ export const toggleHelpMenu = () => {
     iframe.focus();
   }
   visible = !visible;
+  if (isTextEditable(document.activeElement)) {
+    return 'TEXT';
+  }
+  return 'COMMAND';
 };

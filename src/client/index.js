@@ -1,6 +1,6 @@
 import { init } from 'mosi/client';
-import { toggleHelpMenu } from './helpMenu';
 import { initModes, modeAction } from './modes';
+import { GLOBAL } from 'modes/global/client';
 import { UNINITIALIZED } from 'modes/uninitialized/client';
 import { DISABLED } from 'modes/disabled/client';
 import { TEXT } from 'modes/text/client';
@@ -15,6 +15,7 @@ export function initialize (type) {
   console.log(`${type} client loaded`);
 
   initModes('UNINITIALIZED', {
+    GLOBAL,
     UNINITIALIZED,
     DISABLED,
     COMMAND,
@@ -29,9 +30,7 @@ export function initialize (type) {
     subscriptions: ['client', type],
     onConnect: [{ action: 'modeAction', arg: { action: 'initClient' } }],
     actions: {
-      // initClient,
-      modeAction,
-      toggleHelpMenu
+      modeAction
     }
   });
 }

@@ -1,42 +1,14 @@
-import { Mode } from 'modes/mode/client';
 import { get } from 'mosi/client';
 
-export class Extension extends Mode {
+export class Extension {
   onEnter = async (event) => {
-    return await this.externalEvent(event);
+    return (await get(1, 'extensionOnEnter', { name: this.name, event: serializeEvent(event) })).v;
   }
   onExit = async (event) => {
-    return await this.externalEvent(event);
+    return (await get(1, 'extensionOnExit', { name: this.name, event: serializeEvent(event) })).v;
   }
-  keydown = async (event) => {
-    return await this.externalEvent(event);
-  }
-  keypress = async (event) => {
-    return await this.externalEvent(event);
-  }
-  keyup = async (event) => {
-    return await this.externalEvent(event);
-  }
-  focusin = async (event) => {
-    return await this.externalEvent(event);
-  }
-  focusout = async (event) => {
-    return await this.externalEvent(event);
-  }
-  click = async (event) => {
-    return await this.externalEvent(event);
-  }
-  mousedown = async (event) => {
-    return await this.externalEvent(event);
-  }
-  scroll = async (event) => {
-    return await this.externalEvent(event);
-  }
-  msg = async (event) => {
-    return await this.externalEvent(event);
-  }
-  externalEvent = async (event) => {
-    return await (get(1, 'externalEvent', { name: this.name, event: serializeEvent(event) })).v;
+  handle = async (event) => {
+    return (await get(1, 'extensionHandle', { name: this.name, event: serializeEvent(event) })).v;
   }
 }
 
