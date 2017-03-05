@@ -1,9 +1,7 @@
+import { Mode } from 'modes/mode';
 import { get } from 'mosi/client';
 
-export class Extension {
-  constructor (name) {
-    this.name = name;
-  }
+export class Extension extends Mode {
   onEnter = async (event) => {
     return await this.externalEvent(event);
   }
@@ -35,8 +33,7 @@ export class Extension {
     return await this.externalEvent(event);
   }
   msg = async (event) => {
-    const { action, arg, src } = event;
-    return await (this.actions[action](arg, src));
+    return await this.externalEvent(event);
   }
   externalEvent = async (event) => {
     return await (get(1, 'externalEvent', { name: this.name, event: serializeEvent(event) })).v;

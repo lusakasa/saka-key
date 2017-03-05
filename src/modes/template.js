@@ -8,8 +8,9 @@
  * Do not attempt to remove 'unused' handlers. Instead, return the mode itself.
  */
 
-class Template {
-  name = 'TEMPLATE'
+import { Mode } from 'modes/mode';
+
+class Template extends Mode {
   onEnter = async (event) => {
 
   }
@@ -40,14 +41,10 @@ class Template {
   scroll = async (event) => {
 
   }
-  msg = async (event) => {
-    const { detail: { type, arg, src } } = event;
-    return await (this.actions[type](arg, src));
-  }
   actions = {}
 }
 
-export const TEMPLATE = new Template();
+export const TEMPLATE = new Template('TEMPLATE');
 
 /**
  * You might wonder why all the handlers are async functions. This is to support

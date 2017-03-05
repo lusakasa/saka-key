@@ -1,50 +1,47 @@
+import { Mode } from 'modes/mode';
 import { isTextEditable } from 'lib/dom';
 
-export const TEXT = {
-  onEnter: async function (event) {
+class Text extends Mode {
+  onEnter = async (event) => {
 
-  },
-  onExit: async function (event) {
+  }
+  onExit = async (event) => {
 
-  },
-  keydown: async function (event) {
+  }
+  keydown = async (event) => {
     return 'TEXT';
-  },
-  keypress: async function (event) {
+  }
+  keypress = async (event) => {
     return 'TEXT';
-  },
-  keyup: async function (event) {
+  }
+  keyup = async (event) => {
     return 'TEXT';
-  },
-  focusin: async function (event) {
+  }
+  focusin = async (event) => {
     if (isTextEditable(event.target)) {
       return 'TEXT';
     }
     return 'COMMAND';
-  },
-  focusout: async function (event) {
+  }
+  focusout = async (event) => {
     if (isTextEditable(event.relatedTarget)) {
       return 'TEXT';
     }
     return 'COMMAND';
-  },
-  click: async function (event) {
+  }
+  click = async (event) => {
     return 'TEXT';
-  },
-  mousedown: async function (event) {
+  }
+  mousedown = async (event) => {
     return 'TEXT';
-  },
-  scroll: async function (event) {
+  }
+  scroll = async (event) => {
     return 'TEXT';
-  },
-  msg: async function (event) {
-    const { detail: { type, arg, src } } = event;
-    return await (this.actions[type](arg, src));
-  },
-  actions: {
-    toggleEnabled: ({ enabled }) => {
+  }
+  actions = {
+    setEnabled: (enabled) => {
       if (enabled) {
-        if (isTextEditable(event.target)) {
+        if (isTextEditable(document.activeElement)) {
           return 'TEXT';
         }
         return 'COMMAND';
@@ -52,4 +49,6 @@ export const TEXT = {
       return 'DISABLED';
     }
   }
-};
+}
+
+export const TEXT = new Text('TEXT');

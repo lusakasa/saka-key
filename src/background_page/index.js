@@ -39,7 +39,8 @@ function getEnabled (_, src) {
 
 function toggleEnabled () {
   state.enabled = !state.enabled;
-  msg('client;popup', 'setEnabled', state.enabled);
+  msg('popup', 'setEnabled', state.enabled);
+  modeMsg('cs', 'setEnabled', state.enabled);
 };
 
 function loadClient (_, src) {
@@ -47,7 +48,8 @@ function loadClient (_, src) {
   chrome.tabs.executeScript(tabId, {
     file: 'content_script.js',
     frameId,
-    runAt: 'document_start'
+    runAt: 'document_start',
+    matchAboutBlank: true
   });
 };
 

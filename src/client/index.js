@@ -21,16 +21,6 @@ export function initialize (type) {
     TEXT
   });
 
-  function setEnabled (enabled) {
-    const event = new CustomEvent('saka', {
-      detail: {
-        enabled,
-        class: 'toggleEnabled'
-      }
-    });
-    document.dispatchEvent(event);
-  };
-
   // function initClient ({ enabled, bindings }) {
   //   setEnabled(enabled);
   // };
@@ -41,7 +31,6 @@ export function initialize (type) {
     actions: {
       // initClient,
       modeAction,
-      setEnabled,
       toggleHelpMenu
     }
   });

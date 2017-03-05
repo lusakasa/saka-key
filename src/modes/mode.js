@@ -1,8 +1,7 @@
-import { Mode } from 'modes/mode';
-import { commandTrie } from 'modes/command/commandTrie';
-import { isTextEditable } from 'lib/dom';
-
-class Uninitialized extends Mode {
+export class Mode {
+  constructor (name) {
+    this.name = name;
+  }
   onEnter = async (event) => {
     return this.name;
   }
@@ -33,19 +32,11 @@ class Uninitialized extends Mode {
   scroll = async (event) => {
     return this.name;
   }
-  actions = {
-    initClient: ({ enabled, bindings }) => {
-      commandTrie.init(bindings);
-      if (enabled) {
-        if (isTextEditable(document.activeElement)) {
-          return 'TEXT';
-        } else {
-          return 'COMMAND';
-        }
-      }
-      return 'DISABLED';
-    }
+  msg = async (event) => {
+    const { action, arg, src } = event;
+    const handler = this.actions[action];
+    if (SAKA_DEBUG && !handler) throw Error(`Mode ${this.name} has no handler for action ${action}`);
+    return await (this.actions[action](arg, src));
   }
+  actions = {}
 }
-
-export const UNINITIALIZED = new Uninitialized('UNINITIALIZED');

@@ -1,7 +1,7 @@
+import { Mode } from 'modes/mode';
 import { isTextEditable } from 'lib/dom';
 
-class Disaled {
-  name = 'DISABLED';
+class Disabled extends Mode {
   onEnter = async (event) => {
 
   }
@@ -32,14 +32,10 @@ class Disaled {
   scroll = async (event) => {
     return this.name;
   }
-  msg = async (event) => {
-    const { detail: { type, arg, src } } = event;
-    return await (this.actions[type](arg, src));
-  }
   actions = {
-    toggleEnabled: ({ enabled }) => {
+    setEnabled: (enabled) => {
       if (enabled) {
-        if (isTextEditable(event.target)) {
+        if (isTextEditable(document.activeElement)) {
           return 'TEXT';
         }
         return 'COMMAND';
@@ -48,3 +44,5 @@ class Disaled {
     }
   }
 };
+
+export const DISABLED = new Disabled('DISABLED');

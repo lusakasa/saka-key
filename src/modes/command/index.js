@@ -1,9 +1,9 @@
+import { Mode } from 'modes/mode';
 import { commandTrie } from './commandTrie';
 import { commands } from './commands';
 import { isTextEditable } from 'lib/dom';
 
-class Command {
-  name = 'COMMAND'
+class Command extends Mode {
   onEnter = async (event) => {
     commandTrie.reset();
   }
@@ -49,13 +49,14 @@ class Command {
     return this.name;
   }
   msg = async (event) => {
-    const { detail: { type, arg, src } } = event;
-    return await (this.actions[type](arg, src));
+    const { action, arg, src } = event;
+    const handler = this.actions[action] || modes[fallback].actions[action] || modes[global].actions;
+    return await (this.actions[action](arg, src));
   }
   actions = {
-    toggleEnabled: ({ enabled }) => {
+    setEnabled: (enabled) => {
       if (enabled) {
-        if (isTextEditable(event.target)) {
+        if (isTextEditable(document.activeElement)) {
           return 'TEXT';
         }
         return this.name;
@@ -65,4 +66,4 @@ class Command {
   }
 };
 
-export const COMMAND = new Command();
+export const COMMAND = new Command('COMMAND');
