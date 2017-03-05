@@ -113,3 +113,11 @@ This document describes design decisions made in Saka Key and why they were made
 
 * Motivation: Smooth scrolling is surprisingly tricky to get 'just right.' My early attempts all resulted in scrolling for a fraction of a second, then a tiny pause, then smooth scrolling as you'd expect. I learned that, calling cancelAnimationFrame was a bad idea. I tried a timeout based solution. 
 
+## Modes
+
+1. State Machine
+
+---
+Decision: explicit handler for everything but specify fallback modes. Consider finer-grained per-event type fallbacks. For now, just global fallbacks for simplicity.
+
+---

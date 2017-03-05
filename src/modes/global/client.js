@@ -3,36 +3,6 @@ import { isTextEditable } from 'lib/dom';
 import { toggleHelpMenu } from './help';
 
 class Global extends Mode {
-  onEnter = async (event) => {
-
-  }
-  onExit = async (event) => {
-
-  }
-  keydown = async (event) => {
-
-  }
-  keypress = async (event) => {
-
-  }
-  keyup = async (event) => {
-
-  }
-  focusin = async (event) => {
-
-  }
-  focusout = async (event) => {
-
-  }
-  click = async (event) => {
-
-  }
-  mousedown = async (event) => {
-
-  }
-  scroll = async (event) => {
-
-  }
   actions = {
     setEnabled: (enabled) => {
       if (enabled) {
