@@ -1,4 +1,4 @@
-import { Extension } from 'modes/extension';
+import { Extension } from 'modes/extension/client';
 
 let currentMode;
 let modes = {};

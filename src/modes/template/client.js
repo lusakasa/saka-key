@@ -8,7 +8,7 @@
  * Do not attempt to remove 'unused' handlers. Instead, return the mode itself.
  */
 
-import { Mode } from 'modes/mode';
+import { Mode } from 'modes/mode/client';
 
 class Template extends Mode {
   onEnter = async (event) => {

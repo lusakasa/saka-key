@@ -1,4 +1,4 @@
-import { Mode } from 'modes/mode';
+import { Mode } from 'modes/mode/client';
 import { isTextEditable } from 'lib/dom';
 
 class Text extends Mode {

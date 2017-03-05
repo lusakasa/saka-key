@@ -1,4 +1,4 @@
-import { Mode } from 'modes/mode';
+import { Mode } from 'modes/mode/client';
 import { get } from 'mosi/client';
 
 export class Extension extends Mode {

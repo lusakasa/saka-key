@@ -1,10 +1,10 @@
 import { init } from 'mosi/client';
 import { toggleHelpMenu } from './helpMenu';
 import { initModes, modeAction } from './modes';
-import { UNINITIALIZED } from 'modes/uninitialized';
-import { DISABLED } from 'modes/disabled';
-import { TEXT } from 'modes/text';
-import { COMMAND } from 'modes/command';
+import { UNINITIALIZED } from 'modes/uninitialized/client';
+import { DISABLED } from 'modes/disabled/client';
+import { TEXT } from 'modes/text/client';
+import { COMMAND } from 'modes/command/client';
 
 /**
  * Initializes a Saka key client with the given type string (typically components

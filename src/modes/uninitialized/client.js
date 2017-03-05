@@ -1,4 +1,4 @@
-import { Mode } from 'modes/mode';
+import { Mode } from 'modes/mode/client';
 import { commandTrie } from 'modes/command/commandTrie';
 import { isTextEditable } from 'lib/dom';
 
