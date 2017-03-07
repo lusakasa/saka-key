@@ -4,6 +4,9 @@
     "Misc.": [
       "toggleHelpMenu"
     ],
+    "Links": [
+      "showLinkHints"
+    ],
     "Scrolling": [
       "scrollDown",
       "scrollUp",
@@ -49,6 +52,9 @@
   "commandDetails": {
     "toggleHelpMenu": {
       "description": "Show/hide the help menu"
+    },
+    "showLinkHints": {
+      "description": "Shows link hints"
     },
     "scrollDown": {
       "description": "Scroll down page by a single step"
@@ -168,6 +174,9 @@
     "bindings": {
       "toggleHelpMenu": [
         [{ "key": "?" }]
+      ],
+      "showLinkHints": [
+        [{ "key": "f" }]
       ],
       "scrollDown": [
         [{ "key": "d" }],

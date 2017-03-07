@@ -3,8 +3,9 @@ import { initModes, modeAction } from './modes';
 import { GLOBAL } from 'modes/global/client';
 import { UNINITIALIZED } from 'modes/uninitialized/client';
 import { DISABLED } from 'modes/disabled/client';
-import { TEXT } from 'modes/text/client';
 import { COMMAND } from 'modes/command/client';
+import { TEXT } from 'modes/text/client';
+import { HINTS } from 'modes/hints/client';
 
 /**
  * Initializes a Saka key client with the given type string (typically components
@@ -31,6 +32,7 @@ export function initialize (type) {
     UNINITIALIZED,
     DISABLED,
     COMMAND,
-    TEXT
+    TEXT,
+    HINTS
   });
 }

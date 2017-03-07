@@ -65,6 +65,7 @@ class Command extends Mode {
   BP = (command, args) => () => { this.sendMsg(command, args); };
   commands = {
     toggleHelpMenu: this.BP('toggleHelpMenu'),
+    showLinkHints: () => 'HINTS',
     scrollDown,
     scrollUp,
     scrollLeft,

@@ -38,10 +38,8 @@ function toggleHelpMenu () {
 init({
   actions: {
     modeAction,
-    // for popup
     getEnabled,
     toggleEnabled,
-    // for content scripts
     loadClient,
     toggleHelpMenu
   }
