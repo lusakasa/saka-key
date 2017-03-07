@@ -6,3 +6,6 @@
 
 * KeyboardEvent.code for mappable keys json list: [here](./KeyboardEvent.code.mappings.json)
 
+
+https://github.com/vimperator/vimperator-labs/issues/729
+

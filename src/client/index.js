@@ -14,23 +14,23 @@ import { COMMAND } from 'modes/command/client';
 export function initialize (type) {
   console.log(`${type} client loaded`);
 
-  initModes('UNINITIALIZED', {
-    GLOBAL,
-    UNINITIALIZED,
-    DISABLED,
-    COMMAND,
-    TEXT
-  });
-
   // function initClient ({ enabled, bindings }) {
   //   setEnabled(enabled);
   // };
 
   init({
     subscriptions: ['client', type],
-    onConnect: [{ action: 'modeAction', arg: { action: 'initClient' } }],
+    // onConnect: [{ action: 'modeAction', arg: { action: 'initClient' } }],
     actions: {
       modeAction
     }
+  });
+
+  initModes('UNINITIALIZED', {
+    GLOBAL,
+    UNINITIALIZED,
+    DISABLED,
+    COMMAND,
+    TEXT
   });
 }

@@ -1,3 +1,5 @@
+import { msg } from 'mosi/client';
+
 export class Mode {
   fallbacks = ['GLOBAL']
   constructor (name) {
@@ -9,7 +11,6 @@ export class Mode {
     if (SAKA_DEBUG && !handler) throw Error(`Mode ${this.name} has no handler for action ${action}`);
     return await (this.actions[action](arg, src));
   }
-  actions = {}
   handle = async (event) => {
     if (event.type === 'msg') {
       if (this.actions.hasOwnProperty(event.action)) {
@@ -19,5 +20,8 @@ export class Mode {
       return this[event.type](event);
     }
     return false;
+  }
+  sendMsg (action, arg) {
+    msg(1, 'modeAction', { action, arg, mode: this.name });
   }
 }

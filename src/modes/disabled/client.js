@@ -1,13 +1,8 @@
 import { Mode } from 'modes/mode/client';
-import { isTextEditable } from 'lib/dom';
 
 class Disabled extends Mode {
-  onEnter = async (event) => {
-
-  }
-  onExit = async (event) => {
-
-  }
+  onEnter = async (event) => {}
+  onExit = async (event) => {}
   keydown = async (event) => {
     return this.name;
   }

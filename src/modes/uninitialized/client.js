@@ -4,11 +4,9 @@ import { isTextEditable } from 'lib/dom';
 
 class Uninitialized extends Mode {
   onEnter = async (event) => {
-    return this.name;
+    this.sendMsg('initClient');
   }
-  onExit = async (event) => {
-    return this.name;
-  }
+  onExit = async (event) => {}
   keydown = async (event) => {
     return this.name;
   }

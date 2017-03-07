@@ -4,10 +4,11 @@ let currentMode;
 let modes = {};
 
 export function initModes (startMode, availableModes) {
+  installEventListeners();
   currentMode = startMode;
   modes = availableModes;
   if (SAKA_DEBUG) console.log(`Start mode: ${currentMode}`);
-  installEventListeners();
+  modes[currentMode].onEnter();
 }
 
 export function modeAction ({ action, arg }, src) {

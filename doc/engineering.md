@@ -121,3 +121,16 @@ This document describes design decisions made in Saka Key and why they were made
 Decision: explicit handler for everything but specify fallback modes. Consider finer-grained per-event type fallbacks. For now, just global fallbacks for simplicity.
 
 ---
+
+Decision: Should messages be handled by active mode or mode defined in message? For both client and core.
+
+---
+
+Decision: Should global actions that shoud be available regardless of mode, e.g. enabling/disabling saka and showing the help menu, be implemented as modes or hard-coded?
+
+---
+
+Decision: Package help menu into modes
+
+---
+
