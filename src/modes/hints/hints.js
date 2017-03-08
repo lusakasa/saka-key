@@ -26,7 +26,7 @@ export function hintsInFrameAndViewport (requireHref = false) {
   visibleElements.reverse();
 
   const descendantsToCheck = [1, 2, 3];
-  const visibleElements = 
+  // const visibleElements = 
 }
 
 export function getVisibleClickable (element) {

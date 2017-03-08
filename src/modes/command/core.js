@@ -25,7 +25,7 @@ import {
   toggleMuteTab,
   toggleMuteAllTabs,
   togglePinTab
-} from 'saka-commands/tab-actions';
+} from 'saka-commands/tab';
 
 class Command {
   actions = {

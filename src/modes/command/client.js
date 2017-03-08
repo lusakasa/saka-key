@@ -14,7 +14,15 @@ import {
   scrollToTop,
   scrollToLeft,
   scrollToRight
-} from 'saka-commands/scroll-actions';
+} from 'saka-commands/scroll';
+import {
+  goBack,
+  goForward,
+  nextPage,
+  previousPage,
+  goUp,
+  goToRoot
+} from 'saka-commands/navigation';
 
 class Command extends Mode {
   onEnter = async (event) => {
@@ -66,6 +74,7 @@ class Command extends Mode {
   commands = {
     toggleHelpMenu: this.BP('toggleHelpMenu'),
     showLinkHints: () => 'HINTS',
+    // scroll commands
     scrollDown,
     scrollUp,
     scrollLeft,
@@ -78,6 +87,14 @@ class Command extends Mode {
     scrollToTop,
     scrollToLeft,
     scrollToRight,
+    // navigation commands
+    goBack,
+    goForward,
+    nextPage,
+    previousPage,
+    goUp,
+    goToRoot,
+    // tab commands
     previousTab: this.BP('previousTab'),
     nextTab: this.BP('nextTab'),
     firstTab: this.BP('firstTab'),

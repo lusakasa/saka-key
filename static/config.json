@@ -7,6 +7,14 @@
     "Links": [
       "showLinkHints"
     ],
+    "Navigation": [
+      "goBack",
+      "goForward",
+      "nextPage",
+      "previousPage",
+      "goUp",
+      "goToRoot"
+    ],
     "Scrolling": [
       "scrollDown",
       "scrollUp",
@@ -92,8 +100,26 @@
     "scrollToRight": {
       "description": "Scroll to far right of page"
     },
+    "goBack": {
+      "description": "Go backward in history"
+    },
+    "goForward": {
+      "description": "Go forward in history"
+    },
+    "nextPage": {
+      "description": "Go to the next page"
+    },
+    "previousPage": {
+      "description": "Go to the previous page"
+    },
+    "goUp": {
+      "description": "Go up in the URL hierarchy"
+    },
+    "goToRoot": {
+      "description": "Go to the root URL of the page"
+    },
     "previousTab": {
-      "description": "Activate the tab to the left of the active tab of the current window "
+      "description": "Activate the tab to the left of the active tab of the current window"
     },
     "nextTab": {
       "description": "Activate the tab to the right of the active tab of the current window"
@@ -217,6 +243,24 @@
       "scrollToRight": [
         [{ "key": "L" }]
       ],
+      "goBack": [
+        [{ "key": "c"}]
+      ],
+      "goForward": [
+        [{ "key": "v"}]
+      ],
+      "nextPage": [
+        [{ "key": "]"}, { "key": "]"}]
+      ],
+      "previousPage": [
+        [{ "key": "["}, { "key": "["}]
+      ],
+      "goUp": [
+        [{ "key": "u"}]
+      ],
+      "goToRoot": [
+        [{ "key": "U"}]
+      ],
       "previousTab": [
         [{ "key": "e" }]
       ],
@@ -266,7 +310,7 @@
         [{ "key": "N" }]
       ],
       "switchWindow": [
-        [{ "key": "u" }]
+        [{ "key": "%" }]
       ],
       "zoomIn": [
         [{ "key": "z" }]
