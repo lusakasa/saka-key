@@ -17,3 +17,5 @@
 
 
 * think about whether to handle keyboard events on keydown or keypress
+
+* smaller link hints or smaller elements?
