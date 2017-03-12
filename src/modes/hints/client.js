@@ -6,15 +6,26 @@ import { render, h } from 'preact';
 import { HintRenderer, showHints, hideHints } from './HintRenderer';
 
 const style = (
-`.hint {
-  padding: 0px 4px;
+`@font-face {
+  font-family: Roboto;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  src: url(${chrome.runtime.getURL('Roboto-Regular.tff')}) format('tff');
+}
+.hint {
+  font-family: Roboto, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  padding: 0px 1px;
   border-width: 1px;
   border-style: solid;
   border-color: #ff4081;
   color: #ff4081;
   background-color: #ffffff;
   border-radius: 4px;
-  margin: 0px 1px;
+  /* margin: 0px 1px; */
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;

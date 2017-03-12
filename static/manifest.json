@@ -43,6 +43,7 @@
     "options.js",
     "options.js.map",
     "popup.js.map",
-    "options.html"
+    "options.html",
+    "Roboto-Regular.tff"
     ]
 }
