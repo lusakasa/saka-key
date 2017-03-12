@@ -1,5 +1,6 @@
 import { Component, h } from 'preact';
 import { findHints } from './find';
+import { settings } from './settings';
 
 export let showHints;
 export let hideHints;
@@ -27,7 +28,7 @@ export class HintRenderer extends Component {
     };
   }
   render () {
-    const hintStrings = generateHintStrings('asdf', this.state.hints.length);
+    const hintStrings = generateHintStrings(settings.hintCharacters, this.state.hints.length);
     return (
       <div style={{ position: 'absolute', left: '0', top: '0' }}>
         {this.state.ready ? 'READY' : 'NOT READY'}
