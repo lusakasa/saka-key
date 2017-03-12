@@ -9,3 +9,9 @@
 
 https://github.com/vimperator/vimperator-labs/issues/729
 
+
+
+
+Alternatives
+
+https://chrome.google.com/webstore/detail/keyboard-control-for-chro/mhofehfbkjmeldlgkbleegeffhaocceg/related

@@ -2,13 +2,43 @@ import { Mode } from 'modes/mode/client';
 import { isTextEditable } from 'lib/dom';
 import { renderHints } from './render';
 import { findHints } from './find';
+import { render, h } from 'preact';
+import { HintRenderer, showHints, hideHints } from './HintRenderer';
+
+const style = (
+`.hint {
+  padding: 0px 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ff4081;
+  color: #ff4081;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin: 0px 1px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+}`
+);
+
 
 class Hints extends Mode {
+  constructor (name) {
+    super(name);
+    const hintContainer = document.createElement('div');
+    document.documentElement.appendChild(hintContainer);
+    const shadow = hintContainer.attachShadow({mode: 'open'});
+    console.log(style);
+    shadow.innerHTML = `<style>${style}</style>`;
+    render(<HintRenderer />, shadow);
+  }
   onEnter = async (event) => {
-    renderHints(findHints());
+    // renderHints(findHints());
+    showHints();
   }
   onExit = async (event) => {
-
+    hideHints();
   }
   keydown = async (event) => {
     event.stopImmediatePropagation();

@@ -7,17 +7,11 @@ export function hideHints () {
   console.log('hiding hints');
 }
 
-function logXOfBase (x, base) {
-  return Math.log(x) / Math.log(base);
-}
-
 export function renderHints (hintDescriptors) {
-  // Initialize the number used to generate the character hints to be as many digits as we need to
-  // highlight all the links on the page; we don't want some link hints to have more chars than others.
-  const digitsNeeded = Math.ceil(logXOfBase(hintDescriptors.length, settings.linkHintCharacters.length));
 
+  const hintStrings = generateHintStrings(settings.hintCharacters, hintDescriptors.length);
   for (let i = 0; i < hintDescriptors.length; i++) {
-    hintMarkers.push(createMarkerFor(hintDescriptors[i], i, digitsNeeded));
+    hintMarkers.push(createMarkerFor(hintDescriptors[i], hintStrings[i]));
   }
 
   hintMarkerContainingDiv = document.createElement('div');
@@ -29,8 +23,7 @@ export function renderHints (hintDescriptors) {
   document.body.appendChild(hintMarkerContainingDiv);
 }
 
-function createMarkerFor (link, linkHintNumber, linkHintDigits) {
-  var hintString = numberToHintString(linkHintNumber, linkHintDigits);
+function createMarkerFor (link, hintString) {
   var marker = document.createElement('div');
   marker.className = 'internalVimiumHintMarker vimiumReset';
   var innerHTML = [];
@@ -54,25 +47,14 @@ function createMarkerFor (link, linkHintNumber, linkHintDigits) {
   return marker;
 }
 
-/*
- * Converts a number like '8' into a hint string like 'JK'. This is used to sequentially generate all of
- * the hint text. The hint string will be 'padded with zeroes' to ensure its length is equal to numHintDigits.
- */
-function numberToHintString (number, numHintDigits) {
-  const base = settings.linkHintCharacters.length;
-  const hintString = [];
-  let remainder = 0;
-  do {
-    remainder = number % base;
-    hintString.unshift(settings.linkHintCharacters[remainder]);
-    number -= remainder;
-    number /= Math.floor(base);
-  } while (number > 0);
-
-  // Pad the hint string we're returning so that it matches numHintDigits.
-  var hintStringLength = hintString.length;
-  for (var i = 0; i < numHintDigits - hintStringLength; i++) {
-    hintString.unshift(settings.linkHintCharacters[0]);
+function generateHintStrings (characters, count) {
+  const hints = [''];
+  let offset = 0;
+  while (hints.length - offset < count || hints.length === 1) {
+    const hint = hints[offset++];
+    for (const c of characters) {
+      hints.push(hint + c);
+    }
   }
-  return hintString.join('');
+  return hints.slice(offset, offset + count);
 }
