@@ -56,5 +56,6 @@ MIT Licensed, Copyright (c) 2017 Sufyan Dawoodjee
 Saka Key is inspired by and derives from
 
 * [Vimium](https://github.com/philc/vimium)
+* [Vimari](https://github.com/guyht/vimari)
 * [cVim](https://github.com/1995eaton/chromium-vim)
 * [Surfingkeys](https://github.com/brookhong/Surfingkeys)

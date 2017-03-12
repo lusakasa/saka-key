@@ -42,5 +42,8 @@
 * element.scrollTop
   gets/sets the number of pixels an element has been scrolled from the top (always 0 for nonscrollable elements)
 
+* element.getClientRects()
+  returns a collection of rectangles that indicate the bounding rectangles for each box in a client. Returns { left, right, bottom, top, width, height } given in relation to top left of viewport. Values include padding + width but not borders
+
 Determine if an element has been totally scrolled
   element.scrollHeight - element.scrollTop === element.clientHeight

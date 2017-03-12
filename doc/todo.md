@@ -2,6 +2,7 @@
 
 * better scrolling
 * link hints
+* handle browser restart/update properly
 * configurable key bindings
 * more commands
 * configurable themes and colors

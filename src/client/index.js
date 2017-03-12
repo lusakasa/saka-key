@@ -6,6 +6,7 @@ import { DISABLED } from 'modes/disabled/client';
 import { COMMAND } from 'modes/command/client';
 import { TEXT } from 'modes/text/client';
 import { HINTS } from 'modes/hints/client';
+import { DEBUG } from 'modes/debug/client';
 
 /**
  * Initializes a Saka key client with the given type string (typically components
@@ -33,6 +34,7 @@ export function initialize (type) {
     DISABLED,
     COMMAND,
     TEXT,
-    HINTS
+    HINTS,
+    DEBUG
   });
 }

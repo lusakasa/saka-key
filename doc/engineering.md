@@ -134,3 +134,12 @@ Decision: Package help menu into modes
 
 ---
 
+Decision: Use CSS position: absolute for link hints (instead of position: fixed).
+
+Motivation: position: fixed is craaaazy slow
+
+---
+
+Decision: Mount hints to dedicated element mounted to <html> instead of to parent of link.
+
+Motivation: While mounting hints to the parent of their link is more accurate because the hints stay in the correct place when the user scrolls, it's much slower to mount them. Also, there are many corner cases (e.g. absolute positioning within <tr> elements doesn't work the way you expect). Also, the normal behavior is for the user to select a link or cancel selecting a hint, not continuing scrolling.

@@ -119,7 +119,9 @@ class Command extends Mode {
     refreshAllTabs: this.BP('refreshAllTabs'),
     toggleMuteTab: this.BP('toggleMuteTab'),
     toggleMuteAllTabs: this.BP('toggleMuteAllTabs'),
-    togglePinTab: this.BP('togglePinTab')
+    togglePinTab: this.BP('togglePinTab'),
+    // developer
+    debugMode: () => 'DEBUG'
   }
 };
 

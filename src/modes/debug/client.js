@@ -1,14 +1,18 @@
 import { Mode } from 'modes/mode/client';
 import { isTextEditable } from 'lib/dom';
-import { renderHints } from './render';
-import { findHints } from './find';
+import { showToolbar, hideToolbar, showAnchors, hideAnchors,
+  showHints, hideHints } from './highlights';
 
-class Hints extends Mode {
+class Debug extends Mode {
   onEnter = async (event) => {
-    renderHints(findHints());
+    // showToolbar();
+    showAnchors();
+    showHints();
   }
   onExit = async (event) => {
-
+    // hideToolbar();
+    hideAnchors();
+    hideHints();
   }
   keydown = async (event) => {
     event.stopImmediatePropagation();
@@ -35,10 +39,7 @@ class Hints extends Mode {
     return this.name;
   }
   mousedown = async (event) => {
-    if (isTextEditable(event.target)) {
-      return 'TEXT';
-    }
-    return 'COMMAND';
+    return this.name;
   }
   scroll = async (event) => {
     return this.name;
@@ -46,4 +47,4 @@ class Hints extends Mode {
   actions = {}
 }
 
-export const HINTS = new Hints('HINTS');
+export const DEBUG = new Debug('DEBUG');
