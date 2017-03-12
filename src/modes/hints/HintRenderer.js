@@ -4,25 +4,31 @@ import { settings } from './settings';
 
 export let showHints;
 export let hideHints;
+export let advanceOnKeyboardEvent;
 
 export class HintRenderer extends Component {
   constructor () {
     super();
     this.state = {
-      ready: false,
-      hints: []
+      hints: [],
+      inputKeys: []
     };
   }
   componentDidMount () {
     showHints = () => {
       this.setState({
-        ready: true,
-        hints: findHints()
+        hints: findHints(),
+        inputKeys: ''
+      });
+    };
+    advanceOnKeyboardEvent = (event) => {
+      this.setState({
+        hints: this.state.hints,
+        inputKeys: this.state.inputKeys + event.key
       });
     };
     hideHints = () => {
       this.setState({
-        ready: false,
         hints: []
       });
     };
@@ -31,12 +37,13 @@ export class HintRenderer extends Component {
     const hintStrings = generateHintStrings(settings.hintCharacters, this.state.hints.length);
     return (
       <div style={{ position: 'absolute', left: '0', top: '0' }}>
-        {this.state.ready ? 'READY' : 'NOT READY'}
-        {this.state.hints.map((hint, i) => (
-          <Hint
-            hintString={hintStrings[i]}
-            left={hint.rect.left + window.scrollX}
-            top={hint.rect.top + window.scrollY} />
+        {this.state.hints
+          .filter((hint, i) => hintStrings[i].startsWith(this.state.inputKeys))
+          .map((hint, i) => (
+            <Hint
+              hintString={hintStrings[i]}
+              left={hint.rect.left + window.scrollX}
+              top={hint.rect.top + window.scrollY} />
         ))}
       </div>
     );
