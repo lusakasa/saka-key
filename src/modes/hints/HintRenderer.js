@@ -4,7 +4,7 @@ import { settings } from './settings';
 
 export let showHints;
 export let hideHints;
-export let advanceOnKeyboardEvent;
+export let advanceOnKey;
 
 export class HintRenderer extends Component {
   constructor () {
@@ -21,11 +21,12 @@ export class HintRenderer extends Component {
         inputKeys: ''
       });
     };
-    advanceOnKeyboardEvent = (event) => {
+    advanceOnKey = (key) => {
       this.setState({
         hints: this.state.hints,
-        inputKeys: this.state.inputKeys + event.key
+        inputKeys: this.state.inputKeys + key
       });
+      return 'HINTS';
     };
     hideHints = () => {
       this.setState({

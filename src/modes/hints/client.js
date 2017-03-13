@@ -3,7 +3,8 @@ import { isTextEditable } from 'lib/dom';
 import { renderHints } from './render';
 import { findHints } from './find';
 import { render, h } from 'preact';
-import { HintRenderer, showHints, hideHints } from './HintRenderer';
+import { HintRenderer, showHints, hideHints, advanceOnKey } from './HintRenderer';
+import { settings } from './settings';
 
 const style = (
 `@font-face {
@@ -45,7 +46,6 @@ class Hints extends Mode {
     render(<HintRenderer />, shadow);
   }
   onEnter = async (event) => {
-    // renderHints(findHints());
     showHints();
   }
   onExit = async (event) => {
@@ -53,7 +53,10 @@ class Hints extends Mode {
   }
   keydown = async (event) => {
     event.stopImmediatePropagation();
-    return this.name;
+    if (settings.hintCharacters.includes(event.key)) {
+      return advanceOnKey(event.key);
+    }
+    return 'COMMAND';
   }
   keypress = async (event) => {
     event.preventDefault();
@@ -76,6 +79,7 @@ class Hints extends Mode {
     return this.name;
   }
   mousedown = async (event) => {
+    if (SAKA_DEBUG) return 'HINTS';
     if (isTextEditable(event.target)) {
       return 'TEXT';
     }
