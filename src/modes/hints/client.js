@@ -1,7 +1,5 @@
 import { Mode } from 'modes/mode/client';
 import { isTextEditable } from 'lib/dom';
-import { renderHints } from './render';
-import { findHints } from './find';
 import { render, h } from 'preact';
 import { HintRenderer, showHints, hideHints, advanceOnKey } from './HintRenderer';
 import { settings } from './settings';
@@ -16,6 +14,7 @@ const style = (
   src: url(${chrome.runtime.getURL('Roboto-Regular.tff')}) format('tff');
 }
 .hint {
+  z-index: 999999999999;
   font-family: Roboto, sans-serif;
   font-weight: 100;
   font-size: 12px;
@@ -53,14 +52,14 @@ class Hints extends Mode {
   }
   keydown = async (event) => {
     event.stopImmediatePropagation();
-    if (settings.hintCharacters.includes(event.key)) {
-      return advanceOnKey(event.key);
-    }
-    return 'COMMAND';
+    return 'HINTS';
   }
   keypress = async (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
+    if (settings.hintCharacters.includes(event.key)) {
+      return advanceOnKey(event.key);
+    }
     return 'COMMAND';
   }
   keyup = async (event) => {
