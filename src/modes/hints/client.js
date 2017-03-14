@@ -40,7 +40,6 @@ class Hints extends Mode {
     const hintContainer = document.createElement('div');
     document.documentElement.appendChild(hintContainer);
     const shadow = hintContainer.attachShadow({mode: 'open'});
-    console.log(style);
     shadow.innerHTML = `<style>${style}</style>`;
     render(<HintRenderer />, shadow);
   }

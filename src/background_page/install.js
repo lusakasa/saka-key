@@ -26,7 +26,11 @@ export function install () {
       case 'chrome_update':
       case 'shared_module_update':
       default:
+        loadDefaultKeyBindings();
         break;
     }
+  });
+  chrome.runtime.onStartup.addListener(() => {
+    loadDefaultKeyBindings();
   });
 }
