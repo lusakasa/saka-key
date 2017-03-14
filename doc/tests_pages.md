@@ -11,3 +11,7 @@
 * non-standard scroll: [http://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc](http://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc)
 
 * lose focus during scroll: [https://github.com/philc/vimium/issues/1526]()
+
+* page that already provides its own bindings [https://groups.google.com/forum/#!forum/buck-build]
+
+* stupid search bar [http://www.macworld.co.uk/apple/](http://www.macworld.co.uk/apple/)

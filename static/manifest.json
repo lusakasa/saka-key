@@ -3,11 +3,14 @@
   "version": "0.7",
   "description": "A keyboard interface to the web",
   "manifest_version": 2,
+  "content_security_policy": "script-src 'self'; object-src 'self'",
   "background": {
     "scripts": ["background_page.js"]
   },
   "content_scripts": [
     {
+      "__COMMENT1__": "content_script_loader.js checks to see if the frame is valid, and if so, requests the background page load the full content script",
+      "__COMMENT2__": "if the start point is set to content_script.js, the webpack style loader, which appends styles to <head> will cause failure because there is no <head> at document_start",
       "matches": ["<all_urls>"],
       "js": ["content_script_loader.js"],
       "all_frames": true,
@@ -32,6 +35,7 @@
     },
   "permissions": [
     "tabs",
+    "activeTab",
     "sessions",
     "<all_urls>"
   ],

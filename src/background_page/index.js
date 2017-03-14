@@ -7,6 +7,10 @@ import { COMMAND } from 'modes/command/core';
 import { UNINITIALIZED } from 'modes/uninitialized/core';
 import { initModes } from './modes';
 
+if (SAKA_DEBUG) {
+  console.log('background page initialization begin');
+}
+
 install();
 
 function getEnabled (_, src) {
@@ -21,12 +25,16 @@ function toggleEnabled () {
 
 function loadClient (_, src) {
   const { frameId, tabId } = meta(src);
+  if (SAKA_DEBUG) {
+    console.log(`Loading client: frame: ${frameId}, tab" ${tabId}`);
+  }
   chrome.tabs.executeScript(tabId, {
-    file: 'content_script.js',
+    file: '/content_script.js',
     frameId,
     runAt: 'document_start',
     matchAboutBlank: true
-  });
+  }, (results) => { console.log(results); });
+  console.log('all good');
 };
 
 function toggleHelpMenu () {
@@ -49,3 +57,7 @@ initModes({
   UNINITIALIZED,
   COMMAND
 });
+
+if (SAKA_DEBUG) {
+  console.log('background page initialized');
+}

@@ -4,6 +4,8 @@ import { render, h } from 'preact';
 import { HintRenderer, showHints, hideHints, advanceOnKey } from './HintRenderer';
 import { settings } from './settings';
 
+require('@webcomponents/shadydom');
+
 const style = (
 `@font-face {
   font-family: Roboto;

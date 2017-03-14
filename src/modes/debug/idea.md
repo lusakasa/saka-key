@@ -13,3 +13,5 @@ document.scrollingElement
 
 events
 
+frame Id
+tab Id

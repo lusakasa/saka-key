@@ -20,7 +20,7 @@ export default class OptionsMenu extends Component {
             <span class='mdc-toolbar__title'>Saka Key</span>
           </section>
         </header>
-        <main className='mdc-toolbar__fixed-adjust'>
+        <main className='mdc-toolbar-fixed-adjust'>
           <CommandMenu />
         </main>
       </div>

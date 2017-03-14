@@ -2,11 +2,13 @@ import { commandTrie } from '../lib/trie';
 import { state } from './state';
 
 function loadDefaultKeyBindings () {
+  console.log('meow');
   fetch(chrome.runtime.getURL('/config.json'))
     .then((response) => response.json())
     .then((config) => {
       try {
         state.bindings = commandTrie(config.defaultBindings.bindings);
+        console.log(state.bindings);
       } catch (e) {
         console.error(e);
       }

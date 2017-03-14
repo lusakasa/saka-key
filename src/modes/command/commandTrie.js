@@ -1,11 +1,11 @@
 import { keyboardEventString } from 'lib/keys';
 
 class CommandTrie {
-  init (bindings) {
+  init = (bindings) => {
     this.root = bindings;
     this.curNode = bindings;
   }
-  reset () {
+  reset = () => {
     this.curNode = this.root;
   }
   /**
@@ -14,7 +14,7 @@ class CommandTrie {
    * returns the command.
    * Otherwise returns undefined
    */
-  advance (event) {
+  advance = (event) => {
     const key = keyboardEventString(event);
     // TODO: Update to use longest viable prefix by trying
     // longest prefix until a valid path is found
