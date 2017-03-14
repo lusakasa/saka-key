@@ -32,6 +32,7 @@ class Popup extends Component {
           : (<button onClick={this.toggleEnabled} className='mdc-button mdc-button--accent'>Enable Saka Key</button>) }
         <button onClick={this.toggleHelpMenu} className='mdc-button mdc-button--accent'>Help</button>
         <button onClick={this.showOptionsPage} className='mdc-button mdc-button--accent'>Options</button>
+        <button onClick={this.showOptionsPage} className='mdc-button mdc-button--accent'>{ 'VERSION ' + SAKA_VERSION }</button>
       </div>
     );
   }

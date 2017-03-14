@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const BabiliPlugin = require('babili-webpack-plugin');
+// process.traceDeprecation = true;
 
 module.exports = function (env) {
   var config = {
@@ -46,7 +47,8 @@ module.exports = function (env) {
       new BabiliPlugin(),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
-        'SAKA_DEBUG': JSON.stringify(false)
+        'SAKA_DEBUG': JSON.stringify(false),
+        'SAKA_VERSION': JSON.stringify(require('./static/manifest.json').version)
       })
     ];
   } else {
@@ -55,7 +57,8 @@ module.exports = function (env) {
     config.plugins = [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('development'),
-        'SAKA_DEBUG': JSON.stringify(true)
+        'SAKA_DEBUG': JSON.stringify(true),
+        'SAKA_VERSION': JSON.stringify(require('./static/manifest.json').version + ' dev')
       })
     ];
   }
