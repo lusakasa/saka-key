@@ -14,7 +14,9 @@ export const toggleHelpMenu = () => {
   } else {
     // append to document element (<html> node) because document body might not have loaded yet
     document.documentElement.appendChild(iframe);
-    iframe.focus();
+    setTimeout(() => {
+      iframe.contentWindow.focus();
+    }, 100);
   }
   visible = !visible;
   if (isTextEditable(document.activeElement)) {
