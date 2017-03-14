@@ -1,6 +1,6 @@
 {
   "name": "Saka Key",
-  "version": "0.5",
+  "version": "0.6",
   "description": "A keyboard interface to the web",
   "manifest_version": 2,
   "background": {
