@@ -143,3 +143,13 @@ Motivation: position: fixed is craaaazy slow
 Decision: Mount hints to dedicated element mounted to <html> instead of to parent of link.
 
 Motivation: While mounting hints to the parent of their link is more accurate because the hints stay in the correct place when the user scrolls, it's much slower to mount them. Also, there are many corner cases (e.g. absolute positioning within <tr> elements doesn't work the way you expect). Also, the normal behavior is for the user to select a link or cancel selecting a hint, not continuing scrolling.
+
+---
+
+Decision: Use shadow DOM for link hints on browsers that support it (only Chrome as of 3/2017), css reset on others.
+
+Motivation: Link hint styling should be independent of any page stylesheets. Encapsulating them in a shadow DOM is the 'right' way to do it. Unfortunately, shadow DOM is only supported by Chrome. I tried a polyfill on firefox, but it just crashed, and it was heavy weight. So, I use Vimium's manual CSS reset strategy for firefox and edge.
+
+---
+
+Decision: Figure out how to handle 
