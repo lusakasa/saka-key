@@ -1,0 +1,12 @@
+View/Download the source at:
+
+https://github.com/lusakasa/saka-key
+
+Build Saka Key for firefox:
+
+git clone https://github.com/lusakasa/saka-key.git
+cd saka-key
+npm install
+npm run build:prod:firefox
+
+Refer to the readme on github for help.
