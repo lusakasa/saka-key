@@ -13,6 +13,7 @@ import { DEBUG } from 'modes/debug/client';
  * of cs - for content scripts, popup - for the popup, options - for options
  * pages ).
  */
+
 export function initialize (type) {
   console.log(`${type} client loaded`);
 

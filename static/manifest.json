@@ -40,6 +40,7 @@
     "<all_urls>"
   ],
   "web_accessible_resources": [
+    "hello.js",
     "background_page.js.map",
     "content_script.js",
     "content_script.js.map",

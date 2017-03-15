@@ -3,47 +3,24 @@ import { isTextEditable } from 'lib/dom';
 import { render, h } from 'preact';
 import { HintRenderer, showHints, hideHints, advanceOnKey } from './HintRenderer';
 import { settings } from './settings';
-
-require('@webcomponents/shadydom');
-
-const style = (
-`@font-face {
-  font-family: Roboto;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-style: normal;
-  font-weight: normal;
-  src: url(${chrome.runtime.getURL('Roboto-Regular.tff')}) format('tff');
-}
-.hint {
-  z-index: 999999999999;
-  font-family: Roboto, sans-serif;
-  font-weight: 100;
-  font-size: 12px;
-  padding: 0px 1px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #ff4081;
-  color: #ff4081;
-  background-color: #ffffff;
-  border-radius: 4px;
-  /* margin: 0px 1px; */
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  vertical-align: middle;
-}`
-);
-
+import { style } from './style';
 
 class Hints extends Mode {
   constructor (name) {
     super(name);
     const hintContainer = document.createElement('div');
-    document.documentElement.appendChild(hintContainer);
-    const shadow = hintContainer.attachShadow({mode: 'open'});
-    shadow.innerHTML = `<style>${style}</style>`;
-    render(<HintRenderer />, shadow);
+    // Ideally, should use shadow dom, but only chrome supports it (3/2017)
+    // fallback is to reset styles on all child hints (see styles.js)
+    if (SAKA_PLATFORM === 'chrome') {
+      document.documentElement.appendChild(hintContainer);
+      const shadow = hintContainer.attachShadow({mode: 'open'});
+      shadow.innerHTML = `<style>${style}</style>`;
+      render(<HintRenderer />, shadow);
+    } else {
+      hintContainer.innerHTML = `<style>${style}</style>`;
+      document.documentElement.appendChild(hintContainer);
+      render(<HintRenderer />, hintContainer);
+    }
   }
   onEnter = async (event) => {
     showHints();

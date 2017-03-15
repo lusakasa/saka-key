@@ -33,8 +33,7 @@ function loadClient (_, src) {
     frameId,
     runAt: 'document_start',
     matchAboutBlank: true
-  }, (results) => { console.log(results); });
-  console.log('all good');
+  });
 };
 
 function toggleHelpMenu () {

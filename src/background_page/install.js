@@ -16,6 +16,8 @@ function loadDefaultKeyBindings () {
 }
 
 export function install () {
+  loadDefaultKeyBindings();
+
   chrome.runtime.onInstalled.addListener(({ reason }) => {
     console.log('installing');
     switch (reason) {

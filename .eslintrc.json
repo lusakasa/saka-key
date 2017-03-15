@@ -31,7 +31,8 @@
     "document": true,
     "navigator": false,
     "window": true,
-    "SAKA_DEBUG": true
+    "SAKA_DEBUG": true,
+    "SAKA_PLATFORM": true
   },
 
   "ecmaFeatures": {
