@@ -1,4 +1,4 @@
-import { msg, meta } from 'mosi/core';
+import { msg, get, meta } from 'mosi/core';
 
 /** Stores whether Saka Key is enabled */
 let enabled = true;
@@ -7,6 +7,8 @@ const MODE = 'BASIC';
 
 export const mode = {
   name: MODE,
+  onInstalled: () => {},
+  onStartup: () => {},
   messages: {
     loadClient (_, src) {
       const { frameId, tabId } = meta(src);
@@ -18,6 +20,19 @@ export const mode = {
         frameId,
         runAt: 'document_start',
         matchAboutBlank: true
+      });
+    },
+    initClient: async (arg, src) => {
+      msg(src, 'modeAction', {
+        mode: MODE,
+        action: 'initClient',
+        arg: {
+          enabled: enabled,
+          bindings: await get(0, 'modeAction', {
+            mode: 'COMMAND',
+            action: 'bindings'
+          })
+        }
       });
     },
     getEnabled (_, src) {

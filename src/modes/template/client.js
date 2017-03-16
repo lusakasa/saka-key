@@ -12,6 +12,7 @@ const MODE = 'TEMPLATE';
 
 export const mode = {
   name: MODE,
+  onCreate: () => {},
   onEnter: async (event) => {},
   onExit: async (event) => {},
   events: {

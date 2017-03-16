@@ -9,7 +9,9 @@ export function initModes (startMode, availableModes) {
   if (SAKA_DEBUG) console.log(`Start mode: ${startMode}`);
   currentMode = startMode;
   modes = availableModes;
-  modes[currentMode].onEnter();
+  Object.values(modes).forEach((mode) => {
+    mode.onCreate();
+  });
   installEventListeners();
 }
 

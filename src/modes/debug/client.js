@@ -5,6 +5,8 @@ import { showAnchors, hideAnchors,
 const MODE = 'DEBUG';
 
 export const mode = {
+  name: MODE,
+  onCreate: () => {},
   onEnter: async (event) => {
     // showToolbar();
     showAnchors();

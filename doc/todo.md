@@ -21,6 +21,10 @@
 * smarter link hints
 * support for vi-like features
 * consider extensibility, e.g. https://github.com/philc/vimium/pull/1980#issuecomment-183223423
+* interoperation with other accessibility features, see accessibility.md
+  * breaks with NVDA screen reader
+* figure out compatibility with touch screens
+  * consider pointer api instead of mouse events
 
 
 * think about whether to handle keyboard events on keydown or keypress

@@ -6,6 +6,7 @@ const MODE = 'COMMAND';
 
 export const mode = {
   name: MODE,
+  onCreate: () => {},
   onEnter: async (event) => {
     commandTrie.reset();
   },

@@ -6,6 +6,7 @@ const MODE = 'HINTS';
 
 export const mode = {
   name: MODE,
+  onCreate: () => {},
   onEnter: async (event) => {
     showHints();
   },

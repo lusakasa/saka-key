@@ -1,6 +1,5 @@
 import { init } from 'mosi/client';
 import { initModes, modeAction } from './modes';
-import { mode as UNINITIALIZED } from 'modes/uninitialized/client';
 import { mode as BASIC } from 'modes/basic/client';
 import { mode as COMMAND } from 'modes/command/client';
 import { mode as TEXT } from 'modes/text/client';
@@ -27,8 +26,7 @@ export function initialize (type) {
   });
 
   // Initialize the built-in modes. New built-in modes should be added here.
-  initModes('UNINITIALIZED', {
-    UNINITIALIZED,
+  initModes('BASIC', {
     BASIC,
     COMMAND,
     TEXT,
