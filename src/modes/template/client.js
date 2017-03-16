@@ -1,13 +1,3 @@
-/**
- * This file isn't actually a mode. It's just a resource to help construct new modes.
- * Copy and paste its contents into the file of the new mode you want to create.
- * Note that the mode must
- * 1. Provide onEnter and onExit Handler
- * 2. Provide a handler function for every possible event type
- * 3. Return a valid next mode from every handler
- * Do not attempt to remove 'unused' handlers. Instead, return the mode itself.
- */
-
 const MODE = 'TEMPLATE';
 
 export const mode = {
@@ -40,6 +30,16 @@ export const mode = {
   },
   messages: {}
 };
+
+/**
+ * This file isn't actually a mode. It's just a resource to help construct new modes.
+ * Copy and paste its contents into the file of the new mode you want to create.
+ * Note that the mode must
+ * 1. Provide onEnter and onExit Handler
+ * 2. Provide a handler function for every possible event type
+ * 3. Return a valid next mode from every handler
+ * Do not attempt to remove 'unused' handlers. Instead, return the mode itself.
+ */
 
 
 /**

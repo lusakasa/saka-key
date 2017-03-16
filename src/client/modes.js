@@ -54,7 +54,7 @@ export async function modeAction ({ mode, action, arg }, src) {
   }
   const nextMode = await (modes[mode].messages[action](arg, src));
   if (nextMode) {
-    setMode(nextMode);
+    setMode(nextMode, { type: 'message:' + action });
   }
 }
 
@@ -64,7 +64,7 @@ export async function modeAction ({ mode, action, arg }, src) {
  * then calls the new active modes's onEnter() function.
  * @param {string} nextMode
  */
-async function setMode (nextMode) {
+async function setMode (nextMode, event) {
   if (SAKA_DEBUG && !nextMode) {
     throw Error(`Mode ${currentMode} is missing a handler for ${event.type} events`);
   }

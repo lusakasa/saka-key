@@ -29,4 +29,10 @@ function addListeners (modes) {
       mode.onStartup();
     });
   });
+  // TODO: Remove this when firefox fixes bug in next version
+  if (SAKA_DEBUG && SAKA_PLATFORM === 'firefox') {
+    Object.values(modes).forEach((mode) => {
+      mode.onStartup();
+    });
+  }
 }
