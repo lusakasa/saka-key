@@ -1,6 +1,7 @@
 import { isTextEditable } from 'lib/dom';
+import { toggleHelpMenu } from './help';
 
-const MODE = 'TEXT';
+const MODE = 'BASIC';
 
 export const mode = {
   name: MODE,
@@ -17,16 +18,10 @@ export const mode = {
       return MODE;
     },
     focusin: async (event) => {
-      if (isTextEditable(event.target)) {
-        return MODE;
-      }
-      return 'COMMAND';
+      return MODE;
     },
     focusout: async (event) => {
-      if (isTextEditable(event.relatedTarget)) {
-        return MODE;
-      }
-      return 'COMMAND';
+      return MODE;
     },
     click: async (event) => {
       return MODE;
@@ -35,5 +30,16 @@ export const mode = {
       return MODE;
     }
   },
-  messages: {}
+  messages: {
+    setEnabled: (enabled) => {
+      if (enabled) {
+        if (isTextEditable(document.activeElement)) {
+          return 'TEXT';
+        }
+        return 'COMMAND';
+      }
+      return MODE;
+    },
+    toggleHelpMenu
+  }
 };

@@ -63,7 +63,7 @@ vertical-align: baseline;
 white-space: normal;
 width: auto;`;
 
-// Chrome support shadow DOM, so use reset styles are unnecessary
+// Chrome support shadow DOM, so reset styles are not needed
 const optionalResetStyles = SAKA_PLATFORM === 'chrome'
   ? ''
   : resetStyles;

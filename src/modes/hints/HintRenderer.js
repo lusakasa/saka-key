@@ -1,22 +1,14 @@
-import { Component, h } from 'preact';
-import { findHints } from './find';
+import { Component, render, h } from 'preact';
+import { findHints } from './findHints';
 import { settings } from './settings';
 import { mouseEvent, isTextEditable } from 'lib/dom';
-
-function activateHint (hint) {
-  if (isTextEditable(hint.element)) {
-    hint.element.focus();
-    return 'TEXT';
-  }
-  mouseEvent('click', hint.element);
-  return 'COMMAND';
-}
+import { style } from './style';
 
 export let showHints;
 export let hideHints;
 export let advanceOnKey;
 
-export class HintRenderer extends Component {
+class HintRenderer extends Component {
   constructor () {
     super();
     this.state = {
@@ -84,6 +76,15 @@ const Hint = ({ hintString, left, top, seen }) => (
   </div>
 );
 
+function activateHint (hint) {
+  if (isTextEditable(hint.element)) {
+    hint.element.focus();
+    return 'TEXT';
+  }
+  mouseEvent('click', hint.element);
+  return 'COMMAND';
+}
+
 function generateHintStrings (characters, count) {
   const hints = [''];
   let offset = 0;
@@ -94,4 +95,18 @@ function generateHintStrings (characters, count) {
     }
   }
   return hints.slice(offset, offset + count);
+}
+
+const hintContainer = document.createElement('div');
+// Ideally, should use shadow dom, but only chrome supports it (3/2017)
+// fallback is to reset styles on all child hints (see styles.js)
+if (SAKA_PLATFORM === 'chrome') {
+  document.documentElement.appendChild(hintContainer);
+  const shadow = hintContainer.attachShadow({mode: 'open'});
+  shadow.innerHTML = `<style>${style}</style>`;
+  render(<HintRenderer />, shadow);
+} else {
+  hintContainer.innerHTML = `<style>${style}</style>`;
+  document.documentElement.appendChild(hintContainer);
+  render(<HintRenderer />, hintContainer);
 }

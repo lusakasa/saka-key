@@ -8,43 +8,38 @@
  * Do not attempt to remove 'unused' handlers. Instead, return the mode itself.
  */
 
-import { Mode } from 'modes/mode/client';
+const MODE = 'TEMPLATE';
 
-class Template extends Mode {
-  onEnter = async (event) => {
+export const mode = {
+  name: MODE,
+  onEnter: async (event) => {},
+  onExit: async (event) => {},
+  events: {
+    keydown: async (event) => {
+      return MODE;
+    },
+    keypress: async (event) => {
+      return MODE;
+    },
+    keyup: async (event) => {
+      return MODE;
+    },
+    focusin: async (event) => {
+      return MODE;
+    },
+    focusout: async (event) => {
+      return MODE;
+    },
+    click: async (event) => {
+      return MODE;
+    },
+    mousedown: async (event) => {
+      return MODE;
+    }
+  },
+  messages: {}
+};
 
-  }
-  onExit = async (event) => {
-
-  }
-  keydown = async (event) => {
-
-  }
-  keypress = async (event) => {
-
-  }
-  keyup = async (event) => {
-
-  }
-  focusin = async (event) => {
-
-  }
-  focusout = async (event) => {
-
-  }
-  click = async (event) => {
-
-  }
-  mousedown = async (event) => {
-
-  }
-  scroll = async (event) => {
-
-  }
-  actions = {}
-}
-
-export const TEMPLATE = new Template('TEMPLATE');
 
 /**
  * You might wonder why all the handlers are async functions. This is to support

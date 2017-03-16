@@ -7,7 +7,7 @@ class Popup extends Component {
   componentDidMount () {
     init({
       subscriptions: ['popup'],
-      onConnect: [{ action: 'getEnabled' }],
+      onConnect: [{ action: 'modeAction', arg: { mode: 'BASIC', action: 'getEnabled' } }],
       actions: {
         setEnabled: (enabled) => {
           this.setState({ enabled });
@@ -16,10 +16,16 @@ class Popup extends Component {
     });
   }
   toggleEnabled () {
-    msg(1, 'toggleEnabled');
+    msg(1, 'modeAction', {
+      mode: 'BASIC',
+      action: 'toggleEnabled'
+    });
   }
   toggleHelpMenu () {
-    msg(1, 'toggleHelpMenu');
+    msg(1, 'modeAction', {
+      mode: 'BASIC',
+      action: 'toggleHelpMenu'
+    });
   }
   showOptionsPage () {
 

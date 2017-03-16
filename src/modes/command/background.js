@@ -27,8 +27,11 @@ import {
   togglePinTab
 } from 'saka-commands/tab';
 
-class Command {
-  actions = {
+const MODE = 'COMMAND';
+
+export const mode = {
+  name: MODE,
+  messages: {
     toggleHelpMenu: () => { msg(0, 'toggleHelpMenu'); },
     nextTab,
     previousTab,
@@ -56,6 +59,4 @@ class Command {
     toggleMuteAllTabs,
     togglePinTab
   }
-}
-
-export const COMMAND = new Command('COMMAND');
+};

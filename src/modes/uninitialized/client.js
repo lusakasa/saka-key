@@ -1,37 +1,43 @@
-import { Mode } from 'modes/mode/client';
+import { msg } from 'mosi/client';
+
 import { commandTrie } from 'modes/command/commandTrie';
 import { isTextEditable } from 'lib/dom';
 
-class Uninitialized extends Mode {
-  onEnter = async (event) => {
-    this.sendMsg('initClient');
-  }
-  onExit = async (event) => {}
-  keydown = async (event) => {
-    return this.name;
-  }
-  keypress = async (event) => {
-    return this.name;
-  }
-  keyup = async (event) => {
-    return this.name;
-  }
-  focusin = async (event) => {
-    return this.name;
-  }
-  focusout = async (event) => {
-    return this.name;
-  }
-  click = async (event) => {
-    return this.name;
-  }
-  mousedown = async (event) => {
-    return this.name;
-  }
-  scroll = async (event) => {
-    return this.name;
-  }
-  actions = {
+const MODE = 'UNINITIALIZED';
+
+export const mode = {
+  name: MODE,
+  onEnter: async (event) => {
+    msg(1, 'modeAction', {
+      mode: MODE,
+      action: 'initClient'
+    });
+  },
+  onExit: async (event) => {},
+  events: {
+    keydown: async (event) => {
+      return MODE;
+    },
+    keypress: async (event) => {
+      return MODE;
+    },
+    keyup: async (event) => {
+      return MODE;
+    },
+    focusin: async (event) => {
+      return MODE;
+    },
+    focusout: async (event) => {
+      return MODE;
+    },
+    click: async (event) => {
+      return MODE;
+    },
+    mousedown: async (event) => {
+      return MODE;
+    }
+  },
+  messages: {
     initClient: ({ enabled, bindings }) => {
       commandTrie.init(bindings);
       if (enabled) {
@@ -41,9 +47,7 @@ class Uninitialized extends Mode {
           return 'COMMAND';
         }
       }
-      return 'DISABLED';
+      return MODE;
     }
   }
-}
-
-export const UNINITIALIZED = new Uninitialized('UNINITIALIZED');
+};
