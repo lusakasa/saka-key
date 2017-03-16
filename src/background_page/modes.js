@@ -1,7 +1,7 @@
 /** The available modes */
 let modes = {};
 
-export function modeAction ({ mode, action, arg }, src) {
+export async function modeAction ({ mode, action, arg }, src) {
   if (SAKA_DEBUG) {
     if (!modes[mode]) {
       throw Error(`Missing Mode ${mode}`);
@@ -10,7 +10,7 @@ export function modeAction ({ mode, action, arg }, src) {
       throw Error(`Mode ${mode} is missing a handler for action ${action}`);
     }
   }
-  modes[mode].messages[action](arg, src);
+  return await modes[mode].messages[action](arg, src);
 };
 
 export function initModes (availableModes) {

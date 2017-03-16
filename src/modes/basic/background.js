@@ -23,16 +23,14 @@ export const mode = {
       });
     },
     initClient: async (arg, src) => {
+      const bindings = (await get(0, 'modeAction', {
+        mode: 'COMMAND',
+        action: 'bindings'
+      }))[0].v;
       msg(src, 'modeAction', {
         mode: MODE,
         action: 'initClient',
-        arg: {
-          enabled: enabled,
-          bindings: await get(0, 'modeAction', {
-            mode: 'COMMAND',
-            action: 'bindings'
-          })
-        }
+        arg: { enabled, bindings }
       });
     },
     getEnabled (_, src) {
