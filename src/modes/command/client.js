@@ -19,7 +19,8 @@ export const mode = {
       return MODE;
     },
     keypress: async (event) => {
-      event.preventDefault();
+      // NOTE: do not call event.preventDefault();
+      // this will break built-in shortcuts on firefox as of 3/2017
       event.stopImmediatePropagation();
       const command = commandTrie.advance(event);
       if (command) {
