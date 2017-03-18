@@ -1,0 +1,22 @@
+// Built in sections for keybindings and voice bindings
+// all other settings provided in separate list
+{
+  "name": "Command",
+  "keybindings": [
+    {
+      "label": "Activate Link Hints",
+      "value": "linkHints"
+    }
+  ],
+  "other": [
+    {
+      "name": "Key Bindings",
+      "options": [
+        {
+          "type": "key-select",
+          "label": "key 1"
+        }
+      ]
+    }
+  ]
+}

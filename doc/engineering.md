@@ -77,6 +77,12 @@ This document describes design decisions made in Saka Key and why they were made
 
 ---
 
+Decision: Always perform keyboard event handling in the keydown event, not the keypress event
+
+Motivation: In Chrome, non-printing keys like escape don't trigger keypress events. In firefox, they do. To get the same behavior on all platforms, avoid putting control logic in keypress event handlers.
+
+--
+
 * Decision: Store key combinations as `e.code + e.key + e.shiftKey +  e.ctrlKey + e.altKey + e.metaKey`. Show keys to user as `(mapping(e.code, e.shiftKey) || e.key) + e.ctrlKey + e.altKey + e.metaKey`. See [Mappings](./KeyboardEvent.code.mappings.json). Decode KeyEvents using `e.key + e.shiftKey +  e.ctrlKey + e.altKey + e.metaKey`
 
 * Motivation: As far as I can tell, (code | key) & allModifiers is the only unique way to identify a key without using an attribute that will be depracated. Showing the .key attribute will really confuse people since the option key can affect the value of .key (option + j = ∆; option + shift + j = Ô) and the .code attribute values are too long and complicated. To minimize the size of the bindings trie that must be transfered on every page load, use .key for decoding instead of .code.

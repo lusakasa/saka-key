@@ -82,5 +82,5 @@ export const commands = {
   toggleMuteAllTabs: backgroundCommand('toggleMuteAllTabs'),
   togglePinTab: backgroundCommand('togglePinTab'),
   // developer
-  debugMode: () => 'DEBUG'
+  developerMode: () => 'DEVELOPER'
 };

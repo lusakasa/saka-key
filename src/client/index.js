@@ -4,7 +4,7 @@ import { mode as BASIC } from 'modes/basic/client';
 import { mode as COMMAND } from 'modes/command/client';
 import { mode as TEXT } from 'modes/text/client';
 import { mode as HINTS } from 'modes/hints/client';
-import { mode as DEBUG } from 'modes/debug/client';
+import { mode as DEVELOPER } from 'modes/developer/client';
 
 /**
  * Initializes a Saka key client, making keyboard shortcuts available.
@@ -25,12 +25,18 @@ export function initialize (type) {
     actions: { modeAction }
   });
 
-  // Initialize the built-in modes. New built-in modes should be added here.
-  initModes('BASIC', {
+  const modes = SAKA_DEBUG ? {
     BASIC,
     COMMAND,
     TEXT,
     HINTS,
-    DEBUG
-  });
+    DEVELOPER
+  } : {
+    BASIC,
+    COMMAND,
+    TEXT,
+    HINTS
+  };
+  // Initialize the built-in modes. New built-in modes should be added here.
+  initModes('BASIC', modes);
 }

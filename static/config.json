@@ -57,7 +57,7 @@
       "togglePinTab"
     ],
     "Developer": [
-      "debugMode"
+      "developerMode"
     ]
   },
   "commandDetails": {
@@ -196,8 +196,8 @@
     "togglePinTab": {
       "description": "Toggle the pin state of the active tab of the current window"
     },
-    "debugMode": {
-      "description": "Launches debug mode. Useful only to Saka developers."
+    "developerMode": {
+      "description": "Launches developer mode. Useful only to Saka developers."
     }
   },
   "defaultBindings": {
@@ -343,7 +343,7 @@
       "togglePinTab": [
         [{ "key": "p" }]
       ],
-      "debugMode": [
+      "developerMode": [
         [{ "key": "*" }]
       ]
     }

@@ -1,10 +1,16 @@
-const MODE = 'DOMX';
+import { showMenu, hideMenu } from './ui';
+
+const MODE = 'DEVELOPER';
 
 export const mode = {
   name: MODE,
   onCreate: () => {},
-  onEnter: async (event) => {},
-  onExit: async (event) => {},
+  onEnter: async (event) => {
+    showMenu();
+  },
+  onExit: async (event) => {
+    hideMenu();
+  },
   events: {
     keydown: async (event) => {
       return MODE;

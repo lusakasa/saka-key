@@ -66,6 +66,7 @@ export const mode = {
       }
       return MODE;
     },
-    toggleHelpMenu
+    toggleHelpMenu,
+    setMode: (mode) => mode
   }
 };
