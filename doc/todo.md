@@ -19,6 +19,7 @@
 * definable commands
 * smarter on/off mosi to save power
 * smarter link hints
+* pdf.js integration
 * support for vi-like features
 * consider extensibility, e.g. https://github.com/philc/vimium/pull/1980#issuecomment-183223423
 * interoperation with other accessibility features, see accessibility.md

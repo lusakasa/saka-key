@@ -1,5 +1,18 @@
 import codeToKeyMap from './codeToKeyMap.json';
 
+/** Returns true if the given key event is ONLY a modifier key, false otherwise */
+export function isModifierKey (event) {
+  switch (event.key) {
+    case 'Shift':
+    case 'Alt':
+    case 'Control':
+    case 'Meta':
+      return true;
+    default:
+      return false;
+  }
+}
+
 /**
  * Converts a KeyboardEvent to its string representation.
  * This representation is used for internal processing.
