@@ -8,7 +8,7 @@ module.exports = function (env) {
       'background_page': './src/background_page/index.js',
       'content_script': './src/content_script/index.js',
       'content_script_loader': './src/content_script/loader.js',
-      'options': './src/options/index.js',
+      'help': './src/help/index.js',
       'popup': './src/popup/index.js'
     },
     output: {

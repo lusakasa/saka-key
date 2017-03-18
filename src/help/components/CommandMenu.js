@@ -1,7 +1,7 @@
 import { Component, h } from 'preact';
 import { connect } from 'preact-redux';
-import { store } from 'options/reducers';
-import { initConfig } from 'options/actions';
+import { store } from '../reducers';
+import { initConfig } from '../actions';
 import CommandList from './CommandList';
 
 class CommandMenu extends Component {

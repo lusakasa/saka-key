@@ -15,3 +15,5 @@
 * page that already provides its own bindings [https://groups.google.com/forum/#!forum/buck-build]
 
 * stupid search bar [http://www.macworld.co.uk/apple/](http://www.macworld.co.uk/apple/)
+
+* figure out why page styles leak into shadow dom [https://developers.google.com/web/tools/?hl=en]()

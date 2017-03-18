@@ -27,7 +27,7 @@
     "default_title": "Saka Key"
   },
   "options_ui": {
-    "page": "options.html",
+    "page": "help.html",
     "chrome_style": false,
     "open_in_tab": true
   },
@@ -48,10 +48,10 @@
     "content_script.js",
     "content_script.js.map",
     "content_script_loader.js.map",
-    "options.js",
-    "options.js.map",
+    "help.js",
+    "help.js.map",
     "popup.js.map",
-    "options.html",
+    "help.html",
     "Roboto-Regular.tff"
     ]
 }
