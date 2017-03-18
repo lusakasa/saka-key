@@ -1,12 +1,15 @@
-import './style.css';
 import { isTextEditable } from 'lib/dom';
+import { helpFrameStyle } from './style';
 
 const iframe = document.createElement('iframe');
 iframe.id = 'popup';
 iframe.src = chrome.runtime.getURL('options.html');
-iframe.setAttribute('class', 'helpFrame');
+iframe.style = helpFrameStyle;
+console.log(helpFrameStyle);
 
 let visible = false;
+
+
 
 export const toggleHelpMenu = () => {
   if (visible) {
