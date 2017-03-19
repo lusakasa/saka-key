@@ -1,15 +1,25 @@
 import { Component, h } from 'preact';
+import { connect } from 'preact-redux';
 import CommandMenu from './CommandMenu';
+import { viewProfile } from '../actions';
 
-export default class SettingsMenu extends Component {
-  render () {
+const ProfileTab = ({ name, activeProfile, activate }) => (
+  <span
+    className={`mdc-typography--subheading1 saka-toolbar-item ${
+      name === activeProfile ? 'saka-toolbar-item__active' : ''}`}
+    onClick={activate(name)}>{ name }</span>
+);
+
+export class SettingsMenu extends Component {
+  render ({ profile, viewProfile }) {
     return (
       <div className={'settings-menu'}>
-        <header class='mdc-toolbar'>
-          <section class='mdc-toolbar__section mdc-toolbar__section--align-start'>
-            <span class='mdc-toolbar__title'>Profile 1 (default)</span>
-            <span class='mdc-toolbar__title'>Profile 2</span>
-            <span class='mdc-toolbar__title'>Vimium</span>
+        <header className='mdc-toolbar saka-toolbar'>
+          <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
+            <ProfileTab name='Standard' activeProfile={profile} activate={viewProfile} />
+            <ProfileTab name='Left Hand' activeProfile={profile} activate={viewProfile} />
+            <ProfileTab name='Right Hand' activeProfile={profile} activate={viewProfile} />
+            <ProfileTab name='Vimium' activeProfile={profile} activate={viewProfile} />
           </section>
         </header>
         <main>
@@ -19,3 +29,10 @@ export default class SettingsMenu extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({ profile: state.profile });
+const mapDispatchToProps = (dispatch) => ({
+  viewProfile: (profile) => () => { dispatch(viewProfile(profile)); }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsMenu);

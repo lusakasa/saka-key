@@ -7,3 +7,8 @@ export const setView = (view) => ({
   type: 'SET_VIEW',
   view
 });
+
+export const viewProfile = (profile) => ({
+  type: 'VIEW_PROFILE',
+  profile
+});

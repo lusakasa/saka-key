@@ -17,20 +17,23 @@ class OptionsMenu extends Component {
   render ({ view, setView }) {
     return (
       <div className={'options-menu'}>
-        <header className='mdc-toolbar mdc-toolbar--fixed'>
+        <header className='mdc-toolbar mdc-toolbar--fixed saka-toolbar'>
           <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
             <img src='logo.png' className='saka-logo' alt='Saka Key' />
             <span className='mdc-toolbar__title'>Saka Key</span>
           </section>
           <section className='mdc-toolbar__section mdc-toolbar__section--align-end'>
             <a
-              className={`mdc-typography--subheading2 header-item ${view === 'settings' ? 'header-item__active' : ''}`}
+              className={`mdc-typography--subheading2 saka-toolbar-item ${
+                view === 'settings' ? 'saka-toolbar-item__active' : ''}`}
               onClick={setView('settings')}> Settings </a>
             <a
-              className={`mdc-typography--subheading2 header-item ${view === 'tutorial' ? 'header-item__active' : ''}`}
+              className={`mdc-typography--subheading2 saka-toolbar-item ${
+                view === 'tutorial' ? 'saka-toolbar-item__active' : ''}`}
               onClick={setView('tutorial')}> Tutorial </a>
             <a
-              className={`mdc-typography--subheading2 header-item ${view === 'about' ? 'header-item__active' : ''}`}
+              className={`mdc-typography--subheading2 saka-toolbar-item ${
+                view === 'about' ? 'saka-toolbar-item__active' : ''}`}
               onClick={setView('about')}> About </a>
           </section>
         </header>

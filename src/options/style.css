@@ -2,7 +2,9 @@ body {
   margin: 0px;
 }
 
-.header-item {
+.saka-toolbar {}
+
+.saka-toolbar .saka-toolbar-item {
   text-decoration: none;
   color: white;
   cursor: pointer;
@@ -11,7 +13,7 @@ body {
   padding: 0px 12px;
 }
 
-.header-item__active {
+.saka-toolbar-item__active {
   border-bottom: 2px solid;
   border-bottom-color: white;
 }
@@ -33,7 +35,7 @@ body {
 }
 
 .settings-menu {
-
+  width: 100%;
 }
 
 .command-entry {
