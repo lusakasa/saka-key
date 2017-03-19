@@ -1,13 +1,13 @@
 import { render, h } from 'preact';
 import { Provider } from 'preact-redux';
 import { store } from './reducers';
-import HelpMenu from './components/HelpMenu';
+import OptionsMenu from './components/OptionsMenu';
 import { initialize } from 'client';
 
-initialize('help');
+initialize('options');
 
 render((
   <Provider store={store}>
-    <HelpMenu />
+    <OptionsMenu />
   </Provider>
 ), document.body);

@@ -1,12 +1,14 @@
 import { createStore } from 'redux';
-const rootReducer = (state = {}, action) => {
+
+
+
+const rootReducer = (state = { view: 'settings' }, action) => {
   switch (action.type) {
-    case 'INIT_CONFIG':
-      const x = Object.assign({}, state, { ...action.config, loaded: true});
-      return x;
+    case 'SET_VIEW':
+      return Object.assign({}, state, { view: action.view });
     default:
       return state;
   }
-}
+};
 
 export const store = createStore(rootReducer);

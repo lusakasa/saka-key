@@ -42,8 +42,10 @@
   },
   "dependencies": {
     "@material/button": "^0.2.1",
+    "@material/card": "^0.1.4",
     "@material/list": "^0.2.2",
     "@material/toolbar": "^0.1.1",
+    "@material/typography": "^0.2.0",
     "mosi": "latest",
     "preact": "^7.2.0",
     "preact-redux": "^2.0.0",

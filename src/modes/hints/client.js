@@ -19,6 +19,10 @@ export const mode = {
       event.stopImmediatePropagation();
       if (!isModifierKey(event)) {
         if (settings.hintCharacters.includes(event.key)) {
+          // TODO: FIX: next line is shoddy fix to prevent text from being added on entrance to an input
+          // e.g. if the last character in a link hint is 'l', without the next line, activating an input
+          // will cause l to appear within it.
+          event.preventDefault();
           return advanceOnKey(event.key);
         }
         return 'COMMAND';

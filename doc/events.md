@@ -10,3 +10,6 @@ DomActivate?
 
 https://blogs.windows.com/msedgedev/2017/03/08/scrolling-on-the-web/#FfYKZeTKypwBCAAB.97
 http://bl.ocks.org/nolanlawson/raw/dc026a93b91cb448401bb0f1cb3ebad2/
+
+wheel event fires before scroll, and thus blocking.
+scroll event fires after scroll, and is thus nonblocking.

@@ -32,7 +32,8 @@
     "navigator": false,
     "window": true,
     "SAKA_DEBUG": true,
-    "SAKA_PLATFORM": true
+    "SAKA_PLATFORM": true,
+    "SAKA_VERSION": true
   },
 
   "ecmaFeatures": {

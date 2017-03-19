@@ -2,8 +2,31 @@ body {
   margin: 0px;
 }
 
-.help-menu {
-  max-width: 400px;
+.header-item {
+  text-decoration: none;
+  color: white;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.about-card {
+  margin-top: 60px;
+  align-items: center;
+  text-align: center;
+}
+
+.options-menu {
+  
+}
+
+.settings-menu {
+
 }
 
 .command-entry {
