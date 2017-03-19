@@ -2,7 +2,7 @@ import { createStore } from 'redux';
 
 
 
-const rootReducer = (state = { view: 'settings', profile: 'Standard' }, action) => {
+const rootReducer = (state = { view: 'Settings', profile: 'Standard' }, action) => {
   switch (action.type) {
     case 'SET_VIEW':
       return Object.assign({}, state, { view: action.view });

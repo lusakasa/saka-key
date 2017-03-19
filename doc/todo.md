@@ -9,6 +9,7 @@
 * figure out why disabling saka breaks google search (doesn't let you change focus away from search input)
 * handle browser restart/update properly
 * configurable key bindings
+* historical tab switching
 * full screen mode (provide custom tabs/url bar optimized for alt interface)
 * more commands
 * configurable themes and colors

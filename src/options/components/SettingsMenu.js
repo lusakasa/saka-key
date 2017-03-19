@@ -1,7 +1,7 @@
 import { Component, h } from 'preact';
 import SettingsHeader from './SettingsHeader';
 import SettingsDrawer from './SettingsDrawer';
-import CommandMenu from './CommandMenu';
+import SettingsContent from './SettingsContent';
 
 export default class SettingsMenu extends Component {
   render () {
@@ -9,9 +9,7 @@ export default class SettingsMenu extends Component {
       <div className={'settings-menu'}>
         <SettingsHeader />
         <SettingsDrawer />
-        <main>
-          <CommandMenu />
-        </main>
+        <SettingsContent />
       </div>
     );
   }
