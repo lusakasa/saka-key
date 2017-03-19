@@ -35,6 +35,8 @@ class HintRenderer extends Component {
         .filter((hint) => hint.hintString.startsWith(inputKeys));
       if (filteredHints.length === 1 && inputKeys === filteredHints[0].hintString) {
         return activateHint(filteredHints[0]);
+      } else if (filteredHints.length === 0) {
+        return 'COMMAND';
       }
       this.setState({
         hints,
