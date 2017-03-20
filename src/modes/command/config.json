@@ -4,7 +4,7 @@
   "options": [
     {
       "type": "header",
-      "header": "Misc. Key Bindings"
+      "header": "Misc."
     },
     {
       "type": "keybinding",
@@ -13,7 +13,7 @@
     },
     {
       "type": "header",
-      "header": "Link Hints Key Bindings"
+      "header": "Link Hints"
     },
     {
       "type": "keybinding",
@@ -22,7 +22,7 @@
     },
     {
       "type": "header",
-      "header": "Navigation Key Bindings"
+      "header": "Navigation"
     },
     {
       "type": "keybinding",
@@ -48,6 +48,213 @@
       "type": "keybinding",
       "label": "Go Up",
       "value": "goUp"
+    },
+    {
+      "type": "keybinding",
+      "label": "Go To Root",
+      "value": "goToRoot"
+    },
+    {
+      "type": "header",
+      "header": "Scrolling"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Down",
+      "value": "scrollDown"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Up",
+      "value": "scrollUp"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Left",
+      "value": "scrollLeft"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Right",
+      "value": "scrollRight"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Page Down",
+      "value": "scrollPageDown"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Page Up",
+      "value": "scrollPageUp"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Half Page Down",
+      "value": "scrollHalfPageDown"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Half Page Up",
+      "value": "scrollHalfPageUp"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll To Bottom",
+      "value": "scrollToBottom"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll To Top",
+      "value": "scrollToTop"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll To Left",
+      "value": "scrollToLeft"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll To Right",
+      "value": "scrollToRight"
+    },
+    {
+      "type": "header",
+      "header": "Tab Manipulation"
+    },
+    {
+      "type": "keybinding",
+      "label": "Next Tab",
+      "value": "nextTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Previous Tab",
+      "value": "previousTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "First Tab",
+      "value": "firstTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Last Tab",
+      "value": "lastTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab Left",
+      "value": "moveTabLeft"
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab Right",
+      "value": "moveTabRight"
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab First",
+      "value": "moveTabFirst"
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab Last",
+      "value": "moveTabLast"
+    },
+    {
+      "type": "keybinding",
+      "label": "Close Tab",
+      "value": "closeTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Close Other Tabs",
+      "value": "closeOtherTabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Close Right Tabs",
+      "value": "closeRightTabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Close Left Tabs",
+      "value": "closeLeftTabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "New Tab",
+      "value": "newTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Restore Tab",
+      "value": "restoreTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Duplicate Tab",
+      "value": "duplicateTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "New Window",
+      "value": "newWindow"
+    },
+    {
+      "type": "keybinding",
+      "label": "Switch Window",
+      "value": "switchWindow"
+    },
+    {
+      "type": "keybinding",
+      "label": "Zoom In",
+      "value": "zoomIn"
+    },
+    {
+      "type": "keybinding",
+      "label": "Zoom Out",
+      "value": "zoomOut"
+    },
+    {
+      "type": "keybinding",
+      "label": "Zoom Reset",
+      "value": "zoomReset"
+    },
+    {
+      "type": "keybinding",
+      "label": "Refresh Tab",
+      "value": "refreshTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Refresh All Tabs",
+      "value": "refreshAllTabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Toggle Mute Tab",
+      "value": "toggleMuteTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Toggle Mute All Tabs",
+      "value": "toggleMuteAllTabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Toggle Pin Tab",
+      "value": "togglePinTab"
+    },
+    {
+      "type": "header",
+      "header": "Developer"
+    },
+    {
+      "type": "keybinding",
+      "label": "Developer Mode",
+      "value": "developerMode"
     }
   ]
 }
