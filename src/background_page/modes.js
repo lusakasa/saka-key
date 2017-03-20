@@ -1,3 +1,8 @@
+// import basicConfig from 'modes/basic/config.json';
+// import commandConfig from 'modes/command/config.json';
+// import hintsConfig from 'modes/hints/config.json';
+// import developerConfig from 'modes/developer/config.json';
+
 /** The available modes */
 let modes = {};
 
@@ -16,6 +21,10 @@ export async function modeAction ({ mode, action, arg }, src) {
 export function initModes (availableModes) {
   modes = availableModes;
   addListeners(modes);
+}
+
+function setupDefaultConfig () {
+
 }
 
 function addListeners (modes) {

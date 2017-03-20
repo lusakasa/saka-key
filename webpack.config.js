@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const BabiliPlugin = require('babili-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 // process.traceDeprecation = true;
 
 module.exports = function (env) {
@@ -39,7 +40,16 @@ module.exports = function (env) {
         './src',
         './node_modules'
       ]
-    }
+    },
+    plugins: [
+      new CopyWebpackPlugin([
+         { from: 'static' },
+         { from: 'src/modes/basic/config.json', to: 'config/basic.json' },
+         { from: 'src/modes/command/config.json', to: 'config/command.json' },
+         { from: 'src/modes/hints/config.json', to: 'config/hints.json' },
+         { from: 'src/modes/developer/config.json', to: 'config/developer.json' }
+      ])
+    ]
   };
 
   const [mode, platform] = env.split(':');
@@ -57,7 +67,7 @@ module.exports = function (env) {
   //   on chrome but css selectors on firefox and edge for link hint styling
 
   if (mode === 'prod') {
-    config.plugins = [
+    config.plugins = config.plugins.concat([
       new BabiliPlugin(),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
@@ -65,18 +75,18 @@ module.exports = function (env) {
         'SAKA_VERSION': JSON.stringify(version),
         'SAKA_PLATFORM': JSON.stringify(platform)
       })
-    ];
+    ]);
   } else {
     config.devtool = 'source-map';
     config.output.sourceMapFilename = '[name].js.map';
-    config.plugins = [
+    config.plugins = config.plugins.concat([
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('development'),
         'SAKA_DEBUG': JSON.stringify(true),
         'SAKA_VERSION': JSON.stringify(version + ' dev'),
         'SAKA_PLATFORM': JSON.stringify(platform)
       })
-    ];
+    ]);
   }
   return config;
 };

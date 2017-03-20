@@ -2,6 +2,7 @@
 // all other settings provided in separate list
 {
   "name": "Command",
+  "description": "Keyboard commands for controlling your browser",
   "keybindings": [
     {
       "label": "Activate Link Hints",

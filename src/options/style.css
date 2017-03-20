@@ -37,6 +37,7 @@ body {
 
 .settings-content {
   display: inline-flex;
+  flex-direction: column;
 }
 
 .mode-card {
@@ -49,6 +50,7 @@ body {
 
 .settings-menu {
   width: 100%;
+  flex-direction: column;
 }
 
 .command-entry {

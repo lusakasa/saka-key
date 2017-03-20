@@ -16,4 +16,4 @@
 
 * stupid search bar [http://www.macworld.co.uk/apple/](http://www.macworld.co.uk/apple/)
 
-* figure out why page styles leak into shadow dom [https://developers.google.com/web/tools/?hl=en]()
+* link hints shown behavior for links that appear on hover is erratic (see drawer and main area) [https://contacts.google.com/](https://contacts.google.com/)

@@ -5,9 +5,10 @@ export default class SettingsContent extends Component {
   render () {
     return (
       <main className='settings-content'>
-        <ModeCard />
-        <ModeCard />
-        <ModeCard />
+        <ModeCard mode={{ name: 'basic', description: 'basic' }} />
+        <ModeCard mode={{ name: 'command', description: 'command' }} />
+        <ModeCard mode={{ name: 'hints', description: 'hints' }} />
+        <ModeCard mode={{ name: 'developer', description: 'developer' }} />
       </main>
     );
   }

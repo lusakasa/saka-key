@@ -8,8 +8,10 @@ export default class SettingsMenu extends Component {
     return (
       <div className={'settings-menu'}>
         <SettingsHeader />
-        <SettingsDrawer />
-        <SettingsContent />
+        <div style='display: flex;'>
+          <SettingsDrawer />
+          <SettingsContent />
+        </div>
       </div>
     );
   }
