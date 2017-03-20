@@ -1,4 +1,4 @@
-const MODE = 'HINTS';
+const MODE = 'BACKGROUND';
 
 export const mode = {
   name: MODE,

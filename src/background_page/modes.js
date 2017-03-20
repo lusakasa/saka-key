@@ -29,10 +29,14 @@ async function setupDefaultConfig (modes) {
   );
   const configFetch = await Promise.all(configFilePaths.map((path) => fetch(path)));
   const config = await Promise.all(configFetch.map((fetch) => fetch.json()));
-  if (SAKA_DEBUG) {
-    console.log('Modes config installed:', config);
-  }
-  chrome.storage.sync.set({'defaultConfig': config}, () => {
+  chrome.storage.local.set({'modesConfig': config}, () => {
+    if (chrome.runtime.lastError) {
+      console.error(chrome.runtime.lastError);
+      return;
+    }
+    if (SAKA_DEBUG) {
+      console.log('Modes modesConfig installed:', config);
+    }
   });
 }
 
