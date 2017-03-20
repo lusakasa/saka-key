@@ -9,7 +9,7 @@
     {
       "type": "keybinding",
       "label": "Toggle Help Menu",
-      "value": "toggleHelpMenu"
+      "key": "toggleHelpMenu"
     },
     {
       "type": "header",
@@ -18,7 +18,7 @@
     {
       "type": "keybinding",
       "label": "Show Link Hints",
-      "value": "showLinkHints"
+      "key": "showLinkHints"
     },
     {
       "type": "header",
@@ -27,32 +27,32 @@
     {
       "type": "keybinding",
       "label": "Go Back",
-      "value": "goBack"
+      "key": "goBack"
     },
     {
       "type": "keybinding",
       "label": "Go Forward",
-      "value": "goForward"
+      "key": "goForward"
     },
     {
       "type": "keybinding",
       "label": "Next Page",
-      "value": "nextPage"
+      "key": "nextPage"
     },
     {
       "type": "keybinding",
       "label": "Previous Page",
-      "value": "previousPage"
+      "key": "previousPage"
     },
     {
       "type": "keybinding",
       "label": "Go Up",
-      "value": "goUp"
+      "key": "goUp"
     },
     {
       "type": "keybinding",
       "label": "Go To Root",
-      "value": "goToRoot"
+      "key": "goToRoot"
     },
     {
       "type": "header",
@@ -61,62 +61,62 @@
     {
       "type": "keybinding",
       "label": "Scroll Down",
-      "value": "scrollDown"
+      "key": "scrollDown"
     },
     {
       "type": "keybinding",
       "label": "Scroll Up",
-      "value": "scrollUp"
+      "key": "scrollUp"
     },
     {
       "type": "keybinding",
       "label": "Scroll Left",
-      "value": "scrollLeft"
+      "key": "scrollLeft"
     },
     {
       "type": "keybinding",
       "label": "Scroll Right",
-      "value": "scrollRight"
+      "key": "scrollRight"
     },
     {
       "type": "keybinding",
       "label": "Scroll Page Down",
-      "value": "scrollPageDown"
+      "key": "scrollPageDown"
     },
     {
       "type": "keybinding",
       "label": "Scroll Page Up",
-      "value": "scrollPageUp"
+      "key": "scrollPageUp"
     },
     {
       "type": "keybinding",
       "label": "Scroll Half Page Down",
-      "value": "scrollHalfPageDown"
+      "key": "scrollHalfPageDown"
     },
     {
       "type": "keybinding",
       "label": "Scroll Half Page Up",
-      "value": "scrollHalfPageUp"
+      "key": "scrollHalfPageUp"
     },
     {
       "type": "keybinding",
       "label": "Scroll To Bottom",
-      "value": "scrollToBottom"
+      "key": "scrollToBottom"
     },
     {
       "type": "keybinding",
       "label": "Scroll To Top",
-      "value": "scrollToTop"
+      "key": "scrollToTop"
     },
     {
       "type": "keybinding",
       "label": "Scroll To Left",
-      "value": "scrollToLeft"
+      "key": "scrollToLeft"
     },
     {
       "type": "keybinding",
       "label": "Scroll To Right",
-      "value": "scrollToRight"
+      "key": "scrollToRight"
     },
     {
       "type": "header",
@@ -125,127 +125,127 @@
     {
       "type": "keybinding",
       "label": "Next Tab",
-      "value": "nextTab"
+      "key": "nextTab"
     },
     {
       "type": "keybinding",
       "label": "Previous Tab",
-      "value": "previousTab"
+      "key": "previousTab"
     },
     {
       "type": "keybinding",
       "label": "First Tab",
-      "value": "firstTab"
+      "key": "firstTab"
     },
     {
       "type": "keybinding",
       "label": "Last Tab",
-      "value": "lastTab"
+      "key": "lastTab"
     },
     {
       "type": "keybinding",
       "label": "Move Tab Left",
-      "value": "moveTabLeft"
+      "key": "moveTabLeft"
     },
     {
       "type": "keybinding",
       "label": "Move Tab Right",
-      "value": "moveTabRight"
+      "key": "moveTabRight"
     },
     {
       "type": "keybinding",
       "label": "Move Tab First",
-      "value": "moveTabFirst"
+      "key": "moveTabFirst"
     },
     {
       "type": "keybinding",
       "label": "Move Tab Last",
-      "value": "moveTabLast"
+      "key": "moveTabLast"
     },
     {
       "type": "keybinding",
       "label": "Close Tab",
-      "value": "closeTab"
+      "key": "closeTab"
     },
     {
       "type": "keybinding",
       "label": "Close Other Tabs",
-      "value": "closeOtherTabs"
+      "key": "closeOtherTabs"
     },
     {
       "type": "keybinding",
       "label": "Close Right Tabs",
-      "value": "closeRightTabs"
+      "key": "closeRightTabs"
     },
     {
       "type": "keybinding",
       "label": "Close Left Tabs",
-      "value": "closeLeftTabs"
+      "key": "closeLeftTabs"
     },
     {
       "type": "keybinding",
       "label": "New Tab",
-      "value": "newTab"
+      "key": "newTab"
     },
     {
       "type": "keybinding",
       "label": "Restore Tab",
-      "value": "restoreTab"
+      "key": "restoreTab"
     },
     {
       "type": "keybinding",
       "label": "Duplicate Tab",
-      "value": "duplicateTab"
+      "key": "duplicateTab"
     },
     {
       "type": "keybinding",
       "label": "New Window",
-      "value": "newWindow"
+      "key": "newWindow"
     },
     {
       "type": "keybinding",
       "label": "Switch Window",
-      "value": "switchWindow"
+      "key": "switchWindow"
     },
     {
       "type": "keybinding",
       "label": "Zoom In",
-      "value": "zoomIn"
+      "key": "zoomIn"
     },
     {
       "type": "keybinding",
       "label": "Zoom Out",
-      "value": "zoomOut"
+      "key": "zoomOut"
     },
     {
       "type": "keybinding",
       "label": "Zoom Reset",
-      "value": "zoomReset"
+      "key": "zoomReset"
     },
     {
       "type": "keybinding",
       "label": "Refresh Tab",
-      "value": "refreshTab"
+      "key": "refreshTab"
     },
     {
       "type": "keybinding",
       "label": "Refresh All Tabs",
-      "value": "refreshAllTabs"
+      "key": "refreshAllTabs"
     },
     {
       "type": "keybinding",
       "label": "Toggle Mute Tab",
-      "value": "toggleMuteTab"
+      "key": "toggleMuteTab"
     },
     {
       "type": "keybinding",
       "label": "Toggle Mute All Tabs",
-      "value": "toggleMuteAllTabs"
+      "key": "toggleMuteAllTabs"
     },
     {
       "type": "keybinding",
       "label": "Toggle Pin Tab",
-      "value": "togglePinTab"
+      "key": "togglePinTab"
     },
     {
       "type": "header",
@@ -254,7 +254,7 @@
     {
       "type": "keybinding",
       "label": "Developer Mode",
-      "value": "developerMode"
+      "key": "developerMode"
     }
   ]
 }

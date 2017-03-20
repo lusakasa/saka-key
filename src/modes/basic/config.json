@@ -2,6 +2,21 @@
   "name": "Basic",
   "description": "Basic Saka Key Functionality",
   "options": [
-    
+    {
+      "type": "toggleButton",
+      "activeLabel": "Enable Saka Key",
+      "inactiveLabel": "Disable Saka Key",
+      "key": "enabled"
+    },
+    {
+      "type": "color",
+      "label": "Primary Color",
+      "key": "primaryColor"
+    },
+    {
+      "type": "color",
+      "label": "Secondary Color",
+      "key": "secondaryColor"
+    }
   ]
 }
