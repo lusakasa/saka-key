@@ -1,21 +1,53 @@
 {
   "name": "Command",
   "description": "Keyboard commands for controlling your browser",
-  "keybindings": [
+  "options": [
     {
-      "label": "Activate Link Hints",
-      "value": "linkHints"
-    }
-  ],
-  "other": [
+      "type": "header",
+      "header": "Misc. Key Bindings"
+    },
     {
-      "name": "Key Bindings",
-      "options": [
-        {
-          "type": "key-select",
-          "label": "key 1"
-        }
-      ]
+      "type": "keybinding",
+      "label": "Toggle Help Menu",
+      "value": "toggleHelpMenu"
+    },
+    {
+      "type": "header",
+      "header": "Link Hints Key Bindings"
+    },
+    {
+      "type": "keybinding",
+      "label": "Show Link Hints",
+      "value": "showLinkHints"
+    },
+    {
+      "type": "header",
+      "header": "Navigation Key Bindings"
+    },
+    {
+      "type": "keybinding",
+      "label": "Go Back",
+      "value": "goBack"
+    },
+    {
+      "type": "keybinding",
+      "label": "Go Forward",
+      "value": "goForward"
+    },
+    {
+      "type": "keybinding",
+      "label": "Next Page",
+      "value": "nextPage"
+    },
+    {
+      "type": "keybinding",
+      "label": "Previous Page",
+      "value": "previousPage"
+    },
+    {
+      "type": "keybinding",
+      "label": "Go Up",
+      "value": "goUp"
     }
   ]
 }

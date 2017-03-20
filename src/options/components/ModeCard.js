@@ -9,7 +9,6 @@ export default class ModeCard extends Component {
           <h1 class='mdc-card__title'>{ name }</h1>
           <h2 class='mdc-card__subtitle'>{ description }</h2>
         </section>
-        <section class='mdc-card__media demo-card__16-9-media' />
         <section class='mdc-card__supporting-text'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
         </section>
