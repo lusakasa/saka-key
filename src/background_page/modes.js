@@ -23,8 +23,17 @@ export function initModes (availableModes) {
   addListeners(modes);
 }
 
-function setupDefaultConfig () {
-
+async function setupDefaultConfig (modes) {
+  const configFilePaths = Object.keys(modes).map((name) =>
+    `/config/${name.toLowerCase()}.json`
+  );
+  const configFetch = await Promise.all(configFilePaths.map((path) => fetch(path)));
+  const config = await Promise.all(configFetch.map((fetch) => fetch.json()));
+  if (SAKA_DEBUG) {
+    console.log('Modes config installed:', config);
+  }
+  chrome.storage.sync.set({'defaultConfig': config}, () => {
+  });
 }
 
 function addListeners (modes) {
@@ -32,6 +41,7 @@ function addListeners (modes) {
     Object.values(modes).forEach((mode) => {
       mode.onInstalled(details);
     });
+    setupDefaultConfig(modes);
   });
   chrome.runtime.onStartup.addListener(() => {
     Object.values(modes).forEach((mode) => {
