@@ -1,13 +1,14 @@
 import { Component, h } from 'preact';
 
 export default class ToggleButton extends Component {
-  render ({ activeLabel, inactiveLabel, key, active = true }) {
+  render ({ label, activeText, inactiveText, key, active = true }) {
     return (
-      <div>
+      <li className='mdc-list-item' style='justify-content: space-between'>
+        <span>{ label }</span>
         { active
-          ? <button style='color: red'>{inactiveLabel}</button>
-          : <button style='color: green'>{activeLabel}</button> }
-      </div>
+          ? <button className='mdc-button mdc-button--raised mdc-button--accent mdc-ripple-upgraded'>{activeText}</button>
+          : <button className='mdc-button mdc-button--raised mdc-button--primary mdc-ripple-upgraded'>{inactiveText}</button> }
+      </li>
     );
   }
 }

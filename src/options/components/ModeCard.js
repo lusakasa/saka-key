@@ -13,13 +13,13 @@ export default class ModeCard extends Component {
         <section class='mdc-card__primary'>
           <h2 class='mdc-card__subtitle'>{ description }</h2>
         </section>
-        <section class='mdc-card__supporting-text'>
-          { options.map((option) => <OptionWidget option={option} />) }
-        </section>
-        <section class='mdc-card__actions'>
-          <button class='mdc-button mdc-button--compact mdc-card__action'>Action 1</button>
-          <button class='mdc-button mdc-button--compact mdc-card__action'>Action 2</button>
-        </section>
+        {/*<section class='mdc-card__supporting-text'>*/}
+        <ul className='mdc-list mdc-list--dense'>
+          { options.length === 0
+            ? 'No settings to configure'
+            : options.map((option) => <OptionWidget option={option} />) }
+        {/*</section>*/}
+        </ul>
       </div>
     );
   }

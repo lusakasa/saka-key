@@ -15,6 +15,8 @@ const SettingsDrawer = () => (
         <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Enable Profile</a>
         <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Share Profile</a>
         <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Delete Profile</a>
+        <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>GUI Configuration</a>
+        <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Text Configuration</a>
       </nav>
     </div>
   </nav>

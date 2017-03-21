@@ -1,11 +1,12 @@
 {
   "name": "Basic",
-  "description": "Basic Saka Key Functionality",
+  "description": "Core Functionality",
   "options": [
     {
       "type": "toggleButton",
-      "activeLabel": "Enable Saka Key",
-      "inactiveLabel": "Disable Saka Key",
+      "label": "Saka Key",
+      "activeText": "Turn Off",
+      "inactiveText": "Turn On",
       "key": "enabled"
     },
     {
