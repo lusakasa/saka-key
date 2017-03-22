@@ -39,15 +39,15 @@ export function friendlyKeyboardEventString (event) {
       (event.altKey ? 'alt+' : '') +
       (event.shiftKey ? 'shift+' : '') +
       friendlyCodeString(event.code, event.shiftKey)
-    : friendlyKeyString(event.key);
+    : friendlyKeyString(event.key, event.shiftKey);
 };
 
 /**
  * Given a key string, gives a user friendlier version.
  */
-function friendlyKeyString (key) {
+function friendlyKeyString (key, shift) {
   if (key.toLowerCase() !== key) {
-    return 'shift+' + key.toLowerCase();
+    return (shift ? 'shift+' : '') + key.toLowerCase();
   }
   return key;
 }

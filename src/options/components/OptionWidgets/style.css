@@ -43,3 +43,11 @@ body {
   text-transform: uppercase;
   vertical-align: middle;
 }
+
+.key-text-input {
+  width: 12px;
+}
+
+.key-text-input:focus {
+  outline: none;
+}

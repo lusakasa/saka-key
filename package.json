@@ -43,8 +43,11 @@
   "dependencies": {
     "@material/button": "^0.2.1",
     "@material/card": "^0.1.4",
+    "@material/checkbox": "^0.2.2",
     "@material/drawer": "^0.1.4",
+    "@material/elevation": "^0.1.3",
     "@material/list": "^0.2.2",
+    "@material/textfield": "^0.2.3",
     "@material/toolbar": "^0.1.1",
     "@material/typography": "^0.2.0",
     "mosi": "latest",

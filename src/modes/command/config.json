@@ -59,6 +59,16 @@
       "header": "Scrolling"
     },
     {
+      "type": "checkbox",
+      "label": "Smooth Scroll",
+      "key": "smoothScroll"
+    },
+    {
+      "type": "text",
+      "label": "Scroll Step Size (pixels)",
+      "key": "scrollStep"
+    },
+    {
       "type": "keybinding",
       "label": "Scroll Down",
       "key": "scrollDown"

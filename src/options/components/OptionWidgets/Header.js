@@ -3,12 +3,12 @@ import { Component, h } from 'preact';
 export default class Header extends Component {
   render ({ header }) {
     return (
-      <div>
-        <h2
-          className='mdc-typography--title'>
+      <li>
+        <hr class='mdc-list-divider' />
+        <h3 className='mdc-typography--subheading1'>
           { header }
-        </h2>
-      </div>
+        </h3>
+      </li>
     );
   }
 }

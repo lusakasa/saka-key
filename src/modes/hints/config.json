@@ -2,6 +2,55 @@
   "name": "Hints",
   "description": "Link hints for acivating links and selecting inputs",
   "options": [
-    
+    {
+      "type": "text",
+      "label": "Hint Characters",
+      "key": "chars"
+    },
+    {
+      "type": "checkbox",
+      "label": "Use Custom CSS",
+      "key": "customHCSS"
+    },
+    {
+      "type": "checkbox",
+      "label": "Use Default Colors",
+      "key": "customColors"
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "key": "textColor"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "key": "backgroundColor"
+    },
+    {
+      "type": "color",
+      "label": "Border Color",
+      "key": "borderColo"
+    },
+    {
+      "type": "text",
+      "label": "Size",
+      "key": "size"
+    },
+    {
+      "type": "text",
+      "label": "Border Radius (pixels)",
+      "key": "borderRadius"
+    },
+    {
+      "type": "checkbox",
+      "label": "Shadow",
+      "key": "shadow"
+    },
+    {
+      "type": "textarea",
+      "label": "Custom CSS",
+      "key": "hintChars"
+    }
   ]
 }

@@ -18,10 +18,7 @@ export const mode = {
       return MODE;
     },
     focusin: async (event) => {
-      if (isTextEditable(event.target)) {
-        return MODE;
-      }
-      return 'COMMAND';
+      return MODE;
     },
     focusout: async (event) => {
       if (isTextEditable(event.relatedTarget)) {

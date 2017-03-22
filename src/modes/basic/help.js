@@ -5,7 +5,6 @@ const iframe = document.createElement('iframe');
 iframe.id = 'popup';
 iframe.src = chrome.runtime.getURL('help.html');
 iframe.style = helpFrameStyle;
-console.log(helpFrameStyle);
 
 let visible = false;
 

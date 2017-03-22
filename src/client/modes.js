@@ -27,7 +27,7 @@ export function addExtension (name) {
  */
 async function handleEvent (event) {
   const nextMode = await (modes[currentMode].events[event.type](event));
-  setMode(nextMode);
+  setMode(nextMode, event);
 }
 
 /**
@@ -73,7 +73,7 @@ async function setMode (nextMode, event) {
   }
   if (nextMode !== currentMode) {
     if (SAKA_DEBUG) {
-      console.log(`mode changed from ${currentMode} to ${nextMode} on event:`, event);
+      console.log(`mode changed from ${currentMode} to ${nextMode} on ${event.type} event:`, event);
     }
     await modes[currentMode].onExit(event);
     await modes[nextMode].onEnter(event);
@@ -104,12 +104,12 @@ function installEventListeners () {
   eventTypes.forEach((eventType) => {
     document.addEventListener(eventType, handleEvent, true);
   });
-  window.addEventListener('DOMContentLoaded', (event) => {
-    if (SAKA_DEBUG) { console.log('DOMContentLoaded'); }
-    document.activeElement && document.activeElement.blur && document.activeElement.blur();
-  });
-  window.addEventListener('load', (event) => {
-    if (SAKA_DEBUG) { console.log('load'); }
-    document.activeElement && document.activeElement.blur && document.activeElement.blur();
-  });
+  // window.addEventListener('DOMContentLoaded', (event) => {
+  //   if (SAKA_DEBUG) { console.log('DOMContentLoaded'); }
+  //   document.activeElement && document.activeElement.blur && document.activeElement.blur();
+  // });
+  // window.addEventListener('load', (event) => {
+  //   if (SAKA_DEBUG) { console.log('load'); }
+  //   document.activeElement && document.activeElement.blur && document.activeElement.blur();
+  // });
 }

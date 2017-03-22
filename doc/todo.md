@@ -23,6 +23,7 @@
 * pdf.js integration
 * support for vi-like features
 * consider extensibility, e.g. https://github.com/philc/vimium/pull/1980#issuecomment-183223423
+* add per domain settings to KeyboardEvent Input Type
 * interoperation with other accessibility features, see accessibility.md
   * breaks with NVDA screen reader
 * figure out compatibility with touch screens
