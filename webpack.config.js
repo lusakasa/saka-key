@@ -45,9 +45,13 @@ module.exports = function (env) {
       new CopyWebpackPlugin([
          { from: 'static' },
          { from: 'src/modes/basic/config.json', to: 'config/basic.json' },
+         { from: 'src/modes/basic/default.json', to: 'default/basic.json' },
          { from: 'src/modes/command/config.json', to: 'config/command.json' },
+         { from: 'src/modes/command/default.json', to: 'default/command.json' },
          { from: 'src/modes/hints/config.json', to: 'config/hints.json' },
-         { from: 'src/modes/developer/config.json', to: 'config/developer.json' }
+         { from: 'src/modes/hints/default.json', to: 'default/hints.json' },
+         { from: 'src/modes/developer/config.json', to: 'config/developer.json' },
+         { from: 'src/modes/developer/default.json', to: 'default/developer.json' }
       ])
     ]
   };

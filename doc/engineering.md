@@ -158,4 +158,8 @@ Motivation: Link hint styling should be independent of any page stylesheets. Enc
 
 ---
 
-Decision: Figure out how to handle 
+Decision: Allow users to create per-mode profiles (using a dropdown). Allow assigning shortcuts to shuffle between profiles of a single mode. Allow making certain profiles the default on certain domains. Allow profiles to be disabled for shuffling. Eventually allow creating profile groups.
+
+Motivation: Gotta do profiles. Just want to do them the right way.
+
+---

@@ -1,7 +1,8 @@
 import { Component, h } from 'preact';
 
 export default class ToggleButton extends Component {
-  render ({ label, activeText, inactiveText, key, active = true }) {
+  render ({ label, activeText, inactiveText, key, value }) {
+    const active = value;
     return (
       <li className='mdc-list-item' style='justify-content: space-between'>
         <span>{ label }</span>

@@ -10,8 +10,14 @@ export const viewProfile = (profile) => ({
   profile
 });
 
-/** Load the modes settings (what the settings are, not their values) */
-export const loadModesSettings = (modesConfig) => ({
-  type: 'LOAD_MODES_SETTINGS',
+/** Load the modes configuration (what the settings are, not their values) */
+export const loadModesConfig = (modesConfig) => ({
+  type: 'LOAD_MODES_CONFIG',
   modes: modesConfig
+});
+
+/** Load the modes settings (the actual values) */
+export const loadSettings = (settings) => ({
+  type: 'LOAD_SETTINGS',
+  settings
 });

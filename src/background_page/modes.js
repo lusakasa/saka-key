@@ -53,21 +53,22 @@ async function setupDefaultConfig (modes) {
   }
 }
 
+// TODO: upgrade this once profiles are added
 async function loadDefaultSettings (modes) {
-  const configFilePaths = Object.keys(modes).map((name) =>
-    `/defaults/${name.toLowerCase()}.json`
+  const defaultSettingsFilePaths = Object.keys(modes).map((name) =>
+    `/default/${name.toLowerCase()}.json`
   );
-  const configFetch = await Promise.all(configFilePaths.map((path) => fetch(path)));
-  const config = await Promise.all(configFetch.map((fetch) => fetch.json()));
-  chrome.storage.local.set({'modesConfig': config}, () => {
-    if (chrome.runtime.lastError) {
-      console.error(chrome.runtime.lastError);
-      return;
-    }
-    if (SAKA_DEBUG) {
-      console.log('Modes modesConfig installed:', config);
-    }
-  });
+  try {
+    const defaultSettingsFetch = await Promise.all(defaultSettingsFilePaths.map((path) => fetch(path)));
+    const defaultSettings = await Promise.all(defaultSettingsFetch.map((fetch) => fetch.json()));
+    const defaultSettingsObject = {};
+    defaultSettings.forEach((defaultSetting) => {
+      defaultSettingsObject[defaultSetting.name] = defaultSetting.profiles;
+    });
+    await browser.storage.local.set({ 'settings': defaultSettingsObject });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 function addListeners (modes) {
@@ -76,6 +77,7 @@ function addListeners (modes) {
       mode.onInstalled(details);
     });
     setupDefaultConfig(modes);
+    loadDefaultSettings(modes);
   });
   chrome.runtime.onStartup.addListener(() => {
     Object.values(modes).forEach((mode) => {

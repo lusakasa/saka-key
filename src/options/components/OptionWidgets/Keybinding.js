@@ -32,7 +32,7 @@ const KeyBindingItem = ({ binding }) => (
 
 const HelpBindings = ({ bindings }) => (
   <span>
-    { bindings.map((binding, i) =>
+    { bindings && bindings.map((binding, i) =>
       <span>
         <KeyBindingItem binding={binding} />
         { i === bindings.length - 1 ? '' : <span>, </span>}
@@ -99,7 +99,8 @@ export default class Keybinding extends Component {
     super();
     this.state = ({ active: false });
   }
-  render ({ label, key, bindings = testBindings }) {
+  render ({ label, key, value }) {
+    const bindings = value;
     return this.state.active ? (
       <li
         className='mdc-card mdc-list-item'
@@ -120,7 +121,7 @@ export default class Keybinding extends Component {
               Close
             </button>
           </li>
-          { bindings.map((binding) => (
+          { bindings && bindings.map((binding) => (
             <li
               className='mdc-list-item'
               style='justify-content: space-between;'>

@@ -1,7 +1,7 @@
 import { Component, h } from 'preact';
 
 export default class Text extends Component {
-  render ({ label, key }) {
+  render ({ label, key, value }) {
     return (
       <li className='mdc-list-item color-widget'>
         <label>{ label }</label>
@@ -10,7 +10,8 @@ export default class Text extends Component {
             type='text'
             class='mdc-textfield__input'
             style='text-align: right'
-            id='css-only-textfield' />
+            id='css-only-textfield'
+            value={value} />
         </div>
       </li>
     );

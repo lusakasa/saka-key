@@ -3,10 +3,8 @@
   "description": "Core Functionality",
   "options": [
     {
-      "type": "togglebutton",
-      "label": "Saka Key",
-      "activeText": "Turn Off",
-      "inactiveText": "Turn On",
+      "type": "switch",
+      "label": "Saka Key Enabled",
       "key": "enabled"
     },
     {

@@ -15,6 +15,7 @@ import '@material/drawer/dist/mdc.drawer.css';
 import '@material/elevation/dist/mdc.elevation.css';
 import '@material/textfield/dist/mdc.textfield.css';
 import '@material/checkbox/dist/mdc.checkbox.css';
+import '@material/switch/dist/mdc.switch.css';
 import '../style.css';
 
 class OptionsMenu extends Component {

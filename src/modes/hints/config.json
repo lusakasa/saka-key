@@ -10,7 +10,7 @@
     {
       "type": "checkbox",
       "label": "Use Custom CSS",
-      "key": "customHCSS"
+      "key": "useCustomCSS"
     },
     {
       "type": "checkbox",
@@ -30,7 +30,7 @@
     {
       "type": "color",
       "label": "Border Color",
-      "key": "borderColo"
+      "key": "borderColor"
     },
     {
       "type": "text",
@@ -50,7 +50,7 @@
     {
       "type": "textarea",
       "label": "Custom CSS",
-      "key": "hintChars"
+      "key": "customCSS"
     }
   ]
 }

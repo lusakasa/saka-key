@@ -1,0 +1,151 @@
+{
+  "name": "Command",
+  "profiles": {
+    "standard": {
+      "smoothScroll": true,
+      "scrollStep": 60,
+      "toggleHelpMenu": [
+        [{ "key": "?" }]
+      ],
+      "showLinkHints": [
+        [{ "key": "f" }]
+      ],
+      "scrollDown": [
+        [{ "key": "d" }],
+        [{ "key": "j" }]
+      ],
+      "scrollUp": [
+        [{ "key": "s" }],
+        [{ "key": "k" }]
+      ],
+      "scrollLeft": [
+        [{ "key": "h" }]
+      ],
+      "scrollRight": [
+        [{ "key": "l" }]
+      ],
+      "scrollPageDown": [
+        [{ "key": "J" }]
+      ],
+      "scrollPageUp": [
+        [{ "key": "K" }]
+      ],
+      "scrollHalfPageDown": [
+        [{ "key": "D" }]
+      ],
+      "scrollHalfPageUp": [
+        [{ "key": "S" }]
+      ],
+      "scrollToBottom": [
+        [{ "key": "G" }]
+      ],
+      "scrollToTop": [
+          [{ "key": "g" }, { "key": "g" }]
+      ],
+      "scrollToLeft": [
+        [{ "key": "H" }],
+        [{ "key": "g" }, { "key": "a" }]
+      ],
+      "scrollToRight": [
+        [{ "key": "L" }]
+      ],
+      "goBack": [
+        [{ "key": "c"}]
+      ],
+      "goForward": [
+        [{ "key": "v"}]
+      ],
+      "nextPage": [
+        [{ "key": "]"}, { "key": "]"}]
+      ],
+      "previousPage": [
+        [{ "key": "["}, { "key": "["}]
+      ],
+      "goUp": [
+        [{ "key": "u"}]
+      ],
+      "goToRoot": [
+        [{ "key": "U"}]
+      ],
+      "previousTab": [
+        [{ "key": "e" }]
+      ],
+      "nextTab": [
+        [{ "key": "r" }]
+      ],
+      "firstTab": [
+        [{ "key": "1" }]
+      ],
+      "lastTab": [
+        [{ "key": "0" }]
+      ],
+      "moveTabLeft": [
+        [{ "key": "q" }]
+      ],
+      "moveTabRight": [
+        [{ "key": "w" }]
+      ],
+      "moveTabFirst": [
+        [{ "key": "Q" }]
+      ],
+      "moveTabLast": [
+        [{ "key": "R" }]
+      ],
+      "closeTab": [
+        [{ "key": "x" }]
+      ],
+      "closeOtherTabs": [
+        [{ "key": "O" }]
+      ],
+      "closeRightTabs": [
+        [{ "key": "P" }]
+      ],
+      "closeLeftTabs": [
+        [{ "key": "I" }]
+      ],
+      "newTab": [
+        [{ "key": "n" }]
+      ],
+      "restoreTab": [
+        [{ "key": "X" }]
+      ],
+      "duplicateTab": [
+        [{ "key": "b" }]
+      ],
+      "newWindow": [
+        [{ "key": "N" }]
+      ],
+      "switchWindow": [
+        [{ "key": "%" }]
+      ],
+      "zoomIn": [
+        [{ "key": "z" }]
+      ],
+      "zoomOut": [
+        [{ "key": "Z" }]
+      ],
+      "zoomReset": [
+        [{ "code": "KeyZ", "altKey": true }],
+        [{ "code": "KeyZ", "altKey": true, "shiftKey": true }]
+      ],
+      "refreshTab": [
+        [{ "key": "t" }]
+      ],
+      "refreshAllTabs": [
+        [{ "key": "T" }]
+      ],
+      "toggleMuteTab": [
+        [{ "key": "m" }]
+      ],
+      "toggleMuteAllTabs": [
+        [{ "key": "M" }]
+      ],
+      "togglePinTab": [
+        [{ "key": "p" }]
+      ],
+      "developerMode": [
+        [{ "key": "*" }]
+      ]
+    }
+  }
+}
