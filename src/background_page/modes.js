@@ -23,9 +23,39 @@ export function initModes (availableModes) {
   addListeners(modes);
 }
 
+// async function setupDefaultConfig (modes) {
+//   const configFilePaths = Object.keys(modes).map((name) =>
+//     `/config/${name.toLowerCase()}.json`
+//   );
+//   const configFetch = await Promise.all(configFilePaths.map((path) => fetch(path)));
+//   const config = await Promise.all(configFetch.map((fetch) => fetch.json()));
+//   chrome.storage.local.set({'modesConfig': config}, () => {
+//     if (chrome.runtime.lastError) {
+//       console.error(chrome.runtime.lastError);
+//       return;
+//     }
+//     if (SAKA_DEBUG) {
+//       console.log('Modes modesConfig installed:', config);
+//     }
+//   });
+// }
+
 async function setupDefaultConfig (modes) {
   const configFilePaths = Object.keys(modes).map((name) =>
     `/config/${name.toLowerCase()}.json`
+  );
+  try {
+    const configFetch = await Promise.all(configFilePaths.map((path) => fetch(path)));
+    const config = await Promise.all(configFetch.map((fetch) => fetch.json()));
+    await browser.storage.local.set({'modesConfig': config});
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function loadDefaultSettings (modes) {
+  const configFilePaths = Object.keys(modes).map((name) =>
+    `/defaults/${name.toLowerCase()}.json`
   );
   const configFetch = await Promise.all(configFilePaths.map((path) => fetch(path)));
   const config = await Promise.all(configFetch.map((fetch) => fetch.json()));

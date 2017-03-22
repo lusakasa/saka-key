@@ -6,7 +6,7 @@ import { loadModesSettings } from '../actions';
 class SettingsContent extends Component {
   constructor (props) {
     super(props);
-    chrome.storage.local.get('modesConfig', ({ modesConfig }) => {
+    browser.storage.local.get('modesConfig').then(({ modesConfig }) => {
       props.dispatch(loadModesSettings(modesConfig));
     });
   }
