@@ -158,8 +158,32 @@ Motivation: Link hint styling should be independent of any page stylesheets. Enc
 
 ---
 
-Decision: Allow users to create per-mode profiles (using a dropdown). Allow assigning shortcuts to shuffle between profiles of a single mode. Allow making certain profiles the default on certain domains. Allow profiles to be disabled for shuffling. Eventually allow creating profile groups.
+Decision: Allow users to create per-mode profiles (using a dropdown in the settings for each mode). Allow users to create profile groups, which are composed of a pre-defined profile for each mode. Allow users to shuffle between predefined profile groups using 1) a command mode keyboard shortcut and 2) an iframe with the same GUI that is used on the options page.
 
 Motivation: Gotta do profiles. Just want to do them the right way.
 
 ---
+
+Decision: Handle settings changes like this:
+
+1. User makes change to options in Options GUI
+2. * Key-value pair for given mode (and profile and value) is stored in chrome.storage.local
+     * Currently everything is stored in wide <settings> key
+     * Consider storing under <mode::profile> key
+       or even under fine-grained <mode::profile::key> key
+3. Message is sent to background page indicating a settings change has ben made
+4. Options GUI updates to reflect change
+5. Background page receives message for change
+6. Background page pulls settings from chrome.storage.local
+7. Backgroung page calls user-defined onSettingsChange handler for the specified mode,
+   passing information about the change (currently the active profile and newSettings)
+8. onSettingsChange handler executes and may
+   * Change local variables
+   * Send messages to to other components
+   * Process the new settings and store the results in chrome.storage.local
+
+Examples: 
+ * User changes command mode keybinding. Mode handler will regenerate JSON trie, and store it in local storage. If the change is to the active mode, it will send an updateKeybindings message to all Saka Key clients. All clients will fetch the latest keybindings from local storage. All subsequent loads also use the trie in json trie in local storage.
+   
+
+Motivation: had to come up with a clear complete understanding of how it works

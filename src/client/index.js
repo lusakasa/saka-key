@@ -1,10 +1,10 @@
 import { init } from 'mosi/client';
 import { initModes, modeAction } from './modes';
-import { mode as BASIC } from 'modes/basic/client';
-import { mode as COMMAND } from 'modes/command/client';
-import { mode as TEXT } from 'modes/text/client';
-import { mode as HINTS } from 'modes/hints/client';
-import { mode as DEVELOPER } from 'modes/developer/client';
+import { mode as Basic } from 'modes/basic/client';
+import { mode as Command } from 'modes/command/client';
+import { mode as Text } from 'modes/text/client';
+import { mode as Hints } from 'modes/hints/client';
+import { mode as Developer } from 'modes/developer/client';
 
 /**
  * Initializes a Saka key client, making keyboard shortcuts available.
@@ -26,17 +26,17 @@ export function initialize (type) {
   });
 
   const modes = SAKA_DEBUG ? {
-    BASIC,
-    COMMAND,
-    TEXT,
-    HINTS,
-    DEVELOPER
+    Basic,
+    Command,
+    Text,
+    Hints,
+    Developer
   } : {
-    BASIC,
-    COMMAND,
-    TEXT,
-    HINTS
+    Basic,
+    Command,
+    Text,
+    Hints
   };
   // Initialize the built-in modes. New built-in modes should be added here.
-  initModes('BASIC', modes);
+  initModes('Basic', modes);
 }

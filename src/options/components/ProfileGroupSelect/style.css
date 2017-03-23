@@ -1,0 +1,27 @@
+.pg-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pg-row-container {
+  display: flex;
+}
+
+.pg-row-header {
+  display: flex;
+  width: 120px;
+  margin: 0px;
+}
+
+.pg-row-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  align-items: center;
+}
+
+.pg-row-list-item {
+  text-decoration: none;
+  padding: 0 10px;
+  cursor: pointer;
+}

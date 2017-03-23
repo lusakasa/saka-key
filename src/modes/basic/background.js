@@ -2,13 +2,20 @@ import { msg, get, meta } from 'mosi/core';
 
 /** Stores whether Saka Key is enabled */
 let enabled = true;
+let activeProfile = 'standard';
 
-const MODE = 'BASIC';
+const MODE = 'Basic';
 
 export const mode = {
   name: MODE,
   onInstalled: () => {},
   onStartup: () => {},
+  onSettingsChange: (profile, newSettings) => {
+    const { enabled: isEnabled, primaryColor, secondaryColor } = newSettings;
+    if (profile === activeProfile) {
+      enabled = isEnabled;
+    }
+  },
   messages: {
     loadClient (_, src) {
       const { frameId, tabId } = meta(src);
@@ -24,7 +31,7 @@ export const mode = {
     },
     initClient: async (arg, src) => {
       const bindings = (await get(0, 'modeAction', {
-        mode: 'COMMAND',
+        mode: 'Command',
         action: 'bindings'
       }))[0].v;
       msg(src, 'modeAction', {
@@ -40,7 +47,7 @@ export const mode = {
       enabled = !enabled;
       msg('popup', 'setEnabled', enabled);
       msg('cs', 'modeAction', {
-        mode: 'BASIC',
+        mode: 'Basic',
         action: 'setEnabled',
         arg: enabled
       });
@@ -48,7 +55,7 @@ export const mode = {
     toggleHelpMenu: () => {
       chrome.tabs.query({ currentWindow: true, active: true }, ([tab]) => {
         msg(`tab[${tab.id}]&topFrame`, 'modeAction', {
-          mode: 'BASIC',
+          mode: 'Basic',
           action: 'toggleHelpMenu'
         });
       });

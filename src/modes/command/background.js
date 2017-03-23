@@ -46,7 +46,8 @@ function loadDefaultKeyBindings () {
     });
 }
 
-const MODE = 'COMMAND';
+let activeProfile = 'standard';
+const MODE = 'Command';
 
 // TODO: figure out where to call loadDefaultKeyBindings() on firefox
 // because neither onInstall nor onStartup are called when loading in a temp extension
@@ -66,6 +67,7 @@ export const mode = {
   onStartup: () => {
     loadDefaultKeyBindings();
   },
+  onSettingChange: (profile, newSettings) => {},
   messages: {
     // key bindings
     bindings: () => bindings,

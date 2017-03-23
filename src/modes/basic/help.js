@@ -22,7 +22,7 @@ export const toggleHelpMenu = () => {
   }
   visible = !visible;
   if (isTextEditable(document.activeElement)) {
-    return 'TEXT';
+    return 'Text';
   }
-  return 'COMMAND';
+  return 'Command';
 };

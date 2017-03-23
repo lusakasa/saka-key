@@ -1,6 +1,6 @@
 import { showMenu, hideMenu } from './ui';
 
-const MODE = 'DEVELOPER';
+const MODE = 'Developer';
 
 export const mode = {
   name: MODE,

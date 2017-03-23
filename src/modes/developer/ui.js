@@ -31,9 +31,9 @@ export function hideMenu () {
 
 function exitDeveloperMode () {
   msg(0, 'modeAction', {
-    mode: 'BASIC',
+    mode: 'Basic',
     action: 'setMode',
-    arg: 'COMMAND' // TODO: change this to a proper mode, this is a bug
+    arg: 'Command' // TODO: change this to a proper mode, this is a bug
   });
 }
 

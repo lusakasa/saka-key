@@ -1,9 +1,10 @@
 import { Component, h } from 'preact';
+import { connect } from 'preact-redux';
 import OptionWidget from './OptionWidgets';
+import { changeSetting } from '../actions';
 
-export default class ModeCard extends Component {
-  render ({ name, description, options, profiles }) {
-    console.log(`${name} has`, profiles);
+class ModeCard extends Component {
+  render ({ name, description, options, profiles, dispatch }) {
     return (
       <div class='mdc-card demo-card demo-card--with-avatar mode-card'>
         <header className='mdc-toolbar saka-toolbar settings-header'>
@@ -17,13 +18,22 @@ export default class ModeCard extends Component {
         <ul className='mdc-list mdc-list--dense'>
           { options.length === 0
             ? 'No settings to configure'
-            : options.map((option) =>
-              <OptionWidget
-                option={option}
-                value={profiles && profiles.standard && profiles.standard[option.key]} />
-              ) }
+            : options.map((option) => {
+              const value = profiles && profiles.standard && profiles.standard[option.key];
+              const setValue = (value) => {
+                dispatch(changeSetting(name, 'standard', option.key, value))
+              };
+              return <OptionWidget
+                {...option}
+                value={value}
+                setValue={setValue} />;
+            }) }
         </ul>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({ view: state.view });
+const mapDispatchToProps = (dispatch) => ({ dispatch });
+export default connect(mapStateToProps, mapDispatchToProps)(ModeCard);

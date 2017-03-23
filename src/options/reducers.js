@@ -16,7 +16,18 @@ const rootReducer = (state = defaultState, action) => {
     case 'LOAD_MODES_CONFIG':
       return Object.assign({}, state, { modes: action.modes });
     case 'LOAD_SETTINGS':
+      console.log('startState', action.settings);
       return Object.assign({}, state, { settings: action.settings });
+    case 'CHANGE_SETTING':
+      // TODO: Merging like this is bad practice and the data should be normalized
+      const copy = Object.assign({}, state);
+      copy.settings = Object.assign({}, state.settings);
+      copy.settings[action.mode] = Object.assign({}, state.settings[action.mode]);
+      copy.settings[action.mode][action.profile] = Object.assign({}, state.settings[action.mode][action.profile], {
+        [action.key]: action.value
+      });
+      console.log('copy', copy);
+      return copy;
     default:
       return state;
   }

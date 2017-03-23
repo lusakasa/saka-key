@@ -9,26 +9,26 @@ import Text from './Text';
 import Textarea from './TextArea';
 
 export default class OptionWidget extends Component {
-  render ({ option, value }) {
-    switch (option.type) {
+  render (props) {
+    switch (props.type) {
       case 'header':
-        return <Header {...option} />;
+        return <Header {...props} />;
       case 'keybinding':
-        return <Keybinding {...option} value={value} />;
+        return <Keybinding {...props} />;
       case 'togglebutton':
-        return <ToggleButton {...option} value={value} />;
+        return <ToggleButton {...props} />;
       case 'checkbox':
-        return <Checkbox {...option} value={value} />;
+        return <Checkbox {...props} />;
       case 'switch':
-        return <Switch {...option} value={value} />;
+        return <Switch {...props} />;
       case 'color':
-        return <Color {...option} value={value} />;
+        return <Color {...props} />;
       case 'text':
-        return <Text {...option} value={value} />;
+        return <Text {...props} />;
       case 'textarea':
-        return <Textarea {...option} value={value} />;
+        return <Textarea {...props} />;
       default:
-        return <h1>Unknown Options Type {option.type}</h1>;
+        return <h1>Unknown Options Type {props.type}</h1>;
     }
   }
 }

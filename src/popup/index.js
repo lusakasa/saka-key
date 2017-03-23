@@ -1,29 +1,36 @@
 import { render, Component, h } from 'preact';
-import { init, msg } from 'mosi/client';
+import { msg } from 'mosi/client';
+import { initialize } from 'client';
 import './style.css';
 import '@material/button/dist/mdc.button.css';
 
+if (SAKA_PLATFORM === 'chrome') {
+  require('webextension-polyfill/dist/browser-polyfill');
+}
+
+initialize('popup');
+
 class Popup extends Component {
   componentDidMount () {
-    init({
-      subscriptions: ['popup'],
-      onConnect: [{ action: 'modeAction', arg: { mode: 'BASIC', action: 'getEnabled' } }],
-      actions: {
-        setEnabled: (enabled) => {
-          this.setState({ enabled });
-        }
-      }
-    });
+    // init({
+    //   subscriptions: ['popup'],
+    //   onConnect: [{ action: 'modeAction', arg: { mode: 'Basic', action: 'getEnabled' } }],
+    //   actions: {
+    //     setEnabled: (enabled) => {
+    //       this.setState({ enabled });
+    //     }
+    //   }
+    // });
   }
   toggleEnabled () {
     msg(1, 'modeAction', {
-      mode: 'BASIC',
+      mode: 'Basic',
       action: 'toggleEnabled'
     });
   }
   toggleHelpMenu () {
     msg(1, 'modeAction', {
-      mode: 'BASIC',
+      mode: 'Basic',
       action: 'toggleHelpMenu'
     });
   }

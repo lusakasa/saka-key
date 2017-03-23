@@ -3,7 +3,7 @@ import { showHints, hideHints, advanceOnKey } from './HintRenderer';
 import { isModifierKey } from 'lib/keys';
 import { settings } from './settings';
 
-const MODE = 'HINTS';
+const MODE = 'Hints';
 
 export const mode = {
   name: MODE,
@@ -25,7 +25,7 @@ export const mode = {
           event.preventDefault();
           return advanceOnKey(event.key);
         }
-        return 'COMMAND';
+        return 'Command';
       }
       return MODE;
     },
@@ -38,7 +38,7 @@ export const mode = {
     },
     focusin: async (event) => {
       if (isTextEditable(event.target)) {
-        return 'TEXT';
+        return 'Text';
       }
       return MODE;
     },
@@ -51,9 +51,9 @@ export const mode = {
     mousedown: async (event) => {
       if (SAKA_DEBUG) return MODE;
       if (isTextEditable(event.target)) {
-        return 'TEXT';
+        return 'Text';
       }
-      return 'COMMAND';
+      return 'Command';
     }
   },
   messages: {}

@@ -8,7 +8,7 @@ import { msg } from 'mosi/light-client';
 
 if (window.innerWidth > 5 && window.innerHeight > 5) {
   msg(1, 'modeAction', {
-    mode: 'BASIC',
+    mode: 'Basic',
     action: 'loadClient'
   });
 }

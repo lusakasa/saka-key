@@ -36,14 +36,14 @@ class HintRenderer extends Component {
       if (filteredHints.length === 1 && inputKeys === filteredHints[0].hintString) {
         return activateHint(filteredHints[0]);
       } else if (filteredHints.length === 0) {
-        return 'COMMAND';
+        return 'Command';
       }
       this.setState({
         hints,
         filteredHints,
         inputKeys
       });
-      return 'HINTS';
+      return 'Hints';
     };
     hideHints = () => {
       this.setState({
@@ -81,10 +81,10 @@ const Hint = ({ hintString, left, top, seen }) => (
 function activateHint (hint) {
   if (isTextEditable(hint.element)) {
     hint.element.focus();
-    return 'TEXT';
+    return 'Text';
   }
   mouseEvent('click', hint.element);
-  return 'COMMAND';
+  return 'Command';
 }
 
 function generateHintStrings (characters, count) {

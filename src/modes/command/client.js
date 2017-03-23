@@ -3,7 +3,7 @@ import { isTextEditable } from 'lib/dom';
 import { isModifierKey } from 'lib/keys';
 import { commands } from './commands';
 
-const MODE = 'COMMAND';
+const MODE = 'Command';
 
 export const mode = {
   name: MODE,
@@ -40,7 +40,7 @@ export const mode = {
     },
     focusin: async (event) => {
       if (isTextEditable(event.target)) {
-        return 'TEXT';
+        return 'Text';
       }
       return MODE;
     },

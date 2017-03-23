@@ -24,17 +24,17 @@ import {
 
 
 const backgroundCommand = (action, arg) => () => {
-  msg(1, 'modeAction', { mode: 'COMMAND', action, arg });
+  msg(1, 'modeAction', { mode: 'Command', action, arg });
 };
 
 export const commands = {
   toggleHelpMenu: () => {
     msg(1, 'modeAction', {
-      mode: 'BASIC',
+      mode: 'Basic',
       action: 'toggleHelpMenu'
     });
   },
-  showLinkHints: () => 'HINTS',
+  showLinkHints: () => 'Hints',
   // scroll commands
   scrollDown,
   scrollUp,
@@ -82,5 +82,5 @@ export const commands = {
   toggleMuteAllTabs: backgroundCommand('toggleMuteAllTabs'),
   togglePinTab: backgroundCommand('togglePinTab'),
   // developer
-  developerMode: () => 'DEVELOPER'
+  developerMode: () => 'Developer'
 };

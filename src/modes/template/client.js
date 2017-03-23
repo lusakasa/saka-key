@@ -1,4 +1,4 @@
-const MODE = 'TEMPLATE';
+const MODE = 'Template';
 
 export const mode = {
   name: MODE,

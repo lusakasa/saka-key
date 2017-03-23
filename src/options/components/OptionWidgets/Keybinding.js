@@ -4,11 +4,6 @@ import './style.css';
 
 // TODO: This file is messy, redo at some point
 
-const testBindings = [
-  [{ 'key': 'H' }],
-  [{ 'key': 'g' }, { 'key': 'a' }]
-];
-
 /* const Binding = ({ binding }) => (
   <li className='mdc-list-item command-entry'>
     <span>
@@ -49,18 +44,18 @@ class KeyBindingInput extends Component {
       keyEvents: []
     };
   }
-  finalizeInput = () => {
+  finalizeInput = (bindings, setValue) => () => {
     const keyEvents = this.state.keyEvents;
     if (keyEvents.length > 0) {
-      testBindings.push(this.state.keyEvents);
+      setValue(bindings.concat([this.state.keyEvents]));
     }
     this.setState({ active: false, keyEvents: [] });
   }
-  handleKeyDown = (event) => {
+  handleKeyDown = (bindings, setValue) => (event) => {
     event.preventDefault();
     if (isModifierKey(event)) return;
     if (event.key === 'Enter') {
-      this.finalizeInput();
+      this.finalizeInput(bindings, setValue)();
       return;
     }
     const { shiftKey, altKey, ctrlKey, metaKey, code, key } = event;
@@ -70,7 +65,7 @@ class KeyBindingInput extends Component {
       })
     });
   }
-  render () {
+  render ({ value, setValue }) {
     return this.state.active
     ? (
       <div>
@@ -80,8 +75,8 @@ class KeyBindingInput extends Component {
           ref={(input) => input && input.focus && setTimeout(() => { input.focus(); }, 0)}
           className='key-text key-text-input mdc-typography--body1 mdc-elevation--z2'
           type='text'
-          onKeyDown={this.handleKeyDown}
-          onBlur={this.finalizeInput} />
+          onKeyDown={this.handleKeyDown(value, setValue)}
+          onBlur={this.finalizeInput(value, setValue)} />
       </div>
     ) : (
       <button
@@ -99,7 +94,7 @@ export default class Keybinding extends Component {
     super();
     this.state = ({ active: false });
   }
-  render ({ label, key, value }) {
+  render ({ label, key, value, setValue }) {
     const bindings = value;
     return this.state.active ? (
       <li
@@ -127,6 +122,7 @@ export default class Keybinding extends Component {
               style='justify-content: space-between;'>
               <KeyBindingItem binding={binding} />
               <button
+                onClick={() => setValue(bindings.filter((b) => b !== binding))}
                 className='mdc-button mdc-button--secondary'>
                   Delete
               </button>
@@ -135,7 +131,7 @@ export default class Keybinding extends Component {
         </ul>
         <span
           style='width: 90%; display: flex; justify-content: space-between;'>
-          <KeyBindingInput />
+          <KeyBindingInput value={value} setValue={setValue} />
         </span>
       </li>
     ) : (

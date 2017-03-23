@@ -1,3 +1,5 @@
+import { msg } from 'mosi/client';
+
 /** Change the view, e.g. About/Settings/Tutorial etc. */
 export const setView = (view) => ({
   type: 'SET_VIEW',
@@ -21,3 +23,21 @@ export const loadSettings = (settings) => ({
   type: 'LOAD_SETTINGS',
   settings
 });
+
+/** Change a setting value */
+export const changeSetting = (mode, profile, key, value) => {
+  // TODO: rewrite this, handle async properly, don't assume it works
+  browser.storage.local.get('settings').then(({ settings }) => {
+    settings[mode][profile][key] = value;
+    browser.storage.local.set({ 'settings': settings }).then(() => {
+      msg(1, 'settingsChange', { mode, profile });
+    });
+  });
+  return {
+    type: 'CHANGE_SETTING',
+    profile,
+    mode,
+    key,
+    value
+  };
+};

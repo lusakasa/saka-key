@@ -3,7 +3,7 @@ import { isTextEditable } from 'lib/dom';
 import { commandTrie } from 'modes/command/commandTrie';
 import { toggleHelpMenu } from './help';
 
-const MODE = 'BASIC';
+const MODE = 'Basic';
 
 export const mode = {
   name: MODE,
@@ -47,9 +47,9 @@ export const mode = {
       commandTrie.init(bindings);
       if (enabled) {
         if (isTextEditable(document.activeElement)) {
-          return 'TEXT';
+          return 'Text';
         } else {
-          return 'COMMAND';
+          return 'Command';
         }
       }
       return MODE;
@@ -60,9 +60,9 @@ export const mode = {
       }
       if (enabled) {
         if (isTextEditable(document.activeElement)) {
-          return 'TEXT';
+          return 'Text';
         }
-        return 'COMMAND';
+        return 'Command';
       }
       return MODE;
     },

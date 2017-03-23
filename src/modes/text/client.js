@@ -1,6 +1,6 @@
 import { isTextEditable } from 'lib/dom';
 
-const MODE = 'TEXT';
+const MODE = 'Text';
 
 export const mode = {
   name: MODE,
@@ -24,7 +24,7 @@ export const mode = {
       if (isTextEditable(event.relatedTarget)) {
         return MODE;
       }
-      return 'COMMAND';
+      return 'Command';
     },
     click: async (event) => {
       return MODE;

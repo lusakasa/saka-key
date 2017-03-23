@@ -23,6 +23,35 @@ export function initModes (availableModes) {
   addListeners(modes);
 }
 
+function setupStorageChangeListener () {
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName === 'local') {
+      Object.entries(changes).forEach(({ oldValue, newValue }, key) => {
+        if (key === 'settings') {
+          
+        } else {
+          console.log(`key ${key} changed from ${oldValue || '-'} to ${newValue || '-'}`);
+        }
+      });
+    } else {
+      throw Error('how did that happen?');
+    }
+  });
+}
+
+export async function settingsChange ({ mode, profile }, src) {
+  if (SAKA_DEBUG) {
+    if (!modes[mode]) {
+      throw Error(`Missing Mode ${mode}`);
+    }
+  }
+  const { settings } = await browser.storage.local.get('settings');
+  if (SAKA_DEBUG) {
+    console.log(`New settings for ${mode}[${profile}]`, settings[mode][profile]);
+  }
+  await modes[mode].onSettingsChange(profile, settings[mode][profile]);
+}
+
 // async function setupDefaultConfig (modes) {
 //   const configFilePaths = Object.keys(modes).map((name) =>
 //     `/config/${name.toLowerCase()}.json`

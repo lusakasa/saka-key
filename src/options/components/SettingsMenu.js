@@ -2,6 +2,7 @@ import { Component, h } from 'preact';
 import SettingsHeader from './SettingsHeader';
 import SettingsDrawer from './SettingsDrawer';
 import SettingsContent from './SettingsContent';
+import ProfilesGroupSelectTest from './ProfileGroupSelect';
 
 export default class SettingsMenu extends Component {
   render () {
@@ -9,8 +10,9 @@ export default class SettingsMenu extends Component {
       <div className={'settings-menu'}>
         <SettingsHeader />
         <div style='display: flex;'>
-          <SettingsDrawer />
-          <SettingsContent />
+          {/*<SettingsDrawer />
+          <SettingsContent />*/}
+          <ProfilesGroupSelectTest />
         </div>
       </div>
     );
