@@ -8,6 +8,14 @@
         "primaryColor": "#ff4488",
         "secondaryColor": "#f23733"
       }
+    },
+    {
+      "name": "disabled",
+      "settings": {
+        "enabled": false,
+        "primaryColor": "#ff4488",
+        "secondaryColor": "#f23733"
+      }
     }
   ]
 }

@@ -41,3 +41,9 @@ export const changeSetting = (mode, profile, key, value) => {
     value
   };
 };
+
+/** Change the active profile group */
+export const setActiveProfileGroup = (newActiveProfileGroup) => ({
+  type: 'SET_ACTIVE_PROFILE_GROUP',
+  newActiveProfileGroup
+});

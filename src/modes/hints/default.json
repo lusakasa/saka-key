@@ -15,6 +15,21 @@
         "hintChars": "asdghjkl;",
         "customCSS": ".hint { color: red; }"
       }
+    },
+    {
+      "name": "left hand",
+      "settings": {
+        "useCustomCSS": false,
+        "customColors": true,
+        "textColor": "#2222ff",
+        "backgroundColor": "#A6274E",
+        "borderColor": "#936540",
+        "size": 12,
+        "borderRadius": 2,
+        "shadow": true,
+        "hintChars": "asdfqwerzxcv",
+        "customCSS": ".hint { color: red; }"
+      }
     }
   ]
 }
