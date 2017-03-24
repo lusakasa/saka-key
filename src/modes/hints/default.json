@@ -1,17 +1,20 @@
 {
   "name": "Hints",
-  "profiles": {
-    "standard": {
-      "useCustomCSS": false,
-      "customColors": true,
-      "textColor": "#2222ff",
-      "backgroundColor": "#A6274E",
-      "borderColor": "#936540",
-      "size": 12,
-      "borderRadius": 2,
-      "shadow": true,
-      "hintChars": "asdghjkl;",
-      "customCSS": ".hint { color: red; }"
+  "profiles": [
+    {
+      "name": "standard",
+      "settings": {
+        "useCustomCSS": false,
+        "customColors": true,
+        "textColor": "#2222ff",
+        "backgroundColor": "#A6274E",
+        "borderColor": "#936540",
+        "size": 12,
+        "borderRadius": 2,
+        "shadow": true,
+        "hintChars": "asdghjkl;",
+        "customCSS": ".hint { color: red; }"
+      }
     }
-  }
+  ]
 }

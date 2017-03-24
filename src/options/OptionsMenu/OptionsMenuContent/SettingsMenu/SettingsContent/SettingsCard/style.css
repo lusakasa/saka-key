@@ -1,0 +1,22 @@
+.mode-card-select {
+  width: 200px;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  margin-left: 10px;
+}
+
+button.mode-card-button {
+  margin-left: 10px;
+  background-color: white;
+  color: #3f51b5;
+}
+
+button.mode-card-new-button {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+button.mode-card-delete-button {
+  margin-right: 10px;
+  font-size: 20px;
+}

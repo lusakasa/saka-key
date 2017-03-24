@@ -1,7 +1,7 @@
 import { render, h } from 'preact';
 import { Provider } from 'preact-redux';
-import { store } from './reducers';
-import OptionsMenu from './components/OptionsMenu';
+import { store } from 'options/reducers';
+import OptionsMenu from './OptionsMenu';
 import { initialize } from 'client';
 
 // TODO: at some point remove this polyfill or if an npm package is released

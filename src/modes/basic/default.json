@@ -1,10 +1,13 @@
 {
   "name": "Basic",
-  "profiles": {
-    "standard": {
-      "enabled": true,
-      "primaryColor": "#ff4488",
-      "secondaryColor": "#f23733"
+  "profiles": [
+    {
+      "name": "standard",
+      "settings": {
+        "enabled": true,
+        "primaryColor": "#ff4488",
+        "secondaryColor": "#f23733"
+      }
     }
-  }
+  ]
 }

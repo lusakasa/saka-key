@@ -1,0 +1,25 @@
+.color-widget {
+  justify-content: space-between !important;
+}
+
+.key-text {
+  padding: 0px 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ff4081;
+  color: #ff4081;
+  border-radius: 4px;
+  margin: 0px 1px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.key-text-input {
+  width: 12px;
+}
+
+.key-text-input:focus {
+  outline: none;
+}
