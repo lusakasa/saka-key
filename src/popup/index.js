@@ -34,9 +34,6 @@ class Popup extends Component {
       action: 'toggleHelpMenu'
     });
   }
-  showOptionsPage () {
-
-  }
   render () {
     return (
       <div className='container'>
@@ -44,7 +41,7 @@ class Popup extends Component {
           ? (<button onClick={this.toggleEnabled} className='mdc-button mdc-button--accent'>Disable Saka Key</button>)
           : (<button onClick={this.toggleEnabled} className='mdc-button mdc-button--accent'>Enable Saka Key</button>) }
         <button onClick={this.toggleHelpMenu} className='mdc-button mdc-button--accent'>Help</button>
-        <button onClick={this.showOptionsPage} className='mdc-button mdc-button--accent'>Options</button>
+        <a href={chrome.runtime.getURL('options.html')} className='mdc-button mdc-button--accent'>Options</a>
         <button onClick={this.showOptionsPage} className='mdc-button mdc-button--accent'>{ 'VERSION ' + SAKA_VERSION }</button>
       </div>
     );

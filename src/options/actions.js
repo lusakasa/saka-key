@@ -47,3 +47,8 @@ export const setActiveProfileGroup = (newActiveProfileGroup) => ({
   type: 'SET_ACTIVE_PROFILE_GROUP',
   newActiveProfileGroup
 });
+
+export const changeProfileForMode = (mode, newProfileName) => ({
+  type: 'CHANGE_PROFILE_FOR_MODE',
+  newProfileName
+});

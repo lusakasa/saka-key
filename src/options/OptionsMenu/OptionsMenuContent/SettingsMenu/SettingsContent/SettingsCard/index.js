@@ -1,49 +1,11 @@
 import { Component, h } from 'preact';
-import { connect } from 'preact-redux';
-import OptionWidget from './OptionWidgets';
+import SettingsCardHeader from './SettingsCardHeader';
+import SettingsCardOptionWidget from './SettingsCardOptionWidget';
 
 import '@material/toolbar/dist/mdc.toolbar.css';
 import '@material/select/dist/mdc.select.css';
 import '@material/fab/dist/mdc.fab.css';
 import './style.css';
-
-class SettingsCardHeader extends Component {
-  render ({ name, profiles, activeProfile, onProfileChange }) {
-    return (
-      <header className='mdc-toolbar saka-toolbar settings-header'>
-        <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
-          <span className='mdc-toolbar__title'>{ name }</span>
-        </section>
-        <section className='mdc-toolbar__section mdc-toolbar__section--align-end'>
-          <select
-            class='mdc-select mode-card-select'
-            value={activeProfile}
-            onChange={this._handleChange} >
-            { profiles.map((profile) =>
-              <option value={profile}>{profile}</option>
-            )}
-          </select>
-          <button
-            className='mdc-button mdc-button--compact mdc-button--dense mdc-button--raised mode-card-button'>new</button>
-          <button
-            className='mdc-button mdc-button--compact mdc-button--dense mdc-button--raised mdc-buton--accent mode-card-button'>delete</button>
-        </section>
-      </header>
-    );
-  }
-  _handleChange = (e) => {
-    this.props.onProfileChange(e.target.value);
-  }
-}
-
-class SettingsCardOptionWidget extends Component {
-  render (props) {
-    return <OptionWidget {...props} onChange={this._onChange} />;
-  }
-  _onChange = (newValue) => {
-    this.props.onChange(this.props.key, newValue);
-  }
-}
 
 // in:
 // * name
@@ -52,16 +14,36 @@ class SettingsCardOptionWidget extends Component {
 // exposes:
 // * onOptionChange((key, newValue) => {})
 // * onProfileChange((newProfileName) => {})
-class SettingsCard extends Component {
-  render ({ name, description, options, values, onOptionChange, profiles, activeProfile, onProfileChange }) {
-    console.log('values', values);
+export default class SettingsCard extends Component {
+  /**
+   * render function
+   * @param {object} arg
+   * @param {string} arg.name
+   * @param {string} arg.description
+   * @param {Array<string>} arg.profiles
+   * @param {string} arg.selectedProfile
+   * @param {Array<{ type: string, key: string, label: string, {...other}}>} arg.options
+   * @param {{key: string, value: any}} arg.values
+   * @param {(key, newValue) => void} arg.onOptionChange
+   * @param {(newProfileName) => void} arg.onProfileChange
+   */
+  render ({
+      name,
+      description,
+      profiles,
+      selectedProfile,
+      options,
+      values,
+      onOptionChange,
+      onProfileChange
+  }) {
     return (
       <div class='mdc-card demo-card demo-card--with-avatar mode-card'>
 
         <SettingsCardHeader
           name={name}
           profiles={profiles}
-          activeProfile={activeProfile}
+          selectedProfile={selectedProfile}
           onProfileChange={onProfileChange} />
 
         <section class='mdc-card__primary'>
@@ -80,7 +62,3 @@ class SettingsCard extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({ view: state.view });
-const mapDispatchToProps = (dispatch) => ({ dispatch });
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsCard);

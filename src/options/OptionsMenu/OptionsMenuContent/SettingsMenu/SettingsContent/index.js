@@ -1,20 +1,8 @@
 import { Component, h } from 'preact';
 import { connect } from 'preact-redux';
-import { loadModesConfig, loadSettings, setActiveProfileGroup } from 'options/actions';
-import SettingsCard from './SettingsCard';
-
-
-/**
- * Main area containing Settings Cards used to configure profiles
- * and settings for each mode.
- * Props:
- * * modes: Array<{ modeName, modeDescription, Array<{ optionType, optionKey, optionValue, ...other}>>
- * * settings: { [modeName]: Array<{ profileName, settings: { [key]: values } }>}
- * * profileGroups: Array<{ profileGroupName, settings: { [modeName]: profileName }}>
- * * activeProfileGroup: profileGroupName
- * UNNEEDED REMOVE:
- * * selectedProfileForMode: { [modeName]: profileName }
- */
+import { loadModesConfig, loadSettings } from 'options/actions';
+import ModeSettingsCard from './ModeSettingsCard';
+import ProfileSettingsCard from './ProfileSettingsCard';
 
 class SettingsContent extends Component {
   constructor (props) {
@@ -23,64 +11,36 @@ class SettingsContent extends Component {
       props.dispatch(loadModesConfig(modesConfig));
     });
     browser.storage.local.get('settings').then(({ settings }) => {
-      console.log('settings', settings);
       props.dispatch(loadSettings(settings));
     });
   }
+  /**
+   * render function
+   * @param {object} arg
+   * @param {Array<{ modeName, modeDescription, Array<{ type, key, label, {...other} }>>} arg.modes
+   * @param {{ [modeName]: Array<{ profileName, settings: { [key]: values } }>}} arg.settings
+   * @param {Array<{ profileGroupName, settings: { [modeName]: profileName }}} arg.profileGroups
+   * @param {string} arg.activeProfileGroup
+   * @param {{ [modeName]: profileName }} arg.selectedProfileForMode
+   */
   render ({
-    modesLoaded, settingsLoaded,
-    modes, settings, profiles,
-    profileGroups, activeProfileGroup }) {
-    console.log('settings, modes, profiles', settings, modes, profiles);
-    if (!(modesLoaded && settingsLoaded)) return <h3>Loading</h3>;
+    modes,
+    settings,
+    profileGroups,
+    activeProfileGroup,
+    selectedProfileForMode
+  }) {
+    if (modes === null) return <h3>Modes not loaded</h3>;
+    if (settings === null) return <h3>Settings not loaded</h3>;
+    if (profileGroups === null) return <h3>ProfileGroups not loaded</h3>;
+    if (activeProfileGroup === null) return <h3>ActiveProfileGroup not loaded</h3>;
+    if (selectedProfileForMode === null) return <h3>SelectedProfileForMode not loaded</h3>;
     return (
       <main className='settings-content'>
-        {/* Create the Profile Settings Card */}
-        <SettingsCard
-          name='Profiles'
-          description='Configure your profiles'
-          options={[{ type: 'header', header: 'meow' }]}
-          onOptionChange={this._onProfileOptionChange}
-          profiles={this._ProfileGroupProfiles}
-          activeProfile={activeProfileGroup}
-          onProfileChange={this._onProfileGroupChange} />
-        {/* Create a Setting Card for each Mode */}
-        { modes.map((mode) => (
-          <SettingsCard
-            name={mode.name}
-            description={mode.description}
-            options={mode.options}
-            values={this._getOptionValues(mode)}
-            onOptionChange={this._onModeOptionChange}
-            profiles={this._modeProfiles(mode)}
-            activeProfile={this._activeModeProfile(mode)}
-            onProfileChange={this._onModeOptionChange} />
-        )) }
+        <ProfileSettingsCard />
+        { modes.map((mode) => <ModeSettingsCard mode={mode} />) }
       </main>
     );
-  }
-  _ProfileGroupProfiles = this.props.profileGroups.map((p) => p.name)
-  _onProfileOptionChange = (mode, profile) => {
-    console.log(`ProfileGroup ${this.props.activeProfile}'s changed mode ${mode} to ${profile}`);
-  }
-  _onProfileGroupChange = (newProfileGroupName) => {
-    console.log(`Changing to ProfileGroup ${newProfileGroupName}`);
-    this.props.dispatch(setActiveProfileGroup(newProfileGroupName));
-  }
-  _onModeOptionChange = () => {}
-  /** get the list of profiles for the given mode */
-  _modeProfiles = (mode) => {
-    return this.props.settings[mode.name].map((profile) => profile.name);
-  }
-  /** get active mode profile for the active ProfileGroup */
-  _activeModeProfile = (mode) => {
-    return this.props.profileGroups.find((pg) => pg.name === this.props.activeProfileGroup).settings[mode.name];
-  }
-  /** Gets the option values for the given mode's active profile */
-  _getOptionValues = (mode) => {
-    return this.props.settings[mode.name].find((modeProfile) =>
-      modeProfile.name === this._activeModeProfile(mode)
-    ).settings;
   }
 }
 
