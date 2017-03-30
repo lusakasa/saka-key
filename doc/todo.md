@@ -12,6 +12,7 @@
 * historical tab switching
 * full screen mode (provide custom tabs/url bar optimized for alt interface)
 * more commands
+* check out extensions: evernote webclipper
 * configurable themes and colors
 * multiple configuration profiles
 * sharable themes and configurattion

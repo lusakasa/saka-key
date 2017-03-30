@@ -41,7 +41,7 @@ class SettingsCardOptionWidget extends Component {
     return <OptionWidget {...props} onChange={this._onChange} />;
   }
   _onChange = (newValue) => {
-    this.props.onOptionChange(this.props.key, newValue);
+    this.props.onChange(this.props.key, newValue);
   }
 }
 
@@ -53,7 +53,8 @@ class SettingsCardOptionWidget extends Component {
 // * onOptionChange((key, newValue) => {})
 // * onProfileChange((newProfileName) => {})
 class SettingsCard extends Component {
-  render ({ name, description, options, onOptionChange, profiles, activeProfile, onProfileChange }) {
+  render ({ name, description, options, values, onOptionChange, profiles, activeProfile, onProfileChange }) {
+    console.log('values', values);
     return (
       <div class='mdc-card demo-card demo-card--with-avatar mode-card'>
 
@@ -71,7 +72,7 @@ class SettingsCard extends Component {
           { options.length === 0
             ? 'No settings to configure'
             : options.map((option) =>
-              <SettingsCardOptionWidget {...option} onChange={onOptionChange} />
+              <SettingsCardOptionWidget {...option} value={values && values[option.key]} onChange={onOptionChange} />
             ) }
         </ul>
 

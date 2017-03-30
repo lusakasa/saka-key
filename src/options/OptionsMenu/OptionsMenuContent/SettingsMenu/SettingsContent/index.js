@@ -12,6 +12,8 @@ import SettingsCard from './SettingsCard';
  * * settings: { [modeName]: Array<{ profileName, settings: { [key]: values } }>}
  * * profileGroups: Array<{ profileGroupName, settings: { [modeName]: profileName }}>
  * * activeProfileGroup: profileGroupName
+ * UNNEEDED REMOVE:
+ * * selectedProfileForMode: { [modeName]: profileName }
  */
 
 class SettingsContent extends Component {
@@ -48,6 +50,7 @@ class SettingsContent extends Component {
             name={mode.name}
             description={mode.description}
             options={mode.options}
+            values={this._getOptionValues(mode)}
             onOptionChange={this._onModeOptionChange}
             profiles={this._modeProfiles(mode)}
             activeProfile={this._activeModeProfile(mode)}
@@ -72,6 +75,12 @@ class SettingsContent extends Component {
   /** get active mode profile for the active ProfileGroup */
   _activeModeProfile = (mode) => {
     return this.props.profileGroups.find((pg) => pg.name === this.props.activeProfileGroup).settings[mode.name];
+  }
+  /** Gets the option values for the given mode's active profile */
+  _getOptionValues = (mode) => {
+    return this.props.settings[mode.name].find((modeProfile) =>
+      modeProfile.name === this._activeModeProfile(mode)
+    ).settings;
   }
 }
 
