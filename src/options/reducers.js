@@ -56,8 +56,8 @@ const settings = (state = null, action) => {
     case 'CHANGE_SETTING':
       const profiles = state[action.mode];
       const selected = profiles.findIndex((profile) => profile.name === action.profile);
-      const newProfile = update(profiles[selected], { settings: { $set: { [action.key]: action.value } } });
-      return update(state, { [action.mode]: { $splice: [selected, 1, newProfile] } });
+      const newProfile = update(profiles[selected], { settings: { $merge: { [action.key]: action.value } } });
+      return update(state, { [action.mode]: { $splice: [[selected, 1, newProfile]] } });
     default:
       return state;
   }
@@ -81,6 +81,8 @@ const activeProfileGroup = (state = testActiveProfileGroup, action) => {
 
 const selectedProfileForMode = (state = testSelectedProfileForMode, action) => {
   switch (action.type) {
+    case 'CHANGE_PROFILE_FOR_MODE':
+      return Object.assign({}, state, { [action.mode]: action.newProfileName });
     default:
       return state;
   }

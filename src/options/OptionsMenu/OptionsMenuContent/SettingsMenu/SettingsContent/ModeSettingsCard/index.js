@@ -1,4 +1,5 @@
 import { connect } from 'preact-redux';
+import { changeProfileForMode, changeSetting } from 'options/actions';
 import SettingsCard from '../SettingsCard';
 
 const mapStateToProps = ({ settings, selectedProfileForMode }, { mode }) => {
@@ -14,12 +15,19 @@ const mapStateToProps = ({ settings, selectedProfileForMode }, { mode }) => {
     values: modeSettings.find((profile) => profile.name === selectedProfile).settings
   };
 };
-const mapDispatchToProps = (dispatch) => ({
-  onOptionChange: (key, newValue) => {
-
+const mapDispatchToProps = (profile) => (dispatch) => ({
+  onOptionChange: (mode, profile) => (key, newValue) => {
+    dispatch(changeSetting(mode, profile, key, newValue));
   },
-  onProfileChange: (newProfileName) => {
-
+  onProfileChange: (modeName) => (newProfileName) => {
+    dispatch(changeProfileForMode(modeName, newProfileName));
   }
 });
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsCard);
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => (
+  Object.assign({}, stateProps, dispatchProps, {
+    onOptionChange: dispatchProps.onOptionChange(stateProps.name, stateProps.selectedProfile),
+    onProfileChange: dispatchProps.onProfileChange(stateProps.name)
+  })
+);
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SettingsCard);

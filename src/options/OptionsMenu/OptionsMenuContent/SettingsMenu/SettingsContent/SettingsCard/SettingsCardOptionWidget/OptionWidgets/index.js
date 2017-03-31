@@ -1,6 +1,7 @@
 import { Component, h } from 'preact';
 import Header from './Header';
 import Keybinding from './Keybinding';
+import Select from './Select';
 import ToggleButton from './ToggleButton';
 import Switch from './Switch';
 import Checkbox from './Checkbox';
@@ -19,6 +20,8 @@ export default class OptionWidget extends Component {
         return <Header {...props} />;
       case 'keybinding':
         return <Keybinding {...props} />;
+      case 'select':
+        return <Select {...props} />;
       case 'togglebutton':
         return <ToggleButton {...props} />;
       case 'checkbox':

@@ -1,19 +1,18 @@
 import { Component, h } from 'preact';
 
-export default class Text extends Component {
-  render ({ label, key, value, onChange }) {
+export default class Select extends Component {
+  render ({ label, key, value, choices, onChange }) {
     return (
       <li className='mdc-list-item color-widget'>
         <label>{ label }</label>
-        <div class='mdc-textfield' data-demo-no-auto-js=''>
-          <input
-            type='text'
-            class='mdc-textfield__input'
-            style='text-align: right'
-            id='css-only-textfield'
-            value={value}
-            onChange={(e) => onChange(e.target.value)} />
-        </div>
+        <select
+          class='mdc-select'
+          value={value}
+          onChange={(e) => onChange(e.target.value)} >
+          { choices.map((choice) =>
+            <option value={choice}>{choice}</option>
+          )}
+        </select>
       </li>
     );
   }

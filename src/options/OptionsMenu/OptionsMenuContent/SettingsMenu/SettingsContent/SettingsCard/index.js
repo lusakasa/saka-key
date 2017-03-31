@@ -54,7 +54,7 @@ export default class SettingsCard extends Component {
           { options.length === 0
             ? 'No settings to configure'
             : options.map((option) =>
-              <SettingsCardOptionWidget {...option} value={values && values[option.key]} onChange={onOptionChange} />
+              <SettingsCardOptionWidget {...option} _key={option.key} value={values && values[option.key]} onChange={onOptionChange} />
             ) }
         </ul>
 

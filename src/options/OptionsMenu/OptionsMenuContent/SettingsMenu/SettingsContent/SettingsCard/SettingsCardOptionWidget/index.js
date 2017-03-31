@@ -6,6 +6,6 @@ export default class SettingsCardOptionWidget extends Component {
     return <OptionWidget {...props} onChange={this._onChange} />;
   }
   _onChange = (newValue) => {
-    this.props.onChange(this.props.key, newValue);
+    this.props.onChange(this.props._key, newValue);
   }
 }

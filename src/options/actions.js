@@ -28,7 +28,9 @@ export const loadSettings = (settings) => ({
 export const changeSetting = (mode, profile, key, value) => {
   // TODO: rewrite this, handle async properly, don't assume it works
   browser.storage.local.get('settings').then(({ settings }) => {
-    settings[mode][profile][key] = value;
+    console.log('settingsStorage', settings);
+    settings[mode].find((p) => p.name === profile).settings[key] = value;
+    // settings[mode][profile][key] = value;
     browser.storage.local.set({ 'settings': settings }).then(() => {
       msg(1, 'settingsChange', { mode, profile });
     });
@@ -50,5 +52,6 @@ export const setActiveProfileGroup = (newActiveProfileGroup) => ({
 
 export const changeProfileForMode = (mode, newProfileName) => ({
   type: 'CHANGE_PROFILE_FOR_MODE',
+  mode,
   newProfileName
 });
