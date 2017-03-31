@@ -1,0 +1,23 @@
+{
+  "profileGroups": [
+    {
+      "name": "standard",
+      "settings": {
+        "Basic": "standard",
+        "Command": "standard",
+        "Hints": "standard",
+        "Developer": "standard"
+      }
+    },
+    {
+      "name": "left hand",
+      "settings": {
+        "Basic": "standard",
+        "Command": "left hand",
+        "Hints": "left hand",
+        "Developer": "standard"
+      }
+    }
+  ],
+  "activeProfileGroup": "left hand"
+}

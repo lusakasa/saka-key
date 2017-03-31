@@ -22,6 +22,7 @@
 * smarter on/off mosi to save power
 * smarter link hints
 * pdf.js integration
+* emoji keyboard in text mode (activated by pressing and releasing alt key)
 * support for vi-like features
 * consider extensibility, e.g. https://github.com/philc/vimium/pull/1980#issuecomment-183223423
 * create an API for websites to register custom keybaord/voice events. 

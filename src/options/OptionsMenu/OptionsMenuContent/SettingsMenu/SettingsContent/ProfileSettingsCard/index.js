@@ -1,5 +1,5 @@
 import { connect } from 'preact-redux';
-import { setActiveProfileGroup } from 'options/actions';
+import { setActiveProfileGroup, setProfileGroupOption } from 'options/actions';
 import SettingsCard from '../SettingsCard';
 
 const mapStateToProps = ({ profileGroups, activeProfileGroup, settings, selectedProfileForMode }) => {
@@ -14,7 +14,7 @@ const mapStateToProps = ({ profileGroups, activeProfileGroup, settings, selected
   }));
   return {
     name: 'Profiles',
-    description: 'Configure your profiles',
+    description: 'Configure your active profile by selecting per-mode sub-profiles.',
     profiles: profileGroups.map((profile) => profile.name),
     selectedProfile: activeProfileGroup,
     options: options,
@@ -23,7 +23,7 @@ const mapStateToProps = ({ profileGroups, activeProfileGroup, settings, selected
 };
 const mapDispatchToProps = (dispatch) => ({
   onOptionChange: (activeProfileGroup) => (mode, newProfileName) => {
-
+    dispatch(setProfileGroupOption(activeProfileGroup, mode, newProfileName));
   },
   onProfileChange: (newProfileGroupName) => {
     dispatch(setActiveProfileGroup(newProfileGroupName));

@@ -1,35 +1,13 @@
-import { applyMiddleware, createStore, combineReducers } from 'redux';
-import update from 'immutability-helper';
-import logger from 'redux-logger';
+import { combineReducers } from 'redux';
+import store from './store';
+// import update from 'immutability-helper';
 
-const testProfileGroups = [
-  {
-    name: 'standard',
-    settings: {
-      Basic: 'standard',
-      Command: 'standard',
-      Hints: 'standard',
-      Developer: 'standard'
-    }
-  },
-  {
-    name: 'left hand',
-    settings: {
-      Basic: 'standard',
-      Command: 'left hand',
-      Hints: 'left hand',
-      Developer: 'standard'
-    }
-  }
-];
-const testActiveProfileGroup = 'left hand';
 
-const testSelectedProfileForMode = {
-  Basic: 'standard',
-  Command: 'left hand',
-  Hints: 'standard',
-  Developer: 'standard'
-};
+// modes: Array<{ modeName, modeDescription, Array<{ type, key, label, {...other} }>>
+// settings: { [modeName]: Array<{ profileName, settings: { [key]: values } }>
+// profileGroups: Array<{ profileGroupName, settings: { [modeName]: profileName }
+// activeProfileGroup: string
+// selectedProfileForMode: { [modeName]: profileName } ** NOT PERSISTED LIKE THE OTHERS
 
 const view = (state = 'Settings', action) => {
   switch (action.type) {
@@ -42,7 +20,7 @@ const view = (state = 'Settings', action) => {
 
 const modes = (state = null, action) => {
   switch (action.type) {
-    case 'LOAD_MODES_CONFIG':
+    case 'LOAD_MODES':
       return action.modes;
     default:
       return state;
@@ -53,41 +31,49 @@ const settings = (state = null, action) => {
   switch (action.type) {
     case 'LOAD_SETTINGS':
       return action.settings;
-    case 'CHANGE_SETTING':
-      const profiles = state[action.mode];
-      const selected = profiles.findIndex((profile) => profile.name === action.profile);
-      const newProfile = update(profiles[selected], { settings: { $merge: { [action.key]: action.value } } });
-      return update(state, { [action.mode]: { $splice: [[selected, 1, newProfile]] } });
+    // case 'SET_SETTING':
+    //   const profiles = state[action.mode];
+    //   const selected = profiles.findIndex((profile) => profile.name === action.profile);
+    //   const newProfile = update(profiles[selected], { settings: { $merge: { [action.key]: action.value } } });
+    //   return update(state, { [action.mode]: { $splice: [[selected, 1, newProfile]] } });
     default:
       return state;
   }
 };
 
-const profileGroups = (state = testProfileGroups, action) => {
+const profileGroups = (state = null, action) => {
   switch (action.type) {
+    case 'LOAD_PROFILE_GROUPS':
+      return action.profileGroups;
     default:
       return state;
   }
 };
 
-const activeProfileGroup = (state = testActiveProfileGroup, action) => {
+const activeProfileGroup = (state = null, action) => {
   switch (action.type) {
-    case 'SET_ACTIVE_PROFILE_GROUP':
-      return action.newActiveProfileGroup;
+    // case 'SET_ACTIVE_PROFILE_GROUP':
+    //   return action.newActiveProfileGroup;
+    case 'LOAD_ACTIVE_PROFILE_GROUP':
+      return action.activeProfileGroup;
     default:
       return state;
   }
 };
 
-const selectedProfileForMode = (state = testSelectedProfileForMode, action) => {
+const selectedProfileForMode = (state = null, action) => {
   switch (action.type) {
-    case 'CHANGE_PROFILE_FOR_MODE':
+    case 'LOAD_ACTIVE_PROFILE_GROUP':
+      // TODO: fix this so it doesn't rely on store.getState(), possibly with thunks
+      return store.getState().profileGroups.find((p) => p.name === action.activeProfileGroup).settings;
+    case 'SET_SELECTED_PROFILE_FOR_MODE':
       return Object.assign({}, state, { [action.mode]: action.newProfileName });
     default:
       return state;
   }
 };
-const rootReducer = combineReducers({
+
+export default combineReducers({
   view,
   modes,
   settings,
@@ -95,8 +81,3 @@ const rootReducer = combineReducers({
   activeProfileGroup,
   selectedProfileForMode
 });
-
-export const store = createStore(
-  rootReducer,
-  applyMiddleware(logger)
-);

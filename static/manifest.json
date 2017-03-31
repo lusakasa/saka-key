@@ -41,6 +41,7 @@
     "activeTab",
     "sessions",
     "storage",
+    "unlimitedStorage",
     "<all_urls>"
   ],
   "web_accessible_resources": [

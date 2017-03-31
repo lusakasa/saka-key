@@ -23,6 +23,32 @@ export function initModes (availableModes) {
   addListeners(modes);
 }
 
+/**
+ * Initializes install and setup listeners
+ * @param {*} modes
+ */
+function addListeners (modes) {
+  chrome.runtime.onInstalled.addListener((details) => {
+    Object.values(modes).forEach((mode) => {
+      mode.onInstalled(details);
+    });
+    setupDefaultModes(modes);
+    loadDefaultSettings(modes);
+    loadDefaultProfiles();
+  });
+  chrome.runtime.onStartup.addListener(() => {
+    Object.values(modes).forEach((mode) => {
+      mode.onStartup();
+    });
+  });
+  // TODO: Remove this when firefox fixes bug in next version
+  if (SAKA_DEBUG && SAKA_PLATFORM === 'firefox') {
+    Object.values(modes).forEach((mode) => {
+      mode.onStartup();
+    });
+  }
+}
+
 function setupStorageChangeListener () {
   chrome.storage.onChanged.addListener((changes, areaName) => {
     if (areaName === 'local') {
@@ -69,14 +95,24 @@ export async function settingsChange ({ mode, profile }, src) {
 //   });
 // }
 
-async function setupDefaultConfig (modes) {
-  const configFilePaths = Object.keys(modes).map((name) =>
+async function setupDefaultModes (modes) {
+  const startModes = Object.keys(modes).map((name) =>
     `/config/${name.toLowerCase()}.json`
   );
   try {
-    const configFetch = await Promise.all(configFilePaths.map((path) => fetch(path)));
-    const config = await Promise.all(configFetch.map((fetch) => fetch.json()));
-    await browser.storage.local.set({'modesConfig': config});
+    const modesFetch = await Promise.all(startModes.map((path) => fetch(path)));
+    const modes = await Promise.all(modesFetch.map((fetch) => fetch.json()));
+    await browser.storage.local.set({'modes': modes});
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function loadDefaultProfiles () {
+  try {
+    const settings = (await (await fetch('/startProfiles.json')).json());
+    await browser.storage.local.set({ 'profileGroups': settings.profileGroups });
+    await browser.storage.local.set({ 'activeProfileGroup': settings.activeProfileGroup });
   } catch (error) {
     console.error(error);
   }
@@ -97,26 +133,5 @@ async function loadDefaultSettings (modes) {
     await browser.storage.local.set({ 'settings': defaultSettingsObject });
   } catch (error) {
     console.error(error);
-  }
-}
-
-function addListeners (modes) {
-  chrome.runtime.onInstalled.addListener((details) => {
-    Object.values(modes).forEach((mode) => {
-      mode.onInstalled(details);
-    });
-    setupDefaultConfig(modes);
-    loadDefaultSettings(modes);
-  });
-  chrome.runtime.onStartup.addListener(() => {
-    Object.values(modes).forEach((mode) => {
-      mode.onStartup();
-    });
-  });
-  // TODO: Remove this when firefox fixes bug in next version
-  if (SAKA_DEBUG && SAKA_PLATFORM === 'firefox') {
-    Object.values(modes).forEach((mode) => {
-      mode.onStartup();
-    });
   }
 }

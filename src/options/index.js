@@ -1,6 +1,6 @@
 import { render, h } from 'preact';
 import { Provider } from 'preact-redux';
-import { store } from 'options/reducers';
+import store from './store';
 import OptionsMenu from './OptionsMenu';
 import { initialize } from 'client';
 
