@@ -3,13 +3,14 @@ import { setActiveProfileGroup, setProfileGroupOption } from 'options/actions';
 import SettingsCard from '../SettingsCard';
 
 const mapStateToProps = ({ profileGroups, activeProfileGroup, settings, selectedProfileForMode }) => {
+  const profileMap = profileGroups.find((p) => p.name === activeProfileGroup).settings;
   // one option for each mode
   // the options will be a dropdown with an item for each profile
   const options = Object.entries(settings).map(([modeName, profiles]) => ({
     type: 'select',
     label: modeName,
     key: modeName,
-    value: selectedProfileForMode[modeName],
+    value: profileMap[modeName],
     choices: profiles.map((p) => p.name)
   }));
   return {
@@ -18,7 +19,7 @@ const mapStateToProps = ({ profileGroups, activeProfileGroup, settings, selected
     profiles: profileGroups.map((profile) => profile.name),
     selectedProfile: activeProfileGroup,
     options: options,
-    values: selectedProfileForMode
+    values: profileMap
   };
 };
 const mapDispatchToProps = (dispatch) => ({

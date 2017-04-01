@@ -9,6 +9,65 @@ import store from './store';
 // activeProfileGroup: string
 // selectedProfileForMode: { [modeName]: profileName } ** NOT PERSISTED LIKE THE OTHERS
 
+/*
+Consider the following normalized storage format:
+
+modesList: ["1", "2", "3", "4"],
+"modes": {
+  "1": {
+    "id": 1
+    "name": "Basic",
+    "description": "Just the basics",
+    "profiles": ["1", "2"]
+    "options": [
+      {
+        "type": "checkbox",
+        "label": "Saka Key enabled",
+        "key": "enabled"
+      }
+    ]
+  },
+  "2": {
+    "id": 2,
+    "name": "Command",
+    "description": "Just Commands",
+    "profiles": ["3", "4"]
+    "options": [ ... ]
+  }
+},
+"profiles": {
+  "1": {
+    "id": "1"
+    "mode": "1",
+    "name": "standard",
+    "options": { "key": "value" }
+  },
+  "2": {
+    "id": "2",
+    "mode": "1",
+    "name": "left hand",
+    "options": { "key": "value" }
+  }
+},
+"profileGroupsList": ["1", "2"]
+"profileGroups": {
+  "1": {
+    "id": "1",
+    "name": "standard",
+    "map": {
+      "1": "1",
+      "2": "3"
+    }
+  }
+},
+"activeProfileGroup": "1",
+// NOT STORED
+"selectedModeProfile": {
+  "1": "1",
+  "2": "2"
+}
+*/
+
 const view = (state = 'Settings', action) => {
   switch (action.type) {
     case 'SET_VIEW':
@@ -31,11 +90,6 @@ const settings = (state = null, action) => {
   switch (action.type) {
     case 'LOAD_SETTINGS':
       return action.settings;
-    // case 'SET_SETTING':
-    //   const profiles = state[action.mode];
-    //   const selected = profiles.findIndex((profile) => profile.name === action.profile);
-    //   const newProfile = update(profiles[selected], { settings: { $merge: { [action.key]: action.value } } });
-    //   return update(state, { [action.mode]: { $splice: [[selected, 1, newProfile]] } });
     default:
       return state;
   }
@@ -52,8 +106,6 @@ const profileGroups = (state = null, action) => {
 
 const activeProfileGroup = (state = null, action) => {
   switch (action.type) {
-    // case 'SET_ACTIVE_PROFILE_GROUP':
-    //   return action.newActiveProfileGroup;
     case 'LOAD_ACTIVE_PROFILE_GROUP':
       return action.activeProfileGroup;
     default:

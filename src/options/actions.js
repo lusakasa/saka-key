@@ -84,6 +84,7 @@ export const setProfileGroupOption = (activeProfileGroupName, mode, profileName)
   browser.storage.local.get('profileGroups').then(({ profileGroups }) => {
     profileGroups.find((p) => p.name === activeProfileGroupName).settings[mode] = profileName;
     browser.storage.local.set({ 'profileGroups': profileGroups }).then(() => {
+      console.log('change profile group option', activeProfileGroupName, mode, profileName);
     });
   });
   return {
