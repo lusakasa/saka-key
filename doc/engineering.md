@@ -187,3 +187,46 @@ Examples:
    
 
 Motivation: had to come up with a clear complete understanding of how it works
+
+---
+
+Decision: Each page fetches settings by:
+
+1) Fetch url with url = window.location.href
+2) Query activeProfile:
+
+chrome.storage.local('activeProfile')
+
+activeProfile = {
+  glob1: {
+    mode1: profileA,
+    mode2: profileX
+  },
+  glob2: {
+    mode1: profileA,
+    mode2: profileY
+  }
+}
+3) get profile of glob matching url
+
+profiles = match(activeProfile, url)
+
+4) Query each profile for matched glob, then send to each mode for handling
+
+// look into whether it's faster to do them all together
+Object.entries(profiles).forEach(([profile, mode]) => {
+  chrome.storage.local(profile, ({ [profile] }) => {
+    updateProfile(mode, profile);
+  })
+});
+
+5) Add storage listeners on
+1) activeProfile (update everything)
+2) each profile (update just that profile)
+
+
+---
+
+Decision: Add visible and validate field to profile options. Specifying visible allows the user to specify a condition that determines whether the option is visibile in the GUI or not. Setting validate to true will send new keyValues to background page for validation, on failure keep the old key value and show an error message to the user.
+
+Motivation:

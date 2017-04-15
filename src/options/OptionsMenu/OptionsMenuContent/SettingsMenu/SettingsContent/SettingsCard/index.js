@@ -38,7 +38,9 @@ export default class SettingsCard extends Component {
       onProfileChange
   }) {
     return (
-      <div class='mdc-card demo-card demo-card--with-avatar mode-card'>
+      <div
+        id={`settings_card_${name}`}
+        class='mdc-card demo-card demo-card--with-avatar mode-card'>
 
         <SettingsCardHeader
           name={name}

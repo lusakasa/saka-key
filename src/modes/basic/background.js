@@ -9,13 +9,13 @@ const MODE = 'Basic';
 export const mode = {
   name: MODE,
   onInstalled: () => {},
-  onStartup: () => {},
   onSettingsChange: (profile, newSettings) => {
     const { enabled: isEnabled, primaryColor, secondaryColor } = newSettings;
     if (profile === activeProfile) {
       enabled = isEnabled;
     }
   },
+  clientSettings: (options, { enabled }) => ({ enabled }),
   messages: {
     loadClient (_, src) {
       const { frameId, tabId } = meta(src);

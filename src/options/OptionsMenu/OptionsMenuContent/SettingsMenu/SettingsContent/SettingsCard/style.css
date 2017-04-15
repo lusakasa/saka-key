@@ -1,3 +1,7 @@
+.mode-card {
+  margin: 20px;
+  max-width: 450px;
+}
 .mode-card-select {
   width: 200px;
   color: white;
@@ -5,18 +9,13 @@
   margin-left: 10px;
 }
 
-button.mode-card-button {
+button.mode-card-settings-button {
   margin-left: 10px;
-  background-color: white;
-  color: #3f51b5;
-}
-
-button.mode-card-new-button {
-  margin-left: 10px;
-  font-size: 20px;
-}
-
-button.mode-card-delete-button {
+  color: white;
   margin-right: 10px;
   font-size: 20px;
+  font-weight: 600;
+  padding: 0;
+  max-width: 20px !important;
+  width: 20px !important;
 }

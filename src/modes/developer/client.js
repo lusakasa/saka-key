@@ -11,6 +11,7 @@ export const mode = {
   onExit: async (event) => {
     hideMenu();
   },
+  onSettingsChange: (settings) => {},
   events: {
     keydown: async (event) => {
       return MODE;

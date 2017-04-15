@@ -17,7 +17,25 @@
         "Hints": "left hand",
         "Developer": "standard"
       }
+    },
+    {
+      "name": "right hand",
+      "settings": {
+        "Basic": "standard",
+        "Command": "left hand",
+        "Hints": "left hand",
+        "Developer": "standard"
+      }
+    },
+    {
+      "name": "vimium",
+      "settings": {
+        "Basic": "standard",
+        "Command": "left hand",
+        "Hints": "left hand",
+        "Developer": "standard"
+      }
     }
   ],
-  "activeProfileGroup": "left hand"
+  "activeProfileGroup": "standard"
 }

@@ -14,6 +14,9 @@ export const mode = {
   onExit: async (event) => {
     commandTrie.reset();
   },
+  onSettingsChange: ({ bindings }) => {
+    commandTrie.init(bindings);
+  },
   events: {
     keydown: async (event) => {
       event.stopImmediatePropagation();

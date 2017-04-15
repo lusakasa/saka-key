@@ -7,7 +7,7 @@
         "smoothScroll": true,
         "scrollStep": 60,
         "toggleHelpMenu": [
-          [{ "key": "?" }]
+          [{ "key": "?", "shiftKey": true }]
         ],
         "showLinkHints": [
           [{ "key": "f" }]
@@ -27,29 +27,29 @@
           [{ "key": "l" }]
         ],
         "scrollPageDown": [
-          [{ "key": "J" }]
+          [{ "key": "J", "shiftKey": true }]
         ],
         "scrollPageUp": [
-          [{ "key": "K" }]
+          [{ "key": "K", "shiftKey": true }]
         ],
         "scrollHalfPageDown": [
-          [{ "key": "D" }]
+          [{ "key": "D", "shiftKey": true }]
         ],
         "scrollHalfPageUp": [
-          [{ "key": "S" }]
+          [{ "key": "S", "shiftKey": true }]
         ],
         "scrollToBottom": [
-          [{ "key": "G" }]
+          [{ "key": "G", "shiftKey": true }]
         ],
         "scrollToTop": [
             [{ "key": "g" }, { "key": "g" }]
         ],
         "scrollToLeft": [
-          [{ "key": "H" }],
+          [{ "key": "H", "shiftKey": true }],
           [{ "key": "g" }, { "key": "a" }]
         ],
         "scrollToRight": [
-          [{ "key": "L" }]
+          [{ "key": "L", "shiftKey": true }]
         ],
         "goBack": [
           [{ "key": "c"}]
@@ -67,7 +67,7 @@
           [{ "key": "u"}]
         ],
         "goToRoot": [
-          [{ "key": "U"}]
+          [{ "key": "U", "shiftKey": true}]
         ],
         "previousTab": [
           [{ "key": "e" }]
@@ -88,34 +88,34 @@
           [{ "key": "w" }]
         ],
         "moveTabFirst": [
-          [{ "key": "Q" }]
+          [{ "key": "Q", "shiftKey": true }]
         ],
         "moveTabLast": [
-          [{ "key": "R" }]
+          [{ "key": "R", "shiftKey": true }]
         ],
         "closeTab": [
           [{ "key": "x" }]
         ],
         "closeOtherTabs": [
-          [{ "key": "O" }]
+          [{ "key": "O", "shiftKey": true }]
         ],
         "closeRightTabs": [
-          [{ "key": "P" }]
+          [{ "key": "P", "shiftKey": true }]
         ],
         "closeLeftTabs": [
-          [{ "key": "I" }]
+          [{ "key": "I", "shiftKey": true }]
         ],
         "newTab": [
           [{ "key": "n" }]
         ],
         "restoreTab": [
-          [{ "key": "X" }]
+          [{ "key": "X", "shiftKey": true }]
         ],
         "duplicateTab": [
           [{ "key": "b" }]
         ],
         "newWindow": [
-          [{ "key": "N" }]
+          [{ "key": "N", "shiftKey": true }]
         ],
         "switchWindow": [
           [{ "key": "%" }]
@@ -124,7 +124,7 @@
           [{ "key": "z" }]
         ],
         "zoomOut": [
-          [{ "key": "Z" }]
+          [{ "key": "Z", "shiftKey": true }]
         ],
         "zoomReset": [
           [{ "code": "KeyZ", "altKey": true }],
@@ -134,19 +134,19 @@
           [{ "key": "t" }]
         ],
         "refreshAllTabs": [
-          [{ "key": "T" }]
+          [{ "key": "T", "shiftKey": true }]
         ],
         "toggleMuteTab": [
           [{ "key": "m" }]
         ],
         "toggleMuteAllTabs": [
-          [{ "key": "M" }]
+          [{ "key": "M", "shiftKey": true }]
         ],
         "togglePinTab": [
           [{ "key": "p" }]
         ],
         "developerMode": [
-          [{ "key": "*" }]
+          [{ "key": "*", "shiftKey": true }]
         ]
       }
     },
@@ -156,7 +156,7 @@
         "smoothScroll": true,
         "scrollStep": 60,
         "toggleHelpMenu": [
-          [{ "key": "1" }]
+          [{ "key": "?", "shiftKey": true }]
         ],
         "showLinkHints": [
           [{ "key": "f" }]
@@ -174,29 +174,29 @@
           [{ "key": "l" }]
         ],
         "scrollPageDown": [
-          [{ "key": "J" }]
+          [{ "key": "J", "shiftKey": true }]
         ],
         "scrollPageUp": [
-          [{ "key": "K" }]
+          [{ "key": "K", "shiftKey": true }]
         ],
         "scrollHalfPageDown": [
-          [{ "key": "D" }]
+          [{ "key": "D", "shiftKey": true }]
         ],
         "scrollHalfPageUp": [
-          [{ "key": "S" }]
+          [{ "key": "S", "shiftKey": true }]
         ],
         "scrollToBottom": [
-          [{ "key": "G" }]
+          [{ "key": "G", "shiftKey": true }]
         ],
         "scrollToTop": [
             [{ "key": "g" }, { "key": "g" }]
         ],
         "scrollToLeft": [
-          [{ "key": "H" }],
+          [{ "key": "H", "shiftKey": true }],
           [{ "key": "g" }, { "key": "a" }]
         ],
         "scrollToRight": [
-          [{ "key": "L" }]
+          [{ "key": "L", "shiftKey": true }]
         ],
         "goBack": [
           [{ "key": "c"}]
@@ -214,7 +214,7 @@
           [{ "key": "u"}]
         ],
         "goToRoot": [
-          [{ "key": "U"}]
+          [{ "key": "U", "shiftKey": true}]
         ],
         "previousTab": [
           [{ "key": "e" }]
@@ -235,19 +235,19 @@
           [{ "key": "w" }]
         ],
         "moveTabFirst": [
-          [{ "key": "Q" }]
+          [{ "key": "Q", "shiftKey": true }]
         ],
         "moveTabLast": [
-          [{ "key": "R" }]
+          [{ "key": "R", "shiftKey": true }]
         ],
         "closeTab": [
           [{ "key": "x" }]
         ],
         "closeOtherTabs": [
-          [{ "key": "O" }]
+          [{ "key": "O", "shiftKey": true }]
         ],
         "closeRightTabs": [
-          [{ "key": "P" }]
+          [{ "key": "P", "shiftKey": true }]
         ],
         "closeLeftTabs": [
           [{ "key": "I" }]
@@ -256,22 +256,22 @@
           [{ "key": "n" }]
         ],
         "restoreTab": [
-          [{ "key": "X" }]
+          [{ "key": "X", "shiftKey": true }]
         ],
         "duplicateTab": [
           [{ "key": "b" }]
         ],
         "newWindow": [
-          [{ "key": "N" }]
+          [{ "key": "N", "shiftKey": true }]
         ],
         "switchWindow": [
-          [{ "key": "%" }]
+          [{ "key": "%", "shiftKey": true }]
         ],
         "zoomIn": [
           [{ "key": "z" }]
         ],
         "zoomOut": [
-          [{ "key": "Z" }]
+          [{ "key": "Z", "shiftKey": true }]
         ],
         "zoomReset": [
           [{ "code": "KeyZ", "altKey": true }],
@@ -287,13 +287,13 @@
           [{ "key": "m" }]
         ],
         "toggleMuteAllTabs": [
-          [{ "key": "M" }]
+          [{ "key": "M", "shiftKey": true }]
         ],
         "togglePinTab": [
           [{ "key": "p" }]
         ],
         "developerMode": [
-          [{ "key": "*" }]
+          [{ "key": "*", "shiftKey": true }]
         ]
       }
     }

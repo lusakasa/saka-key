@@ -16,6 +16,16 @@ export const mode = {
   },
   onEnter: async (event) => {},
   onExit: async (event) => {},
+  onSettingsChange: ({ enabled }) => {
+    if (enabled) {
+      if (isTextEditable(document.activeElement)) {
+        return 'Text';
+      } else {
+        return 'Command';
+      }
+    }
+    return MODE;
+  },
   events: {
     keydown: async (event) => {
       return MODE;

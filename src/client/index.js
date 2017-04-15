@@ -1,5 +1,5 @@
 import { init } from 'mosi/client';
-import { initModes, modeAction } from './modes';
+import { initModes, setup, modeAction, clientSettings } from './modes';
 import { mode as Basic } from 'modes/basic/client';
 import { mode as Command } from 'modes/command/client';
 import { mode as Text } from 'modes/text/client';
@@ -22,7 +22,10 @@ export function initialize (type) {
   // Initialize the messaging system
   init({
     subscriptions: ['client', type],
-    actions: { modeAction }
+    actions: {
+      modeAction,
+      clientSettings
+    }
   });
 
   const modes = SAKA_DEBUG ? {
@@ -39,4 +42,6 @@ export function initialize (type) {
   };
   // Initialize the built-in modes. New built-in modes should be added here.
   initModes('Basic', modes);
+
+  setup();
 }

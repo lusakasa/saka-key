@@ -1,3 +1,4 @@
+import { msg } from 'mosi/client';
 import { Extension } from 'modes/extension/client';
 
 /** The active mode of the Modes state machine */
@@ -9,9 +10,13 @@ export function initModes (startMode, availableModes) {
   if (SAKA_DEBUG) console.log(`Start mode: ${startMode}`);
   currentMode = startMode;
   modes = availableModes;
+}
+
+export function setup () {
   Object.values(modes).forEach((mode) => {
     mode.onCreate();
   });
+  msg(1, 'clientSettings');
   installEventListeners();
 }
 
@@ -56,6 +61,18 @@ export async function modeAction ({ mode, action, arg }, src) {
   if (nextMode) {
     setMode(nextMode, { type: 'message:' + action });
   }
+}
+
+/** Handles when messages containing updated settings are received */
+export function clientSettings (settings) {
+  if (SAKA_DEBUG) console.log('Received settings: ', settings);
+  if (typeof settings === 'string') {
+    console.error('Failed to configure client settings: ', settings);
+    return;
+  }
+  Object.values(modes).forEach((mode) => {
+    mode.onSettingsChange(settings);
+  });
 }
 
 /**

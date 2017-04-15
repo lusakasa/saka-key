@@ -2,13 +2,44 @@ import { combineReducers } from 'redux';
 import store from './store';
 // import update from 'immutability-helper';
 
-
+// V1 - how it works now
 // modes: Array<{ modeName, modeDescription, Array<{ type, key, label, {...other} }>>
 // settings: { [modeName]: Array<{ profileName, settings: { [key]: values } }>
 // profileGroups: Array<{ profileGroupName, settings: { [modeName]: profileName }
 // activeProfileGroup: string
-// selectedProfileForMode: { [modeName]: profileName } ** NOT PERSISTED LIKE THE OTHERS
+// selectedProfileForMode: { [modeName]: profileName } ** NOT PERSISTED LIKE THE OTHERS, lives only as long as options GUI
+//
+// -> background page listens for changes and converts to storage format designed for loading into clients
+// (not yet implemented)
+//
+// client_profile: { [modeName]: profile_Id <- generated with UUID}
+//    dependent on: 1. activeProfileGroup, 2. profileGroups
+// { ...profile_Id: modeSpecificSettingsObject
+//    dependent on: settings
+//
+// temp fix for now: fetch settings from background page
 
+
+
+// ---------------------------------------- future idea
+// V2 - how it will work in the future
+// modes: [modeName]    modeNames must be unique and thus serve as Ids
+// ...modeName: { modeName, modeDescription, profiles: [profileId], [{ type, key, label, {...other} }] }
+// ...profileId: { profileId, modeId, profileName, options: { [key]: value } } (one key per profile)
+// profileGroups: [profileGroupId]
+// ...profileGroupId: { profileGroupId, profileGroupName, settings: { [modeId]: profileId} }
+// activeProfileGroup: profileGroupId
+// selectedProfileForMode: { [modeId]: profileId } ** NOT PERSISTED LIKE THE OTHERS
+//
+// -> background page listens for changes and converts to storage format designed for loading into clients
+//
+// client_profile: { [modeName]: client_profileId}
+//    dependent on: 1. activeProfileGroup, 2. profileGroups
+// { ...client_profileId: modeSpecificSettingsObject
+//    dependent on: settings
+
+
+// V consider in the future
 /*
 Consider the following normalized storage format:
 
@@ -115,8 +146,12 @@ const activeProfileGroup = (state = null, action) => {
 
 const selectedProfileForMode = (state = null, action) => {
   switch (action.type) {
+    // Set selected modes to those of new Active Profile
+    // TODO: fix this so it doesn't rely on store.getState(), possibly with thunks
+    case 'SET_PROFILE_GROUP_OPTION':
+      const oldProfileMap = store.getState().profileGroups.find((p) => p.name === action.activeProfileGroupName).settings;
+      return Object.assign({}, oldProfileMap, { [action.mode]: action.profileName });
     case 'LOAD_ACTIVE_PROFILE_GROUP':
-      // TODO: fix this so it doesn't rely on store.getState(), possibly with thunks
       return store.getState().profileGroups.find((p) => p.name === action.activeProfileGroup).settings;
     case 'SET_SELECTED_PROFILE_FOR_MODE':
       return Object.assign({}, state, { [action.mode]: action.newProfileName });

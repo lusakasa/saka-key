@@ -80,9 +80,10 @@ function friendlyCodeString (code, shift) {
  *      { key }
  */
 export function validateKeyboardEvent (event) {
-  if (event.hasOwnProperty('code') === event.hasOwnProperty('key')) {
-    throw Error('Either the key or the code property must be specified, but not both');
-  }
+  return;
+  // if (event.hasOwnProperty('code') === event.hasOwnProperty('key')) {
+  //   throw Error('Either the key or the code property must be specified, but not both');
+  // }
   if (event.hasOwnProperty('code')) {
     for (const [key, value] of Object.entries(event)) {
       if (key === 'shiftKey' || key === 'ctrlKey' || key === 'altKey' || key === 'metaKey') {

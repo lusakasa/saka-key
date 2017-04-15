@@ -7,6 +7,7 @@ export const mode = {
   onCreate: () => {},
   onEnter: async (event) => {},
   onExit: async (event) => {},
+  onSettingsChange: (settings) => {},
   events: {
     keydown: async (event) => {
       return MODE;

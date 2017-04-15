@@ -38,14 +38,7 @@ body {
 .settings-content {
   display: inline-flex;
   flex-direction: column;
-}
-
-.mode-card {
-  margin: 20px;
-}
-
-.options-menu {
-  
+  margin-left: 280px;
 }
 
 .settings-menu {

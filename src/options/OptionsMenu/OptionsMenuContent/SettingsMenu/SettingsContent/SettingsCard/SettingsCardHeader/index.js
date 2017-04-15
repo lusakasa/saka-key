@@ -20,9 +20,7 @@ export default class SettingsCardHeader extends Component {
             )}
           </select>
           <button
-            className='mdc-button mdc-button--compact mdc-button--dense mdc-button--raised mode-card-button'>new</button>
-          <button
-            className='mdc-button mdc-button--compact mdc-button--dense mdc-button--raised mdc-buton--accent mode-card-button'>delete</button>
+            className='mdc-button mode-card-settings-button'>&#8942;</button>
         </section>
       </header>
     );

@@ -14,6 +14,7 @@ export const mode = {
   onExit: async (event) => {
     hideHints();
   },
+  onSettingsChange: (settings) => {},
   events: {
     keydown: async (event) => {
       event.stopImmediatePropagation();
