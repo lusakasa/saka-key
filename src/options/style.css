@@ -2,7 +2,9 @@ body {
   margin: 0px;
 }
 
-.saka-toolbar {}
+ .options-menu-header {
+  z-index: 3;
+}
 
 .saka-toolbar .saka-toolbar-item {
   text-decoration: none;

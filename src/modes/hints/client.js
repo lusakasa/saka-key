@@ -34,21 +34,15 @@ export const mode = {
       event.stopImmediatePropagation();
       return MODE;
     },
-    keyup: async (event) => {
-      return MODE;
-    },
+    keyup: (event) => MODE,
     focusin: async (event) => {
       if (isTextEditable(event.target)) {
         return 'Text';
       }
       return MODE;
     },
-    focusout: async (event) => {
-      return MODE;
-    },
-    click: async (event) => {
-      return MODE;
-    },
+    focusout: (event) => MODE,
+    click: (event) => MODE,
     mousedown: async (event) => {
       if (SAKA_DEBUG) return MODE;
       if (isTextEditable(event.target)) {

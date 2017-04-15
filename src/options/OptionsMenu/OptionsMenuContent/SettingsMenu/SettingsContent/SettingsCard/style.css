@@ -4,9 +4,18 @@
 }
 .mode-card-select {
   width: 200px;
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  color: white !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6) !important;
   margin-left: 10px;
+}
+
+.settings-card-menu {
+    position: absolute;
+    transform-origin: right top 0px;
+    transform: scale(1, 1);
+    right: 0px;
+    top: 40px;
+    z-index: 2;
 }
 
 button.mode-card-settings-button {
@@ -18,4 +27,6 @@ button.mode-card-settings-button {
   padding: 0;
   max-width: 20px !important;
   width: 20px !important;
+  min-width: auto;
+  margin-right: 0px;
 }

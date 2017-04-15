@@ -47,15 +47,9 @@ export const mode = {
       }
       return MODE;
     },
-    focusout: async (event) => {
-      return MODE;
-    },
-    click: async (event) => {
-      return MODE;
-    },
-    mousedown: async (event) => {
-      return MODE;
-    }
+    focusout: (event) => MODE,
+    click: (event) => MODE,
+    mousedown: (event) => MODE
   },
   messages: {}
 };

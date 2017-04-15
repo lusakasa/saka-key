@@ -8,9 +8,8 @@ export default class Text extends Component {
         <div class='mdc-textfield' data-demo-no-auto-js=''>
           <input
             type='text'
-            class='mdc-textfield__input'
+            className='mdc-textfield__input'
             style='text-align: right'
-            id='css-only-textfield'
             value={value}
             onChange={(e) => onChange(e.target.value)} />
         </div>

@@ -1,69 +1,39 @@
 import { msg } from 'mosi/client';
 import { isTextEditable } from 'lib/dom';
-import { commandTrie } from 'modes/command/commandTrie';
 import { toggleHelpMenu } from './help';
+
+function calculateNextMode (enabled, currentMode) {
+  if (enabled) {
+    if (isTextEditable(document.activeElement)) {
+      return 'Text';
+    } else {
+      return 'Command';
+    }
+  }
+  return currentMode;
+}
 
 const MODE = 'Basic';
 
 export const mode = {
   name: MODE,
-  onCreate: () => {
-    if (SAKA_DEBUG) console.log('initClient requested');
-    msg(1, 'modeAction', {
-      mode: MODE,
-      action: 'initClient'
-    });
-  },
+  onCreate: () => {},
   onEnter: async (event) => {},
   onExit: async (event) => {},
   onSettingsChange: ({ enabled }) => {
-    if (enabled) {
-      if (isTextEditable(document.activeElement)) {
-        return 'Text';
-      } else {
-        return 'Command';
-      }
-    }
-    return MODE;
+    const nextMode = calculateNextMode(enabled, MODE);
+    msg(0, 'modeAction', { mode: 'Basic', action: 'setMode', arg: nextMode });
   },
   events: {
-    keydown: async (event) => {
-      return MODE;
-    },
-    keypress: async (event) => {
-      return MODE;
-    },
-    keyup: async (event) => {
-      return MODE;
-    },
-    focusin: async (event) => {
-      return MODE;
-    },
-    focusout: async (event) => {
-      return MODE;
-    },
-    click: async (event) => {
-      return MODE;
-    },
-    mousedown: async (event) => {
-      return MODE;
-    }
+    keydown: async (event) => MODE,
+    keypress: (event) => MODE,
+    keyup: (event) => MODE,
+    focusin: (event) => MODE,
+    focusout: (event) => MODE,
+    click: (event) => MODE,
+    mousedown: (event) => MODE
   },
   messages: {
-    initClient: ({ enabled, bindings }) => {
-      if (SAKA_DEBUG) {
-        console.log(`initClient: enabled=${enabled}, bindings=`, bindings);
-      }
-      commandTrie.init(bindings);
-      if (enabled) {
-        if (isTextEditable(document.activeElement)) {
-          return 'Text';
-        } else {
-          return 'Command';
-        }
-      }
-      return MODE;
-    },
     setEnabled: (enabled) => {
       if (SAKA_DEBUG) {
         console.log(`${enabled ? 'en' : 'dis'}abling Saka Key`);

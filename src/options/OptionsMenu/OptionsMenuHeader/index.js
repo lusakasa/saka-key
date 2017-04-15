@@ -2,7 +2,7 @@ import { h } from 'preact';
 import OptionsMenuTab from './OptionsMenuTab';
 
 const OptionsMenuHeader = ({ view }) => (
-  <header className='mdc-toolbar mdc-toolbar--fixed saka-toolbar'>
+  <header className='mdc-toolbar mdc-toolbar--fixed saka-toolbar options-menu-header'>
     <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
       <img src='logo.png' className='saka-logo' alt='Saka Key' />
       <span className='mdc-toolbar__title'>Saka Key</span>

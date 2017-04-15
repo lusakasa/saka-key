@@ -9,30 +9,18 @@ export const mode = {
   onExit: async (event) => {},
   onSettingsChange: (settings) => {},
   events: {
-    keydown: async (event) => {
-      return MODE;
-    },
-    keypress: async (event) => {
-      return MODE;
-    },
-    keyup: async (event) => {
-      return MODE;
-    },
-    focusin: async (event) => {
-      return MODE;
-    },
+    keydown: (event) => MODE,
+    keypress: (event) => MODE,
+    keyup: (event) => MODE,
+    focusin: (event) => MODE,
     focusout: async (event) => {
       if (isTextEditable(event.relatedTarget)) {
         return MODE;
       }
       return 'Command';
     },
-    click: async (event) => {
-      return MODE;
-    },
-    mousedown: async (event) => {
-      return MODE;
-    }
+    click: (event) => MODE,
+    mousedown: (event) => MODE
   },
   messages: {}
 };

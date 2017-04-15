@@ -1,4 +1,4 @@
-import { msg, get, meta } from 'mosi/core';
+import { msg, meta } from 'mosi/core';
 
 /** Stores whether Saka Key is enabled */
 let enabled = true;
@@ -10,7 +10,7 @@ export const mode = {
   name: MODE,
   onInstalled: () => {},
   onSettingsChange: (profile, newSettings) => {
-    const { enabled: isEnabled, primaryColor, secondaryColor } = newSettings;
+    const { enabled: isEnabled } = newSettings;
     if (profile === activeProfile) {
       enabled = isEnabled;
     }
@@ -27,17 +27,6 @@ export const mode = {
         frameId,
         runAt: 'document_start',
         matchAboutBlank: true
-      });
-    },
-    initClient: async (arg, src) => {
-      const bindings = (await get(0, 'modeAction', {
-        mode: 'Command',
-        action: 'bindings'
-      }))[0].v;
-      msg(src, 'modeAction', {
-        mode: MODE,
-        action: 'initClient',
-        arg: { enabled, bindings }
       });
     },
     getEnabled (_, src) {
