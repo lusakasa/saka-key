@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@material/checkbox": "^0.2.2",
+    "@material/menu": "^0.2.1",
     "immutability-helper": "^2.1.2",
     "material-components-web": "^0.7.0",
     "mosi": "latest",

@@ -1,22 +1,15 @@
 import { Component, h } from 'preact';
+import { MDCSimpleMenu } from '@material/menu';
 
 export default class SettingsCardHeader extends Component {
   state = {
-    menuVisible: false,
     state: 'default' // 'editing'
   }
-  menuClasses = () => {
-    const menuVisibleClass = this.state.menuVisible ? 'mdc-simple-menu--open' : '';
-    return `mdc-simple-menu settings-card-menu ${menuVisibleClass}`;
-  }
-  toggleMenuVisibility = () => {
-    this.setState({ menuVisible: !this.state.menuVisible });
-  }
-  clickRename = (name) => () => {
+  clickRename = () => {
     this.setState({ state: 'editing' });
     setTimeout(() => {
-      document.querySelector(`#name-text-input-${name}`).focus();
-    }, 0);
+      this.textInput.focus();
+    }, 100);
   }
   render ({
     name, profiles, selectedProfile,
@@ -39,6 +32,7 @@ export default class SettingsCardHeader extends Component {
             </select>
             : <div className='mdc-textfield' style='margin-bottom: 0px' data-demo-no-auto-js=''>
               <input
+                ref={(el) => { this.textInput = el; }}
                 id={`name-text-input-${name}`}
                 type='text'
                 className='mdc-textfield__input mode-card-select'
@@ -49,13 +43,18 @@ export default class SettingsCardHeader extends Component {
           <div class='mdc-menu-anchor'>
             <button
               className='mdc-button mode-card-settings-button'
-              onClick={this.toggleMenuVisibility}>
+              onClick={() => { this.menu.open = !this.menu.open; }}>
               &#8942;
             </button>
-            <div className={this.menuClasses()} tabIndex='0'>
+            <div
+              className='mdc-simple-menu mdc-simple-menu--open-from-top-right settings-card-menu' tabIndex='0'
+              ref={(el) => {
+                if (el) this.menu = new MDCSimpleMenu(el);
+              }}
+            >
               <ul className='mdc-simple-menu__items mdc-list' role='menu' aria-hidden='true'>
                 <li className='mdc-list-item' role='menuitem' tabIndex='0'
-                  onClick={this.clickRename(name)}
+                  onClick={this.clickRename}
                 >
                   Rename
                 </li>

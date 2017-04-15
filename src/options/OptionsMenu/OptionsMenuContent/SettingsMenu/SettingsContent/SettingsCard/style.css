@@ -10,12 +10,7 @@
 }
 
 .settings-card-menu {
-    position: absolute;
-    transform-origin: right top 0px;
-    transform: scale(1, 1);
-    right: 0px;
-    top: 40px;
-    z-index: 2;
+    z-index: 3;
 }
 
 button.mode-card-settings-button {
