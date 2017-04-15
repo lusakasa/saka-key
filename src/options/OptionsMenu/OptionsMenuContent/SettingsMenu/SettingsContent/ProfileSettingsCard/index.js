@@ -1,5 +1,10 @@
 import { connect } from 'preact-redux';
-import { setActiveProfileGroup, setProfileGroupOption } from 'options/actions';
+import {
+  setActiveProfileGroup,
+  setProfileGroupOption,
+  addProfileGroup,
+  deleteProfileGroup
+} from 'options/actions';
 import SettingsCard from '../SettingsCard';
 
 const mapStateToProps = ({ profileGroups, activeProfileGroup, settings, selectedProfileForMode }) => {
@@ -28,6 +33,18 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onProfileChange: (newProfileGroupName) => {
     dispatch(setActiveProfileGroup(newProfileGroupName));
+  },
+  onProfileNew: (newProfileGroupName) => {
+    dispatch(addProfileGroup(newProfileGroupName));
+  },
+  onProfileDelete: (profileGroupName) => {
+    dispatch(deleteProfileGroup(profileGroupName));
+  },
+  onProfileDuplicate: (profileGroupName) => {
+    // dispatch(deleteProfileGroup(profileGroupName));
+  },
+  onProfileRename: (profileGroupName) => {
+    // dispatch(deleteProfileGroup(profileGroupName));
   }
 });
 const mergeProps = (stateProps, dispatchProps, ownProps) => (
@@ -36,3 +53,10 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => (
   })
 );
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SettingsCard);
+
+// TODO: make sure to remove these comments
+// modes: Array<{ modeName, modeDescription, Array<{ type, key, label, {...other} }>>
+// settings: { [modeName]: Array<{ profileName, settings: { [key]: values } }>
+// profileGroups: Array<{ profileGroupName, settings: { [modeName]: profileName }
+// activeProfileGroup: string
+// selectedProfileForMode: { [modeName]: profileName } ** NOT PERSISTED LIKE THE OTHERS, lives only as long as options GUI

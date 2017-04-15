@@ -35,7 +35,11 @@ export default class SettingsCard extends Component {
       options,
       values,
       onOptionChange,
-      onProfileChange
+      onProfileChange,
+      onProfileNew,
+      onProfileDelete,
+      onProfileDuplicate,
+      onProfileRename
   }) {
     return (
       <div
@@ -46,7 +50,12 @@ export default class SettingsCard extends Component {
           name={name}
           profiles={profiles}
           selectedProfile={selectedProfile}
-          onProfileChange={onProfileChange} />
+          onProfileChange={onProfileChange}
+          onProfileNew={onProfileNew}
+          onProfileDelete={onProfileDelete}
+          onProfileDuplicate={onProfileDuplicate}
+          onProfileRename={onProfileRename}
+        />
 
         <section class='mdc-card__primary'>
           <h2 class='mdc-card__subtitle'>{ description }</h2>

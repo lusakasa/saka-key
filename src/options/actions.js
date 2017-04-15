@@ -71,11 +71,39 @@ export const setSelectedProfileForMode = (mode, newProfileName) => {
 
 /** Change the active profile group */
 export const setActiveProfileGroup = (newActiveProfileGroup) => {
-  browser.storage.local.set({ 'activeProfileGroup': newActiveProfileGroup }).then(() => {
-  });
+  browser.storage.local.set({ 'activeProfileGroup': newActiveProfileGroup });
   return {
     type: 'SET_ACTIVE_PROFILE_GROUP',
     newActiveProfileGroup
+  };
+};
+
+/** Change the active profile group */
+export const addProfileGroup = (newProfileGroupName) => {
+  browser.storage.local.get(['profileGroups', 'activeProfileGroup'])
+    .then(({ profileGroups, activeProfileGroup }) => {
+      profileGroups.push({
+        name: newProfileGroupName,
+        settings: profileGroups.find((p) => p.name === 'standard').settings
+      });
+      browser.storage.local.set({ profileGroups, activeProfileGroup: newProfileGroupName });
+    });
+  return {
+    type: 'ADD_PROFILE_GROUP',
+    newProfileGroupName
+  };
+};
+
+/** Change the active profile group */
+export const deleteProfileGroup = (profileGroupName) => {
+  browser.storage.local.get('profileGroups')
+    .then(({ profileGroups }) => {
+      profileGroups = profileGroups.filter(({ name }) => name !== profileGroupName);
+      browser.storage.local.set({ profileGroups, activeProfileGroup: 'standard' });
+    });
+  return {
+    type: 'DELETE_PROFILE_GROUP',
+    profileGroupName
   };
 };
 
