@@ -155,6 +155,14 @@ const selectedProfileForMode = (state = null, action) => {
       return store.getState().profileGroups.find((p) => p.name === action.activeProfileGroup).settings;
     case 'SET_SELECTED_PROFILE_FOR_MODE':
       return Object.assign({}, state, { [action.mode]: action.newProfileName });
+    case 'DELETE_PROFILE':
+      return Object.assign({}, state, { [action.mode]: 'standard' });
+    case 'ADD_PROFILE':
+      return Object.assign({}, state, { [action.mode]: action.profileName });
+    case 'RENAME_PROFILE':
+      return Object.assign({}, state, { [action.mode]: action.newProfileName });
+    case 'DUPLICATE_PROFILE':
+      return Object.assign({}, state, { [action.mode]: action.profileName });
     default:
       return state;
   }

@@ -55,10 +55,3 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => (
   })
 );
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(SettingsCard);
-
-// TODO: make sure to remove these comments
-// modes: Array<{ modeName, modeDescription, Array<{ type, key, label, {...other} }>>
-// settings: { [modeName]: Array<{ profileName, settings: { [key]: values } }>
-// profileGroups: Array<{ profileGroupName, settings: { [modeName]: profileName }
-// activeProfileGroup: string
-// selectedProfileForMode: { [modeName]: profileName } ** NOT PERSISTED LIKE THE OTHERS, lives only as long as options GUI

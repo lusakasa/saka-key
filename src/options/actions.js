@@ -69,6 +69,76 @@ export const setSelectedProfileForMode = (mode, newProfileName) => {
   };
 };
 
+export const addProfile = (modeName, newProfileName) => {
+  browser.storage.local.get(['settings'])
+    .then(({ settings }) => {
+      const standardSettings = settings[modeName].find((p) => p.name === 'standard').settings;
+      settings[modeName].push({
+        name: newProfileName,
+        settings: standardSettings
+      });
+      browser.storage.local.set({ settings });
+    });
+  return {
+    type: 'ADD_PROFILE',
+    mode: modeName,
+    profileName: newProfileName
+  };
+};
+
+export const deleteProfile = (modeName, profileName) => {
+  browser.storage.local.get(['settings'])
+    .then(({ settings }) => {
+      settings[modeName] = settings[modeName].filter(({ name }) => name !== profileName);
+      browser.storage.local.set({ settings });
+    });
+  return {
+    type: 'DELETE_PROFILE',
+    mode: modeName,
+    profile: profileName
+  };
+};
+
+export const duplicateProfile = (modeName, profileName) => {
+  const copyName = `${profileName} copy`;
+  browser.storage.local.get(['settings'])
+    .then(({ settings }) => {
+      settings[modeName].push({
+        name: copyName,
+        settings: settings[modeName].find((profile) => profile.name === profileName).settings
+      });
+      browser.storage.local.set({ settings });
+    });
+  return {
+    type: 'DUPLICATE_PROFILE',
+    mode: modeName,
+    profileName: copyName
+  };
+};
+
+export const renameProfile = (modeName, oldProfileName, newProfileName) => {
+  browser.storage.local.get(['settings'])
+    .then(({ settings }) => {
+      settings[modeName] = settings[modeName].map((profile) => {
+        if (profile.name === oldProfileName) {
+          return {
+            name: newProfileName,
+            settings: profile.settings
+          };
+        }
+        return profile;
+      });
+      browser.storage.local.set({ settings });
+    });
+  return {
+    type: 'RENAME_PROFILE',
+    mode: modeName,
+    oldProfileName,
+    newProfileName
+  };
+};
+
+
 /** Change the active profile group */
 export const setActiveProfileGroup = (newActiveProfileGroup) => {
   browser.storage.local.set({ 'activeProfileGroup': newActiveProfileGroup });

@@ -7,12 +7,9 @@ export default class SettingsCardHeader extends Component {
   }
   componentDidMount () {
     document.addEventListener('click', () => {
-      if (this.state.menuVisible) {
-        this.setState({ menuVisible: false });
-      }
+      this.setState({ menuVisible: false });
     }, true);
     document.addEventListener('keydown', (e) => {
-      console.log(e);
       if (e.key === 'Escape') {
         this.setState({ menuVisible: false });
       }
