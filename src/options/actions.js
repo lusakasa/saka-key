@@ -78,7 +78,6 @@ export const setActiveProfileGroup = (newActiveProfileGroup) => {
   };
 };
 
-/** Change the active profile group */
 export const addProfileGroup = (newProfileGroupName) => {
   browser.storage.local.get(['profileGroups', 'activeProfileGroup'])
     .then(({ profileGroups, activeProfileGroup }) => {
@@ -94,7 +93,6 @@ export const addProfileGroup = (newProfileGroupName) => {
   };
 };
 
-/** Change the active profile group */
 export const deleteProfileGroup = (profileGroupName) => {
   browser.storage.local.get('profileGroups')
     .then(({ profileGroups }) => {
@@ -106,6 +104,44 @@ export const deleteProfileGroup = (profileGroupName) => {
     profileGroupName
   };
 };
+
+export const duplicateProfileGroup = (profileGroupName) => {
+  const newProfileGroupName = `${profileGroupName} copy`;
+  browser.storage.local.get(['profileGroups'])
+    .then(({ profileGroups }) => {
+      profileGroups.push({
+        name: newProfileGroupName,
+        settings: profileGroups.find((p) => p.name === profileGroupName).settings
+      });
+      browser.storage.local.set({ profileGroups, activeProfileGroup: newProfileGroupName });
+    });
+  return {
+    type: 'DUPLICATE_PROFILE_GROUP',
+    duplicatedProfileGroup: profileGroupName
+  };
+};
+
+export const renameProfileGroup = (oldProfileGroupName, newProfileGroupName) => {
+  browser.storage.local.get('profileGroups')
+    .then(({ profileGroups }) => {
+      profileGroups = profileGroups.map((profileGroup) => {
+        if (profileGroup.name === oldProfileGroupName) {
+          return {
+            name: newProfileGroupName,
+            settings: profileGroup.settings
+          };
+        }
+        return profileGroup;
+      });
+      browser.storage.local.set({ profileGroups, activeProfileGroup: newProfileGroupName });
+    });
+  return {
+    type: 'RENAME_PROFILE_GROUP',
+    oldProfileGroupName,
+    newProfileGroupName
+  };
+};
+
 
 /** Change the profile for the given mode of the active profileGroup */
 export const setProfileGroupOption = (activeProfileGroupName, mode, profileName) => {

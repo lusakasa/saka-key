@@ -5,6 +5,19 @@ export default class SettingsCardHeader extends Component {
     menuVisible: false,
     state: 'default' // 'editing'
   }
+  componentDidMount () {
+    document.addEventListener('click', () => {
+      if (this.state.menuVisible) {
+        this.setState({ menuVisible: false });
+      }
+    }, true);
+    document.addEventListener('keydown', (e) => {
+      console.log(e);
+      if (e.key === 'Escape') {
+        this.setState({ menuVisible: false });
+      }
+    });
+  }
   menuClasses = () => {
     const menuVisibleClass = this.state.menuVisible ? 'mdc-simple-menu--open' : '';
     return `mdc-simple-menu settings-card-menu ${menuVisibleClass}`;
@@ -12,19 +25,28 @@ export default class SettingsCardHeader extends Component {
   toggleMenuVisibility = () => {
     this.setState({ menuVisible: !this.state.menuVisible });
   }
-  renameProfile = () => {
-    this.setState({ state: 'editing', menuVisible: false });
+  onClickRenameProfile = () => {
+    this.setState({ state: 'editing' });
     setTimeout(() => {
       this.profileNameInput.focus();
     }, 0);
   }
+  renameProfile = (newName) => {
+    this.props.onProfileRename(this.props.selectedProfile, newName);
+  }
   duplicateProfile = () => {
-    this.setState({ menuVisible: false });
-
+    this.setState({ state: 'editing' });
+    this.props.onProfileDuplicate(this.props.selectedProfile);
+    setTimeout(() => {
+      this.profileNameInput.select();
+    }, 100);
   }
   newProfile = () => {
-    this.setState({ menuVisible: false });
+    this.setState({ state: 'editing' });
     this.props.onProfileNew('unnamed' + Date.now());
+    setTimeout(() => {
+      this.profileNameInput.select();
+    }, 100);
   }
   deleteProfile = () => {
     this.setState({ menuVisible: false });
@@ -55,13 +77,14 @@ export default class SettingsCardHeader extends Component {
                 type='text'
                 className='mdc-textfield__input mode-card-select'
                 value={selectedProfile}
-                onKeyPress={(e) => {
+                onKeyDown={(e) => {
                   if (e.key === 'Enter') {
-                    if (profiles.indexOf(e.target.value) === -1) {
-
-                    } else {
-
+                    const newName = e.target.value;
+                    if (profiles.indexOf(newName) === -1 && newName !== '') {
+                      this.renameProfile(newName);
                     }
+                    this.setState({ state: 'default' });
+                  } else if (e.key === 'Escape') {
                     this.setState({ state: 'default' });
                   }
                 }}
@@ -76,14 +99,16 @@ export default class SettingsCardHeader extends Component {
             </button>
             <div className={this.menuClasses()} tabIndex='0'>
               <ul className='mdc-simple-menu__items mdc-list' role='menu' aria-hidden='true'>
-                <li
-                  className='mdc-list-item'
-                  role='menuitem'
-                  tabIndex='0'
-                  onClick={this.renameProfile}
-                >
-                  Rename
-                </li>
+                { selectedProfile === 'standard'
+                  ? undefined
+                  : <li
+                    className='mdc-list-item'
+                    role='menuitem'
+                    tabIndex='0'
+                    onClick={this.onClickRenameProfile}
+                    >
+                      Rename
+                    </li> }
                 <li
                   className='mdc-list-item'
                   role='menuitem'

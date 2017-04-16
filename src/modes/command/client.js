@@ -19,7 +19,9 @@ export const mode = {
   },
   events: {
     keydown: async (event) => {
-      event.stopImmediatePropagation();
+      if (event.key !== 'Escape') {
+        event.stopImmediatePropagation();
+      }
       if (!isModifierKey(event)) {
         const command = commandTrie.advance(event);
         if (command) {

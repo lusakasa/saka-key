@@ -3,7 +3,9 @@ import {
   setActiveProfileGroup,
   setProfileGroupOption,
   addProfileGroup,
-  deleteProfileGroup
+  deleteProfileGroup,
+  duplicateProfileGroup,
+  renameProfileGroup
 } from 'options/actions';
 import SettingsCard from '../SettingsCard';
 
@@ -41,10 +43,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(deleteProfileGroup(profileGroupName));
   },
   onProfileDuplicate: (profileGroupName) => {
-    // dispatch(deleteProfileGroup(profileGroupName));
+    dispatch(duplicateProfileGroup(profileGroupName));
   },
-  onProfileRename: (profileGroupName) => {
-    // dispatch(deleteProfileGroup(profileGroupName));
+  onProfileRename: (oldProfileGroupName, newProfileGroupName) => {
+    dispatch(renameProfileGroup(oldProfileGroupName, newProfileGroupName));
   }
 });
 const mergeProps = (stateProps, dispatchProps, ownProps) => (
