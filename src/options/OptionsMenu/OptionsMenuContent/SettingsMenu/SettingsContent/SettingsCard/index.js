@@ -7,6 +7,16 @@ import '@material/select/dist/mdc.select.css';
 import '@material/fab/dist/mdc.fab.css';
 import './style.css';
 
+
+// function parseVisibleString (input) {
+//   const res = /(.*)\s*=\s*(.*)/.exec(input);
+//   return {
+//     dependentKey: res[1].trim(),
+//     acceptValue: JSON.parse(res[2].trim())
+//   };
+// }
+
+
 // in:
 // * name
 // * description
@@ -15,6 +25,28 @@ import './style.css';
 // * onOptionChange((key, newValue) => {})
 // * onProfileChange((newProfileName) => {})
 export default class SettingsCard extends Component {
+  isVisible = (option) => {
+    if (!option.hasOwnProperty('visible')) return true;
+    return option.visible
+      .split('&&')
+      .map((clause) => clause.trim())
+      .every((clause) => {
+        const [key, op, value] = clause.split(' ').map((s) => s.trim());
+        switch (op) {
+          case '=':
+            return this.props.values[key] === JSON.parse(value);
+          case '!=':
+            return this.props.values[key] !== JSON.parse(value);
+          case 'is':
+            return this.isVisible(this.props.options.find((o) => o.key === key));
+          case 'not':
+            return !this.isVisible(this.props.options.find((o) => o.key === key));
+          default:
+            throw Error(`Option '${option.key}' has invalid visible condition: '${option.visible}'`);
+        }
+      });
+  }
+
   /**
    * render function
    * @param {object} arg
@@ -64,9 +96,16 @@ export default class SettingsCard extends Component {
         <ul className='mdc-list mdc-list--dense'>
           { options.length === 0
             ? 'No settings to configure'
-            : options.map((option) =>
-              <SettingsCardOptionWidget {...option} _key={option.key} value={values && values[option.key]} onChange={onOptionChange} />
-            ) }
+            : options.map((option) => (
+              this.isVisible(option)
+              ? <SettingsCardOptionWidget
+                {...option}
+                _key={option.key}
+                value={values && values[option.key]}
+                onChange={onOptionChange} />
+              : undefined
+              ))
+          }
         </ul>
 
       </div>

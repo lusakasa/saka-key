@@ -15,42 +15,50 @@
     {
       "type": "checkbox",
       "label": "Use Default Colors",
-      "key": "customColors"
+      "key": "customColors",
+      "visible": "useCustomCSS = false"
     },
     {
       "type": "color",
       "label": "Text Color",
-      "key": "textColor"
+      "key": "textColor",
+      "visible": "customColors is visible && customColors = false"
     },
     {
       "type": "color",
       "label": "Background Color",
-      "key": "backgroundColor"
+      "key": "backgroundColor",
+      "visible": "customColors is visible && customColors = false"
     },
     {
       "type": "color",
       "label": "Border Color",
-      "key": "borderColor"
+      "key": "borderColor",
+      "visible": "customColors is visible && customColors = false"
     },
     {
       "type": "text",
       "label": "Size",
-      "key": "size"
+      "key": "size",
+      "visible": "useCustomCSS = false"
     },
     {
       "type": "text",
       "label": "Border Radius (pixels)",
-      "key": "borderRadius"
+      "key": "borderRadius",
+      "visible": "useCustomCSS = false"
     },
     {
       "type": "checkbox",
       "label": "Shadow",
-      "key": "shadow"
+      "key": "shadow",
+      "visible": "useCustomCSS = false"
     },
     {
       "type": "textarea",
       "label": "Custom CSS",
-      "key": "customCSS"
+      "key": "customCSS",
+      "visible": "useCustomCSS = true"
     }
   ]
 }
