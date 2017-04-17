@@ -2,7 +2,7 @@ import { Component, render, h } from 'preact';
 import { findHints } from './findHints';
 import { settings } from './settings';
 import { mouseEvent, isTextEditable } from 'lib/dom';
-import { style } from './style';
+import { robotoFontStyleHTML } from './style';
 
 export let showHints;
 export let hideHints;
@@ -70,10 +70,16 @@ class HintRenderer extends Component {
 
 const Hint = ({ hintString, left, top, seen }) => (
   <div
-    className='hint'
+    className='saka-hint-body'
     style={{ left: left + 'px', top: top + 'px', position: 'absolute' }}>
     { hintString.split('').map((char, i) => (
-      <span style={{opacity: i >= seen ? 1 : 0.5}}>{char}</span>
+      <span
+        className={i >= seen
+          ? 'saka-hint-normal-char'
+          : 'saka-hint-active-char'}
+      >
+        {char}
+      </span>
     ))}
   </div>
 );
@@ -99,16 +105,29 @@ function generateHintStrings (characters, count) {
   return hints.slice(offset, offset + count);
 }
 
+export function setHintStyle (hintCSS, normalCharCSS, activeCharCSS) {
+  document.querySelector('#sakaHintStyle').innerText = `
+.saka-hint-body {
+  ${hintCSS}
+}
+.saka-hint-normal-char {
+  ${normalCharCSS}
+}
+.saka-hint-active-char {
+  ${activeCharCSS}
+}`;
+}
+
 const hintContainer = document.createElement('div');
+
 // Ideally, should use shadow dom, but only chrome supports it (3/2017)
 // fallback is to reset styles on all child hints (see styles.js)
-if (SAKA_PLATFORM === 'chrome') {
-  document.documentElement.appendChild(hintContainer);
-  const shadow = hintContainer.attachShadow({mode: 'open'});
-  shadow.innerHTML = `<style>${style}</style>`;
-  render(<HintRenderer />, shadow);
-} else {
-  hintContainer.innerHTML = `<style>${style}</style>`;
-  document.documentElement.appendChild(hintContainer);
-  render(<HintRenderer />, hintContainer);
-}
+// if (SAKA_PLATFORM === 'chrome') {
+//   const shadow = hintContainer.attachShadow({mode: 'open'});
+//   shadow.innerHTML = `<style id='sakaHintStyle'>${style}</style>`;
+//   render(<HintRenderer />, shadow);
+// } else {
+hintContainer.innerHTML = `${robotoFontStyleHTML}<style id='sakaHintStyle'></style>`;
+document.documentElement.appendChild(hintContainer);
+render(<HintRenderer />, hintContainer);
+// }

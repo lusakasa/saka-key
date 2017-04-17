@@ -15,9 +15,6 @@ import Textarea from './TextArea';
 
 export default class OptionWidget extends Component {
   render (props) {
-    if (props.visible) {
-      
-    }
     switch (props.type) {
       case 'header':
         return <Header {...props} />;

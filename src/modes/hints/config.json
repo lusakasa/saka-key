@@ -13,28 +13,22 @@
       "key": "useCustomCSS"
     },
     {
-      "type": "checkbox",
-      "label": "Use Default Colors",
-      "key": "customColors",
-      "visible": "useCustomCSS = false"
-    },
-    {
       "type": "color",
       "label": "Text Color",
       "key": "textColor",
-      "visible": "customColors is visible && customColors = false"
+      "visible": "useCustomCSS = false"
     },
     {
       "type": "color",
       "label": "Background Color",
       "key": "backgroundColor",
-      "visible": "customColors is visible && customColors = false"
+      "visible": "useCustomCSS = false"
     },
     {
       "type": "color",
       "label": "Border Color",
       "key": "borderColor",
-      "visible": "customColors is visible && customColors = false"
+      "visible": "useCustomCSS = false"
     },
     {
       "type": "text",

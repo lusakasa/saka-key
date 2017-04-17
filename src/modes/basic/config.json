@@ -10,12 +10,14 @@
     {
       "type": "color",
       "label": "Primary Color",
-      "key": "primaryColor"
+      "key": "primaryColor",
+      "visible": false
     },
     {
       "type": "color",
       "label": "Secondary Color",
-      "key": "secondaryColor"
+      "key": "secondaryColor",
+      "visible": false
     }
   ]
 }

@@ -6,7 +6,12 @@ export const mode = {
   onSettingChange: (profile, newSettings) => {},
   clientSettings: (options, settings) => {
     let { hintCSS, normalCharCSS, activeCharCSS } = settings;
-    if (!settings.useCustomCSS) {
+    if (settings.useCustomCSS) {
+      hintCSS = `
+all: initial;
+z-index: 999999999999;
+` + hintCSS;
+    } else {
       hintCSS = (
 `all: initial;
 z-index: 999999999999;

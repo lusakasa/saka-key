@@ -1,5 +1,5 @@
 import { isTextEditable } from 'lib/dom';
-import { showHints, hideHints, advanceOnKey } from './HintRenderer';
+import { showHints, hideHints, advanceOnKey, setHintStyle } from './HintRenderer';
 import { isModifierKey } from 'lib/keys';
 import { settings } from './settings';
 
@@ -14,7 +14,9 @@ export const mode = {
   onExit: async (event) => {
     hideHints();
   },
-  onSettingsChange: (settings) => {},
+  onSettingsChange: ({ hintCSS, normalCharCSS, activeCharCSS }) => {
+    setHintStyle(hintCSS, normalCharCSS, activeCharCSS);
+  },
   events: {
     keydown: async (event) => {
       event.stopImmediatePropagation();

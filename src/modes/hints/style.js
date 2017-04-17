@@ -32,14 +32,19 @@ vertical-align: middle;`;
 // const optionalResetStyles = SAKA_PLATFORM === 'chrome'
 //   ? ''
 //   : ''; // resetStyles;
-const browserSpecificHintStyles = SAKA_PLATFORM === 'chrome'
-  ? ''
-  : 'padding: 2px 1px 0px 1px;';
+// const browserSpecificHintStyles = SAKA_PLATFORM === 'chrome'
+//   ? ''
+//   : 'padding: 2px 1px 0px 1px;';
+
+export const robotoFontStyleHTML = `<style>@font-face { ${fontStyles} }</style>`;
 
 export const style = `
-@font-face { ${fontStyles} }
-.hint {
+.saka-hint-body {
   ${hintStyles}
-  ${browserSpecificHintStyles}
 }
-`;
+.saka-hint-active-char {
+
+}
+.saka-hint-normal-char {
+
+}`;

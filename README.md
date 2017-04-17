@@ -12,7 +12,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 2. It's not vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers.   
 
-3. It's built with modern web tooling (as of 2017): es6+, webpack, preact... no coffeescript to be seen.
+3. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen.
 
 Note: This is a developing project that has bugs and lacks features. If you're looking for a robust experience, try some of the more mature options like [Vimium](https://github.com/philc/vimium) and [cVim](https://github.com/1995eaton/chromium-vim).
 

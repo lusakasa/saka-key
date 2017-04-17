@@ -27,6 +27,8 @@ import './style.css';
 export default class SettingsCard extends Component {
   isVisible = (option) => {
     if (!option.hasOwnProperty('visible')) return true;
+    if (option['visible'] === true) return true;
+    if (option['visible'] === false) return false;
     return option.visible
       .split('&&')
       .map((clause) => clause.trim())
