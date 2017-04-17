@@ -9,6 +9,11 @@
     },
     {
       "type": "checkbox",
+      "label": "Detect Hints Using Cursor Style",
+      "key": "detectByCursorStyle"
+    },
+    {
+      "type": "checkbox",
       "label": "Use Custom CSS",
       "key": "useCustomCSS"
     },

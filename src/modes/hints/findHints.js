@@ -1,4 +1,4 @@
-import { settings } from './settings';
+import { detectByCursorStyle } from './client';
 
 export function findHints () {
   const candidates = [];
@@ -40,7 +40,7 @@ function isClickable (element) {
     role === 'textbox' ||
     // other ways by which we can know an element is clickable
     element.hasAttribute('onclick') ||
-    settings.detectByCursorStyle && window.getComputedStyle(element).cursor === 'pointer' &&
+    detectByCursorStyle && window.getComputedStyle(element).cursor === 'pointer' &&
       (!element.parentNode ||
        window.getComputedStyle(element.parentNode).cursor !== 'pointer')
   );

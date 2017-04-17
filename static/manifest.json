@@ -23,7 +23,7 @@
     "default_icon": {
       "48": "logo.png"
     },
-    "default_popup": "popup.html",
+    "default_popup": "options.html",
     "default_title": "Saka Key"
   },
   "options_ui": {
@@ -53,7 +53,6 @@
     "help.js",
     "help.js.map",
     "help.html",
-    "popup.js.map",
     "Roboto-Regular.tff"
     ]
 }

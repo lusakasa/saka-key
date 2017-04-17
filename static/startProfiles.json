@@ -19,20 +19,11 @@
       }
     },
     {
-      "name": "right hand",
-      "settings": {
-        "Basic": "standard",
-        "Command": "left hand",
-        "Hints": "left hand",
-        "Developer": "standard"
-      }
-    },
-    {
       "name": "vimium",
       "settings": {
         "Basic": "standard",
-        "Command": "left hand",
-        "Hints": "left hand",
+        "Command": "vimium",
+        "Hints": "vimium",
         "Developer": "standard"
       }
     }

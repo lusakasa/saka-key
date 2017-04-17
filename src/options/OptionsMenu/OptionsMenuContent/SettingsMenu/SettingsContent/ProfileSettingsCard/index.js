@@ -22,7 +22,7 @@ const mapStateToProps = ({ profileGroups, activeProfileGroup, settings, selected
   }));
   return {
     name: 'Profiles',
-    description: 'Configure your active profile by selecting per-mode sub-profiles. Coming soon: specify profiles per-url match pattern https://developer.chrome.com/extensions/match_patterns',
+    description: 'Configure your active profile by selecting per-mode sub-profiles. I realize this separate profile selection menu is unintuitive. It will be phased out in an upcoming release.',
     profiles: profileGroups.map((profile) => profile.name),
     selectedProfile: activeProfileGroup,
     options: options,

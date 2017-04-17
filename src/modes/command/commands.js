@@ -29,10 +29,11 @@ const backgroundCommand = (action, arg) => () => {
 
 export const commands = {
   toggleHelpMenu: () => {
-    msg(1, 'modeAction', {
-      mode: 'Basic',
-      action: 'toggleHelpMenu'
-    });
+    // TODO: REIMPLEMENT PROPERLY
+    // msg(1, 'modeAction', {
+    //   mode: 'Basic',
+    //   action: 'toggleHelpMenu'
+    // });
   },
   showLinkHints: () => 'Hints',
   // scroll commands

@@ -9,7 +9,8 @@
     {
       "type": "keybinding",
       "label": "Toggle Help Menu",
-      "key": "toggleHelpMenu"
+      "key": "toggleHelpMenu",
+      "visible": false
     },
     {
       "type": "header",
@@ -37,12 +38,14 @@
     {
       "type": "keybinding",
       "label": "Next Page",
-      "key": "nextPage"
+      "key": "nextPage",
+      "visible": false
     },
     {
       "type": "keybinding",
       "label": "Previous Page",
-      "key": "previousPage"
+      "key": "previousPage",
+      "visible": false
     },
     {
       "type": "keybinding",
@@ -210,12 +213,14 @@
     {
       "type": "keybinding",
       "label": "New Window",
-      "key": "newWindow"
+      "key": "newWindow",
+      "visible": false
     },
     {
       "type": "keybinding",
       "label": "Switch Window",
-      "key": "switchWindow"
+      "key": "switchWindow",
+      "visible": false
     },
     {
       "type": "keybinding",

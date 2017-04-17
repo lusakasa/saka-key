@@ -3,7 +3,7 @@ import { Component, h } from 'preact';
 export default class About extends Component {
   render () {
     return (
-      <div class='mdc-card about-card'>
+      <div class='mdc-card  simple-content-card'>
         <img class='mdc-card__media-item mdc-card__media-item--1x' src='logo.png' style='height: 80px' />
         <section class='mdc-card__primary'>
           <h1 class='mdc-card__title mdc-card__title--large'>Saka Key</h1>

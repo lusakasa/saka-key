@@ -10,8 +10,7 @@ module.exports = function (env) {
       'content_script': './src/content_script/index.js',
       'content_script_loader': './src/content_script/loader.js',
       'help': './src/help/index.js',
-      'options': './src/options/index.js',
-      'popup': './src/popup/index.js'
+      'options': './src/options/index.js'
     },
     output: {
       path: __dirname + '/dist',

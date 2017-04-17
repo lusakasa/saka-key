@@ -1,9 +1,15 @@
 import { isTextEditable } from 'lib/dom';
-import { showHints, hideHints, advanceOnKey, setHintStyle } from './HintRenderer';
+import {
+  showHints,
+  hideHints,
+  advanceOnKey,
+  setHintStyle
+} from './HintRenderer';
 import { isModifierKey } from 'lib/keys';
-import { settings } from './settings';
 
 const MODE = 'Hints';
+export let hintChars;
+export let detectByCursorStyle;
 
 export const mode = {
   name: MODE,
@@ -14,14 +20,16 @@ export const mode = {
   onExit: async (event) => {
     hideHints();
   },
-  onSettingsChange: ({ hintCSS, normalCharCSS, activeCharCSS }) => {
+  onSettingsChange: ({ hintCSS, normalCharCSS, activeCharCSS, hintChars: chars, detectByCursorStyle: s }) => {
     setHintStyle(hintCSS, normalCharCSS, activeCharCSS);
+    hintChars = chars;
+    detectByCursorStyle = s;
   },
   events: {
     keydown: async (event) => {
       event.stopImmediatePropagation();
       if (!isModifierKey(event)) {
-        if (settings.hintCharacters.includes(event.key)) {
+        if (hintChars.includes(event.key)) {
           // TODO: FIX: next line is shoddy fix to prevent text from being added on entrance to an input
           // e.g. if the last character in a link hint is 'l', without the next line, activating an input
           // will cause l to appear within it.

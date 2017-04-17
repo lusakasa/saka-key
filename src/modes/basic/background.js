@@ -1,20 +1,10 @@
 import { msg, meta } from 'mosi/core';
 
-/** Stores whether Saka Key is enabled */
-let enabled = true;
-let activeProfile = 'standard';
-
 const MODE = 'Basic';
 
 export const mode = {
   name: MODE,
   onInstalled: () => {},
-  onSettingsChange: (profile, newSettings) => {
-    const { enabled: isEnabled } = newSettings;
-    if (profile === activeProfile) {
-      enabled = isEnabled;
-    }
-  },
   clientSettings: (options, { enabled }) => ({ enabled }),
   messages: {
     loadClient (_, src) {
@@ -29,17 +19,8 @@ export const mode = {
         matchAboutBlank: true
       });
     },
-    getEnabled (_, src) {
-      msg(src, 'setEnabled', enabled);
-    },
     toggleEnabled: () => {
-      enabled = !enabled;
-      msg('popup', 'setEnabled', enabled);
-      msg('cs', 'modeAction', {
-        mode: 'Basic',
-        action: 'setEnabled',
-        arg: enabled
-      });
+      // TODO: change appropriate enabled key in local storage
     },
     toggleHelpMenu: () => {
       chrome.tabs.query({ currentWindow: true, active: true }, ([tab]) => {

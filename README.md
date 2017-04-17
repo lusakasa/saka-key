@@ -6,13 +6,15 @@ Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/sa
 
 ## Intro
 
-Saka Key lets you navigate the web with just your keyboard. It differs from existing vi-inspired chrome extensions on three fronts:
+Saka Key lets you navigate the web with just your keyboard. It differs from existing vi-inspired chrome extensions on four fronts:
 
 1. Its [architecture](./doc/developer_guide.md) is modular, extensible, and _hopefully_ easy to understand. It is designed to be as easy as possible to add complex features with minimal effort and understanding of the codebase. 
 
 2. It's not vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers.   
 
-3. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen.
+3. It's engineered for configurability. There are no hardcoded keybindings you have to unmap. There is no default hint styling. Default _settings profiles_ are built-in, but the user can make any changes desired. Per-domain profiles coming soon.
+
+4. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen.
 
 Note: This is a developing project that has bugs and lacks features. If you're looking for a robust experience, try some of the more mature options like [Vimium](https://github.com/philc/vimium) and [cVim](https://github.com/1995eaton/chromium-vim).
 

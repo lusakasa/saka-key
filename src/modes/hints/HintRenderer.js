@@ -1,8 +1,8 @@
 import { Component, render, h } from 'preact';
 import { findHints } from './findHints';
-import { settings } from './settings';
 import { mouseEvent, isTextEditable } from 'lib/dom';
 import { robotoFontStyleHTML } from './style';
+import { hintChars } from './client';
 
 export let showHints;
 export let hideHints;
@@ -20,7 +20,7 @@ class HintRenderer extends Component {
   componentDidMount () {
     showHints = () => {
       const hints = findHints();
-      const hintStrings = generateHintStrings(settings.hintCharacters, hints.length);
+      const hintStrings = generateHintStrings(hintChars, hints.length);
       const labeledHints = hints.map((hint, i) => Object.assign(hint, { hintString: hintStrings[i] }));
       this.setState({
         hints: labeledHints,
@@ -93,6 +93,8 @@ function activateHint (hint) {
   return 'Command';
 }
 
+
+
 function generateHintStrings (characters, count) {
   const hints = [''];
   let offset = 0;
@@ -104,6 +106,7 @@ function generateHintStrings (characters, count) {
   }
   return hints.slice(offset, offset + count);
 }
+
 
 export function setHintStyle (hintCSS, normalCharCSS, activeCharCSS) {
   document.querySelector('#sakaHintStyle').innerText = `

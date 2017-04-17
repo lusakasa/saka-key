@@ -46,6 +46,7 @@ function initStorageChangeListener () {
           case 'modes':
           case 'profileGroups':
           case 'activeProfileGroup':
+            console.log('regenerating client settings');
             regenerateClientSettings();
             break;
           default:

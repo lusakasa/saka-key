@@ -34,18 +34,6 @@ export const mode = {
     mousedown: (event) => MODE
   },
   messages: {
-    setEnabled: (enabled) => {
-      if (SAKA_DEBUG) {
-        console.log(`${enabled ? 'en' : 'dis'}abling Saka Key`);
-      }
-      if (enabled) {
-        if (isTextEditable(document.activeElement)) {
-          return 'Text';
-        }
-        return 'Command';
-      }
-      return MODE;
-    },
     toggleHelpMenu,
     setMode: (mode) => mode
   }
