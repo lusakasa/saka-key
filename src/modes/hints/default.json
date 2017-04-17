@@ -28,7 +28,7 @@
         "borderRadius": 4,
         "shadow": true,
         "hintChars": "asdfqwerzxcv",
-        "hintCSS": "font-family: Roboto, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 0px 1px;\nborder-width: 1px;\nborder-style: solid;\nborder-color: #ff4081;\ncolor: #ff4081;\nbackground-color: #ffffff;\nborder-radius: 4px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\nbox-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);",
+        "hintCSS": "font-family: Roboto, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 2px 2px;\nborder-width: 0px;\ncolor: #ffffff;\nbackground-color: #3f51F5;\nborder-radius: 0px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\nbox-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);",
         "normalCharCSS": "",
         "activeCharCSS": "opacity: 0.5;"
       }
