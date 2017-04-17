@@ -9,11 +9,13 @@
         "textColor": "#2222ff",
         "backgroundColor": "#A6274E",
         "borderColor": "#936540",
-        "size": 12,
+        "fontSize": 12,
         "borderRadius": 2,
         "shadow": true,
         "hintChars": "asdghjkl;",
-        "customCSS": ".hint { color: red; }"
+        "hintCSS": "font-family: Roboto, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 0px 1px;\nborder-width: 1px;\nborder-style: solid;\nborder-color: #ff4081;\ncolor: #ff4081;\nbackground-color: #ffffff;\nborder-radius: 4px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;",
+        "normalCharCSS": "",
+        "activeCharCSS": "opacity: 0.5;"
       }
     },
     {
@@ -24,11 +26,13 @@
         "textColor": "#2222ff",
         "backgroundColor": "#A6274E",
         "borderColor": "#936540",
-        "size": 12,
+        "fontSize": 12,
         "borderRadius": 2,
         "shadow": true,
         "hintChars": "asdfqwerzxcv",
-        "customCSS": ".hint { color: red; }"
+        "hintCSS": "font-family: Roboto, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 0px 1px;\nborder-width: 1px;\nborder-style: solid;\nborder-color: #ff4081;\ncolor: #ff4081;\nbackground-color: #ffffff;\nborder-radius: 4px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;",
+        "normalCharCSS": "",
+        "activeCharCSS": "opacity: 0.5;"
       }
     }
   ]

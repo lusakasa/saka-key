@@ -1,5 +1,7 @@
 .textarea-widget-container {
   width: 100%;
+  margin-top: 0px !important;
+  margin-bottom: 16px !important;
 }
 
  .textarea-widget-container > textarea {

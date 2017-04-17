@@ -65,6 +65,7 @@ export async function modeAction ({ mode, action, arg }, src) {
 
 /** Handles when messages containing updated settings are received */
 export function clientSettings (settings) {
+  if (SAKA_DEBUG) console.log('received settings: ', settings);
   if (typeof settings === 'string') {
     console.error('Failed to configure client settings: ', settings);
     return;

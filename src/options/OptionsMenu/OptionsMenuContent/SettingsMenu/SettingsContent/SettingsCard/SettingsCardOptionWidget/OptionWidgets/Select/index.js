@@ -7,6 +7,7 @@ export default class Select extends Component {
         <label>{ label }</label>
         <select
           class='mdc-select'
+          style='width: 176px'
           value={value}
           onChange={(e) => onChange(e.target.value)} >
           { choices.map((choice) =>

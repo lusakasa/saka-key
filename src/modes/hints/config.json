@@ -5,7 +5,7 @@
     {
       "type": "text",
       "label": "Hint Characters",
-      "key": "chars"
+      "key": "hintChars"
     },
     {
       "type": "checkbox",
@@ -38,8 +38,8 @@
     },
     {
       "type": "text",
-      "label": "Size",
-      "key": "size",
+      "label": "Font Size",
+      "key": "fontSize",
       "visible": "useCustomCSS = false"
     },
     {
@@ -56,8 +56,20 @@
     },
     {
       "type": "textarea",
-      "label": "Custom CSS",
-      "key": "customCSS",
+      "label": "Hint CSS",
+      "key": "hintCSS",
+      "visible": "useCustomCSS = true"
+    },
+    {
+      "type": "textarea",
+      "label": "Normal Character CSS",
+      "key": "normalCharCSS",
+      "visible": "useCustomCSS = true"
+    },
+    {
+      "type": "textarea",
+      "label": "Active Character CSS",
+      "key": "activeCharCSS",
       "visible": "useCustomCSS = true"
     }
   ]
