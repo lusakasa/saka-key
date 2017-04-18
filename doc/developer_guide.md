@@ -4,10 +4,13 @@ Warning: Details are glossed over and Saka Key is still a young project with lot
 
 ## Index
 
-* [Client](#client)
-* [Background](#background)
-* [Settings](#settings)
+* [Components](#components)
+  * [Client](#client)
+  * [Background](#background)
+  * [Settings](#settings)
 * [Example flow](#example-flow)
+
+## Components
 
 Saka Key comprises:
 
@@ -15,7 +18,7 @@ Saka Key comprises:
 * a persistent background page
 * an options page for user-specified settings
 
-## Client
+### Client
 
 The client is structured as a state machine. Developers can create modes, which correspond to states in the state machine. The important built in modes are:
 
@@ -42,7 +45,7 @@ Each mode is given its own directory at ./src/modes/modeName. Within each mode d
   * mousedown(event)
 * messages - an object containing callback that are executed when messages are received. Messages may be sent by the background page, another mode on the same page, or by a client on a completely different tab. The string returned by the callback is the next mode. Each callback takes an argument and a source id. See [mosi](https://github.com/eejdoowad/mosi) for details.
 
-## Background
+### Background
 
 Modes may require access to privileged APIs only accessible on the background page or information only the background page has. This means the client mode must send a message to the background page. But once the message gets to the background page, what handles the message?
 
@@ -53,7 +56,7 @@ Each mode has a component that lives in background page! Within each modes direc
 * clientSettings(options, settings) - a function that is called whenever any setting is changed. This should return an object which will be passed to the client mode's onSettingsChange callback (skipping some details).
 * messages - just like the client-side messages property.
 
-## Settings
+### Settings
 
 Saka Key is engineered to make adding modes as easy as possible. Mode authors don't have to write any code to get user configurable options!
 
