@@ -14,8 +14,10 @@ module.exports = function (env) {
     },
     output: {
       path: __dirname + '/dist',
-      filename: '[name].js'
+      filename: '[name].js',
+      sourceMapFilename: '[name].js.map' // always generate source maps
     },
+    devtool: 'source-map',
     module: {
       loaders: [
         {
@@ -43,14 +45,14 @@ module.exports = function (env) {
     plugins: [
       new CopyWebpackPlugin([
          { from: 'static' },
-         { from: 'src/modes/basic/config.json', to: 'config/basic.json' },
-         { from: 'src/modes/basic/default.json', to: 'default/basic.json' },
-         { from: 'src/modes/command/config.json', to: 'config/command.json' },
-         { from: 'src/modes/command/default.json', to: 'default/command.json' },
-         { from: 'src/modes/hints/config.json', to: 'config/hints.json' },
-         { from: 'src/modes/hints/default.json', to: 'default/hints.json' },
-         { from: 'src/modes/developer/config.json', to: 'config/developer.json' },
-         { from: 'src/modes/developer/default.json', to: 'default/developer.json' }
+         { from: 'src/modes/basic/config.json', to: 'config_basic.json' },
+         { from: 'src/modes/basic/default.json', to: 'default_basic.json' },
+         { from: 'src/modes/command/config.json', to: 'config_command.json' },
+         { from: 'src/modes/command/default.json', to: 'default_command.json' },
+         { from: 'src/modes/hints/config.json', to: 'config_hints.json' },
+         { from: 'src/modes/hints/default.json', to: 'default_hints.json' },
+         { from: 'src/modes/developer/config.json', to: 'config_developer.json' },
+         { from: 'src/modes/developer/default.json', to: 'default_developer.json' }
       ])
     ]
   };
@@ -80,8 +82,6 @@ module.exports = function (env) {
       })
     ]);
   } else {
-    config.devtool = 'source-map';
-    config.output.sourceMapFilename = '[name].js.map';
     config.plugins = config.plugins.concat([
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('development'),

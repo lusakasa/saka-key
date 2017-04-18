@@ -79,7 +79,7 @@ async function initializeLocalStorage (modes) {
 
 async function setupDefaultModes (modes) {
   const startModes = Object.keys(modes).map((name) =>
-    `/config/${name.toLowerCase()}.json`
+    `/config_${name.toLowerCase()}.json`
   );
   try {
     const modesFetch = await Promise.all(startModes.map((path) => fetch(path)));
@@ -103,7 +103,7 @@ async function setupDefaultProfiles () {
 // TODO: upgrade this once profiles are added
 async function setupDefaultSettings (modes) {
   const defaultSettingsFilePaths = Object.keys(modes).map((name) =>
-    `/default/${name.toLowerCase()}.json`
+    `/default_${name.toLowerCase()}.json`
   );
   try {
     const defaultSettingsFetch = await Promise.all(defaultSettingsFilePaths.map((path) => fetch(path)));

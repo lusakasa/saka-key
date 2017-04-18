@@ -1,5 +1,7 @@
 dist
 dist.zip
+dist.crx
+dist.pem
 node_modules
 npm-debug.log
 debug.log
