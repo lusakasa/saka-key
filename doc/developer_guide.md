@@ -1,5 +1,14 @@
 # Developer Guide
 
+Warning: Details are glossed over and Saka Key is still a young project with lots of room to grow and change. Refer to the source code for definitive answers.
+
+## Index
+
+* [Client](#client)
+* [Background](#background)
+* [Settings](#settings)
+* [Example flow](#example-flow)
+
 Saka Key comprises:
 
 * a client that runs on every frame of every page
@@ -79,9 +88,44 @@ Each mode directory also contains a file named 'default.json', which contains de
 }
 ```
 
-## Warning
+## Example Flow
 
-Details were glossed over and Saka Key is still a young project with lots of room to grow and change. Refer to the source code for definitive answers.
+1. User loads a new page by clicking a link
 
+2. The page begins to load. This page only has a single top level frame
 
+3. A content script bootstrapper in the frame sends a message to the background page, requesting the full client
 
+4. The background page gets the messge, then dynamically loads the full client into the frame
+
+5. The client initializes its full messaging subsystem, calls setup routines, and sets the start state to Basic (which is the disabled state).
+
+6. The client sends a message to the background page requesting user-defined settings
+
+7. The background page receives the request, examines the clients url and determines the appropriate settings to forward to the client. The settings sent to the client are calculated using the user-defined settings specified on the options page, and are cached in the background page's memory.
+
+8. The client receives the settings, and calls every mode's onSettingsChange callback.
+
+9. Mode Basic observes the 'enabled' setting is true, and changes the mode to Command.
+
+10. The user presses 'j' to scroll down. Command mode knows that 'j' is for scrolling down because all keybindings were specified in the settings passed to its onSettingsChange callback.
+
+11. The user presses 'f'.  This results in a transition to Hints mode. The user enters 'a' then 'd', which activates an html text input.
+
+12. The focusin event triggers a mode change to Text mode.
+
+13. The user types their name in, then hits tab to exit the text input.
+
+14. The focusout event triggers a mode change to Command mode.
+
+15. The user presses 'r' to switch to the next tab.
+
+16. The next tab contains an independent Saka Key client that is currently in Command mode.
+
+17. The user presses 'x' to close the tab.
+
+18. The user returns to the original tab, which is still in Command Mode.
+
+19. The user presses 'x' to close the tab.
+
+20. Finito.

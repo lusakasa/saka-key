@@ -4,6 +4,13 @@ A keyboard interface to the web.
 
 Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp).
 
+## Index
+
+* [Intro](#intro)
+* [Install](#install)
+* [Development Tips](#development-tips)
+* [Credits](#credits)
+
 ## Intro
 
 Saka Key lets you navigate the web with just your keyboard. It differs from existing vi-inspired chrome extensions on four fronts:
@@ -18,7 +25,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 Note: This is a developing project that has bugs and lacks features. If you're looking for a robust experience, try some of the more mature options like [Vimium](https://github.com/philc/vimium) and [cVim](https://github.com/1995eaton/chromium-vim).
 
-## Development
+## Install
 
 Run the following commands in your terminal to clone and build Saka Key
 
@@ -37,7 +44,7 @@ Enable developer mode and select 'Load unpacked Extension'
 
 Select the dist directory, and &#128640;.
 
-### Development Notes
+## Development Tips
 
 Save yourself some trouble and read the [Developer Guide](./doc/developer_guide.md). It explains the basics of how Saka Key works.
 
