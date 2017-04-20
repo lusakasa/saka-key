@@ -8,9 +8,14 @@ export default class TextArea extends Component {
       <li id='mdc-list-item color-widget demo-textfield-multiline-wrapper'>
         <label style='display: flex;'>{label}</label>
         <div
-          class='mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded textarea-widget-container'
-          style='flex-direction: column; height: auto; align-items: flex-start;'>
-          <textarea id='multi-line' class='mdc-textfield__input' rows='8' cols='40'
+          className='mdc-textfield mdc-textfield--multiline mdc-textfield--upgraded textarea-widget-container'
+          style={{
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            height: 'auto'
+          }}
+        >
+          <textarea id='multi-line' class='mdc-textfield__input' rows={value.split('\n').length + 3} cols='40'
             value={value}
             onChange={(e) => onChange(e.target.value)} />
         </div>

@@ -1,8 +1,7 @@
 import { Component, render, h } from 'preact';
 import { findHints } from './findHints';
 import { mouseEvent, isTextEditable } from 'lib/dom';
-import { robotoFontStyleHTML } from './style';
-import { hintChars } from './client';
+import { hintChars, horizontalPlacement, verticalPlacement } from './client';
 
 export let showHints;
 export let hideHints;
@@ -59,8 +58,9 @@ class HintRenderer extends Component {
         {this.state.filteredHints.map((hint) => (
           <Hint
             hintString={hint.hintString}
-            left={hint.rect.left + window.scrollX}
-            top={hint.rect.top + window.scrollY}
+            rect={hint.rect}
+            horizontalPlacement={horizontalPlacement}
+            verticalPlacement={verticalPlacement}
             seen={this.state.inputKeys.length} />
         ))}
       </div>
@@ -68,10 +68,42 @@ class HintRenderer extends Component {
   }
 }
 
-const Hint = ({ hintString, left, top, seen }) => (
+function computeHintPositionStyle (rect, horizontalPlacement, verticalPlacement) {
+  const style = { position: 'absolute' };
+  const translate = { x: 0, y: 0 };
+  switch (horizontalPlacement) {
+    case 'left':
+      style.left = `${window.scrollX + rect.left}px`;
+      break;
+    case 'right':
+      style.left = `${window.scrollX + rect.left + rect.width}px`;
+      translate.x = -100;
+      break;
+    default: // center
+      style.left = `${window.scrollX + rect.left + rect.width / 2}px`;
+      translate.x = -50;
+  }
+  switch (verticalPlacement) {
+    case 'top':
+      style.top = `${window.scrollY + rect.top}px`;
+      break;
+    case 'bottom':
+      style.top = `${window.scrollY + rect.top + rect.height}px`;
+      translate.y = -100;
+      break;
+    default: // center
+      style.top = `${window.scrollY + rect.top + rect.height / 2}px`;
+      translate.y = -50;
+  }
+  style.transform = `translate3d(${translate.x}%, ${translate.y}%, 0)`;
+  console.log(style);
+  return style;
+}
+
+const Hint = ({ hintString, rect, horizontalPlacement, verticalPlacement, seen }) => (
   <div
     className='saka-hint-body'
-    style={{ left: left + 'px', top: top + 'px', position: 'absolute' }}>
+    style={computeHintPositionStyle(rect, horizontalPlacement, verticalPlacement)}>
     { hintString.split('').map((char, i) => (
       <span
         className={i >= seen
@@ -130,7 +162,12 @@ const hintContainer = document.createElement('div');
 //   shadow.innerHTML = `<style id='sakaHintStyle'>${style}</style>`;
 //   render(<HintRenderer />, shadow);
 // } else {
-hintContainer.innerHTML = `${robotoFontStyleHTML}<style id='sakaHintStyle'></style>`;
+hintContainer.innerHTML = `
+<style> @font-face {
+  font-family: Roboto; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;
+  font-style: normal; font-weight: normal; src: url(${chrome.runtime.getURL('Roboto-Regular.tff')}) format('tff');}
+</style>
+<style id='sakaHintStyle'></style>`;
 document.documentElement.appendChild(hintContainer);
 render(<HintRenderer />, hintContainer);
 // }

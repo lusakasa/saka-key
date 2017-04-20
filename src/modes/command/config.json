@@ -4,7 +4,7 @@
   "options": [
     {
       "type": "header",
-      "header": "Misc."
+      "label": "Misc."
     },
     {
       "type": "keybinding",
@@ -14,7 +14,7 @@
     },
     {
       "type": "header",
-      "header": "Link Hints"
+      "label": "Link Hints"
     },
     {
       "type": "keybinding",
@@ -23,7 +23,7 @@
     },
     {
       "type": "header",
-      "header": "Navigation"
+      "label": "Navigation"
     },
     {
       "type": "keybinding",
@@ -59,7 +59,7 @@
     },
     {
       "type": "header",
-      "header": "Scrolling"
+      "label": "Scrolling"
     },
     {
       "type": "checkbox",
@@ -133,7 +133,7 @@
     },
     {
       "type": "header",
-      "header": "Tab Manipulation"
+      "label": "Tab Manipulation"
     },
     {
       "type": "keybinding",
@@ -264,7 +264,7 @@
     },
     {
       "type": "header",
-      "header": "Developer"
+      "label": "Developer"
     },
     {
       "type": "keybinding",

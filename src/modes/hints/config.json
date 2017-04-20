@@ -13,6 +13,22 @@
       "key": "detectByCursorStyle"
     },
     {
+      "type": "select",
+      "label": "Hint Horizontal Placement",
+      "key": "hintHorizontalPlacement",
+      "choices": ["left", "center", "right"]
+    },
+    {
+      "type": "select",
+      "label": "Hint Vertical Placement",
+      "key": "hintVerticalPlacement",
+      "choices": ["top", "center", "bottom"]
+    },
+    {
+      "type": "header",
+      "label": "Hint Appearance"
+    },
+    {
       "type": "checkbox",
       "label": "Use Custom CSS",
       "key": "useCustomCSS"
@@ -37,9 +53,29 @@
     },
     {
       "type": "text",
+      "label": "Opacity",
+      "key": "hintOpacity",
+      "visible": "useCustomCSS = false"
+    },
+    {
+      "type": "select",
+      "label": "Font Family",
+      "key": "fontFamily",
+      "choices": ["Roboto, sans-serif", "Helvetica, sans-serif", "Arial, sans-serif", "Verdana, sans-serif", "Trebuchet MS, sans-serif", "Georgia", "Times New Roman", "Courier", "Comic Sans MS", "Impact", "Charcoal", "Lucida Console", "Lucida Sans Unicode", "Lucida Grande", "Palatino Linotype", "Book Antiqua", "Palatino, Tahoma", "Geneva, Times", "Monaco"],
+      "visible": "useCustomCSS = false"
+    },
+    {
+      "type": "text",
       "label": "Font Size",
       "key": "fontSize",
       "visible": "useCustomCSS = false"
+    },
+    {
+      "type": "select",
+      "label": "Font Weight",
+      "key": "hintFontWeight",
+      "visible": "useCustomCSS = false",
+      "choices": ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
     },
     {
       "type": "text",
@@ -67,19 +103,13 @@
     },
     {
       "type": "text",
-      "label": "Hint Horizontal Placement",
-      "key": "hintHorizontalPlacement",
+      "label": "Border Width",
+      "key": "borderWidth",
       "visible": "useCustomCSS = false"
     },
     {
       "type": "text",
-      "label": "Hint Vertical Placement",
-      "key": "hintVerticalPlacement",
-      "visible": "useCustomCSS = false"
-    },
-    {
-      "type": "text",
-      "label": "Border Radius (pixels)",
+      "label": "Border Radius",
       "key": "borderRadius",
       "visible": "useCustomCSS = false"
     },

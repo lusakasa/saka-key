@@ -10,6 +10,8 @@ import { isModifierKey } from 'lib/keys';
 const MODE = 'Hints';
 export let hintChars;
 export let detectByCursorStyle;
+export let horizontalPlacement;
+export let verticalPlacement;
 
 export const mode = {
   name: MODE,
@@ -20,10 +22,12 @@ export const mode = {
   onExit: async (event) => {
     hideHints();
   },
-  onSettingsChange: ({ hintCSS, normalCharCSS, activeCharCSS, hintChars: chars, detectByCursorStyle: s }) => {
-    setHintStyle(hintCSS, normalCharCSS, activeCharCSS);
-    hintChars = chars;
-    detectByCursorStyle = s;
+  onSettingsChange: (settings) => {
+    setHintStyle(settings.hintCSS, settings.normalCharCSS, settings.activeCharCSS);
+    hintChars = settings.hintChars;
+    detectByCursorStyle = settings.detectByCursorStyle;
+    horizontalPlacement = settings.hintHorizontalPlacement;
+    verticalPlacement = settings.hintVerticalPlacement;
   },
   events: {
     keydown: async (event) => {

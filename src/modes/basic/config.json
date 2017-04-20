@@ -1,6 +1,6 @@
 {
   "name": "Basic",
-  "description": "Core Functionality",
+  "description": "Core Functionality. WARNING: Saka Key is still in early development. Your settings will be reset when Saka Key updates. Sorry for the inconvenience.",
   "options": [
     {
       "type": "switch",

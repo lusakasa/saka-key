@@ -4,11 +4,11 @@ function generateHintCSSFromGUISettings (settings) {
   return `
 all: initial;
 z-index: 999999999999;
-font-family: Roboto, sans-serif;
-font-weight: 100;
-padding: 0px 1px;
-border-width: 1px;
-border-style: solid;
+opacity: ${settings.hintOpacity};
+font-family: ${settings.fontFamily};
+font-weight: ${settings.hintFontWeight};
+padding: ${settings.paddingTop}px ${settings.paddingRight}px ${settings.paddingBottom}px ${settings.paddingLeft}px;
+border: ${settings.borderWidth}px solid;
 text-align: center;
 text-decoration: none;
 text-transform: uppercase;
@@ -27,7 +27,15 @@ export const mode = {
   onSettingChange: (profile, newSettings) => {},
   clientSettings: (options, settings) => {
     console.log('user updates settings', settings);
-    let { hintCSS, normalCharCSS, activeCharCSS, hintChars, detectByCursorStyle } = settings;
+    let {
+      hintCSS,
+      normalCharCSS,
+      activeCharCSS,
+      hintChars,
+      detectByCursorStyle,
+      hintHorizontalPlacement,
+      hintVerticalPlacement
+    } = settings;
     if (settings.useCustomCSS) {
       hintCSS = `all: initial; z-index: 999999999999; ${hintCSS}`;
     } else {
@@ -40,7 +48,9 @@ export const mode = {
       normalCharCSS,
       activeCharCSS,
       hintChars,
-      detectByCursorStyle
+      detectByCursorStyle,
+      hintHorizontalPlacement,
+      hintVerticalPlacement
     };
   },
   messages: {}

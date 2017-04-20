@@ -22,7 +22,7 @@ function initInstallListeners () {
         await initializeLocalStorage(modes);
         break;
       case 'update':
-        if (SAKA_DEBUG) await initializeLocalStorage(modes);
+        initializeLocalStorage(modes);
         break;
       case 'chrome_update':
       case 'shared_module_update':
