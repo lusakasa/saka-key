@@ -43,6 +43,42 @@
     },
     {
       "type": "text",
+      "label": "Padding Left",
+      "key": "paddingLeft",
+      "visible": "useCustomCSS = false"
+    },
+    {
+      "type": "text",
+      "label": "Padding Right",
+      "key": "paddingRight",
+      "visible": "useCustomCSS = false"
+    },
+    {
+      "type": "text",
+      "label": "Padding Top",
+      "key": "paddingTop",
+      "visible": "useCustomCSS = false"
+    },
+    {
+      "type": "text",
+      "label": "Padding Bottom",
+      "key": "paddingBottom",
+      "visible": "useCustomCSS = false"
+    },
+    {
+      "type": "text",
+      "label": "Hint Horizontal Placement",
+      "key": "hintHorizontalPlacement",
+      "visible": "useCustomCSS = false"
+    },
+    {
+      "type": "text",
+      "label": "Hint Vertical Placement",
+      "key": "hintVerticalPlacement",
+      "visible": "useCustomCSS = false"
+    },
+    {
+      "type": "text",
       "label": "Border Radius (pixels)",
       "key": "borderRadius",
       "visible": "useCustomCSS = false"

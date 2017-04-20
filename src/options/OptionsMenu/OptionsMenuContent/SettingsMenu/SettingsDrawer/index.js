@@ -11,11 +11,11 @@ const scrollToCard = (name) => () => {
 class SettingsDrawer extends Component {
   state = {
      // the first card for which its bottom is below the viewport top
-    activeCard: 'Profiles'
+    activeCard: 'Basic'
   }
   componentDidMount () {
     document.addEventListener('scroll', (event) => {
-      const cardNames = ['Profiles', ...this.props.modes];
+      const cardNames = this.props.modes;
       const cardBottoms = cardNames.map((name) =>
         document.querySelector(`#settings_card_${name}`)
           .getBoundingClientRect().bottom + pageYOffset
@@ -35,14 +35,14 @@ class SettingsDrawer extends Component {
     return (
       <nav class='mdc-permanent-drawer'>
         <div class='mdc-list-group'>
-          <a
+          {/*<a
             class='mdc-list-item settings-drawer-link'
             style={{ color: this.calculateLinkColor('Profiles') }}
             onClick={scrollToCard('Profiles')}
           >
             Profiles
           </a>
-          <hr class='mdc-list-divider' />
+          <hr class='mdc-list-divider' />*/}
           <nav class='mdc-list'>
             { modes.map((name) =>
               <a

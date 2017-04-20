@@ -1,6 +1,7 @@
 # Todos
 
-* redo modes GUI: no more profile menu, all keys global, additional category field, options placed in category card, each card has url selection, error message on top of card (background page writes error message to localstorage), background page uses LRU cache to store generated clientSettings based on category url combinations
+* redo modes GUI: no more profile menu, all keys global, additional category field, options placed in category card, each card has url selection, clientSettings returns { values: { key: value}, errors: { key: error } } (background page writes errors just like values to localstorage), errors rendered above widget, background page uses per-category LRU cache to store generated clientSettings, object.assigns appropriate category pieces based on client url
+
 * firefox:
     * figure out why default key actions are suppressed, e.g. cmd+l won't focus the address bar unless saka key is disabled
     * figure out why onStartup event listener doesn't get triggered on temp addon install

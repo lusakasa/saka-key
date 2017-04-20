@@ -2,7 +2,8 @@ import { connect } from 'preact-redux';
 import SettingsCard from '../SettingsCard';
 import {
   setSetting,
-  setSelectedProfileForMode,
+  // setSelectedProfileForMode,
+  setProfileGroupOption,
   addProfile,
   deleteProfile,
   duplicateProfile,
@@ -32,7 +33,8 @@ const mapDispatchToProps = (profile) => (dispatch) => ({
     dispatch(setSetting(mode, profile, key, value));
   },
   onProfileChange: (mode) => (newProfileName) => {
-    dispatch(setSelectedProfileForMode(mode, newProfileName));
+    // dispatch(setSelectedProfileForMode(mode, newProfileName));
+    dispatch(setProfileGroupOption('standard', mode, newProfileName));
   },
   onProfileNew: (mode) => (newProfileGroupName) => {
     dispatch(addProfile(mode, newProfileGroupName));

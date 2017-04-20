@@ -27,7 +27,7 @@ class SettingsContent extends Component {
     if (selectedProfileForMode === null) return <h3>SelectedProfileForMode not loaded</h3>;
     return (
       <main className='settings-content'>
-        <ProfileSettingsCard />
+        {/* <ProfileSettingsCard /> */}
         { modes.map((mode) => <ModeSettingsCard mode={mode} />) }
       </main>
     );
