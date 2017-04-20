@@ -72,3 +72,4 @@ Saka Key is inspired by and derives from
 * [Vimari](https://github.com/guyht/vimari)
 * [cVim](https://github.com/1995eaton/chromium-vim)
 * [Surfingkeys](https://github.com/brookhong/Surfingkeys)
+* [VimFX](https://github.com/akhodakivskiy/VimFx)
