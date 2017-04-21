@@ -1,6 +1,9 @@
 /**
- * Given a DOM element, returns true if you can edit it with key presses.
+ * Given a DOM element, returns true if you can edit it with key presses or
+ * if the element is of a type that should handle its own keypresses
+ * (e.g. role=application for google docs/sheets)
  * TODO: work on case sensitivity
+ * consider all the possible cases
  */
 export function isTextEditable (element) {
   const textInputTypes = [ 'text', 'search', 'email', 'url', 'number', 'password', 'date', 'tel' ];
@@ -11,7 +14,11 @@ export function isTextEditable (element) {
       }
     } else if (element.nodeName === 'TEXTAREA') {
       return true;
-    } else if (element.contentEditable === 'true') {
+    } else if (element.contentEditable.toUpperCase() === 'TRUE') {
+      return true;
+    // Although applications, e.g. google docs/sheets aren't necessarily text elements
+    // they usually do their own key handling
+    } else if (element.role === 'application') {
       return true;
     }
     return false;

@@ -96,7 +96,6 @@ function computeHintPositionStyle (rect, horizontalPlacement, verticalPlacement)
       translate.y = -50;
   }
   style.transform = `translate3d(${translate.x}%, ${translate.y}%, 0)`;
-  console.log(style);
   return style;
 }
 

@@ -16,8 +16,8 @@ export const mode = {
     keydown: (event) => MODE,
     keypress: (event) => MODE,
     keyup: (event) => MODE,
-    focusin: (event) => MODE,
     focusout: (event) => MODE,
+    focusin: (event) => MODE,
     click: (event) => MODE,
     mousedown: (event) => MODE
   },

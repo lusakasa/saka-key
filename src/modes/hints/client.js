@@ -49,13 +49,13 @@ export const mode = {
       return MODE;
     },
     keyup: (event) => MODE,
+    focusout: (event) => MODE,
     focusin: async (event) => {
       if (isTextEditable(event.target)) {
         return 'Text';
       }
       return MODE;
     },
-    focusout: (event) => MODE,
     click: (event) => MODE,
     mousedown: async (event) => {
       if (SAKA_DEBUG) return MODE;

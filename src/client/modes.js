@@ -1,3 +1,4 @@
+import Queue from 'promise-queue';
 import { msg } from 'mosi/client';
 import { Extension } from 'modes/extension/client';
 
@@ -23,16 +24,6 @@ export function setup () {
 /** TODO: Adds an external extension. Not yet implemented */
 export function addExtension (name) {
   modes[name] = new Extension(name);
-}
-
-/**
- * Passes a DOM Event to the active mode for handling,
- * potentially resulting in a new mode.
- * @param {DocumentEvent} event
- */
-async function handleEvent (event) {
-  const nextMode = await (modes[currentMode].events[event.type](event));
-  setMode(nextMode, event);
 }
 
 /**
@@ -90,13 +81,36 @@ async function setMode (nextMode, event) {
   }
   if (nextMode !== currentMode) {
     if (SAKA_DEBUG) {
-      console.log(`mode changed from ${currentMode} to ${nextMode} on ${event.type} event:`, event);
+      console.log(`changing mode from ${currentMode} to ${nextMode} on ${event.type} event:`, event);
     }
     await modes[currentMode].onExit(event);
     await modes[nextMode].onEnter(event);
   }
   currentMode = nextMode;
 }
+
+/**
+ * A FIFO queue of functions returning promises with a concurrency limit of 1.
+ * Only one function may execute at a time, other functions must wait
+ */
+const eventQueue = new Queue(1);
+
+/**
+ * Passes a DOM Event to the active mode for handling, potentially resulting in a
+ * new mode. Event handlers are NOT executed immediately. Instead, the event  handler is
+ * added to a FIFO promise queue that executes the handler at a head of the queue,
+ * calculates the new mode, then executes the next handler with the updated new mode
+ * and so on. This queue is necessary to avoid subtle concurrency bugs.
+ * TODO: evaluate conditions under which event handlers in the queue expire
+ * @param {DocumentEvent} event
+ */
+async function handleEvent (event) {
+  eventQueue.add(async () => {
+    const nextMode = await (modes[currentMode].events[event.type](event));
+    await setMode(nextMode, event);
+  });
+}
+
 
 /**
  * Installs event listeners for all events that should be handled by the active mode.
