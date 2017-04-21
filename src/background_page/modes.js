@@ -1,4 +1,4 @@
-import { msg } from 'mosi/core';
+import { msg, meta } from 'mosi/core';
 export let modes = {};
 
 export function setModes (availableModes) {
@@ -44,14 +44,12 @@ async function generateClientSettings () {
       'modes'
     ]);
     const profileMap = profileGroups.find(({ name }) => name === activeProfileGroup).settings;
-    const clientSettingsPerMode = {};
     const clientSettings = {};
     Object.entries(profileMap).forEach(([mode, profile]) => {
       const options = modesConfig.find(({ name }) => name === mode).options;
       const modeSettings = settings[mode].find(({ name }) => name === profileMap[mode]).settings;
-      const clientModeSettings = modes[mode].clientSettings(options, modeSettings);
-      clientSettingsPerMode[mode] = clientModeSettings;
-      Object.assign(clientSettings, clientModeSettings);
+      const { values, errors } = modes[mode].clientSettings(options, modeSettings);
+      Object.assign(clientSettings, values);
     });
     return clientSettings;
   } catch (error) {
@@ -60,3 +58,16 @@ async function generateClientSettings () {
   }
 }
 
+
+export function loadClient (_, src) {
+  const { frameId, tabId } = meta(src);
+  if (SAKA_DEBUG) {
+    console.log(`Loading client: frame: ${frameId}, tab" ${tabId}`);
+  }
+  chrome.tabs.executeScript(tabId, {
+    file: '/content_script.js',
+    frameId,
+    runAt: 'document_start',
+    matchAboutBlank: true
+  });
+}

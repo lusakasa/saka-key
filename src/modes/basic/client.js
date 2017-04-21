@@ -1,31 +1,18 @@
-import { msg } from 'mosi/client';
-import { isTextEditable } from 'lib/dom';
 import { toggleHelpMenu } from './help';
 
-function calculateNextMode (enabled, currentMode) {
-  if (enabled) {
-    if (isTextEditable(document.activeElement)) {
-      return 'Text';
-    } else {
-      return 'Command';
-    }
-  }
-  return currentMode;
-}
-
+/**
+ * The de facto disabled mode (note how all handlers return the current mode)
+ */
 const MODE = 'Basic';
 
 export const mode = {
   name: MODE,
   onCreate: () => {},
-  onEnter: async (event) => {},
-  onExit: async (event) => {},
-  onSettingsChange: ({ enabled }) => {
-    const nextMode = calculateNextMode(enabled, MODE);
-    msg(0, 'modeAction', { mode: 'Basic', action: 'setMode', arg: nextMode });
-  },
+  onEnter: (event) => {},
+  onExit: (event) => {},
+  onSettingsChange: (settings) => {},
   events: {
-    keydown: async (event) => MODE,
+    keydown: (event) => MODE,
     keypress: (event) => MODE,
     keyup: (event) => MODE,
     focusout: (event) => MODE,

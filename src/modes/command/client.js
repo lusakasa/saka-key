@@ -1,5 +1,4 @@
 import { commandTrie } from './commandTrie';
-import { isTextEditable } from 'lib/dom';
 import { isModifierKey } from 'lib/keys';
 import { commands } from './commands';
 
@@ -43,24 +42,8 @@ export const mode = {
       event.stopImmediatePropagation();
       return MODE;
     },
-    // event.target is original focused element
-    // event.relatedTarget is the newly focused element (if any)
-    focusout: (event) => {
-      // console.log('command: focusout event', event);
-      if (isTextEditable(event.relatedTarget)) {
-        return 'Text';
-      }
-      return 'Command';
-    },
-    // event.relatedTarget is the original focused element (if any)
-    // event.target is new focused element
-    focusin: async (event) => {
-      // console.log('command: focusout event', event);
-      if (isTextEditable(event.target)) {
-        return 'Text';
-      }
-      return 'Command';
-    },
+    focusout: (event) => 'Reset',
+    focusin: async (event) => 'Reset',
     click: (event) => MODE,
     mousedown: (event) => MODE
   },

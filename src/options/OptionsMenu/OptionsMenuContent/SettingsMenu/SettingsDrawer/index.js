@@ -35,37 +35,46 @@ class SettingsDrawer extends Component {
   }
   render ({ modes }) {
     return (
-      <nav class='mdc-permanent-drawer'>
-        <div class='mdc-list-group'>
-          {/*<a
-            class='mdc-list-item settings-drawer-link'
-            style={{ color: this.calculateLinkColor('Profiles') }}
-            onClick={scrollToCard('Profiles')}
-          >
-            Profiles
-          </a>
-          <hr class='mdc-list-divider' />*/}
-          <nav class='mdc-list'>
-            { modes.map((name) =>
-              <a
-                class='mdc-list-item settings-drawer-link'
-                style={{ color: this.calculateLinkColor(name) }}
-                onClick={scrollToCard(name)}
-              >
-                { name }
-              </a>
-            )}
-          </nav>
-          {/* <div class='mdc-permanent-drawer__toolbar-spacer' /> */}
-          {/*<nav class='mdc-list'>
-            <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Enable Profile</a>
-            <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Share Profile</a>
-            <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Delete Profile</a>
-            <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>GUI Configuration</a>
-            <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Text Configuration</a>
-          </nav>*/}
-        </div>
-      </nav>
+      <div
+        class='mdc-card'
+        style={{
+          margin: '20px 20px',
+          position: 'fixed',
+          overflowY: 'scroll'
+        }}
+      >
+        <nav class='mdc-permanent-drawer'>
+          <div class='mdc-list-group'>
+            {/*<a
+              class='mdc-list-item settings-drawer-link'
+              style={{ color: this.calculateLinkColor('Profiles') }}
+              onClick={scrollToCard('Profiles')}
+            >
+              Profiles
+            </a>
+            <hr class='mdc-list-divider' />*/}
+            <nav class='mdc-list'>
+              { modes.map((name) =>
+                <a
+                  class='mdc-list-item settings-drawer-link'
+                  style={{ color: this.calculateLinkColor(name) }}
+                  onClick={scrollToCard(name)}
+                >
+                  { name }
+                </a>
+              )}
+            </nav>
+            {/* <div class='mdc-permanent-drawer__toolbar-spacer' /> */}
+            {/*<nav class='mdc-list'>
+              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Enable Profile</a>
+              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Share Profile</a>
+              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Delete Profile</a>
+              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>GUI Configuration</a>
+              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Text Configuration</a>
+            </nav>*/}
+          </div>
+        </nav>
+      </div>
     );
   }
 }

@@ -2,6 +2,7 @@ body {
   margin: 0px;
   min-width: 700px;
   min-height: 700px;
+  background-color: #f5f5f5;
 }
 
  .options-menu-header {
@@ -37,12 +38,13 @@ body {
   margin: 20px;
   align-items: center;
   text-align: center;
+  background-color: white;
 }
 
 .settings-content {
   display: inline-flex;
   flex-direction: column;
-  margin-left: 280px;
+  margin-left: 260px;
 }
 
 .settings-menu {

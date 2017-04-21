@@ -24,13 +24,13 @@ import {
 
 
 const backgroundCommand = (action, arg) => () => {
-  msg(1, 'modeAction', { mode: 'Command', action, arg });
+  msg(1, 'modeMessage', { mode: 'Command', action, arg });
 };
 
 export const commands = {
   toggleHelpMenu: () => {
     // TODO: REIMPLEMENT PROPERLY
-    // msg(1, 'modeAction', {
+    // msg(1, 'modeMessage', {
     //   mode: 'Basic',
     //   action: 'toggleHelpMenu'
     // });

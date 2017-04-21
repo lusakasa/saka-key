@@ -1,5 +1,5 @@
 import { init } from 'mosi/client';
-import { initModes, setup, modeAction, clientSettings } from './modes';
+import { initModes, setup, modeMessage, clientSettings } from './modes';
 import { mode as Basic } from 'modes/basic/client';
 import { mode as Command } from 'modes/command/client';
 import { mode as Text } from 'modes/text/client';
@@ -23,7 +23,7 @@ export function initialize (type) {
   init({
     subscriptions: ['client', type],
     actions: {
-      modeAction,
+      modeMessage,
       clientSettings
     }
   });

@@ -3,7 +3,9 @@ const MODE = 'Developer';
 export const mode = {
   name: MODE,
   onInstalled: () => {},
-  onSettingChange: (profile, newSettings) => {},
-  clientSettings: (options, settings) => undefined,
+  clientSettings: (options, settings) => ({
+    values: {},
+    errors: {}
+  }),
   messages: {}
 };

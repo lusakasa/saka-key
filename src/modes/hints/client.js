@@ -1,4 +1,3 @@
-import { isTextEditable } from 'lib/dom';
 import {
   showHints,
   hideHints,
@@ -16,10 +15,10 @@ export let verticalPlacement;
 export const mode = {
   name: MODE,
   onCreate: () => {},
-  onEnter: async (event) => {
+  onEnter: (event) => {
     showHints();
   },
-  onExit: async (event) => {
+  onExit: (event) => {
     hideHints();
   },
   onSettingsChange: (settings) => {
@@ -30,7 +29,7 @@ export const mode = {
     verticalPlacement = settings.hintVerticalPlacement;
   },
   events: {
-    keydown: async (event) => {
+    keydown: (event) => {
       event.stopImmediatePropagation();
       if (!isModifierKey(event)) {
         if (hintChars.includes(event.key)) {
@@ -44,26 +43,15 @@ export const mode = {
       }
       return MODE;
     },
-    keypress: async (event) => {
+    keypress: (event) => {
       event.stopImmediatePropagation();
       return MODE;
     },
     keyup: (event) => MODE,
     focusout: (event) => MODE,
-    focusin: async (event) => {
-      if (isTextEditable(event.target)) {
-        return 'Text';
-      }
-      return MODE;
-    },
+    focusin: (event) => 'TryText',
     click: (event) => MODE,
-    mousedown: async (event) => {
-      if (SAKA_DEBUG) return MODE;
-      if (isTextEditable(event.target)) {
-        return 'Text';
-      }
-      return 'Command';
-    }
+    mousedown: async (event) => 'Reset'
   },
   messages: {}
 };

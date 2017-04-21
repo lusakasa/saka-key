@@ -3,20 +3,12 @@ import { Component, h } from 'preact';
 import SettingsDrawer from './SettingsDrawer';
 import SettingsContent from './SettingsContent';
 
-const style = {
-  margin: '20px 28px',
-  position: 'fixed',
-  overflowY: 'scroll'
-};
-
 export default class SettingsMenu extends Component {
   render () {
     return (
       <div className={'settings-menu'}>
         <div style='display: flex;'>
-          <div class='mdc-card' style={style}>
-            <SettingsDrawer />
-          </div>
+          <SettingsDrawer />
           <SettingsContent />
         </div>
       </div>

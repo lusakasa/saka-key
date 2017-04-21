@@ -75,10 +75,15 @@ export default class SettingsCard extends Component {
       onProfileDuplicate,
       onProfileRename
   }) {
+    const errorExists = false;
     return (
       <div
         id={`settings_card_${name}`}
-        class='mdc-card demo-card demo-card--with-avatar mode-card'>
+        class='mdc-card demo-card demo-card--with-avatar mode-card'
+        style={{
+          backgroundColor: errorExists ? '#fff0f0' : '#ffffff'
+        }}
+      >
 
         <SettingsCardHeader
           name={name}

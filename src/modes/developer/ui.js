@@ -30,7 +30,7 @@ export function hideMenu () {
 }
 
 function exitDeveloperMode () {
-  msg(0, 'modeAction', {
+  msg(0, 'modeMessage', {
     mode: 'Basic',
     action: 'setMode',
     arg: 'Command' // TODO: change this to a proper mode, this is a bug

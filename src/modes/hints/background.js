@@ -44,13 +44,16 @@ export const mode = {
       activeCharCSS = 'opacity: 0.5';
     }
     return {
-      hintCSS,
-      normalCharCSS,
-      activeCharCSS,
-      hintChars,
-      detectByCursorStyle,
-      hintHorizontalPlacement,
-      hintVerticalPlacement
+      values: {
+        hintCSS,
+        normalCharCSS,
+        activeCharCSS,
+        hintChars,
+        detectByCursorStyle,
+        hintHorizontalPlacement,
+        hintVerticalPlacement
+      },
+      errors: {}
     };
   },
   messages: {}
