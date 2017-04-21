@@ -36,11 +36,26 @@ export function clientSettings (settings) {
   Object.entries(modes).forEach(([name, mode]) => {
     mode.onSettingsChange(settings);
   });
-  changeMode(settings.enabled ? 'Reset' : 'Basic', 'clientSettings');
+  changeMode({
+    mode: settings.enabled ? 'Reset' : 'Basic',
+    reason: 'clientSettings'
+  });
 }
 
+/**
+ * Transforms a reserved mode name to an actual mode name.
+ * For regular mode names, returns the name unchanged.
+ * Reserved mode names:
+ * * Same - returns the active mode name
+ * * Reset - returns either Command or Text, depending on document.activeElement
+ * * TryText - if document.activeElement is a text input, returns Text. 
+ *   Otherwise returns the active mode name
+ * @param {string} name
+ */
 function modeNameTransform (name) {
   switch (name) {
+    case 'Same':
+      return currentMode;
     case 'Reset':
       if (isTextEditable(document.activeElement)) {
         return 'Text';
@@ -50,7 +65,7 @@ function modeNameTransform (name) {
       if (isTextEditable(document.activeElement)) {
         return 'Text';
       }
-      return currentMode.name;
+      return currentMode;
     default:
       return name;
   }
@@ -91,10 +106,23 @@ async function setMode (nextMode, event) {
  */
 const eventQueue = new Queue(1);
 
-/** Explicitly changes the mode, type should be a string denoted why the mode was changed */
-function changeMode (nextMode, type) {
+/**
+ * Explicitly changes the modes. This function is declared so that
+ * it can be called by any mode with msg(0, 'changeMode', { mode, why })
+ * mode - the name of the new mode
+ * why - a string explaining why the mode was changed
+*/
+export function changeMode ({ mode, reason }) {
+  if (SAKA_DEBUG) {
+    if (!mode) {
+      console.error('Called changeMode but failed to provide a new mode');
+    }
+    if (!reason) {
+      console.error('Called changeMode but failed to provide a reason');
+    }
+  }
   eventQueue.add(async () => {
-    await setMode(nextMode, { type });
+    await setMode(mode, { type: reason });
   });
 }
 

@@ -1,9 +1,7 @@
 import { showMenu, hideMenu } from './ui';
 
-const MODE = 'Developer';
-
 export const mode = {
-  name: MODE,
+  name: 'Developer',
   onCreate: () => {},
   onEnter: async (event) => {
     showMenu();
@@ -13,13 +11,13 @@ export const mode = {
   },
   onSettingsChange: (settings) => {},
   events: {
-    keydown: (event) => MODE,
-    keypress: (event) => MODE,
-    keyup: (event) => MODE,
-    focusout: (event) => MODE,
-    focusin: (event) => MODE,
-    click: (event) => MODE,
-    mousedown: (event) => MODE
+    keydown: (event) => 'Same',
+    keypress: (event) => 'Same',
+    keyup: (event) => 'Same',
+    focusout: (event) => 'Same',
+    focusin: (event) => 'Same',
+    click: (event) => 'Same',
+    mousedown: (event) => 'Same'
   },
   messages: {}
 };

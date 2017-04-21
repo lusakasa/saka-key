@@ -1,31 +1,29 @@
-const MODE = 'Template';
-
 export const mode = {
-  name: MODE,
+  name: 'Template',
   onCreate: () => {},
   onEnter: async (event) => {},
   onExit: async (event) => {},
   events: {
     keydown: async (event) => {
-      return MODE;
+      return 'Template';
     },
     keypress: async (event) => {
-      return MODE;
+      return 'Template';
     },
     keyup: async (event) => {
-      return MODE;
+      return 'Template';
     },
     focusin: async (event) => {
-      return MODE;
+      return 'Template';
     },
     focusout: async (event) => {
-      return MODE;
+      return 'Template';
     },
     click: async (event) => {
-      return MODE;
+      return 'Template';
     },
     mousedown: async (event) => {
-      return MODE;
+      return 'Template';
     }
   },
   messages: {}

@@ -6,14 +6,13 @@ import {
 } from './HintRenderer';
 import { isModifierKey } from 'lib/keys';
 
-const MODE = 'Hints';
 export let hintChars;
 export let detectByCursorStyle;
 export let horizontalPlacement;
 export let verticalPlacement;
 
 export const mode = {
-  name: MODE,
+  name: 'Hints',
   onCreate: () => {},
   onEnter: (event) => {
     showHints();
@@ -41,16 +40,16 @@ export const mode = {
         }
         return 'Command';
       }
-      return MODE;
+      return 'Same';
     },
     keypress: (event) => {
       event.stopImmediatePropagation();
-      return MODE;
+      return 'Same';
     },
-    keyup: (event) => MODE,
-    focusout: (event) => MODE,
+    keyup: (event) => 'Same',
+    focusout: (event) => 'Same',
     focusin: (event) => 'TryText',
-    click: (event) => MODE,
+    click: (event) => 'Same',
     mousedown: async (event) => 'Reset'
   },
   messages: {}

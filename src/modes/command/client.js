@@ -2,10 +2,8 @@ import { commandTrie } from './commandTrie';
 import { isModifierKey } from 'lib/keys';
 import { commands } from './commands';
 
-const MODE = 'Command';
-
 export const mode = {
-  name: MODE,
+  name: 'Command',
   onCreate: () => {},
   onEnter: async (event) => {
     commandTrie.reset();
@@ -30,22 +28,22 @@ export const mode = {
           }
         }
       }
-      return MODE;
+      return 'Same';
     },
     keypress: async (event) => {
       // NOTE: do not call event.preventDefault();
       // this will break built-in shortcuts on firefox as of 3/2017
       event.stopImmediatePropagation();
-      return MODE;
+      return 'Same';
     },
     keyup: async (event) => {
       event.stopImmediatePropagation();
-      return MODE;
+      return 'Same';
     },
     focusout: (event) => 'Reset',
     focusin: async (event) => 'Reset',
-    click: (event) => MODE,
-    mousedown: (event) => MODE
+    click: (event) => 'Same',
+    mousedown: (event) => 'Same'
   },
   messages: {}
 };
