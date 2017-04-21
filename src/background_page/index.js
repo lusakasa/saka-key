@@ -1,5 +1,5 @@
 import { init } from 'mosi/core';
-import { modeAction, clientSettings } from 'background_page/modes';
+import { modeMessage, clientSettings } from 'background_page/modes';
 import { mode as Basic } from 'modes/basic/background';
 import { mode as Command } from 'modes/command/background';
 import { mode as Hints } from 'modes/hints/background';
@@ -21,7 +21,7 @@ if (SAKA_DEBUG) {
 init({
   actions: {
     loadClient,
-    modeAction,
+    modeMessage,
     clientSettings
   }
 });

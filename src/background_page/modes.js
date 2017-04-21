@@ -5,7 +5,7 @@ export function setModes (availableModes) {
   modes = availableModes;
 }
 
-export async function modeAction ({ mode, action, arg }, src) {
+export async function modeMessage ({ mode, action, arg }, src) {
   if (SAKA_DEBUG) {
     if (!modes[mode]) {
       throw Error(`Missing Mode ${mode}`);
