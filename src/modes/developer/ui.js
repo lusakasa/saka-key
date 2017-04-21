@@ -85,8 +85,7 @@ class EventsExplorer extends Component {
     const defaultCaptureTypes = [
       'keydown',
       'keypress',
-      'keyup',
-      'scroll'
+      'keyup'
     ];
     defaultCaptureTypes.forEach((type) => {
       this.addCaptureType(type);
