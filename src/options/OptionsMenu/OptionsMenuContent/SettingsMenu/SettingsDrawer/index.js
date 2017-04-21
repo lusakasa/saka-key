@@ -11,20 +11,22 @@ const scrollToCard = (name) => () => {
 class SettingsDrawer extends Component {
   state = {
      // the first card for which its bottom is below the viewport top
-    activeCard: 'Basic'
+    activeCard: SAKA_PLATFORM !== 'firefox' ? 'Basic' : ''
   }
   componentDidMount () {
-    document.addEventListener('scroll', (event) => {
-      const cardNames = this.props.modes;
-      const cardBottoms = cardNames.map((name) =>
-        document.querySelector(`#settings_card_${name}`)
-          .getBoundingClientRect().bottom + pageYOffset
-      );
-      const activeCardIndex = cardBottoms.findIndex((bottom) =>
-        bottom > document.scrollingElement.scrollTop + 84
-      );
-      this.setState({ activeCard: cardNames[activeCardIndex] });
-    });
+    if (SAKA_PLATFORM !== 'firefox') {
+      document.addEventListener('scroll', (event) => {
+        const cardNames = this.props.modes;
+        const cardBottoms = cardNames.map((name) =>
+          document.querySelector(`#settings_card_${name}`)
+            .getBoundingClientRect().bottom + pageYOffset
+        );
+        const activeCardIndex = cardBottoms.findIndex((bottom) =>
+          bottom > document.scrollingElement.scrollTop + 84
+        );
+        this.setState({ activeCard: cardNames[activeCardIndex] });
+      });
+    }
   }
   calculateLinkColor = (cardName) => {
     return cardName === this.state.activeCard

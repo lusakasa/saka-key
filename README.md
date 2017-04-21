@@ -21,7 +21,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 3. It's engineered for configurability. There are no hardcoded keybindings you have to unmap. There is no default hint styling. Default _settings profiles_ are built-in, but the user can make any changes desired. Per-domain profiles coming soon.
 
-4. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen.
+4. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen. These tools weren't selected just because they're hip and new. Saka Key would be something entirely different without native asynchronous support, ES6 Modules, and functional UI libraries.
 
 Note: This is a developing project that has bugs and lacks features. If you're looking for a robust experience, try some of the more mature options like [Vimium](https://github.com/philc/vimium) and [cVim](https://github.com/1995eaton/chromium-vim).
 
@@ -60,7 +60,6 @@ You may have to debug or modify these libraries when contributing to saka key. T
 2. Run `npm link`
 3. Navigate to the root of Saka key.
 4. Run `npm link saka-actions` and/or `npm link mosi`
-
 
 ## Credits
 

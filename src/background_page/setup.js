@@ -9,12 +9,16 @@ import { modes, regenerateClientSettings } from './modes';
  * should NOT be placed in the startup listener.
  */
 export function setup () {
+  console.log('SETUP1');
   initInstallListeners();
+  console.log('SETUP2');
   regenerateClientSettings();
+  console.log('SETUP3');
   initStorageChangeListener();
+  console.log('SETUP4');
 }
 
-function initInstallListeners () {
+async function initInstallListeners () {
   chrome.runtime.onInstalled.addListener(async ({ reason }) => {
     if (SAKA_DEBUG) console.log('install event: ' + reason);
     switch (reason) {
@@ -33,6 +37,12 @@ function initInstallListeners () {
       mode.onInstalled(reason);
     });
   });
+  if (SAKA_DEBUG && SAKA_PLATFORM === 'firefox') {
+    await initializeLocalStorage(modes);
+    Object.values(modes).forEach((mode) => {
+      mode.onInstalled('install');
+    });
+  }
 }
 
 function initStorageChangeListener () {
