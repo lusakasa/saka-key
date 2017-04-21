@@ -1,7 +1,5 @@
-const MODE = 'Developer';
-
 export const mode = {
-  name: MODE,
+  name: 'Developer',
   onInstalled: () => {},
   clientSettings: (options, settings) => ({
     values: {},

@@ -28,10 +28,8 @@ import {
   togglePinTab
 } from 'saka-commands/tab';
 
-const MODE = 'Command';
-
 export const mode = {
-  name: MODE,
+  name: 'Command',
   onInstalled: (reason) => {},
   clientSettings: (options, settings) => {
     const keybindings = {};

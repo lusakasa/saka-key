@@ -1,7 +1,5 @@
-const MODE = 'Basic';
-
 export const mode = {
-  name: MODE,
+  name: 'Basic',
   onInstalled: () => {},
   clientSettings: (options, { enabled }) => ({
     values: { enabled },

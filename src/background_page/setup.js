@@ -9,13 +9,9 @@ import { modes, regenerateClientSettings } from './modes';
  * should NOT be placed in the startup listener.
  */
 export function setup () {
-  console.log('SETUP1');
   initInstallListeners();
-  console.log('SETUP2');
   regenerateClientSettings();
-  console.log('SETUP3');
   initStorageChangeListener();
-  console.log('SETUP4');
 }
 
 async function initInstallListeners () {
@@ -47,7 +43,6 @@ async function initInstallListeners () {
 
 function initStorageChangeListener () {
   chrome.storage.onChanged.addListener((changes, areaName) => {
-    console.log(changes);
     if (areaName === 'local') {
       Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
         if (SAKA_DEBUG) console.log(`storage listener detected ${key} changed from `, oldValue, ' to ', newValue);
@@ -56,7 +51,6 @@ function initStorageChangeListener () {
           case 'modes':
           case 'profileGroups':
           case 'activeProfileGroup':
-            console.log('regenerating client settings');
             regenerateClientSettings();
             break;
           default:

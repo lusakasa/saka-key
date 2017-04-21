@@ -64,10 +64,17 @@ export function loadClient (_, src) {
   if (SAKA_DEBUG) {
     console.log(`Loading client: frame: ${frameId}, tab" ${tabId}`);
   }
-  chrome.tabs.executeScript(tabId, {
-    file: '/content_script.js',
-    frameId,
-    runAt: 'document_start',
-    matchAboutBlank: true
-  });
+  try {
+    browser.tabs.executeScript(tabId, {
+      file: '/content_script.js',
+      frameId,
+      runAt: 'document_start',
+      matchAboutBlank: true
+    });
+  } catch (e) {
+    if (SAKA_DEBUG) {
+      console.error(e);
+    }
+  }
+
 }
