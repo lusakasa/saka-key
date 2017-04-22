@@ -5,17 +5,17 @@ import { commands } from './commands';
 export const mode = {
   name: 'Command',
   onCreate: () => {},
-  onEnter: async (event) => {
+  onEnter: (event) => {
     commandTrie.reset();
   },
-  onExit: async (event) => {
+  onExit: (event) => {
     commandTrie.reset();
   },
   onSettingsChange: ({ bindings }) => {
     commandTrie.init(bindings);
   },
   events: {
-    keydown: async (event) => {
+    keydown: (event) => {
       if (event.key !== 'Escape') {
         event.stopImmediatePropagation();
       }
@@ -30,18 +30,18 @@ export const mode = {
       }
       return 'Same';
     },
-    keypress: async (event) => {
+    keypress: (event) => {
       // NOTE: do not call event.preventDefault();
       // this will break built-in shortcuts on firefox as of 3/2017
       event.stopImmediatePropagation();
       return 'Same';
     },
-    keyup: async (event) => {
+    keyup: (event) => {
       event.stopImmediatePropagation();
       return 'Same';
     },
     focusout: (event) => 'Reset',
-    focusin: async (event) => 'Reset',
+    focusin: (event) => 'Reset',
     click: (event) => 'Same',
     mousedown: (event) => 'Same'
   },
