@@ -19,7 +19,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 2. It's not vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers.   
 
-3. It's engineered for configurability. The Settings GUI is generated from simple JSON files to encourage authors to make modes configurable. Any changes to a setting are automatically propogated to all clients without requiring a page refresh. Saka Key supports _settings profiles_ that are easy to switch between and sensible default settings profiles are supported. Per-domain profiles coming soon.
+3. It's engineered for configurability. The Settings GUI is generated from simple JSON files to encourage authors to make modes configurable. Any changes to a setting are automatically propogated to all tabs without requiring a page refresh. Saka Key supports _settings profiles_ that are easy to switch between and sensible default settings profiles are supported. Per-domain profiles coming soon.
 
 4. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen. These tools weren't selected just because they're hip and new. Saka Key would be something entirely different without native asynchronous support, ES6 Modules, and functional UI libraries.
 
