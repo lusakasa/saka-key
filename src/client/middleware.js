@@ -19,7 +19,7 @@ const middleware = {
     }
   },
   events: {
-    keydown: (event) => {},
+    keydown: (event) => undefined,
     keypress: (event) => undefined,
     keyup: (event) => undefined,
     blur: (event) => undefined,
