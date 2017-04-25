@@ -2,10 +2,17 @@ import Queue from 'promise-queue';
 import { msg } from 'mosi/client';
 import { isTextEditable } from 'lib/dom';
 import { Extension } from 'modes/extension/client';
+import {
+  passDOMEventToMiddleware,
+  passMessageToMiddleware,
+  middlewareOnSettingsChange
+} from './middleware';
 
 /** The active mode of the Modes state machine */
 let currentMode;
 let modes = {};
+/** whether saka key is enabled or not */
+let enabled = false;
 
 /** Initializes the Modes state machine */
 export function initModes (startMode, availableModes) {
@@ -33,12 +40,15 @@ export function clientSettings (settings) {
     console.error('Failed to configure client settings: ', settings);
     return;
   }
+  enabled = settings.enabled;
   Object.entries(modes).forEach(([name, mode]) => {
     mode.onSettingsChange(settings);
   });
+  middlewareOnSettingsChange(settings);
   changeMode({
     mode: settings.enabled ? 'Reset' : 'Basic',
-    reason: 'clientSettings'
+    type: 'clientSettings',
+    settings
   });
 }
 
@@ -87,8 +97,9 @@ async function setMode (nextMode, event) {
   }
   if (nextMode !== currentMode) {
     if (SAKA_DEBUG) {
-      console.log(`%c${event.type}: %c${currentMode} -> %c${nextMode}`,
-        'color: #2196F3;', 'color: grey;', 'color: #4CAF50;', event);
+      const middlewareString = event.middleware ? ` :: via ${event.middleware} middleware` : '';
+      console.log(`%c${event.type}: %c${currentMode} -> %c${nextMode}%c${middlewareString}`,
+        'color: #2196F3;', 'color: grey;', 'color: #4CAF50;', 'color: #FF4500;', event);
     }
     await modes[currentMode].onExit(event);
     await modes[nextMode].onEnter(event);
@@ -112,18 +123,20 @@ const eventQueue = new Queue(1);
  * mode - the name of the new mode
  * why - a string explaining why the mode was changed
 */
-export function changeMode ({ mode, reason }) {
+export function changeMode (modeChangeEvent) {
   if (SAKA_DEBUG) {
-    if (!mode) {
-      console.error('Called changeMode but failed to provide a new mode');
+    if (!modeChangeEvent.mode) {
+      throw Error('Called changeMode but failed to provide a new mode');
     }
-    if (!reason) {
-      console.error('Called changeMode but failed to provide a reason');
+    if (!modeChangeEvent.type) {
+      throw Error('Called changeMode but failed to provide a type');
     }
   }
-  eventQueue.add(async () => {
-    await setMode(mode, { type: reason });
-  });
+  if (enabled) {
+    eventQueue.add(async () => {
+      await setMode(modeChangeEvent.mode, modeChangeEvent);
+    });
+  }
 }
 
 /**
@@ -136,10 +149,13 @@ export function changeMode ({ mode, reason }) {
  * @param {DocumentEvent} event
  */
 async function handleDOMEvent (event) {
-  eventQueue.add(async () => {
-    const nextMode = await (modes[currentMode].events[event.type](event));
-    await setMode(nextMode, event);
-  });
+  if (enabled) {
+    eventQueue.add(async () => {
+      const nextMode = await passDOMEventToMiddleware(event) ||
+        await (modes[currentMode].events[event.type](event));
+      await setMode(nextMode, event);
+    });
+  }
 }
 
 /**
@@ -156,20 +172,23 @@ async function handleDOMEvent (event) {
  * @param {number} src - the source of the message, usually ignored
  */
 export async function modeMessage ({ mode, action, arg }, src) {
-  eventQueue.add(async () => {
-    if (SAKA_DEBUG) {
-      if (!modes[mode]) {
-        throw Error(`Missing Mode ${mode}`);
+  if (enabled) {
+    eventQueue.add(async () => {
+      if (SAKA_DEBUG) {
+        if (!modes[mode]) {
+          throw Error(`Missing Mode ${mode}`);
+        }
+        if (!modes[mode].messages[action]) {
+          throw Error(`Mode ${mode} is missing a handler for action ${action}`);
+        }
       }
-      if (!modes[mode].messages[action]) {
-        throw Error(`Mode ${mode} is missing a handler for action ${action}`);
+      const nextMode = await passMessageToMiddleware(action, arg, src) ||
+        await (modes[mode].messages[action](arg, src));
+      if (nextMode) {
+        setMode(nextMode, { type: 'message:' + action });
       }
-    }
-    const nextMode = await (modes[mode].messages[action](arg, src));
-    if (nextMode) {
-      setMode(nextMode, { type: 'message:' + action });
-    }
-  });
+    });
+  }
 }
 
 
@@ -188,8 +207,8 @@ function installEventListeners () {
     'keydown',
     'keypress',
     'keyup',
-    'focusin',
-    'focusout',
+    'blur',
+    'focus',
     'click',
     'mousedown'
   ];

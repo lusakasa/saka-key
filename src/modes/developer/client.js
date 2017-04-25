@@ -14,8 +14,8 @@ export const mode = {
     keydown: (event) => 'Same',
     keypress: (event) => 'Same',
     keyup: (event) => 'Same',
-    focusout: (event) => 'Same',
-    focusin: (event) => 'Same',
+    blur: (event) => 'Same',
+    focus: (event) => 'Same',
     click: (event) => 'Same',
     mousedown: (event) => 'Same'
   },

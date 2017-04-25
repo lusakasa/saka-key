@@ -5,6 +5,7 @@
       "name": "standard",
       "settings": {
         "enabled": true,
+        "preventStealFocus": false,
         "primaryColor": "#ff4488",
         "secondaryColor": "#f23733"
       }
@@ -13,6 +14,7 @@
       "name": "disabled",
       "settings": {
         "enabled": false,
+        "preventStealFocus": false,
         "primaryColor": "#ff4488",
         "secondaryColor": "#f23733"
       }

@@ -8,6 +8,11 @@
       "key": "enabled"
     },
     {
+      "type": "checkbox",
+      "label": "Prevent Page From Steal Focus",
+      "key": "preventStealFocus"
+    },
+    {
       "type": "color",
       "label": "Primary Color",
       "key": "primaryColor",

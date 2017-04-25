@@ -1,6 +1,6 @@
 import { Component, render, h } from 'preact';
 import { findHints } from './findHints';
-import { mouseEvent, isTextEditable } from 'lib/dom';
+import { mouseEvent } from 'lib/dom';
 import { hintChars, horizontalPlacement, verticalPlacement } from './client';
 
 export let showHints;
@@ -116,12 +116,9 @@ const Hint = ({ hintString, rect, horizontalPlacement, verticalPlacement, seen }
 );
 
 function activateHint (hint) {
-  if (isTextEditable(hint.element)) {
-    hint.element.focus();
-    return 'Text';
-  }
   mouseEvent('click', hint.element);
-  return 'Command';
+  hint.element.focus();
+  return 'Reset';
 }
 
 

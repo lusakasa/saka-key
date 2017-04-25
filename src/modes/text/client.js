@@ -8,8 +8,8 @@ export const mode = {
     keydown: (event) => 'Same',
     keypress: (event) => 'Same',
     keyup: (event) => 'Same',
-    focusout: (event) => 'Reset',
-    focusin: (event) => 'Reset',
+    blur: (event) => 'Reset',
+    focus: (event) => 'Reset',
     click: (event) => 'Same',
     mousedown: (event) => 'Same'
   },

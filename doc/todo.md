@@ -8,6 +8,8 @@
 * better scrolling
 * link hints
     * link hint types: scroll, frames, inputs, select
+    * higher quality link hints https://github.com/philc/vimium/issues/2083
+    * cached link hints
 * figure out why disabling saka breaks google search (doesn't let you change focus away from search input)
 * handle browser restart/update properly
 * configurable key bindings

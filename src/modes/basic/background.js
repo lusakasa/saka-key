@@ -1,10 +1,12 @@
 export const mode = {
   name: 'Basic',
   onInstalled: () => {},
-  clientSettings: (options, { enabled }) => ({
-    values: { enabled },
-    errors: {}
-  }),
+  clientSettings: (options, { enabled, preventStealFocus }) => {
+    return {
+      values: { enabled, preventStealFocus },
+      errors: {}
+    };
+  },
   messages: {
     toggleHelpMenu: () => {
       // chrome.tabs.query({ currentWindow: true, active: true }, ([tab]) => {

@@ -13,10 +13,10 @@ export const mode = {
     keyup: async (event) => {
       return 'Template';
     },
-    focusin: async (event) => {
+    blur: async (event) => {
       return 'Template';
     },
-    focusout: async (event) => {
+    focus: async (event) => {
       return 'Template';
     },
     click: async (event) => {

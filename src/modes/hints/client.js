@@ -47,8 +47,8 @@ export const mode = {
       return 'Same';
     },
     keyup: (event) => 'Same',
-    focusout: (event) => 'Same',
-    focusin: (event) => 'TryText',
+    blur: (event) => 'Same',
+    focus: (event) => 'TryText',
     click: (event) => 'Same',
     mousedown: async (event) => 'Reset'
   },

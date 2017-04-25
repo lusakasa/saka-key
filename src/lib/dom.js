@@ -38,6 +38,7 @@ export function mouseEvent (type, element) {
     const event = new MouseEvent(type, {
       bubbles: true,
       cancelable: true,
+      view: window,
       detail: 1 // usually the click count
     });
     // TODO: # firefox synthetic click events apparently don't trigger default actions
