@@ -9,7 +9,7 @@
     },
     {
       "type": "checkbox",
-      "label": "Prevent Page From Steal Focus",
+      "label": "Prevent Page From Stealing Focus",
       "key": "preventStealFocus"
     },
     {
