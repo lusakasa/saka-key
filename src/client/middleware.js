@@ -28,10 +28,12 @@ const middleware = {
         event.target.blur();
         return 'Same';
       }
+      return undefined;
     },
-    click: (event) => {},
+    click: (event) => undefined,
     mousedown: (event) => {
       hasInteractedWithPage = true;
+      return undefined;
     }
   },
   messages: {}
