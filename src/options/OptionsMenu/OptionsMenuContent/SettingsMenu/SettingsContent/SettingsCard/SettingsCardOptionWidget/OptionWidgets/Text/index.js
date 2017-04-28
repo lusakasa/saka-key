@@ -5,7 +5,7 @@ export default class Text extends Component {
     return (
       <li className='mdc-list-item color-widget'>
         <label>{ label }</label>
-        <div class='mdc-textfield' data-demo-no-auto-js=''>
+        <div className='mdc-textfield' data-demo-no-auto-js=''>
           <input
             type='text'
             className='mdc-textfield__input'

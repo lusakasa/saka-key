@@ -1,5 +1,6 @@
 import { Component, h } from 'preact';
 import Header from './Header';
+import Unknown from './Unknown';
 import Keybinding from './Keybinding';
 import Select from './Select';
 import ToggleButton from './ToggleButton';
@@ -7,35 +8,43 @@ import Switch from './Switch';
 import Checkbox from './Checkbox';
 import Color from './Color';
 import Text from './Text';
+import Number from './Number';
 import Textarea from './TextArea';
 
 // must pass:
 // * value
 // * onValueChange((newValue) => {})
 
+function optionWidgetByType (type) {
+  switch (type) {
+    case 'header':
+      return Header;
+    case 'keybinding':
+      return Keybinding;
+    case 'select':
+      return Select;
+    case 'togglebutton':
+      return ToggleButton;
+    case 'checkbox':
+      return Checkbox;
+    case 'switch':
+      return Switch;
+    case 'color':
+      return Color;
+    case 'text':
+      return Text;
+    case 'number':
+      return Number;
+    case 'textarea':
+      return Textarea;
+    default:
+      return Unknown;
+  }
+}
+
 export default class OptionWidget extends Component {
   render (props) {
-    switch (props.type) {
-      case 'header':
-        return <Header {...props} />;
-      case 'keybinding':
-        return <Keybinding {...props} />;
-      case 'select':
-        return <Select {...props} />;
-      case 'togglebutton':
-        return <ToggleButton {...props} />;
-      case 'checkbox':
-        return <Checkbox {...props} />;
-      case 'switch':
-        return <Switch {...props} />;
-      case 'color':
-        return <Color {...props} />;
-      case 'text':
-        return <Text {...props} />;
-      case 'textarea':
-        return <Textarea {...props} />;
-      default:
-        return <h1>Unknown Options Type {props.type}</h1>;
-    }
+    const Widget = optionWidgetByType(props.type);
+    return <Widget {...props} />;
   }
 }

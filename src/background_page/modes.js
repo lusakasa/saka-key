@@ -34,6 +34,22 @@ export async function regenerateClientSettings () {
   msg('client', 'clientSettings', cachedClientSettings);
 }
 
+/**
+ * generateClientSettings is called when the chrome.storage.onChange event fires.
+ * It has two jobs:
+ *
+ * 1. Use the new user-defined settings to generate and cache the client settings that
+ *    should be sent to every client
+ * 2. Write any errors detected in the new user-defined settings to storage so the options
+ *    GUI can update to show them.
+ *
+ * It accomplishes this by passing the user-defined settings to every mode's clientSettings
+ * method. clientSettings must returns an object with two properties:
+ *
+ * * values: an object whose properties should be passed to every Saka client.
+ * * errors: an object whose properties are written to storage to indicate invalid user-
+ *   defined settings.
+ */
 async function generateClientSettings () {
   try {
     const {
@@ -51,10 +67,13 @@ async function generateClientSettings () {
     const clientSettings = {};
     Object.entries(profileMap).forEach(([mode, profile]) => {
       const options = modesConfig.find(({ name }) => name === mode).options;
-      const modeSettings = settings[mode].find(({ name }) => name === profileMap[mode]).settings;
+      const activeProfile = settings[mode].find(({ name }) => name === profileMap[mode]);
+      const modeSettings = activeProfile.settings;
       const { values, errors } = modes[mode].clientSettings(options, modeSettings);
+      activeProfile.errors = errors;
       Object.assign(clientSettings, values);
     });
+    await browser.storage.local.set({ 'settings': settings });
     return clientSettings;
   } catch (error) {
     console.error(error);

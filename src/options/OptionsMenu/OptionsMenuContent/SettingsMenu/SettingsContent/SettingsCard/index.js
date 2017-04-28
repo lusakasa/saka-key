@@ -1,6 +1,7 @@
 import { Component, h } from 'preact';
 import SettingsCardHeader from './SettingsCardHeader';
 import SettingsCardOptionWidget from './SettingsCardOptionWidget';
+import SettingsCardErrorWidget from './SettingsCardErrorWidget';
 
 import '@material/toolbar/dist/mdc.toolbar.css';
 import '@material/select/dist/mdc.select.css';
@@ -25,7 +26,7 @@ import './style.css';
 // * onOptionChange((key, newValue) => {})
 // * onProfileChange((newProfileName) => {})
 export default class SettingsCard extends Component {
-  isVisible = (option) => {
+  isOptionVisible = (option) => {
     if (!option.hasOwnProperty('visible')) return true;
     if (option['visible'] === true) return true;
     if (option['visible'] === false) return false;
@@ -40,9 +41,9 @@ export default class SettingsCard extends Component {
           case '!=':
             return this.props.values[key] !== JSON.parse(value);
           case 'is':
-            return this.isVisible(this.props.options.find((o) => o.key === key));
+            return this.isOptionVisible(this.props.options.find((o) => o.key === key));
           case 'not':
-            return !this.isVisible(this.props.options.find((o) => o.key === key));
+            return !this.isOptionVisible(this.props.options.find((o) => o.key === key));
           default:
             throw Error(`Option '${option.key}' has invalid visible condition: '${option.visible}'`);
         }
@@ -68,6 +69,7 @@ export default class SettingsCard extends Component {
       selectedProfile,
       options,
       values,
+      errors,
       onOptionChange,
       onProfileChange,
       onProfileNew,
@@ -104,12 +106,21 @@ export default class SettingsCard extends Component {
           { options.length === 0
             ? 'No settings to configure'
             : options.map((option) => (
-              this.isVisible(option)
-              ? <SettingsCardOptionWidget
-                {...option}
-                _key={option.key}
-                value={values && values[option.key]}
-                onChange={onOptionChange} />
+              this.isOptionVisible(option)
+              ? (
+                <div>
+                  { errors && errors[option.key]
+                    ? <SettingsCardErrorWidget message={errors[option.key]} />
+                    : undefined
+                  }
+                  <SettingsCardOptionWidget
+                    {...option}
+                    _key={option.key}
+                    value={values && values[option.key]}
+                    onChange={onOptionChange}
+                  />
+                </div>
+                )
               : undefined
               ))
           }

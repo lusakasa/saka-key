@@ -98,6 +98,7 @@ export default class Keybinding extends Component {
     const bindings = value;
     return this.state.active ? (
       <li
+        tabIndex={0}
         className='mdc-card mdc-list-item'
         style='height: auto; padding: 12px 0px;'>
         <ul
@@ -136,10 +137,12 @@ export default class Keybinding extends Component {
       </li>
     ) : (
       <li
+        tabIndex={0}
         className='mdc-list-item'
         style='justify-content: space-between; cursor: pointer;'
         role='button'
-        onClick={() => { this.setState({ active: true }); }}>
+        onClick={() => { this.setState({ active: true }); }}
+      >
         <label>{ label }</label>
         <HelpBindings bindings={bindings} />
       </li>

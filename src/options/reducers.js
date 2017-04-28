@@ -20,6 +20,13 @@ import store from './store';
 // temp fix for now: fetch settings from background page
 
 
+// modes: Array<{ modeName, modeDescription, Array<{ type, key, label, {...other} }>>
+// settings: { [modeName]: Array<{ profileName, settings: { [key]: values }, ERRORS: { [key]: ERROR} }>
+// profileGroups: Array<{ profileGroupName, settings: { [modeName]: profileName }
+// activeProfileGroup: string
+//
+//
+
 
 // ---------------------------------------- future idea
 // V2 - how it will work in the future

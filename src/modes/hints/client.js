@@ -21,9 +21,9 @@ export const mode = {
     hideHints();
   },
   onSettingsChange: (settings) => {
-    setHintStyle(settings.hintCSS, settings.normalCharCSS, settings.activeCharCSS);
+    setHintStyle(settings.hintCSS, settings.hintNormalCharCSS, settings.hintActiveCharCSS);
     hintChars = settings.hintChars;
-    detectByCursorStyle = settings.detectByCursorStyle;
+    detectByCursorStyle = settings.hintDetectByCursorStyle;
     horizontalPlacement = settings.hintHorizontalPlacement;
     verticalPlacement = settings.hintVerticalPlacement;
   },

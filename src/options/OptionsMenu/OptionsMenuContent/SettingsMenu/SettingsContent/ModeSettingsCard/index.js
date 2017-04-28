@@ -17,15 +17,18 @@ const mapStateToProps = ({ settings, selectedProfileForMode }, { mode }) => {
   const { name, description, options } = mode;
   const modeSettings = settings[name] || settings['standard'];
   const selectedProfile = selectedProfileForMode[name] || 'standard';
-  const values = (modeSettings.find((profile) => profile.name === selectedProfile) ||
-                  modeSettings.find((profile) => profile.name === 'standard')).settings;
+  const { settings: values, errors } = (
+    modeSettings.find((profile) => profile.name === selectedProfile) ||
+    modeSettings.find((profile) => profile.name === 'standard')
+  );
   return {
     name,
     description,
     profiles: modeSettings.map((profile) => profile.name),
     selectedProfile,
     options,
-    values
+    values,
+    errors
   };
 };
 const mapDispatchToProps = (profile) => (dispatch) => ({

@@ -17,9 +17,11 @@
       "key": "smoothScroll"
     },
     {
-      "type": "text",
+      "type": "number",
       "label": "Scroll Step Size (pixels)",
-      "key": "scrollStep"
+      "key": "scrollStep",
+      "step": "1",
+      "min": "1"
     },
     {
       "type": "keybinding",

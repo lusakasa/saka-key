@@ -48,7 +48,12 @@ function addToTrie (trie, i, key, value) {
     throw Error(`${value} has a 0 length key binding`);
   } else if (i === key.length - 1) {
     if (trie.hasOwnProperty(key[i])) {
-      throw Error(`${trie[key[i]]} and ${value} have conflicting mapping ${key.slice(0, i + 1).join(' ')}`);
+      throw {
+        message: `${trie[key[i]]} and ${value} have conflicting mapping ${key.slice(0, i + 1).join(' ')}`,
+        type: 'conflict',
+        command1: trie[key[i]],
+        command2: value
+      };
     } else {
       trie[key[i]] = value;
     }
@@ -57,7 +62,12 @@ function addToTrie (trie, i, key, value) {
       if (typeof trie[key[i]] === 'object') {
         addToTrie(trie[key[i]], i + 1, key, value);
       } else {
-        throw Error(`${trie[key[i]]} and ${value} share conflicting prefix ${key.slice(0, i + 1).join(' ')}`);
+        throw {
+          message: `${trie[key[i]]} and ${value} have conflicting prefix ${key.slice(0, i + 1).join(' ')}`,
+          type: 'conflict',
+          command1: trie[key[i]],
+          command2: value
+        };
       }
     } else {
       addToTrie(trie[key[i]] = {}, i + 1, key, value);

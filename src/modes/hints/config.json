@@ -10,7 +10,7 @@
     {
       "type": "checkbox",
       "label": "Detect Hints Using Cursor Style",
-      "key": "detectByCursorStyle"
+      "key": "hintDetectByCursorStyle"
     },
     {
       "type": "select",
@@ -31,111 +31,121 @@
     {
       "type": "checkbox",
       "label": "Use Custom CSS",
-      "key": "useCustomCSS"
+      "key": "hintUseCustomCSS"
     },
     {
       "type": "color",
       "label": "Text Color",
-      "key": "textColor",
-      "visible": "useCustomCSS = false"
+      "key": "hintTextColor",
+      "visible": "hintUseCustomCSS = false"
     },
     {
       "type": "color",
       "label": "Background Color",
-      "key": "backgroundColor",
-      "visible": "useCustomCSS = false"
+      "key": "hintBackgroundColor",
+      "visible": "hintUseCustomCSS = false"
     },
     {
       "type": "color",
       "label": "Border Color",
-      "key": "borderColor",
-      "visible": "useCustomCSS = false"
+      "key": "hintBorderColor",
+      "visible": "hintUseCustomCSS = false"
     },
     {
-      "type": "text",
+      "type": "number",
       "label": "Opacity",
       "key": "hintOpacity",
-      "visible": "useCustomCSS = false"
+      "visible": "hintUseCustomCSS = false",
+      "min": "0.0",
+      "max": "1.0",
+      "step": "0.01"
     },
     {
       "type": "select",
       "label": "Font Family",
-      "key": "fontFamily",
+      "key": "hintFontFamily",
       "choices": ["Roboto, sans-serif", "Helvetica, sans-serif", "Arial, sans-serif", "Verdana, sans-serif", "Trebuchet MS, sans-serif", "Georgia", "Times New Roman", "Courier", "Comic Sans MS", "Impact", "Charcoal", "Lucida Console", "Lucida Sans Unicode", "Lucida Grande", "Palatino Linotype", "Book Antiqua", "Palatino, Tahoma", "Geneva, Times", "Monaco"],
-      "visible": "useCustomCSS = false"
+      "visible": "hintUseCustomCSS = false"
     },
     {
-      "type": "text",
+      "type": "number",
       "label": "Font Size",
-      "key": "fontSize",
-      "visible": "useCustomCSS = false"
+      "key": "hintFontSize",
+      "visible": "hintUseCustomCSS = false",
+      "min": "1"
     },
     {
       "type": "select",
       "label": "Font Weight",
       "key": "hintFontWeight",
-      "visible": "useCustomCSS = false",
+      "visible": "hintUseCustomCSS = false",
       "choices": ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
     },
     {
-      "type": "text",
+      "type": "number",
       "label": "Padding Left",
-      "key": "paddingLeft",
-      "visible": "useCustomCSS = false"
+      "key": "hintPaddingLeft",
+      "visible": "hintUseCustomCSS = false",
+      "min": "0"
     },
     {
-      "type": "text",
+      "type": "number",
       "label": "Padding Right",
-      "key": "paddingRight",
-      "visible": "useCustomCSS = false"
+      "key": "hintPaddingRight",
+      "visible": "hintUseCustomCSS = false",
+      "min": "0"
     },
     {
-      "type": "text",
+      "type": "number",
       "label": "Padding Top",
-      "key": "paddingTop",
-      "visible": "useCustomCSS = false"
+      "key": "hintPaddingTop",
+      "visible": "hintUseCustomCSS = false",
+      "min": "0"
     },
     {
-      "type": "text",
+      "type": "number",
       "label": "Padding Bottom",
-      "key": "paddingBottom",
-      "visible": "useCustomCSS = false"
+      "key": "hintPaddingBottom",
+      "visible": "hintUseCustomCSS = false",
+      "min": "0"
     },
     {
-      "type": "text",
+      "type": "number",
       "label": "Border Width",
-      "key": "borderWidth",
-      "visible": "useCustomCSS = false"
+      "key": "hintBorderWidth",
+      "visible": "hintUseCustomCSS = false",
+      "min": "0"
     },
     {
-      "type": "text",
+      "type": "number",
       "label": "Border Radius",
-      "key": "borderRadius",
-      "visible": "useCustomCSS = false"
+      "key": "hintBorderRadius",
+      "visible": "hintUseCustomCSS = false",
+      "min": "0"
     },
     {
       "type": "checkbox",
       "label": "Shadow",
-      "key": "shadow",
-      "visible": "useCustomCSS = false"
+      "key": "hintShadow",
+      "visible": "hintUseCustomCSS = false"
     },
     {
       "type": "textarea",
       "label": "Hint CSS",
       "key": "hintCSS",
-      "visible": "useCustomCSS = true"
+      "visible": "hintUseCustomCSS = true"
     },
     {
       "type": "textarea",
       "label": "Normal Character CSS",
-      "key": "normalCharCSS",
-      "visible": "useCustomCSS = true"
+      "key": "hintNormalCharCSS",
+      "visible": "hintUseCustomCSS = true"
     },
     {
       "type": "textarea",
       "label": "Active Character CSS",
-      "key": "activeCharCSS",
-      "visible": "useCustomCSS = true"
+      "key": "hintActiveCharCSS",
+      "visible": "hintUseCustomCSS = true"
     }
   ]
 }

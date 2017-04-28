@@ -1,7 +1,7 @@
 import { Component, h } from 'preact';
 import { connect } from 'preact-redux';
 import ModeSettingsCard from './ModeSettingsCard';
-import ProfileSettingsCard from './ProfileSettingsCard';
+// import ProfileSettingsCard from './ProfileSettingsCard';
 
 class SettingsContent extends Component {
   /**
