@@ -1,4 +1,5 @@
 import { Component, h } from 'preact';
+import './style.css';
 
 // TODO: make this an intelligent error checking component
 // so that error checking doesn't have to be done in background page.
@@ -26,7 +27,7 @@ export default class Number extends Component {
     return (
       <div>
         {/*<ErrorMessage />*/}
-        <li className='mdc-list-item'>
+        <li className='mdc-list-item number-widget-li'>
           <label>{ label }</label>
           <div className='mdc-textfield' data-demo-no-auto-js=''>
             <input
