@@ -1,9 +1,10 @@
 import { Component, h } from 'preact';
+import './style.css';
 
 export default class Text extends Component {
   render ({ label, key, value, onChange }) {
     return (
-      <li className='mdc-list-item color-widget'>
+      <li className='mdc-list-item text-widget-li'>
         <label>{ label }</label>
         <div className='mdc-textfield' data-demo-no-auto-js=''>
           <input
