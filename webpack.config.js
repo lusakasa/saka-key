@@ -53,6 +53,13 @@ module.exports = function (env) {
          { from: 'src/modes/hints/default.json', to: 'default_hints.json' },
          { from: 'src/modes/developer/config.json', to: 'config_developer.json' },
          { from: 'src/modes/developer/default.json', to: 'default_developer.json' }
+        // TODO: consider replacing lines above to be more generic if transform below ever gets merged
+        // https://github.com/kevlened/copy-webpack-plugin/pull/115
+        // {
+        //   context: 'src/modes',
+        //   from: '**/default.json,
+        //   to: '[path].json'
+        // }
       ])
     ]
   };
