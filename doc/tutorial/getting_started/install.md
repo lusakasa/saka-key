@@ -11,6 +11,8 @@ To install Saka Key, scroll down to the instructions for your browser.
 
 2. Click `Install`. Saka Key is now installed.
 
+3. Follow the [Setup](/tutorial/setup.md) instructions to ensure an optimal experience.
+
 ## Install on Firefox
 
 Coming soon

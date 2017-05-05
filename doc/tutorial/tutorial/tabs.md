@@ -38,8 +38,11 @@ Saka Key lets you create, close, restore, refresh, switch, move, duplicate, mute
 * **Move Tab First** - <kbd>Shift + K</kbd>
 * **Move Tab Last** - <kbd>Shift + K</kbd>
 
-### Muting and Pinning Tabs
+### Muting Tabs
 
 * **Mute/Unmute Tab** - <kbd>Shift + K</kbd>
 * **Mute/Unmute All Tabs** - <kbd>Shift + K</kbd>
+
+### Pinning Tabs
+
 * **Pin/Unpin Tab** - <kbd>Shift + K</kbd>
