@@ -14,4 +14,5 @@
   * [Tabs](tutorial/tabs.md)
   * [Clicking Links and Inputs](tutorial/clicking_links_and_inputs.md)
   * [Settings](tutorial/settings.md)
+  * [Appearance](appearance.md)
   * [Advanced Tabs](tutorial/advanced_tabs.md)

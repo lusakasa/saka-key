@@ -11,4 +11,5 @@ This is the place to start for poeple new to Saka Key. You can reference this tu
 * [Tabs](tabs.md)
 * [Links and Inputs](clicking_links_and_inputs.md)
 * [Settings](settings.md)
+* [Appearance](appearance.md)
 * [Advanced Tabs](advanced_tabs.md)
