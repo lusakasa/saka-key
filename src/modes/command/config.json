@@ -90,13 +90,13 @@
     },
     {
       "type": "keybinding",
-      "label": "Scroll Left",
-      "key": "scrollLeft"
+      "label": "Scroll Right",
+      "key": "scrollRight"
     },
     {
       "type": "keybinding",
-      "label": "Scroll Right",
-      "key": "scrollRight"
+      "label": "Scroll Left",
+      "key": "scrollLeft"
     },
     {
       "type": "keybinding",
@@ -137,6 +137,25 @@
       "type": "keybinding",
       "label": "Scroll To Right",
       "key": "scrollToRight"
+    },
+    {
+      "type": "header",
+      "label": "Zooming"
+    },
+    {
+      "type": "keybinding",
+      "label": "Zoom In",
+      "key": "zoomIn"
+    },
+    {
+      "type": "keybinding",
+      "label": "Zoom Out",
+      "key": "zoomOut"
+    },
+    {
+      "type": "keybinding",
+      "label": "Zoom Reset",
+      "key": "zoomReset"
     },
     {
       "type": "header",
@@ -228,21 +247,6 @@
       "label": "Switch Window",
       "key": "switchWindow",
       "visible": false
-    },
-    {
-      "type": "keybinding",
-      "label": "Zoom In",
-      "key": "zoomIn"
-    },
-    {
-      "type": "keybinding",
-      "label": "Zoom Out",
-      "key": "zoomOut"
-    },
-    {
-      "type": "keybinding",
-      "label": "Zoom Reset",
-      "key": "zoomReset"
     },
     {
       "type": "keybinding",

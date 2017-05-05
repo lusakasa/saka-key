@@ -1,0 +1,16 @@
+# Install
+
+To install Saka Key, scroll down to the instructions for your browser.
+
+* [Install on Chrome]()
+* [Install on Firefox]()
+
+## Install on Chrome
+
+1. Navigate to [Saka Key's page on the Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp)
+
+2. Click `Install`. Saka Key is now installed.
+
+## Install on Firefox
+
+Coming soon

@@ -1,0 +1,16 @@
+kbd {
+  color: #3f51F5;
+  font-family: roboto, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.56px;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  border: 1px solid #3f51F5;
+  border-bottom: 5px solid;
+  border-left: 3px solid;
+  padding: 0px 4px;
+  border-radius: 4px;
+  border-bottom-left-radius: 3px;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  margin: auto 1px;
+}

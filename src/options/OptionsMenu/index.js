@@ -12,7 +12,7 @@ class OptionsMenu extends Component {
     return (
       <div className={'options-menu'}>
         <OptionsMenuHeader view={view} />
-        <main className='mdc-toolbar-fixed-adjust main-container'>
+        <main className='mdc-toolbar-fixed-adjust'>
           <OptionsMenuContent view={view} />
         </main>
       </div>
