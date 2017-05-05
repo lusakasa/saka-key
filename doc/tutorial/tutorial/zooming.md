@@ -1,6 +1,6 @@
 # Zooming
 
-** This tutorial assume the default [Safe Mode]() profile.**
+** This tutorial uses the default profile's keybindings.**
 
 ## Bindings
 

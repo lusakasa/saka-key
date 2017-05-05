@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Zooming · GitBook</title>
+        <title>Clicking and Link Hints · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="tabs.html" />
+    <link rel="next" href="settings.html" />
     
     
-    <link rel="prev" href="scrolling.html" />
+    <link rel="prev" href="tabs.html" />
     
 
     </head>
@@ -228,7 +228,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.4" data-path="zooming.html">
+        <li class="chapter " data-level="1.3.4" data-path="zooming.html">
             
                 <a href="zooming.html">
             
@@ -254,7 +254,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="clicking_and_link_hints.html">
+        <li class="chapter active" data-level="1.3.6" data-path="clicking_and_link_hints.html">
             
                 <a href="clicking_and_link_hints.html">
             
@@ -386,7 +386,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Zooming</a>
+        <a href=".." >Clicking and Link Hints</a>
     </h1>
 </div>
 
@@ -401,14 +401,24 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="zooming">Zooming</h1>
+                                <h1 id="clicking-and-link-hints">Clicking and Link Hints</h1>
 <p><strong> This tutorial uses the default profile&apos;s keybindings.</strong></p>
-<h2 id="bindings">Bindings</h2>
-<p>It&apos;s easy to zoom in and out.</p>
+<p>Browsing the web normally involves moving your mouse to select something, then clicking to activate it. Saka Key lets you use your keyboard to quickly identify and click things on screen. You can use this feature to follow links, focus text inputs, toggle checkboxes, and more.</p>
+<p>To get started, type <kbd>Alt + F</kbd>. <em>Link Hints</em> will appear next to all clickable elments on screen.</p>
+<p><img src="../images/link_hints.png" alt="link hints on screen"></p>
+<p>Each link hint contains a unique sequence of letters. Type the letters of a link hint to activate it. As you type, link hints will be filtered out until only one is left. For example typing <kbd>S</kbd> filters out all link hints that don&apos;t start with <kbd>S</kbd>.</p>
+<p><img src="../images/link_hints_filtered.png" alt="only link hints beginning with S on screen"></p>
+<p>If you typed <kbd>D</kbd> in the image above, you would follow the link named <em>Javascript Commands</em>.</p>
+<p>To abort link activation, press <kbd>Escape</kbd> or <kbd>F</kbd> or any key that doesn&apos;t appear in any link hint.</p>
+<h2 id="options">Options</h2>
+<h3 id="appearance">Appearance</h3>
+<p>The <a href="settings.html">Option Page</a> gives you fine control over the appearance of link hints. Using the menu, you can control their size, color, font, position and more. You also have the option to use CSS to control how hints look. </p>
+<h3 id="hint-characters">Hint Characters</h3>
+<p>You can configure which characters appear in link hints using the <em>Hint Characters</em> setting.</p>
+<h3 id="finding-clickable-elements">Finding Clickable Elements</h3>
+<p>Finding which elements can be clicked is a time-consuming process. To keep things speedy, you can disable checks that give more accurate link hints at the cost of performance.</p>
 <ul>
-<li><strong>Zoom In</strong> - <kbd>Z</kbd></li>
-<li><strong>Zoom Out</strong> - <kbd>Shift + Z</kbd></li>
-<li><strong>Zoom Reset</strong> - <kbd>Alt + Shift + Z</kbd></li>
+<li><strong>Detect Hints Using Cursor Style</strong> - finds clickable elements by checking to see if hovering over the element makes the mouse cursor a pointer hand</li>
 </ul>
 
                                 
@@ -437,12 +447,12 @@
 
             
                 
-                <a href="scrolling.html" class="navigation navigation-prev " aria-label="Previous page: Scrolling">
+                <a href="tabs.html" class="navigation navigation-prev " aria-label="Previous page: Tabs">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="tabs.html" class="navigation navigation-next " aria-label="Next page: Tabs">
+                <a href="settings.html" class="navigation navigation-next " aria-label="Next page: Settings">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -453,7 +463,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Zooming","level":"1.3.4","depth":2,"next":{"title":"Tabs","level":"1.3.5","depth":2,"path":"tutorial/tabs.md","ref":"tutorial/tabs.md","articles":[]},"previous":{"title":"Scrolling","level":"1.3.3","depth":2,"path":"tutorial/scrolling.md","ref":"tutorial/scrolling.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/zooming.md","mtime":"2017-05-05T05:00:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-03T11:07:29.209Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Clicking and Link Hints","level":"1.3.6","depth":2,"next":{"title":"Settings","level":"1.3.7","depth":2,"path":"tutorial/settings.md","ref":"tutorial/settings.md","articles":[]},"previous":{"title":"Tabs","level":"1.3.5","depth":2,"path":"tutorial/tabs.md","ref":"tutorial/tabs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/clicking_and_link_hints.md","mtime":"2017-05-05T06:01:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-03T11:07:29.209Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

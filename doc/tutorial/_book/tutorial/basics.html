@@ -254,12 +254,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="clicking_links_and_inputs.html">
+        <li class="chapter " data-level="1.3.6" data-path="clicking_and_link_hints.html">
             
-                <a href="clicking_links_and_inputs.html">
+                <a href="clicking_and_link_hints.html">
             
                     
-                    Clicking Links and Inputs
+                    Clicking and Link Hints
             
                 </a>
             
@@ -280,9 +280,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.8" data-path="../appearance.md">
+        <li class="chapter " data-level="1.3.8" data-path="appearance.html">
             
-                <span>
+                <a href="appearance.html">
             
                     
                     Appearance
@@ -293,12 +293,44 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" data-path="advanced_tabs.html">
+
+            </ul>
             
-                <a href="advanced_tabs.html">
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../commands/">
+            
+                <a href="../commands/">
             
                     
-                    Advanced Tabs
+                    Commands
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../commands/commands_list.html">
+            
+                <a href="../commands/commands_list.html">
+            
+                    
+                    Commands List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../commands/javascript_commands.html">
+            
+                <a href="../commands/javascript_commands.html">
+            
+                    
+                    Javascript Commands
             
                 </a>
             
@@ -308,6 +340,19 @@
     
 
             </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../extensions/">
+            
+                <a href="../extensions/">
+            
+                    
+                    Extensions
+            
+                </a>
+            
+
             
         </li>
     
@@ -361,22 +406,24 @@
 <p>Saka Key is a browser extension that lets you map keys on your keyboard to common browser tasks. It waits for you to press a key, then executes the appropriate action. This action might be scrolling a page, switching tabs, or clicking a link.</p>
 <h2 id="commands-and-bindings">Commands and Bindings</h2>
 <p>To use commands, you must first bind them to keys on your keyboard. Default bindings are built-in, but you have complete freedom to add, delete, and modify bindings using the <a href="">Options Page</a>. Commands can be bound to a single key, or a sequence of multiple keys. Commands only execute if a text input is <em>not</em> focused so that you can type text as usual.</p>
+<!-- TODO: You can unfocus any text input by pressing <kbd>Escape</kbd>. -->
 <h2 id="resources">Resources</h2>
 <p>The following pages in this tutorial explain how to use Saka Key&apos;s commands.</p>
-<p>To view all the commands Saka Key provides, visit the complete <a href="">Commands List</a>. </p>
-<p>You can view what key each command is bound to by typing <kbd>?</kbd> or equivalently <kbd>Shift + /</kbd>  from any page.</p>
+<p>To view all the commands Saka Key provides, visit the complete <a href="../commands/">Commands List</a>. </p>
+<!-- TODO: You can view what key each command is bound to by typing <kbd>?</kbd> or equivalently <kbd>Shift + /</kbd>  from any page. -->
 <h2 id="limitations">Limitations</h2>
-<p>Saka Key works on most pages, but cannot run on pages like the Chrome Store and chrome&apos;s built-in pages. This is a limitation imposed by Chrome for security reasons.</p>
+<p>Saka Key works on most pages, but cannot run on the Chrome Store and or Chrome&apos;s built-in pages. This is a limitation imposed by Chrome for security reasons.</p>
 <p>PDFs are also troublesome. You can use keyboard shortcuts to close PDF tabs and switch to other tabs, but you cannot scroll PDFs.</p>
-<p>To work around these limitations, I recommend learning the following Chrome shortcuts</p>
+<p>To work around these limitations, I recommend learning the following Chrome shortcuts.</p>
 <ul>
 <li><kbd>Ctrl + Tab</kbd> - switches to the next tab</li>
 <li><kbd>Ctrl + Shift + Tab</kbd> - switches to the previous tab</li>
 <li><kbd>Ctrl + W</kbd> - closes the current tab.</li>
 </ul>
 <h2 id="profiles">Profiles</h2>
-<p>Most of the time you want to browse the web with both hands, but sometimes you might want to browse with just your left hand. To make this possible, Saka Key lets you define <a href="">Settings Profiles</a> that are easy to switch between. The default profile for new users is <strong>Safe Mode</strong>, which only binds a few <em>safe</em> commands like scrolling and zooming. <em>Unsafe</em> commands trigger irreversible changes like closing the current tab. When you become more comfortable with Saka Key, try switching to a profile with <em>unsafe</em> commands.</p>
-<p>This tutorial assumes you&apos;re a new user using the <strong>Safe Mode</strong> profile. If you are using some other profile, commands may be mapped to different keys.</p>
+<p>Most of the time you want to browse the web with both hands, but sometimes you might want to browse with just your left hand. To make this possible, Saka Key lets you define <a href="">Settings Profiles</a> that are easy to switch between.</p>
+<p>The default profile for new users gives <em>safe</em> commands, like scrolling and zooming, simple bindings, like <kbd>D</kbd> and <kbd>Z</kbd>. <em>Unsafe</em> commands that trigger irreversible changes, like closing a tab or going back in history, have complex bindings, like <kbd>Alt + X</kbd> and <kbd>Alt + C</kbd>. When you become more comfortable with Saka Key, try switching to a profile with <em>unsafe</em> commands.</p>
+<p>This tutorial assumes you&apos;re a new user using the <strong>default</strong> profile. If you are using some other profile, commands may be mapped to different keys.</p>
 
                                 
                                 </section>
@@ -420,7 +467,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Basics","level":"1.3.2","depth":2,"next":{"title":"Scrolling","level":"1.3.3","depth":2,"path":"tutorial/scrolling.md","ref":"tutorial/scrolling.md","articles":[]},"previous":{"title":"Setup","level":"1.3.1","depth":2,"path":"tutorial/setup.md","ref":"tutorial/setup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/basics.md","mtime":"2017-05-04T21:50:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-03T11:07:29.209Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Basics","level":"1.3.2","depth":2,"next":{"title":"Scrolling","level":"1.3.3","depth":2,"path":"tutorial/scrolling.md","ref":"tutorial/scrolling.md","articles":[]},"previous":{"title":"Setup","level":"1.3.1","depth":2,"path":"tutorial/setup.md","ref":"tutorial/setup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"tutorial/basics.md","mtime":"2017-05-05T04:33:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-05-03T11:07:29.209Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,17 +1,17 @@
 # Tabs
 
-** This tutorial assume the default [Safe Mode]() profile.**
+** This tutorial uses the default profile's keybindings.**
 
-Saka Key lets you create, close, restore, refresh, switch, move, duplicate, mute, and pin tabs.
+Saka Key lets you, [create](), [duplicate](), [close](), [restore](), [refresh](), [switch](), [move](), [mute](), and [pin]() tabs.
 
 ## Bindings
 
-### Creating Tabs
+### Create and Duplicate Tabs
 
 * **New Tab** - <kbd>Shift + K</kbd>
 * **Duplicate Tab** - <kbd>Shift + K</kbd>
 
-### Closing and Restoring Tabs
+### Close and Restore Tabs
 
 * **Close Tab** - <kbd>Shift + K</kbd>
 * **Close Other Tabs** - <kbd>Shift + K</kbd>
@@ -19,30 +19,30 @@ Saka Key lets you create, close, restore, refresh, switch, move, duplicate, mute
 * **Close Right Tabs** - <kbd>Shift + K</kbd>
 * **Restore Tab** - <kbd>Shift + K</kbd>
 
-### Refreshing Tabs
+### Refresh Tabs
 
 * **Refresh Tab** - <kbd>Shift + K</kbd>
 * **Refresh All Tabs** - <kbd>Shift + K</kbd>
 
-### Switching Tabs
+### Switch Tabs
 
 * **Next Tab** - <kbd>Shift + K</kbd>
 * **Previous Tab** - <kbd>Shift + K</kbd>
 * **First Tab** - <kbd>Shift + K</kbd>
 * **Last Tab** - <kbd>Shift + K</kbd>
 
-### Moving Tabs
+### Move Tabs
 
 * **Move Tab Left** - <kbd>Shift + K</kbd>
 * **Move Tab Right** - <kbd>Shift + K</kbd>
 * **Move Tab First** - <kbd>Shift + K</kbd>
 * **Move Tab Last** - <kbd>Shift + K</kbd>
 
-### Muting Tabs
+### Mute Tabs
 
 * **Mute/Unmute Tab** - <kbd>Shift + K</kbd>
 * **Mute/Unmute All Tabs** - <kbd>Shift + K</kbd>
 
-### Pinning Tabs
+### Pin Tabs
 
 * **Pin/Unpin Tab** - <kbd>Shift + K</kbd>

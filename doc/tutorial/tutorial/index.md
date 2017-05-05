@@ -9,7 +9,6 @@ This is the place to start for poeple new to Saka Key. You can reference this tu
 * [Scrolling](scrolling.md)
 * [Zooming](zooming.md)
 * [Tabs](tabs.md)
-* [Links and Inputs](clicking_links_and_inputs.md)
+* [Clicking and Link Hints](clicking_and_link_hints.md)
 * [Settings](settings.md)
 * [Appearance](appearance.md)
-* [Advanced Tabs](advanced_tabs.md)

@@ -1,6 +1,6 @@
 # Scrolling
 
-** This tutorial assume the default [Safe Mode]() profile.**
+** This tutorial uses the default profile's keybindings.**
 
 Scrolling is often the first thing you do on a web page. Saka Key makes it easy.
 
