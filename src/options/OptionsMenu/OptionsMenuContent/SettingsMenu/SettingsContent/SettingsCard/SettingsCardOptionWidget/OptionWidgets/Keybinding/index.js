@@ -19,7 +19,7 @@ import './style.css';
 const KeyBindingItem = ({ binding }) => (
   <span>
     { binding.map((key) =>
-      <span className='key-text mdc-typography--body1 mdc-elevation--z2'>
+      <span className='keybinding-key mdc-typography--body1 mdc-elevation--z2'>
         {friendlyKeyboardEventString(key)}
       </span>) }
   </span>
@@ -73,7 +73,7 @@ class KeyBindingInput extends Component {
         <input
           id='meow'
           ref={(input) => input && input.focus && setTimeout(() => { input.focus(); }, 0)}
-          className='key-text key-text-input mdc-typography--body1 mdc-elevation--z2'
+          className='keybinding-key keybinding-input mdc-typography--body1 mdc-elevation--z2'
           type='text'
           onKeyDown={this.handleKeyDown(value, setValue)}
           onBlur={this.finalizeInput(value, setValue)} />

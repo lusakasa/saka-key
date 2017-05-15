@@ -8,7 +8,13 @@ const OptionsMenuHeader = ({ view }) => (
       <span className='mdc-toolbar__title'>Saka Key</span>
     </section>
     <section className='mdc-toolbar__section mdc-toolbar__section--align-end'>
-      <OptionsMenuTab view={view} name='Tutorial' />
+      <a
+        className={'mdc-typography--subheading2 saka-toolbar-item'}
+        target='_blank'
+        href='http://dawoodjee.com'
+      >
+        Tutorial
+      </a>
       <OptionsMenuTab view={view} name='Settings' />
       <OptionsMenuTab view={view} name='Extensions' />
       <OptionsMenuTab view={view} name='About' />

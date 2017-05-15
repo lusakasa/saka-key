@@ -1,20 +1,4 @@
-.color-widget {
-  justify-content: space-between !important;
-}
-
-.keybinding-key {
-  /*padding: 0px 4px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #ff4081;
-  color: #ff4081;
-  border-radius: 4px;
-  margin: 0px 1px;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  vertical-align: middle;*/
-
+kbd {
   color: #3f51F5;
   font-family: roboto, sans-serif;
   font-weight: normal;
@@ -31,10 +15,10 @@
   margin: auto 1px;
 }
 
-.keybinding-input {
-  width: 12px;
+h1, h2, h3, h4, h5, h6 {
+  color: #3f51b5;
 }
 
-.keybinding-input:focus {
-  outline: none;
+.markdown-section a {
+  color: #3f51F5;
 }
