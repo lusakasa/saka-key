@@ -2,7 +2,7 @@
   "name": "Basic",
   "profiles": [
     {
-      "name": "standard",
+      "name": "default",
       "settings": {
         "enabled": true,
         "preventStealFocus": false,

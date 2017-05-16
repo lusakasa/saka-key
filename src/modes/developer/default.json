@@ -2,7 +2,7 @@
   "name": "Developer",
   "profiles": [
     {
-      "name": "standard",
+      "name": "default",
       "settings": {}
     }
   ]

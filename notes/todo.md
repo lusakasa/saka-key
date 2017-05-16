@@ -1,9 +1,6 @@
 # Todos
 
-* website
-* tutorial
-* fix settings update bug... it breaks from race condition on color change because
-  storage.onChange listener changes storage... switch to messaging background page when setting changes
+* reset settings option
 * better scrolling element logic (must work for tutorial)
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
 * embedded feedback textbox for nontechnical users

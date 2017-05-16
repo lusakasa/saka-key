@@ -1,32 +1,32 @@
 {
   "profileGroups": [
     {
-      "name": "standard",
+      "name": "default",
       "settings": {
-        "Basic": "standard",
-        "Command": "standard",
-        "Hints": "standard",
-        "Developer": "standard"
+        "Basic": "default",
+        "Command": "default",
+        "Hints": "default",
+        "Developer": "default"
       }
     },
     {
       "name": "left hand",
       "settings": {
-        "Basic": "standard",
+        "Basic": "default",
         "Command": "left hand",
         "Hints": "left hand",
-        "Developer": "standard"
+        "Developer": "default"
       }
     },
     {
       "name": "vimium",
       "settings": {
-        "Basic": "standard",
+        "Basic": "default",
         "Command": "vimium",
         "Hints": "vimium",
-        "Developer": "standard"
+        "Developer": "default"
       }
     }
   ],
-  "activeProfileGroup": "standard"
+  "activeProfileGroup": "default"
 }

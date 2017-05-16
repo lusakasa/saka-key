@@ -11,7 +11,7 @@ const OptionsMenuHeader = ({ view }) => (
       <a
         className={'mdc-typography--subheading2 saka-toolbar-item'}
         target='_blank'
-        href='http://dawoodjee.com'
+        href='http://saka-key.lusakasa.com/'
       >
         Tutorial
       </a>

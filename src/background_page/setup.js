@@ -11,7 +11,7 @@ import { modes, regenerateClientSettings } from './modes';
 export function setup () {
   initInstallListeners();
   regenerateClientSettings();
-  initStorageChangeListener();
+  // initStorageChangeListener();
 }
 
 async function initInstallListeners () {
@@ -41,26 +41,26 @@ async function initInstallListeners () {
   }
 }
 
-function initStorageChangeListener () {
-  chrome.storage.onChanged.addListener((changes, areaName) => {
-    if (areaName === 'local') {
-      Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
-        if (SAKA_DEBUG) console.log(`storage listener detected ${key} changed from `, oldValue, ' to ', newValue);
-        switch (key) {
-          case 'settings':
-          case 'modes':
-          case 'profileGroups':
-          case 'activeProfileGroup':
-            regenerateClientSettings();
-            break;
-          default:
-        }
-      });
-    } else {
-      throw Error('how did that happen?');
-    }
-  });
-}
+// function initStorageChangeListener () {
+//   chrome.storage.onChanged.addListener((changes, areaName) => {
+//     if (areaName === 'local') {
+//       Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
+//         if (SAKA_DEBUG) console.log(`storage listener detected ${key} changed from `, oldValue, ' to ', newValue);
+//         switch (key) {
+//           case 'settings':
+//           case 'modes':
+//           case 'profileGroups':
+//           case 'activeProfileGroup':
+//             regenerateClientSettings();
+//             break;
+//           default:
+//         }
+//       });
+//     } else {
+//       throw Error('how did that happen?');
+//     }
+//   });
+// }
 
 export async function settingsChange ({ mode, profile }, src) {
   if (SAKA_DEBUG) {
@@ -114,6 +114,9 @@ async function setupDefaultSettings (modes) {
     const defaultSettings = await Promise.all(defaultSettingsFetch.map((fetch) => fetch.json()));
     const defaultSettingsObject = {};
     defaultSettings.forEach((defaultSetting) => {
+      defaultSetting.profiles.forEach((profile) => {
+        profile.builtIn = true;
+      });
       defaultSettingsObject[defaultSetting.name] = defaultSetting.profiles;
     });
     await browser.storage.local.set({ 'settings': defaultSettingsObject });

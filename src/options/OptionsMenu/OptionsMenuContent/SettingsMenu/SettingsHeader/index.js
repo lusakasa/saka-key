@@ -1,4 +1,4 @@
-import { h } from 'preact';
+/*import { h } from 'preact';
 import { connect } from 'preact-redux';
 import { viewProfile } from 'options/actions';
 
@@ -12,7 +12,7 @@ const ProfileTab = ({ name, activeProfile, activate }) => (
 const SettingsHeader = ({ profile, viewProfile }) => (
   <header className='mdc-toolbar saka-toolbar settings-header'>
     <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
-      <ProfileTab name='Standard' activeProfile={profile} activate={viewProfile} />
+      <ProfileTab name='Default' activeProfile={profile} activate={viewProfile} />
       <ProfileTab name='Left Hand' activeProfile={profile} activate={viewProfile} />
       <ProfileTab name='Right Hand' activeProfile={profile} activate={viewProfile} />
       <ProfileTab name='Vimium' activeProfile={profile} activate={viewProfile} />
@@ -25,4 +25,4 @@ const mapDispatchToProps = (dispatch) => ({
   viewProfile: (profile) => () => { dispatch(viewProfile(profile)); }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsHeader);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsHeader);*/

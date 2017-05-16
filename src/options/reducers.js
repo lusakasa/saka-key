@@ -77,7 +77,7 @@ modesList: ["1", "2", "3", "4"],
   "1": {
     "id": "1"
     "mode": "1",
-    "name": "standard",
+    "name": "default",
     "options": { "key": "value" }
   },
   "2": {
@@ -91,7 +91,7 @@ modesList: ["1", "2", "3", "4"],
 "profileGroups": {
   "1": {
     "id": "1",
-    "name": "standard",
+    "name": "default",
     "map": {
       "1": "1",
       "2": "3"
@@ -163,7 +163,7 @@ const selectedProfileForMode = (state = null, action) => {
     case 'SET_SELECTED_PROFILE_FOR_MODE':
       return Object.assign({}, state, { [action.mode]: action.newProfileName });
     case 'DELETE_PROFILE':
-      return Object.assign({}, state, { [action.mode]: 'standard' });
+      return Object.assign({}, state, { [action.mode]: 'default' });
     case 'ADD_PROFILE':
       return Object.assign({}, state, { [action.mode]: action.profileName });
     case 'RENAME_PROFILE':

@@ -67,6 +67,7 @@ export default class SettingsCard extends Component {
       description,
       profiles,
       selectedProfile,
+      selectedProfileBuiltIn,
       options,
       values,
       errors,
@@ -75,7 +76,8 @@ export default class SettingsCard extends Component {
       onProfileNew,
       onProfileDelete,
       onProfileDuplicate,
-      onProfileRename
+      onProfileRename,
+      onProfileReset
   }) {
     const errorExists = false;
     return (
@@ -91,11 +93,13 @@ export default class SettingsCard extends Component {
           name={name}
           profiles={profiles}
           selectedProfile={selectedProfile}
+          selectedProfileBuiltIn={selectedProfileBuiltIn}
           onProfileChange={onProfileChange}
           onProfileNew={onProfileNew}
           onProfileDelete={onProfileDelete}
           onProfileDuplicate={onProfileDuplicate}
           onProfileRename={onProfileRename}
+          onProfileReset={onProfileReset}
         />
 
         <section class='mdc-card__primary'>

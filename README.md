@@ -2,7 +2,7 @@
 
 A keyboard interface to the web.
 
-Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp) or [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/saka-key/).
+Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp) or [Firefox Marketplace](https://addons.mozilla.org/en-US/firefox/addon/saka-key/). Then read the [Saka Key Handbook](http://saka-key.lusakasa.com).
 
 ## Index
 

@@ -2,7 +2,7 @@
   "name": "Hints",
   "profiles": [
     {
-      "name": "standard",
+      "name": "default",
       "settings": {
         "hintChars": "asdghjklvn",
         "hintDetectByCursorStyle": true,

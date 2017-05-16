@@ -2,7 +2,7 @@
   "name": "Command",
   "profiles": [
     {
-      "name": "standard",
+      "name": "default",
       "settings": {
         "smoothScroll": true,
         "scrollStep": 60,

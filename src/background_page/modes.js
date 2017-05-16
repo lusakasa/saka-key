@@ -17,7 +17,6 @@ export async function modeMessage ({ mode, action, arg }, src) {
   return await modes[mode].messages[action](arg, src);
 };
 
-
 export let cachedClientSettings;
 
 /**
@@ -28,10 +27,18 @@ export function clientSettings (arg, src) {
   msg(src, 'clientSettings', cachedClientSettings);
 }
 
+/**
+ * generates client settings and sends them to every client
+ */
 export async function regenerateClientSettings () {
   cachedClientSettings = await generateClientSettings();
   if (SAKA_DEBUG) console.log('New clientSettings generated: ', cachedClientSettings);
   msg('client', 'clientSettings', cachedClientSettings);
+}
+
+/** Called when the user changes a setting on the options page */
+export function storageChange () {
+  regenerateClientSettings();
 }
 
 /**
@@ -51,34 +58,29 @@ export async function regenerateClientSettings () {
  *   defined settings.
  */
 async function generateClientSettings () {
-  try {
-    const {
-      activeProfileGroup,
-      profileGroups,
-      settings,
-      modes: modesConfig
-    } = await browser.storage.local.get([
-      'activeProfileGroup',
-      'profileGroups',
-      'settings',
-      'modes'
-    ]);
-    const profileMap = profileGroups.find(({ name }) => name === activeProfileGroup).settings;
-    const clientSettings = {};
-    Object.entries(profileMap).forEach(([mode, profile]) => {
-      const options = modesConfig.find(({ name }) => name === mode).options;
-      const activeProfile = settings[mode].find(({ name }) => name === profileMap[mode]);
-      const modeSettings = activeProfile.settings;
-      const { values, errors } = modes[mode].clientSettings(options, modeSettings);
-      activeProfile.errors = errors;
-      Object.assign(clientSettings, values);
-    });
-    await browser.storage.local.set({ 'settings': settings });
-    return clientSettings;
-  } catch (error) {
-    console.error(error);
-    return error.message;
-  }
+  const {
+    activeProfileGroup,
+    profileGroups,
+    settings,
+    modes: modesConfig
+  } = await browser.storage.local.get([
+    'activeProfileGroup',
+    'profileGroups',
+    'settings',
+    'modes'
+  ]);
+  const profileMap = profileGroups.find(({ name }) => name === activeProfileGroup).settings;
+  const clientSettings = {};
+  Object.entries(profileMap).forEach(([mode, profile]) => {
+    const options = modesConfig.find(({ name }) => name === mode).options;
+    const activeProfile = settings[mode].find(({ name }) => name === profileMap[mode]);
+    const modeSettings = activeProfile.settings;
+    const { values, errors } = modes[mode].clientSettings(options, modeSettings);
+    activeProfile.errors = errors;
+    Object.assign(clientSettings, values);
+  });
+  await browser.storage.local.set({ 'settings': settings });
+  return clientSettings;
 }
 
 export function loadClient (_, src) {

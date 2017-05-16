@@ -49,9 +49,13 @@ export default class SettingsCardHeader extends Component {
     this.setState({ menuVisible: false });
     this.props.onProfileDelete(this.props.selectedProfile);
   }
+  resetProfile = () => {
+    this.setState({ menuVisible: false });
+    this.props.onProfileReset(this.props.selectedProfile);
+  }
   render ({
-    name, profiles, selectedProfile,
-    onProfileChange, onProfileRename, onProfileDelete, onProfileDuplicate
+    name, profiles, selectedProfile, selectedProfileBuiltIn,
+    onProfileChange, onProfileRename, onProfileDelete, onProfileDuplicate, onProfileReset
   }) {
     return (
       <header className='mdc-toolbar saka-toolbar settings-header'>
@@ -96,7 +100,7 @@ export default class SettingsCardHeader extends Component {
             </button>
             <div className={this.menuClasses()} tabIndex='0'>
               <ul className='mdc-simple-menu__items mdc-list' role='menu' aria-hidden='true'>
-                { selectedProfile === 'standard'
+                { selectedProfileBuiltIn
                   ? undefined
                   : <li
                     className='mdc-list-item'
@@ -122,8 +126,16 @@ export default class SettingsCardHeader extends Component {
                 >
                   New
                 </li>
-                { selectedProfile === 'standard'
-                  ? undefined
+                { selectedProfileBuiltIn
+                  ? <li
+                    className='mdc-list-item'
+                    role='menuitem'
+                    tabIndex='0'
+                    style={{color: 'blue'}}
+                    onClick={this.resetProfile}
+                  >
+                    Reset
+                  </li>
                   : <li
                     className='mdc-list-item'
                     role='menuitem'
