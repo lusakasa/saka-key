@@ -1,7 +1,0 @@
-{
-  "private": true,
-  "scripts": {
-    "dev": "gitbook serve",
-    "build": "gitbook build"
-  }
-}
