@@ -1,7 +1,7 @@
 import { Component, render, h } from 'preact';
 import { findHints } from './findHints';
 import { mouseEvent } from 'lib/dom';
-import { hintChars, horizontalPlacement, verticalPlacement } from './client';
+import { hintChars, horizontalPlacement, verticalPlacement } from './index';
 
 export let showHints;
 export let hideHints;

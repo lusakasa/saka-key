@@ -1,4 +1,4 @@
-import { detectByCursorStyle } from './client';
+import { detectByCursorStyle } from './index';
 
 export function findHints () {
   const candidates = [];

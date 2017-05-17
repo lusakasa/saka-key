@@ -52,7 +52,7 @@
     "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
-    "saka-commands": "latest",
+    "smoothscroll-polyfill": "^0.3.5",
     "webextension-polyfill": "git+https://github.com/lusakasa/webextension-polyfill.git"
   }
 }

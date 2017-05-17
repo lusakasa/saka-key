@@ -15,7 +15,7 @@ Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/sa
 
 Saka Key lets you navigate the web with just your keyboard. It differs from existing vi-inspired chrome extensions on four fronts:
 
-1. Its state machine [architecture](./doc/developer_guide.md) is modular, extensible, and **SIMPLE**. It is designed to be as easy as possible to add complex features with minimal effort and understanding of the codebase. 
+1. Its state machine [architecture](./notes/developer_guide.md) is modular, extensible, and **SIMPLE**. It is designed to be as easy as possible to add complex features with minimal effort and understanding of the codebase. 
 
 2. It's not vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers.   
 
@@ -46,7 +46,7 @@ Select the dist directory, and &#128640;.
 
 ## Development Tips
 
-Save yourself some trouble and read the [Developer Guide](./doc/developer_guide.md). It explains the basics of how Saka Key works.
+Save yourself some trouble and read the [Developer Guide](./notes/developer_guide.md). It explains the basics of how Saka Key works.
 
 Check out the [doc](./doc) folder to learn about Saka Key's design.
 

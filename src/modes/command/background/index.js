@@ -1,5 +1,5 @@
 import { msg } from 'mosi/core';
-import { commandTrie } from 'lib/trie';
+import { commandTrie } from './trie';
 import {
   nextTab,
   previousTab,
@@ -26,7 +26,7 @@ import {
   toggleMuteTab,
   toggleMuteAllTabs,
   togglePinTab
-} from 'saka-commands/tab';
+} from './tab_commands';
 
 export const mode = {
   name: 'Command',
@@ -34,6 +34,7 @@ export const mode = {
   clientSettings: (options, settings) => {
     const values = {};
     const errors = {};
+    values.smoothScroll = settings.smoothScroll;
     // scrollStep
     const scrollStep = parseFloat(settings.scrollStep);
     if (isNaN(scrollStep) || scrollStep < 1 || scrollStep % 1 !== 0) {

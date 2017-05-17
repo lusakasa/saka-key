@@ -1,3 +1,5 @@
+import Trie from 'lib/trie';
+import { keyboardEventString } from 'lib/keys';
 import { msg } from 'mosi/client';
 import {
   scrollDown,
@@ -12,7 +14,7 @@ import {
   scrollToTop,
   scrollToLeft,
   scrollToRight
-} from 'saka-commands/scroll';
+} from './scroll_commands';
 import {
   goBack,
   goForward,
@@ -20,8 +22,7 @@ import {
   previousPage,
   goUp,
   goToRoot
-} from 'saka-commands/navigation';
-
+} from './navigation_commands';
 
 const backgroundCommand = (action, arg) => () => {
   msg(1, 'modeMessage', { mode: 'Command', action, arg });
@@ -85,3 +86,24 @@ export const commands = {
   // developer
   developerMode: () => 'Developer'
 };
+
+const trie = new Trie();
+
+export function initInputTrie (root) {
+  trie.init(root);
+}
+
+export function resetInputTrie () {
+  trie.reset();
+}
+
+export function advanceInputTrie (event) {
+  const command = trie.advance(keyboardEventString(event));
+  if (command) {
+    const nextMode = commands[command](event);
+    if (nextMode) {
+      return nextMode;
+    }
+  }
+  return 'Same';
+}

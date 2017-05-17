@@ -1,76 +1,57 @@
-import { validateKeyboardEvent, keyboardEventString } from './keys';
-
 /**
- * Given an object mapping commands to their key bindings,
- * returns the trie representation.
+ * A Trie datastructure that uses a simple javascript object for its underlying storage.
+ * It doesn't generate the input tree for you, you MUST generate it yourself.
+ * This trie is designed for Saka Key's needs and ISN'T general purpose.
+ * An example input tree is:
+ * {
+ *   "c": {
+ *     "a": {
+ *       "t": "Tom",
+ *       "r": "Tarzan"
+ *     }
+ *   },
+ *   "d": {
+ *     "o": {
+ *       "g": () => console.log("My dog's name is Harris")
+ *     }
+ *   }
+ * }
  */
-export function commandTrie (commandMap) {
-  return JSONTrie(bindingsList(commandMap));
-}
 
-/**
- * Given an object mapping commands to their key bindings,
- * returns an array of (commands, binding).
- * A command may have more than one binding, or none at all.
- */
-function bindingsList (bindingsMap) {
-  const out = [];
-  for (const [command, bindings] of Object.entries(bindingsMap)) {
-    for (const binding of bindings) {
-      const keySequence = binding.map((key) => {
-        try {
-          validateKeyboardEvent(key);
-        } catch (e) {
-          throw Error(`Invalid KeyboardEvent descriptor for ${command}: ${e.message}`);
-        }
-        return keyboardEventString(key);
-      });
-      out.push([keySequence, command]);
+export default class Trie {
+
+  /**
+   * Creates a trie
+   * @param {Object} root - A simple javascript object representing a trie
+   */
+  init = (root) => {
+    this.root = root;
+    this.curNode = root;
+  }
+
+  /** Sets the root to current node to the root node */
+  reset = () => {
+    this.curNode = this.root;
+  }
+
+  /**
+   * Advances the command trie based on the command key event.
+   * If a leaf node, corresponding to a command, has been reached,
+   * returns the command.
+   * Otherwise returns undefined
+   */
+  advance = (input) => {
+    // TODO: Update to use longest viable prefix by trying
+    // longest prefix until a valid path is found
+    const next = this.curNode[input] || this.root[input] || this.root;
+    // Case 1. A trie node
+    if (typeof next === 'object') {
+      this.curNode = next;
+      return undefined;
+    // Case 2. A trie leaf corresponding to the command reached
+    } else {
+      this.curNode = this.root;
+      return next;
     }
   }
-  return out;
 }
-
-/**
- * Given an array of (command, binding),
- * returns the trie representation.
- */
-function JSONTrie (bindings) {
-  const trie = {};
-  bindings.forEach(([key, value]) => {
-    addToTrie(trie, 0, key, value);
-  });
-  return trie;
-}
-
-function addToTrie (trie, i, key, value) {
-  if (key.length === 0) {
-    throw Error(`${value} has a 0 length key binding`);
-  } else if (i === key.length - 1) {
-    if (trie.hasOwnProperty(key[i])) {
-      throw {
-        message: `${trie[key[i]]} and ${value} have conflicting mapping ${key.slice(0, i + 1).join(' ')}`,
-        type: 'conflict',
-        command1: trie[key[i]],
-        command2: value
-      };
-    } else {
-      trie[key[i]] = value;
-    }
-  } else {
-    if (trie.hasOwnProperty(key[i])) {
-      if (typeof trie[key[i]] === 'object') {
-        addToTrie(trie[key[i]], i + 1, key, value);
-      } else {
-        throw {
-          message: `${trie[key[i]]} and ${value} have conflicting prefix ${key.slice(0, i + 1).join(' ')}`,
-          type: 'conflict',
-          command1: trie[key[i]],
-          command2: value
-        };
-      }
-    } else {
-      addToTrie(trie[key[i]] = {}, i + 1, key, value);
-    }
-  }
-};

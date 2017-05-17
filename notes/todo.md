@@ -1,6 +1,5 @@
 # Todos
 
-* reset settings option
 * better scrolling element logic (must work for tutorial)
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
 * embedded feedback textbox for nontechnical users

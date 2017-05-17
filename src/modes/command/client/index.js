@@ -1,34 +1,31 @@
-import { commandTrie } from './commandTrie';
+import { initInputTrie, resetInputTrie, advanceInputTrie } from './command_manager';
+import { initScrolling, cancelScroll } from './scroll_commands';
 import { isModifierKey } from 'lib/keys';
-import { commands } from './commands';
+
+
 
 export const mode = {
   name: 'Command',
   onCreate: () => {},
   onEnter: (event) => {
-    commandTrie.reset();
+    resetInputTrie();
   },
   onExit: (event) => {
-    commandTrie.reset();
+    resetInputTrie();
   },
-  onSettingsChange: ({ bindings }) => {
-    commandTrie.init(bindings);
+  onSettingsChange: ({ bindings, smoothScroll, scrollStep }) => {
+    initInputTrie(bindings);
+    initScrolling(smoothScroll, scrollStep);
   },
   events: {
     keydown: (event) => {
       if (event.key !== 'Escape') {
         event.stopImmediatePropagation();
       }
-      if (!isModifierKey(event)) {
-        const command = commandTrie.advance(event);
-        if (command) {
-          const nextMode = commands[command]();
-          if (nextMode) {
-            return nextMode;
-          }
-        }
+      if (isModifierKey(event)) {
+        return 'Same';
       }
-      return 'Same';
+      return advanceInputTrie(event);
     },
     keypress: (event) => {
       // NOTE: do not call event.preventDefault();
@@ -38,6 +35,7 @@ export const mode = {
     },
     keyup: (event) => {
       event.stopImmediatePropagation();
+      cancelScroll();
       return 'Same';
     },
     blur: (event) => 'Reset',
