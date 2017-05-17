@@ -1,9 +1,9 @@
 # Todos
 
-* better scrolling element logic (must work for tutorial)
+* implement scrolling pages without smoothscroll polyfill (which is large and can only scroll the scrollingElement, not subelements)
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
-* embedded feedback textbox for nontechnical users
 * safe mode profile for beginning users that only provides commands that are easily reversible or have little impact, e.g. only scrolling, zooming and switching tabs, no closing tabs or going back or forward in history
+* Switch to KeyboardEvent.code for bindings
 * add quick disable/enable key binding (to basic)
 * Content script message ports close when battery runs out/computer goes to sleep. Figure out all situations in which port closes and add way to gracefully restart. Will probably require Mosi update... should add proper typings to that.
 * screen reader support

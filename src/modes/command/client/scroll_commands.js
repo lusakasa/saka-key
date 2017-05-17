@@ -67,12 +67,12 @@ export function scrollUp (event) {
 }
 
 /** Scroll left page by a single step */
-export function scrollLeft () {
+export function scrollLeft (event) {
   scroll(document.scrollingElement, event.repeat, -scrollStep, 'scrollLeft');
 }
 
 /** Scroll right page by a single step */
-export function scrollRight () {
+export function scrollRight (event) {
   scroll(document.scrollingElement, event.repeat, scrollStep, 'scrollLeft');
 }
 
