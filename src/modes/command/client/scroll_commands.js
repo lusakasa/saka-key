@@ -78,6 +78,9 @@ export function scrollRight (event) {
 
 // TODO: figure out why document.documentElement.clientHeight
 // is buggy on hackernews, i wouldd use it over innerHeight otherwise
+// ... I think it's related to quirks mode rendering since hackernew
+// lacks a doctype
+// https://github.com/akhodakivskiy/VimFx/blob/3a0a66d4250cd8f0f0dd0fbe4462b3419ba22d80/extension/lib/scrollable-elements.coffee#L34
 /** Scroll down one page */
 export function scrollPageDown () {
   scrollBy({
