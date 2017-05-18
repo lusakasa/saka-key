@@ -44,22 +44,19 @@ module.exports = function (env) {
     },
     plugins: [
       new CopyWebpackPlugin([
-         { from: 'static' },
-         { from: 'src/modes/basic/config.json', to: 'config_basic.json' },
-         { from: 'src/modes/basic/default.json', to: 'default_basic.json' },
-         { from: 'src/modes/command/config.json', to: 'config_command.json' },
-         { from: 'src/modes/command/default.json', to: 'default_command.json' },
-         { from: 'src/modes/hints/config.json', to: 'config_hints.json' },
-         { from: 'src/modes/hints/default.json', to: 'default_hints.json' },
-         { from: 'src/modes/developer/config.json', to: 'config_developer.json' },
-         { from: 'src/modes/developer/default.json', to: 'default_developer.json' }
-        // TODO: consider replacing lines above to be more generic if transform below ever gets merged
-        // https://github.com/kevlened/copy-webpack-plugin/pull/115
-        // {
-        //   context: 'src/modes',
-        //   from: '**/default.json,
-        //   to: '[path].json'
-        // }
+        {
+          from: 'static'
+        },
+        {
+          context: 'src/modes',
+          from: '**/default.json',
+          to: 'default_[folder].json'
+        },
+        {
+          context: 'src/modes',
+          from: '**/config.json',
+          to: 'config_[folder].json'
+        }
       ])
     ]
   };

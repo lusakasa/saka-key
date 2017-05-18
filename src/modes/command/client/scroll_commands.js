@@ -49,31 +49,92 @@ export function cancelScroll () {
   cancelAnimationFrame(lastAnimationFrame);
 }
 
-/**
- * Scrolls the selected element immediately
- */
+/** Scrolls the selected element immediately */
 function scrollRegular (element, repeat, step, direction) {
   element[direction] += step;
 }
 
+// TODO: the implementation below makes me feel guilty... but there's no better way
+/** returns true if an element scrolls vertically, false otherwise */
+function scrollsVertically (element) {
+  const yStart = element.scrollTop;
+  element.scrollTop += 1;
+  const yAfterScrollDown = element.scrollTop;
+  element.scrollTop -= 1;
+  const yAfterScrollUp = element.scrollTop;
+  return yStart !== yAfterScrollDown || yStart !== yAfterScrollUp;
+}
+
+/**
+ * Returns the largest scrollable element that is the root element or one of its children
+ * @param {HTMLElement} element - the root element
+ * @param {number} depth - the maximum depth, pass -1 to indicate no limit
+ */
+function largestScrollableElement (element, depth = 7) {
+  function _largestScrollableElement (element, depth) {
+    if (!element) return;
+    if (depth === 0) return undefined;
+    if (scrollsVertically(element)) {
+      const rect = element.getBoundingClientRect();
+      const area = rect.width * rect.height;
+      return [element, area];
+    }
+    let largestFound;
+    [...element.children]
+      .map((child) => _largestScrollableElement(child, depth - 1))
+      .forEach((scrollElementInfo) => {
+        if (scrollElementInfo) {
+          if (!largestFound) {
+            largestFound = scrollElementInfo;
+          } else {
+            if (scrollElementInfo[1] > largestFound[1]) {
+              largestFound = scrollElementInfo;
+            }
+          }
+        }
+      });
+    return largestFound;
+  }
+  const scrollInfo = _largestScrollableElement(element, depth);
+  return scrollInfo && scrollInfo[0] || getScrollingElement();
+}
+
+function getScrollingElement () {
+  return document.scrollingElement || document.documentElement;
+}
+
+let currentScrollElement;
+
+export function recalculateCurrentScrollElement () {
+  currentScrollElement = largestScrollableElement(getScrollingElement());
+  if (SAKA_DEBUG) {
+    console.log('currentScrollElement changed to: ', currentScrollElement);
+  }
+}
+recalculateCurrentScrollElement();
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  recalculateCurrentScrollElement();
+});
+
 /** Scroll down page by a single step */
 export function scrollDown (event) {
-  scroll(document.scrollingElement, event.repeat, scrollStep, 'scrollTop');
+  scroll(currentScrollElement, event.repeat, scrollStep, 'scrollTop');
 }
 
 /** Scroll up page by a single step */
 export function scrollUp (event) {
-  scroll(document.scrollingElement, event.repeat, -scrollStep, 'scrollTop');
+  scroll(currentScrollElement, event.repeat, -scrollStep, 'scrollTop');
 }
 
 /** Scroll left page by a single step */
 export function scrollLeft (event) {
-  scroll(document.scrollingElement, event.repeat, -scrollStep, 'scrollLeft');
+  scroll(currentScrollElement, event.repeat, -scrollStep, 'scrollLeft');
 }
 
 /** Scroll right page by a single step */
 export function scrollRight (event) {
-  scroll(document.scrollingElement, event.repeat, scrollStep, 'scrollLeft');
+  scroll(currentScrollElement, event.repeat, scrollStep, 'scrollLeft');
 }
 
 // TODO: figure out why document.documentElement.clientHeight

@@ -1,5 +1,5 @@
 import { initInputTrie, resetInputTrie, advanceInputTrie } from './command_manager';
-import { initScrolling, cancelScroll } from './scroll_commands';
+import { initScrolling, cancelScroll, recalculateCurrentScrollElement } from './scroll_commands';
 import { isModifierKey } from 'lib/keys';
 
 
@@ -43,5 +43,10 @@ export const mode = {
     click: (event) => 'Same',
     mousedown: (event) => 'Same'
   },
-  messages: {}
+  messages: {
+    recalculateCurrentScrollElement: () => {
+      console.log('recalculateCurrentScrollElement');
+      recalculateCurrentScrollElement();
+    }
+  }
 };

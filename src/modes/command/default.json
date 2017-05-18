@@ -5,7 +5,7 @@
       "name": "default",
       "settings": {
         "smoothScroll": true,
-        "scrollStep": 20,
+        "scrollStep": 12,
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],
@@ -154,7 +154,7 @@
       "name": "left hand",
       "settings": {
         "smoothScroll": true,
-        "scrollStep": 20,
+        "scrollStep": 12,
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],
@@ -301,7 +301,7 @@
       "name": "vimium",
       "settings": {
         "smoothScroll": true,
-        "scrollStep": 20,
+        "scrollStep": 12,
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],

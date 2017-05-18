@@ -191,7 +191,6 @@ export async function modeMessage ({ mode, action, arg }, src) {
   }
 }
 
-
 /**
  * Installs event listeners for all events that should be handled by the active mode.
  * These listeners are installed once, as early as possible, to prevent visited pages

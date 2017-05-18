@@ -6,7 +6,7 @@
 
 * scroll box: [http://www.quackit.com/html/codes/html_scroll_box.cfm](http://www.quackit.com/html/codes/html_scroll_box.cfm)
 
-* horizontal scroll: [todo]()
+* horizontal scroll: [https://html5up.net/uploads/demos/ethereal/](https://html5up.net/uploads/demos/ethereal/)
 
 * non-standard scroll: [http://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc](http://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc)
 

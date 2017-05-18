@@ -127,3 +127,15 @@ function reloadClientLoaders (addedTabId, removedTabId) {
   });
 }
 chrome.tabs.onReplaced.addListener(reloadClientLoaders);
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  console.log('tabUpdate:', changeInfo);
+  if (changeInfo.status) {
+    console.log('sending status change');
+    msg(`tab[${tabId}]&topFrame`, 'modeMessage', {
+      mode: 'Command',
+      action: 'recalculateCurrentScrollElement',
+      arg: changeInfo[status]
+    });
+  }
+});
