@@ -6,10 +6,10 @@ For example, Command mode is in *command*, and Hints mode is in  *hints*.
 
 Each mode's directory must have the following structure:
 
-* **mode**
-  * **background**
+* **mode/**
+  * **background/**
     * **index.js** - logic that runs in the background page
-  * **client**
+  * **client/**
     * **index.js** - logic that runs on every page
   * **config.json** - describes the mode's settings (used to generate the options page)
   * **default.json** - defines built-in settings profiles
