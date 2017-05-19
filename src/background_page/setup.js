@@ -12,17 +12,23 @@ export async function setup () {
   initInstallListeners();
 }
 
-async function initInstallListeners () {
+async function installProcedure () {
+  await initializeLocalStorage(modes);
+  await regenerateClientSettings();
+  if (!SAKA_DEBUG) {
+    chrome.tabs.create({ url: 'http://saka-key.lusakasa.com' });
+  }
+}
+
+function initInstallListeners () {
   chrome.runtime.onInstalled.addListener(async ({ reason }) => {
     if (SAKA_DEBUG) console.log('install event: ' + reason);
     switch (reason) {
       case 'install':
-        await initializeLocalStorage(modes);
-        await regenerateClientSettings();
+        installProcedure();
         break;
       case 'update':
-        await initializeLocalStorage(modes);
-        await regenerateClientSettings();
+        installProcedure();
         break;
       case 'chrome_update':
       case 'shared_module_update':
@@ -34,8 +40,7 @@ async function initInstallListeners () {
     });
   });
   if (SAKA_DEBUG && SAKA_PLATFORM === 'firefox') {
-    await initializeLocalStorage(modes);
-    await regenerateClientSettings();
+    installProcedure();
     Object.values(modes).forEach((mode) => {
       mode.onInstalled('install');
     });
