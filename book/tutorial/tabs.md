@@ -8,41 +8,41 @@ Saka Key lets you, [create](), [duplicate](), [close](), [restore](), [refresh](
 
 ### Create and Duplicate Tabs
 
-* **New Tab** - <kbd>Shift + K</kbd>
-* **Duplicate Tab** - <kbd>Shift + K</kbd>
+* **New Tab** - <kbd>N</kbd>
+* **Duplicate Tab** - <kbd>B</kbd>
 
 ### Close and Restore Tabs
 
-* **Close Tab** - <kbd>Shift + K</kbd>
-* **Close Other Tabs** - <kbd>Shift + K</kbd>
-* **Close Left Tabs** - <kbd>Shift + K</kbd>
-* **Close Right Tabs** - <kbd>Shift + K</kbd>
-* **Restore Tab** - <kbd>Shift + K</kbd>
+* **Close Tab** - <kbd>Alt + X</kbd>
+* **Restore Tab** - <kbd>Shift + X</kbd>
+* **Close Other Tabs** - <kbd>Alt + X</kbd>
+* **Close Left Tabs** - <kbd>unmapped</kbd>
+* **Close Right Tabs** - <kbd>unmapped</kbd>
 
 ### Refresh Tabs
 
-* **Refresh Tab** - <kbd>Shift + K</kbd>
-* **Refresh All Tabs** - <kbd>Shift + K</kbd>
+* **Refresh Tab** - <kbd>Alt + R</kbd>
+* **Refresh All Tabs** - <kbd>Alt + Shift + R</kbd>
 
 ### Switch Tabs
 
-* **Next Tab** - <kbd>Shift + K</kbd>
-* **Previous Tab** - <kbd>Shift + K</kbd>
-* **First Tab** - <kbd>Shift + K</kbd>
-* **Last Tab** - <kbd>Shift + K</kbd>
+* **Next Tab** - <kbd>Q</kbd>
+* **Previous Tab** - <kbd>W</kbd>
+* **First Tab** - <kbd>Shift + Q</kbd> or <kbd>1</kbd>
+* **Last Tab** - <kbd>Shift + W</kbd> or <kbd>0</kbd>
 
 ### Move Tabs
 
-* **Move Tab Left** - <kbd>Shift + K</kbd>
-* **Move Tab Right** - <kbd>Shift + K</kbd>
-* **Move Tab First** - <kbd>Shift + K</kbd>
-* **Move Tab Last** - <kbd>Shift + K</kbd>
+* **Move Tab Left** - <kbd>I</kbd>
+* **Move Tab Right** - <kbd>O</kbd>
+* **Move Tab First** - <kbd>Shift + I</kbd>
+* **Move Tab Last** - <kbd>Shift + O</kbd>
 
 ### Mute Tabs
 
-* **Mute/Unmute Tab** - <kbd>Shift + K</kbd>
-* **Mute/Unmute All Tabs** - <kbd>Shift + K</kbd>
+* **Mute/Unmute Tab** - <kbd>M</kbd>
+* **Mute/Unmute All Tabs** - <kbd>Shift + M</kbd>
 
 ### Pin Tabs
 
-* **Pin/Unpin Tab** - <kbd>Shift + K</kbd>
+* **Pin/Unpin Tab** - <kbd>Shift + P</kbd>

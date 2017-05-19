@@ -11,6 +11,7 @@
   * [Basics](tutorial/basics.md)
   * [Scrolling](tutorial/scrolling.md)
   * [Zooming](tutorial/zooming.md)
+  * [Navigation](tutorial/navigation.md)
   * [Tabs](tutorial/tabs.md)
   * [Clicking and Link Hints](tutorial/clicking_and_link_hints.md)
   * [Settings](tutorial/settings.md)

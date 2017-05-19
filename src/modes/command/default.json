@@ -10,6 +10,154 @@
           [{ "key": "?", "shiftKey": true }]
         ],
         "showLinkHints": [
+          [{ "code": "KeyF", "altKey": true }]
+        ],
+        "hintChars": "asdghjklvn",
+        "scrollDown": [
+          [{ "key": "d" }],
+          [{ "key": "j" }]
+        ],
+        "scrollUp": [
+          [{ "key": "s" }],
+          [{ "key": "k" }]
+        ],
+        "scrollLeft": [
+          [{ "code": "KeyS", "altKey": true }],
+          [{ "code": "KeyK", "altKey": true }]
+        ],
+        "scrollRight": [
+          [{ "code": "KeyD", "altKey": true }],
+          [{ "code": "KeyJ", "altKey": true }]
+        ],
+        "scrollPageDown": [
+          [{ "key": "J", "shiftKey": true }]
+        ],
+        "scrollPageUp": [
+          [{ "key": "K", "shiftKey": true }]
+        ],
+        "scrollHalfPageDown": [
+          [{ "key": "D", "shiftKey": true }]
+        ],
+        "scrollHalfPageUp": [
+          [{ "key": "S", "shiftKey": true }]
+        ],
+        "scrollToBottom": [
+          [{ "key": "G", "shiftKey": true }]
+        ],
+        "scrollToTop": [
+            [{ "key": "g" }, { "key": "g" }]
+        ],
+        "scrollToLeft": [
+        ],
+        "scrollToRight": [
+        ],
+        "goBack": [
+          [{ "key": "c"}]
+        ],
+        "goForward": [
+          [{ "key": "v"}]
+        ],
+        "nextPage": [
+          [{ "key": "]"}, { "key": "]"}]
+        ],
+        "previousPage": [
+          [{ "key": "["}, { "key": "["}]
+        ],
+        "goUp": [
+          [{ "code": "KeyU", "altKey": true }]
+        ],
+        "goToRoot": [
+          [{ "code": "KeyU", "altKey": true, "shiftKey": true }]
+        ],
+        "nextTab": [
+          [{ "key": "w" }]
+        ],
+        "previousTab": [
+          [{ "key": "q" }]
+        ],
+        "firstTab": [
+          [{ "key": "Q", "shiftKey": true }],
+          [{ "key": "1" }]
+        ],
+        "lastTab": [
+          [{ "key": "W", "shiftKey": true }],
+          [{ "key": "0" }]
+        ],
+        "moveTabLeft": [
+          [{ "key": "i" }]
+        ],
+        "moveTabRight": [
+          [{ "key": "o" }]
+        ],
+        "moveTabFirst": [
+          [{ "key": "I", "shiftKey": true }]
+        ],
+        "moveTabLast": [
+          [{ "key": "O", "shiftKey": true }]
+        ],
+        "closeTab": [
+          [{ "code": "KeyX", "altKey": true }]
+        ],
+        "closeOtherTabs": [
+          [{ "code": "KeyX", "altKey": true, "shiftKey": true }]
+        ],
+        "closeRightTabs": [
+        ],
+        "closeLeftTabs": [
+        ],
+        "newTab": [
+          [{ "key": "n" }]
+        ],
+        "restoreTab": [
+          [{ "key": "X", "shiftKey": true }]
+        ],
+        "duplicateTab": [
+          [{ "key": "b" }]
+        ],
+        "newWindow": [
+        ],
+        "switchWindow": [
+          [{ "key": "%" }]
+        ],
+        "zoomIn": [
+          [{ "key": "z" }]
+        ],
+        "zoomOut": [
+          [{ "key": "Z", "shiftKey": true }]
+        ],
+        "zoomReset": [
+          [{ "code": "KeyZ", "altKey": true }],
+          [{ "code": "KeyZ", "altKey": true, "shiftKey": true }]
+        ],
+        "refreshTab": [
+          [{ "code": "KeyR", "altKey": true }]
+        ],
+        "refreshAllTabs": [
+          [{ "code": "KeyR", "altKey": true, "shiftKey": true }]
+        ],
+        "toggleMuteTab": [
+          [{ "key": "m" }]
+        ],
+        "toggleMuteAllTabs": [
+          [{ "key": "M", "shiftKey": true }]
+        ],
+        "togglePinTab": [
+          [{ "key": "p" }]
+        ],
+        "developerMode": [
+          [{ "key": "*", "shiftKey": true }]
+        ]
+      }
+    },
+    {
+      "name": "power",
+      "settings": {
+        "smoothScroll": true,
+        "scrollStep": 12,
+        "toggleHelpMenu": [
+          [{ "key": "?", "shiftKey": true }]
+        ],
+        "showLinkHints": [
           [{ "key": "f" }]
         ],
         "hintChars": "asdghjklvn",
@@ -46,11 +194,8 @@
             [{ "key": "g" }, { "key": "g" }]
         ],
         "scrollToLeft": [
-          [{ "key": "H", "shiftKey": true }],
-          [{ "key": "g" }, { "key": "a" }]
         ],
         "scrollToRight": [
-          [{ "key": "L", "shiftKey": true }]
         ],
         "goBack": [
           [{ "key": "c"}]
@@ -65,46 +210,46 @@
           [{ "key": "["}, { "key": "["}]
         ],
         "goUp": [
-          [{ "key": "u"}]
+          [{ "key": "u" }]
         ],
         "goToRoot": [
-          [{ "key": "U", "shiftKey": true}]
-        ],
-        "previousTab": [
-          [{ "key": "e" }]
+          [{ "key": "U", "shiftKey": true }]
         ],
         "nextTab": [
-          [{ "key": "r" }]
+          [{ "key": "w" }]
+        ],
+        "previousTab": [
+          [{ "key": "q" }]
         ],
         "firstTab": [
+          [{ "key": "Q", "shiftKey": true }],
           [{ "key": "1" }]
         ],
         "lastTab": [
+          [{ "key": "W", "shiftKey": true }],
           [{ "key": "0" }]
         ],
         "moveTabLeft": [
-          [{ "key": "q" }]
+          [{ "key": "i" }]
         ],
         "moveTabRight": [
-          [{ "key": "w" }]
+          [{ "key": "o" }]
         ],
         "moveTabFirst": [
-          [{ "key": "Q", "shiftKey": true }]
+          [{ "key": "I", "shiftKey": true }]
         ],
         "moveTabLast": [
-          [{ "key": "R", "shiftKey": true }]
+          [{ "key": "O", "shiftKey": true }]
         ],
         "closeTab": [
           [{ "key": "x" }]
         ],
         "closeOtherTabs": [
-          [{ "key": "O", "shiftKey": true }]
+          [{ "code": "X", "altKey": true, "shiftKey": true }]
         ],
         "closeRightTabs": [
-          [{ "key": "P", "shiftKey": true }]
         ],
         "closeLeftTabs": [
-          [{ "key": "I", "shiftKey": true }]
         ],
         "newTab": [
           [{ "key": "n" }]
@@ -116,7 +261,6 @@
           [{ "key": "b" }]
         ],
         "newWindow": [
-          [{ "key": "N", "shiftKey": true }]
         ],
         "switchWindow": [
           [{ "key": "%" }]
@@ -132,10 +276,10 @@
           [{ "code": "KeyZ", "altKey": true, "shiftKey": true }]
         ],
         "refreshTab": [
-          [{ "key": "t" }]
+          [{ "key": "r" }]
         ],
         "refreshAllTabs": [
-          [{ "key": "T", "shiftKey": true }]
+          [{ "key": "R", "shiftKey": true }]
         ],
         "toggleMuteTab": [
           [{ "key": "m" }]

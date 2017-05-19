@@ -34,6 +34,8 @@ git clone https://github.com/lusakasa/saka-key.git
 cd saka-key
 npm install
 npm run build
+# or if you use firefox
+npm run build:firefox
 ```
 
 An extension you can run will be generated in the 'dist' directory.

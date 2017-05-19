@@ -8,10 +8,8 @@ import { modes, regenerateClientSettings } from './modes';
  * A setup action that should always run whenever the background page starts
  * should NOT be placed in the startup listener.
  */
-export function setup () {
+export async function setup () {
   initInstallListeners();
-  regenerateClientSettings();
-  // initStorageChangeListener();
 }
 
 async function initInstallListeners () {
@@ -20,9 +18,11 @@ async function initInstallListeners () {
     switch (reason) {
       case 'install':
         await initializeLocalStorage(modes);
+        await regenerateClientSettings();
         break;
       case 'update':
         await initializeLocalStorage(modes);
+        await regenerateClientSettings();
         break;
       case 'chrome_update':
       case 'shared_module_update':
@@ -35,6 +35,7 @@ async function initInstallListeners () {
   });
   if (SAKA_DEBUG && SAKA_PLATFORM === 'firefox') {
     await initializeLocalStorage(modes);
+    await regenerateClientSettings();
     Object.values(modes).forEach((mode) => {
       mode.onInstalled('install');
     });

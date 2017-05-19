@@ -20,11 +20,11 @@ To view all the commands Saka Key provides, visit the complete [Commands List](/
 
 ## Limitations
 
-Saka Key works on most pages, but cannot run on the Chrome Store and or Chrome's built-in pages. This is a limitation imposed by Chrome for security reasons.
+Saka Key works on most pages, but cannot run on the Chrome Store/Firefox Marketplace or the brower's built-in pages. This is a limitation imposed by browers for security reasons.
 
 PDFs are also troublesome. You can use keyboard shortcuts to close PDF tabs and switch to other tabs, but you cannot scroll PDFs.
 
-To work around these limitations, I recommend learning the following Chrome shortcuts.
+To work around these limitations, I recommend learning the following brower shortcuts.
 
 * <kbd>Ctrl + Tab</kbd> - switches to the next tab
 * <kbd>Ctrl + Shift + Tab</kbd> - switches to the previous tab
@@ -34,6 +34,6 @@ To work around these limitations, I recommend learning the following Chrome shor
 
 Most of the time you want to browse the web with both hands, but sometimes you might want to browse with just your left hand. To make this possible, Saka Key lets you define [Settings Profiles]() that are easy to switch between.
 
-The default profile for new users gives *safe* commands, like scrolling and zooming, simple bindings, like <kbd>D</kbd> and <kbd>Z</kbd>. *Unsafe* commands that trigger irreversible changes, like closing a tab or going back in history, have complex bindings, like <kbd>Alt + X</kbd> and <kbd>Alt + C</kbd>. When you become more comfortable with Saka Key, try switching to a profile with *unsafe* commands.
+The default profile for new users gives *safe* commands, like scrolling and zooming, simple bindings, like <kbd>D</kbd> and <kbd>Z</kbd>. *Unsafe* commands that trigger irreversible changes, like closing a tab or going back in history, have complex bindings, like <kbd>Alt + X</kbd> and <kbd>Alt + C</kbd>. When you become more comfortable with Saka Key, try switching to a profile with *unsafe* commands mapped to simple bindings.
 
 This tutorial assumes you're a new user using the **default** profile. If you are using some other profile, commands may be mapped to different keys.

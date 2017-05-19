@@ -1,4 +1,4 @@
-# ![Saka Key](logo_with_title.png)
+# ![Saka Key](/images/logo_with_title.png)
 
 [Saka Key](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp) lets you control your browser with keyboard shortcuts. It is easy-to-use, highly configurable, and will transform how you surf the web. Put away your mouse. With Saka Key, your keyboard can
 

@@ -82,7 +82,7 @@
     },
     {
       "type": "header",
-      "label": "Scrolling"
+      "label": "Scroll"
     },
     {
       "type": "keybinding",
@@ -103,6 +103,10 @@
       "type": "keybinding",
       "label": "Scroll Left",
       "key": "scrollLeft"
+    },
+    {
+      "type": "header",
+      "label": "Scroll Faster"
     },
     {
       "type": "keybinding",
@@ -137,16 +141,18 @@
     {
       "type": "keybinding",
       "label": "Scroll To Left",
-      "key": "scrollToLeft"
+      "key": "scrollToLeft",
+      "visible": false
     },
     {
       "type": "keybinding",
       "label": "Scroll To Right",
-      "key": "scrollToRight"
+      "key": "scrollToRight",
+      "visible": false
     },
     {
       "type": "header",
-      "label": "Zooming"
+      "label": "Zoom"
     },
     {
       "type": "keybinding",
@@ -165,47 +171,21 @@
     },
     {
       "type": "header",
-      "label": "Tab Manipulation"
+      "label": "Create and Duplicate Tabs"
     },
     {
       "type": "keybinding",
-      "label": "Next Tab",
-      "key": "nextTab"
+      "label": "New Tab",
+      "key": "newTab"
     },
     {
       "type": "keybinding",
-      "label": "Previous Tab",
-      "key": "previousTab"
+      "label": "Duplicate Tab",
+      "key": "duplicateTab"
     },
     {
-      "type": "keybinding",
-      "label": "First Tab",
-      "key": "firstTab"
-    },
-    {
-      "type": "keybinding",
-      "label": "Last Tab",
-      "key": "lastTab"
-    },
-    {
-      "type": "keybinding",
-      "label": "Move Tab Left",
-      "key": "moveTabLeft"
-    },
-    {
-      "type": "keybinding",
-      "label": "Move Tab Right",
-      "key": "moveTabRight"
-    },
-    {
-      "type": "keybinding",
-      "label": "Move Tab First",
-      "key": "moveTabFirst"
-    },
-    {
-      "type": "keybinding",
-      "label": "Move Tab Last",
-      "key": "moveTabLast"
+      "type": "header",
+      "label": "Close and Restore Tabs"
     },
     {
       "type": "keybinding",
@@ -229,30 +209,12 @@
     },
     {
       "type": "keybinding",
-      "label": "New Tab",
-      "key": "newTab"
-    },
-    {
-      "type": "keybinding",
       "label": "Restore Tab",
       "key": "restoreTab"
     },
     {
-      "type": "keybinding",
-      "label": "Duplicate Tab",
-      "key": "duplicateTab"
-    },
-    {
-      "type": "keybinding",
-      "label": "New Window",
-      "key": "newWindow",
-      "visible": false
-    },
-    {
-      "type": "keybinding",
-      "label": "Switch Window",
-      "key": "switchWindow",
-      "visible": false
+      "type": "header",
+      "label": "Refresh Tabs"
     },
     {
       "type": "keybinding",
@@ -265,6 +227,58 @@
       "key": "refreshAllTabs"
     },
     {
+      "type": "header",
+      "label": "Switch Tabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Next Tab",
+      "key": "nextTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Previous Tab",
+      "key": "previousTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "First Tab",
+      "key": "firstTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Last Tab",
+      "key": "lastTab"
+    },
+    {
+      "type": "header",
+      "label": "Move Tabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab Left",
+      "key": "moveTabLeft"
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab Right",
+      "key": "moveTabRight"
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab First",
+      "key": "moveTabFirst"
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab Last",
+      "key": "moveTabLast"
+    },
+    {
+      "type": "header",
+      "label": "Mute Tabs"
+    },
+    {
       "type": "keybinding",
       "label": "Toggle Mute Tab",
       "key": "toggleMuteTab"
@@ -275,9 +289,25 @@
       "key": "toggleMuteAllTabs"
     },
     {
+      "type": "header",
+      "label": "Pin Tabs"
+    },
+    {
       "type": "keybinding",
       "label": "Toggle Pin Tab",
       "key": "togglePinTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "New Window",
+      "key": "newWindow",
+      "visible": false
+    },
+    {
+      "type": "keybinding",
+      "label": "Switch Window",
+      "key": "switchWindow",
+      "visible": false
     },
     {
       "type": "header",
