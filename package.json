@@ -45,7 +45,7 @@
     "@material/menu": "^0.2.1",
     "immutability-helper": "^2.1.2",
     "material-components-web": "^0.7.0",
-    "mosi": "latest",
+    "mosi": "^1.0.0",
     "preact": "^7.2.0",
     "preact-redux": "^2.0.0",
     "promise-queue": "^2.2.3",

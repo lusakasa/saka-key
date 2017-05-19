@@ -6,13 +6,24 @@ require('smoothscroll-polyfill').polyfill();
 
 let lastAnimationFrame;
 let scrollStep = 20;
-let scroll = scrollSmooth;
+let currentScrollElement = calculateCurrentScrollElement();
+let scrollFunction = scrollSmooth;
 let behavior = 'smooth';
 
 export function initScrolling (_smoothScroll, _scrollStep) {
   scrollStep = _scrollStep;
-  scroll = _smoothScroll ? scrollSmooth : scrollRegular;
+  scrollFunction = _smoothScroll ? scrollSmooth : scrollRegular;
   behavior = _smoothScroll ? 'smooth' : 'instant';
+}
+
+function scroll (element, repeat, step, direction) {
+  if (!repeat) {
+    if (!scrollsVertically(element)) {
+      console.log(element, "doesn't scroll vertically");
+      currentScrollElement = element = calculateCurrentScrollElement();
+    }
+  }
+  scrollFunction(element, repeat, step, direction);
 }
 
 /**
@@ -68,12 +79,14 @@ function scrollsVertically (element) {
 /**
  * Returns the largest scrollable element that is the root element or one of its children
  * @param {HTMLElement} element - the root element
- * @param {number} depth - the maximum depth, pass -1 to indicate no limit
+ * @param {number} depth - the maximum depth, pass -1 to indicate no limit,
+ * depth = 8 is just large enough for gmail
  */
-function largestScrollableElement (element, depth = 7) {
+function largestScrollableElement (element, depth = 8) {
   function _largestScrollableElement (element, depth) {
+    if (depth === 0) return;
     if (!element) return;
-    if (depth === 0) return undefined;
+    if (getComputedStyle(element).overflow === 'hidden') return;
     if (scrollsVertically(element)) {
       const rect = element.getBoundingClientRect();
       const area = rect.width * rect.height;
@@ -96,26 +109,25 @@ function largestScrollableElement (element, depth = 7) {
     return largestFound;
   }
   const scrollInfo = _largestScrollableElement(element, depth);
-  return scrollInfo && scrollInfo[0] || getScrollingElement();
+  return scrollInfo && scrollInfo[0];
 }
 
-function getScrollingElement () {
-  return document.scrollingElement || document.documentElement;
+function guessScrollElement () {
+  return document.scrollingElement || document.body || document.documentElement;
 }
 
-let currentScrollElement;
-
-export function recalculateCurrentScrollElement () {
-  currentScrollElement = largestScrollableElement(getScrollingElement());
-  if (SAKA_DEBUG) {
-    console.log('currentScrollElement changed to: ', currentScrollElement);
+export function calculateCurrentScrollElement () {
+  let scrollElement = largestScrollableElement(guessScrollElement());
+  if (scrollElement === undefined) {
+    scrollElement = guessScrollElement();
+    if (SAKA_DEBUG) {
+      console.log('No scrollElement candidate, defaulting to: ', scrollElement);
+    }
+  } else if (SAKA_DEBUG) {
+    console.log('scrollElement changed to: ', scrollElement);
   }
+  return scrollElement;
 }
-recalculateCurrentScrollElement();
-
-window.addEventListener('DOMContentLoaded', (event) => {
-  recalculateCurrentScrollElement();
-});
 
 /** Scroll down page by a single step */
 export function scrollDown (event) {

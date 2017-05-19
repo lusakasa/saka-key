@@ -19,6 +19,7 @@ if (SAKA_DEBUG) {
 
 // initialize messaging system
 init({
+  log: SAKA_DEBUG,
   actions: {
     loadClient,
     modeMessage,

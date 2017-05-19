@@ -21,6 +21,7 @@ export function initialize (type) {
 
   // Initialize the messaging system
   init({
+    log: SAKA_DEBUG,
     subscriptions: ['client', type],
     actions: {
       changeMode,

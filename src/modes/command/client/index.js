@@ -43,10 +43,5 @@ export const mode = {
     click: (event) => 'Same',
     mousedown: (event) => 'Same'
   },
-  messages: {
-    recalculateCurrentScrollElement: () => {
-      console.log('recalculateCurrentScrollElement');
-      recalculateCurrentScrollElement();
-    }
-  }
+  messages: {}
 };
