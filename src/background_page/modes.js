@@ -73,8 +73,11 @@ async function generateClientSettings () {
   const clientSettings = {};
   Object.entries(profileMap).forEach(([mode, profile]) => {
     const options = modesConfig.find(({ name }) => name === mode).options;
+    console.log('## settings', settings);
     const activeProfile = settings[mode].find(({ name }) => name === profileMap[mode]);
+    console.log('## activeProfile', activeProfile);
     const modeSettings = activeProfile.settings;
+    console.log('## modeSettings', modeSettings);
     const { values, errors } = modes[mode].clientSettings(options, modeSettings);
     activeProfile.errors = errors;
     Object.assign(clientSettings, values);
@@ -105,28 +108,31 @@ export function loadClient (_, src) {
   }
 }
 
-/**
- * Requests for the full Saka Client by the client loaders of preloaded tabs are
- * denied because attempting to execute within them would cause errors.
- * http://stackoverflow.com/questions/43665470/cannot-call-chrome-tabs-executescript-into-preloaded-tab-is-this-a-bug-in-chr
- * Instead, the background page listens for the tabs.onReplaced event and executes
- * content_script_loader.js into all frames, which then launches another request for
- * the full Saka Client
- * @param {number} addedTabId
- * @param {number} removedTabId
- */
-function reloadClientLoaders (addedTabId, removedTabId) {
-  if (SAKA_DEBUG) {
-    console.log(`Tab id changed from ${removedTabId} to ${addedTabId}. Reloading content_script_loader.js`);
-  }
-  browser.tabs.executeScript(addedTabId, {
-    file: '/content_script_loader.js',
-    allFrames: true,
-    runAt: 'document_start',
-    matchAboutBlank: true
+
+
+if (SAKA_PLATFORM === 'chrome') {
+    /**
+   * Requests for the full Saka Client by the client loaders of preloaded tabs are
+   * denied because attempting to execute within them would cause errors.
+   * http://stackoverflow.com/questions/43665470/cannot-call-chrome-tabs-executescript-into-preloaded-tab-is-this-a-bug-in-chr
+   * Instead, the background page listens for the tabs.onReplaced event and executes
+   * content_script_loader.js into all frames, which then launches another request for
+   * the full Saka Client
+   * @param {number} addedTabId
+   * @param {number} removedTabId
+   */
+  chrome.tabs.onReplaced.addListener((addedTabId, removedTabId) => {
+    if (SAKA_DEBUG) {
+      console.log(`Tab id changed from ${removedTabId} to ${addedTabId}. Reloading content_script_loader.js`);
+    }
+    browser.tabs.executeScript(addedTabId, {
+      file: '/content_script_loader.js',
+      allFrames: true,
+      runAt: 'document_start',
+      matchAboutBlank: true
+    });
   });
 }
-chrome.tabs.onReplaced.addListener(reloadClientLoaders);
 
 // TODO: remove. Previously used this to detect page changes.
 // No longer needed, but might be useful in the future

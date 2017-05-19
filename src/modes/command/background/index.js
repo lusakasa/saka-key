@@ -34,6 +34,7 @@ export const mode = {
   clientSettings: (options, settings) => {
     const values = {};
     const errors = {};
+    values.hintChars = settings.hintChars;
     values.smoothScroll = settings.smoothScroll;
     // scrollStep
     const scrollStep = parseFloat(settings.scrollStep);

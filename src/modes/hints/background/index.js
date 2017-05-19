@@ -9,7 +9,6 @@ export const mode = {
       hintCSS,
       hintNormalCharCSS,
       hintActiveCharCSS,
-      hintChars,
       hintDetectByCursorStyle,
       hintHorizontalPlacement,
       hintVerticalPlacement
@@ -66,7 +65,6 @@ export const mode = {
         hintCSS,
         hintNormalCharCSS,
         hintActiveCharCSS,
-        hintChars,
         hintDetectByCursorStyle,
         hintHorizontalPlacement,
         hintVerticalPlacement

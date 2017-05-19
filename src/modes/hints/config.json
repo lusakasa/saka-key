@@ -3,11 +3,6 @@
   "description": "Link hints for acivating links and selecting inputs",
   "options": [
     {
-      "type": "text",
-      "label": "Hint Characters",
-      "key": "hintChars"
-    },
-    {
       "type": "checkbox",
       "label": "Detect Hints Using Cursor Style",
       "key": "hintDetectByCursorStyle"

@@ -4,7 +4,6 @@
     {
       "name": "default",
       "settings": {
-        "hintChars": "asdghjklvn",
         "hintDetectByCursorStyle": true,
         "hintHorizontalPlacement": "left",
         "hintVerticalPlacement": "center",
@@ -29,9 +28,8 @@
       }
     },
     {
-      "name": "left hand",
+      "name": "light",
       "settings": {
-        "hintChars": "asdfqwerzxcv",
         "hintDetectByCursorStyle": true,
         "hintHorizontalPlacement": "left",
         "hintVerticalPlacement": "center",
@@ -58,7 +56,6 @@
     {
       "name": "vimium",
       "settings": {
-        "hintChars": "sadfjklewcmpgh",
         "hintDetectByCursorStyle": true,
         "hintHorizontalPlacement": "left",
         "hintVerticalPlacement": "top",

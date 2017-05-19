@@ -9,7 +9,8 @@
     {
       "type": "checkbox",
       "label": "Disable Page Shortcuts (for unmapped keys)",
-      "key": "disablePageShortcuts"
+      "key": "disablePageShortcuts",
+      "visible": false
     },
     {
       "type": "checkbox",
@@ -37,6 +38,11 @@
       "type": "keybinding",
       "label": "Show Link Hints",
       "key": "showLinkHints"
+    },
+    {
+      "type": "text",
+      "label": "Hint Characters",
+      "key": "hintChars"
     },
     {
       "type": "header",

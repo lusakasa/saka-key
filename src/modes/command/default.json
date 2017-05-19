@@ -12,6 +12,7 @@
         "showLinkHints": [
           [{ "key": "f" }]
         ],
+        "hintChars": "asdghjklvn",
         "scrollDown": [
           [{ "key": "d" }],
           [{ "key": "j" }]
@@ -161,6 +162,7 @@
         "showLinkHints": [
           [{ "key": "f" }]
         ],
+        "hintChars": "asdfqwerzxcv",
         "scrollDown": [
           [{ "key": "d" }]
         ],
@@ -308,6 +310,7 @@
         "showLinkHints": [
           [{ "key": "f" }]
         ],
+        "hintChars": "sadfjklewcmpgh",
         "scrollDown": [
           [{ "key": "j" }],
           [{ "code": "KeyE", "ctrlKey": true }]
