@@ -10,10 +10,9 @@ import { modes, regenerateClientSettings } from './modes';
  */
 export async function setup () {
   initInstallListeners();
-  // TODO: add install check because this might fail if called before 
-  // local storage is intiailized
-  // on startup generate client settings
-  await regenerateClientSettings();
+  chrome.runtime.onStartup.addListener(() => {
+    regenerateClientSettings();
+  });
 }
 
 async function installProcedure () {
