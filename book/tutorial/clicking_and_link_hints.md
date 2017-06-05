@@ -4,7 +4,7 @@
 
 Browsing the web normally involves moving your mouse to select something, then clicking to activate it. Saka Key lets you use your keyboard to quickly identify and click things on screen. You can use this feature to follow links, focus text inputs, toggle checkboxes, and more.
 
-To get started, type <kbd>Alt + F</kbd>. *Link Hints* will appear next to all clickable elments on screen.
+To get started, type <kbd>F</kbd><kbd>F</kbd> (press <kbd>F</kbd> twice in a row). *Link Hints* will appear next to all clickable elments on screen.
 
 ![link hints on screen](/images/link_hints.png)
 

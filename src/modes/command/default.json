@@ -10,7 +10,7 @@
           [{ "key": "?", "shiftKey": true }]
         ],
         "showLinkHints": [
-          [{ "code": "KeyF", "altKey": true }]
+          [{ "code": "KeyF" }, { "code": "KeyF" }]
         ],
         "hintChars": "asdghjklvn",
         "scrollDown": [
