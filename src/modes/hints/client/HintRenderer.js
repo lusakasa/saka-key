@@ -1,11 +1,11 @@
 import { Component, render, h } from 'preact';
-import { findHints } from './findHints';
+// import { findHints } from './findHints';
 import { mouseEvent } from 'lib/dom';
-import { hintChars, horizontalPlacement, verticalPlacement } from './index';
+import { horizontalPlacement, verticalPlacement } from './index';
 
 export let showHints;
 export let hideHints;
-export let advanceOnKey;
+export let advanceHints;
 
 class HintRenderer extends Component {
   constructor () {
@@ -17,9 +17,7 @@ class HintRenderer extends Component {
     };
   }
   componentDidMount () {
-    showHints = () => {
-      const hints = findHints();
-      const hintStrings = generateHintStrings(hintChars, hints.length);
+    showHints = (hints, hintStrings) => {
       const labeledHints = hints.map((hint, i) => Object.assign(hint, { hintString: hintStrings[i] }));
       this.setState({
         hints: labeledHints,
@@ -27,22 +25,21 @@ class HintRenderer extends Component {
         inputKeys: ''
       });
     };
-    advanceOnKey = (key) => {
+    advanceHints = (key) => {
       const hints = this.state.hints;
       const inputKeys = this.state.inputKeys + key;
-      const filteredHints = this.state.hints
-        .filter((hint) => hint.hintString.startsWith(inputKeys));
+      const filteredHints = this.state.hints.filter((hint) => {
+        return hint.hintString.startsWith(inputKeys);
+      });
       if (filteredHints.length === 1 && inputKeys === filteredHints[0].hintString) {
         return activateHint(filteredHints[0]);
-      } else if (filteredHints.length === 0) {
-        return 'Command';
       }
       this.setState({
         hints,
         filteredHints,
         inputKeys
       });
-      return 'Hints';
+      return filteredHints.length === 0 ? 'Filtered' : 'Same';
     };
     hideHints = () => {
       this.setState({
@@ -120,21 +117,6 @@ function activateHint (hint) {
   hint.element.focus();
   return 'Reset';
 }
-
-
-
-function generateHintStrings (characters, count) {
-  const hints = [''];
-  let offset = 0;
-  while (hints.length - offset < count || hints.length === 1) {
-    const hint = hints[offset++];
-    for (const c of characters) {
-      hints.push(hint + c);
-    }
-  }
-  return hints.slice(offset, offset + count);
-}
-
 
 export function setHintStyle (hintCSS, normalCharCSS, activeCharCSS) {
   document.querySelector('#sakaHintStyle').innerText = `

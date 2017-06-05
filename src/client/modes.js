@@ -148,7 +148,7 @@ export function changeMode (modeChangeEvent) {
  * TODO: evaluate conditions under which event handlers in the queue expire
  * @param {DocumentEvent} event
  */
-async function handleDOMEvent (event) {
+function handleDOMEvent (event) {
   if (enabled) {
     eventQueue.add(async () => {
       const nextMode = await passDOMEventToMiddleware(event) ||
@@ -171,24 +171,27 @@ async function handleDOMEvent (event) {
  * @param {?any} arg - any arguments to be passed to the action
  * @param {number} src - the source of the message, usually ignored
  */
-export async function modeMessage ({ mode, action, arg }, src) {
-  if (enabled) {
-    eventQueue.add(async () => {
-      if (SAKA_DEBUG) {
-        if (!modes[mode]) {
-          throw Error(`Missing Mode ${mode}`);
+export function modeMessage ({ mode, action, arg }, src) {
+  return new Promise((resolve) => {
+    if (enabled) {
+      eventQueue.add(async () => {
+        if (SAKA_DEBUG) {
+          if (!modes[mode]) {
+            throw Error(`Missing Mode ${mode}`);
+          }
+          if (!modes[mode].messages[action]) {
+            throw Error(`Mode ${mode} is missing a handler for action ${action}`);
+          }
         }
-        if (!modes[mode].messages[action]) {
-          throw Error(`Mode ${mode} is missing a handler for action ${action}`);
+        const result = await passMessageToMiddleware(action, arg, src) ||
+          await (modes[mode].messages[action](arg, src));
+        if (result && result.nextMode) {
+          setMode(result.nextMode, { type: 'message:' + action });
         }
-      }
-      const nextMode = await passMessageToMiddleware(action, arg, src) ||
-        await (modes[mode].messages[action](arg, src));
-      if (nextMode) {
-        setMode(nextMode, { type: 'message:' + action });
-      }
-    });
-  }
+        resolve(result && result.value);
+      });
+    }
+  });
 }
 
 /**

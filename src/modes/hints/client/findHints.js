@@ -13,7 +13,6 @@ export function findHints () {
   return candidates;
 }
 
-
 // https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
 function isClickable (element) {
   var name = element.nodeName.toLowerCase();

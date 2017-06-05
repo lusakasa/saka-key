@@ -1,5 +1,5 @@
 import { initInputTrie, resetInputTrie, advanceInputTrie } from './command_manager';
-import { initScrolling, cancelScroll, recalculateCurrentScrollElement } from './scroll_commands';
+import { initScrolling, cancelScroll } from './scroll_commands';
 import { isModifierKey } from 'lib/keys';
 
 

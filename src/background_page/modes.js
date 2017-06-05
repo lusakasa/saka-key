@@ -71,18 +71,21 @@ async function generateClientSettings () {
   ]);
   const profileMap = profileGroups.find(({ name }) => name === activeProfileGroup).settings;
   const clientSettings = {};
+  // 1. Construct map containing key-value mappings for ALL modes
+  const settingsMap = Object.entries(profileMap).reduce((allSettings, [mode, profile]) => {
+    const activeProfile = settings[mode].find(({ name }) => name === profileMap[mode]);
+    const modeSettings = activeProfile.settings;
+    return Object.assign(allSettings, modeSettings);
+  }, {});
+  // 2. Generate client settings and validate settings
   Object.entries(profileMap).forEach(([mode, profile]) => {
     const options = modesConfig.find(({ name }) => name === mode).options;
-    console.log('## settings', settings);
     const activeProfile = settings[mode].find(({ name }) => name === profileMap[mode]);
-    console.log('## activeProfile', activeProfile);
-    const modeSettings = activeProfile.settings;
-    console.log('## modeSettings', modeSettings);
-    const { values, errors } = modes[mode].clientSettings(options, modeSettings);
+    const { values, errors } = modes[mode].clientSettings(options, settingsMap);
     activeProfile.errors = errors;
     Object.assign(clientSettings, values);
   });
-  await browser.storage.local.set({ 'settings': settings });
+  await browser.storage.local.set({ settings });
   return clientSettings;
 }
 

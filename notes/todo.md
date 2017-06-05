@@ -1,6 +1,7 @@
 # Todos
 
 * safe mode profile for beginning users that only provides commands that are easily reversible or have little impact, e.g. only scrolling, zooming and switching tabs, no closing tabs or going back or forward in history
+* add new user setup tab (e.g. let them pick power mode and hint style)
 * implement scrolling pages without smoothscroll polyfill (which is large and can only scroll the scrollingElement, not subelements)
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
 * Switch to KeyboardEvent.code for bindings

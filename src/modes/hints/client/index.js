@@ -1,28 +1,36 @@
+import { modeMsg } from 'client/msg';
 import {
   showHints,
   hideHints,
-  advanceOnKey,
+  advanceHints,
   setHintStyle
 } from './HintRenderer';
-import { isModifierKey } from 'lib/keys';
+import { findHints } from './findHints';
 
-export let hintChars;
 export let detectByCursorStyle;
 export let horizontalPlacement;
 export let verticalPlacement;
+
+let hints;
 
 export const mode = {
   name: 'Hints',
   onCreate: () => {},
   onEnter: (event) => {
-    showHints();
+    // first frame to enter Hints mode is triggered by a keypress from command mode
+    // all other frames must be notified of mode change via message
+    if (event.type === 'keydown') {
+      modeMsg(1, 'Hints', 'gatherHints');
+    }
   },
   onExit: (event) => {
+    if (!event.type.startsWith('message')) {
+      modeMsg('thisTab&otherFrames', 'Hints', 'exitHintsMode');
+    }
     hideHints();
   },
   onSettingsChange: (settings) => {
     setHintStyle(settings.hintCSS, settings.hintNormalCharCSS, settings.hintActiveCharCSS);
-    hintChars = settings.hintChars;
     detectByCursorStyle = settings.hintDetectByCursorStyle;
     horizontalPlacement = settings.hintHorizontalPlacement;
     verticalPlacement = settings.hintVerticalPlacement;
@@ -30,16 +38,18 @@ export const mode = {
   events: {
     keydown: (event) => {
       event.stopImmediatePropagation();
-      if (!isModifierKey(event)) {
-        if (hintChars.includes(event.key)) {
-          // TODO: FIX: next line is shoddy fix to prevent text from being added on entrance to an input
-          // e.g. if the last character in a link hint is 'l', without the next line, activating an input
-          // will cause l to appear within it.
-          event.preventDefault();
-          return advanceOnKey(event.key);
-        }
-        return 'Command';
-      }
+      // TODO: FIX: next line is shoddy fix to prevent text from being added on entrance to an input
+      // e.g. if the last character in a link hint is 'l', without the next line, activating an input
+      // will cause l to appear within it.
+      event.preventDefault();
+      modeMsg(1, 'Hints', 'processKey', {
+        key: event.key,
+        code: event.code,
+        shiftKey: event.shiftKey,
+        altKey: event.altKey,
+        ctrlKey: event.ctrlKey,
+        metaKey: event.metaKey
+      });
       return 'Same';
     },
     keypress: (event) => {
@@ -52,5 +62,25 @@ export const mode = {
     click: (event) => 'Same',
     mousedown: async (event) => 'Reset'
   },
-  messages: {}
+  messages: {
+    findHints: () => {
+      hints = findHints();
+      return {
+        nextMode: 'Hints',
+        value: hints.length
+      };
+    },
+    renderHints: (hintStrings) => {
+      showHints(hints, hintStrings);
+      hints = undefined;
+    },
+    exitHintsMode: () => ({ nextMode: 'Reset' }),
+    advanceHints: (key) => {
+      const nextMode = advanceHints(key);
+      return {
+        nextMode: nextMode === 'Filtered' ? 'Same' : nextMode,
+        value: nextMode
+      };
+    }
+  }
 };
