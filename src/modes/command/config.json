@@ -19,10 +19,10 @@
     },
     {
       "type": "number",
-      "label": "Scroll Step Size (pixels)",
+      "label": "Scroll Step",
       "key": "scrollStep",
-      "step": "1",
-      "min": "1"
+      "step": 1,
+      "min": 1
     },
     {
       "type": "keybinding",

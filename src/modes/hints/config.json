@@ -51,9 +51,9 @@
       "label": "Opacity",
       "key": "hintOpacity",
       "visible": "hintUseCustomCSS = false",
-      "min": "0.0",
-      "max": "1.0",
-      "step": "0.01"
+      "min": 0,
+      "max": 1,
+      "step": 0.01
     },
     {
       "type": "select",
@@ -67,7 +67,7 @@
       "label": "Font Size",
       "key": "hintFontSize",
       "visible": "hintUseCustomCSS = false",
-      "min": "1"
+      "min": 1
     },
     {
       "type": "select",
@@ -81,42 +81,42 @@
       "label": "Padding Left",
       "key": "hintPaddingLeft",
       "visible": "hintUseCustomCSS = false",
-      "min": "0"
+      "min": 0
     },
     {
       "type": "number",
       "label": "Padding Right",
       "key": "hintPaddingRight",
       "visible": "hintUseCustomCSS = false",
-      "min": "0"
+      "min": 0
     },
     {
       "type": "number",
       "label": "Padding Top",
       "key": "hintPaddingTop",
       "visible": "hintUseCustomCSS = false",
-      "min": "0"
+      "min": 0
     },
     {
       "type": "number",
       "label": "Padding Bottom",
       "key": "hintPaddingBottom",
       "visible": "hintUseCustomCSS = false",
-      "min": "0"
+      "min": 0
     },
     {
       "type": "number",
       "label": "Border Width",
       "key": "hintBorderWidth",
       "visible": "hintUseCustomCSS = false",
-      "min": "0"
+      "min": 0
     },
     {
       "type": "number",
       "label": "Border Radius",
       "key": "hintBorderRadius",
       "visible": "hintUseCustomCSS = false",
-      "min": "0"
+      "min": 0
     },
     {
       "type": "checkbox",

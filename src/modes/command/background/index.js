@@ -1,4 +1,3 @@
-// import { msg } from 'mosi/core';
 import { commandTrie } from './trie';
 import {
   nextTab,
@@ -35,14 +34,7 @@ export const mode = {
     const values = {};
     const errors = {};
     values.smoothScroll = settings.smoothScroll;
-    // scrollStep
-    const scrollStep = parseFloat(settings.scrollStep);
-    if (isNaN(scrollStep) || scrollStep < 1 || scrollStep % 1 !== 0) {
-      errors.scrollStep = 'Scroll Step must be a positive whole number';
-    } else {
-      values.scrollStep = scrollStep;
-    }
-    // key bindings
+    values.scrollStep = settings.scrollStep;
     const keybindings = {};
     options.filter((option) => option.type === 'keybinding').forEach((option) => {
       keybindings[option.key] = settings[option.key];
