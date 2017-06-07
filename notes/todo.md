@@ -1,7 +1,5 @@
 # Todos
 
-* safe mode profile for beginning users that only provides commands that are easily reversible or have little impact, e.g. only scrolling, zooming and switching tabs, no closing tabs or going back or forward in history
-* add new user setup tab (e.g. let them pick power mode and hint style)
 * implement scrolling pages without smoothscroll polyfill (which is large and can only scroll the scrollingElement, not subelements)
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
 * Switch to KeyboardEvent.code for bindings
@@ -13,6 +11,7 @@
 * redo modes GUI: no more profile menu, all keys global, additional category field, options placed in category card, each card has url selection, clientSettings returns { values: { key: value}, errors: { key: error } } (background page writes errors just like values to localstorage), errors rendered above widget, background page uses per-category LRU cache to store generated clientSettings, object.assigns appropriate category pieces based on client url
 * Add version check to make sure Chrome is new enough to run, http://stackoverflow.com/questions/19294981/how-to-find-the-version-of-chrome-browser-from-my-extension, http://stackoverflow.com/questions/4900436/how-to-detect-the-installed-chrome-version
 * add search bar at top of options GUI modes overview
+* modify info.html to show release notes and provide quick profile change
 * install listener that captures keys that will be passed to full client when it loads
 * firefox:
     * figure out why default key actions are suppressed, e.g. cmd+l won't focus the address bar unless saka key is disabled

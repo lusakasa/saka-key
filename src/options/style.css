@@ -9,20 +9,6 @@ body {
   z-index: 5;
 }
 
-.saka-toolbar .saka-toolbar-item {
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  height: 62px;
-  line-height: 62px;
-  padding: 0px 12px;
-}
-
-.saka-toolbar-item__active {
-  border-bottom: 2px solid;
-  border-bottom-color: white;
-}
-
 .settings-header {
   background-color: #3f51F5;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);

@@ -10,7 +10,6 @@ if (SAKA_PLATFORM === 'chrome') {
   require('webextension-polyfill/dist/browser-polyfill');
 }
 
-
 initialize('options');
 
 render((

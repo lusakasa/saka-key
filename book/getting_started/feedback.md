@@ -1,9 +1,13 @@
 # Feedback
 
-## Report a Bug or Request a Feature
+## Report Bugs and Request Features
 
-If you find a bug in Saka Key or want to request a feature, please [submit an issue here](). Technical users are encouraged to file a [Github issue] and perhaps submit a pull request.
+* The best way to report a bug or request a feature is to [submit an issue on Github](https://github.com/lusakasa/saka-key/issues).
 
-## Leave a Review
+* Otherwise, email [lusakasa.dev@gmail.com](mailto:lusakasa.dev@gmail.com)
 
-To leave a (5 star) review of Saka Key, navigate to Saka Key's [review page for Chrome]() or [review page for Firefox]().
+## Leave a (5 star) Review
+
+* [Review Saka Key for Chrome](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp/reviews)
+
+* [Review Saka Key for Firefox](https://addons.mozilla.org/en-US/firefox/addon/saka-key/reviews/add)

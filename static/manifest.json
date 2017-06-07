@@ -53,6 +53,7 @@
     "content_script_loader.js.map",
     "help.js.map",
     "options.js.map",
+    "info.js.map",
     "help.html",
     "Roboto-Regular.tff",
     "startProfiles.json",

@@ -106,7 +106,7 @@ modesList: ["1", "2", "3", "4"],
 }
 */
 
-const view = (state = 'Settings', action) => {
+const view = (state = 'Info', action) => {
   switch (action.type) {
     case 'SET_VIEW':
       return action.view;

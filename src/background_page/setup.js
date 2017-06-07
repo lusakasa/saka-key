@@ -18,9 +18,6 @@ export async function setup () {
 async function installProcedure () {
   await initializeLocalStorage(modes);
   await regenerateClientSettings();
-  if (!SAKA_DEBUG) {
-    chrome.tabs.create({ url: 'http://saka-key.lusakasa.com' });
-  }
 }
 
 function initInstallListeners () {
@@ -29,6 +26,7 @@ function initInstallListeners () {
     switch (reason) {
       case 'install':
         installProcedure();
+        chrome.tabs.create({ url: 'options.html' });
         break;
       case 'update':
         installProcedure();

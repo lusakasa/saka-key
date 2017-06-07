@@ -1,0 +1,13 @@
+.saka-toolbar .saka-toolbar-item {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  height: 62px;
+  line-height: 62px;
+  padding: 0px 12px;
+}
+
+.saka-toolbar-item__active {
+  border-bottom: 2px solid;
+  border-bottom-color: white;
+}
