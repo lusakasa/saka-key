@@ -23,8 +23,7 @@
     "default_icon": {
       "48": "logo.png"
     },
-    "default_popup": "options.html",
-    "default_title": "Saka Key"
+    "default_popup": "options.html"
   },
   "options_ui": {
     "page": "options.html",

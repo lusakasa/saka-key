@@ -1,0 +1,42 @@
+.content-card {
+  background-color: #ffffff;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  overflow: scroll;
+  padding: 20px;
+}
+
+.header-section {
+  display: flex;
+  align-items: center;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.info-section > h1 {
+  margin: 5px;
+}
+
+.content-card > .mdc-card__primary {
+  align-self: center;
+}
+
+.content-card button {
+  display: block;
+  margin: 8px;
+  text-transform: none;
+}
+
+.main-logo-background {
+  width: 200px;
+  height: 200px;
+}
+
+.content-section .mdc-list-item {
+  flex-direction: column;
+}

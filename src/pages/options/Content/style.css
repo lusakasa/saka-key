@@ -1,0 +1,5 @@
+.settings-content {
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 260px;
+}
