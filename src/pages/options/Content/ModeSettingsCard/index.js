@@ -9,7 +9,7 @@ import {
   duplicateProfile,
   renameProfile,
   resetProfile
-} from 'options/actions';
+} from 'pages/options/actions';
 
 const mapStateToProps = ({ settings, selectedProfileForMode }, { mode }) => {
   // TODO: cleanup

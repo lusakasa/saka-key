@@ -26,7 +26,7 @@ function initInstallListeners () {
     switch (reason) {
       case 'install':
         installProcedure();
-        chrome.tabs.create({ url: 'options.html' });
+        chrome.tabs.create({ url: 'info.html' });
         break;
       case 'update':
         installProcedure();

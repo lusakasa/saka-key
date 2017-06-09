@@ -6,7 +6,7 @@ import {
   deleteProfileGroup,
   duplicateProfileGroup,
   renameProfileGroup
-} from 'options/actions';
+} from 'pages/options/actions';
 import SettingsCard from '../SettingsCard';
 
 const mapStateToProps = ({ profileGroups, activeProfileGroup, settings, selectedProfileForMode }) => {

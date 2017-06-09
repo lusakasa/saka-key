@@ -2,7 +2,13 @@ import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import { loadModes, loadSettings, loadProfileGroups, loadActiveProfileGroup, loadSelectedProfileForMode } from 'options/actions';
+import {
+  loadModes,
+  loadSettings,
+  loadProfileGroups,
+  loadActiveProfileGroup
+  // loadSelectedProfileForMode
+} from 'pages/options/actions';
 
 const middleWare = SAKA_DEBUG
  ? applyMiddleware(thunk, logger)

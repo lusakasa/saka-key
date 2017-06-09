@@ -10,9 +10,9 @@ module.exports = function (env) {
       'content_script': './src/content_script/index.js',
       'content_script_loader': './src/content_script/loader.js',
       // 'help': './src/help/index.js',
-      'extensions': './src/pags/extensions/index.js',
-      'info': './src/pags/info/index.js',
-      'options': './src/pags/options/index.js',
+      'extensions': './src/pages/extensions/index.js',
+      'info': './src/pages/info/index.js',
+      'options': './src/pages/options/index.js',
       // 'popup': './src/popup/index.js'
     },
     output: {

@@ -41,7 +41,7 @@ export const mode = {
   messages: {
     gatherHints: async (_, src) => {
       // 1. Gather the number of link hints in each frame
-      const hintsPerFrame = await modeGet(`tab[${meta(src).tabId}]`, 'Hints', 'findHints');
+      const hintsPerFrame = await modeGet(`tab[${meta(src).tabId}]|id[${src}]`, 'Hints', 'findHints');
       // 2. Generate Hint Strings
       const totalHints = hintsPerFrame.reduce((total, { v }) => total + v, 0);
       const hintStrings = generateHintStrings(hintChars, totalHints);
@@ -55,7 +55,7 @@ export const mode = {
     },
     processKey: async (event, src) => {
       if (!isModifierKey(event)) {
-        const currentTabTarget = `tab[${meta(src).tabId}]`;
+        const currentTabTarget = `tab[${meta(src).tabId}]|id[${src}]`;
         const results = await modeGet(currentTabTarget, 'Hints', 'advanceHints', event.key);
         if (results.every(({ v }) => v === 'Filtered')) {
           modeMsg(currentTabTarget, 'Hints', 'exitHintsMode');

@@ -1,4 +1,5 @@
 .content-main {
   width: 100%;
   flex-direction: column;
+  padding: 1px; /* for some reason, StandardContentCard margin is messed up if this has no padding */
 }
