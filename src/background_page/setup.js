@@ -16,6 +16,7 @@ export async function setup () {
 }
 
 async function installProcedure () {
+  chrome.tabs.create({ url: 'info.html' });
   await initializeLocalStorage(modes);
   await regenerateClientSettings();
 }
@@ -26,7 +27,6 @@ function initInstallListeners () {
     switch (reason) {
       case 'install':
         installProcedure();
-        chrome.tabs.create({ url: 'info.html' });
         break;
       case 'update':
         installProcedure();

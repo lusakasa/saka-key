@@ -6,4 +6,4 @@
 * **help** - the help page
 * **lib** - utility functions
 * **modes** -  all mode logic 
-* **options** - the options page
+* **pages** - pages including the options page, info page, extensions page, and popup
