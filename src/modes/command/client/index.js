@@ -2,11 +2,8 @@ import { initInputTrie, resetInputTrie, advanceInputTrie } from './command_manag
 import { initScrolling, cancelScroll } from './scroll_commands';
 import { isModifierKey } from 'lib/keys';
 
-
-
 export const mode = {
   name: 'Command',
-  onCreate: () => {},
   onEnter: (event) => {
     resetInputTrie();
   },

@@ -1,6 +1,5 @@
 export const mode = {
   name: 'Template',
-  onCreate: () => {},
   onEnter: async (event) => {},
   onExit: async (event) => {},
   events: {

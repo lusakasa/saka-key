@@ -22,9 +22,6 @@ export function initModes (startMode, availableModes) {
 }
 
 export function setup () {
-  Object.values(modes).forEach((mode) => {
-    mode.onCreate();
-  });
   msg(1, 'clientSettings');
   installEventListeners();
 }

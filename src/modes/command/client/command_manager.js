@@ -1,6 +1,6 @@
 import Trie from 'lib/trie';
 import { keyboardEventString } from 'lib/keys';
-import { msg } from 'mosi/client';
+import { modeMsg } from 'client/msg';
 import {
   scrollDown,
   scrollUp,
@@ -24,9 +24,7 @@ import {
   goToRoot
 } from './navigation_commands';
 
-const backgroundCommand = (action, arg) => () => {
-  msg(1, 'modeMessage', { mode: 'Command', action, arg });
-};
+const background = (action, arg) => () => modeMsg(1, 'Command', action, arg);
 
 export const commands = {
   toggleHelpMenu: () => {
@@ -35,6 +33,19 @@ export const commands = {
     //   mode: 'Basic',
     //   action: 'toggleHelpMenu'
     // });
+  },
+  passOneKey: (event) => {
+    // preventDefault() to suppress keypress event
+    // no way to suppress keyup event, so Pass mode must ignore
+    // first keyup event
+    event.preventDefault();
+    event.passKeyType = 'one';
+    return 'Pass';
+  },
+  passAllKeys: (event) => {
+    event.preventDefault();
+    event.passKeyType = 'all';
+    return 'Pass';
   },
   showLinkHints: () => 'Hints',
   // scroll commands
@@ -58,31 +69,31 @@ export const commands = {
   goUp,
   goToRoot,
   // tab commands
-  previousTab: backgroundCommand('previousTab'),
-  nextTab: backgroundCommand('nextTab'),
-  firstTab: backgroundCommand('firstTab'),
-  lastTab: backgroundCommand('lastTab'),
-  moveTabLeft: backgroundCommand('moveTabLeft'),
-  moveTabRight: backgroundCommand('moveTabRight'),
-  moveTabFirst: backgroundCommand('moveTabFirst'),
-  moveTabLast: backgroundCommand('moveTabLast'),
-  closeTab: backgroundCommand('closeTab'),
-  closeOtherTabs: backgroundCommand('closeOtherTabs'),
-  closeRightTabs: backgroundCommand('closeRightTabs'),
-  closeLeftTabs: backgroundCommand('closeLeftTabs'),
-  newTab: backgroundCommand('newTab'),
-  restoreTab: backgroundCommand('restoreTab'),
-  duplicateTab: backgroundCommand('duplicateTab'),
-  newWindow: backgroundCommand('newWindow'),
-  switchWindow: backgroundCommand('switchWindow'),
-  zoomIn: backgroundCommand('zoomIn'),
-  zoomOut: backgroundCommand('zoomOut'),
-  zoomReset: backgroundCommand('zoomReset'),
-  refreshTab: backgroundCommand('refreshTab'),
-  refreshAllTabs: backgroundCommand('refreshAllTabs'),
-  toggleMuteTab: backgroundCommand('toggleMuteTab'),
-  toggleMuteAllTabs: backgroundCommand('toggleMuteAllTabs'),
-  togglePinTab: backgroundCommand('togglePinTab'),
+  previousTab: background('previousTab'),
+  nextTab: background('nextTab'),
+  firstTab: background('firstTab'),
+  lastTab: background('lastTab'),
+  moveTabLeft: background('moveTabLeft'),
+  moveTabRight: background('moveTabRight'),
+  moveTabFirst: background('moveTabFirst'),
+  moveTabLast: background('moveTabLast'),
+  closeTab: background('closeTab'),
+  closeOtherTabs: background('closeOtherTabs'),
+  closeRightTabs: background('closeRightTabs'),
+  closeLeftTabs: background('closeLeftTabs'),
+  newTab: background('newTab'),
+  restoreTab: background('restoreTab'),
+  duplicateTab: background('duplicateTab'),
+  newWindow: background('newWindow'),
+  switchWindow: background('switchWindow'),
+  zoomIn: background('zoomIn'),
+  zoomOut: background('zoomOut'),
+  zoomReset: background('zoomReset'),
+  refreshTab: background('refreshTab'),
+  refreshAllTabs: background('refreshAllTabs'),
+  toggleMuteTab: background('toggleMuteTab'),
+  toggleMuteAllTabs: background('toggleMuteAllTabs'),
+  togglePinTab: background('togglePinTab'),
   // developer
   developerMode: () => 'Developer'
 };

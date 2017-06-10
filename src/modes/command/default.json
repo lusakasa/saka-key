@@ -6,6 +6,12 @@
       "settings": {
         "smoothScroll": true,
         "scrollStep": 12,
+        "passOneKey": [
+          [{ "key": ";" }]
+        ],
+        "passAllKeys": [
+          [{ "key": ":", "shiftKey": true }]
+        ],
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],
@@ -154,6 +160,12 @@
       "settings": {
         "smoothScroll": true,
         "scrollStep": 12,
+        "passOneKey": [
+          [{ "key": ";" }]
+        ],
+        "passAllKeys": [
+          [{ "key": ":", "shiftKey": true }]
+        ],
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],
@@ -300,6 +312,12 @@
       "settings": {
         "smoothScroll": true,
         "scrollStep": 12,
+        "passOneKey": [
+          [{ "key": ";" }]
+        ],
+        "passAllKeys": [
+          [{ "key": ":", "shiftKey": true }]
+        ],
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],
@@ -448,6 +466,12 @@
       "settings": {
         "smoothScroll": true,
         "scrollStep": 12,
+        "passOneKey": [
+          [{ "key": ";" }]
+        ],
+        "passAllKeys": [
+          [{ "key": ":", "shiftKey": true }]
+        ],
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],

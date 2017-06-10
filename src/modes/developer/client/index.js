@@ -2,7 +2,6 @@ import { showMenu, hideMenu } from './ui';
 
 export const mode = {
   name: 'Developer',
-  onCreate: () => {},
   onEnter: async (event) => {
     showMenu();
   },

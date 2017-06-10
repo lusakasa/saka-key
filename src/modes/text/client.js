@@ -1,6 +1,5 @@
 export const mode = {
   name: 'Text',
-  onCreate: () => {},
   onEnter: (event) => {},
   onExit: (event) => {},
   onSettingsChange: (settings) => {},

@@ -81,7 +81,9 @@ async function generateClientSettings () {
   Object.entries(profileMap).forEach(([mode, profile]) => {
     const options = modesConfig.find(({ name }) => name === mode).options;
     const activeProfile = settings[mode].find(({ name }) => name === profileMap[mode]);
-    const { values, errors } = modes[mode].clientSettings(options, settingsMap);
+    const { values, errors } = modes[mode].clientSettings(options, settingsMap) || {
+      values: {}, errors: {}
+    };
     activeProfile.errors = errors;
     Object.assign(clientSettings, values);
   });

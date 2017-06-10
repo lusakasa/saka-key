@@ -1,11 +1,11 @@
 import { modeMsg } from 'client/msg';
+import { findHints } from './findHints';
 import {
   showHints,
   hideHints,
   advanceHints,
-  setHintStyle
+  setHintRenderSettings
 } from './HintRenderer';
-import { findHints } from './findHints';
 
 export let detectByCursorStyle;
 export let horizontalPlacement;
@@ -15,7 +15,6 @@ let hints;
 
 export const mode = {
   name: 'Hints',
-  onCreate: () => {},
   onEnter: (event) => {
     // first frame to enter Hints mode is triggered by a keypress from command mode
     // all other frames must be notified of mode change via message
@@ -30,10 +29,8 @@ export const mode = {
     hideHints();
   },
   onSettingsChange: (settings) => {
-    setHintStyle(settings.hintCSS, settings.hintNormalCharCSS, settings.hintActiveCharCSS);
+    setHintRenderSettings(settings);
     detectByCursorStyle = settings.hintDetectByCursorStyle;
-    horizontalPlacement = settings.hintHorizontalPlacement;
-    verticalPlacement = settings.hintVerticalPlacement;
   },
   events: {
     keydown: (event) => {

@@ -26,6 +26,16 @@
     },
     {
       "type": "keybinding",
+      "label": "Pass One Key To Page",
+      "key": "passOneKey"
+    },
+    {
+      "type": "keybinding",
+      "label": "Pass All Keys To Page",
+      "key": "passAllKeys"
+    },
+    {
+      "type": "keybinding",
       "label": "Toggle Help Menu",
       "key": "toggleHelpMenu",
       "visible": false

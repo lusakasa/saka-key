@@ -6,7 +6,6 @@ import { toggleHelpMenu } from './help';
 
 export const mode = {
   name: 'Basic',
-  onCreate: () => {},
   onEnter: (event) => {},
   onExit: (event) => {},
   onSettingsChange: (settings) => {},

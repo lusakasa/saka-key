@@ -16,7 +16,6 @@
 * firefox:
     * figure out why default key actions are suppressed, e.g. cmd+l won't focus the address bar unless saka key is disabled
     * figure out why onStartup event listener doesn't get triggered on temp addon install
-* better scrolling
 * link hints
     * link hint types: scroll, frames, inputs, select
     * higher quality link hints https://github.com/philc/vimium/issues/2083

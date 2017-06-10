@@ -2,6 +2,7 @@ import { init } from 'mosi/client';
 import { initModes, setup, changeMode, modeMessage, clientSettings } from './modes';
 import { mode as Basic } from 'modes/basic/client';
 import { mode as Command } from 'modes/command/client';
+import { mode as Pass } from 'modes/pass/client';
 import { mode as Text } from 'modes/text/client';
 import { mode as Hints } from 'modes/hints/client';
 import { mode as Developer } from 'modes/developer/client';
@@ -33,12 +34,14 @@ export function initialize (type) {
   const modes = SAKA_DEBUG ? {
     Basic,
     Command,
+    Pass,
     Text,
     Hints,
     Developer
   } : {
     Basic,
     Command,
+    Pass,
     Text,
     Hints
   };

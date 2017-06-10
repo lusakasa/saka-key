@@ -1,11 +1,31 @@
 import { Component, render, h } from 'preact';
-// import { findHints } from './findHints';
 import { mouseEvent } from 'lib/dom';
-import { horizontalPlacement, verticalPlacement } from './index';
 
 export let showHints;
 export let hideHints;
 export let advanceHints;
+
+let horizontalPlacement;
+let verticalPlacement;
+
+export function setHintRenderSettings ({
+  hintCSS,
+  hintNormalCharCSS,
+  hintActiveCharCSS,
+  hintHorizontalPlacement,
+  hintVerticalPlacement
+}) {
+  document.querySelector('#sakaHintStyle').innerText = `
+.saka-hint-body {
+  ${hintCSS}
+}
+.saka-hint-normal-char {
+  ${hintNormalCharCSS}
+}
+.saka-hint-active-char {
+  ${hintActiveCharCSS}
+}`;
+}
 
 class HintRenderer extends Component {
   constructor () {
@@ -116,19 +136,6 @@ function activateHint (hint) {
   mouseEvent('click', hint.element);
   hint.element.focus();
   return 'Reset';
-}
-
-export function setHintStyle (hintCSS, normalCharCSS, activeCharCSS) {
-  document.querySelector('#sakaHintStyle').innerText = `
-.saka-hint-body {
-  ${hintCSS}
-}
-.saka-hint-normal-char {
-  ${normalCharCSS}
-}
-.saka-hint-active-char {
-  ${activeCharCSS}
-}`;
 }
 
 const hintContainer = document.createElement('div');
