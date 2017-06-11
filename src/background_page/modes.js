@@ -1,8 +1,18 @@
 import { msg, meta } from 'mosi/core';
+
 export let modes = {};
 
-export function setModes (availableModes) {
+const defaultModeObject = {
+  onInstalled: () => {},
+  clientSettings: () => ({ values: {}, errors: {} }),
+  messages: {}
+};
+
+export function initModes (availableModes) {
   modes = availableModes;
+  Object.keys(availableModes).map((name) => {
+    modes[name] = Object.assign({}, defaultModeObject, availableModes[name]);
+  });
 }
 
 export async function modeMessage ({ mode, action, arg }, src) {

@@ -15,6 +15,8 @@ export function setHintRenderSettings ({
   hintHorizontalPlacement,
   hintVerticalPlacement
 }) {
+  horizontalPlacement = hintHorizontalPlacement;
+  verticalPlacement = hintVerticalPlacement;
   document.querySelector('#sakaHintStyle').innerText = `
 .saka-hint-body {
   ${hintCSS}

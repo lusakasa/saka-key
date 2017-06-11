@@ -5,8 +5,7 @@
       "settings": {
         "Basic": "default",
         "Command": "default",
-        "Hints": "default",
-        "Developer": "default"
+        "Hints": "default"
       }
     },
     {
@@ -14,8 +13,7 @@
       "settings": {
         "Basic": "default",
         "Command": "left hand",
-        "Hints": "left hand",
-        "Developer": "default"
+        "Hints": "left hand"
       }
     },
     {
@@ -23,8 +21,7 @@
       "settings": {
         "Basic": "default",
         "Command": "vimium",
-        "Hints": "vimium",
-        "Developer": "default"
+        "Hints": "vimium"
       }
     }
   ],

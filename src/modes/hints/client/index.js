@@ -1,5 +1,5 @@
 import { modeMsg } from 'client/msg';
-import { findHints } from './findHints';
+import { findHints, setHintFindSettings } from './findHints';
 import {
   showHints,
   hideHints,
@@ -7,14 +7,9 @@ import {
   setHintRenderSettings
 } from './HintRenderer';
 
-export let detectByCursorStyle;
-export let horizontalPlacement;
-export let verticalPlacement;
-
 let hints;
 
-export const mode = {
-  name: 'Hints',
+export default {
   onEnter: (event) => {
     // first frame to enter Hints mode is triggered by a keypress from command mode
     // all other frames must be notified of mode change via message
@@ -30,35 +25,30 @@ export const mode = {
   },
   onSettingsChange: (settings) => {
     setHintRenderSettings(settings);
-    detectByCursorStyle = settings.hintDetectByCursorStyle;
+    setHintFindSettings(settings);
   },
-  events: {
-    keydown: (event) => {
-      event.stopImmediatePropagation();
-      // TODO: FIX: next line is shoddy fix to prevent text from being added on entrance to an input
-      // e.g. if the last character in a link hint is 'l', without the next line, activating an input
-      // will cause l to appear within it.
-      event.preventDefault();
-      modeMsg(1, 'Hints', 'processKey', {
-        key: event.key,
-        code: event.code,
-        shiftKey: event.shiftKey,
-        altKey: event.altKey,
-        ctrlKey: event.ctrlKey,
-        metaKey: event.metaKey
-      });
-      return 'Same';
-    },
-    keypress: (event) => {
-      event.stopImmediatePropagation();
-      return 'Same';
-    },
-    keyup: (event) => 'Same',
-    blur: (event) => 'Same',
-    focus: (event) => 'TryText',
-    click: (event) => 'Same',
-    mousedown: async (event) => 'Reset'
+  keydown: (event) => {
+    event.stopImmediatePropagation();
+    // TODO: FIX: next line is shoddy fix to prevent text from being added on entrance to an input
+    // e.g. if the last character in a link hint is 'l', without the next line, activating an input
+    // will cause l to appear within it.
+    event.preventDefault();
+    modeMsg(1, 'Hints', 'processKey', {
+      key: event.key,
+      code: event.code,
+      shiftKey: event.shiftKey,
+      altKey: event.altKey,
+      ctrlKey: event.ctrlKey,
+      metaKey: event.metaKey
+    });
+    return 'Same';
   },
+  keypress: (event) => {
+    event.stopImmediatePropagation();
+    return 'Same';
+  },
+  focus: () => 'TryText',
+  mousedown: () => 'Reset',
   messages: {
     findHints: () => {
       hints = findHints();

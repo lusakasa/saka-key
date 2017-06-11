@@ -1,7 +1,6 @@
 import Queue from 'promise-queue';
 import { msg } from 'mosi/client';
 import { isTextEditable } from 'lib/dom';
-import { Extension } from 'modes/extension/client';
 import {
   passDOMEventToMiddleware,
   passMessageToMiddleware,
@@ -14,21 +13,32 @@ let modes = {};
 /** whether saka key is enabled or not */
 let enabled = false;
 
+const defaultModeObject = {
+  onEnter: () => {},
+  onExit: () => {},
+  onSettingsChange: () => {},
+  keydown: () => 'Same',
+  keypress: () => 'Same',
+  keyup: () => 'Same',
+  blur: () => 'Same',
+  focus: () => 'Same',
+  click: () => 'Same',
+  mousedown: () => 'Same',
+  messages: {}
+};
+
 /** Initializes the Modes state machine */
 export function initModes (startMode, availableModes) {
   if (SAKA_DEBUG) console.log(`Start mode: ${startMode}`);
   currentMode = startMode;
-  modes = availableModes;
+  Object.keys(availableModes).map((name) => {
+    modes[name] = Object.assign({}, defaultModeObject, availableModes[name]);
+  });
 }
 
 export function setup () {
   msg(1, 'clientSettings');
   installEventListeners();
-}
-
-/** TODO: Adds an external extension. Not yet implemented */
-export function addExtension (name) {
-  modes[name] = new Extension(name);
 }
 
 /** Handles when messages containing updated settings are received */
@@ -149,7 +159,7 @@ function handleDOMEvent (event) {
   if (enabled) {
     eventQueue.add(async () => {
       const nextMode = await passDOMEventToMiddleware(event) ||
-        await (modes[currentMode].events[event.type](event));
+        await (modes[currentMode][event.type](event));
       await setMode(nextMode, event);
     });
   }

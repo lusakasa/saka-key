@@ -18,5 +18,7 @@
 
 * link hints shown behavior for links that appear on hover is erratic (see drawer and main area) [https://contacts.google.com/](https://contacts.google.com/)
 
+* clickable sandwich icon that isn't detected for link hints [http://aging.nautil.us/feature/218/why-you-cant-help-but-act-your-age](http://aging.nautil.us/feature/218/why-you-cant-help-but-act-your-age)
+
 * another iframe [http://www.economist.com/news/science-and-technology/21718858-arachnids-eat-much-animal-food-all-humans-earth-ecological](http://www.economist.com/news/science-and-technology/21718858-arachnids-eat-much-animal-food-all-humans-earth-ecological)
 

@@ -1,10 +1,8 @@
-export const mode = {
-  name: 'Basic',
+export default {
   clientSettings: (options, { enabled, preventStealFocus }) => {
     return {
       values: { enabled, preventStealFocus },
       errors: {}
     };
-  },
-  messages: {}
+  }
 };

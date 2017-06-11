@@ -26,12 +26,12 @@
     },
     {
       "type": "keybinding",
-      "label": "Pass One Key To Page",
+      "label": "Pass One Key to Page",
       "key": "passOneKey"
     },
     {
       "type": "keybinding",
-      "label": "Pass All Keys To Page",
+      "label": "Pass All Keys to Page (press Alt twice to exit)",
       "key": "passAllKeys"
     },
     {

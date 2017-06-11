@@ -4,7 +4,7 @@ import { validateKeyboardEvent, keyboardEventString } from 'lib/keys';
  * Given an object mapping commands to their key bindings,
  * returns the trie representation.
  */
-export function commandTrie (commandMap) {
+export function generateCommandTrie (commandMap) {
   return JSONTrie(bindingsList(commandMap));
 }
 

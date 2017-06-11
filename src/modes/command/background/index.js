@@ -1,4 +1,4 @@
-import { commandTrie } from './trie';
+import { generateCommandTrie } from './trie';
 import {
   nextTab,
   previousTab,
@@ -27,8 +27,7 @@ import {
   togglePinTab
 } from './tab_commands';
 
-export const mode = {
-  name: 'Command',
+export default {
   onInstalled: (reason) => {},
   clientSettings: (options, settings) => {
     const values = {};
@@ -40,7 +39,7 @@ export const mode = {
       keybindings[option.key] = settings[option.key];
     });
     try {
-      values.bindings = commandTrie(keybindings);
+      values.bindings = generateCommandTrie(keybindings);
     } catch (e) {
       if (e.type === 'conflict') {
         errors[e.command1] = e.message;

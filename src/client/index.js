@@ -1,11 +1,11 @@
 import { init } from 'mosi/client';
 import { initModes, setup, changeMode, modeMessage, clientSettings } from './modes';
-import { mode as Basic } from 'modes/basic/client';
-import { mode as Command } from 'modes/command/client';
-import { mode as Pass } from 'modes/pass/client';
-import { mode as Text } from 'modes/text/client';
-import { mode as Hints } from 'modes/hints/client';
-import { mode as Developer } from 'modes/developer/client';
+import Basic from 'modes/basic/client';
+import Command from 'modes/command/client';
+import Pass from 'modes/pass/client';
+import Text from 'modes/text/client';
+import Hints from 'modes/hints/client';
+import Developer from 'modes/developer/client';
 
 /**
  * Initializes a Saka key client, making keyboard shortcuts available.

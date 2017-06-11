@@ -1,4 +1,8 @@
-import { detectByCursorStyle } from './index';
+let detectByCursorStyle = false;
+
+export function setHintFindSettings (settings) {
+  detectByCursorStyle = settings.detectByCursorStyle;
+}
 
 export function findHints () {
   const candidates = [];
@@ -44,7 +48,6 @@ function isClickable (element) {
        window.getComputedStyle(element.parentNode).cursor !== 'pointer')
   );
 }
-
 
 // https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
 function isVisible (element, clientRect) {
@@ -100,7 +103,6 @@ function isVisible (element, clientRect) {
 
   return true;
 }
-
 
 /**
  * Given an element, returns its first bounding rectangle, if any.

@@ -4,12 +4,9 @@ import { isModifierKey } from 'lib/keys';
 
 let hintChars = 'adsfghjkl;';
 
-export const mode = {
-  name: 'Hints',
-  onInstalled: () => {},
+export default {
   clientSettings: (options, settings) => {
     const errors = {};
-    // styling
     let {
       hintCSS,
       hintNormalCharCSS,
