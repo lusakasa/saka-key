@@ -25,6 +25,10 @@
       "min": 1
     },
     {
+      "type": "header",
+      "label": "Pass Keys"
+    },
+    {
       "type": "keybinding",
       "label": "Pass One Key to Page",
       "key": "passOneKey"

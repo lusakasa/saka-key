@@ -6,7 +6,7 @@
 
 * Otherwise, email [lusakasa.dev@gmail.com](mailto:lusakasa.dev@gmail.com)
 
-## Leave a (5 star) Review
+## Leave a 5 star Review
 
 * [Review Saka Key for Chrome](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp/reviews)
 
