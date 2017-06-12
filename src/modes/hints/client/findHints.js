@@ -4,7 +4,11 @@ export function setHintFindSettings (settings) {
   detectByCursorStyle = settings.detectByCursorStyle;
 }
 
-export function findHints () {
+/**
+ * Finds hints
+ * @param {string} hintType - the type of elements to find (currently unused)
+ */
+export function findHints (hintType) {
   const candidates = [];
   for (const element of document.querySelectorAll('*')) {
     if (isClickable(element)) {

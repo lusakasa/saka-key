@@ -36,9 +36,10 @@ export default {
     };
   },
   messages: {
-    gatherHints: async (_, src) => {
+    gatherHints: async (hintType, src) => {
       // 1. Gather the number of link hints in each frame
-      const hintsPerFrame = await modeGet(`tab[${meta(src).tabId}]|id[${src}]`, 'Hints', 'findHints');
+      const hintsPerFrame = await modeGet(`tab[${meta(src).tabId}]|id[${src}]`, 'Hints',
+        'findHints', hintType);
       // 2. Generate Hint Strings
       const totalHints = hintsPerFrame.reduce((total, { v }) => total + v, 0);
       const hintStrings = generateHintStrings(hintChars, totalHints);
@@ -58,6 +59,10 @@ export default {
           modeMsg(currentTabTarget, 'Hints', 'exitHintsMode');
         }
       }
+    },
+    openLinkInIncognitoWindow: (url) => {
+      // TODO: consider more robust URL verification like Vimium's
+      chrome.windows.create({ incognito: true, url });
     }
   }
 };

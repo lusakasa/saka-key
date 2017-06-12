@@ -47,7 +47,30 @@ export const commands = {
     event.passKeyType = 'all';
     return 'Pass';
   },
-  showLinkHints: () => 'Hints',
+  openLink: (event) => {
+    event.hintType = 'currentTab';
+    return 'Hints';
+  },
+  openLinkInBackgroundTab: (event) => {
+    event.hintType = 'backgroundTab';
+    return 'Hints';
+  },
+  openLinkInForegroundTab: (event) => {
+    event.hintType = 'foregroundTab';
+    return 'Hints';
+  },
+  openLinkInNewWindow: (event) => {
+    event.hintType = 'newWindow';
+    return 'Hints';
+  },
+  openLinkInIncognitoWindow: (event) => {
+    event.hintType = 'incognitoWindow';
+    return 'Hints';
+  },
+  downloadLink: (event) => {
+    event.hintType = 'download';
+    return 'Hints';
+  },
   // scroll commands
   scrollDown,
   scrollUp,

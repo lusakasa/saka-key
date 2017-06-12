@@ -5,7 +5,7 @@
       "name": "default",
       "settings": {
         "smoothScroll": true,
-        "scrollStep": 12,
+        "scrollStep": 16,
         "passOneKey": [
           [{ "key": ";" }]
         ],
@@ -15,8 +15,23 @@
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],
-        "showLinkHints": [
+        "openLink": [
           [{ "key": "f" }, { "key": "f" }]
+        ],
+        "openLinkInBackgroundTab": [
+          [{ "key": "f" }, { "key": "F", "shiftKey": true }]
+        ],
+        "openLinkInForegroundTab": [
+          [{ "key": "f" }, { "code": "KeyF", "altKey": true }]
+        ],
+        "openLinkInNewWindow": [
+          [{ "key": "f" }, { "key": "n" }]
+        ],
+        "openLinkInIncognitoWindow": [
+          [{ "key": "f" }, { "key": "N", "shiftKey": true }]
+        ],
+        "downloadLink": [
+          [{ "key": "f" }, { "key": "d" }]
         ],
         "hintChars": "asdghjklvn",
         "scrollDown": [
@@ -159,7 +174,7 @@
       "name": "power",
       "settings": {
         "smoothScroll": true,
-        "scrollStep": 12,
+        "scrollStep": 16,
         "passOneKey": [
           [{ "key": ";" }]
         ],
@@ -169,8 +184,23 @@
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],
-        "showLinkHints": [
+        "openLink": [
           [{ "key": "f" }]
+        ],
+        "openLinkInBackgroundTab": [
+          [{ "key": "F", "shiftKey": true }]
+        ],
+        "openLinkInForegroundTab": [
+          [{ "code": "KeyF", "altKey": true }, { "code": "KeyF", "altKey": true }]
+        ],
+        "openLinkInNewWindow": [
+          [{ "code": "KeyF", "altKey": true }, { "key": "f" }]
+        ],
+        "openLinkInIncognitoWindow": [
+         [{ "code": "KeyF", "altKey": true }, { "key": "F", "shiftKey": true }]
+        ],
+        "downloadLink": [
+          [{ "code": "KeyF", "altKey": true }, { "key": "d" }]
         ],
         "hintChars": "asdghjklvn",
         "scrollDown": [
@@ -311,7 +341,7 @@
       "name": "left hand",
       "settings": {
         "smoothScroll": true,
-        "scrollStep": 12,
+        "scrollStep": 16,
         "passOneKey": [
           [{ "key": ";" }]
         ],
@@ -321,8 +351,23 @@
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],
-        "showLinkHints": [
+        "openLink": [
           [{ "key": "f" }]
+        ],
+        "openLinkInBackgroundTab": [
+          [{ "key": "F", "shiftKey": true }]
+        ],
+        "openLinkInForegroundTab": [
+          [{ "code": "KeyF", "altKey": true }, { "code": "KeyF", "altKey": true }]
+        ],
+        "openLinkInNewWindow": [
+          [{ "code": "KeyF", "altKey": true }, { "key": "f" }]
+        ],
+        "openLinkInIncognitoWindow": [
+         [{ "code": "KeyF", "altKey": true }, { "key": "F", "shiftKey": true }]
+        ],
+        "downloadLink": [
+          [{ "code": "KeyF", "altKey": true }, { "key": "d" }]
         ],
         "hintChars": "asdfqwerzxcv",
         "scrollDown": [
@@ -465,7 +510,7 @@
       "name": "vimium",
       "settings": {
         "smoothScroll": true,
-        "scrollStep": 12,
+        "scrollStep": 16,
         "passOneKey": [
           [{ "key": ";" }]
         ],
@@ -475,8 +520,19 @@
         "toggleHelpMenu": [
           [{ "key": "?", "shiftKey": true }]
         ],
-        "showLinkHints": [
+        "openLink": [
           [{ "key": "f" }]
+        ],
+        "openLinkInBackgroundTab": [
+          [{ "key": "F", "shiftKey": true }]
+        ],
+        "openLinkInForegroundTab": [
+        ],
+        "openLinkInNewWindow": [
+        ],
+        "openLinkInIncognitoWindow": [
+        ],
+        "downloadLink": [
         ],
         "hintChars": "sadfjklewcmpgh",
         "scrollDown": [

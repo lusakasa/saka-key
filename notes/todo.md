@@ -5,6 +5,8 @@
 * Add Reset All Settings Option
 * implement scrolling pages without smoothscroll polyfill (which is large and can only scroll the scrollingElement, not subelements)
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
+* Decouple settings from modes to support more flexible per-domain settings
+  * requires implementing settings store in background page that takes a URL and a setting and returns a value
 * Switch to KeyboardEvent.code for bindings
 * add quick disable/enable key binding (to basic)
 * Content script message ports close when battery runs out/computer goes to sleep. Figure out all situations in which port closes and add way to gracefully restart. Will probably require Mosi update... should add proper typings to that.

@@ -27,7 +27,13 @@ export function isTextEditable (element) {
 }
 
 // https://github.com/1995eaton/chromium-vim/blob/48226e1f86639dd2cbf18792fa078b7969da078f/content_scripts/dom.js
-export function mouseEvent (type, element) {
+/**
+ * Dispatch a mouse event to the target element
+ * @param {HTMLElement} element
+ * @param {'hover' | 'unhover' | 'click'} type
+ * @param {{ ctrlKey, shiftKey, altKey, metaKey }} modifierKeys
+ */
+export function mouseEvent (element, type, modifierKeys = {}) {
   let events;
   switch (type) {
     case 'hover': events = ['mouseover', 'mouseenter']; break;
@@ -39,7 +45,8 @@ export function mouseEvent (type, element) {
       bubbles: true,
       cancelable: true,
       view: window,
-      detail: 1 // usually the click count
+      detail: 1, // usually the click count
+      ...modifierKeys
     });
     // TODO: # firefox synthetic click events apparently don't trigger default actions
     element.dispatchEvent(event);

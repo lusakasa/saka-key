@@ -1,5 +1,7 @@
 import codeToKeyMap from './codeToKeyMap.json';
 
+export const isMac = navigator.appVersion.indexOf('Mac') !== -1;
+
 /** Returns true if the given key event is ONLY a modifier key, false otherwise */
 export function isModifierKey (event) {
   switch (event.key) {

@@ -46,8 +46,33 @@
     },
     {
       "type": "keybinding",
-      "label": "Show Link Hints",
-      "key": "showLinkHints"
+      "label": "Open Link",
+      "key": "openLink"
+    },
+    {
+      "type": "keybinding",
+      "label": "Open Link in new Background Tab",
+      "key": "openLinkInBackgroundTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Open Link in new Foreground Tab",
+      "key": "openLinkInForegroundTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Open Link in New Window",
+      "key": "openLinkInNewWindow"
+    },
+    {
+      "type": "keybinding",
+      "label": "Open Link in Incognito Window",
+      "key": "openLinkInIncognitoWindow"
+    },
+    {
+      "type": "keybinding",
+      "label": "Download Link",
+      "key": "downloadLink"
     },
     {
       "type": "text",

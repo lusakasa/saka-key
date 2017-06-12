@@ -8,13 +8,14 @@ import {
 } from './HintRenderer';
 
 let hints;
+export let hintType;
 
 export default {
   onEnter: (event) => {
     // first frame to enter Hints mode is triggered by a keypress from command mode
     // all other frames must be notified of mode change via message
     if (event.type === 'keydown') {
-      modeMsg(1, 'Hints', 'gatherHints');
+      modeMsg(1, 'Hints', 'gatherHints', event.hintType);
     }
   },
   onExit: (event) => {
@@ -50,8 +51,9 @@ export default {
   focus: () => 'TryText',
   mousedown: () => 'Reset',
   messages: {
-    findHints: () => {
-      hints = findHints();
+    findHints: (ht) => {
+      hintType = ht;
+      hints = findHints(ht);
       return {
         nextMode: 'Hints',
         value: hints.length

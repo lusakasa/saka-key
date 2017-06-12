@@ -1,5 +1,8 @@
 import { Component, render, h } from 'preact';
+import { modeMsg } from 'client/msg';
 import { mouseEvent } from 'lib/dom';
+import { isMac } from 'lib/keys';
+import { hintType } from './index';
 
 export let showHints;
 export let hideHints;
@@ -29,6 +32,30 @@ export function setHintRenderSettings ({
 }`;
 }
 
+function activateHint (hint, hintType) {
+  const click = (modifiers) => mouseEvent(hint.element, 'click', modifiers);
+  switch (hintType) {
+    case 'backgroundTab':
+      click({ ctrlKey: !isMac, metaKey: isMac }); break;
+    case 'foregroundTab':
+      click({ ctrlKey: !isMac, metaKey: isMac, shiftKey: true }); break;
+    case 'newWindow':
+      click({ shiftKey: true }); break;
+    case 'incognitoWindow':
+      if (hint.element.href) {
+        modeMsg(1, 'Hints', 'openLinkInIncognitoWindow', hint.element.href);
+      }
+      break;
+    case 'download':
+      click({ altKey: true }); break;
+    case 'currentTab':
+    default:
+      click();
+  }
+  hint.element.focus();
+  return 'Reset';
+}
+
 class HintRenderer extends Component {
   constructor () {
     super();
@@ -54,7 +81,7 @@ class HintRenderer extends Component {
         return hint.hintString.startsWith(inputKeys);
       });
       if (filteredHints.length === 1 && inputKeys === filteredHints[0].hintString) {
-        return activateHint(filteredHints[0]);
+        return activateHint(filteredHints[0], hintType);
       }
       this.setState({
         hints,
@@ -133,12 +160,6 @@ const Hint = ({ hintString, rect, horizontalPlacement, verticalPlacement, seen }
     ))}
   </div>
 );
-
-function activateHint (hint) {
-  mouseEvent('click', hint.element);
-  hint.element.focus();
-  return 'Reset';
-}
 
 const hintContainer = document.createElement('div');
 
