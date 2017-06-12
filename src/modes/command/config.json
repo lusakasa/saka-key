@@ -51,12 +51,12 @@
     },
     {
       "type": "keybinding",
-      "label": "Open Link in new Background Tab",
+      "label": "Open Link in Background Tab",
       "key": "openLinkInBackgroundTab"
     },
     {
       "type": "keybinding",
-      "label": "Open Link in new Foreground Tab",
+      "label": "Open Link in Foreground Tab",
       "key": "openLinkInForegroundTab"
     },
     {

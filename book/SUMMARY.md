@@ -14,6 +14,7 @@
   * [Navigation](tutorial/navigation.md)
   * [Tabs](tutorial/tabs.md)
   * [Clicking and Link Hints](tutorial/clicking_and_link_hints.md)
+  * [Pass Keys](tutorial/pass_keys.md)
   * [Settings](tutorial/settings.md)
 * [Commands](commands/index.md)
   * [Commands List](commands/commands_list.md)

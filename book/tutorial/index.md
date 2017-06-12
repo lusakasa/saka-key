@@ -11,4 +11,5 @@ This is the place to start for poeple new to Saka Key. You can reference this tu
 * [Navigation](navigation.md)
 * [Tabs](tabs.md)
 * [Clicking and Link Hints](clicking_and_link_hints.md)
+* [Pass Keys](pass_keys.md)
 * [Settings](settings.md)

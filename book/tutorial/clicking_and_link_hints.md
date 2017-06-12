@@ -16,6 +16,15 @@ If you typed <kbd>D</kbd> in the image above, you would follow the link named *J
 
 To abort link activation, press <kbd>Escape</kbd> or <kbd>F</kbd> or any key that doesn't appear in any link hint.
 
+## Bindings
+
+* **Open Link** - <kbd>F</kbd><kbd>F</kbd>
+* **Open Link in Background Tab** - <kbd>F</kbd><kbd>shift + F</kbd>
+* **Open Link in Foreground Tab** - <kbd>F</kbd><kbd>shift + F</kbd>
+* **Open Link in New Window** - <kbd>F</kbd><kbd>N</kbd>
+* **Open Link in Incognito Window** - <kbd>F</kbd><kbd>shift + N</kbd>
+* **Download Link** - <kbd>F</kbd><kbd>D</kbd>
+
 ## Options
 
 ### Appearance
