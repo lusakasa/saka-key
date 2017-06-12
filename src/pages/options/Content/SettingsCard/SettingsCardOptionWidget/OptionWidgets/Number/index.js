@@ -7,7 +7,7 @@ import './style.css';
 
 export default class Number extends Component {
   _onChange = (e) => {
-    this.props.onChange(e.target.value);
+    this.props.onChange(parseFloat(e.target.value));
   }
   render ({ label, key, value, step, min, max }) {
     const optionalProps = { step, min, max };

@@ -1,5 +1,8 @@
 # Todos
 
+* Add open in new tab to Hints mode
+* Make sure Escape lets you escape input elements
+* Add Reset All Settings Option
 * implement scrolling pages without smoothscroll polyfill (which is large and can only scroll the scrollingElement, not subelements)
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
 * Switch to KeyboardEvent.code for bindings
