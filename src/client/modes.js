@@ -68,21 +68,20 @@ export function clientSettings (settings) {
  * * TryText - if document.activeElement is a text input, returns Text. 
  *   Otherwise returns the active mode name
  * @param {string} name
+ * @returns {string}
  */
 function modeNameTransform (name) {
   switch (name) {
     case 'Same':
       return currentMode;
     case 'Reset':
-      if (isTextEditable(document.activeElement)) {
-        return 'Text';
-      }
-      return 'Command';
+      return isTextEditable(document.activeElement)
+        ? 'Text'
+        : 'Command';
     case 'TryText':
-      if (isTextEditable(document.activeElement)) {
-        return 'Text';
-      }
-      return currentMode;
+      return isTextEditable(document.activeElement)
+        ? 'Text'
+        : currentMode;
     default:
       return name;
   }
@@ -169,18 +168,15 @@ function handleDOMEvent (event) {
  * modeMessage is called when a valid message is received by the client.
  * In a pure state machine, all events would be handled by the currently active mode.
  * Message handling in Saka Key violate this purity because the mode that handles
- * the message is pre-defined and independent of the active mode. For example, if
- * the current mode is COMMAND, but the user disables Saka Key from the popup,
- * a toggleEnable message will be received specifying mode BASIC, and mode BASIC's
- * toggleEnable handler will be called (and change the state to BASIC).
+ * the message is pre-defined and independent of the active mode.
  * @param {string} mode - the mode that should handle the message
  * @param {string} action - the action to be called
  * @param {?any} arg - any arguments to be passed to the action
  * @param {number} src - the source of the message, usually ignored
  */
 export function modeMessage ({ mode, action, arg }, src) {
-  return new Promise((resolve) => {
-    if (enabled) {
+  if (enabled) {
+    return new Promise((resolve) => {
       eventQueue.add(async () => {
         if (SAKA_DEBUG) {
           if (!modes[mode]) {
@@ -197,8 +193,8 @@ export function modeMessage ({ mode, action, arg }, src) {
         }
         resolve(result && result.value);
       });
-    }
-  });
+    });
+  }
 }
 
 /**

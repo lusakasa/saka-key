@@ -6,9 +6,6 @@ export default {
   onEnter: (event) => {
     resetInputTrie();
   },
-  onExit: (event) => {
-    resetInputTrie();
-  },
   onSettingsChange: ({ bindings, smoothScroll, scrollStep }) => {
     initInputTrie(bindings);
     initScrolling(smoothScroll, scrollStep);

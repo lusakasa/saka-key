@@ -1,6 +1,6 @@
 # Saka Key Tutorial
 
-This is the place to start for poeple new to Saka Key. You can reference this tutorial at any time clicking the Saka Key Logo in your browser's toolbar or by visiting [URL coming soon]().
+This is the place to start for poeple new to Saka Key. You can reference this tutorial at any time clicking the Saka Key Logo in your browser's toolbar or by visiting [saka-key.lusakasa.com](http://saka-key.lusakasa.com).
 
 ![Saka Key logo in browser toolbar](/images/toolbar_logo.png)
 
