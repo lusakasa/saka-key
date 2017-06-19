@@ -30,8 +30,8 @@ function isClickable (element) {
     // normal html elements that can be clicked
     name === 'a' ||
     name === 'button' ||
-    name === 'input' && element.getAttribute('type') !== 'hidden' |
-    name === 'select' |
+    name === 'input' && element.getAttribute('type') !== 'hidden' ||
+    name === 'select' ||
     name === 'textarea' ||
     // elements having an ARIA role implying clickability
     // (see http://www.w3.org/TR/wai-aria/roles#widget_roles)

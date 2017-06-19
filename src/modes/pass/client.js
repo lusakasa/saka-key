@@ -24,7 +24,7 @@ export default {
         ? 'Reset'
         : 'Same';
     } else {
-      return (isModifierKey(event) || passKeysLeft === -1)
+      return isModifierKey(event)
         ? 'Same'
         : (--passKeysLeft === 0) ? 'Reset' : 'Same';
     }
