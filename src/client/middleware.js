@@ -8,6 +8,9 @@
 // 2. DISCONTINUED: Handle Escape key presses
 // 3. DISCONTINUED: Handle Pass keys
 
+import { normalizeEventType } from 'lib/dom';
+import { handleFullscreenChange } from './gui';
+
 let preventStealFocus;
 let hasInteractedWithPage = false;
 
@@ -19,10 +22,10 @@ const middleware = {
     }
   },
   events: {
-    keydown: (event) => undefined,
-    keypress: (event) => undefined,
-    keyup: (event) => undefined,
-    blur: (event) => undefined,
+    keydown: () => undefined,
+    keypress: () => undefined,
+    keyup: () => undefined,
+    blur: () => undefined,
     focus: (event) => {
       if (preventStealFocus && (hasInteractedWithPage === false)) {
         event.target.blur();
@@ -34,6 +37,10 @@ const middleware = {
     mousedown: (event) => {
       hasInteractedWithPage = true;
       return undefined;
+    },
+    fullscreenchange: (event) => {
+      handleFullscreenChange(event);
+      return undefined;
     }
   },
   messages: {}
@@ -44,7 +51,7 @@ export function middlewareOnSettingsChange (settings) {
 }
 
 export async function passDOMEventToMiddleware (event) {
-  const nextMode = middleware.events[event.type](event);
+  const nextMode = middleware.events[normalizeEventType(event.type)](event);
   if (SAKA_DEBUG && nextMode) {
     event.middleware = 'generic';
   }

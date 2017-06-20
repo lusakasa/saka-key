@@ -20,6 +20,7 @@
     * figure out why default key actions are suppressed, e.g. cmd+l won't focus the address bar unless saka key is disabled
     * figure out why onStartup event listener doesn't get triggered on temp addon install
 * link hints
+    * revise link hints to get fewer false negatives (e.g. on youtube and other video players at certain resolutions)
     * link hint types: scroll, frames, inputs, select
     * higher quality link hints https://github.com/philc/vimium/issues/2083
     * cached link hints

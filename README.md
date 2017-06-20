@@ -21,7 +21,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 3. It's engineered for configurability. The Settings GUI is generated from simple JSON files to encourage authors to make modes configurable. Any changes to a setting are automatically propogated to all tabs without requiring a page refresh. Saka Key supports _settings profiles_ that are easy to switch between and sensible default settings profiles are supported. Per-domain profiles coming soon.
 
-4. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen. These tools weren't selected just because they're hip and new. Saka Key would be something entirely different without native asynchronous support, ES6 Modules, and functional UI libraries.
+4. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen. These tools weren't selected just because they're hip and new. Saka Key would be something entirely different without native asynchronous support, ES6 Modules, and a functional UI library.
 
 Note: This is a developing project that has bugs and lacks features. If you're looking for a robust experience, try some of the more mature options like [Vimium](https://github.com/philc/vimium) and [cVim](https://github.com/1995eaton/chromium-vim).
 
@@ -52,16 +52,16 @@ Save yourself some trouble and read the [Developer Guide](./notes/developer_guid
 
 Check out the [doc](./doc) folder to learn about Saka Key's design.
 
-Saka Key is developed with and reliant on the following libraries:
-* saka-actions: [github](https://github.com/lusakasa/saka-actions), [npm](https://www.npmjs.com/package/saka-actions)
-* mosi: [github](https://github.com/eejdoowad/mosi), [npm](https://www.npmjs.com/package/mosi)
+Saka Key is developed together with:
 
-You may have to debug or modify these libraries when contributing to saka key. To use your local copy of these libraries when building saka-key:
+* Mosi - a messaging library for Chrome extensions: [github](https://github.com/eejdoowad/mosi), [npm](https://www.npmjs.com/package/mosi)
 
-1. Navigate to their root directories.
+You may have to debug or modify Mosi when contributing to saka key. To use your local copy of Mosi when building Saka Key:
+
+1. Navigate to Mosi's root directories.
 2. Run `npm link`
 3. Navigate to the root of Saka key.
-4. Run `npm link saka-actions` and/or `npm link mosi`
+4. Run `npm link mosi`
 
 ## Credits
 

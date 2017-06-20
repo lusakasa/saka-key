@@ -31,5 +31,9 @@ export default {
     return 'Same';
   },
   blur: () => 'Reset',
-  focus: () => 'Reset'
+  focus: () => 'Reset',
+  fullscreenchange: (e) => {
+    console.log(e);
+    return 'Same';
+  }
 };

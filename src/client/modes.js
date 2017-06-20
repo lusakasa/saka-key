@@ -1,6 +1,6 @@
 import Queue from 'promise-queue';
 import { msg } from 'mosi/client';
-import { isTextEditable } from 'lib/dom';
+import { isTextEditable, fullscreenchange, normalizeEventType } from 'lib/dom';
 import {
   passDOMEventToMiddleware,
   passMessageToMiddleware,
@@ -24,6 +24,7 @@ const defaultModeObject = {
   focus: () => 'Same',
   click: () => 'Same',
   mousedown: () => 'Same',
+  fullscreenchange: () => 'Same',
   messages: {}
 };
 
@@ -158,7 +159,7 @@ function handleDOMEvent (event) {
   if (enabled) {
     eventQueue.add(async () => {
       const nextMode = await passDOMEventToMiddleware(event) ||
-        await (modes[currentMode][event.type](event));
+        await (modes[currentMode][normalizeEventType(event.type)](event));
       await setMode(nextMode, event);
     });
   }
@@ -215,7 +216,8 @@ function installEventListeners () {
     'blur',
     'focus',
     'click',
-    'mousedown'
+    'mousedown',
+    fullscreenchange
   ];
   eventTypes.forEach((eventType) => {
     document.addEventListener(eventType, handleDOMEvent, true);

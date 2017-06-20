@@ -1,5 +1,6 @@
 import { Component, render, h } from 'preact';
 import { modeMsg } from 'client/msg';
+import { guiRoot } from 'client/gui';
 import { mouseEvent } from 'lib/dom';
 import { isMac } from 'lib/keys';
 import { hintType } from './index';
@@ -20,7 +21,11 @@ export function setHintRenderSettings ({
 }) {
   horizontalPlacement = hintHorizontalPlacement;
   verticalPlacement = hintVerticalPlacement;
-  document.querySelector('#sakaHintStyle').innerText = `
+  hintStyle.textContent = `
+@font-face {
+  font-family: Roboto; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;
+  font-style: normal; font-weight: normal; src: url(${chrome.runtime.getURL('Roboto-Regular.tff')}) format('tff');
+}
 .saka-hint-body {
   ${hintCSS}
 }
@@ -161,21 +166,9 @@ const Hint = ({ hintString, rect, horizontalPlacement, verticalPlacement, seen }
   </div>
 );
 
-const hintContainer = document.createElement('div');
-
-// Ideally, should use shadow dom, but only chrome supports it (3/2017)
-// fallback is to reset styles on all child hints (see styles.js)
-// if (SAKA_PLATFORM === 'chrome') {
-//   const shadow = hintContainer.attachShadow({mode: 'open'});
-//   shadow.innerHTML = `<style id='sakaHintStyle'>${style}</style>`;
-//   render(<HintRenderer />, shadow);
-// } else {
-hintContainer.innerHTML = `
-<style> @font-face {
-  font-family: Roboto; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;
-  font-style: normal; font-weight: normal; src: url(${chrome.runtime.getURL('Roboto-Regular.tff')}) format('tff');}
-</style>
-<style id='sakaHintStyle'></style>`;
-document.documentElement.appendChild(hintContainer);
+const hintContainer = SAKA_PLATFORM === 'chrome'
+  ? guiRoot.attachShadow({ mode: 'open' })
+  : guiRoot.appendChild(document.createElement('div'));
+const hintStyle = document.createElement('style');
+hintContainer.appendChild(hintStyle);
 render(<HintRenderer />, hintContainer);
-// }

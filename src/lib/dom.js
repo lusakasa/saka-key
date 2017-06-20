@@ -4,6 +4,8 @@
  * (e.g. role=application for google docs/sheets)
  * TODO: work on case sensitivity
  * consider all the possible cases
+ * @param {HTMLElement} element
+ * @returns {boolean}
  */
 export function isTextEditable (element) {
   const textInputTypes = [ 'text', 'search', 'email', 'url', 'number', 'password', 'date', 'tel' ];
@@ -26,9 +28,9 @@ export function isTextEditable (element) {
   return false;
 }
 
-// https://github.com/1995eaton/chromium-vim/blob/48226e1f86639dd2cbf18792fa078b7969da078f/content_scripts/dom.js
 /**
  * Dispatch a mouse event to the target element
+ * based on cVim's implementation
  * @param {HTMLElement} element
  * @param {'hover' | 'unhover' | 'click'} type
  * @param {{ ctrlKey, shiftKey, altKey, metaKey }} modifierKeys
@@ -36,8 +38,8 @@ export function isTextEditable (element) {
 export function mouseEvent (element, type, modifierKeys = {}) {
   let events;
   switch (type) {
-    case 'hover': events = ['mouseover', 'mouseenter']; break;
-    case 'unhover': events = ['mouseout', 'mouseleave']; break;
+    case 'hover': events = ['mouseover', 'mouseenter', 'mousemove']; break;
+    case 'unhover': events = ['mousemove', 'mouseout', 'mouseleave']; break;
     case 'click': events = ['mouseover', 'mousedown', 'mouseup', 'click']; break;
   }
   events.forEach((type) => {
@@ -51,4 +53,28 @@ export function mouseEvent (element, type, modifierKeys = {}) {
     // TODO: # firefox synthetic click events apparently don't trigger default actions
     element.dispatchEvent(event);
   });
+}
+
+/**
+ * TODO: use standard fullscreenchange event when browsers support it
+ */
+export const fullscreenchange = SAKA_PLATFORM === 'chrome'
+    ? 'webkitfullscreenchange'
+    : SAKA_PLATFORM === 'firefox'
+      ? 'mozfullscreenchange'
+      : 'fullscreenchange';
+/**
+ * Given a DOM event type that is vendor pre-fixed, e.g. 'mozfullscreenchange',
+ * converts it to a standardized event type, e.g. 'fullscreenchange'
+ * TODO: remove this if no vendor-prefixed events are needed
+ * @param {string} event
+ * @returns {string}
+ */
+export function normalizeEventType (type) {
+  switch (type) {
+    case fullscreenchange:
+      return 'fullscreenchange';
+    default:
+      return type;
+  }
 }

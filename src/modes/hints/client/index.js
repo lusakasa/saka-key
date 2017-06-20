@@ -6,6 +6,7 @@ import {
   advanceHints,
   setHintRenderSettings
 } from './HintRenderer';
+import { showVideoControls, hideVideoControls } from './video';
 
 let hints;
 export let hintType;
@@ -23,6 +24,7 @@ export default {
       modeMsg('thisTab&otherFrames', 'Hints', 'exitHintsMode');
     }
     hideHints();
+    hideVideoControls();
   },
   onSettingsChange: (settings) => {
     setHintRenderSettings(settings);
@@ -52,6 +54,7 @@ export default {
   mousedown: () => 'Reset',
   messages: {
     findHints: (ht) => {
+      showVideoControls();
       hintType = ht;
       hints = findHints(ht);
       return {
