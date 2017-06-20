@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "gitbook serve",
-    "build": "gitbook build"
+    "build": "gitbook build",
+    "publish": "gitbook build && cp -r ./_book/* ../docs"
   }
 }

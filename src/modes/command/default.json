@@ -73,10 +73,10 @@
         "scrollToRight": [
         ],
         "goBack": [
-          [{ "code": "KeyC", "altKey": true }]
+          [{ "key": "c" }, { "key": "c" }]
         ],
         "goForward": [
-          [{ "code": "KeyV", "altKey": true }]
+          [{ "key": "v" }, { "key": "v" }]
         ],
         "nextPage": [
           [{ "key": "]"}, { "key": "]"}]

@@ -6,8 +6,8 @@
 
 You can go backward and forward in history.
 
-* **Go Back** - <kbd>Alt + C</kbd>
-* **Go Forward** - <kbd>Alt + V</kbd>
+* **Go Back** - <kbd>C</kbd><kbd>C</kbd>
+* **Go Forward** - <kbd>V</kbd><kbd>V</kbd>
 
 You can also go up the URL hierarchy.
 
