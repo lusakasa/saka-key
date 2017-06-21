@@ -33,4 +33,4 @@
 
 * Multi-frame link hints
 * Regenerate clientSettings on startup so that Saka Key doesn't break when you close then reopen your browser
-* change default link hints binding from <kbd>alt + F</kbd> to <kbd>F</kbd><kbd>F</kbd> 
+* change default link hints binding from <kbd>alt+F</kbd> to <kbd>F</kbd><kbd>F</kbd> 

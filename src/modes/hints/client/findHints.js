@@ -1,7 +1,7 @@
 let detectByCursorStyle = false;
 
 export function setHintFindSettings (settings) {
-  detectByCursorStyle = settings.detectByCursorStyle;
+  detectByCursorStyle = settings.hintDetectByCursorStyle;
 }
 
 /**
