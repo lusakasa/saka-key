@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · Saka Key Handbook</title>
+        <title>Release Notes · Saka Key Handbook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -59,8 +59,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="getting_started/" />
+    <link rel="next" href="tutorial/" />
     
+    
+    <link rel="prev" href="getting_started/help.html" />
     
 
     </head>
@@ -89,7 +91,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -173,7 +175,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="release_notes.html">
+        <li class="chapter active" data-level="1.3" data-path="release_notes.html">
             
                 <a href="release_notes.html">
             
@@ -410,7 +412,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Release Notes</a>
     </h1>
 </div>
 
@@ -425,26 +427,42 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id=""><img src="images/logo_with_title.png" alt="Saka Key"></h1>
-<p><a href="https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp" target="_blank">Saka Key</a> lets you control your browser with keyboard shortcuts. It is easy-to-use, highly configurable, and will transform how you surf the web. Put away your mouse. With Saka Key, your keyboard can</p>
+                                <h1 id="release-notes">Release Notes</h1>
+<h2 id="v19">v1.9</h2>
 <ul>
-<li>click links</li>
-<li>scroll and zoom pages</li>
-<li>switch, close, and rearrange tabs</li>
-<li>and much more</li>
+<li>Release notes are now shown on the info page (which appears when Saka Key updates)</li>
 </ul>
-<p>Install Saka Key from the <a href="https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp" target="_blank">Chrome Web Store</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/saka-key/" target="_blank">Firefox Add-ons Marketplace</a>.</p>
-<p>Support Saka Key by leaving feedback, <a href="https://github.com/lusakasa/saka-key/issues" target="_blank">reporting bugs</a>, or contributing on <a href="https://github.com/lusakasa/saka-key" target="_blank">Github</a>.</p>
-<h2 id="motivation">Motivation</h2>
-<blockquote>
-<p>The power of the Web is in its universality.
-Access by everyone regardless of disability is an essential aspect.</p>
-</blockquote>
-<p><em>Tim Berners-Lee,
-Inventor of the World Wide Web</em></p>
-<p>When the web isn&apos;t accessible, it&apos;s because people who author content don&apos;t understand the benefit of making it accessible. Saka Key leverages accessibility information to make the browsing experience better for <em>everyone</em>. I hope this will encourage the creation of accessible content.</p>
-<p>Keyboard shortcuts are only the beginning of this journey. Screen reading and voice commands are on the roadmap.</p>
-<p><a href="http://dawoodjee.com" target="_blank">Sufyan</a></p>
+<h2 id="v18">v1.8</h2>
+<ul>
+<li>Fixed bug that prevented link hints from detecting selects and textareas</li>
+<li>Updated default mode&apos;s goBack and goForward bindings to <kbd>C</kbd><kbd>C</kbd> and <kbd>V</kbd><kbd>V</kbd> respectively</li>
+<li>Improved link hints behavior on video elements and in fullscreen mode</li>
+</ul>
+<h2 id="v17">v1.7</h2>
+<ul>
+<li>Add Pass Key commands to make using page shortcuts possible</li>
+<li>Add commands for opening links in background tabs, foreground tabs, new windows, incognito windows and downloading links</li>
+<li>Typing Escape now always exits text inputs</li>
+<li>Fixed a bug that broke scrolling if the user changed the scroll step</li>
+</ul>
+<h2 id="v16">v1.6</h2>
+<ul>
+<li>Better scroll element identification; scrolling on gmail now works</li>
+<li>Added Pass Key Commands. You can now use a page&apos;s keyboard shortcuts (e.g. on github or gmail) without disabling Saka Key</li>
+<li>Refactored and simplified mode&apos;s code</li>
+<li>Updated/added developer documentation</li>
+</ul>
+<h2 id="v15">v1.5</h2>
+<ul>
+<li>Replaced About page with more helpful Info page that is opened on install/update</li>
+<li>Updated link hints to work on popup</li>
+</ul>
+<h2 id="v14">v1.4</h2>
+<ul>
+<li>Multi-frame link hints</li>
+<li>Regenerate clientSettings on startup so that Saka Key doesn&apos;t break when you close then reopen your browser</li>
+<li>change default link hints binding from <kbd>alt + F</kbd> to <kbd>F</kbd><kbd>F</kbd> </li>
+</ul>
 
                                 
                                 </section>
@@ -472,8 +490,12 @@ Inventor of the World Wide Web</em></p>
 
             
                 
+                <a href="getting_started/help.html" class="navigation navigation-prev " aria-label="Previous page: Help">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="getting_started/" class="navigation navigation-next navigation-unique" aria-label="Next page: Getting Started">
+                
+                <a href="tutorial/" class="navigation navigation-next " aria-label="Next page: Tutorial">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -484,7 +506,7 @@ Inventor of the World Wide Web</em></p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Getting Started","level":"1.2","depth":1,"path":"getting_started/index.md","ref":"getting_started/index.md","articles":[{"title":"Install","level":"1.2.1","depth":2,"path":"getting_started/install.md","ref":"getting_started/install.md","articles":[]},{"title":"Uninstall","level":"1.2.2","depth":2,"path":"getting_started/uninstall.md","ref":"getting_started/uninstall.md","articles":[]},{"title":"Feedback","level":"1.2.3","depth":2,"path":"getting_started/feedback.md","ref":"getting_started/feedback.md","articles":[]},{"title":"Help","level":"1.2.4","depth":2,"path":"getting_started/help.md","ref":"getting_started/help.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Sufyan Dawoodjee","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Saka Key Handbook","gitbook":"*"},"file":{"path":"README.md","mtime":"2017-05-19T05:05:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-21T12:09:40.188Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Release Notes","level":"1.3","depth":1,"next":{"title":"Tutorial","level":"1.4","depth":1,"path":"tutorial/index.md","ref":"tutorial/index.md","articles":[{"title":"Setup","level":"1.4.1","depth":2,"path":"tutorial/setup.md","ref":"tutorial/setup.md","articles":[]},{"title":"Basics","level":"1.4.2","depth":2,"path":"tutorial/basics.md","ref":"tutorial/basics.md","articles":[]},{"title":"Scrolling","level":"1.4.3","depth":2,"path":"tutorial/scrolling.md","ref":"tutorial/scrolling.md","articles":[]},{"title":"Zooming","level":"1.4.4","depth":2,"path":"tutorial/zooming.md","ref":"tutorial/zooming.md","articles":[]},{"title":"Navigation","level":"1.4.5","depth":2,"path":"tutorial/navigation.md","ref":"tutorial/navigation.md","articles":[]},{"title":"Tabs","level":"1.4.6","depth":2,"path":"tutorial/tabs.md","ref":"tutorial/tabs.md","articles":[]},{"title":"Clicking and Link Hints","level":"1.4.7","depth":2,"path":"tutorial/clicking_and_link_hints.md","ref":"tutorial/clicking_and_link_hints.md","articles":[]},{"title":"Pass Keys","level":"1.4.8","depth":2,"path":"tutorial/pass_keys.md","ref":"tutorial/pass_keys.md","articles":[]},{"title":"Settings","level":"1.4.9","depth":2,"path":"tutorial/settings.md","ref":"tutorial/settings.md","articles":[]}]},"previous":{"title":"Help","level":"1.2.4","depth":2,"path":"getting_started/help.md","ref":"getting_started/help.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Sufyan Dawoodjee","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Saka Key Handbook","gitbook":"*"},"file":{"path":"release_notes.md","mtime":"2017-06-21T12:09:06.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-21T12:09:40.188Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

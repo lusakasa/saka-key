@@ -1,10 +1,14 @@
 const webpack = require('webpack');
 const BabiliPlugin = require('babili-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // process.traceDeprecation = true;
 
+// markdown convert to html
+var marked = require('marked');
+var renderer = new marked.Renderer();
+
 module.exports = function (env) {
-  var config = {
+  const config = {
     entry: {
       'background_page': './src/background_page/index.js',
       'content_script': './src/content_script/index.js',
@@ -36,6 +40,20 @@ module.exports = function (env) {
         {
           test: /\.css$/,
           use: ['style-loader', 'css-loader']
+        },
+        {
+          test: /\.md$/,
+          use: [
+            {
+              loader: 'html-loader'
+            },
+            {
+              loader: 'markdown-loader',
+              options: {
+                renderer
+              }
+            }
+          ]
         }
       ]
     },

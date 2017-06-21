@@ -6,6 +6,7 @@
   * [Uninstall](getting_started/uninstall.md)
   * [Feedback](getting_started/feedback.md)
   * [Help](getting_started/help.md)(getting_started/report_bugs.md)
+* [Release Notes](release_notes.md)
 * [Tutorial](tutorial/index.md)
   * [Setup](tutorial/setup.md)
   * [Basics](tutorial/basics.md)

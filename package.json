@@ -11,6 +11,9 @@
     "build:profile": "npm run clean && webpack --config webpack.config.js --progress --profile --colors && cp ./static/* ./dist",
     "clean": "rimraf dist",
     "zip-dist": "bestzip dist.zip dist/*",
+    "book:dev": "cd book && npm run dev",
+    "book:build": "cd book && npm run build",
+    "book:publish": "cd book && npm run publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -43,7 +46,10 @@
   "dependencies": {
     "@material/checkbox": "^0.2.2",
     "@material/menu": "^0.2.1",
+    "html-loader": "^0.4.5",
     "immutability-helper": "^2.1.2",
+    "markdown-loader": "^2.0.0",
+    "marked": "^0.3.6",
     "material-components-web": "^0.7.0",
     "mosi": "^1.2.0",
     "preact": "^7.2.0",

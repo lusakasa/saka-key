@@ -1,6 +1,7 @@
-import { h } from 'preact';
+import { h, Component } from 'preact';
 import StandardLayout from 'pages/layout/StandardLayout';
 import StandardContentCard from 'pages/layout/StandardContentCard';
+import releaseNotesHTML from '../../../book/release_notes.md';
 import './style.css';
 
 const Item = ({ title, href, description }) => (
@@ -39,11 +40,6 @@ const MainView = () => (
         description='Report bugs, request features, and give 5-star ratings'
       />
       <Item
-        title='Release Notes'
-        href='https://github.com/lusakasa/saka-key/releases'
-        description="Find out what's changed in recent releases"
-      />
-      <Item
         title='Contribute'
         href='https://github.com/lusakasa/saka-key'
         description='Developer? Help Make Saka Key better'
@@ -51,6 +47,8 @@ const MainView = () => (
     </ul>
   </section>
 );
+
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const Header = () => (
   <div class='header-section'>
@@ -62,7 +60,7 @@ const Header = () => (
     <section className='info-section'>
       <h1 className='mdc-card__title mdc-card__title--large'>Saka Key</h1>
       <h2 class='mdc-card__subtitle'>A keyboard interface to the web</h2>
-      <h2 class='mdc-card__subtitle'>Version { SAKA_VERSION }</h2>
+      <h2 class='mdc-card__subtitle'>Version { SAKA_VERSION } for { capitalize(SAKA_PLATFORM) }</h2>
       <h2 class='mdc-card__subtitle'>By <a href='http://dawoodjee.com'>Sufyan</a></h2>
       {/*<a
         className='mdc-button mdc-button--primary'
@@ -84,11 +82,33 @@ const Header = () => (
   </div>
 );
 
+class ReleaseNotes extends Component {
+  render () {
+    return (
+      <section
+        id='release-notes-section'
+        style='margin-top: 40px; text-align: left; max-width: 600px'
+        class='mdc-typography--body1'
+        ref={(e) => {
+          e.innerHTML = releaseNotesHTML;
+        }}
+      />
+    );
+  }
+}
+
 export default () => (
   <StandardLayout view='Info'>
-    <StandardContentCard>
-      <Header />
-      <MainView />
+    <StandardContentCard >
+      <div
+        style='width: 100%; height: 100%; display: flex; flex-flow: row wrap; justify-content: space-around;'
+      >
+        <div>
+          <Header />
+          <MainView />
+        </div>
+        <ReleaseNotes />
+      </div>
     </StandardContentCard>
   </StandardLayout>
 );
