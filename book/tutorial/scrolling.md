@@ -8,25 +8,25 @@ Scrolling is often the first thing you do on a web page. Saka Key makes it easy.
 
 Scrolling down or up a page is simple.
 
-* **Scroll Down** - <kbd>D</kbd> or <kbd>J</kbd>
-* **Scroll Up** - <kbd>S</kbd> or <kbd>K</kbd>
+* **Scroll Down** - <kbd>d</kbd> or <kbd>j</kbd>
+* **Scroll Up** - <kbd>s</kbd> or <kbd>k</kbd>
 
 You can scroll faster.
 
-* **Scroll Half Page Down** - <kbd>Shift + D</kbd>
-* **Scroll Half Page Up** - <kbd>Shift + S</kbd>
-* **Scroll Full Page Down** - <kbd>Shift + J</kbd>
-* **Scroll Full Page Up** - <kbd>Shift + K</kbd>
+* **Scroll Half Page Down** - <kbd>shift+d</kbd>
+* **Scroll Half Page Up** - <kbd>shift+s</kbd>
+* **Scroll Full Page Down** - <kbd>shift+j</kbd>
+* **Scroll Full Page Up** - <kbd>shift+k</kbd>
 
 You can also scroll to the top or bottom of a page.
 
-* **Scroll to Bottom** - <kbd>Shift + G</kbd>
-* **Scroll to Top** - <kbd>G</kbd><kbd>G</kbd> (press and release <kbd>G</kbd> twice)
+* **Scroll to Bottom** - <kbd>shift+g</kbd>
+* **Scroll to Top** - <kbd>g</kbd><kbd>g</kbd> (press and release <kbd>g</kbd> twice)
 
 Sometimes you want to scroll left or right.
 
-* **Scroll Right** - <kbd>Alt + D</kbd> or <kbd>Alt + J</kbd>
-* **Scroll Left** - <kbd>Alt + S</kbd> or <kbd>Alt + K</kbd>
+* **Scroll Left** - <kbd>alt+s</kbd> or <kbd>alt+k</kbd>
+* **Scroll Right** - <kbd>alt+d</kbd> or <kbd>alt+j</kbd>
 
 ## Options
 

@@ -16,7 +16,7 @@
   * [Tabs](tutorial/tabs.md)
   * [Clicking and Link Hints](tutorial/clicking_and_link_hints.md)
   * [Pass Keys](tutorial/pass_keys.md)
-  * [Settings](tutorial/settings.md)
+  * [Options](tutorial/options.md)
 * [Commands](commands/index.md)
   * [Commands List](commands/commands_list.md)
   * [Javascript Commands](commands/javascript_commands.md)

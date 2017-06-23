@@ -55,7 +55,6 @@ kbd {
   font-family: roboto, sans-serif;
   font-weight: normal;
   letter-spacing: 0.56px;
-  text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
   border: 1px solid #3f51F5;
   border-bottom: 5px solid;

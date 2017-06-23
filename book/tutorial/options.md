@@ -1,4 +1,4 @@
-# Settings
+# Options
 
 Saka Key is customizable. You can modify keybindings, change the appearance of link hints, adjust the scroll speed, and more.
 

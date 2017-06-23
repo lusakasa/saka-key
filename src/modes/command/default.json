@@ -124,11 +124,11 @@
         "closeOtherTabs": [
           [{ "code": "KeyX", "key": "x" }, { "code": "KeyX", "key": "X", "shiftKey": true }]
         ],
-        "closeRightTabs": [
-          [{ "code": "KeyX", "key": "x" }, { "code": "BracketRight", "key": "]"}]
-        ],
         "closeLeftTabs": [
           [{ "code": "KeyX", "key": "x" }, { "code": "BracketLeft", "key": "["}]
+        ],
+        "closeRightTabs": [
+          [{ "code": "KeyX", "key": "x" }, { "code": "BracketRight", "key": "]"}]
         ],
         "newTab": [
           [{ "code": "KeyN", "key": "n" }]

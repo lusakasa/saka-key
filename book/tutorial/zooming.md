@@ -6,6 +6,6 @@
 
 It's easy to zoom in and out.
 
-* **Zoom In** - <kbd>Z</kbd>
-* **Zoom Out** - <kbd>Shift + Z</kbd>
-* **Zoom Reset** - <kbd>Alt + Shift + Z</kbd>
+* **Zoom In** - <kbd>z</kbd>
+* **Zoom Out** - <kbd>shift+z</kbd>
+* **Zoom Reset** - <kbd>shift+alt+z</kbd>

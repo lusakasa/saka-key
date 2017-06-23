@@ -4,26 +4,26 @@
 
 Browsing the web normally involves moving your mouse to select something, then clicking to activate it. Saka Key lets you use your keyboard to quickly identify and click things on screen. You can use this feature to follow links, focus text inputs, toggle checkboxes, and more.
 
-To get started, type <kbd>F</kbd><kbd>F</kbd> (press <kbd>F</kbd> twice in a row). *Link Hints* will appear next to all clickable elments on screen.
+To get started, type <kbd>f</kbd><kbd>f</kbd> (press <kbd>f</kbd> twice). *Link Hints* will appear next to all clickable elments on screen.
 
 ![link hints on screen](/images/link_hints.png)
 
-Each link hint contains a unique sequence of letters. Type the letters of a link hint to activate it. As you type, link hints will be filtered out until only one is left. For example typing <kbd>S</kbd> filters out all link hints that don't start with <kbd>S</kbd>.
+Each link hint contains a unique sequence of letters. Type the letters of a link hint to activate it. As you type, link hints will be filtered out until only one is left. For example typing <kbd>s</kbd> filters out all link hints that don't start with <kbd>s</kbd>.
 
 ![only link hints beginning with S on screen](/images/link_hints_filtered.png)
 
-If you typed <kbd>D</kbd> in the image above, you would follow the link named *Javascript Commands*.
+If you typed <kbd>d</kbd> in the image above, you would follow the link named *Javascript Commands*.
 
-To abort link activation, press <kbd>Escape</kbd> or <kbd>F</kbd> or any key that doesn't appear in any link hint.
+To abort link activation, press <kbd>Escape</kbd> or <kbd>f</kbd> or any key that doesn't appear in any link hint.
 
 ## Bindings
 
-* **Open Link** - <kbd>F</kbd><kbd>F</kbd>
-* **Open Link in Background Tab** - <kbd>F</kbd><kbd>shift + F</kbd>
-* **Open Link in Foreground Tab** - <kbd>F</kbd><kbd>shift + F</kbd>
-* **Open Link in New Window** - <kbd>F</kbd><kbd>N</kbd>
-* **Open Link in Incognito Window** - <kbd>F</kbd><kbd>shift + N</kbd>
-* **Download Link** - <kbd>F</kbd><kbd>D</kbd>
+* **Open Link** - <kbd>f</kbd><kbd>f</kbd>
+* **Open Link in Background Tab** - <kbd>f</kbd><kbd>shift+f</kbd>
+* **Open Link in Foreground Tab** - <kbd>shift+f</kbd><kbd>shift+f</kbd>
+* **Open Link in New Window** - <kbd>f</kbd><kbd>n</kbd>
+* **Open Link in Incognito Window** - <kbd>f</kbd><kbd>shift+n</kbd>
+* **Download Link** - <kbd>f</kbd><kbd>d</kbd>
 
 ## Options
 

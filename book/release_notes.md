@@ -7,7 +7,7 @@
 ## v1.8
 
 * Fixed bug that prevented link hints from detecting selects and textareas
-* Updated default mode's goBack and goForward bindings to <kbd>C</kbd><kbd>C</kbd> and <kbd>V</kbd><kbd>V</kbd> respectively
+* Updated default mode's goBack and goForward bindings to <kbd>c</kbd><kbd>c</kbd> and <kbd>v</kbd><kbd>v</kbd> respectively
 * Improved link hints behavior on video elements and in fullscreen mode
 
 ## v1.7
@@ -33,4 +33,4 @@
 
 * Multi-frame link hints
 * Regenerate clientSettings on startup so that Saka Key doesn't break when you close then reopen your browser
-* change default link hints binding from <kbd>alt+F</kbd> to <kbd>F</kbd><kbd>F</kbd> 
+* change default link hints binding from <kbd>alt+f</kbd> to <kbd>f</kbd><kbd>f</kbd> 

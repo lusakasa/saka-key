@@ -6,9 +6,9 @@ Saka Key is a browser extension that lets you map keys on your keyboard to commo
 
 ## Commands and Bindings
 
-To use commands, you must first bind them to keys on your keyboard. Default bindings are built-in, but you have complete freedom to add, delete, and modify bindings using the [Options Page](). Commands can be bound to a single key, or a sequence of multiple keys. Commands only execute if a text input is *not* focused so that you can type text as usual.
+To use commands, you must first bind them to keys on your keyboard. Default bindings are built-in, but you have complete freedom to add, delete, and modify bindings using the [Options Page](./options.md). Commands can be bound to a single key, or a sequence of multiple keys. Commands only execute if a text input is *not* focused so that you can type text as usual.
 
-<!-- TODO: You can unfocus any text input by pressing <kbd>Escape</kbd>. -->
+You can unfocus any text input by pressing <kbd>Escape</kbd>.
 
 ## Resources
 
@@ -26,14 +26,14 @@ PDFs are also troublesome. You can use keyboard shortcuts to close PDF tabs and 
 
 To work around these limitations, I recommend learning the following brower shortcuts.
 
-* <kbd>Ctrl + Tab</kbd> - switches to the next tab
-* <kbd>Ctrl + Shift + Tab</kbd> - switches to the previous tab
-* <kbd>Ctrl + W</kbd> - closes the current tab.
+* <kbd>ctrl+Tab</kbd> - switches to the next tab
+* <kbd>shift+ctrl+Tab</kbd> - switches to the previous tab
+* <kbd>ctrl+w</kbd> - closes the current tab.
 
 ## Profiles
 
 Most of the time you want to browse the web with both hands, but sometimes you might want to browse with just your left hand. To make this possible, Saka Key lets you define [Settings Profiles]() that are easy to switch between.
 
-The default profile for new users gives *safe* commands, like scrolling and zooming, simple bindings, like <kbd>D</kbd> and <kbd>Z</kbd>. *Unsafe* commands that trigger irreversible changes, like closing a tab or going back in history, have complex bindings, like <kbd>Alt + X</kbd> and <kbd>Alt + C</kbd>. When you become more comfortable with Saka Key, try switching to a profile with *unsafe* commands mapped to simple bindings.
+The default profile for new users gives *safe* commands, like scrolling and zooming, simple bindings, like <kbd>d</kbd> and <kbd>z</kbd>. *Unsafe* commands that trigger irreversible changes, like closing a tab or going back in history, have complex bindings, like <kbd>x</kbd><kbd>x</kbd> and <kbd>c</kbd><kbd>c</kbd>. When you become more comfortable with Saka Key, try switching to a profile with *unsafe* commands mapped to simple bindings.
 
 This tutorial assumes you're a new user using the **default** profile. If you are using some other profile, commands may be mapped to different keys.
