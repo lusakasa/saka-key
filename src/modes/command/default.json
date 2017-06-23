@@ -6,8 +6,6 @@
       "settings": {
         "physicalKeys": true,
         "ignoreModifierKeys": false,
-        "smoothScroll": true,
-        "scrollStep": 16,
         "passOneKey": [
           [{ "code": "Semicolon", "key": ";" }]
         ],
@@ -179,8 +177,6 @@
       "settings": {
         "physicalKeys": true,
         "ignoreModifierKeys": false,
-        "smoothScroll": true,
-        "scrollStep": 16,
         "passOneKey": [
           [{ "key": ";" }]
         ],
@@ -348,8 +344,6 @@
       "settings": {
         "physicalKeys": true,
         "ignoreModifierKeys": false,
-        "smoothScroll": true,
-        "scrollStep": 16,
         "passOneKey": [
           [{ "key": ";" }]
         ],
@@ -519,8 +513,6 @@
       "settings": {
         "physicalKeys": true,
         "ignoreModifierKeys": false,
-        "smoothScroll": true,
-        "scrollStep": 16,
         "passOneKey": [
           [{ "key": ";" }]
         ],

@@ -4,7 +4,6 @@
     {
       "name": "default",
       "settings": {
-        "hintDetectByCursorStyle": true,
         "hintHorizontalPlacement": "left",
         "hintVerticalPlacement": "center",
         "hintUseCustomCSS": false,
@@ -30,7 +29,6 @@
     {
       "name": "light",
       "settings": {
-        "hintDetectByCursorStyle": true,
         "hintHorizontalPlacement": "left",
         "hintVerticalPlacement": "center",
         "hintUseCustomCSS": true,
@@ -56,7 +54,6 @@
     {
       "name": "vimium",
       "settings": {
-        "hintDetectByCursorStyle": true,
         "hintHorizontalPlacement": "left",
         "hintVerticalPlacement": "top",
         "hintUseCustomCSS": true,

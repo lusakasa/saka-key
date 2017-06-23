@@ -3,9 +3,8 @@
   "description": "Link hints for acivating links and selecting inputs",
   "options": [
     {
-      "type": "checkbox",
-      "label": "Detect Hints Using Cursor Style",
-      "key": "hintDetectByCursorStyle"
+      "type": "header",
+      "label": "Hint Appearance"
     },
     {
       "type": "select",
@@ -18,10 +17,6 @@
       "label": "Hint Vertical Placement",
       "key": "hintVerticalPlacement",
       "choices": ["top", "center", "bottom"]
-    },
-    {
-      "type": "header",
-      "label": "Hint Appearance"
     },
     {
       "type": "checkbox",

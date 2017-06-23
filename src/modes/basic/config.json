@@ -13,16 +13,27 @@
       "key": "preventStealFocus"
     },
     {
-      "type": "color",
-      "label": "Primary Color",
-      "key": "primaryColor",
+      "type": "checkbox",
+      "label": "Disable Page Shortcuts (for unmapped keys)",
+      "key": "disablePageShortcuts",
       "visible": false
     },
     {
-      "type": "color",
-      "label": "Secondary Color",
-      "key": "secondaryColor",
-      "visible": false
+      "type": "checkbox",
+      "label": "Detect Hints Using Cursor Style",
+      "key": "hintDetectByCursorStyle"
+    },
+    {
+      "type": "checkbox",
+      "label": "Smooth Scroll",
+      "key": "smoothScroll"
+    },
+    {
+      "type": "number",
+      "label": "Scroll Step",
+      "key": "scrollStep",
+      "step": 1,
+      "min": 1
     }
   ]
 }
