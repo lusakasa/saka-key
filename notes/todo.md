@@ -29,6 +29,8 @@
     * under tabs
     * alternative 'progressive' algorithms
     * pre-rendering, caching
+* Key handling
+    * add logic that will check the platform/keyboard layout and modify the "key" attribute of the built-in profiles' keybindings based on what char is produced on each platform/layout.
 * figure out why disabling saka breaks google search (doesn't let you change focus away from search input)
 * handle browser restart/update properly
 * configurable key bindings

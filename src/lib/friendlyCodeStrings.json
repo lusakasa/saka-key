@@ -203,5 +203,69 @@
   "Slash": {
     "value": "/",
     "shift": "?"
+  },
+  "Space": {
+    "value": "Space",
+    "shift": "Space"
+  },
+  "Tab": {
+    "value": "Tab",
+    "shift": "Tab"
+  },
+  "CapsLock": {
+    "value": "CapsLock",
+    "shift": "CapsLock"
+  },
+  "Escape": {
+    "value": "Escape",
+    "shift": "Escape"
+  },
+  "Backspace": {
+    "value": "Backspace",
+    "shift": "Backspace"
+  },
+  "ArrowLeft": {
+    "value": "ArrowLeft",
+    "shift": "ArrowLeft"
+  },
+  "ArrowRight": {
+    "value": "ArrowRight",
+    "shift": "ArrowRight"
+  },
+  "ArrowUp": {
+    "value": "ArrowUp",
+    "shift": "ArrowUp"
+  },
+  "ArrowDown": {
+    "value": "ArrowDown",
+    "shift": "ArrowDown"
+  },
+  "ShiftLeft": {
+    "value": "ShiftLeft",
+    "shift": "ShiftLeft"
+  },
+  "ShiftRight": {
+    "value": "ShiftRight",
+    "shift": "ShiftRight"
+  },
+  "ControlLeft": {
+    "value": "ControlLeft",
+    "shift": "ControlLeft"
+  },
+  "AltLeft": {
+    "value": "AltLeft",
+    "shift": "AltLeft"
+  },
+  "AltRight": {
+    "value": "AltRight",
+    "shift": "AltRight"
+  },
+  "MetaLeft": {
+    "value": "MetaLeft",
+    "shift": "MetaLeft"
+  },
+  "MetaRight": {
+    "value": "MetaRight",
+    "shift": "MetaRight"
   }
 }

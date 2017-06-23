@@ -1,14 +1,15 @@
 import { initInputTrie, resetInputTrie, advanceInputTrie } from './command_manager';
 import { initScrolling, cancelScroll } from './scroll_commands';
-import { isModifierKey } from 'lib/keys';
+import { setKeyboardSettings, isModifierKey } from 'lib/keys';
 
 export default {
   onEnter: (event) => {
     resetInputTrie();
   },
-  onSettingsChange: ({ bindings, smoothScroll, scrollStep }) => {
-    initInputTrie(bindings);
-    initScrolling(smoothScroll, scrollStep);
+  onSettingsChange: (settings) => {
+    initInputTrie(settings.bindings);
+    initScrolling(settings.smoothScroll, settings.scrollStep);
+    setKeyboardSettings(settings.physicalKeys, settings.ignoreModifierKeys);
   },
   keydown: (event) => {
     if (event.key !== 'Escape') {
@@ -31,9 +32,5 @@ export default {
     return 'Same';
   },
   blur: () => 'Reset',
-  focus: () => 'Reset',
-  fullscreenchange: (e) => {
-    console.log(e);
-    return 'Same';
-  }
+  focus: () => 'Reset'
 };

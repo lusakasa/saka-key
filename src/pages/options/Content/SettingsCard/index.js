@@ -28,8 +28,8 @@ import './style.css';
 export default class SettingsCard extends Component {
   isOptionVisible = (option) => {
     if (!option.hasOwnProperty('visible')) return true;
-    if (option['visible'] === true) return true;
-    if (option['visible'] === false) return false;
+    if (option.visible === true) return true;
+    if (option.visible === false) return false;
     return option.visible
       .split('&&')
       .map((clause) => clause.trim())
@@ -120,6 +120,7 @@ export default class SettingsCard extends Component {
                   <SettingsCardOptionWidget
                     {...option}
                     _key={option.key}
+                    values={values}
                     value={values && values[option.key]}
                     onChange={onOptionChange}
                   />

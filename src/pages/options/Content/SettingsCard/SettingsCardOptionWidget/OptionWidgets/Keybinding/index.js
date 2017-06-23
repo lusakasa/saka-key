@@ -1,88 +1,17 @@
 import { Component, h } from 'preact';
-import { friendlyKeyboardEventString, isModifierKey } from 'lib/keys';
+import KeybindingItem from './KeybindingItem';
+import KeybindingList from './KeybindingList';
+import KeybindingInput from './KeybindingInput';
 import './style.css';
 
 // TODO: This file is messy, redo at some point
-
-const KeyBindingItem = ({ binding }) => (
-  <span>
-    { binding.map((key) =>
-      <span className='keybinding-key mdc-typography--body1 mdc-elevation--z2'>
-        {friendlyKeyboardEventString(key)}
-      </span>) }
-  </span>
-);
-
-const HelpBindings = ({ bindings }) => (
-  <span>
-    { bindings && bindings.map((binding, i) =>
-      <span>
-        <KeyBindingItem binding={binding} />
-        { i === bindings.length - 1 ? '' : <span>, </span>}
-      </span>) }
-  </span>
-);
-
-class KeyBindingInput extends Component {
-  constructor () {
-    super();
-    this.state = {
-      active: false,
-      numKeysPressed: 0,
-      keyEvents: []
-    };
-  }
-  finalizeInput = (bindings, setValue) => () => {
-    const keyEvents = this.state.keyEvents;
-    if (keyEvents.length > 0) {
-      setValue(bindings.concat([this.state.keyEvents]));
-    }
-    this.setState({ active: false, keyEvents: [] });
-  }
-  handleKeyDown = (bindings, setValue) => (event) => {
-    event.preventDefault();
-    if (isModifierKey(event)) return;
-    if (event.key === 'Enter') {
-      this.finalizeInput(bindings, setValue)();
-      return;
-    }
-    const { shiftKey, altKey, ctrlKey, metaKey, code, key } = event;
-    this.setState({
-      keyEvents: this.state.keyEvents.concat({
-        shiftKey, altKey, ctrlKey, metaKey, code, key
-      })
-    });
-  }
-  render ({ value, setValue }) {
-    return this.state.active
-    ? (
-      <div>
-        <KeyBindingItem binding={this.state.keyEvents} />
-        <input
-          id='meow'
-          ref={(input) => input && input.focus && setTimeout(() => { input.focus(); }, 0)}
-          className='keybinding-key keybinding-input mdc-typography--body1 mdc-elevation--z2'
-          type='text'
-          onKeyDown={this.handleKeyDown(value, setValue)}
-          onBlur={this.finalizeInput(value, setValue)} />
-      </div>
-    ) : (
-      <button
-        onClick={() => { this.setState({ active: true }); console.log(this.base); }}
-        className='mdc-button mdc-button--raised mdc-button--primary mdc-ripple-upgraded'>
-        Add Binding
-      </button>
-    );
-  }
-}
-
 
 export default class Keybinding extends Component {
   constructor () {
     super();
     this.state = ({ active: false });
   }
-  render ({ label, key, value, onChange }) {
+  render ({ label, key, value, onChange, values: { physicalKeys, ignoreModifierKeys } }) {
     const bindings = value;
     return this.state.active ? (
       <li
@@ -104,7 +33,11 @@ export default class Keybinding extends Component {
             <li
               className='mdc-list-item'
               style='justify-content: space-between;'>
-              <KeyBindingItem binding={binding} />
+              <KeybindingItem
+                binding={binding}
+                physicalKeys={physicalKeys}
+                ignoreModifierKeys={ignoreModifierKeys}
+              />
               <button
                 onClick={() => onChange(bindings.filter((b) => b !== binding))}
                 className='mdc-button mdc-button--secondary'>
@@ -115,7 +48,12 @@ export default class Keybinding extends Component {
         </ul>
         <span
           style='width: 90%; display: flex; justify-content: space-between;'>
-          <KeyBindingInput value={value} setValue={onChange} />
+          <KeybindingInput
+            value={value}
+            setValue={onChange}
+            physicalKeys={physicalKeys}
+            ignoreModifierKeys={ignoreModifierKeys}
+          />
         </span>
       </li>
     ) : (
@@ -127,7 +65,11 @@ export default class Keybinding extends Component {
         onClick={() => { this.setState({ active: true }); }}
       >
         <label>{ label }</label>
-        <HelpBindings bindings={bindings} />
+        <KeybindingList
+          bindings={bindings}
+          physicalKeys={physicalKeys}
+          ignoreModifierKeys={ignoreModifierKeys}
+        />
       </li>
     );
   }

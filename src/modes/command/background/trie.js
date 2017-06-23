@@ -1,4 +1,4 @@
-import { validateKeyboardEvent, keyboardEventString } from 'lib/keys';
+import { validKeyboardEvent, keyboardEventString, friendlyKeyboardEventString } from 'lib/keys';
 
 /**
  * Given an object mapping commands to their key bindings,
@@ -19,13 +19,13 @@ function bindingsList (bindingsMap) {
     for (const binding of bindings) {
       const keySequence = binding.map((key) => {
         try {
-          validateKeyboardEvent(key);
+          validKeyboardEvent(key);
         } catch (e) {
-          throw Error(`Invalid KeyboardEvent descriptor for ${command}: ${e.message}`);
+          throw Error(`Invalid KeyboardEvent descriptor for ${command}`);
         }
         return keyboardEventString(key);
       });
-      out.push([keySequence, command]);
+      out.push([keySequence, command, binding]);
     }
   }
   return out;
@@ -37,19 +37,19 @@ function bindingsList (bindingsMap) {
  */
 function JSONTrie (bindings) {
   const trie = {};
-  bindings.forEach(([key, value]) => {
-    addToTrie(trie, 0, key, value);
+  bindings.forEach(([key, value, binding]) => {
+    addToTrie(trie, 0, key, value, binding);
   });
   return trie;
 }
 
-function addToTrie (trie, i, key, value) {
+function addToTrie (trie, i, key, value, binding) {
   if (key.length === 0) {
     throw Error(`${value} has a 0 length key binding`);
   } else if (i === key.length - 1) {
     if (trie.hasOwnProperty(key[i])) {
       throw {
-        message: `${trie[key[i]]} and ${value} have conflicting mapping ${key.slice(0, i + 1).join(' ')}`,
+        message: `${trie[key[i]]} and ${value} have conflicting mapping`,
         type: 'conflict',
         command1: trie[key[i]],
         command2: value
@@ -63,7 +63,7 @@ function addToTrie (trie, i, key, value) {
         addToTrie(trie[key[i]], i + 1, key, value);
       } else {
         throw {
-          message: `${trie[key[i]]} and ${value} have conflicting prefix ${key.slice(0, i + 1).join(' ')}`,
+          message: `${trie[key[i]]} and ${value} have conflicting prefix`,
           type: 'conflict',
           command1: trie[key[i]],
           command2: value

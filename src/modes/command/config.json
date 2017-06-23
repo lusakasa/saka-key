@@ -8,6 +8,18 @@
     },
     {
       "type": "checkbox",
+      "label": "Bind to physical keys (en-US QWERTY) not characters",
+      "key": "physicalKeys"
+    },
+    {
+      "type": "checkbox",
+      "label": "Ignore modifier keys",
+      "help": "On some platforms, typing a key together with a modifier key doesn't change the character produced. For example, on Windows QWERTY keyboards, typing Alt+f produces the same character as typing f by itself. Enable this option to distinguish between the two.",
+      "key": "ignoreModifierKeys",
+      "visible": "physicalKeys = false"
+    },
+    {
+      "type": "checkbox",
       "label": "Disable Page Shortcuts (for unmapped keys)",
       "key": "disablePageShortcuts",
       "visible": false

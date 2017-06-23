@@ -1,4 +1,5 @@
 import { generateCommandTrie } from './trie';
+import { setKeyboardSettings } from 'lib/keys';
 import {
   nextTab,
   previousTab,
@@ -32,8 +33,12 @@ export default {
   clientSettings: (options, settings) => {
     const values = {};
     const errors = {};
+    values.physicalKeys = settings.physicalKeys;
     values.smoothScroll = settings.smoothScroll;
     values.scrollStep = settings.scrollStep;
+    values.physicalKeys = settings.physicalKeys;
+    values.ignoreModifierKeys = settings.ignoreModifierKeys;
+    setKeyboardSettings(settings.physicalKeys, settings.ignoreModifierKeys);
     const keybindings = {};
     options.filter((option) => option.type === 'keybinding').forEach((option) => {
       keybindings[option.key] = settings[option.key];

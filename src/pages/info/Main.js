@@ -48,7 +48,7 @@ const MainView = () => (
   </section>
 );
 
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
 
 const Header = () => (
   <div class='header-section'>
