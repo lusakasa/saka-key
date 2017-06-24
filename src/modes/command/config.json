@@ -39,6 +39,11 @@
       "label": "Link Hints"
     },
     {
+      "type": "text",
+      "label": "Hint Characters",
+      "key": "hintChars"
+    },
+    {
       "type": "keybinding",
       "label": "Open Link",
       "key": "openLink"
@@ -67,11 +72,6 @@
       "type": "keybinding",
       "label": "Download Link",
       "key": "downloadLink"
-    },
-    {
-      "type": "text",
-      "label": "Hint Characters",
-      "key": "hintChars"
     },
     {
       "type": "header",

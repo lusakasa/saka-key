@@ -71,6 +71,15 @@ function friendlyModifierString (event) {
   return `${s ? 'shift+' : ''}${c ? 'ctrl+' : ''}${a ? 'alt+' : ''}${m ? 'meta+' : ''}`;
 }
 
+/** Given a keyboard event, returns a string representation of its modifiers
+ * @param {KeyboardEvent} event
+ * @returns {string}
+ */
+function friendlyShiftlessModifierString (event) {
+  const { ctrlKey: c, altKey: a, metaKey: m } = event;
+  return `${c ? 'ctrl+' : ''}${a ? 'alt+' : ''}${m ? 'meta+' : ''}`;
+}
+
 /** Converts a KeyboardEvent to a user-friendly string representation.
  * @param {KeyboardEvent} event
  * @param {boolean} physicalKeys
@@ -85,7 +94,7 @@ export function friendlyKeyboardEventString (event,
         : event.code}`
     : ignoreModifierKeys
       ? `${event.key}`
-      : `${friendlyModifierString(event)}${event.key}`;
+      : `${friendlyShiftlessModifierString(event)}${event.key}`;
 };
 
 /**

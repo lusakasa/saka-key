@@ -17,4 +17,4 @@ For example, if the current URL is `saka-key.lusakasa.com/tutorial/zooming.html`
 
 Or you can jump directly to `saka-key.lusakasa.com`.
 
-* **Go To Root** - <kbd>shift+u</kbd><kbd>shift+u</kbd>
+* **Go To Root** - <kbd>u</kbd><kbd>shift+u</kbd>
