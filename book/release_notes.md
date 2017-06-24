@@ -1,5 +1,14 @@
 # Release Notes
 
+## 1.10
+
+* Fixed bug that cause "Detect Hints Using Cursor Style" setting to be ignored
+* Added "Bind to physical keys" options so users can decide whether to bind commands to physical keys or to the characters produce from typing keys
+* Updated how keybindings are presented to the users
+* Modified many default keybindings. See Options Page or tutorial for the complete details
+* Updated documentation with new keybindings
+* Rearranged which category each setting is assigned to
+
 ## v1.9
 
 * Release notes are now shown on the info page (which appears when Saka Key updates)
