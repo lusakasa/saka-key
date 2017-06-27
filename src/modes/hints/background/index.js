@@ -9,6 +9,7 @@ export default {
   clientSettings: (options, settings) => {
     const errors = {};
     let {
+      hintFontSize,
       hintUseTargetSize,
       hintCSS,
       hintNormalCharCSS,
@@ -27,6 +28,7 @@ export default {
     hintChars = settings.hintChars;
     return {
       values: {
+        hintFontSize,
         hintUseTargetSize,
         hintCSS,
         hintNormalCharCSS,

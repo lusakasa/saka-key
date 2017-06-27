@@ -36,7 +36,7 @@
         "focusLink": [
           [{ "code": "KeyF", "key": "f"}, { "code": "KeyL", "key": "l" }]
         ],
-        "hintChars": "ajskdlgheiworuvncm",
+        "hintChars": "ajskdlgheworuvncm",
         "scrollDown": [
           [{ "code": "KeyD", "key": "d" }],
           [{ "code": "KeyJ", "key": "j" }]
@@ -210,7 +210,7 @@
         "focusLink": [
           [{ "code": "KeyF", "key": "F", "shiftKey": true }, { "code": "KeyL", "key": "l" }]
         ],
-        "hintChars": "ajskdlgheiworuvncm",
+        "hintChars": "ajskdlghewioruvncm",
         "scrollDown": [
           [{ "code": "KeyD", "key": "d" }],
           [{ "code": "KeyJ", "key": "j" }]

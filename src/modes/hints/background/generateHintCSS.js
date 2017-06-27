@@ -40,7 +40,7 @@ z-index: 2147483647;
 opacity: ${hintOpacity};
 font-family: ${hintFontFamily};
 font-weight: ${hintFontWeight};
-padding: ${hintPaddingTop}px ${hintPaddingRight}px ${hintPaddingBottom}px ${hintPaddingLeft}px;
+padding: ${hintPaddingTop}rem ${hintPaddingRight}rem ${hintPaddingBottom}rem ${hintPaddingLeft}rem;
 border: ${hintBorderWidth}px solid;
 text-align: center;
 text-decoration: none;

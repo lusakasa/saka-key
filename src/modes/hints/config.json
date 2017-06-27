@@ -12,6 +12,12 @@
       "key": "hintUseTargetSize"
     },
     {
+      "type": "number",
+      "label": "Default Font Size (px)",
+      "key": "hintFontSize",
+      "min": 1
+    },
+    {
       "type": "select",
       "label": "Horizontal Placement",
       "key": "hintHorizontalPlacement",
@@ -81,13 +87,6 @@
       "visible": "hintUseCustomCSS = false"
     },
     {
-      "type": "number",
-      "label": "Font Size",
-      "key": "hintFontSize",
-      "visible": "hintUseTargetSize = false && hintUseCustomCSS = false",
-      "min": 1
-    },
-    {
       "type": "select",
       "label": "Font Weight",
       "key": "hintFontWeight",
@@ -96,42 +95,46 @@
     },
     {
       "type": "number",
-      "label": "Padding Left",
+      "label": "Padding Left (rem)",
       "key": "hintPaddingLeft",
       "visible": "hintUseCustomCSS = false",
-      "min": 0
+      "min": 0,
+      "step": 0.01
     },
     {
       "type": "number",
-      "label": "Padding Right",
+      "label": "Padding Right (rem)",
       "key": "hintPaddingRight",
       "visible": "hintUseCustomCSS = false",
-      "min": 0
+      "min": 0,
+      "step": 0.01
     },
     {
       "type": "number",
-      "label": "Padding Top",
+      "label": "Padding Top (rem)",
       "key": "hintPaddingTop",
       "visible": "hintUseCustomCSS = false",
-      "min": 0
+      "min": 0,
+      "step": 0.01
     },
     {
       "type": "number",
-      "label": "Padding Bottom",
+      "label": "Padding Bottom (rem)",
       "key": "hintPaddingBottom",
       "visible": "hintUseCustomCSS = false",
-      "min": 0
+      "min": 0,
+      "step": 0.01
     },
     {
       "type": "number",
-      "label": "Border Width",
+      "label": "Border Width (px)",
       "key": "hintBorderWidth",
       "visible": "hintUseCustomCSS = false",
       "min": 0
     },
     {
       "type": "number",
-      "label": "Border Radius",
+      "label": "Border Radius (px)",
       "key": "hintBorderRadius",
       "visible": "hintUseCustomCSS = false",
       "min": 0

@@ -9,11 +9,13 @@ export let showHints;
 export let hideHints;
 export let advanceHints;
 
+let fontSize;
 let useTargetSize;
 let horizontalPlacement;
 let verticalPlacement;
 
 export function setHintRenderSettings ({
+  hintFontSize,
   hintUseTargetSize,
   hintCSS,
   hintNormalCharCSS,
@@ -21,6 +23,7 @@ export function setHintRenderSettings ({
   hintHorizontalPlacement,
   hintVerticalPlacement
 }) {
+  fontSize = hintFontSize;
   horizontalPlacement = hintHorizontalPlacement;
   verticalPlacement = hintVerticalPlacement;
   useTargetSize = hintUseTargetSize;
@@ -128,6 +131,13 @@ class HintRenderer extends Component {
   }
 }
 
+function generateFontSize (computedStyle) {
+  const computedFontSize = parseFloat(computedStyle.fontSize);
+  return useTargetSize && (computedFontSize > 5)
+    ? computedFontSize
+    : fontSize;
+}
+
 const Hint = ({ hintString, rect, computedStyle, horizontalPlacement, verticalPlacement, seen }) => (
   <div
     className='saka-hint-body'
@@ -142,7 +152,7 @@ const Hint = ({ hintString, rect, computedStyle, horizontalPlacement, verticalPl
         : verticalPlacement === 'bottom'
           ? window.scrollY + rect.top + rect.height
           : window.scrollY + rect.top + rect.height / 2}px`,
-      ...(useTargetSize ? { fontSize: computedStyle.fontSize } : {})
+      fontSize: generateFontSize(computedStyle)
     }}
   >
     { hintString.split('').map((char, i) => (

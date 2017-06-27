@@ -1,6 +1,7 @@
 # Todos
 
 * Add Reset All Settings Option
+* Provide link hint activation methods for firefox that don't rely on click events
 * implement scrolling pages without smoothscroll polyfill (which is large and can only scroll the scrollingElement, not subelements)
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
 * Decouple settings from modes to support more flexible per-domain settings
@@ -21,6 +22,8 @@
     * figure out why default key actions are suppressed, e.g. cmd+l won't focus the address bar unless saka key is disabled
     * figure out why onStartup event listener doesn't get triggered on temp addon install
 * link hints
+    * consider canvas based implementation for maximum rendering performance
+    * Add "Ignore Non-accessible Links" option so hints are only shown for elements with the appropriate type/aria role: encourage accessibility and improve speed
     * VimFx- position link hints by finding first text child of hintable element, taking its dimentions ignoring padding/border/margin and translating hint position so its exactly to the left of text
     * VimFx - make hints for important elements shorter (prob based on font weight)
     * VimFX - multiphase hint identification
