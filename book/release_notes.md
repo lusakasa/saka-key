@@ -1,5 +1,12 @@
 # Release Notes
 
+## 1.11
+
+* Link Hints can now be styled according to the target element's font size. This behavior is now the default
+* Link hint placement now ignores padding and borders 
+* Added settings for specifying the horizontal and vertical translation of link hints. Default is to place link hints directly to the left of the target element
+* Firefox specific bug fixes. Firefox releases will henceforth be published together with Chrome releases.
+
 ## 1.10
 
 * Fixed bug that cause "Detect Hints Using Cursor Style" setting to be ignored
