@@ -20,7 +20,7 @@
         "hintPaddingLeft": 0.25,
         "hintPaddingRight": 0.25,
         "hintPaddingTop": 0.15,
-        "hintPaddingBottom": 0.05,
+        "hintPaddingBottom": 0.15,
         "hintBorderWidth": 0,
         "hintBorderRadius": 4,
         "hintShadow": true,
