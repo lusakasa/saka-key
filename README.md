@@ -40,7 +40,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
   npm run build:prod:chrome
   ```
 
-2. Navigate to chrome://extensions
+2. Navigate to `chrome://extensions`
 
 3. Enable developer mode and click 'Load Unpacked Extension'
 
@@ -62,7 +62,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
   npm run build:prod:firefox
   ```
 
-2. Navigate to about:debugging
+2. Navigate to `about:debugging`
 
 3. Enable add-on debugging and click 'Load Temporary Add-on'
 
