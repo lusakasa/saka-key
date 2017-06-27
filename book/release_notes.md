@@ -1,5 +1,10 @@
 # Release Notes
 
+## 1.12
+
+* New default Link Hints Style that is easier to see and looks nicer (subjectively)
+* Minimum font-size setting now applies when a hint's target element's size is less than 6px
+
 ## 1.11
 
 * Link Hints can now be styled according to the target element's font size. This behavior is now the default
