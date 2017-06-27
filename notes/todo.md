@@ -6,6 +6,8 @@
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
 * Decouple settings from modes to support more flexible per-domain settings
   * requires implementing settings store in background page that takes a URL and a setting and returns a value
+* properly simulate hovers to make mouseover menus usable with link hints
+* fix gmail scrolling on firefox
 * add quick disable/enable key binding (to basic)
 * Figure out all situations in which ports to background page close and add way to gracefully restart.
   * when battery runs out/computer goes to sleep.

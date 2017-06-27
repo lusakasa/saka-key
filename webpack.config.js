@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const BabiliPlugin = require('babili-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-// process.traceDeprecation = true;
+process.traceDeprecation = true;
 
 // markdown convert to html
 var marked = require('marked');
@@ -64,6 +64,7 @@ module.exports = function (env) {
       ]
     },
     plugins: [
+      new webpack.optimize.ModuleConcatenationPlugin(),
       new CopyWebpackPlugin([
         {
           from: 'static'
