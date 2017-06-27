@@ -31,7 +31,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 1. Run the following commands in your terminal to clone and build Saka Key. 
   An extension you can run will be generated in the 'dist' directory.
 
-  ```
+  ```sh
   git clone https://github.com/lusakasa/saka-key.git
   cd saka-key
   npm install
@@ -53,7 +53,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 1. Run the following commands in your terminal to clone and build Saka Key. 
   An extension you can run will be generated in the 'dist' directory.
 
-  ```
+  ```sh
   git clone https://github.com/lusakasa/saka-key.git
   cd saka-key
   npm install
