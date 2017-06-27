@@ -25,24 +25,50 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 ## Install
 
-Run the following commands in your terminal to clone and build Saka Key
 
-```
-git clone https://github.com/lusakasa/saka-key.git
-cd saka-key
-npm install
-npm run build
-# or if you use firefox
-npm run build:firefox
-```
+### Install on Chrome
 
-An extension you can run will be generated in the 'dist' directory.
+1. Run the following commands in your terminal to clone and build Saka Key. 
+  An extension you can run will be generated in the 'dist' directory.
 
-Open Chrome and navigate to chrome://extensions
+  ```
+  git clone https://github.com/lusakasa/saka-key.git
+  cd saka-key
+  npm install
+  npm run build:chrome
+  # or if you want to generate an optimized production build
+  npm run build:prod:chrome
+  ```
 
-Enable developer mode and select 'Load unpacked Extension'
+2. Navigate to chrome://extensions
 
-Select the dist directory, and &#128640;.
+3. Enable developer mode and click 'Load Unpacked Extension'
+
+4. Select the dist directory, and &#128640;.
+
+5. Refresh existing tabs to load Saka Key into them
+
+### Install on Firefox
+
+1. Run the following commands in your terminal to clone and build Saka Key. 
+  An extension you can run will be generated in the 'dist' directory.
+
+  ```
+  git clone https://github.com/lusakasa/saka-key.git
+  cd saka-key
+  npm install
+  npm run build:firefox
+  # or if you want to generate an optimized production build
+  npm run build:prod:firefox
+  ```
+
+2. Navigate to about:debugging
+
+3. Enable add-on debugging and click 'Load Temporary Add-on'
+
+4. Select any file within the dist directory, and &#128640;.
+
+5. Firefox will load Saka Key automatically into all valid existing tabs
 
 ## Development Tips
 
