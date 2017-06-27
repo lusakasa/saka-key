@@ -42,7 +42,6 @@ export default class KeyBindingInput extends Component {
           ignoreModifierKeys={ignoreModifierKeys}
         />
         <input
-          id='meow'
           ref={(input) => input && input.focus && setTimeout(() => { input.focus(); }, 0)}
           className='keybinding-key keybinding-input mdc-typography--body1 mdc-elevation--z2'
           type='text'

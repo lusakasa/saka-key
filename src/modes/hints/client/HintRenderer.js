@@ -9,10 +9,12 @@ export let showHints;
 export let hideHints;
 export let advanceHints;
 
+let useTargetSize;
 let horizontalPlacement;
 let verticalPlacement;
 
 export function setHintRenderSettings ({
+  hintUseTargetSize,
   hintCSS,
   hintNormalCharCSS,
   hintActiveCharCSS,
@@ -21,6 +23,7 @@ export function setHintRenderSettings ({
 }) {
   horizontalPlacement = hintHorizontalPlacement;
   verticalPlacement = hintVerticalPlacement;
+  useTargetSize = hintUseTargetSize;
   hintStyle.textContent = `
 @font-face {
   font-family: Roboto; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;
@@ -53,6 +56,11 @@ function activateHint (hint, hintType) {
       break;
     case 'download':
       click({ altKey: true }); break;
+    case 'focusLink':
+      if (SAKA_DEBUG) {
+        console.log(`Hint [${hint.hintString}] targets:`, hint.element);
+      }
+      break;
     case 'currentTab':
     default:
       click();
@@ -110,6 +118,7 @@ class HintRenderer extends Component {
           <Hint
             hintString={hint.hintString}
             rect={hint.rect}
+            computedStyle={hint.computedStyle}
             horizontalPlacement={horizontalPlacement}
             verticalPlacement={verticalPlacement}
             seen={this.state.inputKeys.length} />
@@ -119,41 +128,23 @@ class HintRenderer extends Component {
   }
 }
 
-function computeHintPositionStyle (rect, horizontalPlacement, verticalPlacement) {
-  const style = { position: 'absolute' };
-  const translate = { x: 0, y: 0 };
-  switch (horizontalPlacement) {
-    case 'left':
-      style.left = `${window.scrollX + rect.left}px`;
-      break;
-    case 'right':
-      style.left = `${window.scrollX + rect.left + rect.width}px`;
-      translate.x = -100;
-      break;
-    default: // center
-      style.left = `${window.scrollX + rect.left + rect.width / 2}px`;
-      translate.x = -50;
-  }
-  switch (verticalPlacement) {
-    case 'top':
-      style.top = `${window.scrollY + rect.top}px`;
-      break;
-    case 'bottom':
-      style.top = `${window.scrollY + rect.top + rect.height}px`;
-      translate.y = -100;
-      break;
-    default: // center
-      style.top = `${window.scrollY + rect.top + rect.height / 2}px`;
-      translate.y = -50;
-  }
-  style.transform = `translate3d(${translate.x}%, ${translate.y}%, 0)`;
-  return style;
-}
-
-const Hint = ({ hintString, rect, horizontalPlacement, verticalPlacement, seen }) => (
+const Hint = ({ hintString, rect, computedStyle, horizontalPlacement, verticalPlacement, seen }) => (
   <div
     className='saka-hint-body'
-    style={computeHintPositionStyle(rect, horizontalPlacement, verticalPlacement)}>
+    style={{
+      left: `${horizontalPlacement === 'left'
+        ? window.scrollX + rect.left
+        : horizontalPlacement === 'right'
+          ? window.scrollX + rect.left + rect.width
+          : window.scrollX + rect.left + rect.width / 2}px`,
+      top: `${verticalPlacement === 'top'
+        ? window.scrollY + rect.top
+        : verticalPlacement === 'bottom'
+          ? window.scrollY + rect.top + rect.height
+          : window.scrollY + rect.top + rect.height / 2}px`,
+      ...(useTargetSize ? { fontSize: computedStyle.fontSize } : {})
+    }}
+  >
     { hintString.split('').map((char, i) => (
       <span
         className={i >= seen

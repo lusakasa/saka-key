@@ -4,75 +4,96 @@ export function setHintFindSettings (settings) {
   detectByCursorStyle = settings.hintDetectByCursorStyle;
 }
 
+/** @type {WeakMap<HTMLElement, CSSStyleDeclaration>} */
+let computedStyles;
+
 /**
  * Finds hints
  * @param {string} hintType - the type of elements to find (currently unused)
  */
 export function findHints (hintType) {
-  const candidates = [];
-  for (const element of document.querySelectorAll('*')) {
-    if (isClickable(element)) {
-      const rect = firstVisibleRect(element);
-      if (rect) {
-        candidates.push({element, rect});
+  // on Firefox, getComputedStyle() may return null for conditions I don't fully understand
+  // try-catch block prevents link hints generation from breaking.
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+  try {
+    // 1. getComputedStyle for every element
+    const allElements = document.querySelectorAll('*');
+    computedStyles = new WeakMap();
+    allElements.forEach((element) => computedStyles.set(element, getComputedStyle(element)));
+    // 2. find hintable elements
+    const hintableElements = [];
+    allElements.forEach((element) => {
+      const computedStyle = computedStyles.get(element);
+      if (isClickable(element, computedStyle)) {
+        const rect = firstVisibleRect(element);
+        if (rect) {
+          hintableElements.push({
+            element,
+            rect: removeRectPaddingAndBorders(element, rect, computedStyle),
+            computedStyle
+          });
+        }
       }
-    }
+    });
+    computedStyles = undefined;
+    return hintableElements;
+  } catch (e) {
+    return [];
   }
-  return candidates;
 }
 
-// https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
-function isClickable (element) {
-  var name = element.nodeName.toLowerCase();
-  var role = element.getAttribute('role');
-
-  return (
-    // normal html elements that can be clicked
-    name === 'a' ||
-    name === 'button' ||
-    name === 'input' && element.getAttribute('type') !== 'hidden' ||
-    name === 'select' ||
-    name === 'textarea' ||
-    // elements having an ARIA role implying clickability
-    // (see http://www.w3.org/TR/wai-aria/roles#widget_roles)
-    role === 'button' ||
-    role === 'checkbox' ||
-    role === 'combobox' ||
-    role === 'link' ||
-    role === 'menuitem' ||
-    role === 'menuitemcheckbox' ||
-    role === 'menuitemradio' ||
-    role === 'radio' ||
-    role === 'tab' ||
-    role === 'textbox' ||
-    // other ways by which we can know an element is clickable
-    element.hasAttribute('onclick') ||
-    detectByCursorStyle && window.getComputedStyle(element).cursor === 'pointer' &&
-      (!element.parentNode ||
-       window.getComputedStyle(element.parentNode).cursor !== 'pointer')
-  );
+// based on https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
+function isClickable (element, computedStyle) {
+  // clickable html elements
+  switch (element.nodeName) {
+    case 'A':
+    case 'BUTTON':
+    case 'SELECT':
+    case 'TEXTAREA':
+      return true;
+    case 'INPUT':
+      return element.type !== 'hidden';
+  }
+  // ARIA roles implying clickability
+  switch (element.getAttribute('role')) {
+    case 'button':
+    case 'checkbox':
+    case 'combobox':
+    case 'link':
+    case 'menuitem':
+    case 'menuitemcheckbox':
+    case 'menuitemradio':
+    case 'radio':
+    case 'tab':
+    case 'textbox':
+      return true;
+  }
+  // other clickable conditions
+  switch (true) {
+    case element.hasAttribute('onclick'):
+    case detectByCursorStyle &&
+         computedStyle.cursor === 'pointer' &&
+         (!element.parentNode || computedStyles.get(element.parentNode).cursor !== 'pointer'):
+      return true;
+  }
+  return false;
 }
 
-// https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
+// based on https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
 function isVisible (element, clientRect) {
-  // Exclude links which have just a few pixels on screen, because the link hints won't show for them anyway.
-  if (!clientRect ||
-    clientRect.top < 0 ||
-    clientRect.top >= window.innerHeight - 4 ||
-    clientRect.left < 0 ||
-    clientRect.left >= window.innerWidth - 4) {
-    return false;
-  }
-
-  if (clientRect.width < 3 || clientRect.height < 3) {
-    return false;
-  }
-
-  // eliminate invisible elements (see test_harnesses/visibility_test.html)
-  var computedStyle = window.getComputedStyle(element, null);
-  if (computedStyle.getPropertyValue('visibility') !== 'visible' ||
-    computedStyle.getPropertyValue('display') === 'none') {
-    return false;
+  const computedStyle = computedStyles.get(element);
+  // remove elements that are barely within the viewport, tiny, or invisible
+  switch (true) {
+    case !clientRect:
+    case clientRect.top < 0:
+    case clientRect.top >= innerHeight - 4:
+    case clientRect.left < 0:
+    case clientRect.left >= innerWidth - 4:
+    case clientRect.width < 3:
+    case clientRect.height < 3:
+    case computedStyle.visibility !== 'visible':
+    case computedStyle.display === 'none':
+      return false;
   }
 
   // Eliminate elements hidden by another overlapping element.
@@ -113,7 +134,7 @@ function isVisible (element, clientRect) {
  * Inline elements can have multiple bounding rectangles,
  * e.g. a paragraph that wraps to the next line.
  * @param {HTMLElement} element
- * @returns {rect: ClientRect}
+ * @returns {rect?: ClientRect}
  */
 function firstVisibleRect (element) {
   // Case 1. the element itself is visible
@@ -124,11 +145,42 @@ function firstVisibleRect (element) {
   }
   // Case 2. a child of the element is visible
   for (const child of element.children) {
-    var childRect = firstVisibleRect(child);
+    const childRect = firstVisibleRect(child);
     if (childRect) {
       return childRect;
     }
   }
   // Case 3. there is no bounding rectangle
   return undefined;
+}
+
+/**
+ * Given an element, its ClientRect, and its computed style,
+ * returns a ClientRect with padding and borders removed
+ * @param {HTMLElement} element
+ * @param {ClientRect} rect
+ * @param {CSSStyleDeclaration} computedStyle
+ * @returns {ClientRect}
+ */
+function removeRectPaddingAndBorders (element, rect, computedStyle) {
+  const left = rect.left +
+    parseFloat(computedStyle.paddingLeft) +
+    parseFloat(computedStyle.borderLeftWidth);
+  const right = rect.right -
+    parseFloat(computedStyle.paddingRight) -
+    parseFloat(computedStyle.borderRightWidth);
+  const top = rect.top +
+    parseFloat(computedStyle.paddingTop) +
+    parseFloat(computedStyle.borderTopWidth);
+  const bottom = rect.bottom -
+    parseFloat(computedStyle.paddingBottom) -
+    parseFloat(computedStyle.borderBottomWidth);
+  return {
+    left,
+    right,
+    top,
+    bottom,
+    width: right - left,
+    height: bottom - top
+  };
 }

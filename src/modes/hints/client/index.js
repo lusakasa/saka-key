@@ -51,7 +51,7 @@ export default {
     return 'Same';
   },
   focus: () => 'TryText',
-  mousedown: () => 'Reset',
+  mousedown: () => SAKA_DEBUG ? 'Same' : 'Reset',
   messages: {
     findHints: (ht) => {
       showVideoControls();

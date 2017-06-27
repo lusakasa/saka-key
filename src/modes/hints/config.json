@@ -7,16 +7,39 @@
       "label": "Hint Appearance"
     },
     {
+      "type": "checkbox",
+      "label": "Size Hints to targets",
+      "key": "hintUseTargetSize"
+    },
+    {
       "type": "select",
-      "label": "Hint Horizontal Placement",
+      "label": "Horizontal Placement",
       "key": "hintHorizontalPlacement",
       "choices": ["left", "center", "right"]
     },
     {
       "type": "select",
-      "label": "Hint Vertical Placement",
+      "label": "Vertical Placement",
       "key": "hintVerticalPlacement",
       "choices": ["top", "center", "bottom"]
+    },
+    {
+      "type": "number",
+      "label": "Horizontal Translation (percent)",
+      "key": "hintHorizontalTranslation",
+      "visible": "hintUseCustomCSS = false",
+      "min": -100,
+      "max": 100,
+      "step": 10
+    },
+    {
+      "type": "number",
+      "label": "Vertical Translation (percent)",
+      "key": "hintVerticalTranslation",
+      "visible": "hintUseCustomCSS = false",
+      "min": -100,
+      "max": 100,
+      "step": 10
     },
     {
       "type": "checkbox",
@@ -61,7 +84,7 @@
       "type": "number",
       "label": "Font Size",
       "key": "hintFontSize",
-      "visible": "hintUseCustomCSS = false",
+      "visible": "hintUseTargetSize = false && hintUseCustomCSS = false",
       "min": 1
     },
     {

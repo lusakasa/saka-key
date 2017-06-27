@@ -1,6 +1,6 @@
 # Saka Key
 
-A keyboard interface to the web.
+A keyboard interface to the web for everyone.
 
 Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp) or [Firefox Marketplace](https://addons.mozilla.org/en-US/firefox/addon/saka-key/). Then read the [Saka Key Handbook](http://saka-key.lusakasa.com).
 
@@ -13,17 +13,15 @@ Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/sa
 
 ## Intro
 
-Saka Key lets you navigate the web with just your keyboard. It differs from existing vi-inspired chrome extensions on four fronts:
+Saka Key lets you navigate the web with just your keyboard. It differs from existing vi-inspired Chrome extensions on four fronts:
 
-1. Its state machine [architecture](./notes/developer_guide.md) is modular, extensible, and **SIMPLE**. It is designed to be as easy as possible to add complex features with minimal effort and understanding of the codebase. 
+1. Its state machine [architecture](./notes/developer_guide.md) is modular, extensible, and **SIMPLE**. It is designed to be as easy as possible to add complex features with minimal effort and understanding of the codebase.
 
-2. It's not vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers.   
+2. It's not vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers. You shouldn't need a tutorial, but there is one
 
 3. It's engineered for configurability. The Settings GUI is generated from simple JSON files to encourage authors to make modes configurable. Any changes to a setting are automatically propogated to all tabs without requiring a page refresh. Saka Key supports _settings profiles_ that are easy to switch between and sensible default settings profiles are supported. Per-domain profiles coming soon.
 
 4. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen. These tools weren't selected just because they're hip and new. Saka Key would be something entirely different without native asynchronous support, ES6 Modules, and a functional UI library.
-
-Note: This is a developing project that has bugs and lacks features. If you're looking for a robust experience, try some of the more mature options like [Vimium](https://github.com/philc/vimium) and [cVim](https://github.com/1995eaton/chromium-vim).
 
 ## Install
 

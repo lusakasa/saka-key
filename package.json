@@ -51,7 +51,7 @@
     "markdown-loader": "^2.0.0",
     "marked": "^0.3.6",
     "material-components-web": "^0.7.0",
-    "mosi": "^1.2.0",
+    "mosi": "^1.2.1",
     "preact": "^7.2.0",
     "preact-redux": "^2.0.0",
     "promise-queue": "^2.2.3",

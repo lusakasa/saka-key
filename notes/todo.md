@@ -5,9 +5,10 @@
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
 * Decouple settings from modes to support more flexible per-domain settings
   * requires implementing settings store in background page that takes a URL and a setting and returns a value
-* Switch to KeyboardEvent.code for bindings
 * add quick disable/enable key binding (to basic)
-* Content script message ports close when battery runs out/computer goes to sleep. Figure out all situations in which port closes and add way to gracefully restart. Will probably require Mosi update... should add proper typings to that.
+* Figure out all situations in which ports to background page close and add way to gracefully restart.
+  * when battery runs out/computer goes to sleep.
+  * ? when saka key updates ?
 * screen reader support
   * ChromeVox https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en
   * Aria Landmarks https://github.com/matatk/landmarks
@@ -20,6 +21,11 @@
     * figure out why default key actions are suppressed, e.g. cmd+l won't focus the address bar unless saka key is disabled
     * figure out why onStartup event listener doesn't get triggered on temp addon install
 * link hints
+    * VimFx- position link hints by finding first text child of hintable element, taking its dimentions ignoring padding/border/margin and translating hint position so its exactly to the left of text
+    * VimFx - make hints for important elements shorter (prob based on font weight)
+    * VimFX - multiphase hint identification
+    * add backspace
+    * add final key modifiers
     * figure out the "fork me on github" link on http://www.getferro.com isn't found
     * revise link hints to get fewer false negatives (e.g. on youtube and other video players at certain resolutions)
     * link hint types: scroll, frames, inputs, select

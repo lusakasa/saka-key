@@ -74,6 +74,11 @@
       "key": "downloadLink"
     },
     {
+      "type": "keybinding",
+      "label": "Focus Link",
+      "key": "focusLink"
+    },
+    {
       "type": "header",
       "label": "Navigation"
     },

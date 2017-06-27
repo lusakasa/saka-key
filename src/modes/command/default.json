@@ -33,7 +33,10 @@
         "downloadLink": [
           [{ "code": "KeyF", "key": "f" }, { "code": "KeyD", "key": "d" }]
         ],
-        "hintChars": "asdghjklvn",
+        "focusLink": [
+          [{ "code": "KeyF", "key": "f"}, { "code": "KeyL", "key": "l" }]
+        ],
+        "hintChars": "ajskdlgheiworuvncm",
         "scrollDown": [
           [{ "code": "KeyD", "key": "d" }],
           [{ "code": "KeyJ", "key": "j" }]
@@ -204,7 +207,10 @@
         "downloadLink": [
           [{ "code": "KeyF", "key": "F", "shiftKey": true }, { "code": "KeyD", "key": "d" }]
         ],
-        "hintChars": "asdghjklvn",
+        "focusLink": [
+          [{ "code": "KeyF", "key": "F", "shiftKey": true }, { "code": "KeyL", "key": "l" }]
+        ],
+        "hintChars": "ajskdlgheiworuvncm",
         "scrollDown": [
           [{ "code": "KeyD", "key": "d" }],
           [{ "code": "KeyJ", "key": "j" }]
@@ -374,6 +380,9 @@
         "downloadLink": [
           [{ "code": "KeyF", "key": "ƒ", "altKey": true }, { "code": "KeyD", "key": "D" }]
         ],
+        "focusLink": [
+          [{ "code": "KeyF", "key": "ƒ", "altKey": true }, { "code": "KeyL", "key": "l" }]
+        ],
         "hintChars": "asdfqwerzxcv",
         "scrollDown": [
           [{ "code": "KeyD", "key": "d" }]
@@ -538,6 +547,8 @@
         "openLinkInIncognitoWindow": [
         ],
         "downloadLink": [
+        ],
+        "focusLink": [
         ],
         "hintChars": "sadfjklewcmpgh",
         "scrollDown": [

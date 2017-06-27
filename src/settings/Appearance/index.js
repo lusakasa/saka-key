@@ -33,7 +33,7 @@ export default (config, settings) => {
 function generateHintCSSFromGUISettings (settings) {
   return (
 `all: initial;
-z-index: 999999999999;
+z-index: 2147483647;
 opacity: ${settings.hintOpacity};
 font-family: ${settings.hintFontFamily};
 font-weight: ${settings.hintFontWeight};

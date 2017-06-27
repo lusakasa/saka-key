@@ -71,6 +71,10 @@ export const commands = {
     event.hintType = 'download';
     return 'Hints';
   },
+  focusLink: (event) => {
+    event.hintType = 'focusLink';
+    return 'Hints';
+  },
   // scroll commands
   scrollDown,
   scrollUp,
