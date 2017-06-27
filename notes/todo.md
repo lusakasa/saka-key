@@ -31,7 +31,8 @@
     * VimFX - multiphase hint identification
     * add backspace
     * add final key modifiers
-    * figure out the "fork me on github" link on http://www.getferro.com isn't found
+    * Add link activation method that just hovers over a link for use with dropdown on hover menus, example: https://www.numfocus.org/blog/why-is-numpy-only-now-getting-funded/#
+    * figure out why the "fork me on github" link on http://www.getferro.com isn't found
     * revise link hints to get fewer false negatives (e.g. on youtube and other video players at certain resolutions)
     * link hint types: scroll, frames, inputs, select
     * higher quality link hints https://github.com/philc/vimium/issues/2083

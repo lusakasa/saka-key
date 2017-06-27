@@ -7,9 +7,20 @@
         "enabled": true,
         "preventStealFocus": false,
         "disablePageShortcuts": false,
-        "hintDetectByCursorStyle": true,
+        "hintDetectByCursorStyle": false,
         "smoothScroll": true,
         "scrollStep": 16
+      }
+    },
+    {
+      "name": "power",
+      "settings": {
+        "enabled": true,
+        "preventStealFocus": true,
+        "disablePageShortcuts": false,
+        "hintDetectByCursorStyle": true,
+        "smoothScroll": true,
+        "scrollStep": 21
       }
     },
     {
