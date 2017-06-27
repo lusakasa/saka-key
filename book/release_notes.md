@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.13
+
+* Improved performance and smaller bundle size resulting from the move to Webpack 3 and its Module Concatenation Plugin 
+* Fixed default hint padding
+* New 'power' profile for Basic settings
+
 ## 1.12
 
 * New default Link Hints Style that is easier to see and looks nicer (subjectively)
