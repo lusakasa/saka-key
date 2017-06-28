@@ -45,36 +45,36 @@ Each mode is given its own directory at ./src/modes/modeName. Within each mode d
 * **mousedown(event)** - a function called when a keydown event is detected, returns the next mode
 * **messages** - an object containing callback that are executed when messages are received. Messages may be sent by the background page, another mode on the same page, or by a client on a completely different tab. The string returned by the callback is the next mode. Each callback takes an argument and a source id. See [mosi](https://github.com/eejdoowad/mosi) for details. To use mosi's get() functionality, return an object of the form `{ nextMode, value }`. See Hints mode for an example.
 
-All  properties are optional and asynchronous (you can use an async function that returns a promise). The default implementation is
+A mode client is an object with the following properties, all of which are optional. Note that message handling is asynchronous and DOM event handling is synchronous. The default implementation is
 
 The type definition is:
 
 ```typescript
 interface Mode {
   // called when mode is entered, passed event that triggered mode change
-  onEnter?: async (event: Event) => void,
+  onEnter?: (event: Event) => void,
   // called when mode is exited, passed event that triggered mode change
-  onExit?: async (event: Event) => void,
+  onExit?: (event: Event) => void,
   // called when a setting is updated, passed new settings object
   onSettingsChange?: ({ [key: string]: any }) => {},
   // called on every keydown event, passed keydown event, returns next mode
-  keydown?: async (event: KeyboardEvent) => string,
+  keydown?: (event: KeyboardEvent) => string,
   // called on every keypress event, passed keypress event, returns next mode
-  keypress?: async (event: KeyboardEvent) => string,
+  keypress?: (event: KeyboardEvent) => string,
   // called on every keyup event, passed keyup event, returns next mode
-  keyup?: async (event: KeyboardEvent) => string,
+  keyup?: (event: KeyboardEvent) => string,
   // called on every blur event, passed blur event, returns next mode
-  blur?: async (event: FocusEvent) => string,
+  blur?: (event: FocusEvent) => string,
   // called on every focus event, passed focus event, returns next mode
-  focus?: async (event: FocusEvent) => string,
+  focus?: (event: FocusEvent) => string,
   // called on every keydown event, passed keydown event, returns next mode
-  click?: async (event: MouseEvent) => string,
+  click?: (event: MouseEvent) => string,
   // called on every keydown event, passed keydown event, returns next mode
-  mousedown?: async (event: MouseEvent) => string,
+  mousedown?: (event: MouseEvent) => string,
   // contains message callbacks, returns next mode and optionally mosi get() value
   // https://github.com/eejdoowad/mosi
   messages?: {
-    [key: string]: (arg: any, src: number) => undefined | string | {
+    [key: string]: async (arg: any, src: number) => undefined | string | {
       nextMode: string,
       value: any
     }

@@ -35,30 +35,30 @@ If a mode is simple and has no background page component or settings, it might b
 
 ## Mode Client Component
 
-A mode client is an object with the following properties. Note that they are optional and asynchronous.
+A mode client is an object with the following properties, all of which are optional. Note that message handling is asynchronous and DOM event handling is synchronous. In the past, DOM event handling was asynchronous also, but firefox's [incorrect implementation](https://bugzilla.mozilla.org/show_bug.cgi?id=1193394) of [promises/microtasks](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/) forced a switch back to synchronous DOM event handling. If/when this bug is resolved, Saka Key will probably revert to Asynchronous DOM event handling.
 
 ```typescript
 interface ModeClient {
   // called when mode is entered, passed event that triggered mode change
-  onEnter?: async (event: Event) => void,
+  onEnter?: (event: Event) => void,
   // called when mode is exited, passed event that triggered mode change
-  onExit?: async (event: Event) => void,
+  onExit?: (event: Event) => void,
   // called when a setting is updated, passed new settings object
   onSettingsChange?: ({ [key: string]: any }) => {},
   // called on every keydown event, passed keydown event, returns next mode
-  keydown?: async (event: KeyboardEvent) => string,
+  keydown?: (event: KeyboardEvent) => string,
   // called on every keypress event, passed keypress event, returns next mode
-  keypress?: async (event: KeyboardEvent) => string,
+  keypress?: (event: KeyboardEvent) => string,
   // called on every keyup event, passed keyup event, returns next mode
-  keyup?: async (event: KeyboardEvent) => string,
+  keyup?: (event: KeyboardEvent) => string,
   // called on every blur event, passed blur event, returns next mode
-  blur?: async (event: FocusEvent) => string,
+  blur?: (event: FocusEvent) => string,
   // called on every focus event, passed focus event, returns next mode
-  focus?: async (event: FocusEvent) => string,
+  focus?: (event: FocusEvent) => string,
   // called on every keydown event, passed keydown event, returns next mode
-  click?: async (event: MouseEvent) => string,
+  click?: (event: MouseEvent) => string,
   // called on every keydown event, passed keydown event, returns next mode
-  mousedown?: async (event: MouseEvent) => string,
+  mousedown?: (event: MouseEvent) => string,
   // contains message callbacks, returns next mode and optionally mosi get() value
   // https://github.com/eejdoowad/mosi
   messages?: {
