@@ -2,7 +2,7 @@
 
 ## 1.14
 
-* Major changes to how Saka Key handles DOM Events for better compatibility across website
+* Changed to synchronous DOM Event handling for better compatibility with firefox
 * Saka Key now works consistently on websites that provide their own keyboard shortcuts, like google groups
 * Scrolling on Firefox should now work more consistently (but not yet in the popup or on pages like gmail where the scroll element can't be identified)
 * 'Prevent Page from Stealing Focus' setting should now work correctly on Firefox
