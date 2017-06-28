@@ -1,6 +1,7 @@
 import Queue from 'promise-queue';
 import { msg } from 'mosi/client';
-import { isTextEditable, fullscreenchange, normalizeEventType } from 'lib/dom';
+import { isTextEditable, normalizeEventType } from 'lib/dom';
+import { installEventListeners } from './installEventListeners';
 import {
   passDOMEventToMiddleware,
   passMessageToMiddleware,
@@ -37,9 +38,12 @@ export function initModes (startMode, availableModes) {
   });
 }
 
-export function setup () {
+export function setup (clientType) {
   msg(1, 'clientSettings');
-  installEventListeners();
+  if (clientType !== 'content_script') {
+    installEventListeners();
+  }
+  window.handleDOMEvent = handleDOMEvent;
 }
 
 /** Handles when messages containing updated settings are received */
@@ -94,7 +98,7 @@ function modeNameTransform (name) {
  * then calls the new active modes's onEnter() function.
  * @param {string} nextMode
  */
-async function setMode (nextMode, event) {
+function setMode (nextMode, event) {
   nextMode = modeNameTransform(nextMode);
   if (SAKA_DEBUG && !nextMode) {
     throw Error(`Mode ${currentMode} is missing a handler for ${event.type} events`);
@@ -108,8 +112,8 @@ async function setMode (nextMode, event) {
       console.log(`%c${event.type}: %c${currentMode} -> %c${nextMode}%c${middlewareString}`,
         'color: #2196F3;', 'color: grey;', 'color: #4CAF50;', 'color: #FF4500;', event);
     }
-    await modes[currentMode].onExit(event);
-    await modes[nextMode].onEnter(event);
+    modes[currentMode].onExit(event);
+    modes[nextMode].onEnter(event);
   }
   currentMode = nextMode;
 }
@@ -140,8 +144,8 @@ export function changeMode (modeChangeEvent) {
     }
   }
   if (enabled) {
-    eventQueue.add(async () => {
-      await setMode(modeChangeEvent.mode, modeChangeEvent);
+    eventQueue.add(() => {
+      setMode(modeChangeEvent.mode, modeChangeEvent);
     });
   }
 }
@@ -157,13 +161,11 @@ export function changeMode (modeChangeEvent) {
  */
 function handleDOMEvent (event) {
   if (enabled) {
-    eventQueue.add(async () => {
-      const nextMode = await passDOMEventToMiddleware(event) ||
-        await (modes[currentMode][normalizeEventType(event.type)](event));
-      await setMode(nextMode, event);
-    });
+    const nextMode = passDOMEventToMiddleware(event) ||
+      (modes[currentMode][normalizeEventType(event.type)](event));
+    setMode(nextMode, event);
   }
-}
+};
 
 /**
  * modeMessage is called when a valid message is received by the client.
@@ -208,26 +210,26 @@ export function modeMessage ({ mode, action, arg }, src) {
  * for other types of events, it should add a listeners in its onEnter() function, and
  * remove those listeners in its onExit() function.
  */
-function installEventListeners () {
-  const eventTypes = [
-    'keydown',
-    'keypress',
-    'keyup',
-    'blur',
-    'focus',
-    'click',
-    'mousedown',
-    fullscreenchange
-  ];
-  eventTypes.forEach((eventType) => {
-    document.addEventListener(eventType, handleDOMEvent, true);
-  });
-  // window.addEventListener('DOMContentLoaded', (event) => {
-  //   if (SAKA_DEBUG) { console.log('DOMContentLoaded'); }
-  //   document.activeElement && document.activeElement.blur && document.activeElement.blur();
-  // });
-  // window.addEventListener('load', (event) => {
-  //   if (SAKA_DEBUG) { console.log('load'); }
-  //   document.activeElement && document.activeElement.blur && document.activeElement.blur();
-  // });
-}
+// function installEventListeners () {
+//   const eventTypes = [
+//     'keydown',
+//     'keypress',
+//     'keyup',
+//     'blur',
+//     'focus',
+//     'click',
+//     'mousedown',
+//     fullscreenchange
+//   ];
+//   eventTypes.forEach((eventType) => {
+//     document.addEventListener(eventType, handleDOMEvent, true);
+//   });
+//   // window.addEventListener('DOMContentLoaded', (event) => {
+//   //   if (SAKA_DEBUG) { console.log('DOMContentLoaded'); }
+//   //   document.activeElement && document.activeElement.blur && document.activeElement.blur();
+//   // });
+//   // window.addEventListener('load', (event) => {
+//   //   if (SAKA_DEBUG) { console.log('load'); }
+//   //   document.activeElement && document.activeElement.blur && document.activeElement.blur();
+//   // });
+// }

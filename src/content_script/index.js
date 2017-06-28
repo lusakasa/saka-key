@@ -1,3 +1,3 @@
 import { initialize } from 'client';
 
-initialize('cs');
+initialize('content_script');

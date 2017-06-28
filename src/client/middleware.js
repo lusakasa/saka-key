@@ -50,7 +50,7 @@ export function middlewareOnSettingsChange (settings) {
   middleware.onSettingsChange(settings);
 }
 
-export async function passDOMEventToMiddleware (event) {
+export function passDOMEventToMiddleware (event) {
   const nextMode = middleware.events[normalizeEventType(event.type)](event);
   if (SAKA_DEBUG && nextMode) {
     event.middleware = 'generic';

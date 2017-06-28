@@ -48,5 +48,5 @@ export function initialize (type) {
   // Initialize the built-in modes. New built-in modes should be added here.
   initModes('Basic', modes);
 
-  setup();
+  setup(type);
 }
