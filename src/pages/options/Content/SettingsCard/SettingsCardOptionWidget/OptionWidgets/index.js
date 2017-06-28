@@ -9,7 +9,7 @@ import Checkbox from './Checkbox';
 import Color from './Color';
 import Text from './Text';
 import Number from './Number';
-import Textarea from './TextArea';
+import TextArea from './TextArea';
 
 // must pass:
 // * value
@@ -36,7 +36,7 @@ function optionWidgetByType (type) {
     case 'number':
       return Number;
     case 'textarea':
-      return Textarea;
+      return TextArea;
     default:
       return Unknown;
   }
