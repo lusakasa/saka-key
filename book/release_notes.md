@@ -2,6 +2,7 @@
 
 ## 1.15
 
+* Fixed bug that caused Saka Key to break when the extension was disabled then reenabled
 * Somewhat faster link hints
 * Link Hints timeout raised to 10 seconds
 * Better compatibility with pages that use Shadow DOM
