@@ -16,22 +16,19 @@
     },
     {
       "type": "header",
-      "label": "Pass Keys"
-    },
-    {
-      "type": "keybinding",
-      "label": "Pass One Key to Page",
-      "key": "passOneKey"
-    },
-    {
-      "type": "keybinding",
-      "label": "Pass All Keys to Page (press Alt twice to exit)",
-      "key": "passAllKeys"
+      "label": "Tools",
+      "visible": false
     },
     {
       "type": "keybinding",
       "label": "Toggle Help Menu",
       "key": "toggleHelpMenu",
+      "visible": false
+    },
+    {
+      "type": "keybinding",
+      "label": "Omnibar",
+      "key": "toggleOmnibar",
       "visible": false
     },
     {
@@ -345,12 +342,37 @@
     },
     {
       "type": "header",
-      "label": "Developer"
+      "label": "Pass Keys"
+    },
+    {
+      "type": "keybinding",
+      "label": "Pass One Key to Page",
+      "key": "passOneKey"
+    },
+    {
+      "type": "keybinding",
+      "label": "Pass All Keys to Page (press Alt twice to exit)",
+      "key": "passAllKeys"
+    },
+    {
+      "type": "header",
+      "label": "Clipboard"
+    },
+    {
+      "type": "keybinding",
+      "label": "Copy URL to Clipboard",
+      "key": "copyURL"
+    },
+    {
+      "type": "header",
+      "label": "Developer",
+      "visible": false
     },
     {
       "type": "keybinding",
       "label": "Developer Mode",
-      "key": "developerMode"
+      "key": "developerMode",
+      "visible": false
     }
   ]
 }

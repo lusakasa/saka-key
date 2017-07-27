@@ -21,8 +21,5 @@ export const toggleHelpMenu = () => {
     }, 100);
   }
   visible = !visible;
-  if (isTextEditable(document.activeElement)) {
-    return 'Text';
-  }
-  return 'Command';
+  return 'Reset';
 };

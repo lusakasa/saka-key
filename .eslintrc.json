@@ -33,7 +33,8 @@
     "window": true,
     "SAKA_DEBUG": true,
     "SAKA_PLATFORM": true,
-    "SAKA_VERSION": true
+    "SAKA_VERSION": true,
+    "SAKA_BENCHMARK": true
   },
 
   "ecmaFeatures": {

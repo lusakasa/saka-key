@@ -94,9 +94,6 @@ A mode's background component is an object with the following properties.
 
 ```typescript
 interface ModeBackground {
-  // called when chrome.runtime.onInstalled is fired, passed install reason
-  // https://developer.chrome.com/extensions/runtime#event-onInstalled
-  onInstalled?: (reason: string) => void,
   // called when the user updates a setting, passes the mode's options object
   // defined in config.json and the key-value pairs for all modes, returns
   // * values - the key-value pairs passed to every client
@@ -117,7 +114,6 @@ Each mode provides custom definitions for these properties. If a property is omi
 
 ```javascript
 const defaultModeObject = {
-  onInstalled: () => {},
   clientSettings: () => ({ values: {}, errors: {} }),
   messages: {}
 };

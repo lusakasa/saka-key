@@ -3,7 +3,6 @@ import { msg, meta } from 'mosi/core';
 export let modes = {};
 
 const defaultModeObject = {
-  onInstalled: () => {},
   clientSettings: () => ({ values: {}, errors: {} }),
   messages: {}
 };

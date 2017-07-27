@@ -8,24 +8,56 @@
  * @returns {boolean}
  */
 export function isTextEditable (element) {
-  const textInputTypes = [ 'text', 'search', 'email', 'url', 'number', 'password', 'date', 'tel' ];
   if (element) {
-    if (element.nodeName === 'INPUT') {
-      if (!element.disabled && !element.readonly && (!element.type || textInputTypes.includes(element.type))) {
+    switch (element.nodeName) {
+      case 'INPUT':
+        return isEditableHTMLInput(element);
+      case 'TEXTAREA':
+      case 'OBJECT':
         return true;
-      }
-    } else if (element.nodeName === 'TEXTAREA') {
-      return true;
-    } else if (element.contentEditable.toUpperCase() === 'TRUE') {
-      return true;
-    // Although applications, e.g. google docs/sheets aren't necessarily text elements
-    // they usually do their own key handling
-    } else if (element.role === 'application') {
-      return true;
     }
-    return false;
+    switch (true) {
+      case element.contentEditable.toUpperCase() === 'TRUE':
+      case element.role === 'application':
+        return true;
+    }
   }
   return false;
+}
+
+/**
+ * Returns whether the passed HTML input element is editable
+ * @param {HTMLInputElement} element
+ */
+function isEditableHTMLInput (element) {
+  if (element.disabled || element.readonly) return false;
+  switch (element.type) {
+    case undefined:
+    case 'text':
+    case 'search':
+    case 'email':
+    case 'url':
+    case 'number':
+    case 'password':
+    case 'date':
+    case 'tel':
+      return true;
+  }
+  return false;
+}
+
+/**
+ * Like document.activeElement, but penetrates through Shadow DOM
+ * A good example is: https://web.archive.org/web/20170621214451/https://material.io/icons/
+ * Click on the input. document.activeElement is different from deepActiveElement()
+ * @param {HTMLElement} root
+ */
+export function deepActiveElement (root = document) {
+  const activeElement = root.activeElement;
+  const activeElementShadowRoot = activeElement && activeElement.shadowRoot;
+  return activeElementShadowRoot
+    ? deepActiveElement(activeElementShadowRoot)
+    : activeElement;
 }
 
 /**
@@ -77,4 +109,38 @@ export function normalizeEventType (type) {
     default:
       return type;
   }
+}
+
+// TODO: figure out why elements within shadow roots aren't registered as
+// visible/clickable, then start using this method
+/**
+ * Given an HTML Element, returns a list of all elements within
+ * penetrating the shadow DOM
+ * @param {HTMLElement} root
+ */
+export function getAllElementsIncludingShadowDOM (root = document) {
+  const allElements = root.querySelectorAll('*');
+  let shadowDescendents = [];
+  allElements.forEach((element) => {
+    if (element.shadowRoot) {
+      shadowDescendents = [
+        ...shadowDescendents,
+        ...getAllElementsIncludingShadowDOM(element.shadowRoot)];
+    }
+  });
+  return [...allElements, shadowDescendents];
+}
+
+/**
+ * Copies the specified text to the clipboard
+ * @param {string} text
+ */
+export function copy (text) {
+  const textArea = document.createElement('textarea');
+  textArea.style = 'position:fixed;right:0';
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand('Copy');
+  document.body.removeChild(textArea);
 }

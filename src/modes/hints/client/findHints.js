@@ -7,6 +7,16 @@ export function setHintFindSettings (settings) {
 /** @type {WeakMap<HTMLElement, CSSStyleDeclaration>} */
 let computedStyles;
 
+function demandComputedStyle (element) {
+  if (computedStyles.has(element)) {
+    return computedStyles.get(element);
+  } else {
+    const computedStyle = getComputedStyle(element);
+    computedStyles.set(element, computedStyle);
+    return computedStyle;
+  }
+}
+
 /**
  * Finds hints
  * @param {string} hintType - the type of elements to find (currently unused)
@@ -19,14 +29,14 @@ export function findHints (hintType) {
     // 1. getComputedStyle for every element
     const allElements = document.querySelectorAll('*');
     computedStyles = new WeakMap();
-    allElements.forEach((element) => computedStyles.set(element, getComputedStyle(element)));
+    // allElements.forEach((element) => computedStyles.set(element, getComputedStyle(element)));
     // 2. find hintable elements
     const hintableElements = [];
     allElements.forEach((element) => {
-      const computedStyle = computedStyles.get(element);
-      if (isClickable(element, computedStyle)) {
+      if (isClickable(element)) {
         const rect = firstVisibleRect(element);
         if (rect) {
+          const computedStyle = demandComputedStyle(element);
           hintableElements.push({
             element,
             rect: removeRectPaddingAndBorders(element, rect, computedStyle),
@@ -36,6 +46,7 @@ export function findHints (hintType) {
       }
     });
     computedStyles = undefined;
+    console.log(hintableElements);
     return hintableElements;
   } catch (e) {
     return [];
@@ -69,19 +80,22 @@ function isClickable (element, computedStyle) {
       return true;
   }
   // other clickable conditions
-  switch (true) {
-    case element.hasAttribute('onclick'):
-    case detectByCursorStyle &&
-         computedStyle.cursor === 'pointer' &&
-         (!element.parentNode || computedStyles.get(element.parentNode).cursor !== 'pointer'):
+  if (element.hasAttribute('onclick')) return true;
+  if (detectByCursorStyle) {
+    const computedStyle = demandComputedStyle(element);
+    if (
+      computedStyle.cursor === 'pointer' &&
+      (!element.parentElement || demandComputedStyle(element.parentElement).cursor !== 'pointer')
+    ) {
       return true;
+    }
   }
   return false;
 }
 
 // based on https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
 function isVisible (element, clientRect) {
-  const computedStyle = computedStyles.get(element);
+  const computedStyle = demandComputedStyle(element);
   // remove elements that are barely within the viewport, tiny, or invisible
   switch (true) {
     case !clientRect:

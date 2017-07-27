@@ -167,9 +167,11 @@ const Hint = ({ hintString, rect, computedStyle, horizontalPlacement, verticalPl
   </div>
 );
 
+const hostElement = document.createElement('div');
+guiRoot.appendChild(hostElement);
 const hintContainer = SAKA_PLATFORM === 'chrome'
-  ? guiRoot.attachShadow({ mode: 'open' })
-  : guiRoot.appendChild(document.createElement('div'));
+  ? hostElement.attachShadow({ mode: 'open' })
+  : hostElement.appendChild(document.createElement('div'));
 const hintStyle = document.createElement('style');
 hintContainer.appendChild(hintStyle);
 render(<HintRenderer />, hintContainer);

@@ -105,7 +105,6 @@ Modes may require access to privileged APIs only accessible on the background pa
 
 Each mode has a component that lives in background page! Within each modes directory is a file named background.js. This file should export a single object with the following properties:
 
-* **onInstalled(reason)** - a function that is called when the [install event](https://developer.chrome.com/extensions/runtime#event-onInstalled) is triggered.
 * **clientSettings(options, settings)** - a function that is called whenever any setting is changed. This should return an object with two properties: values - an object containing the key-value pairs that should be forwarded to every client, and errors - an object containing error strings for keys whose values are invalid.
 * **messages** - like the client-side messages property, but always returns values (for mosi get()) never the next mode (because the state machine lives in clients, not the background page).
 
@@ -113,9 +112,6 @@ The type definition is:
 
 ```typescript
 interface ModeBackground {
-  // called when chrome.runtime.onInstalled is fired, passed install reason
-  // https://developer.chrome.com/extensions/runtime#event-onInstalled
-  onInstalled?: (reason: string) => void,
   // called when the user updates a setting, passes the mode's options object
   // defined in config.json and the key-value pairs for all modes, returns
   // * values - the key-value pairs passed to every client
@@ -136,7 +132,6 @@ The default implementation is:
 
 ```javascript
 const defaultModeObject = {
-  onInstalled: () => {},
   clientSettings: () => ({ values: {}, errors: {} }),
   messages: {}
 };

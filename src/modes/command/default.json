@@ -6,14 +6,11 @@
       "settings": {
         "physicalKeys": true,
         "ignoreModifierKeys": false,
-        "passOneKey": [
-          [{ "code": "Semicolon", "key": ";" }]
-        ],
-        "passAllKeys": [
-          [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
-        ],
         "toggleHelpMenu": [
           [{ "code": "Slash", "key": "?", "shiftKey": true }]
+        ],
+        "toggleOmnibar": [
+          [{ "code": "KeyL", "key": "l" }]
         ],
         "openLink": [
           [{ "code": "KeyF", "key": "f" }, { "code": "KeyF", "key": "f" }]
@@ -170,8 +167,16 @@
         "togglePinTab": [
           [{ "code": "KeyP", "key": "p" }]
         ],
+        "passOneKey": [
+          [{ "code": "Semicolon", "key": ";" }]
+        ],
+        "passAllKeys": [
+          [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
+        ],
+        "copyURL": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
+        ],
         "developerMode": [
-          [{ "code": "Digit8", "key": "*", "shiftKey": true }]
         ]
       }
     },
@@ -180,14 +185,11 @@
       "settings": {
         "physicalKeys": true,
         "ignoreModifierKeys": false,
-        "passOneKey": [
-          [{ "code": "Semicolon", "key": ";" }]
-        ],
-        "passAllKeys": [
-          [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
-        ],
         "toggleHelpMenu": [
           [{ "code": "Slash", "key": "?", "shiftKey": true }]
+        ],
+        "toggleOmnibar": [
+          [{ "code": "KeyL", "key": "l" }]
         ],
         "openLink": [
           [{ "code": "KeyF", "key": "f" }]
@@ -220,10 +222,12 @@
           [{ "code": "KeyK", "key": "k" }]
         ],
         "scrollLeft": [
-          [{ "code": "KeyH", "key": "h" }]
+          [{ "code": "KeyS", "key": "ß", "altKey": true }],
+          [{ "code": "KeyK", "key": "˚", "altKey": true }]
         ],
         "scrollRight": [
-          [{ "code": "KeyL", "key": "l" }]
+          [{ "code": "KeyD", "key": "∂", "altKey": true }],
+          [{ "code": "KeyJ", "key": "∆", "altKey": true }]
         ],
         "scrollPageDown": [
           [{ "code": "KeyJ", "key": "J", "shiftKey": true }]
@@ -343,8 +347,16 @@
         "togglePinTab": [
           [{ "code": "KeyP", "key": "p" }]
         ],
+        "passOneKey": [
+          [{ "code": "Semicolon", "key": ";" }]
+        ],
+        "passAllKeys": [
+          [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
+        ],
+        "copyURL": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
+        ],
         "developerMode": [
-          [{ "code": "Digit8", "key": "*", "shiftKey": true }]
         ]
       }
     },
@@ -353,14 +365,11 @@
       "settings": {
         "physicalKeys": true,
         "ignoreModifierKeys": false,
-        "passOneKey": [
-          [{ "code": "Semicolon", "key": ";" }]
-        ],
-        "passAllKeys": [
-          [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
-        ],
         "toggleHelpMenu": [
           [{ "code": "Slash", "key": "?", "shiftKey": true }]
+        ],
+        "toggleOmnibar": [
+          []
         ],
         "openLink": [
           [{ "code": "KeyF", "key": "f" }]
@@ -515,8 +524,16 @@
         "togglePinTab": [
           [{ "code": "KeyP", "key": "p" }]
         ],
+        "passOneKey": [
+          [{ "code": "Semicolon", "key": ";" }]
+        ],
+        "passAllKeys": [
+          [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
+        ],
+        "copyURL": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
+        ],
         "developerMode": [
-          [{ "code": "Digit8", "key": "*", "shiftKey": true }]
         ]
       }
     },
@@ -525,14 +542,11 @@
       "settings": {
         "physicalKeys": false,
         "ignoreModifierKeys": false,
-        "passOneKey": [
-          [{ "code": "Semicolon", "key": ";" }]
-        ],
-        "passAllKeys": [
-          [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
-        ],
         "toggleHelpMenu": [
           [{ "code": "Slash", "key": "?", "shiftKey": true }]
+        ],
+        "toggleOmnibar": [
+          [{ "code": "KeyO", "key": "o" }]
         ],
        "openLink": [
           [{ "code": "KeyF", "key": "f" }]
@@ -667,6 +681,13 @@
         ],
         "togglePinTab": [
           [{ "code": "KeyP", "key": "π", "altKey": true }]
+        ],
+        "passOneKey": [
+        ],
+        "passAllKeys": [
+        ],
+        "copyURL": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
         ],
         "developerMode": [
         ]

@@ -1,6 +1,6 @@
 import Queue from 'promise-queue';
 import { msg } from 'mosi/client';
-import { isTextEditable, normalizeEventType } from 'lib/dom';
+import { isTextEditable, deepActiveElement, normalizeEventType } from 'lib/dom';
 import { installEventListeners } from './installEventListeners';
 import {
   passDOMEventToMiddleware,
@@ -48,6 +48,12 @@ export function setup (clientType) {
 
 /** Handles when messages containing updated settings are received */
 export function clientSettings (settings) {
+  if (settings === undefined) {
+    if (SAKA_DEBUG) {
+      console.error('Received undefined client settings');
+    }
+    return;
+  }
   if (typeof settings === 'string') {
     console.error('Failed to configure client settings: ', settings);
     return;
@@ -69,8 +75,8 @@ export function clientSettings (settings) {
  * For regular mode names, returns the name unchanged.
  * Reserved mode names:
  * * Same - returns the active mode name
- * * Reset - returns either Command or Text, depending on document.activeElement
- * * TryText - if document.activeElement is a text input, returns Text. 
+ * * Reset - returns either Command or Text, depending on deepActiveElement
+ * * TryText - if deepActiveElement is a text input, returns Text. 
  *   Otherwise returns the active mode name
  * @param {string} name
  * @returns {string}
@@ -80,11 +86,11 @@ function modeNameTransform (name) {
     case 'Same':
       return currentMode;
     case 'Reset':
-      return isTextEditable(document.activeElement)
+      return isTextEditable(deepActiveElement())
         ? 'Text'
         : 'Command';
     case 'TryText':
-      return isTextEditable(document.activeElement)
+      return isTextEditable(deepActiveElement())
         ? 'Text'
         : currentMode;
     default:
@@ -199,37 +205,3 @@ export function modeMessage ({ mode, action, arg }, src) {
     });
   }
 }
-
-/**
- * Installs event listeners for all events that should be handled by the active mode.
- * These listeners are installed once, as early as possible, to prevent visited pages
- * from installing listeners earlier that could interfere with Saka Key's event handling.
- * E.g. a web page that defines its own keyboard shortcuts will interfere with Saka Key.
- * Not all modes subscribe to all events. Their handlers for those events should simply
- * return the mode's name so that the mode is unchanged. If a mode needs to listen
- * for other types of events, it should add a listeners in its onEnter() function, and
- * remove those listeners in its onExit() function.
- */
-// function installEventListeners () {
-//   const eventTypes = [
-//     'keydown',
-//     'keypress',
-//     'keyup',
-//     'blur',
-//     'focus',
-//     'click',
-//     'mousedown',
-//     fullscreenchange
-//   ];
-//   eventTypes.forEach((eventType) => {
-//     document.addEventListener(eventType, handleDOMEvent, true);
-//   });
-//   // window.addEventListener('DOMContentLoaded', (event) => {
-//   //   if (SAKA_DEBUG) { console.log('DOMContentLoaded'); }
-//   //   document.activeElement && document.activeElement.blur && document.activeElement.blur();
-//   // });
-//   // window.addEventListener('load', (event) => {
-//   //   if (SAKA_DEBUG) { console.log('load'); }
-//   //   document.activeElement && document.activeElement.blur && document.activeElement.blur();
-//   // });
-// }

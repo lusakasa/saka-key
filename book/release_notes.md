@@ -1,5 +1,12 @@
 # Release Notes
 
+## 1.15
+
+* Somewhat faster link hints
+* Link Hints timeout raised to 10 seconds
+* Better compatibility with pages that use Shadow DOM
+* Added "Copy Current URL to Clipboard" command with default binding <kbd>y</kbd><kbd>y</kbd>
+
 ## 1.14
 
 * Changed to synchronous DOM Event handling for better compatibility with firefox

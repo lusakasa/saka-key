@@ -16,8 +16,8 @@ module.exports = function (env) {
       // 'help': './src/help/index.js',
       'extensions': './src/pages/extensions/index.js',
       'info': './src/pages/info/index.js',
-      'options': './src/pages/options/index.js',
-      // 'popup': './src/popup/index.js'
+      'options': './src/pages/options/index.js'
+      // 'popup': './src/popup/index.js',
     },
     output: {
       path: __dirname + '/dist',
@@ -83,7 +83,7 @@ module.exports = function (env) {
     ]
   };
 
-  const [mode, platform] = env.split(':');
+  const [mode, platform, benchmark] = env.split(':');
   const version = require('./static/manifest.json').version;
   // mode controls:
   // 1. SAKA_DEBUG: boolean(true | false)
@@ -104,7 +104,8 @@ module.exports = function (env) {
         'process.env.NODE_ENV': JSON.stringify('production'),
         'SAKA_DEBUG': JSON.stringify(false),
         'SAKA_VERSION': JSON.stringify(version),
-        'SAKA_PLATFORM': JSON.stringify(platform)
+        'SAKA_PLATFORM': JSON.stringify(platform),
+        'SAKA_BENCHMARK': JSON.stringify(true)
       })
     ]);
   } else {
@@ -113,7 +114,8 @@ module.exports = function (env) {
         'process.env.NODE_ENV': JSON.stringify('development'),
         'SAKA_DEBUG': JSON.stringify(true),
         'SAKA_VERSION': JSON.stringify(version + ' dev'),
-        'SAKA_PLATFORM': JSON.stringify(platform)
+        'SAKA_PLATFORM': JSON.stringify(platform),
+        'SAKA_BENCHMARK': JSON.stringify(benchmark === 'benchmark')
       })
     ]);
   }

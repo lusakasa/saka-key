@@ -9,15 +9,7 @@ import { modes, regenerateClientSettings } from './modes';
  * should NOT be placed in the startup listener.
  */
 export async function setup () {
-  initInstallListeners();
-  chrome.runtime.onStartup.addListener(() => {
-    regenerateClientSettings();
-  });
-}
-
-async function installProcedure () {
-  chrome.tabs.create({ url: 'info.html' });
-  await initializeLocalStorage(modes);
+  await initInstallListeners();
   await regenerateClientSettings();
 }
 
@@ -26,26 +18,22 @@ function initInstallListeners () {
     if (SAKA_DEBUG) console.log('install event: ' + reason);
     switch (reason) {
       case 'install':
-        installProcedure();
+        await initializeLocalStorage(modes);
+        await regenerateClientSettings();
+        chrome.tabs.create({ url: 'info.html' });
         break;
       case 'update':
-        installProcedure();
+        // TODO: At some point introduce a method that upgrades settings instead of resetting them
+        await initializeLocalStorage(modes);
+        await regenerateClientSettings();
+        chrome.tabs.create({ url: 'info.html' });
         break;
       case 'chrome_update':
       case 'shared_module_update':
       default:
         break;
     }
-    Object.values(modes).forEach((mode) => {
-      mode.onInstalled(reason);
-    });
   });
-  if (SAKA_DEBUG && SAKA_PLATFORM === 'firefox') {
-    installProcedure();
-    Object.values(modes).forEach((mode) => {
-      mode.onInstalled('install');
-    });
-  }
 }
 
 // function initStorageChangeListener () {

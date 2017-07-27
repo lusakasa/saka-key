@@ -59,96 +59,98 @@ export default class SettingsCardHeader extends Component {
   }) {
     return (
       <header className='mdc-toolbar saka-toolbar settings-header'>
-        <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
-          <span className='mdc-toolbar__title'>{ name }</span>
-        </section>
-        <section className='mdc-toolbar__section mdc-toolbar__section--align-end'>
-          { this.state.state === 'default'
-            ? <select
-              className='mdc-select mode-card-select'
-              value={selectedProfile}
-              onChange={this._handleChange} >
-              { profiles.map((profile) =>
-                <option value={profile}>{profile}</option>
-              )}
-            </select>
-            : <div className='mdc-textfield' style='margin-bottom: 0px' data-demo-no-auto-js=''>
-              <input
-                ref={(el) => { this.profileNameInput = el; }}
-                type='text'
-                className='mdc-textfield__input mode-card-select'
+        <div class='mdc-toolbar__row'>
+          <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
+            <span className='mdc-toolbar__title'>{ name }</span>
+          </section>
+          <section className='mdc-toolbar__section mdc-toolbar__section--align-end'>
+            { this.state.state === 'default'
+              ? <select
+                className='mdc-select mode-card-select'
                 value={selectedProfile}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    const newName = e.target.value;
-                    if (profiles.indexOf(newName) === -1 && newName !== '') {
-                      this.renameProfile(newName);
+                onChange={this._handleChange} >
+                { profiles.map((profile) =>
+                  <option value={profile}>{profile}</option>
+                )}
+              </select>
+              : <div className='mdc-textfield' style='margin-bottom: 0px' data-demo-no-auto-js=''>
+                <input
+                  ref={(el) => { this.profileNameInput = el; }}
+                  type='text'
+                  className='mdc-textfield__input mode-card-select'
+                  value={selectedProfile}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      const newName = e.target.value;
+                      if (profiles.indexOf(newName) === -1 && newName !== '') {
+                        this.renameProfile(newName);
+                      }
+                      this.setState({ state: 'default' });
+                    } else if (e.key === 'Escape') {
+                      this.setState({ state: 'default' });
                     }
-                    this.setState({ state: 'default' });
-                  } else if (e.key === 'Escape') {
-                    this.setState({ state: 'default' });
-                  }
-                }}
-              />
-            </div>
-          }
-          <div class='mdc-menu-anchor'>
-            <button
-              className='mdc-button mode-card-settings-button'
-              onClick={this.toggleMenuVisibility}>
-              &#8942;
-            </button>
-            <div className={this.menuClasses()} tabIndex='0'>
-              <ul className='mdc-simple-menu__items mdc-list' role='menu' aria-hidden='true'>
-                { selectedProfileBuiltIn
-                  ? undefined
-                  : <li
+                  }}
+                />
+              </div>
+            }
+            <div class='mdc-menu-anchor' style='margin: 0px 10px'>
+              <button
+                className='mdc-button mode-card-settings-button'
+                onClick={this.toggleMenuVisibility}>
+                &#8942;
+              </button>
+              <div className={this.menuClasses()} tabIndex='0'>
+                <ul className='mdc-simple-menu__items mdc-list' role='menu' aria-hidden='true'>
+                  { selectedProfileBuiltIn
+                    ? undefined
+                    : <li
+                      className='mdc-list-item'
+                      role='menuitem'
+                      tabIndex='0'
+                      onClick={this.onClickRenameProfile}
+                      >
+                        Rename
+                      </li> }
+                  <li
                     className='mdc-list-item'
                     role='menuitem'
                     tabIndex='0'
-                    onClick={this.onClickRenameProfile}
-                    >
-                      Rename
-                    </li> }
-                <li
-                  className='mdc-list-item'
-                  role='menuitem'
-                  tabIndex='0'
-                  onClick={this.duplicateProfile}
-                >
-                  Duplicate
-                </li>
-                <li
-                  className='mdc-list-item'
-                  role='menuitem'
-                  tabIndex='0'
-                  onClick={this.newProfile}
-                >
-                  New
-                </li>
-                { selectedProfileBuiltIn
-                  ? <li
-                    className='mdc-list-item'
-                    role='menuitem'
-                    tabIndex='0'
-                    style={{color: 'blue'}}
-                    onClick={this.resetProfile}
+                    onClick={this.duplicateProfile}
                   >
-                    Reset
+                    Duplicate
                   </li>
-                  : <li
+                  <li
                     className='mdc-list-item'
                     role='menuitem'
                     tabIndex='0'
-                    style={{color: 'red'}}
-                    onClick={this.deleteProfile}
+                    onClick={this.newProfile}
                   >
-                    Delete
-                  </li> }
-              </ul>
+                    New
+                  </li>
+                  { selectedProfileBuiltIn
+                    ? <li
+                      className='mdc-list-item'
+                      role='menuitem'
+                      tabIndex='0'
+                      style={{color: 'blue'}}
+                      onClick={this.resetProfile}
+                    >
+                      Reset
+                    </li>
+                    : <li
+                      className='mdc-list-item'
+                      role='menuitem'
+                      tabIndex='0'
+                      style={{color: 'red'}}
+                      onClick={this.deleteProfile}
+                    >
+                      Delete
+                    </li> }
+                </ul>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </header>
     );
   }

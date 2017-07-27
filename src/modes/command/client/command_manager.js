@@ -1,6 +1,7 @@
 import Trie from 'lib/trie';
-import { keyboardEventString } from 'lib/keys';
 import { modeMsg } from 'client/msg';
+import { keyboardEventString } from 'lib/keys';
+import { copy } from 'lib/dom';
 import {
   scrollDown,
   scrollUp,
@@ -34,18 +35,8 @@ export const commands = {
     //   action: 'toggleHelpMenu'
     // });
   },
-  passOneKey: (event) => {
-    // preventDefault() to suppress keypress event
-    // no way to suppress keyup event, so Pass mode must ignore
-    // first keyup event
-    event.preventDefault();
-    event.passKeyType = 'one';
-    return 'Pass';
-  },
-  passAllKeys: (event) => {
-    event.preventDefault();
-    event.passKeyType = 'all';
-    return 'Pass';
+  toggleOmnibar: () => {
+    // modeMsg('thisTab&topFrame', 'Command', 'toggleOmnibar');
   },
   openLink: (event) => {
     event.hintType = 'currentTab';
@@ -121,7 +112,22 @@ export const commands = {
   toggleMuteTab: background('toggleMuteTab'),
   toggleMuteAllTabs: background('toggleMuteAllTabs'),
   togglePinTab: background('togglePinTab'),
-  // developer
+  passOneKey: (event) => {
+    // preventDefault() to suppress keypress event
+    // no way to suppress keyup event, so Pass mode must ignore
+    // first keyup event
+    event.preventDefault();
+    event.passKeyType = 'one';
+    return 'Pass';
+  },
+  passAllKeys: (event) => {
+    event.preventDefault();
+    event.passKeyType = 'all';
+    return 'Pass';
+  },
+  copyURL: () => {
+    copy(document.location.href);
+  },
   developerMode: () => 'Developer'
 };
 

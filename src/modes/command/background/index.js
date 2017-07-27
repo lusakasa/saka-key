@@ -29,7 +29,6 @@ import {
 } from './tab_commands';
 
 export default {
-  onInstalled: (reason) => {},
   clientSettings: (options, settings) => {
     const values = {};
     const errors = {};

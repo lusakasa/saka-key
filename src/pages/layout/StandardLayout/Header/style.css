@@ -1,13 +1,28 @@
-.options-menu-header {
+header.options-menu-header {
   z-index: 5;
 }
-
+/* TODO: replace this hideous CSS */
 .saka-logo {
   height: 32px;
   margin-right: 8px;
+  margin: 16px;
+  display: inline-block;
+  box-sizing: border-box
 }
 
-.saka-logo-text {
+.saka-logo-link {
   text-decoration: none;
   color: white;
+  padding: 0px !important;
+  vertical-align: middle;
+  box-sizing: border-box;
+  height: 64px;
+  margin-left: 0px !important;
+}
+.saka-logo-text {
+  vertical-align: middle;
+  height: 64px;
+  line-height: 64px;
+  display: inline-block;
+  margin-top: -50px;
 }

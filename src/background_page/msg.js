@@ -6,10 +6,10 @@ export const modeMsg = (dst, mode, action, arg) => msg(dst, 'modeMessage', {
   arg
 });
 
-export const modeGet = (dst, mode, action, arg) => get(dst, 'modeMessage', {
+export const modeGet = (dst, mode, action, arg, timeout) => get(dst, 'modeMessage', {
   mode,
   action,
   arg
-});
+}, timeout);
 
 export { meta } from 'mosi/core';

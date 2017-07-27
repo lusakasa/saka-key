@@ -1,5 +1,9 @@
 # Todos
 
+* Figure out why focusing the textbox on https://material.io/icons/ doesn't change modes
+* Make commands available in text mode
+* Make Tab/Select Widget for assigning keybinding to different modes
+* Make command for returning to last focused element
 * Add Reset All Settings Option
 * Provide link hint activation methods for firefox that don't rely on click events
 * implement scrolling pages without smoothscroll polyfill (which is large and can only scroll the scrollingElement, not subelements)
@@ -24,6 +28,7 @@
     * figure out why default key actions are suppressed, e.g. cmd+l won't focus the address bar unless saka key is disabled
     * figure out why onStartup event listener doesn't get triggered on temp addon install
 * link hints
+    * Find hintable elements within shadow dom, e.g. search bar on https://material.io/icons/
     * consider canvas based implementation for maximum rendering performance
     * Add "Ignore Non-accessible Links" option so hints are only shown for elements with the appropriate type/aria role: encourage accessibility and improve speed
     * VimFx- position link hints by finding first text child of hintable element, taking its dimentions ignoring padding/border/margin and translating hint position so its exactly to the left of text

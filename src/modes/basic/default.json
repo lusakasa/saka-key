@@ -7,7 +7,7 @@
         "enabled": true,
         "preventStealFocus": false,
         "disablePageShortcuts": false,
-        "hintDetectByCursorStyle": false,
+        "hintDetectByCursorStyle": true,
         "smoothScroll": true,
         "scrollStep": 16
       }
