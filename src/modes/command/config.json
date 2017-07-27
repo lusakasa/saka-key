@@ -360,7 +360,7 @@
     },
     {
       "type": "keybinding",
-      "label": "Copy URL to Clipboard",
+      "label": "Copy Current URL",
       "key": "copyURL"
     },
     {
