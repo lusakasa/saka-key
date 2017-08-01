@@ -16,10 +16,10 @@
           [{ "code": "KeyF", "key": "f" }, { "code": "KeyF", "key": "f" }]
         ],
         "openLinkInBackgroundTab": [
-          [{ "code": "KeyF", "key": "f" }, { "code": "KeyF", "key": "F", "shiftKey": true }]
+          [{ "code": "KeyF", "key": "f" }, { "code": "KeyB", "key": "b" }]
         ],
         "openLinkInForegroundTab": [
-          [{ "code": "KeyF", "key": "F", "shiftKey": true }, { "code": "KeyF", "key": "F", "shiftKey": true }]
+          [{ "code": "KeyF", "key": "f" }, { "code": "KeyF", "key": "F", "shiftKey": true }]
         ],
         "openLinkInNewWindow": [
           [{ "code": "KeyF", "key": "f" }, { "code": "KeyN", "key": "n" }]
@@ -79,10 +79,8 @@
           [{ "code": "KeyV", "key": "v" }, { "code": "KeyV", "key": "v" }]
         ],
         "nextPage": [
-          [{ "code": "BracketRight", "key": "]"}]
         ],
         "previousPage": [
-          [{ "code": "BracketLeft", "key": "["}]
         ],
         "goUp": [
           [{ "code": "KeyU", "key": "u" }, { "code": "KeyU", "key": "u" }]
@@ -91,9 +89,11 @@
           [{ "code": "KeyU", "key": "u" }, { "code": "KeyU", "key": "U", "shiftKey": true }]
         ],
         "nextTab": [
+          [{ "code": "BracketRight", "key": "]" }],
           [{ "code": "KeyW", "key": "w" }]
         ],
         "previousTab": [
+          [{ "code": "BracketLeft", "key": "[" }],
           [{ "code": "KeyQ", "key": "q" }]
         ],
         "firstTab": [
@@ -105,15 +105,19 @@
           [{ "code": "Digit0", "key": "0" }]
         ],
         "moveTabLeft": [
+          [{ "code": "BracketLeft", "key": "{", "shiftKey": true }],
           [{ "code": "KeyI", "key": "i" }]
         ],
         "moveTabRight": [
+          [{ "code": "BracketRight", "key": "}", "shiftKey": true }],
           [{ "code": "KeyO", "key": "o" }]
         ],
         "moveTabFirst": [
+          [{ "code": "BracketLeft", "key": "“", "altKey": true }],
           [{ "code": "KeyI", "key": "I", "shiftKey": true }]
         ],
         "moveTabLast": [
+          [{ "code": "BracketRight", "key": "‘", "altKey": true }],
           [{ "code": "KeyO", "key": "O", "shiftKey": true }]
         ],
         "closeTab": [
@@ -175,6 +179,21 @@
         ],
         "copyURL": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
+        ],
+        "clipboardCurrentTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyF", "key": "f" }]
+        ],
+        "clipboardBackgroundTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyB", "key": "b" }]
+        ],
+        "clipboardForegroundTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyF", "key": "F", "shiftKey": true }]
+        ],
+        "clipboardNewWindow": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyN", "key": "n" }]
+        ],
+        "clipboardIncognitoWindow": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyN", "key": "N", "shiftKey": true }]
         ],
         "developerMode": [
         ]
@@ -258,10 +277,8 @@
           [{ "code": "KeyV", "key": "v"}]
         ],
         "nextPage": [
-          [{ "code": "BracketRight", "key": "]"}, { "code": "BracketRight", "key": "]"}]
         ],
         "previousPage": [
-          [{ "code": "BracketLeft", "key": "["}, { "code": "BracketLeft", "key": "["}]
         ],
         "goUp": [
           [{ "code": "KeyU", "key": "u" }]
@@ -270,9 +287,11 @@
           [{ "code": "KeyU", "key": "U", "shiftKey": true }]
         ],
         "nextTab": [
+          [{ "code": "BracketRight", "key": "]" }],
           [{ "code": "KeyW", "key": "w" }]
         ],
         "previousTab": [
+          [{ "code": "BracketLeft", "key": "[" }],
           [{ "code": "KeyQ", "key": "q" }]
         ],
         "firstTab": [
@@ -284,15 +303,19 @@
           [{ "code": "Digit0", "key": "0" }]
         ],
         "moveTabLeft": [
+          [{ "code": "BracketLeft", "key": "{", "shiftKey": true }],
           [{ "code": "KeyI", "key": "i" }]
         ],
         "moveTabRight": [
+          [{ "code": "BracketRight", "key": "}", "shiftKey": true }],
           [{ "code": "KeyO", "key": "o" }]
         ],
         "moveTabFirst": [
+          [{ "code": "BracketLeft", "key": "“", "altKey": true }],
           [{ "code": "KeyI", "key": "I", "shiftKey": true }]
         ],
         "moveTabLast": [
+          [{ "code": "BracketRight", "key": "‘", "altKey": true }],
           [{ "code": "KeyO", "key": "O", "shiftKey": true }]
         ],
         "closeTab": [
@@ -355,6 +378,21 @@
         ],
         "copyURL": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
+        ],
+        "clipboardCurrentTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyF", "key": "f" }]
+        ],
+        "clipboardBackgroundTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyB", "key": "b" }]
+        ],
+        "clipboardForegroundTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyF", "key": "F", "shiftKey": true }]
+        ],
+        "clipboardNewWindow": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyN", "key": "n" }]
+        ],
+        "clipboardIncognitoWindow": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyN", "key": "N", "shiftKey": true }]
         ],
         "developerMode": [
         ]
@@ -437,10 +475,8 @@
           [{ "code": "KeyV", "key": "v"}]
         ],
         "nextPage": [
-          [{ "code": "BracketRight", "key": "]"}, { "code": "BracketRight", "key": "]"}]
         ],
         "previousPage": [
-          [{ "code": "BracketLeft", "key": "["}, { "code": "BracketLeft", "key": "["}]
         ],
         "goUp": [
           [{ "code": "KeyU", "key": "u"}]
@@ -533,6 +569,21 @@
         "copyURL": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
         ],
+        "clipboardCurrentTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyF", "key": "f" }]
+        ],
+        "clipboardBackgroundTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyB", "key": "b" }]
+        ],
+        "clipboardForegroundTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyF", "key": "F", "shiftKey": true }]
+        ],
+        "clipboardNewWindow": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyN", "key": "n" }]
+        ],
+        "clipboardIncognitoWindow": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyN", "key": "N", "shiftKey": true }]
+        ],
         "developerMode": [
         ]
       }
@@ -608,10 +659,8 @@
           [{ "code": "KeyL", "key": "L", "shiftKey": true }]
         ],
         "nextPage": [
-          [{ "code": "BracketRight", "key": "]"}, { "code": "BracketRight", "key": "]"}]
         ],
         "previousPage": [
-          [{ "code": "BracketLeft", "key": "["}, { "code": "BracketLeft", "key": "["}]
         ],
         "goUp": [
           [{ "code": "KeyG", "key": "g" }, { "code": "KeyU", "key": "u" }]
@@ -620,10 +669,12 @@
           [{ "code": "KeyG", "key": "g" }, { "code": "KeyU", "key": "U", "shiftKey": true }]
         ],
         "previousTab": [
-          [{ "code": "KeyJ", "key": "J", "shiftKey": true }]
+          [{ "code": "KeyJ", "key": "J", "shiftKey": true }],
+          [{ "code": "BracketLeft", "key": "["}]
         ],
         "nextTab": [
-          [{ "code": "KeyK", "key": "K", "shiftKey": true }]
+          [{ "code": "KeyK", "key": "K", "shiftKey": true }],
+          [{ "code": "BracketRight", "key": "]"}]
         ],
         "firstTab": [
           [{ "code": "KeyG", "key": "g" }, { "code": "Digit0", "key": "0" }]
@@ -688,6 +739,18 @@
         ],
         "copyURL": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
+        ],
+        "clipboardCurrentTab": [
+          [{ "code": "KeyP", "key": "p" }]
+        ],
+        "clipboardBackgroundTab": [
+        ],
+        "clipboardForegroundTab": [
+          [{ "code": "KeyP", "key": "P", "shiftKey": true }]
+        ],
+        "clipboardNewWindow": [
+        ],
+        "clipboardIncognitoWindow": [
         ],
         "developerMode": [
         ]

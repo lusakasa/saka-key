@@ -195,7 +195,6 @@ export function toggleMuteAllTabs () {
   });
 }
 
-
 /** Toggle the pin state of the active tab of the current window */
 export function togglePinTab () {
   chrome.tabs.query({ currentWindow: true, active: true }, ([tab]) => {

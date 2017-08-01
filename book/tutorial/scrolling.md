@@ -13,20 +13,20 @@ Scrolling down or up a page is simple.
 
 You can scroll faster.
 
-* **Scroll Half Page Down** - <kbd>shift+d</kbd>
-* **Scroll Half Page Up** - <kbd>shift+s</kbd>
-* **Scroll Full Page Down** - <kbd>shift+j</kbd>
-* **Scroll Full Page Up** - <kbd>shift+k</kbd>
+* **Scroll Half Page Down** - <kbd>shift-d</kbd>
+* **Scroll Half Page Up** - <kbd>shift-s</kbd>
+* **Scroll Full Page Down** - <kbd>shift-j</kbd>
+* **Scroll Full Page Up** - <kbd>shift-k</kbd>
 
 You can also scroll to the top or bottom of a page.
 
-* **Scroll to Bottom** - <kbd>shift+g</kbd>
+* **Scroll to Bottom** - <kbd>shift-g</kbd>
 * **Scroll to Top** - <kbd>g</kbd><kbd>g</kbd> (press and release <kbd>g</kbd> twice)
 
 Sometimes you want to scroll left or right.
 
-* **Scroll Left** - <kbd>alt+s</kbd> or <kbd>alt+k</kbd>
-* **Scroll Right** - <kbd>alt+d</kbd> or <kbd>alt+j</kbd>
+* **Scroll Left** - <kbd>alt-s</kbd> or <kbd>alt-k</kbd>
+* **Scroll Right** - <kbd>alt-d</kbd> or <kbd>alt-j</kbd>
 
 ## Options
 

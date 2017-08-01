@@ -364,6 +364,31 @@
       "key": "copyURL"
     },
     {
+      "type": "keybinding",
+      "label": "Activate Clipboard in Current Tab",
+      "key": "clipboardCurrentTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Activate Clipboard in Background Tab",
+      "key": "clipboardBackgroundTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Activate Clipboard in Foreground Tab",
+      "key": "clipboardForegroundTab"
+    },
+    {
+      "type": "keybinding",
+      "label": "Activate Clipboard in New Window",
+      "key": "clipboardNewWindow"
+    },
+    {
+      "type": "keybinding",
+      "label": "Activate Clipboard in Incognito Window",
+      "key": "clipboardIncognitoWindow"
+    },
+    {
       "type": "header",
       "label": "Developer",
       "visible": false

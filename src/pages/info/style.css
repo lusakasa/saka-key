@@ -51,6 +51,7 @@
 }
 
 kbd {
+  white-space: nowrap;
   color: #3f51F5;
   font-family: roboto, sans-serif;
   font-weight: normal;

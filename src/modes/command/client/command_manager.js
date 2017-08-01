@@ -128,6 +128,11 @@ export const commands = {
   copyURL: () => {
     copy(document.location.href);
   },
+  clipboardCurrentTab: background('clipboardCurrentTab'),
+  clipboardBackgroundTab: background('clipboardBackgroundTab'),
+  clipboardForegroundTab: background('clipboardForegroundTab'),
+  clipboardNewWindow: background('clipboardNewWindow'),
+  clipboardIncognitoWindow: background('clipboardIncognitoWindow'),
   developerMode: () => 'Developer'
 };
 

@@ -19,10 +19,10 @@ To abort link activation, press <kbd>Escape</kbd> or <kbd>f</kbd> or any key tha
 ## Bindings
 
 * **Open Link** - <kbd>f</kbd><kbd>f</kbd>
-* **Open Link in Background Tab** - <kbd>f</kbd><kbd>shift+f</kbd>
-* **Open Link in Foreground Tab** - <kbd>shift+f</kbd><kbd>shift+f</kbd>
+* **Open Link in Background Tab** - <kbd>f</kbd><kbd>b</kbd>
+* **Open Link in Foreground Tab** - <kbd>f</kbd><kbd>shift-f</kbd>
 * **Open Link in New Window** - <kbd>f</kbd><kbd>n</kbd>
-* **Open Link in Incognito Window** - <kbd>f</kbd><kbd>shift+n</kbd>
+* **Open Link in Incognito Window** - <kbd>f</kbd><kbd>shift-n</kbd>
 * **Download Link** - <kbd>f</kbd><kbd>d</kbd>
 
 ## Options

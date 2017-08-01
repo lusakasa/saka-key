@@ -1,5 +1,6 @@
 import { generateCommandTrie } from './trie';
 import { setKeyboardSettings } from 'lib/keys';
+import { paste } from 'lib/dom';
 import {
   nextTab,
   previousTab,
@@ -27,6 +28,13 @@ import {
   toggleMuteAllTabs,
   togglePinTab
 } from './tab_commands';
+import {
+  openCurrentTab,
+  openBackgroundTab,
+  openForegroundTab,
+  openNewWindow,
+  openIncognitoWindow
+} from './open_commands';
 
 export default {
   clientSettings: (options, settings) => {
@@ -78,6 +86,11 @@ export default {
     refreshAllTabs,
     toggleMuteTab,
     toggleMuteAllTabs,
-    togglePinTab
+    togglePinTab,
+    clipboardCurrentTab: () => openCurrentTab(paste()),
+    clipboardBackgroundTab: () => openBackgroundTab(paste()),
+    clipboardForegroundTab: () => openForegroundTab(paste()),
+    clipboardNewWindow: () => openNewWindow(paste()),
+    clipboardIncognitoWindow: () => openIncognitoWindow(paste())
   }
 };

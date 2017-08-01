@@ -43,7 +43,7 @@ export default class Trie {
   advance = (input) => {
     // TODO: Update to use longest viable prefix by trying
     // longest prefix until a valid path is found
-    const next = this.curNode[input] || this.root[input] || this.root;
+    const next = this.curNode[input] || this.root;
     // Case 1. A trie node
     if (typeof next === 'object') {
       this.curNode = next;

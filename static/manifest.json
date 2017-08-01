@@ -41,7 +41,8 @@
     "sessions",
     "storage",
     "unlimitedStorage",
-    "<all_urls>"
+    "<all_urls>",
+    "clipboardRead"
   ],
   "web_accessible_resources": [
     "hello.js",

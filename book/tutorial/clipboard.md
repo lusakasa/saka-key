@@ -9,11 +9,10 @@ You can copy the current page's URL, or you can use link hints to copy the URL o
 * **Copy Current URL** - <kbd>y</kbd><kbd>y</kbd>
 * **Copy URL Using Link Hints** - coming soon
 
-You can then _activate_ the clipboard. If the clipboard contains a URL, this will navigate to the URL. Otherwise, this will perform a search;
+You can then _activate_ the clipboard. If the clipboard contains a URL, this will navigate to the URL. Otherwise, this will perform a search.
 
-* **Activate Clipboard in Current Tab** - coming soon
-* **Activate Clipboard in New Foreground Tab** - coming soon
-* **Activate Clipboard in New Background Tab** - coming soon
-* **Activate Clipboard in New Window** - coming soon
-* **Activate Clipboard in New Incognito Window** - coming soon
-* **Activate Clipboard in New Background Tab** - coming soon
+* **Activate Clipboard in Current Tab** - <kbd>y</kbd><kbd>f</kbd>
+* **Activate Clipboard in Background Tab** - <kbd>y</kbd><kbd>b</kbd>
+* **Activate Clipboard in Foreground Tab** - <kbd>y</kbd><kbd>shift-f</kbd>
+* **Activate Clipboard in New Window** - <kbd>y</kbd><kbd>n</kbd>
+* **Activate Clipboard in Incognito Window** - <kbd>y</kbd><kbd>shift-n</kbd>

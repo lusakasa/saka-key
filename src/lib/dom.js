@@ -144,3 +144,20 @@ export function copy (text) {
   document.execCommand('Copy');
   document.body.removeChild(textArea);
 }
+
+/**
+ * Returns the clipboard contents.
+ * This method is only callable from the background page and requires
+ * the "clipboardRead" permission to be declared in manifest.json
+ * @returns {string}
+ */
+export function paste () {
+  const textArea = document.createElement('textarea');
+  textArea.style = 'position:fixed;right:0';
+  document.body.appendChild(textArea);
+  textArea.focus();
+  document.execCommand('Paste');
+  const value = textArea.value;
+  document.body.removeChild(textArea);
+  return value;
+}

@@ -26,17 +26,17 @@ Saka Key lets you, [create](), [duplicate](), [close](), [restore](), [refresh](
 
 ### Switch Tabs
 
-* **Next Tab** - <kbd>q</kbd>
-* **Previous Tab** - <kbd>w</kbd>
+* **Next Tab** - <kbd>q</kbd> or <kbd>]</kbd>
+* **Previous Tab** - <kbd>w</kbd> or <kbd>[</kbd>
 * **First Tab** - <kbd>shift+q</kbd> or <kbd>1</kbd>
 * **Last Tab** - <kbd>shift+w</kbd> or <kbd>0</kbd>
 
 ### Move Tabs
 
-* **Move Tab Left** - <kbd>i</kbd>
-* **Move Tab Right** - <kbd>o</kbd>
-* **Move Tab First** - <kbd>shift+i</kbd>
-* **Move Tab Last** - <kbd>shift+o</kbd>
+* **Move Tab Left** - <kbd>i</kbd> or <kbd>shift-[</kbd>
+* **Move Tab Right** - <kbd>o</kbd> or <kbd>shift-]</kbd>
+* **Move Tab First** - <kbd>shift+i</kbd> or <kbd>alt-[</kbd>
+* **Move Tab Last** - <kbd>shift+o</kbd> or <kbd>alt-]</kbd>
 
 ### Mute Tabs
 

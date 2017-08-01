@@ -1,5 +1,15 @@
 # Release Notes
 
+## 1.16
+
+* Starting with this release, custom settings **profiles** will be preserved across updates. All built-in profiles will still reset on every update so make sure to create a custom profile if you want your settings to be saved.
+* **Open Link in Background Tab** is now mapped to <kbd>f</kbd><kbd>b</kbd> and **Open Link in Foreground** is now mapped to <kbd>f</kbd><kbd>shift-f</kbd>.
+* Added additional bindings: **Next Tab** <kbd>]</kbd>, **Previous Tab** <kbd>[</kbd>, **Move Tab Left** <kbd>shift-[</kbd>, **Move Tab Right** <kbd>shift-]</kbd>, **Move Tab First** <kbd>alt-[</kbd>, **Move Tab Last** <kbd>alt-]</kbd>.
+* Added new commands: **Activate Clipboard in Current Tab** <kbd>y</kbd><kbd>f</kbd>, **Activate Clipboard in Background Tab** <kbd>y</kbd><kbd>b</kbd>, **Activate Clipboard in Foreground Tab**
+<kbd>y</kbd><kbd>shift-f</kbd>, **Activate Clipboard in New Window**
+<kbd>y</kbd><kbd>n</kbd>, and **Activate Clipboard in Incognito Window**
+<kbd>y</kbd><kbd>shift-n</kbd>.
+
 ## 1.15
 
 * Fixed bug that caused Saka Key to break when the extension was disabled then reenabled
@@ -75,4 +85,4 @@
 
 * Multi-frame link hints
 * Regenerate clientSettings on startup so that Saka Key doesn't break when you close then reopen your browser
-* change default link hints binding from <kbd>alt+f</kbd> to <kbd>f</kbd><kbd>f</kbd> 
+* change default link hints binding from <kbd>alt-f</kbd> to <kbd>f</kbd><kbd>f</kbd> 
