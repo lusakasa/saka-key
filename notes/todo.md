@@ -1,5 +1,6 @@
 # Todos
 
+* Add tests and release files
 * Figure out why focusing the textbox on https://material.io/icons/ doesn't change modes
 * Make commands available in text mode
 * Make Tab/Select Widget for assigning keybinding to different modes
