@@ -4,3 +4,13 @@ node_js: "lts/*"
 script:
   - npm run build:prod:firefox
   - npm run build:prod:chrome
+
+deploy:
+  provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file:
+    - "dist-firefox.zip"
+    - "dist-chrome.zip"
+  skip_cleanup: true
+  on:
+    tags: true
