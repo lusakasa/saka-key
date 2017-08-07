@@ -4,3 +4,13 @@ node_js: "lts/*"
 script:
   - npm run build:prod:firefox
   - npm run build:prod:chrome
+
+deploy:
+  provider: releases
+  api_key: cd802024f39f605f8d0d2c764cb7832e4d986116
+  file:
+    - "dist-firefox.zip"
+    - "dist-chrome.zip"
+  skip_cleanup: true
+  on:
+    tags: true
