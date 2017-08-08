@@ -1,9 +1,11 @@
 import { msg, meta } from 'mosi/core';
+import { getAllActiveProfileOptions, storageGet } from 'options/storage';
+import transformOptions from 'options/transform';
 
 export let modes = {};
 
 const defaultModeObject = {
-  clientSettings: () => ({ values: {}, errors: {} }),
+  onOptionsChange: () => {},
   messages: {}
 };
 
@@ -26,78 +28,26 @@ export async function modeMessage ({ mode, action, arg }, src) {
   return await modes[mode].messages[action](arg, src);
 };
 
-export let cachedClientSettings;
+let cachedClientOptions;
+
+export async function onOptionsChange () {
+  const { backgroundOptions, clientOptions } =
+    transformOptions(await getAllActiveProfileOptions(), (await storageGet('config')).config);
+  Object.values(modes).forEach((mode) => {
+    mode.onOptionsChange(backgroundOptions);
+  });
+  cachedClientOptions = clientOptions;
+  msg('client', 'clientOptions', clientOptions);
+}
+
+chrome.storage.onChanged.addListener(onOptionsChange);
 
 /**
  * When a client requests settings, messages back the current client settings.
  * Future: domain lookups to determine settings to message back
  */
-export function clientSettings (arg, src) {
-  msg(src, 'clientSettings', cachedClientSettings);
-}
-
-/**
- * generates client settings and sends them to every client
- */
-export async function regenerateClientSettings () {
-  cachedClientSettings = await generateClientSettings();
-  if (SAKA_DEBUG) console.log('New clientSettings generated: ', cachedClientSettings);
-  msg('client', 'clientSettings', cachedClientSettings);
-}
-
-/** Called when the user changes a setting on the options page */
-export function storageChange () {
-  regenerateClientSettings();
-}
-
-/**
- * generateClientSettings is called when the chrome.storage.onChange event fires.
- * It has two jobs:
- *
- * 1. Use the new user-defined settings to generate and cache the client settings that
- *    should be sent to every client
- * 2. Write any errors detected in the new user-defined settings to storage so the options
- *    GUI can update to show them.
- *
- * It accomplishes this by passing the user-defined settings to every mode's clientSettings
- * method. clientSettings must returns an object with two properties:
- *
- * * values: an object whose properties should be passed to every Saka client.
- * * errors: an object whose properties are written to storage to indicate invalid user-
- *   defined settings.
- */
-async function generateClientSettings () {
-  const {
-    activeProfileGroup,
-    profileGroups,
-    settings,
-    modes: modesConfig
-  } = await browser.storage.local.get([
-    'activeProfileGroup',
-    'profileGroups',
-    'settings',
-    'modes'
-  ]);
-  const profileMap = profileGroups.find(({ name }) => name === activeProfileGroup).settings;
-  const clientSettings = {};
-  // 1. Construct map containing key-value mappings for ALL modes
-  const settingsMap = Object.entries(profileMap).reduce((allSettings, [mode, profile]) => {
-    const activeProfile = settings[mode].find(({ name }) => name === profileMap[mode]);
-    const modeSettings = activeProfile.settings;
-    return Object.assign(allSettings, modeSettings);
-  }, {});
-  // 2. Generate client settings and validate settings
-  Object.entries(profileMap).forEach(([mode, profile]) => {
-    const options = modesConfig.find(({ name }) => name === mode).options;
-    const activeProfile = settings[mode].find(({ name }) => name === profileMap[mode]);
-    const { values, errors } = modes[mode].clientSettings(options, settingsMap) || {
-      values: {}, errors: {}
-    };
-    activeProfile.errors = errors;
-    Object.assign(clientSettings, values);
-  });
-  await browser.storage.local.set({ settings });
-  return clientSettings;
+export function clientOptions (arg, src) {
+  msg(src, 'clientOptions', cachedClientOptions);
 }
 
 export function loadClient (_, src) {
@@ -122,8 +72,6 @@ export function loadClient (_, src) {
   }
 }
 
-
-
 if (SAKA_PLATFORM === 'chrome') {
     /**
    * Requests for the full Saka Client by the client loaders of preloaded tabs are
@@ -147,17 +95,3 @@ if (SAKA_PLATFORM === 'chrome') {
     });
   });
 }
-
-// TODO: remove. Previously used this to detect page changes.
-// No longer needed, but might be useful in the future
-// chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-//   console.log('tabUpdate:', changeInfo);
-//   if (changeInfo.status) {
-//     console.log('sending status change');
-//     msg(`tab[${tabId}]&topFrame`, 'modeMessage', {
-//       mode: 'Command',
-//       action: 'recalculateCurrentScrollElement',
-//       arg: changeInfo[status]
-//     });
-//   }
-// });

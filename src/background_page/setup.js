@@ -1,4 +1,8 @@
-import { modes, regenerateClientSettings } from './modes';
+import { onOptionsChange } from './modes';
+import {
+  storageInstallProcedure,
+  storageUpdateProcedure
+} from 'options/installAndUpdate';
 
 /**
  * Sets up startup listener, sets up install listener, and executes setup routine
@@ -10,7 +14,7 @@ import { modes, regenerateClientSettings } from './modes';
  */
 export async function setup () {
   await initInstallListeners();
-  await regenerateClientSettings();
+  await onOptionsChange();
 }
 
 function initInstallListeners () {
@@ -18,14 +22,13 @@ function initInstallListeners () {
     if (SAKA_DEBUG) console.log('install event: ' + reason);
     switch (reason) {
       case 'install':
-        await initializeLocalStorage(modes);
-        await regenerateClientSettings();
+        await storageInstallProcedure();
+        await onOptionsChange();
         chrome.tabs.create({ url: 'info.html' });
         break;
       case 'update':
-        // TODO: At some point introduce a method that upgrades settings instead of resetting them
-        await initializeLocalStorage(modes);
-        await regenerateClientSettings();
+        await storageUpdateProcedure();
+        await onOptionsChange();
         chrome.tabs.create({ url: 'info.html' });
         break;
       case 'chrome_update':
@@ -34,88 +37,4 @@ function initInstallListeners () {
         break;
     }
   });
-}
-
-// function initStorageChangeListener () {
-//   chrome.storage.onChanged.addListener((changes, areaName) => {
-//     if (areaName === 'local') {
-//       Object.entries(changes).forEach(([key, { oldValue, newValue }]) => {
-//         if (SAKA_DEBUG) console.log(`storage listener detected ${key} changed from `, oldValue, ' to ', newValue);
-//         switch (key) {
-//           case 'settings':
-//           case 'modes':
-//           case 'profileGroups':
-//           case 'activeProfileGroup':
-//             regenerateClientSettings();
-//             break;
-//           default:
-//         }
-//       });
-//     } else {
-//       throw Error('how did that happen?');
-//     }
-//   });
-// }
-
-export async function settingsChange ({ mode, profile }, src) {
-  if (SAKA_DEBUG) {
-    if (!modes[mode]) {
-      throw Error(`Missing Mode ${mode}`);
-    }
-  }
-  const { settings } = await browser.storage.local.get('settings');
-  if (SAKA_DEBUG) {
-    console.log(`New settings for ${mode}[${profile}]`, settings[mode][profile]);
-  }
-  await modes[mode].onSettingsChange(profile, settings[mode][profile]);
-}
-
-async function initializeLocalStorage (modes) {
-  await setupDefaultModes(modes);
-  await setupDefaultSettings(modes);
-  await setupDefaultProfiles();
-}
-
-async function setupDefaultModes (modes) {
-  const startModes = Object.keys(modes).map((name) =>
-    `/config_${name.toLowerCase()}.json`
-  );
-  try {
-    const modesFetch = await Promise.all(startModes.map((path) => fetch(path)));
-    const modes = await Promise.all(modesFetch.map((fetch) => fetch.json()));
-    await browser.storage.local.set({'modes': modes});
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function setupDefaultProfiles () {
-  try {
-    const settings = (await (await fetch('/startProfiles.json')).json());
-    await browser.storage.local.set({ 'profileGroups': settings.profileGroups });
-    await browser.storage.local.set({ 'activeProfileGroup': settings.activeProfileGroup });
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// TODO: upgrade this once profiles are added
-async function setupDefaultSettings (modes) {
-  const defaultSettingsFilePaths = Object.keys(modes).map((name) =>
-    `/default_${name.toLowerCase()}.json`
-  );
-  try {
-    const defaultSettingsFetch = await Promise.all(defaultSettingsFilePaths.map((path) => fetch(path)));
-    const defaultSettings = await Promise.all(defaultSettingsFetch.map((fetch) => fetch.json()));
-    const defaultSettingsObject = {};
-    defaultSettings.forEach((defaultSetting) => {
-      defaultSetting.profiles.forEach((profile) => {
-        profile.builtIn = true;
-      });
-      defaultSettingsObject[defaultSetting.name] = defaultSetting.profiles;
-    });
-    await browser.storage.local.set({ 'settings': defaultSettingsObject });
-  } catch (error) {
-    console.error(error);
-  }
 }

@@ -1,0 +1,51 @@
+{
+  "options": [
+    {
+      "type": "paragraph",
+      "text": "WARNING: Saka Key is still in early development. Your settings will be reset when Saka Key updates."
+    },
+    {
+      "type": "paragraph",
+      "text": "FIREFOX USERS: Don't use this page from the popup. Navigate to about:addons, then click 'Preferences' to open this page in a new tab"
+    },
+    {
+      "type": "switch",
+      "label": "Saka Key Enabled",
+      "key": "enabled",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Prevent Pages From Stealing Focus",
+      "key": "preventStealFocus",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "label": "Disable Page Shortcuts (for unmapped keys)",
+      "key": "disablePageShortcuts",
+      "visible": false,
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "label": "Detect Hints Using Cursor Style",
+      "key": "hintDetectByCursorStyle",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Smooth Scroll",
+      "key": "smoothScroll",
+      "default": true
+    },
+    {
+      "type": "number",
+      "label": "Scroll Step",
+      "key": "scrollStep",
+      "step": 1,
+      "min": 1,
+      "default": 16
+    }
+  ]
+}

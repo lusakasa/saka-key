@@ -1,190 +1,120 @@
-import { combineReducers } from 'redux';
 import store from './store';
-// import update from 'immutability-helper';
+import { combineReducers } from 'redux';
 
-// V1 - how it works now
-// modes: Array<{ modeName, modeDescription, Array<{ type, key, label, {...other} }>>
-// settings: { [modeName]: Array<{ profileName, settings: { [key]: values } }>
-// profileGroups: Array<{ profileGroupName, settings: { [modeName]: profileName }
-// activeProfileGroup: string
-// selectedProfileForMode: { [modeName]: profileName } ** NOT PERSISTED LIKE THE OTHERS, lives only as long as options GUI
-//
-// -> background page listens for changes and converts to storage format designed for loading into clients
-// (not yet implemented)
-//
-// client_profile: { [modeName]: profile_Id <- generated with UUID}
-//    dependent on: 1. activeProfileGroup, 2. profileGroups
-// { ...profile_Id: modeSpecificSettingsObject
-//    dependent on: settings
-//
-// temp fix for now: fetch settings from background page
-
-
-// modes: Array<{ modeName, modeDescription, Array<{ type, key, label, {...other} }>>
-// settings: { [modeName]: Array<{ profileName, settings: { [key]: values }, ERRORS: { [key]: ERROR} }>
-// profileGroups: Array<{ profileGroupName, settings: { [modeName]: profileName }
-// activeProfileGroup: string
-//
-//
-
-
-// ---------------------------------------- future idea
-// V2 - how it will work in the future
-// modes: [modeName]    modeNames must be unique and thus serve as Ids
-// ...modeName: { modeName, modeDescription, profiles: [profileId], [{ type, key, label, {...other} }] }
-// ...profileId: { profileId, modeId, profileName, options: { [key]: value } } (one key per profile)
-// profileGroups: [profileGroupId]
-// ...profileGroupId: { profileGroupId, profileGroupName, settings: { [modeId]: profileId} }
-// activeProfileGroup: profileGroupId
-// selectedProfileForMode: { [modeId]: profileId } ** NOT PERSISTED LIKE THE OTHERS
-//
-// -> background page listens for changes and converts to storage format designed for loading into clients
-//
-// client_profile: { [modeName]: client_profileId}
-//    dependent on: 1. activeProfileGroup, 2. profileGroups
-// { ...client_profileId: modeSpecificSettingsObject
-//    dependent on: settings
-
-
-// V consider in the future
-/*
-Consider the following normalized storage format:
-
-modesList: ["1", "2", "3", "4"],
-"modes": {
-  "1": {
-    "id": 1
-    "name": "Basic",
-    "description": "Just the basics",
-    "profiles": ["1", "2"]
-    "options": [
-      {
-        "type": "checkbox",
-        "label": "Saka Key enabled",
-        "key": "enabled"
-      }
-    ]
-  },
-  "2": {
-    "id": 2,
-    "name": "Command",
-    "description": "Just Commands",
-    "profiles": ["3", "4"]
-    "options": [ ... ]
-  }
-},
-"profiles": {
-  "1": {
-    "id": "1"
-    "mode": "1",
-    "name": "default",
-    "options": { "key": "value" }
-  },
-  "2": {
-    "id": "2",
-    "mode": "1",
-    "name": "left hand",
-    "options": { "key": "value" }
-  }
-},
-"profileGroupsList": ["1", "2"]
-"profileGroups": {
-  "1": {
-    "id": "1",
-    "name": "default",
-    "map": {
-      "1": "1",
-      "2": "3"
-    }
-  }
-},
-"activeProfileGroup": "1",
-// NOT STORED
-"selectedModeProfile": {
-  "1": "1",
-  "2": "2"
-}
-*/
-
-// let defaultView;
-// export function setDefaultView (tmp) {
-//   defaultView = tmp;
-// }
-
-const view = (state = 'Info', action) => {
+const categories = (state = [], action) => {
   switch (action.type) {
-    case 'SET_VIEW':
-      return action.view;
+    case 'INITIALIZE':
+      return action.entries.categories;
     default:
       return state;
   }
 };
 
-const modes = (state = null, action) => {
+const config = (state = {}, action) => {
   switch (action.type) {
-    case 'LOAD_MODES':
-      return action.modes;
+    case 'INITIALIZE':
+      return action.entries.config;
     default:
       return state;
   }
 };
 
-const settings = (state = null, action) => {
+const builtInProfiles = (state = {}, action) => {
   switch (action.type) {
-    case 'LOAD_SETTINGS':
-      return action.settings;
+    case 'INITIALIZE':
+      return action.entries.builtInProfiles;
     default:
       return state;
   }
 };
 
-const profileGroups = (state = null, action) => {
+const customProfiles = (state = {}, action) => {
   switch (action.type) {
-    case 'LOAD_PROFILE_GROUPS':
-      return action.profileGroups;
-    default:
-      return state;
-  }
-};
-
-const activeProfileGroup = (state = null, action) => {
-  switch (action.type) {
-    case 'LOAD_ACTIVE_PROFILE_GROUP':
-      return action.activeProfileGroup;
-    default:
-      return state;
-  }
-};
-
-const selectedProfileForMode = (state = null, action) => {
-  switch (action.type) {
-    // Set selected modes to those of new Active Profile
-    // TODO: fix this so it doesn't rely on store.getState(), possibly with thunks
-    case 'SET_PROFILE_GROUP_OPTION':
-      const oldProfileMap = store.getState().profileGroups.find((p) => p.name === action.activeProfileGroupName).settings;
-      return Object.assign({}, oldProfileMap, { [action.mode]: action.profileName });
-    case 'LOAD_ACTIVE_PROFILE_GROUP':
-      return store.getState().profileGroups.find((p) => p.name === action.activeProfileGroup).settings;
-    case 'SET_SELECTED_PROFILE_FOR_MODE':
-      return Object.assign({}, state, { [action.mode]: action.newProfileName });
-    case 'DELETE_PROFILE':
-      return Object.assign({}, state, { [action.mode]: 'default' });
-    case 'ADD_PROFILE':
-      return Object.assign({}, state, { [action.mode]: action.profileName });
-    case 'RENAME_PROFILE':
-      return Object.assign({}, state, { [action.mode]: action.newProfileName });
+    case 'INITIALIZE':
+      return action.entries.customProfiles;
+    case 'NEW_PROFILE':
     case 'DUPLICATE_PROFILE':
-      return Object.assign({}, state, { [action.mode]: action.profileName });
+      const profiles = state[action.category];
+      return { ...state, [action.category]: [...profiles, action.profile] };
+    case 'DELETE_PROFILE': {
+      const profiles = { ...state };
+      profiles[action.category] = profiles[action.category]
+        .filter((profile) => profile !== action.profile);
+      return profiles;
+    }
+    case 'RENAME_PROFILE': {
+      const profiles = { ...state };
+      profiles[action.category] = profiles[action.category]
+        .map((profile) => profile === action.oldName
+          ? action.newName
+          : profile
+        );
+      return profiles;
+    }
+    default:
+      return state;
+  }
+};
+
+const activeProfiles = (state = {}, action) => {
+  switch (action.type) {
+    case 'INITIALIZE':
+      return action.entries.activeProfiles;
+    case 'SET_ACTIVE_PROFILE':
+      return { ...state, [action.category]: action.profile };
+    case 'NEW_PROFILE':
+    case 'DUPLICATE_PROFILE':
+      return { ...state, [action.category]: action.profile };
+    case 'DELETE_PROFILE':
+      return { ...state, [action.category]: 'default' };
+    case 'RENAME_PROFILE':
+      return { ...state, [action.category]: action.newName };
+    default:
+      return state;
+  }
+};
+
+const options = (state = {}, action) => {
+  switch (action.type) {
+    case 'INITIALIZE':
+      return action.entries.options;
+    case 'NEW_PROFILE':
+      const defaultOptions = {};
+      for (const option of store.getState().config[action.category]) {
+        if (option.key) {
+          defaultOptions[option.key] = option.default;
+        }
+      }
+      return { ...state, [`${action.category}_${action.profile}`]: defaultOptions };
+    case 'DUPLICATE_PROFILE':
+      const options = { ...state[`${action.category}_${action.baseProfile}`] };
+      return { ...state, [`${action.category}_${action.profile}`]: options };
+    case 'DELETE_PROFILE': {
+      const options = { ...state };
+      delete options[`${action.category}_${action.profile}`]
+      return options;
+    }
+    case 'SET_OPTION':
+      const optionsKey = `${action.category}_${action.profile}`;
+      const updatedOptions = { ...state[optionsKey], [action.key]: action.value };
+      return { ...state, [optionsKey]: updatedOptions };
+    case 'RENAME_PROFILE': {
+      const options = { ...state };
+      options[`${action.category}_${action.newName}`] = options[`${action.category}_${action.oldName}`];
+      delete options[`${action.category}_${action.oldName}`];
+      return options;
+    }
     default:
       return state;
   }
 };
 
 export default combineReducers({
-  view,
-  modes,
-  settings,
-  profileGroups,
-  activeProfileGroup,
-  selectedProfileForMode
+  categories,
+  config,
+  builtInProfiles,
+  customProfiles,
+  activeProfiles,
+  options
+  // don't store errors because errors are a function of config and options
 });

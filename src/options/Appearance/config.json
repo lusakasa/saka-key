@@ -1,0 +1,189 @@
+{
+  "name": "Appearance",
+  "options": [
+    {
+      "type": "header",
+      "label": "Hint Appearance"
+    },
+    {
+      "type": "checkbox",
+      "label": "Size Hints to targets",
+      "key": "hintUseTargetSize",
+      "default": false
+    },
+    {
+      "type": "number",
+      "label": "Default Font Size (px)",
+      "key": "hintFontSize",
+      "min": 1,
+      "default": 14
+    },
+    {
+      "type": "select",
+      "label": "Horizontal Placement",
+      "key": "hintHorizontalPlacement",
+      "choices": ["left", "center", "right"],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "label": "Vertical Placement",
+      "key": "hintVerticalPlacement",
+      "choices": ["top", "center", "bottom"],
+      "default": "center"
+    },
+    {
+      "type": "number",
+      "label": "Horizontal Translation (percent)",
+      "key": "hintHorizontalTranslation",
+      "visible": "hintUseCustomCSS = false",
+      "min": -100,
+      "max": 100,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "number",
+      "label": "Vertical Translation (percent)",
+      "key": "hintVerticalTranslation",
+      "visible": "hintUseCustomCSS = false",
+      "min": -100,
+      "max": 100,
+      "step": 10,
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "label": "Use Custom CSS",
+      "key": "hintUseCustomCSS",
+      "default": false
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "key": "hintTextColor",
+      "visible": "hintUseCustomCSS = false",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "key": "hintBackgroundColor",
+      "visible": "hintUseCustomCSS = false",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "label": "Border Color",
+      "key": "hintBorderColor",
+      "visible": "hintUseCustomCSS = false",
+      "default": "#ffffff"
+    },
+    {
+      "type": "number",
+      "label": "Opacity",
+      "key": "hintOpacity",
+      "visible": "hintUseCustomCSS = false",
+      "min": 0,
+      "max": 1,
+      "step": 0.01,
+      "default": 1
+    },
+    {
+      "type": "select",
+      "label": "Font Family",
+      "key": "hintFontFamily",
+      "choices": ["Roboto, sans-serif", "Helvetica, sans-serif", "Arial, sans-serif", "Verdana, sans-serif", "Trebuchet MS, sans-serif", "Georgia", "Times New Roman", "Courier", "Comic Sans MS", "Impact", "Charcoal", "Lucida Console", "Lucida Sans Unicode", "Lucida Grande", "Palatino Linotype", "Book Antiqua", "Palatino, Tahoma", "Geneva, Times", "Monaco"],
+      "visible": "hintUseCustomCSS = false",
+      "default": "Roboto, sans-serif"
+    },
+    {
+      "type": "select",
+      "label": "Font Weight",
+      "key": "hintFontWeight",
+      "visible": "hintUseCustomCSS = false",
+      "choices": ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      "default": "900"
+    },
+    {
+      "type": "number",
+      "label": "Padding Left (rem)",
+      "key": "hintPaddingLeft",
+      "visible": "hintUseCustomCSS = false",
+      "min": 0,
+      "step": 0.01,
+      "default": 0.25
+    },
+    {
+      "type": "number",
+      "label": "Padding Right (rem)",
+      "key": "hintPaddingRight",
+      "visible": "hintUseCustomCSS = false",
+      "min": 0,
+      "step": 0.01,
+      "default": 0.25
+    },
+    {
+      "type": "number",
+      "label": "Padding Top (rem)",
+      "key": "hintPaddingTop",
+      "visible": "hintUseCustomCSS = false",
+      "min": 0,
+      "step": 0.01,
+      "default": 0.15
+    },
+    {
+      "type": "number",
+      "label": "Padding Bottom (rem)",
+      "key": "hintPaddingBottom",
+      "visible": "hintUseCustomCSS = false",
+      "min": 0,
+      "step": 0.01,
+      "default": 0.15
+    },
+    {
+      "type": "number",
+      "label": "Border Width (px)",
+      "key": "hintBorderWidth",
+      "visible": "hintUseCustomCSS = false",
+      "min": 0,
+      "default": 2
+    },
+    {
+      "type": "number",
+      "label": "Border Radius (px)",
+      "key": "hintBorderRadius",
+      "visible": "hintUseCustomCSS = false",
+      "min": 0,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "label": "Shadow",
+      "key": "hintShadow",
+      "visible": "hintUseCustomCSS = false",
+      "default": false
+    },
+    {
+      "type": "textarea",
+      "label": "Hint CSS",
+      "key": "hintCSS",
+      "visible": "hintUseCustomCSS = true",
+      "default": ""
+    },
+    {
+      "type": "textarea",
+      "label": "Normal Character CSS",
+      "key": "hintNormalCharCSS",
+      "visible": "hintUseCustomCSS = true",
+      "default": ""
+    },
+    {
+      "type": "textarea",
+      "label": "Active Character CSS",
+      "key": "hintActiveCharCSS",
+      "visible": "hintUseCustomCSS = true",
+      "default": ""
+    }
+  ]
+}

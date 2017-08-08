@@ -1,12 +1,5 @@
 // simple middleware that intercepts events/messages before the active mode/messaged mode
 // though of a stack of handlers... but that's complex and for now isn't needed
-// see discussion at https://github.com/philc/vimium/issues/2491
-// it would probably make the code more intuitive if they were split up
-
-// Current responsibilities:
-// 1. Grab back focus if user hasn't interacted with page
-// 2. DISCONTINUED: Handle Escape key presses
-// 3. DISCONTINUED: Handle Pass keys
 
 import { normalizeEventType } from 'lib/dom';
 import { handleFullscreenChange } from './gui';
@@ -15,8 +8,8 @@ let preventStealFocus;
 let hasInteractedWithPage = false;
 
 const middleware = {
-  onSettingsChange: (settings) => {
-    preventStealFocus = settings.preventStealFocus;
+  onOptionsChange: (options) => {
+    preventStealFocus = options.preventStealFocus;
     if (!hasInteractedWithPage && preventStealFocus) {
       document.activeElement && document.activeElement.blur();
     }
@@ -46,8 +39,8 @@ const middleware = {
   messages: {}
 };
 
-export function middlewareOnSettingsChange (settings) {
-  middleware.onSettingsChange(settings);
+export function middlewareOnOptionsChange (options) {
+  middleware.onOptionsChange(options);
 }
 
 export function passDOMEventToMiddleware (event) {

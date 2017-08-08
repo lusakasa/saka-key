@@ -1,5 +1,5 @@
 import { init } from 'mosi/client';
-import { initModes, setup, changeMode, modeMessage, clientSettings } from './modes';
+import { initModes, setup, changeMode, modeMessage, clientOptions } from './modes';
 import Basic from 'modes/basic/client';
 import Command from 'modes/command/client';
 import Pass from 'modes/pass/client';
@@ -15,7 +15,7 @@ import Developer from 'modes/developer/client';
  * * 'options' - for options
  * @param {string} type - the type of client
  */
-export function initialize (type) {
+export function initialize (type, actions = {}) {
   if (SAKA_DEBUG) {
     console.log(`${type} client loaded`);
   }
@@ -25,9 +25,10 @@ export function initialize (type) {
     log: SAKA_DEBUG,
     subscriptions: ['client', type],
     actions: {
+      ...actions,
       changeMode,
       modeMessage,
-      clientSettings
+      clientOptions
     }
   });
 

@@ -1,53 +1,56 @@
+import 'lib/browser_polyfill';
 import { applyMiddleware, createStore } from 'redux';
+import { initialize as initClient } from 'client';
+import { msg } from 'mosi/client';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import {
-  loadModes,
-  loadSettings,
-  loadProfileGroups,
-  loadActiveProfileGroup
-  // loadSelectedProfileForMode
-} from 'pages/options/actions';
+import { initialize } from './actions';
+import { storageGet, storageSet } from 'options/storage';
 
-const middleWare = SAKA_DEBUG
- ? applyMiddleware(thunk, logger)
- : applyMiddleware(thunk);
+storageGet(null).then((entries) => {
+  store.dispatch(initialize(entries));
+});
+
+initClient('options_page', {
+  SYNC_ACTION: (action) => store.dispatch(action)
+});
+
+const synchronizeOptionsGUIs = (store) => (next) => (action) => {
+  if (!action.syncAction && action.type !== 'INITIALIZATION') {
+    msg('options_page&other', 'SYNC_ACTION', { ...action, syncAction: true });
+  }
+  return next(action);
+};
+
+const writeToStorage = (store) => (next) => (action) => {
+  const nextState = next(action);
+  if (!action.syncAction && action.type !== 'INITIALIZATION') {
+    storageSet(store.getState());
+  }
+  return nextState;
+};
 
 const store = createStore(
   rootReducer,
-  middleWare
+  applyMiddleware(synchronizeOptionsGUIs, writeToStorage, thunk, ...(SAKA_DEBUG ? [logger] : []))
 );
 export default store;
 
-// TODO: cleanup, timeout is dirty fix to ensure browser polyfill is loaded
-setTimeout(() => {
-  // Load initial state from chrome.storage.local
-  browser.storage.local.get(['modes', 'settings', 'profileGroups', 'activeProfileGroup'])
-    .then(({ modes, settings, profileGroups, activeProfileGroup, selectedProfileForMode }) => {
-      store.dispatch(loadModes(modes));
-      store.dispatch(loadSettings(settings));
-      store.dispatch(loadProfileGroups(profileGroups));
-      store.dispatch(loadActiveProfileGroup(activeProfileGroup));
-    });
-  // Whenever chrome.storage.local changes, update the GUI
-  // Action creators don't actually modify state (because no reducers listen for those action types)
-  // They are called only for their side effects (which write to chrome.storage.local)
-  // Instead, state is modified when a change is noticed in chrome.storage.local
-  browser.storage.onChanged.addListener((changes, area) => {
-    if (area === 'local') {
-      if (changes.hasOwnProperty('modes')) {
-        store.dispatch(loadModes(changes.modes.newValue));
-      }
-      if (changes.hasOwnProperty('settings')) {
-        store.dispatch(loadSettings(changes.settings.newValue));
-      }
-      if (changes.hasOwnProperty('profileGroups')) {
-        store.dispatch(loadProfileGroups(changes.profileGroups.newValue));
-      }
-      if (changes.hasOwnProperty('activeProfileGroup')) {
-        store.dispatch(loadActiveProfileGroup(changes.activeProfileGroup.newValue));
-      }
-    }
-  });
-}, 0);
+// // Whenever chrome.storage.local changes, update the GUI
+// // Action creators don't actually modify state (because no reducers listen for those action types)
+// // They are called only for their side effects (which write to chrome.storage.local)
+// // Instead, state is modified when a change is noticed in chrome.storage.local
+// browser.storage.onChanged.addListener((changes, area) => {
+//   if (area === 'local') {
+//     if (changes.hasOwnProperty('modes')) {
+//       store.dispatch(loadModes(changes.modes.newValue));
+//     }
+//     if (changes.hasOwnProperty('settings')) {
+//       store.dispatch(loadSettings(changes.settings.newValue));
+//     }
+//     if (changes.hasOwnProperty('profileGroups')) {
+//       store.dispatch(loadProfileGroups(changes.profileGroups.newValue));
+//     }
+//   }
+// });

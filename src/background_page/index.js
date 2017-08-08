@@ -4,8 +4,7 @@ import {
   loadClient,
   initModes,
   modeMessage,
-  clientSettings,
-  storageChange
+  clientOptions
 } from 'background_page/modes';
 import { setup } from './setup';
 import Basic from 'modes/basic/background';
@@ -22,8 +21,7 @@ init({
   actions: {
     loadClient,
     modeMessage,
-    clientSettings,
-    storageChange
+    clientOptions
   }
 });
 

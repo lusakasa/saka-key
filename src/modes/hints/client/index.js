@@ -26,9 +26,9 @@ export default {
     hideHints();
     hideVideoControls();
   },
-  onSettingsChange: (settings) => {
-    setHintRenderSettings(settings);
-    setHintFindSettings(settings);
+  onOptionsChange: (options) => {
+    setHintRenderSettings(options);
+    setHintFindSettings(options);
   },
   keydown: (event) => {
     event.stopImmediatePropagation();

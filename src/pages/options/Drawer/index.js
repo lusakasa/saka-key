@@ -8,23 +8,23 @@ const scrollToCard = (name) => () => {
   document.scrollingElement.scrollTop = newScrollTop;
 };
 
-class SettingsDrawer extends Component {
+class Drawer extends Component {
   state = {
      // the first card for which its bottom is below the viewport top
-    activeCard: SAKA_PLATFORM !== 'firefox' ? 'Basic' : ''
+    activeCard: SAKA_PLATFORM !== 'firefox' ? 'General' : ''
   }
   componentDidMount () {
     if (SAKA_PLATFORM !== 'firefox') {
       document.addEventListener('scroll', (event) => {
-        const cardNames = this.props.modes;
-        const cardBottoms = cardNames.map((name) =>
-          document.querySelector(`#settings_card_${name}`)
+        const { categories } = this.props;
+        const cardBottoms = categories.map((category) =>
+          document.querySelector(`#settings_card_${category}`)
             .getBoundingClientRect().bottom + pageYOffset
         );
         const activeCardIndex = cardBottoms.findIndex((bottom) =>
           bottom > document.scrollingElement.scrollTop + 84
         );
-        this.setState({ activeCard: cardNames[activeCardIndex] });
+        this.setState({ activeCard: categories[activeCardIndex] });
       });
     }
   }
@@ -33,7 +33,7 @@ class SettingsDrawer extends Component {
       ? '#3f51b5'
       : '#000000';
   }
-  render ({ modes }) {
+  render ({ categories }) {
     return (
       <div
         class='mdc-card'
@@ -54,24 +54,22 @@ class SettingsDrawer extends Component {
             </a>
             <hr class='mdc-list-divider' />*/}
             <nav class='mdc-list'>
-              { modes.map((name) =>
+              { categories.map((category) =>
                 <a
                   class='mdc-list-item settings-drawer-link'
-                  style={{ color: this.calculateLinkColor(name) }}
-                  onClick={scrollToCard(name)}
+                  style={{ color: this.calculateLinkColor(category) }}
+                  onClick={scrollToCard(category)}
                 >
-                  { name }
+                  { category }
                 </a>
               )}
+              <a
+                class='mdc-list-item settings-drawer-link'
+                style={{ color: 'black' }}
+              >
+                Import, Export and Reset
+              </a>
             </nav>
-            {/* <div class='mdc-permanent-drawer__toolbar-spacer' /> */}
-            {/*<nav class='mdc-list'>
-              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Enable Profile</a>
-              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Share Profile</a>
-              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Delete Profile</a>
-              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>GUI Configuration</a>
-              <a class='mdc-list-item mdc-permanent-drawer--selected' href='#'>Text Configuration</a>
-            </nav>*/}
           </div>
         </nav>
       </div>
@@ -79,7 +77,5 @@ class SettingsDrawer extends Component {
   }
 }
 
-const mapStateToProps = ({ modes }) => ({
-  modes: modes ? modes.map((mode) => mode.name) : []
-});
-export default connect(mapStateToProps)(SettingsDrawer);
+const mapStateToProps = ({ categories }) => ({ categories });
+export default connect(mapStateToProps)(Drawer);

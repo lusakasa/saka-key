@@ -2,13 +2,24 @@
 
 ## 1.16
 
-* Starting with this release, custom settings **profiles** will be preserved across updates. All built-in profiles will still reset on every update so make sure to create a custom profile if you want your settings to be saved.
-* **Open Link in Background Tab** is now mapped to <kbd>f</kbd><kbd>b</kbd> and **Open Link in Foreground** is now mapped to <kbd>f</kbd><kbd>shift-f</kbd>.
-* Added additional bindings: **Next Tab** <kbd>]</kbd>, **Previous Tab** <kbd>[</kbd>, **Move Tab Left** <kbd>shift-[</kbd>, **Move Tab Right** <kbd>shift-]</kbd>, **Move Tab First** <kbd>alt-[</kbd>, **Move Tab Last** <kbd>alt-]</kbd>.
-* Added new commands: **Activate Clipboard in Current Tab** <kbd>y</kbd><kbd>f</kbd>, **Activate Clipboard in Background Tab** <kbd>y</kbd><kbd>b</kbd>, **Activate Clipboard in Foreground Tab**
-<kbd>y</kbd><kbd>shift-f</kbd>, **Activate Clipboard in New Window**
-<kbd>y</kbd><kbd>n</kbd>, and **Activate Clipboard in Incognito Window**
-<kbd>y</kbd><kbd>shift-n</kbd>.
+* Custom profiles will now be preserved when Saka Key updates
+* Built-in profiles can no longer be modified
+* Creating a New profile now creates a (mostly) blank profile
+* Many bug fixes on the options page
+* You can now import and export your settings
+* Modified binding **Open Link in Background Tab** <kbd>f</kbd><kbd>b</kbd>
+* Modified binding **Open Link in Foreground** <kbd>f</kbd><kbd>shift-f</kbd>.
+* Additional binding **Next Tab** <kbd>]</kbd>
+* Additional binding **Previous Tab** <kbd>[</kbd>
+* Additional binding **Move Tab Left** <kbd>shift-[</kbd>
+* Additional binding **Move Tab Right** <kbd>shift-]</kbd>
+* Additional binding **Move Tab First** <kbd>alt-[</kbd>
+* Additional binding **Move Tab Last** <kbd>alt-]</kbd>.
+* New command **Activate Clipboard in Current Tab** <kbd>y</kbd><kbd>f</kbd>
+* New command **Activate Clipboard in Background Tab** <kbd>y</kbd><kbd>b</kbd>
+* New command **Activate Clipboard in Foreground Tab** <kbd>y</kbd><kbd>shift-f</kbd>
+* New command **Activate Clipboard in New Window** <kbd>y</kbd><kbd>n</kbd>
+* New command **Activate Clipboard in Incognito Window** <kbd>y</kbd><kbd>shift-n</kbd>.
 
 ## 1.15
 

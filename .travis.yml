@@ -1,4 +1,9 @@
 language: node_js
-node_js: "lts/*"
-
+node_js: lts/*
 script: npm run build:prod:firefox
+deploy:
+  provider: releases
+  api_key: cd802024f39f605f8d0d2c764cb7832e4d986116
+  file: dist-chrome.zip
+  on:
+    repo: lusakasa/saka-key

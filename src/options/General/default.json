@@ -1,0 +1,38 @@
+{
+  "name": "Basic",
+  "profiles": [
+    {
+      "name": "default",
+      "options": {
+        "enabled": true,
+        "preventStealFocus": false,
+        "disablePageShortcuts": false,
+        "hintDetectByCursorStyle": true,
+        "smoothScroll": true,
+        "scrollStep": 16
+      }
+    },
+    {
+      "name": "power",
+      "options": {
+        "enabled": true,
+        "preventStealFocus": true,
+        "disablePageShortcuts": false,
+        "hintDetectByCursorStyle": true,
+        "smoothScroll": true,
+        "scrollStep": 21
+      }
+    },
+    {
+      "name": "disabled",
+      "options": {
+        "enabled": false,
+        "preventStealFocus": false,
+        "disablePageShortcuts": false,
+        "hintDetectByCursorStyle": true,
+        "smoothScroll": true,
+        "scrollStep": 16
+      }
+    }
+  ]
+}

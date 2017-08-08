@@ -1,0 +1,470 @@
+{
+  "options": [
+    {
+      "type": "paragraph",
+      "text": "Keyboard commands for controlling your browser"
+    },
+    {
+      "type": "checkbox",
+      "label": "Bind to physical keys (en-US QWERTY) not characters",
+      "key": "physicalKeys",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "label": "Ignore modifier keys",
+      "help": "On some platforms, typing a key together with a modifier key doesn't change the character produced. For example, on Windows QWERTY keyboards, typing Alt+f produces the same character as typing f by itself. Enable this option to distinguish between the two.",
+      "key": "ignoreModifierKeys",
+      "visible": "physicalKeys = false",
+      "default": false
+    },
+    {
+      "type": "header",
+      "label": "Tools",
+      "visible": false
+    },
+    {
+      "type": "keybinding",
+      "label": "Toggle Help Menu",
+      "key": "toggleHelpMenu",
+      "visible": false,
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Omnibar",
+      "key": "toggleOmnibar",
+      "visible": false,
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Link Hints"
+    },
+    {
+      "type": "text",
+      "label": "Hint Characters",
+      "key": "hintChars",
+      "default": ""
+    },
+    {
+      "type": "keybinding",
+      "label": "Open Link",
+      "key": "openLink",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Open Link in Background Tab",
+      "key": "openLinkInBackgroundTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Open Link in Foreground Tab",
+      "key": "openLinkInForegroundTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Open Link in New Window",
+      "key": "openLinkInNewWindow",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Open Link in Incognito Window",
+      "key": "openLinkInIncognitoWindow",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Download Link",
+      "key": "downloadLink",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Focus Link",
+      "key": "focusLink",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Navigation"
+    },
+    {
+      "type": "keybinding",
+      "label": "Go Back",
+      "key": "goBack",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Go Forward",
+      "key": "goForward",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Next Page",
+      "key": "nextPage",
+      "visible": false,
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Previous Page",
+      "key": "previousPage",
+      "visible": false,
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Go Up",
+      "key": "goUp",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Go To Root",
+      "key": "goToRoot",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Scroll"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Down",
+      "key": "scrollDown",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Up",
+      "key": "scrollUp",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Right",
+      "key": "scrollRight",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Left",
+      "key": "scrollLeft",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Scroll Faster"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Page Down",
+      "key": "scrollPageDown"
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Page Up",
+      "key": "scrollPageUp",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Half Page Down",
+      "key": "scrollHalfPageDown",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll Half Page Up",
+      "key": "scrollHalfPageUp",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll To Bottom",
+      "key": "scrollToBottom",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll To Top",
+      "key": "scrollToTop",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll To Left",
+      "key": "scrollToLeft",
+      "visible": false,
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Scroll To Right",
+      "key": "scrollToRight",
+      "visible": false,
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Zoom"
+    },
+    {
+      "type": "keybinding",
+      "label": "Zoom In",
+      "key": "zoomIn",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Zoom Out",
+      "key": "zoomOut",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Zoom Reset",
+      "key": "zoomReset",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Create and Duplicate Tabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "New Tab",
+      "key": "newTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Duplicate Tab",
+      "key": "duplicateTab",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Close and Restore Tabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Close Tab",
+      "key": "closeTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Close Other Tabs",
+      "key": "closeOtherTabs",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Close Right Tabs",
+      "key": "closeRightTabs",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Close Left Tabs",
+      "key": "closeLeftTabs",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Restore Tab",
+      "key": "restoreTab",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Refresh Tabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Refresh Tab",
+      "key": "refreshTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Refresh All Tabs",
+      "key": "refreshAllTabs",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Switch Tabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Next Tab",
+      "key": "nextTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Previous Tab",
+      "key": "previousTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "First Tab",
+      "key": "firstTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Last Tab",
+      "key": "lastTab",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Move Tabs",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab Left",
+      "key": "moveTabLeft",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab Right",
+      "key": "moveTabRight",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab First",
+      "key": "moveTabFirst",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Move Tab Last",
+      "key": "moveTabLast",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Mute Tabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Toggle Mute Tab",
+      "key": "toggleMuteTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Toggle Mute All Tabs",
+      "key": "toggleMuteAllTabs",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Pin Tabs"
+    },
+    {
+      "type": "keybinding",
+      "label": "Toggle Pin Tab",
+      "key": "togglePinTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "New Window",
+      "key": "newWindow",
+      "visible": false,
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Switch Window",
+      "key": "switchWindow",
+      "visible": false,
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Pass Keys"
+    },
+    {
+      "type": "keybinding",
+      "label": "Pass One Key to Page",
+      "key": "passOneKey",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Pass All Keys to Page (press Alt twice to exit)",
+      "key": "passAllKeys",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Clipboard"
+    },
+    {
+      "type": "keybinding",
+      "label": "Copy Current URL",
+      "key": "copyURL",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Activate Clipboard in Current Tab",
+      "key": "clipboardCurrentTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Activate Clipboard in Background Tab",
+      "key": "clipboardBackgroundTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Activate Clipboard in Foreground Tab",
+      "key": "clipboardForegroundTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Activate Clipboard in New Window",
+      "key": "clipboardNewWindow",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Activate Clipboard in Incognito Window",
+      "key": "clipboardIncognitoWindow",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Developer",
+      "visible": false,
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Developer Mode",
+      "key": "developerMode",
+      "visible": false,
+      "default": []
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import { installEventListeners } from './installEventListeners';
 import {
   passDOMEventToMiddleware,
   passMessageToMiddleware,
-  middlewareOnSettingsChange
+  middlewareOnOptionsChange
 } from './middleware';
 
 /** The active mode of the Modes state machine */
@@ -17,7 +17,7 @@ let enabled = false;
 const defaultModeObject = {
   onEnter: () => {},
   onExit: () => {},
-  onSettingsChange: () => {},
+  onOptionsChange: () => {},
   keydown: () => 'Same',
   keypress: () => 'Same',
   keyup: () => 'Same',
@@ -39,34 +39,34 @@ export function initModes (startMode, availableModes) {
 }
 
 export function setup (clientType) {
-  msg(1, 'clientSettings');
+  msg(1, 'clientOptions');
   if (clientType !== 'content_script') {
     installEventListeners();
   }
   window.handleDOMEvent = handleDOMEvent;
 }
 
-/** Handles when messages containing updated settings are received */
-export function clientSettings (settings) {
-  if (settings === undefined) {
+/** Handles when messages containing updated options are received */
+export function clientOptions (options) {
+  if (options === undefined) {
     if (SAKA_DEBUG) {
-      console.error('Received undefined client settings');
+      console.error('Received undefined client options');
     }
     return;
   }
-  if (typeof settings === 'string') {
-    console.error('Failed to configure client settings: ', settings);
+  if (typeof options === 'string') {
+    console.error('Failed to configure client options: ', options);
     return;
   }
-  enabled = settings.enabled;
+  enabled = options.enabled;
   Object.entries(modes).forEach(([name, mode]) => {
-    mode.onSettingsChange(settings);
+    mode.onOptionsChange(options);
   });
-  middlewareOnSettingsChange(settings);
+  middlewareOnOptionsChange(options);
   changeMode({
-    mode: settings.enabled ? 'Reset' : 'Basic',
-    type: 'clientSettings',
-    settings
+    mode: options.enabled ? 'Reset' : 'Basic',
+    type: 'clientOptions',
+    options
   });
 }
 

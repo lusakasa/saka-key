@@ -1,44 +1,12 @@
 import { modeMsg, modeGet, meta } from 'background_page/msg';
 import { generateHintStrings } from './hintStrings';
 import { isModifierKey } from 'lib/keys';
-import { generateHintCSS } from './generateHintCSS';
 
 let hintChars = 'adsfghjkl;';
 
 export default {
-  clientSettings: (options, settings) => {
-    const errors = {};
-    let {
-      hintFontSize,
-      hintUseTargetSize,
-      hintCSS,
-      hintNormalCharCSS,
-      hintActiveCharCSS,
-      hintDetectByCursorStyle,
-      hintHorizontalPlacement,
-      hintVerticalPlacement
-    } = settings;
-    if (settings.hintUseCustomCSS) {
-      hintCSS = `all: initial; position: absolute; z-index: 2147483647; ${hintCSS}`;
-    } else {
-      hintCSS = generateHintCSS(settings);
-      hintNormalCharCSS = '';
-      hintActiveCharCSS = 'opacity: 0.5';
-    }
-    hintChars = settings.hintChars;
-    return {
-      values: {
-        hintFontSize,
-        hintUseTargetSize,
-        hintCSS,
-        hintNormalCharCSS,
-        hintActiveCharCSS,
-        hintDetectByCursorStyle,
-        hintHorizontalPlacement,
-        hintVerticalPlacement
-      },
-      errors
-    };
+  onOptionsChange: (options) => {
+    hintChars = options.hintChars;
   },
   messages: {
     gatherHints: async (hintType, src) => {

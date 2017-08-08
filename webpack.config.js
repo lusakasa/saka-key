@@ -70,12 +70,12 @@ module.exports = function (env) {
           from: 'static'
         },
         {
-          context: 'src/modes',
+          context: 'src/options',
           from: '**/default.json',
           to: 'default_[folder].json'
         },
         {
-          context: 'src/modes',
+          context: 'src/options',
           from: '**/config.json',
           to: 'config_[folder].json'
         }
