@@ -5,7 +5,7 @@ export default (options, config) => {
   const clientOptions = getAttributes(options, ['hintCSS', 'hintNormalCharCSS', 'hintActiveCharCSS', 'hintDetectByCursorStyle', 'hintHorizontalPlacement', 'hintVerticalPlacement']);
   const errors = {};
   if (options.hintUseCustomCSS) {
-    clientOptions.hintCSS = `all: initial; z-index: 999999999999; ${options.hintCSS}`;
+    clientOptions.hintCSS = `all: initial; position: absolute; z-index: 999999999999; ${options.hintCSS}`;
   } else {
     clientOptions.hintCSS = generateHintCSS(options);
     clientOptions.hintNormalCharCSS = '';

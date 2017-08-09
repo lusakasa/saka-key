@@ -3,62 +3,61 @@ import { connect } from 'preact-redux';
 import OptionItem from './OptionItem';
 import ErrorItem from './ErrorItem';
 import transformOptions from 'options/transform';
-import { setOption } from 'pages/options/actions';
+import { setOption, setBuiltInOption } from 'pages/options/actions';
 
 class OptionsList extends Component {
-  render ({ options, values, errors, setOption, isBuiltInProfile }) {
+  render ({ visibleOptions, values, errors, setOption, isBuiltInProfile }) {
     return (
       <ul
         className='mdc-list mdc-list--dense'
+        style={{ backgroundColor: Object.keys(errors).length === 0 ? 'inherit' : 'rgba(243, 188, 188, 0.44)' }}
       >
-        { options.length === 0
+        { visibleOptions.length === 0
           ? 'No settings to configure'
-          : options.map((option) => (
-            this.isOptionVisible(option)
-            ? (
-              <div>
-                { errors && errors[option.key]
-                  ? <ErrorItem message={errors[option.key]} />
-                  : undefined
-                }
-                <OptionItem
-                  {...option}
-                  _key={option.key}
-                  values={values}
-                  value={values && values[option.key]}
-                  setOption={setOption(this)}
-                />
-              </div>
-              )
-            : undefined
+          : visibleOptions.map((option) => (
+            <div>
+              { errors && errors[option.key]
+                ? <ErrorItem message={errors[option.key]} />
+                : undefined
+              }
+              <OptionItem
+                {...option}
+                _key={option.key}
+                values={values}
+                value={values && values[option.key]}
+                setOption={setOption(this)}
+              />
+            </div>
             ))
         }
       </ul>
     );
   }
-  isOptionVisible = (option) => {
-    if (!option.hasOwnProperty('visible')) return true;
-    if (option.visible === true) return true;
-    if (option.visible === false) return false;
-    return option.visible
-      .split('&&')
-      .map((clause) => clause.trim())
-      .every((clause) => {
-        const [key, op, value] = clause.split(' ').map((s) => s.trim());
-        switch (op) {
-          case '=':
-            return this.props.values[key] === JSON.parse(value);
-          case '!=':
-            return this.props.values[key] !== JSON.parse(value);
-          case 'is':
-            return this.isOptionVisible(this.props.options.find((o) => o.key === key));
-          case 'not':
-            return !this.isOptionVisible(this.props.options.find((o) => o.key === key));
-          default:
-            throw Error(`Option '${option.key}' has invalid visible condition: '${option.visible}'`);
-        }
-      });
-  }
+}
+
+export function isConfigItemVisible (key, configList, values) {
+  const option = configList.find((o) => o.key === key);
+  if (!option.hasOwnProperty('visible')) return true;
+  if (option.visible === true) return true;
+  if (option.visible === false) return false;
+  return option.visible
+    .split('&&')
+    .map((clause) => clause.trim())
+    .every((clause) => {
+      const [ckey, op, value] = clause.split(' ').map((s) => s.trim());
+      switch (op) {
+        case '=':
+          return values[ckey] === JSON.parse(value);
+        case '!=':
+          return values[ckey] !== JSON.parse(value);
+        case 'is':
+          return isConfigItemVisible(ckey, configList, values);
+        case 'not':
+          return !isConfigItemVisible(ckey, configList, values);
+        default:
+          throw Error(`Option '${key}' has invalid visible condition: '${option.visible}'`);
+      }
+    });
 }
 
 const mapStateToProps = ({ config, categories, activeProfiles, options }, { category, activeProfile }) => {
@@ -67,18 +66,23 @@ const mapStateToProps = ({ config, categories, activeProfiles, options }, { cate
     const profile = activeProfiles[category];
     Object.assign(allOptions, options[`${category}_${profile}`]);
   }
+  const configList = config[category];
+  const values = options[`${category}_${activeProfile}`];
+  const visibleOptions = configList.filter((item) => isConfigItemVisible(item.key, configList, values));
+  const { errors } = transformOptions(allOptions, config);
+  const hasErrors = Object.keys(errors).length === 0;
   return {
-    options: config[category],
-    values: options[`${category}_${activeProfile}`],
-    errors: transformOptions(allOptions, config).errors
+    visibleOptions,
+    values,
+    errors,
+    hasErrors
   };
 };
 
 const mapDispatchToProps = (dispatch, { category, activeProfile, isBuiltInProfile }) => ({
   setOption: (component) => (key, value) => {
     if (isBuiltInProfile) {
-      component.forceUpdate();
-      alert(`${activeProfile} is a built-in profile that cannot be modified. To customize your options, create a new profile using the toolbar above.`);
+      dispatch(setBuiltInOption(category, activeProfile, `${activeProfile}_copy_${Date.now()}`, key, value));
     } else {
       dispatch(setOption(category, activeProfile, key, value));
     }

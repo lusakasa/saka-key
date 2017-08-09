@@ -49,7 +49,7 @@ function addToTrie (trie, i, key, value, binding) {
   } else if (i === key.length - 1) {
     if (trie.hasOwnProperty(key[i])) {
       throw {
-        message: `${trie[key[i]]} and ${value} have conflicting mapping`,
+        message: `${firstLeafValue(trie[key[i]])} and ${value} have conflicting mapping`,
         type: 'conflict',
         command1: trie[key[i]],
         command2: value
@@ -74,3 +74,9 @@ function addToTrie (trie, i, key, value, binding) {
     }
   }
 };
+
+function firstLeafValue (trie) {
+  return typeof trie === 'object'
+    ? firstLeafValue(trie[Object.keys(trie)[0]])
+    : trie;
+}

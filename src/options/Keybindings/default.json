@@ -407,7 +407,6 @@
           [{ "code": "Slash", "key": "?", "shiftKey": true }]
         ],
         "toggleOmnibar": [
-          []
         ],
         "openLink": [
           [{ "code": "KeyF", "key": "f" }]

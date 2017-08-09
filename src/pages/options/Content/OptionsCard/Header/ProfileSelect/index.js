@@ -8,7 +8,7 @@ const Select = ({ profiles, activeProfile, setActiveProfile }) => (
     value={activeProfile}
     onChange={(e) => setActiveProfile(e.target.value)} >
     { profiles.map((profile) =>
-      <option value={profile}>{profile}</option>
+      <option style={{ color: 'white', backgroundColor: '#3f51b5' }} value={profile}>{profile}</option>
     )}
   </select>
 );

@@ -51,6 +51,10 @@ const customProfiles = (state = {}, action) => {
         );
       return profiles;
     }
+    case 'SET_BUILTIN_OPTION': {
+      const profiles = state[action.category];
+      return { ...state, [action.category]: [...profiles, action.profile] };
+    }
     default:
       return state;
   }
@@ -69,6 +73,8 @@ const activeProfiles = (state = {}, action) => {
       return { ...state, [action.category]: 'default' };
     case 'RENAME_PROFILE':
       return { ...state, [action.category]: action.newName };
+    case 'SET_BUILTIN_OPTION':
+      return { ...state, [action.category]: action.profile };
     default:
       return state;
   }
@@ -91,7 +97,7 @@ const options = (state = {}, action) => {
       return { ...state, [`${action.category}_${action.profile}`]: options };
     case 'DELETE_PROFILE': {
       const options = { ...state };
-      delete options[`${action.category}_${action.profile}`]
+      delete options[`${action.category}_${action.profile}`];
       return options;
     }
     case 'SET_OPTION':
@@ -102,6 +108,12 @@ const options = (state = {}, action) => {
       const options = { ...state };
       options[`${action.category}_${action.newName}`] = options[`${action.category}_${action.oldName}`];
       delete options[`${action.category}_${action.oldName}`];
+      return options;
+    }
+    case 'SET_BUILTIN_OPTION': {
+      const options = { ...state };
+      options[`${action.category}_${action.profile}`] =
+        { ...options[`${action.category}_${action.baseProfile}`], [action.key]: action.value };
       return options;
     }
     default:

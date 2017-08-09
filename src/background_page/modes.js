@@ -30,14 +30,16 @@ export async function modeMessage ({ mode, action, arg }, src) {
 
 let cachedClientOptions;
 
-export async function onOptionsChange () {
-  const { backgroundOptions, clientOptions } =
-    transformOptions(await getAllActiveProfileOptions(), (await storageGet('config')).config);
-  Object.values(modes).forEach((mode) => {
-    mode.onOptionsChange(backgroundOptions);
-  });
-  cachedClientOptions = clientOptions;
-  msg('client', 'clientOptions', clientOptions);
+export async function onOptionsChange ({ ready } = {}) {
+  if (ready) {
+    const { backgroundOptions, clientOptions } =
+      transformOptions(await getAllActiveProfileOptions(), (await storageGet('config')).config);
+    Object.values(modes).forEach((mode) => {
+      mode.onOptionsChange(backgroundOptions);
+    });
+    cachedClientOptions = clientOptions;
+    msg('client', 'clientOptions', clientOptions);
+  }
 }
 
 chrome.storage.onChanged.addListener(onOptionsChange);

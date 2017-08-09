@@ -49,3 +49,16 @@ export const setOption = (category, profile, key, value) => ({
   key,
   value
 });
+
+/**
+ * User modified an option from a built-in profile. Built-in profiles are read only
+ * so instead duplicate it and set the modified option
+ */
+export const setBuiltInOption = (category, baseProfile, profile, key, value) => ({
+  type: 'SET_BUILTIN_OPTION',
+  category,
+  baseProfile,
+  profile,
+  key,
+  value
+});

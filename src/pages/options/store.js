@@ -7,9 +7,11 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import { initialize } from './actions';
 import { storageGet, storageSet } from 'options/storage';
+import { getAttributes } from 'lib/util.js';
 
 storageGet(null).then((entries) => {
-  store.dispatch(initialize(entries));
+  const optionsPageEntries = getAttributes(entries, ['categories', 'config', 'options', 'builtInProfiles', 'customProfiles', 'activeProfiles', 'options']);
+  store.dispatch(initialize(optionsPageEntries));
 });
 
 initClient('options_page', {

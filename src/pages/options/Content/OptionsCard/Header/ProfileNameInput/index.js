@@ -9,10 +9,7 @@ const Input = ({ activeProfile, profiles, tryRenameProfile, setIsEditingName }) 
       className='mdc-textfield__input mode-card-select'
       value={activeProfile}
       onKeyDown={(e) => {
-        if (e.key === 'Enter') {
-          setIsEditingName(false);
-        } else if (e.key === 'Escape') {
-          e.target = activeProfile;
+        if (e.key === 'Enter' || e.key === 'Escape') {
           setIsEditingName(false);
         }
       }}
