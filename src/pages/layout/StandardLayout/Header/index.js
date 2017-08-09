@@ -13,7 +13,7 @@ export default ({ view }) => (
       </section>
       <section className='mdc-toolbar__section mdc-toolbar__section--align-end'>
         <Tab href='options.html' view={view} name='Options' />
-        <Tab href='extensions.html' view={view} name='Extensions' />
+        {/* <Tab href='extensions.html' view={view} name='Extensions' /> */}
         <Tab href='http://saka-key.lusakasa.com' view={view} name='Tutorial' target='_blank' />
       </section>
     </div>

@@ -18,7 +18,7 @@ class SettingsCard extends Component {
         style={{ backgroundColor: '#ffffff' }}
       >
         <Header {...props} />
-        <Message {...props} />
+        {/* <Message {...props} /> */}
         <OptionsList {...props} />
       </div>
     );

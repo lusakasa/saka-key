@@ -1,10 +1,6 @@
 {
   "options": [
     {
-      "type": "paragraph",
-      "text": "Keyboard commands for controlling your browser"
-    },
-    {
       "type": "checkbox",
       "label": "Bind to physical keys (en-US QWERTY) not characters",
       "key": "physicalKeys",
