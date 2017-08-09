@@ -1,9 +1,16 @@
 language: node_js
-node_js: lts/*
-script: npm run build:prod:firefox
+node_js: "lts/*"
+
+script:
+  - npm run build:prod:firefox
+  - npm run build:prod:chrome
+
 deploy:
   provider: releases
   api_key: cd802024f39f605f8d0d2c764cb7832e4d986116
-  file: dist-chrome.zip
+  file:
+    - "dist-firefox.zip"
+    - "dist-chrome.zip"
+  skip_cleanup: true
   on:
-    repo: lusakasa/saka-key
+    tags: true
