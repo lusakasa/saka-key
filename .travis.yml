@@ -7,7 +7,8 @@ script:
 
 deploy:
   provider: releases
-  api_key: cd802024f39f605f8d0d2c764cb7832e4d986116
+  api_key:
+    secure: wig/sVOgZx2lCjgje/B3nLdV+SLhMjn2PciYhkaI3PtQg/tJY6qEl3xZrvV/1V6yx02LiBMcTtkeFV1xbUAw5Yzie0uYiN9AOs5Rpxa5XdG1bOZkatIZ+POQlqMr+iCM+rY9CgMXLWAuvREoPLgpYocTzomY7/RhY296E02xLiBMEdwcbLLn28AWKGIXIPriTIS5f2tC2wFDWOsJkl/DInGEHTejnHsyMfr1Def84xHkcJkIkl8mMfCfjEfjnSEc/ofNF4sbyYVpfODlKng2YONUwAq/Vd1RqcLd9NQAf4i0FssUSpnPkkI8yHPCLCpFRoHkuGFRmza93+Y8kWmF8WVHybtIvJ6n+0N57MAgs/unrWYYCOqL3Q1XCGrjxgcqa8reKlaE9aZTPsqzQhACHOTinZjWV8B3o55JMHgiODOQo7MxHhlRNzSVGZzdM27G8oqjfdqhsSGW1s4GFxOUbhSFalg7JDu04bQavZf4u4TQ/BDytokDMOgJC14BrdntbZrxDeyVzaktzfJ2IvQnifm7uvOlpmnoULxSkEg3dtRqZm85J7KKYImwS9NnZ/4Qq5kRentxBLb5ATWcByVyxNPAGxvvUbbrDbHJa6nOE0hIx1GzqIZSiW5chvqeLW0DWz68+gw+JlQ0VW3nnnvD4yl/G+Dit6FG7BiU/dVBaFU=
   file:
     - "dist-firefox.zip"
     - "dist-chrome.zip"
