@@ -18,7 +18,7 @@ export async function setup () {
 }
 
 function initInstallListeners () {
-  chrome.runtime.onInstalled.addListener(async ({ reason }) => {
+  chrome.runtime.onInstalled.addListener(async ({ reason, previousVersion }) => {
     if (SAKA_DEBUG) console.log('install event: ' + reason);
     switch (reason) {
       case 'install':
@@ -27,7 +27,7 @@ function initInstallListeners () {
         chrome.tabs.create({ url: 'info.html' });
         break;
       case 'update':
-        await storageUpdateProcedure();
+        await storageUpdateProcedure(previousVersion);
         await onOptionsChange();
         chrome.tabs.create({ url: 'info.html' });
         break;

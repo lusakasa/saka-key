@@ -7,6 +7,7 @@ import {
 import { msg } from 'mosi/client';
 import { categories as installCategories } from 'options/transform';
 import { saveAs } from 'file-saver';
+import compareVersions from 'compare-versions';
 
 // TODO: test this code, lots of room for error, should really have unit tests
 
@@ -26,23 +27,28 @@ export async function storageInstallProcedure () {
   }
 }
 
-export async function storageUpdateProcedure () {
+export async function storageUpdateProcedure (previousVersion) {
   try {
     // order matters: e.g. you must delete the old built-in options using the
     // built-in profiles already in storage, not the built-in profiles in the update
     await storageSet({ ready: false });
-    await deleteBuiltInOptions();
-    await deleteBuiltInProfiles();
-    await deleteConfig();
-    await deleteCategories();
-    await createCategories();
-    await createConfig();
-    if (SAKA_DEBUG) await validateConfig();
-    await createBuiltInProfiles();
-    await renameCustomProfilesAndOptions(); // if a new built-in profile 'steals' the name of an existing custom profile
-    await correctActiveProfiles(); // if the active profile is a deleted built-in profile
-    await createBuiltInOptions();
-    await correctCustomOptions();
+    if (compareVersions(previousVersion, '1.16') <= 0) {
+      await storageClear();
+      await storageInstallProcedure();
+    } else {
+      await deleteBuiltInOptions();
+      await deleteBuiltInProfiles();
+      await deleteConfig();
+      await deleteCategories();
+      await createCategories();
+      await createConfig();
+      if (SAKA_DEBUG) await validateConfig();
+      await createBuiltInProfiles();
+      await renameCustomProfilesAndOptions(); // if a new built-in profile 'steals' the name of an existing custom profile
+      await correctActiveProfiles(); // if the active profile is a deleted built-in profile
+      await createBuiltInOptions();
+      await correctCustomOptions();
+    }
     await storageSet({ ready: true });
   } catch (e) {
     console.error('FATAL ERROR: UPDATE FAILED. DELETE THEN REINSTALL THE EXTENSION.', e);

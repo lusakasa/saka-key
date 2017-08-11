@@ -5,12 +5,9 @@
 * Make commands available in text mode
 * Make Tab/Select Widget for assigning keybinding to different modes
 * Make command for returning to last focused element
-* Add Reset All Settings Option
 * Provide link hint activation methods for firefox that don't rely on click events
 * implement scrolling pages without smoothscroll polyfill (which is large and can only scroll the scrollingElement, not subelements)
 * Make sure arrow keys/Escape/Tab/Spacebar always work. Check Netflix.
-* Decouple settings from modes to support more flexible per-domain settings
-  * requires implementing settings store in background page that takes a URL and a setting and returns a value
 * properly simulate hovers to make mouseover menus usable with link hints
 * fix gmail scrolling on firefox
 * add quick disable/enable key binding (to basic)
@@ -50,7 +47,6 @@
 * Key handling
     * add logic that will check the platform/keyboard layout and modify the "key" attribute of the built-in profiles' keybindings based on what char is produced on each platform/layout.
 * figure out why disabling saka breaks google search (doesn't let you change focus away from search input)
-* handle browser restart/update properly
 * configurable key bindings
 * commands: mute Other tabs, mute tab X (easier with below)
 * historical tab switching
@@ -75,7 +71,6 @@
 * add per domain settings to KeyboardEvent Input Type
 * 
 * interoperation with other accessibility features, see accessibility.md
-  * breaks with NVDA screen reader
 * figure out compatibility with touch screens
   * consider pointer api instead of mouse events
 
