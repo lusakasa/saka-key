@@ -5,12 +5,11 @@ import { isModifierKey } from 'lib/keys';
 let hintChars = 'adsfghjkl;';
 
 export default {
-  onOptionsChange: (options) => {
-    hintChars = options.hintChars;
+  onOptionsChange: ({ hintChars: hc }) => {
+    hintChars = hc.length >= 2 ? hc : 'bad';
   },
   messages: {
     gatherHints: async (hintType, src) => {
-      // TODO: handle case in which get() fails or times out by wrapping call in try-catch block
       // 1. Gather the number of link hints in each frame
       const hintsPerFrame = await modeGet(`tab[${meta(src).tabId}]|id[${src}]`, 'Hints',
         'findHints', hintType);

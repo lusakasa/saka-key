@@ -9,17 +9,21 @@ import { initialize } from './actions';
 import { storageGet, storageSet } from 'options/storage';
 import { getAttributes } from 'lib/util.js';
 
-storageGet(null).then((entries) => {
-  const optionsPageEntries = getAttributes(entries, ['categories', 'config', 'options', 'builtInProfiles', 'customProfiles', 'activeProfiles', 'options']);
+async function initializeOptionsPage () {
+  const state = await storageGet(null);
+  const optionsPageEntries = getAttributes(state, ['categories', 'config', 'options', 'builtInProfiles', 'customProfiles', 'activeProfiles', 'options']);
   store.dispatch(initialize(optionsPageEntries));
-});
+}
+
+initializeOptionsPage();
 
 initClient('options_page', {
-  SYNC_ACTION: (action) => store.dispatch(action)
+  SYNC_ACTION: (action) => store.dispatch(action),
+  RERENDER: initializeOptionsPage
 });
 
 const synchronizeOptionsGUIs = (store) => (next) => (action) => {
-  if (!action.syncAction && action.type !== 'INITIALIZATION') {
+  if (!action.syncAction && action.type !== 'INITIALIZE') {
     msg('options_page&other', 'SYNC_ACTION', { ...action, syncAction: true });
   }
   return next(action);
@@ -27,7 +31,7 @@ const synchronizeOptionsGUIs = (store) => (next) => (action) => {
 
 const writeToStorage = (store) => (next) => (action) => {
   const nextState = next(action);
-  if (!action.syncAction && action.type !== 'INITIALIZATION') {
+  if (!action.syncAction && action.type !== 'INITIALIZE') {
     storageSet(store.getState());
   }
   return nextState;

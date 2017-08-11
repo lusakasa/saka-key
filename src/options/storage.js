@@ -3,6 +3,7 @@ import 'lib/browser_polyfill';
 export const storageGet = browser.storage.local.get;
 export const storageSet = browser.storage.local.set;
 export const storageRemove = browser.storage.local.remove;
+export const storageClear = browser.storage.local.clear;
 
 export async function getAllActiveProfileOptions () {
   const { activeProfiles } = await storageGet('activeProfiles');
@@ -13,11 +14,3 @@ export async function getAllActiveProfileOptions () {
   }
   return activeOptions;
 }
-
-// export async function importOptions (json) {
-
-// }
-
-// export async function exportOptions () {
-
-// }

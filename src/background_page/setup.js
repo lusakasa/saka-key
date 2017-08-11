@@ -2,7 +2,7 @@ import { onOptionsChange } from './modes';
 import {
   storageInstallProcedure,
   storageUpdateProcedure
-} from 'options/installAndUpdate';
+} from 'options/procedures';
 
 /**
  * Sets up startup listener, sets up install listener, and executes setup routine

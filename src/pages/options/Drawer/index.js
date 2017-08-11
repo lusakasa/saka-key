@@ -1,5 +1,10 @@
 import { Component, h } from 'preact';
 import { connect } from 'preact-redux';
+import {
+  storeageImportProcedure,
+  storageExportProcedure,
+  storageResetProcedure
+} from 'options/procedures';
 import './style.css';
 
 const scrollToCard = (name) => () => {
@@ -7,6 +12,16 @@ const scrollToCard = (name) => () => {
   const newScrollTop = scrollTarget.getBoundingClientRect().top + pageYOffset - 84;
   document.scrollingElement.scrollTop = newScrollTop;
 };
+
+const ActionButton = ({ label, onClick }) => (
+  <a
+    class='mdc-list-item settings-drawer-link'
+    style={{ color: 'black' }}
+    onClick={onClick}
+  >
+    { label }
+  </a>
+);
 
 class Drawer extends Component {
   state = {
@@ -45,14 +60,6 @@ class Drawer extends Component {
       >
         <nav class='mdc-permanent-drawer'>
           <div class='mdc-list-group'>
-            {/*<a
-              class='mdc-list-item settings-drawer-link'
-              style={{ color: this.calculateLinkColor('Profiles') }}
-              onClick={scrollToCard('Profiles')}
-            >
-              Profiles
-            </a>
-            <hr class='mdc-list-divider' />*/}
             <nav class='mdc-list'>
               { categories.map((category) =>
                 <a
@@ -63,12 +70,10 @@ class Drawer extends Component {
                   { category }
                 </a>
               )}
-              <a
-                class='mdc-list-item settings-drawer-link'
-                style={{ color: 'black' }}
-              >
-                Import, Export and Reset
-              </a>
+              <div role='separator' class='mdc-list-divider' style={{ margin: '20px' }} />
+              <ActionButton label={'Import Options from File'} onClick={storeageImportProcedure} />
+              <ActionButton label={'Export Options To File'} onClick={storageExportProcedure} />
+              <ActionButton label={'Reset All Options'} onClick={storageResetProcedure} />
             </nav>
           </div>
         </nav>

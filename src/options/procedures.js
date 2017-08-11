@@ -1,39 +1,99 @@
 import {
   storageGet,
   storageSet,
-  storageRemove
+  storageRemove,
+  storageClear
 } from 'options/storage';
+import { msg } from 'mosi/client';
 import { categories as installCategories } from 'options/transform';
+import { saveAs } from 'file-saver';
 
 // TODO: test this code, lots of room for error, should really have unit tests
 
 export async function storageInstallProcedure () {
-  await storageSet({ ready: false });
-  await createCategories();
-  await createConfig();
-  await createBuiltInProfiles();
-  await createCustomProfiles();
-  await createActiveProfiles();
-  await createBuiltInOptions();
-  await storageSet({ ready: true });
+  try {
+    await storageSet({ ready: false });
+    await createCategories();
+    await createConfig();
+    if (SAKA_DEBUG) await validateConfig();
+    await createBuiltInProfiles();
+    await createCustomProfiles();
+    await createActiveProfiles();
+    await createBuiltInOptions();
+    await storageSet({ ready: true });
+  } catch (e) {
+    console.error('FATAL ERROR: INSTALLATION FAILED. DELETE THEN REINSTALL THE EXTENSION.', e);
+  }
 }
 
 export async function storageUpdateProcedure () {
-  // order matters: e.g. you must delete the old built-in options using the
-  // built-in profiles already in storage, not the built-in profiles in the update
-  await storageSet({ ready: false });
-  await deleteBuiltInOptions();
-  await deleteBuiltInProfiles();
-  await deleteConfig();
-  await deleteCategories();
-  await createCategories();
-  await createConfig();
-  await createBuiltInProfiles();
-  await renameCustomProfilesAndOptions(); // if a new built-in profile 'steals' the name of an existing custom profile
-  await correctActiveProfiles(); // if the active profile is a deleted built-in profile
-  await createBuiltInOptions();
-  await correctCustomOptions();
-  await storageSet({ ready: true });
+  try {
+    // order matters: e.g. you must delete the old built-in options using the
+    // built-in profiles already in storage, not the built-in profiles in the update
+    await storageSet({ ready: false });
+    await deleteBuiltInOptions();
+    await deleteBuiltInProfiles();
+    await deleteConfig();
+    await deleteCategories();
+    await createCategories();
+    await createConfig();
+    if (SAKA_DEBUG) await validateConfig();
+    await createBuiltInProfiles();
+    await renameCustomProfilesAndOptions(); // if a new built-in profile 'steals' the name of an existing custom profile
+    await correctActiveProfiles(); // if the active profile is a deleted built-in profile
+    await createBuiltInOptions();
+    await correctCustomOptions();
+    await storageSet({ ready: true });
+  } catch (e) {
+    console.error('FATAL ERROR: UPDATE FAILED. DELETE THEN REINSTALL THE EXTENSION.', e);
+  }
+}
+
+// TODO: proper import validation
+export async function storeageImportProcedure () {
+  const input = document.createElement('input');
+  input.setAttribute('type', 'file');
+  input.setAttribute('accept', '.json');
+  input.addEventListener('change', (e) => {
+    const reader = new FileReader();
+    reader.onload = async () => {
+      await storageResetProcedure();
+      const { customProfiles, options } = await storageGet(['customProfiles', 'options']);
+      const { activeProfiles, profiles } = JSON.parse(reader.result);
+      for (const category in profiles) {
+        for (const profile in profiles[category]) {
+          customProfiles[category].push(profile);
+          options[`${category}_${profile}`] = profiles[category][profile];
+        }
+      }
+      await storageSet({ customProfiles, activeProfiles, options });
+      msg('options_page', 'RERENDER');
+    };
+    reader.readAsText(e.target.files[0]);
+  });
+  input.click();
+}
+
+export async function storageExportProcedure () {
+  const { customProfiles, activeProfiles, options } = await storageGet(['customProfiles', 'activeProfiles', 'options']);
+  const profiles = {};
+  for (const category in customProfiles) {
+    profiles[category] = {};
+    customProfiles[category].forEach((profile) => {
+      profiles[category][profile] = options[`${category}_${profile}`];
+    });
+  }
+  const blob = new Blob(
+    [JSON.stringify({ activeProfiles, profiles }, null, 2)],
+    { type: 'application/json;charset=utf-8' }
+  );
+  saveAs(blob, 'saka_key_config.json');
+}
+
+export async function storageResetProcedure () {
+  await storageClear();
+  await storageInstallProcedure();
+  msg('options_page', 'RERENDER');
 }
 
 async function createCategories () {
@@ -49,6 +109,29 @@ async function createConfig () {
     config[category] = result.options;
   }
   await storageSet({ config });
+}
+
+// TODO: define a per-type validation function
+async function validateConfig () {
+  const { config } = await storageGet('config');
+  const allKeys = {};
+  for (const [category, _config] of Object.entries(config)) {
+    for (const item of _config) {
+      if (!item.hasOwnProperty('type')) {
+        throw Error(`Config validation failed: item ${category}:${item.key || '[no key]'} has no type`, item);
+      }
+      if (item.hasOwnProperty('key')) {
+        if (allKeys.hasOwnProperty(item.key)) {
+          throw Error(`Config validation failed: two items share the key ${item.key}`);
+        } else {
+          allKeys[item.key] = true;
+        }
+        if (!item.hasOwnProperty('default')) {
+          throw Error(`Config validation failed: no default value for key ${item.key}`);
+        }
+      }
+    }
+  }
 }
 
 async function createBuiltInProfiles () {

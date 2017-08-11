@@ -41,7 +41,7 @@
       "type": "text",
       "label": "Hint Characters",
       "key": "hintChars",
-      "default": ""
+      "default": "asdf"
     },
     {
       "type": "keybinding",
@@ -162,7 +162,8 @@
     {
       "type": "keybinding",
       "label": "Scroll Page Down",
-      "key": "scrollPageDown"
+      "key": "scrollPageDown",
+      "default": []
     },
     {
       "type": "keybinding",

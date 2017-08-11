@@ -3,10 +3,12 @@
 ## 1.16
 
 * Custom profiles will now be preserved when Saka Key updates
-* Built-in profiles can no longer be modified
-* Creating a New profile now creates a (mostly) blank profile
+* User's who want automatic updates should stick to built-in profiles
+* Modifying a built-in profile creates and switches to a duplicate of the built-in profile
+* Creating a New profile now creates a profile with default settings (and no keybindings)
 * Many bug fixes on the options page
-* You can now import and export your settings
+* You can now import, export, and reset your settings
+* Input handling has been updated to make it harder to accidentally issue a command
 * Modified binding **Open Link in Background Tab** <kbd>f</kbd><kbd>b</kbd>
 * Modified binding **Open Link in Foreground** <kbd>f</kbd><kbd>shift-f</kbd>.
 * Additional binding **Next Tab** <kbd>]</kbd>

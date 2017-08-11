@@ -49,6 +49,7 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
+    "file-saver": "^1.3.3",
     "immutability-helper": "^2.1.2",
     "marked": "^0.3.6",
     "material-components-web": "^0.14.0",

@@ -30,8 +30,8 @@ export async function modeMessage ({ mode, action, arg }, src) {
 
 let cachedClientOptions;
 
-export async function onOptionsChange ({ ready } = {}) {
-  if (ready) {
+export async function onOptionsChange () {
+  if ((await storageGet('ready')).ready) {
     const { backgroundOptions, clientOptions } =
       transformOptions(await getAllActiveProfileOptions(), (await storageGet('config')).config);
     Object.values(modes).forEach((mode) => {

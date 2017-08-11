@@ -34,7 +34,7 @@ Each mode is given its own directory at ./src/modes/modeName. Within each mode d
 
 * **onEnter(event)** - a function called when the mode is entered
 * **onExit(event)** - a function called when the mode is exited
-* **onSettingsChange(settings)** - a function called when the client first loads and when the user changes a setting
+* **onOptionsChange(options)** - a function called when the client first loads and when the user changes an option from the options page
 * events - an object containing callbacks that are executed when events occur. The string returned by the callback is the next mode. The following callbacks are provided:
 * **keydown(event)** - a function called when a keydown event is detected, returns the next mode
 * **keypress(event)** - a function called when a keydown event is detected, returns the next mode
@@ -55,8 +55,8 @@ interface Mode {
   onEnter?: (event: Event) => void,
   // called when mode is exited, passed event that triggered mode change
   onExit?: (event: Event) => void,
-  // called when a setting is updated, passed new settings object
-  onSettingsChange?: ({ [key: string]: any }) => {},
+  // called when an option is updated, passed new client options object
+  onOptionsChange?: ({ [key: string]: any }) => {},
   // called on every keydown event, passed keydown event, returns next mode
   keydown?: (event: KeyboardEvent) => string,
   // called on every keypress event, passed keypress event, returns next mode
@@ -88,7 +88,7 @@ The default implementation for each property is:
 const defaultModeObject = {
   onEnter: () => {},
   onExit: () => {},
-  onSettingsChange: () => {},
+  onOptionsChange: () => {},
   keydown: () => 'Same',
   keypress: () => 'Same',
   keyup: () => 'Same',
@@ -105,21 +105,16 @@ Modes may require access to privileged APIs only accessible on the background pa
 
 Each mode has a component that lives in background page! Within each modes directory is a file named background.js. This file should export a single object with the following properties:
 
-* **clientSettings(options, settings)** - a function that is called whenever any setting is changed. This should return an object with two properties: values - an object containing the key-value pairs that should be forwarded to every client, and errors - an object containing error strings for keys whose values are invalid.
+* **onOptionsChange(options)** - a function that is called on startup and whenever an option is changed.
 * **messages** - like the client-side messages property, but always returns values (for mosi get()) never the next mode (because the state machine lives in clients, not the background page).
 
 The type definition is:
 
 ```typescript
 interface ModeBackground {
-  // called when the user updates a setting, passes the mode's options object
+  // called when the user updates a setting, passes the background Options object
   // defined in config.json and the key-value pairs for all modes, returns
-  // * values - the key-value pairs passed to every client
-  // * errors - the error strings for settings that failed validation
-  clientSettings?: (options: Object, settings: { [key: string]: any }) => ({
-    values: { [key: string]: any },
-    errors: { [key: string]: string }
-  }),
+  onOptionsChange?: ({ [key: string]: any }) => {},
   // contains message callbacks, returns the mosi get() value
   // https://github.com/eejdoowad/mosi
   messages?: {
@@ -132,16 +127,16 @@ The default implementation is:
 
 ```javascript
 const defaultModeObject = {
-  clientSettings: () => ({ values: {}, errors: {} }),
+  onOptionsChange: () => {},
   messages: {}
 };
 ```
 
-### Settings
+### Options
 
-Saka Key is engineered to make adding modes as easy as possible. Mode authors don't have to write any code to get user configurable options!
+Saka Key is engineered to make adding new functionality as easy as possible. Developers don't have to write code to get user configurable options! Just define what options are available with JSON and Saka Key automatically gets you: rendering on the options page, integration with profiles, importing, and resetting.
 
-Within each mode directory is a file named config.json. This JSON file contains an array of options. Each option has a type (e.g. switch, checkbox, textarea), a label, and a key.
+Within **options** directory are subdirectories corresponding to options categories. Currently, these subdirectories are named 'General', 'Keybindings', and 'Appearance.' Within each subdirectory is a file named config.json. This JSON file contains an array of options. Each option has a type (e.g. switch, checkbox, textarea), a label, and a key.
 
 ```JSON
 "options": [
@@ -161,12 +156,18 @@ These options are used to generate a GUI on the options page.
 
 ![example](options_gui_example.png)
 
-When a setting on the options GUI is changes, the clientSettings callback on the background page is called and passed an object containing the values for each key for that mode.
+Each subdirectory also contains a file named 'index.js'. This file defines a transform function that takes the user-defined options and per-category configs and returns the options reported to the background page and clients, and an error message for each option with an invalid value.
 
-Each mode directory also contains a file named 'default.json', which contains default settings for each key.
+The outputs of the transform function of each category are merged. The merged `backgroundOptions` object is forwarded to the background page and passed to the `onOptionsChange()` function of each mode's background component.
+
+Similarly, the merged `clientOptions` object is forwarded to every open Saka Key client and passed to the `onOptionsChange()` function of each mode's client component.
+
+The merged `errors` object is used by the options page to notify user's of errors in the options.
+
+Each subdirectory also contains a file named 'default.json', which contains default option for each key.
 
 ```JSON
-"settings": {
+"options": {
   "enabled": true,
   "primaryColor": "#ff4488"
 }

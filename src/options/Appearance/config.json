@@ -107,8 +107,8 @@
     },
     {
       "type": "number",
-      "label": "Padding Left (rem)",
-      "key": "hintPaddingLeft",
+      "label": "Horizontal Padding (rem)",
+      "key": "hintHorizontalPadding",
       "visible": "hintUseCustomCSS = false",
       "min": 0,
       "step": 0.01,
@@ -116,26 +116,8 @@
     },
     {
       "type": "number",
-      "label": "Padding Right (rem)",
-      "key": "hintPaddingRight",
-      "visible": "hintUseCustomCSS = false",
-      "min": 0,
-      "step": 0.01,
-      "default": 0.25
-    },
-    {
-      "type": "number",
-      "label": "Padding Top (rem)",
-      "key": "hintPaddingTop",
-      "visible": "hintUseCustomCSS = false",
-      "min": 0,
-      "step": 0.01,
-      "default": 0.15
-    },
-    {
-      "type": "number",
-      "label": "Padding Bottom (rem)",
-      "key": "hintPaddingBottom",
+      "label": "Horizontal Padding (rem)",
+      "key": "hintVerticalPadding",
       "visible": "hintUseCustomCSS = false",
       "min": 0,
       "step": 0.01,

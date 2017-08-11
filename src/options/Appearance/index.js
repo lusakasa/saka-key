@@ -1,7 +1,7 @@
 import { getAttributes } from 'lib/util';
 
 export default (options, config) => {
-  const backgroundOptions = getAttributes(options, ['hintChars']);
+  const backgroundOptions = {};
   const clientOptions = getAttributes(options, ['hintCSS', 'hintNormalCharCSS', 'hintActiveCharCSS', 'hintDetectByCursorStyle', 'hintHorizontalPlacement', 'hintVerticalPlacement']);
   const errors = {};
   if (options.hintUseCustomCSS) {
@@ -21,10 +21,8 @@ function generateHintCSS ({
   hintOpacity,
   hintFontFamily,
   hintFontWeight,
-  hintPaddingTop,
-  hintPaddingRight,
-  hintPaddingBottom,
-  hintPaddingLeft,
+  hintHorizontalPadding,
+  hintVerticalPadding,
   hintBorderWidth,
   hintFontSize,
   hintTextColor,
@@ -56,7 +54,7 @@ z-index: 2147483647;
 opacity: ${hintOpacity};
 font-family: ${hintFontFamily};
 font-weight: ${hintFontWeight};
-padding: ${hintPaddingTop}rem ${hintPaddingRight}rem ${hintPaddingBottom}rem ${hintPaddingLeft}rem;
+padding: ${hintVerticalPadding}rem ${hintHorizontalPadding}rem;
 border: ${hintBorderWidth}px solid;
 text-align: center;
 text-decoration: none;
