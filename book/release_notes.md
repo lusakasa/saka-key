@@ -1,6 +1,6 @@
 # Release Notes
 
-# 1.17
+## 1.17
 
 * Emergency bug-fix release. The upgrade path to v1.16 wasn't tested and broke the extension (unless the user manually reset all settings).
 
