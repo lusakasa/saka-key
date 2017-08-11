@@ -1,6 +1,6 @@
 {
   "name": "Saka Key",
-  "version": "1.15",
+  "version": "1.16",
   "author": "Sufyan Dawoodjee",
   "description": "A keyboard interface to the web",
   "manifest_version": 2,
@@ -10,8 +10,6 @@
   },
   "content_scripts": [
     {
-      "__COMMENT1__": "content_script_loader.js checks to see if the frame is valid, and if so, requests the background page load the full content script",
-      "__COMMENT2__": "if the start point is set to content_script.js, the webpack style loader, which appends styles to <head> will cause failure because there is no <head> at document_start",
       "matches": ["<all_urls>"],
       "js": ["content_script_loader.js"],
       "all_frames": true,

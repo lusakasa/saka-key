@@ -16,7 +16,11 @@ export default class Header extends Component {
           <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
             <span className='mdc-toolbar__title'>{ props.category }</span>
           </section>
-          <section className='mdc-toolbar__section mdc-toolbar__section--align-end'>
+          {/* align-items: center is a firefox fix */}
+          <section
+            className='mdc-toolbar__section mdc-toolbar__section--align-end'
+            style='align-items: center'
+          >
             { isEditingName
               ? <ProfileNameInput {...props} setIsEditingName={this.setIsEditingName} />
               : <ProfileSelect {...props} setIsEditingName={this.setIsEditingName} />
