@@ -4,6 +4,8 @@ A keyboard interface to the web for everyone.
 
 Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp) or [Firefox Marketplace](https://addons.mozilla.org/en-US/firefox/addon/saka-key/). Then read the [Saka Key Handbook](http://saka-key.lusakasa.com).
 
+THE VERSION OF SAKA KEY ON THE FIREFOX MARKETPLACE IS EXTREMELY OUTDATED. PLEASE INSTALL FROM SOURCE FOR NOW.
+
 ## Index
 
 * [Intro](#intro)

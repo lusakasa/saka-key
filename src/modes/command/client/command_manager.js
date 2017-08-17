@@ -1,3 +1,4 @@
+import 'lib/browser_polyfill';
 import { msg } from 'mosi/client';
 import Trie from 'lib/trie';
 import { keyboardEventString } from 'lib/keys';
@@ -12,8 +13,11 @@ export const commands = {
     // TODO: REIMPLEMENT PROPERLY=
   },
   toggleSaka: () => {
-    // TODO: Add Saka
-    // msg('thisTab&topFrame', 'toggleSaka');
+    try {
+      browser.runtime.sendMessage('nbdfpcokndmapcollfpjdpjlabnibjdi', 'toggleSaka');
+    } catch (e) {
+      console.error('Install Saka at https://chrome.google.com/webstore/detail/saka/nbdfpcokndmapcollfpjdpjlabnibjdi');
+    }
   },
   openLink: (event) => {
     event.hintType = 'currentTab';

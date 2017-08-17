@@ -1,7 +1,7 @@
 import { Component, h } from 'preact';
 import { connect } from 'preact-redux';
 import Header from './Header';
-import Message from './Message';
+// import Message from './Message';
 import OptionsList from './OptionsList';
 
 import '@material/toolbar/dist/mdc.toolbar.css';

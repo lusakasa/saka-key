@@ -1,7 +1,7 @@
 {
   "options": [
     {
-      "type": "paragraph",
+      "type": "info",
       "text": "FIREFOX USERS: Don't use this page from the popup. Navigate to about:addons, then click 'Preferences' to open this page in a new tab"
     },
     {

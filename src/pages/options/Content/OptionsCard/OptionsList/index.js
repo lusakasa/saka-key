@@ -28,7 +28,7 @@ class OptionsList extends Component {
                 setOption={setOption(this)}
               />
             </div>
-            ))
+          ))
         }
       </ul>
     );
@@ -36,6 +36,7 @@ class OptionsList extends Component {
 }
 
 export function isConfigItemVisible (key, configList, values) {
+  if (key === undefined) return true;
   const option = configList.find((o) => o.key === key);
   if (!option.hasOwnProperty('visible')) return true;
   if (option.visible === true) return true;
@@ -69,6 +70,7 @@ const mapStateToProps = ({ config, categories, activeProfiles, options }, { cate
   const configList = config[category];
   const values = options[`${category}_${activeProfile}`];
   const visibleOptions = configList.filter((item) => isConfigItemVisible(item.key, configList, values));
+  console.log(configList, visibleOptions);
   const { errors } = transformOptions(allOptions, config);
   const hasErrors = Object.keys(errors).length === 0;
   return {

@@ -1,4 +1,4 @@
-import { validKeyboardEvent, keyboardEventString, friendlyKeyboardEventString } from 'lib/keys';
+import { validKeyboardEvent, keyboardEventString } from 'lib/keys';
 
 /**
  * Given an object mapping commands to their key bindings,
@@ -16,6 +16,9 @@ export function generateCommandTrie (commandMap) {
 function bindingsList (bindingsMap) {
   const out = [];
   for (const [command, bindings] of Object.entries(bindingsMap)) {
+    if (bindings === undefined) {
+      throw Error(`A profile is missing bindings for command ${command}`);
+    }
     for (const binding of bindings) {
       const keySequence = binding.map((key) => {
         try {

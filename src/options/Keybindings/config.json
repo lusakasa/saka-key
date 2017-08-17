@@ -28,10 +28,18 @@
     },
     {
       "type": "keybinding",
-      "label": "Omnibar",
-      "key": "toggleOmnibar",
-      "visible": false,
+      "label": "Toggle Saka",
+      "key": "toggleSaka",
       "default": []
+    },
+    {
+      "type": "info",
+      "text": "Saka is an elegant Omnibar replacement extension. Install Saka to use this command.",
+      "links": [
+        { "title": "About Saka", "url": "https://saka.io" },
+        { "title": "Add to Chrome", "url": "https://chrome.google.com/webstore/detail/saka/nbdfpcokndmapcollfpjdpjlabnibjdi" },
+        { "title": "Coming to Firefox soon" }
+      ]
     },
     {
       "type": "header",

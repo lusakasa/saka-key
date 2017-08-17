@@ -10,7 +10,7 @@ import Color from './Color';
 import Text from './Text';
 import Number from './Number';
 import TextArea from './TextArea';
-import Paragraph from './Paragraph';
+import Info from './Info';
 
 // must pass:
 // * value
@@ -20,8 +20,8 @@ function optionWidgetByType (type) {
   switch (type) {
     case 'header':
       return Header;
-    case 'paragraph':
-      return Paragraph;
+    case 'info':
+      return Info;
     case 'keybinding':
       return Keybinding;
     case 'select':
