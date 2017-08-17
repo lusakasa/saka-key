@@ -1,5 +1,10 @@
 # Release Notes
 
+## 1.18
+* Integration with [Saka](https://saka.io) - an elegant Omnibar replacement extension
+* Headers are back in the Options page
+* New command **Toggle Saka** <kbd>l</kbd> (requires installing [Saka](https://saka.io))
+
 ## 1.17
 
 * Emergency bug-fix release. The upgrade path to v1.16 wasn't tested and broke the extension (unless the user manually reset all settings).
