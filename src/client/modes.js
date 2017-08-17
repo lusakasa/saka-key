@@ -1,10 +1,8 @@
-import Queue from 'promise-queue';
 import { msg } from 'mosi/client';
 import { isTextEditable, deepActiveElement, normalizeEventType } from 'lib/dom';
 import { installEventListeners } from './installEventListeners';
 import {
   passDOMEventToMiddleware,
-  passMessageToMiddleware,
   middlewareOnOptionsChange
 } from './middleware';
 
@@ -30,11 +28,12 @@ const defaultModeObject = {
 };
 
 /** Initializes the Modes state machine */
-export function initModes (startMode, availableModes) {
+export function initModes (startMode, availableModes, actions) {
   if (SAKA_DEBUG) console.log(`Start mode: ${startMode}`);
   currentMode = startMode;
-  Object.keys(availableModes).map((name) => {
-    modes[name] = Object.assign({}, defaultModeObject, availableModes[name]);
+  Object.entries(availableModes).map(([name, mode]) => {
+    modes[name] = Object.assign({}, defaultModeObject, mode);
+    Object.assign(actions, wrapModeMessages(modes[name].messages));
   });
 }
 
@@ -64,7 +63,7 @@ export function clientOptions (options) {
   });
   middlewareOnOptionsChange(options);
   changeMode({
-    mode: options.enabled ? 'Reset' : 'Basic',
+    mode: options.enabled ? 'Reset' : 'Disabled',
     type: 'clientOptions',
     options
   });
@@ -125,16 +124,6 @@ function setMode (nextMode, event) {
 }
 
 /**
- * A FIFO queue of event handling functions returning promises with a concurrency
- * limit of 1. Only one handler may execute at a time, other functions must wait.
- * An event may be either
- * 1. A DOM event
- * 2. A message
- * 3. An explicit mode change via changeMode()
- */
-const eventQueue = new Queue(1);
-
-/**
  * Explicitly changes the modes. This function is declared so that
  * it can be called by any mode with msg(0, 'changeMode', { mode, why })
  * mode - the name of the new mode
@@ -150,19 +139,11 @@ export function changeMode (modeChangeEvent) {
     }
   }
   if (enabled) {
-    eventQueue.add(() => {
-      setMode(modeChangeEvent.mode, modeChangeEvent);
-    });
+    setMode(modeChangeEvent.mode, modeChangeEvent);
   }
 }
 
 /**
- * Passes an event to the active mode for handling, potentially resulting in a
- * new mode. Event handlers are NOT executed immediately. Instead, the event  handler is
- * added to a FIFO promise queue that executes the handler at a head of the queue,
- * calculates the new mode, then executes the next handler with the updated new mode
- * and so on. This queue is necessary to avoid subtle concurrency bugs.
- * TODO: evaluate conditions under which event handlers in the queue expire
  * @param {DocumentEvent} event
  */
 function handleDOMEvent (event) {
@@ -174,34 +155,28 @@ function handleDOMEvent (event) {
 };
 
 /**
- * modeMessage is called when a valid message is received by the client.
- * In a pure state machine, all events would be handled by the currently active mode.
- * Message handling in Saka Key violate this purity because the mode that handles
- * the message is pre-defined and independent of the active mode.
- * @param {string} mode - the mode that should handle the message
- * @param {string} action - the action to be called
- * @param {?any} arg - any arguments to be passed to the action
- * @param {number} src - the source of the message, usually ignored
+ * In Mosi, actions are message endpoints that return a single value
+ * that is returned to the source node on calls to get().
+ * In Saka Key, messages may optionally change the mode by returning
+ * an object of the form { nextMode: string, value: any }
+ * @param {*} modeMessages 
  */
-export function modeMessage ({ mode, action, arg }, src) {
-  if (enabled) {
-    return new Promise((resolve) => {
-      eventQueue.add(async () => {
-        if (SAKA_DEBUG) {
-          if (!modes[mode]) {
-            throw Error(`Missing Mode ${mode}`);
-          }
-          if (!modes[mode].messages[action]) {
-            throw Error(`Mode ${mode} is missing a handler for action ${action}`);
-          }
-        }
-        const result = await passMessageToMiddleware(action, arg, src) ||
-          await (modes[mode].messages[action](arg, src));
-        if (result && result.nextMode) {
-          setMode(result.nextMode, { type: 'message:' + action });
-        }
-        resolve(result && result.value);
-      });
-    });
-  }
+function wrapModeMessages (modeMessages) {
+  const wrappedMessages = {};
+  Object.entries(modeMessages).forEach(([name, message]) => {
+    wrappedMessages[name] = wrapMessage(name, message);
+  });
+  return wrappedMessages;
+}
+
+function wrapMessage (name, message) {
+  return async function (arg, src) {
+    if (enabled) {
+      const result = await message(arg, src);
+      if (result && result.nextMode) {
+        setMode(result.nextMode, { type: `message: ${name}` });
+      }
+      return result && result.value;
+    }
+  };
 }

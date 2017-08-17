@@ -1,42 +1,19 @@
+import { msg } from 'mosi/client';
 import Trie from 'lib/trie';
-import { modeMsg } from 'client/msg';
 import { keyboardEventString } from 'lib/keys';
 import { copy } from 'lib/dom';
-import {
-  scrollDown,
-  scrollUp,
-  scrollLeft,
-  scrollRight,
-  scrollPageDown,
-  scrollPageUp,
-  scrollHalfPageDown,
-  scrollHalfPageUp,
-  scrollToBottom,
-  scrollToTop,
-  scrollToLeft,
-  scrollToRight
-} from './scroll_commands';
-import {
-  goBack,
-  goForward,
-  nextPage,
-  previousPage,
-  goUp,
-  goToRoot
-} from './navigation_commands';
+import * as scrollCommands from './scroll_commands';
+import * as navigationCommands from './navigation_commands';
 
-const background = (action, arg) => () => modeMsg(1, 'Command', action, arg);
+const background = (action, arg) => () => msg(1, action, arg);
 
 export const commands = {
   toggleHelpMenu: () => {
-    // TODO: REIMPLEMENT PROPERLY
-    // msg(1, 'modeMessage', {
-    //   mode: 'Basic',
-    //   action: 'toggleHelpMenu'
-    // });
+    // TODO: REIMPLEMENT PROPERLY=
   },
-  toggleOmnibar: () => {
-    // modeMsg('thisTab&topFrame', 'Command', 'toggleOmnibar');
+  toggleSaka: () => {
+    // TODO: Add Saka
+    // msg('thisTab&topFrame', 'toggleSaka');
   },
   openLink: (event) => {
     event.hintType = 'currentTab';
@@ -66,26 +43,8 @@ export const commands = {
     event.hintType = 'focusLink';
     return 'Hints';
   },
-  // scroll commands
-  scrollDown,
-  scrollUp,
-  scrollLeft,
-  scrollRight,
-  scrollPageDown,
-  scrollPageUp,
-  scrollHalfPageDown,
-  scrollHalfPageUp,
-  scrollToBottom,
-  scrollToTop,
-  scrollToLeft,
-  scrollToRight,
-  // navigation commands
-  goBack,
-  goForward,
-  nextPage,
-  previousPage,
-  goUp,
-  goToRoot,
+  ...scrollCommands,
+  ...navigationCommands,
   // tab commands
   previousTab: background('previousTab'),
   nextTab: background('nextTab'),
@@ -132,8 +91,7 @@ export const commands = {
   clipboardBackgroundTab: background('clipboardBackgroundTab'),
   clipboardForegroundTab: background('clipboardForegroundTab'),
   clipboardNewWindow: background('clipboardNewWindow'),
-  clipboardIncognitoWindow: background('clipboardIncognitoWindow'),
-  developerMode: () => 'Developer'
+  clipboardIncognitoWindow: background('clipboardIncognitoWindow')
 };
 
 const trie = new Trie();

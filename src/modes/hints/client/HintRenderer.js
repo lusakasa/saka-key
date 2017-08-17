@@ -1,5 +1,5 @@
 import { Component, render, h } from 'preact';
-import { modeMsg } from 'client/msg';
+import { msg } from 'mosi/client';
 import { guiRoot } from 'client/gui';
 import { mouseEvent } from 'lib/dom';
 import { isMac } from 'lib/keys';
@@ -54,7 +54,7 @@ function activateHint (hint, hintType) {
       click({ shiftKey: true }); break;
     case 'incognitoWindow':
       if (hint.element.href) {
-        modeMsg(1, 'Hints', 'openLinkInIncognitoWindow', hint.element.href);
+        msg(1, 'openLinkInIncognitoWindow', hint.element.href);
       }
       break;
     case 'download':

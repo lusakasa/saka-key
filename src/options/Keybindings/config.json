@@ -449,19 +449,6 @@
       "label": "Activate Clipboard in Incognito Window",
       "key": "clipboardIncognitoWindow",
       "default": []
-    },
-    {
-      "type": "header",
-      "label": "Developer",
-      "visible": false,
-      "default": []
-    },
-    {
-      "type": "keybinding",
-      "label": "Developer Mode",
-      "key": "developerMode",
-      "visible": false,
-      "default": []
     }
   ]
 }

@@ -1,4 +1,4 @@
-import { modeMsg } from 'client/msg';
+import { msg } from 'mosi/client';
 import { findHints, setHintFindSettings } from './findHints';
 import {
   showHints,
@@ -16,12 +16,12 @@ export default {
     // first frame to enter Hints mode is triggered by a keypress from command mode
     // all other frames must be notified of mode change via message
     if (event.type === 'keydown') {
-      modeMsg(1, 'Hints', 'gatherHints', event.hintType);
+      msg(1, 'gatherHints', event.hintType);
     }
   },
   onExit: (event) => {
     if (!event.type.startsWith('message')) {
-      modeMsg('thisTab&otherFrames', 'Hints', 'exitHintsMode');
+      msg('thisTab&otherFrames', 'exitHintsMode');
     }
     hideHints();
     hideVideoControls();
@@ -32,7 +32,7 @@ export default {
   },
   keydown: (event) => {
     event.stopImmediatePropagation();
-    modeMsg(1, 'Hints', 'processKey', {
+    msg(1, 'processKey', {
       key: event.key,
       code: event.code,
       shiftKey: event.shiftKey,

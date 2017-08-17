@@ -1,4 +1,4 @@
-import { modeMsg, modeGet, meta } from 'background_page/msg';
+import { msg, get, meta } from 'mosi/core';
 import { generateHintStrings } from './hintStrings';
 import { isModifierKey } from 'lib/keys';
 
@@ -11,7 +11,7 @@ export default {
   messages: {
     gatherHints: async (hintType, src) => {
       // 1. Gather the number of link hints in each frame
-      const hintsPerFrame = await modeGet(`tab[${meta(src).tabId}]|id[${src}]`, 'Hints',
+      const hintsPerFrame = await get(`tab[${meta(src).tabId}]|id[${src}]`,
         'findHints', hintType);
       // 2. Generate Hint Strings
       const totalHints = hintsPerFrame.reduce((total, { v }) => total + v, 0);
@@ -20,16 +20,16 @@ export default {
       let offset = 0;
       hintsPerFrame.forEach(({ id, v }) => {
         const nextOffset = offset + v;
-        modeMsg(id, 'Hints', 'renderHints', hintStrings.slice(offset, nextOffset));
+        msg(id, 'renderHints', hintStrings.slice(offset, nextOffset));
         offset = nextOffset;
       });
     },
     processKey: async (event, src) => {
       if (!isModifierKey(event)) {
         const currentTabTarget = `tab[${meta(src).tabId}]|id[${src}]`;
-        const results = await modeGet(currentTabTarget, 'Hints', 'advanceHints', event.key);
+        const results = await get(currentTabTarget, 'advanceHints', event.key);
         if (results.every(({ v }) => v === 'Filtered')) {
-          modeMsg(currentTabTarget, 'Hints', 'exitHintsMode');
+          msg(currentTabTarget, 'exitHintsMode');
         }
       }
     },

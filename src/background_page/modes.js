@@ -1,6 +1,10 @@
 import { msg, meta } from 'mosi/core';
 import { getAllActiveProfileOptions, storageGet } from 'options/storage';
 import transformOptions from 'options/transform';
+import {
+  storageInstallProcedure,
+  storageUpdateProcedure
+} from 'options/procedures';
 
 export let modes = {};
 
@@ -9,47 +13,12 @@ const defaultModeObject = {
   messages: {}
 };
 
-export function initModes (availableModes) {
+export function initModes (availableModes, actions) {
   modes = availableModes;
-  Object.keys(availableModes).map((name) => {
-    modes[name] = Object.assign({}, defaultModeObject, availableModes[name]);
+  Object.entries(availableModes).map(([name, mode]) => {
+    modes[name] = Object.assign({}, defaultModeObject, mode);
+    Object.assign(actions, modes[name].messages);
   });
-}
-
-export async function modeMessage ({ mode, action, arg }, src) {
-  if (SAKA_DEBUG) {
-    if (!modes[mode]) {
-      throw Error(`Missing Mode ${mode}`);
-    }
-    if (!modes[mode].messages[action]) {
-      throw Error(`Mode ${mode} is missing a handler for action ${action}`);
-    }
-  }
-  return await modes[mode].messages[action](arg, src);
-};
-
-let cachedClientOptions;
-
-export async function onOptionsChange () {
-  if ((await storageGet('ready')).ready) {
-    const { backgroundOptions, clientOptions } =
-      transformOptions(await getAllActiveProfileOptions(), (await storageGet('config')).config);
-    Object.values(modes).forEach((mode) => {
-      mode.onOptionsChange(backgroundOptions);
-    });
-    cachedClientOptions = clientOptions;
-    msg('client', 'clientOptions', clientOptions);
-  }
-}
-
-chrome.storage.onChanged.addListener(onOptionsChange);
-
-/**
- * When a client requests settings, messages back the current client settings.
- * Future: domain lookups to determine settings to message back
- */
-export function clientOptions (arg, src) {
-  msg(src, 'clientOptions', cachedClientOptions);
 }
 
 export function loadClient (_, src) {
@@ -74,17 +43,13 @@ export function loadClient (_, src) {
   }
 }
 
+// Requests for the full Saka Client by the client loaders of preloaded tabs are
+// denied because attempting to execute within them would cause errors.
+// http://stackoverflow.com/questions/43665470/cannot-call-chrome-tabs-executescript-into-preloaded-tab-is-this-a-bug-in-chr
+// Instead, the background page listens for the tabs.onReplaced event and executes
+// content_script_loader.js into all frames, which then launches another request for
+// the full Saka Client
 if (SAKA_PLATFORM === 'chrome') {
-    /**
-   * Requests for the full Saka Client by the client loaders of preloaded tabs are
-   * denied because attempting to execute within them would cause errors.
-   * http://stackoverflow.com/questions/43665470/cannot-call-chrome-tabs-executescript-into-preloaded-tab-is-this-a-bug-in-chr
-   * Instead, the background page listens for the tabs.onReplaced event and executes
-   * content_script_loader.js into all frames, which then launches another request for
-   * the full Saka Client
-   * @param {number} addedTabId
-   * @param {number} removedTabId
-   */
   chrome.tabs.onReplaced.addListener((addedTabId, removedTabId) => {
     if (SAKA_DEBUG) {
       console.log(`Tab id changed from ${removedTabId} to ${addedTabId}. Reloading content_script_loader.js`);
@@ -95,5 +60,60 @@ if (SAKA_PLATFORM === 'chrome') {
       runAt: 'document_start',
       matchAboutBlank: true
     });
+  });
+}
+
+let cachedClientOptions;
+
+export function clientOptions (arg, src) {
+  msg(src, 'clientOptions', cachedClientOptions);
+}
+
+async function onOptionsChange () {
+  if ((await storageGet('ready')).ready) {
+    const { backgroundOptions, clientOptions } =
+    transformOptions(await getAllActiveProfileOptions(), (await storageGet('config')).config);
+    Object.values(modes).forEach((mode) => {
+      mode.onOptionsChange(backgroundOptions);
+    });
+    cachedClientOptions = clientOptions;
+    msg('client', 'clientOptions', clientOptions);
+  }
+}
+
+chrome.storage.onChanged.addListener(onOptionsChange);
+
+/**
+ * Sets up startup listener, sets up install listener, and executes setup routine
+ * When an extension is installed, only the install listener is executed, not the
+ * startup listener. The startup listener is called only when chrome is opened.
+ * The install listener can be called for a number of reasons.
+ * A setup action that should always run whenever the background page starts
+ * should NOT be placed in the startup listener.
+ */
+export async function setup () {
+  await initInstallListeners();
+  await onOptionsChange();
+}
+
+function initInstallListeners () {
+  chrome.runtime.onInstalled.addListener(async ({ reason, previousVersion }) => {
+    if (SAKA_DEBUG) console.log('install event: ' + reason);
+    switch (reason) {
+      case 'install':
+        await storageInstallProcedure();
+        await onOptionsChange();
+        chrome.tabs.create({ url: 'info.html' });
+        break;
+      case 'update':
+        await storageUpdateProcedure(previousVersion);
+        await onOptionsChange();
+        chrome.tabs.create({ url: 'info.html' });
+        break;
+      case 'chrome_update':
+      case 'shared_module_update':
+      default:
+        break;
+    }
   });
 }

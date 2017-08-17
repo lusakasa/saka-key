@@ -1,5 +1,7 @@
 dist
 dist.zip
+dist-chrome.zip
+dist-firefox.zip
 dist.crx
 dist.pem
 node_modules

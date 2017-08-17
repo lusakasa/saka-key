@@ -35,8 +35,9 @@ const middleware = {
       handleFullscreenChange(event);
       return undefined;
     }
-  },
-  messages: {}
+  }
+  // NOTE: message middleware doesn't make sense because all messages are targeted
+  // to a specific mode, whereas DOM events can be handled by any mode
 };
 
 export function middlewareOnOptionsChange (options) {
@@ -45,15 +46,6 @@ export function middlewareOnOptionsChange (options) {
 
 export function passDOMEventToMiddleware (event) {
   const nextMode = middleware.events[normalizeEventType(event.type)](event);
-  if (SAKA_DEBUG && nextMode) {
-    event.middleware = 'generic';
-  }
-  return nextMode;
-}
-
-export async function passMessageToMiddleware (action, arg, src) {
-  const messageHandler = middleware.messages[action];
-  const nextMode = messageHandler && messageHandler(arg, src);
   if (SAKA_DEBUG && nextMode) {
     event.middleware = 'generic';
   }

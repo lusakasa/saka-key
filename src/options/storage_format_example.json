@@ -94,8 +94,6 @@
     "clipboardBackgroundTab": [],
     "clipboardForegroundTab": [],
     "clipboardNewWindow": [],
-    "clipboardIncognitoWindow": [],
-    "developerMode": [
-    ]
+    "clipboardIncognitoWindow": []
   }
 }

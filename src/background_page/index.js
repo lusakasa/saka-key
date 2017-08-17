@@ -3,11 +3,9 @@ import { init } from 'mosi/core';
 import {
   loadClient,
   initModes,
-  modeMessage,
+  setup,
   clientOptions
 } from 'background_page/modes';
-import { setup } from './setup';
-import Basic from 'modes/basic/background';
 import Command from 'modes/command/background';
 import Hints from 'modes/hints/background';
 
@@ -15,21 +13,22 @@ if (SAKA_DEBUG) {
   console.log('background page initialize begin');
 }
 
+// messaging endpoints, see Mosi (https://github.com/eejdoowad/mosi) 
+const actions = {
+  loadClient,
+  clientOptions
+};
+
 // initialize messaging system
 init({
   log: SAKA_DEBUG,
-  actions: {
-    loadClient,
-    modeMessage,
-    clientOptions
-  }
+  actions
 });
 
 initModes({
-  Basic,
   Command,
   Hints
-});
+}, actions);
 
 setup();
 

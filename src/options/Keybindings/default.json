@@ -194,8 +194,6 @@
         ],
         "clipboardIncognitoWindow": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyN", "key": "N", "shiftKey": true }]
-        ],
-        "developerMode": [
         ]
       }
     },
@@ -393,8 +391,6 @@
         ],
         "clipboardIncognitoWindow": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyN", "key": "N", "shiftKey": true }]
-        ],
-        "developerMode": [
         ]
       }
     },
@@ -582,8 +578,6 @@
         ],
         "clipboardIncognitoWindow": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyN", "key": "N", "shiftKey": true }]
-        ],
-        "developerMode": [
         ]
       }
     },
@@ -750,8 +744,6 @@
         "clipboardNewWindow": [
         ],
         "clipboardIncognitoWindow": [
-        ],
-        "developerMode": [
         ]
       }
     }

@@ -22,7 +22,7 @@ Saka Key comprises:
 
 The client is structured as a state machine. Developers can create modes, which correspond to states in the state machine. The important built in modes are:
 
-* Basic - the default start/disabled state
+* Disabled - the default start/disabled state
 * Text - the state that is active when a text input is focused 
 * Command - allows entering keyboard commands for things like scrolling and switching tabs
 * Pass - forwards all events to the page so that you can use a page's built-in keyboard shortcuts
@@ -183,7 +183,7 @@ Each subdirectory also contains a file named 'default.json', which contains defa
 
 4. The background page gets the messge, then dynamically loads the full client into the frame
 
-5. The client initializes its full messaging subsystem, calls setup routines, and sets the start state to Basic (which is the disabled state).
+5. The client initializes its full messaging subsystem, calls setup routines, and sets the start state to Disabled.
 
 6. The client sends a message to the background page requesting user-defined settings
 
@@ -191,7 +191,7 @@ Each subdirectory also contains a file named 'default.json', which contains defa
 
 8. The client receives the settings, and calls every mode's onSettingsChange callback.
 
-9. Mode Basic observes the 'enabled' setting is true, and changes the mode to Command.
+9. Mode Disabled observes the 'enabled' setting is true, and changes the mode to Command.
 
 10. The user presses 'j' to scroll down. Command mode knows that 'j' is for scrolling down because all keybindings were specified in the settings passed to its onSettingsChange callback.
 
