@@ -7,3 +7,4 @@
 * **modes** -  all mode logic 
 * **options** - where options are defined
 * **pages** - pages including the options page, info page, extensions page, and popup
+* **storage** - procedures and utitilities for persisting settings

@@ -3,9 +3,9 @@ import {
   storageSet,
   storageRemove,
   storageClear
-} from 'options/storage';
+} from 'storage/storage';
 import { msg } from 'mosi/client';
-import { categories as installCategories } from 'options/transform';
+import { categories as installCategories } from 'storage/transform';
 import { saveAs } from 'file-saver';
 import compareVersions from 'compare-versions';
 

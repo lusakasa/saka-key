@@ -1,10 +1,10 @@
 import { msg, meta } from 'mosi/core';
-import { getAllActiveProfileOptions, storageGet } from 'options/storage';
-import transformOptions from 'options/transform';
+import { getAllActiveProfileOptions, storageGet } from 'storage/storage';
+import transformOptions from 'storage/transform';
 import {
   storageInstallProcedure,
   storageUpdateProcedure
-} from 'options/procedures';
+} from 'storage/procedures';
 
 export let modes = {};
 

@@ -4,7 +4,7 @@ import {
   storeageImportProcedure,
   storageExportProcedure,
   storageResetProcedure
-} from 'options/procedures';
+} from 'storage/procedures';
 import './style.css';
 
 const scrollToCard = (name) => () => {

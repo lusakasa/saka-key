@@ -6,7 +6,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import { initialize } from './actions';
-import { storageGet, storageSet } from 'options/storage';
+import { storageGet, storageSet } from 'storage/storage';
 import { getAttributes } from 'lib/util.js';
 
 async function initializeOptionsPage () {

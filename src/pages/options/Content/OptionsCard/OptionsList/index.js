@@ -2,7 +2,7 @@ import { Component, h } from 'preact';
 import { connect } from 'preact-redux';
 import OptionItem from './OptionItem';
 import ErrorItem from './ErrorItem';
-import transformOptions from 'options/transform';
+import transformOptions from 'storage/transform';
 import { setOption, setBuiltInOption } from 'pages/options/actions';
 
 class OptionsList extends Component {
