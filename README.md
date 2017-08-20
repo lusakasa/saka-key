@@ -39,7 +39,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
   npm install
   npm run build:chrome
   # or if you want to generate an optimized production build
-  npm run build:prod:chrome
+  npm run build:chrome:prod
   ```
 
 2. Navigate to `chrome://extensions`
@@ -61,7 +61,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
   npm install
   npm run build:firefox
   # or if you want to generate an optimized production build
-  npm run build:prod:firefox
+  npm run build:firefox:prod
   ```
 
 2. Navigate to `about:debugging`

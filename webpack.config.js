@@ -11,9 +11,10 @@ const marked = require('marked');
 const renderer = new marked.Renderer();
 
 module.exports = function (env) {
-
-  const [mode, platform, benchmark] = env.split(':');
-  const version = require('./manifest/common.json').version;
+  console.log(env);
+  const [mode, platform, benchmark, firefoxBeta ] = env.split(':');
+  let version = require('./manifest/common.json').version;
+  if (firefoxBeta) version += 'rc';
 
   const config = {
     entry: {
@@ -89,7 +90,8 @@ module.exports = function (env) {
       ]),
       new GenerateJsonPlugin('manifest.json', merge(
         require('./manifest/common.json'),
-        require(`./manifest/${platform}.json`)
+        require(`./manifest/${platform}.json`),
+        { version }
       ), null, 2)
     ]
   };
