@@ -6,13 +6,12 @@ Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/sa
 
 THE DEFAULT VERSION OF SAKA KEY ON THE FIREFOX MARKETPLACE IS EXTREMELY OUTDATED. Please install the DEVELOPMENT CHANNEL version of Saka Key for Firefox (by scrolling to the bottom of its marketplace page). It's 15 releases ahead.
 
-![Saka Key Preview](./book/images/saka-key-preview.gif)
-
 ## Index
 
 * [Intro](#intro)
 * [Install](#install)
 * [Development Tips](#development-tips)
+* [Preview](#preview)
 * [Credits](#credits)
 
 ## Intro
@@ -90,6 +89,10 @@ You may have to debug or modify Mosi when contributing to saka key. To use your 
 2. Run `npm link`
 3. Navigate to the root of Saka key.
 4. Run `npm link mosi`
+
+## Preview
+
+![Saka Key Preview](./book/images/saka-key-preview.gif)
 
 ## Credits
 
