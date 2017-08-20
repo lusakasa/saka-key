@@ -2,13 +2,16 @@
 
 ## Modes Overview
 
-Each mode in Saka Key has two components:
-  1. A client component loaded into every frame of every page
-  2. A persistent background page
+Saka Key is architected as a state machine in which the states are Saka Key's various modes. At any given time, exactly one mode is active. Each mode defines handlers for events (like keypresses, clicks, and messages) that 1) perform an action (like scrolling or switching tabs) and 2) return the next active mode.
 
-The client is structured like a state machine. Each mode is a state in this state machine and must define what happens when the mode is entered and exited, and what the next mode is for each event.
+A Saka Key "client" is loaded into every frame of every page. This client comprises:
+  1. the set of modes contained within this directory and
+  2. the infrastructure needed to manage and switch between modes (contained in `src/client`)
 
-Each mode also defines the settings it requires, how those settings should be transformed before being sent to the client component, and what the client component should do with the transformed settings.
+Each mode may include a persistent component that lives in the background page that is shared by all clients. This background component is useful for:
+  1. Communicating between frames of a page
+  2. Performing privileged actions that can't occur in content scripts
+  3. Storing data that should be persisted in memory
 
 See the [developer guide](/notes/developer_guide.md) to learn the details
 
@@ -25,8 +28,6 @@ Each mode's directory has the following structure:
     * **index.js** - logic that runs in the background page
   * **client/**
     * **index.js** - logic that runs in every frame of every page (in content scripts)
-  * **config.json** - describes the mode's settings (used to generate the options page)
-  * **default.json** - defines built-in settings profiles
 
 If a mode is simple and has no background page component or settings, it might be simplified to just:
 
@@ -35,7 +36,7 @@ If a mode is simple and has no background page component or settings, it might b
 
 ## Mode Client Component
 
-A mode client is an object with the following properties, all of which are optional. Note that message handling is asynchronous and DOM event handling is synchronous. In the past, DOM event handling was asynchronous also, but firefox's [incorrect implementation](https://bugzilla.mozilla.org/show_bug.cgi?id=1193394) of [promises/microtasks](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/) forced a switch back to synchronous DOM event handling. If/when this bug is resolved, Saka Key will probably revert to Asynchronous DOM event handling.
+A mode client is an object with the following properties, all of which are optional. Note that message handling is asynchronous and DOM event handling is synchronous.
 
 ```typescript
 interface ModeClient {
@@ -43,8 +44,8 @@ interface ModeClient {
   onEnter?: (event: Event) => void,
   // called when mode is exited, passed event that triggered mode change
   onExit?: (event: Event) => void,
-  // called when a setting is updated, passed new settings object
-  onSettingsChange?: ({ [key: string]: any }) => {},
+  // called on all existing modes (not just the active mode) when an option is changed
+  onOptionsChange?: ({ [key: string]: any }) => void,
   // called on every keydown event, passed keydown event, returns next mode
   keydown?: (event: KeyboardEvent) => string,
   // called on every keypress event, passed keypress event, returns next mode
@@ -59,10 +60,11 @@ interface ModeClient {
   click?: (event: MouseEvent) => string,
   // called on every keydown event, passed keydown event, returns next mode
   mousedown?: (event: MouseEvent) => string,
-  // contains message callbacks, returns next mode and optionally mosi get() value
-  // https://github.com/eejdoowad/mosi
+  // contains message callbacks which return either
+  // 1. the Mosi get() value https://github.com/eejdoowad/mosi or
+  // 2. an object containg the nextMode and the Mosi get() value
   messages?: {
-    [key: string]: async (arg: any, src: number) => undefined | string | {
+    [key: string]: async (arg: any, src: number) => any | {
       nextMode: string,
       value: any
     }
@@ -94,16 +96,9 @@ A mode's background component is an object with the following properties.
 
 ```typescript
 interface ModeBackground {
-  // called when the user updates a setting, passes the mode's options object
-  // defined in config.json and the key-value pairs for all modes, returns
-  // * values - the key-value pairs passed to every client
-  // * errors - the error strings for settings that failed validation
-  clientSettings?: (options: Object, settings: { [key: string]: any }) => ({
-    values: { [key: string]: any },
-    errors: { [key: string]: string }
-  }),
-  // contains message callbacks, returns the mosi get() value
-  // https://github.com/eejdoowad/mosi
+  // called when an option is changed
+  onOptionsChange?: ({ [key: string]: any }) => void,
+  // contains message callbacks wich returns the mosi get() value https://github.com/eejdoowad/mosi
   messages?: {
     [key: string]: async (arg: any, src: number) => any
   }
@@ -114,7 +109,7 @@ Each mode provides custom definitions for these properties. If a property is omi
 
 ```javascript
 const defaultModeObject = {
-  clientSettings: () => ({ values: {}, errors: {} }),
+  onOptionsChange: () => undefined
   messages: {}
 };
 ```
