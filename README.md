@@ -30,7 +30,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 ### Install on Chrome
 
-1. Run the following commands in your terminal to clone and build Saka Key. 
+1. Run the following commands in your terminal to clone and build Saka Key.
   An extension you can run will be generated in the 'dist' directory.
 
   ```sh
@@ -52,25 +52,27 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 ### Install on Firefox
 
-1. Run the following commands in your terminal to clone and build Saka Key. 
-  An extension you can run will be generated in the 'dist' directory.
+1. Run the following commands in your terminal to clone and build Saka Key.
+  A zipped extension named 'dist-firefox.zip' will be generated in the root directory.
 
   ```sh
   git clone https://github.com/lusakasa/saka-key.git
   cd saka-key
   npm install
-  npm run build:firefox
-  # or if you want to generate an optimized production build
   npm run build:prod:firefox
   ```
 
-2. Navigate to `about:debugging`
+2. Navigate to `about:config`
 
-3. Enable add-on debugging and click 'Load Temporary Add-on'
+3. Search for the entry `xpinstall.signatures.required` and set it to `false` (beware: this will allow installing unsigned extension from files)
 
-4. Select any file within the dist directory, and &#128640;.
+4. Navigate to `about:addons`
 
-5. Firefox will load Saka Key automatically into all valid existing tabs
+5. Click the gear icon in the upper right corner and select "Install Add-on From File..."
+
+6. Select the `dist-firefox.zip` file
+
+7. Firefox will load Saka Key automatically into all valid existing tabs
 
 ## Development Tips
 
@@ -91,7 +93,7 @@ You may have to debug or modify Mosi when contributing to saka key. To use your 
 
 ## Credits
 
-MIT Licensed, Copyright (c) 2017 Sufyan Dawoodjee 
+MIT Licensed, Copyright (c) 2017 Sufyan Dawoodjee
 
 Saka Key is inspired by and derives from
 

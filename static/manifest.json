@@ -63,5 +63,10 @@
     "default_command.json",
     "default_developer.json",
     "default_hints.json"
-    ]
+  ],
+	"applications": {
+    "gecko": {
+      "id": "saka-key@lusakasa.org"
+    }
+  }
 }
