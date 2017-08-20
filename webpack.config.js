@@ -1,13 +1,20 @@
 const webpack = require('webpack');
-const BabiliPlugin = require('babili-webpack-plugin');
+const MinifyPlugin = require('babel-minify-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const GenerateJsonPlugin = require('generate-json-webpack-plugin');
+const merge = require('webpack-merge');
+
 // process.traceDeprecation = true;
 
 // markdown convert to html
-var marked = require('marked');
-var renderer = new marked.Renderer();
+const marked = require('marked');
+const renderer = new marked.Renderer();
 
 module.exports = function (env) {
+
+  const [mode, platform, benchmark] = env.split(':');
+  const version = require('./manifest/common.json').version;
+
   const config = {
     entry: {
       'background_page': './src/background_page/index.js',
@@ -79,27 +86,17 @@ module.exports = function (env) {
           from: '**/config.json',
           to: 'config_[folder].json'
         }
-      ])
+      ]),
+      new GenerateJsonPlugin('manifest.json', merge(
+        require('./manifest/common.json'),
+        require(`./manifest/${platform}.json`)
+      ), null, 2)
     ]
   };
 
-  const [mode, platform, benchmark] = env.split(':');
-  const version = require('./static/manifest.json').version;
-  // mode controls:
-  // 1. SAKA_DEBUG: boolean(true | false)
-  //   * true for development builds
-  //   * false for production build
-  //   If you want something to run only in testing/development, use
-  //     if (SAKA_DEBUG) { console.log(variable); }.
-  //   All code within will be removed at build time in production builds.
-  // platform controls:
-  // 1. SAKA_PLATFORM: string('chrome' | 'firefox' | 'edge')
-  //   Use this to provide platform specific features, e.g. use shadow DOM
-  //   on chrome but css selectors on firefox and edge for link hint styling
-
   if (mode === 'prod') {
     config.plugins = config.plugins.concat([
-      new BabiliPlugin(),
+      new MinifyPlugin(),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
         'SAKA_DEBUG': JSON.stringify(false),

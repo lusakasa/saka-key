@@ -43,18 +43,13 @@
     "clipboardRead"
   ],
   "web_accessible_resources": [
-    "hello.js",
     "content_script.js",
-    "help.js",
     "content_script.js.map",
     "background_page.js.map",
     "content_script_loader.js.map",
-    "help.js.map",
     "options.js.map",
     "info.js.map",
-    "help.html",
     "Roboto-Regular.tff",
-    "startProfiles.json",
     "config_basic.json",
     "config_command.json",
     "config_developer.json",
