@@ -12,7 +12,7 @@ export default class Paragraph extends Component {
         <ul style={{ paddingLeft: 0 }}>
           { links.map(({ title, url }) =>
             <li style={{ display: 'inline-block', paddingLeft: 0, paddingRight: '12px' }}>
-              <a href={url} style={{ textDecoration: 'none', color: '#3f51F5', pointerEvents: url ? 'auto' : 'none' }}>
+              <a target='_blank' href={url} style={{ textDecoration: 'none', color: '#3f51F5', pointerEvents: url ? 'auto' : 'none' }}>
                 { title }
               </a>
             </li>

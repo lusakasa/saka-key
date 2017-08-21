@@ -49,7 +49,7 @@ export function searchEngineQueryURL (query, queryURLTemplate) {
 
 /**
  * Returns true if the text is a valid URL (including protocol, e.g. http://hello)
- * or probably corresponds to a valid URL (e.g. lusakasa.com)
+ * or probably corresponds to a valid URL (e.g. google.com)
  * Based on https://github.com/1995eaton/chromium-vim/blob/aec10cf47943b4674a5bc92c46d3c3c138d3cba3/content_scripts/utils.js#L59
  */
 export function isLikeURL (url) {

@@ -36,7 +36,7 @@
       "type": "info",
       "text": "Saka is an elegant Omnibar replacement extension. Install Saka to use this command.",
       "links": [
-        { "title": "About Saka", "url": "https://saka.io" },
+        { "title": "About Saka", "url": "https://key.saka.io" },
         { "title": "Add to Chrome", "url": "https://chrome.google.com/webstore/detail/saka/nbdfpcokndmapcollfpjdpjlabnibjdi" },
         { "title": "Coming to Firefox soon" }
       ]

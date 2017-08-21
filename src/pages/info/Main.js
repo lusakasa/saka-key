@@ -26,17 +26,17 @@ const MainView = () => (
     <ul class='mdc-list mdc-list--two-line'>
       <Item
         title='Tutorial'
-        href='http://saka-key.lusakasa.com/tutorial'
+        href='https://key.saka.io/tutorial'
         description='Learn how to use Saka Key'
       />
       <Item
         title='Customize'
-        href='http://saka-key.lusakasa.com/tutorial/settings.html'
+        href='https://key.saka.io/tutorial/settings.html'
         description="Modify keybindings and adjust Saka Key's appearance"
       />
       <Item
         title='Feedback'
-        href='http://saka-key.lusakasa.com/getting_started/feedback.html'
+        href='https://key.saka.io/getting_started/feedback.html'
         description='Report bugs, request features, and give 5-star ratings'
       />
       <Item
@@ -61,23 +61,7 @@ const Header = () => (
       <h1 className='mdc-card__title mdc-card__title--large'>Saka Key</h1>
       <h2 class='mdc-card__subtitle'>A keyboard interface to the web</h2>
       <h2 class='mdc-card__subtitle'>Version { SAKA_VERSION } for { capitalize(SAKA_PLATFORM) }</h2>
-      <h2 class='mdc-card__subtitle'>By <a href='http://dawoodjee.com'>Sufyan</a></h2>
-      {/*<a
-        className='mdc-button mdc-button--primary'
-        href='http://saka-key.lusakasa.com'>
-        Handbook
-      </a>
-      <a
-        className='mdc-button mdc-button--primary'
-        href='https://github.com/lusakasa/saka-key'>
-        Github
-      </a>*/}
-      {/*<a
-        className='mdc-button mdc-button--primary'
-        style='display:block'
-        href='mailto:lusakasa.dev@gmail.com'>
-        lusakasa.dev@gmail.com
-      </a>*/}
+      <h2 class='mdc-card__subtitle'>By <a href='https://dawoodjee.com'>Sufyan</a></h2>
     </section>
   </div>
 );
