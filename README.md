@@ -1,6 +1,6 @@
 # Saka Key
 
-A keyboard interface to the web for everyone.
+A keyboard interface to the web
 
 Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp) or [Firefox Marketplace](https://addons.mozilla.org/en-US/firefox/addon/saka-key/). Then read the [Saka Key Handbook](http://saka-key.lusakasa.com).
 
@@ -11,6 +11,7 @@ THE DEFAULT VERSION OF SAKA KEY ON THE FIREFOX MARKETPLACE IS EXTREMELY OUTDATED
 * [Intro](#intro)
 * [Install](#install)
 * [Development Tips](#development-tips)
+* [Preview](#preview)
 * [Credits](#credits)
 
 ## Intro
@@ -88,6 +89,10 @@ You may have to debug or modify Mosi when contributing to saka key. To use your 
 2. Run `npm link`
 3. Navigate to the root of Saka key.
 4. Run `npm link mosi`
+
+## Preview
+
+![Saka Key Preview](./book/images/saka-key-preview.gif)
 
 ## Credits
 
