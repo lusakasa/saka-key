@@ -11,10 +11,10 @@ You can go backward and forward in history.
 
 You can also go up the URL hierarchy.
 
-For example, if the current URL is `saka-key.lusakasa.com/tutorial/zooming.html`, you can go up once to `saka-key.lusakasa.com/tutorial/`.
+For example, if the current URL is `key.saka.io/tutorial/zooming.html`, you can go up once to `key.saka.io/tutorial/`.
 
 * **Go Up** - <kbd>u</kbd><kbd>u</kbd>
 
-Or you can jump directly to `saka-key.lusakasa.com`.
+Or you can jump directly to `key.saka.io`.
 
 * **Go To Root** - <kbd>u</kbd><kbd>shift-u</kbd>
