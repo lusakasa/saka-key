@@ -4,7 +4,7 @@
 
 * The best way to report a bug or request a feature is to [submit an issue on Github](https://github.com/lusakasa/saka-key/issues).
 
-* Otherwise, email [lusakasa.dev@gmail.com](mailto:lusakasa.dev@gmail.com)
+* Otherwise, email [saka.help@gmail.com](mailto:saka.help@gmail.com)
 
 ## Leave a 5 star Review
 
