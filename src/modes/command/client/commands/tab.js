@@ -1,0 +1,27 @@
+import { background } from 'lib/msg';
+
+export const previousTab = background('previousTab');
+export const nextTab = background('nextTab');
+export const firstTab = background('firstTab');
+export const lastTab = background('lastTab');
+export const moveTabLeft = background('moveTabLeft');
+export const moveTabRight = background('moveTabRight');
+export const moveTabFirst = background('moveTabFirst');
+export const moveTabLast = background('moveTabLast');
+export const closeTab = background('closeTab');
+export const closeOtherTabs = background('closeOtherTabs');
+export const closeRightTabs = background('closeRightTabs');
+export const closeLeftTabs = background('closeLeftTabs');
+export const newTab = background('newTab');
+export const restoreTab = background('restoreTab');
+export const duplicateTab = background('duplicateTab');
+export const newWindow = background('newWindow');
+export const switchWindow = background('switchWindow');
+export const zoomIn = background('zoomIn');
+export const zoomOut = background('zoomOut');
+export const zoomReset = background('zoomReset');
+export const refreshTab = background('refreshTab');
+export const refreshAllTabs = background('refreshAllTabs');
+export const toggleMuteTab = background('toggleMuteTab');
+export const toggleMuteAllTabs = background('toggleMuteAllTabs');
+export const togglePinTab = background('togglePinTab');

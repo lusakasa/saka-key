@@ -1,5 +1,6 @@
 import { init } from 'mosi/client';
 import { initModes, setup, changeMode, clientOptions } from './modes';
+import { removeEventListeners } from './eventListeners';
 import Disabled from 'modes/disabled/client';
 import Command from 'modes/command/client';
 import Pass from 'modes/pass/client';
@@ -16,7 +17,7 @@ import Hints from 'modes/hints/client';
  */
 export function initialize (type, otherActions = {}) {
   if (SAKA_DEBUG) {
-    console.log(`${type} client loaded`);
+    console.log(`${type} client loaded for version ${SAKA_VERSION}`);
   }
 
   const actions = {
@@ -29,7 +30,8 @@ export function initialize (type, otherActions = {}) {
   init({
     log: SAKA_DEBUG,
     subscriptions: ['client', type],
-    actions
+    actions,
+    onClientDisconnect: removeEventListeners
   });
 
   initModes('Disabled', {

@@ -1,6 +1,6 @@
 import { msg } from 'mosi/client';
 import { isTextEditable, deepActiveElement, normalizeEventType } from 'lib/dom';
-import { installEventListeners } from './installEventListeners';
+import { installEventListeners } from './eventListeners';
 import {
   passDOMEventToMiddleware,
   middlewareOnOptionsChange

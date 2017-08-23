@@ -96,6 +96,13 @@ module.exports = function (env) {
     ]
   };
 
+  // extension id must be specified in calls to chrome.runtime.connect
+  // otherwise clients won't be able to reconnect to background page
+  // and background commands will stop working
+  const EXTENSION_ID = JSON.stringify(platform === 'chrome'
+    ? 'hhhpdkekipnbloiiiiaokibebpdpakdp'
+    : 'a0dd2b80-9ba1-224b-b5fe-3ae14f12d85d');
+
   if (mode === 'prod') {
     config.plugins = config.plugins.concat([
       new MinifyPlugin(),
@@ -103,8 +110,9 @@ module.exports = function (env) {
         'process.env.NODE_ENV': JSON.stringify('production'),
         'SAKA_DEBUG': JSON.stringify(false),
         'SAKA_VERSION': JSON.stringify(version),
+        'SAKA_BENCHMARK': JSON.stringify(true),
         'SAKA_PLATFORM': JSON.stringify(platform),
-        'SAKA_BENCHMARK': JSON.stringify(true)
+        EXTENSION_ID
       })
     ]);
   } else {
@@ -113,8 +121,9 @@ module.exports = function (env) {
         'process.env.NODE_ENV': JSON.stringify('development'),
         'SAKA_DEBUG': JSON.stringify(true),
         'SAKA_VERSION': JSON.stringify(version + ' dev'),
+        'SAKA_BENCHMARK': JSON.stringify(benchmark === 'benchmark'),
         'SAKA_PLATFORM': JSON.stringify(platform),
-        'SAKA_BENCHMARK': JSON.stringify(benchmark === 'benchmark')
+        EXTENSION_ID
       })
     ]);
   }

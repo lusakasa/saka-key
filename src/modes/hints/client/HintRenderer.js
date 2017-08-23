@@ -1,9 +1,7 @@
 import { Component, render, h } from 'preact';
-import { msg } from 'mosi/client';
 import { guiRoot } from 'client/gui';
-import { mouseEvent } from 'lib/dom';
-import { isMac } from 'lib/keys';
 import { hintType } from './index';
+import { activateHint } from './activateHint';
 
 export let showHints;
 export let hideHints;
@@ -41,35 +39,6 @@ export function setHintRenderSettings ({
 .saka-hint-active-char {
   ${hintActiveCharCSS}
 }`;
-}
-
-function activateHint (hint, hintType) {
-  const click = (modifiers) => mouseEvent(hint.element, 'click', modifiers);
-  switch (hintType) {
-    case 'backgroundTab':
-      click({ ctrlKey: !isMac, metaKey: isMac }); break;
-    case 'foregroundTab':
-      click({ ctrlKey: !isMac, metaKey: isMac, shiftKey: true }); break;
-    case 'newWindow':
-      click({ shiftKey: true }); break;
-    case 'incognitoWindow':
-      if (hint.element.href) {
-        msg(1, 'openLinkInIncognitoWindow', hint.element.href);
-      }
-      break;
-    case 'download':
-      click({ altKey: true }); break;
-    case 'focusLink':
-      if (SAKA_DEBUG) {
-        console.log(`Hint [${hint.hintString}] targets:`, hint.element);
-      }
-      break;
-    case 'currentTab':
-    default:
-      click();
-  }
-  hint.element.focus();
-  return 'Reset';
 }
 
 class HintRenderer extends Component {

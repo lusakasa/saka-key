@@ -9,3 +9,11 @@ export function getAttributes (object, keys) {
   });
   return output;
 }
+
+export function objectMap (object, map) {
+  const out = {};
+  Object.entries(object).forEach(([attribute, value]) => {
+    out[attribute] = map(value);
+  });
+  return out;
+}

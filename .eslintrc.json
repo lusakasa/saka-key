@@ -34,7 +34,8 @@
     "SAKA_DEBUG": true,
     "SAKA_PLATFORM": true,
     "SAKA_VERSION": true,
-    "SAKA_BENCHMARK": true
+    "SAKA_BENCHMARK": true,
+    "EXTENSION_ID": true
   },
 
   "ecmaFeatures": {

@@ -21,7 +21,7 @@ export function initModes (availableModes, actions) {
   });
 }
 
-export function loadClient (_, src) {
+export async function loadClient (_, src) {
   const { sender: { frameId, tab: { index: tabIndex, id: tabId } } } = meta(src);
   // tabIndex === -1 indicates the tab is preloaded but not a full tab
   // attempting to execute into it is an error
@@ -34,12 +34,27 @@ export function loadClient (_, src) {
     if (SAKA_DEBUG) {
       console.log(`Loading client: frame: ${frameId}, tab: ${tabId}`);
     }
-    browser.tabs.executeScript(tabId, {
+    await browser.tabs.executeScript(tabId, {
       file: '/content_script.js',
       frameId,
       runAt: 'document_start',
       matchAboutBlank: true
     });
+  }
+}
+
+/** Reloads all Saka Clients, called on extension updates */
+export async function reloadAllClients () {
+  const tabs = await browser.tabs.query({});
+  for (const tab of tabs) {
+    try {
+      browser.tabs.executeScript(tab.id, {
+        file: '/content_script_loader.js',
+        allFrames: true,
+        runAt: 'document_start',
+        matchAboutBlank: true
+      });
+    } catch (e) {}
   }
 }
 
@@ -108,6 +123,7 @@ function initInstallListeners () {
       case 'update':
         await storageUpdateProcedure(previousVersion);
         await onOptionsChange();
+        await reloadAllClients();
         chrome.tabs.create({ url: 'info.html' });
         break;
       case 'chrome_update':

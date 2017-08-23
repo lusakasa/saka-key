@@ -33,5 +33,5 @@ initModes({
 setup();
 
 if (SAKA_DEBUG) {
-  console.log('background page initialized');
+  console.log(`background page initialized for version ${SAKA_VERSION}`);
 }

@@ -35,7 +35,20 @@ export default {
     },
     openLinkInIncognitoWindow: (url) => {
       // TODO: consider more robust URL verification like Vimium's
-      chrome.windows.create({ incognito: true, url });
+      browser.windows.create({ url, incognito: true });
+    },
+    // Needed to activate links on firefox because it ignores keyboard modifiers
+    // or doesn't execute default behaviors on click events
+    ...SAKA_PLATFORM === 'chrome' ? {} : {
+      openLinkInBackgroundTab: (url) => {
+        browser.tabs.create({ url, active: false });
+      },
+      openLinkInForegroundTab: (url) => {
+        browser.tabs.create({ url, active: true });
+      },
+      openLinkInNewWindow: (url) => {
+        browser.windows.create({ url });
+      }
     }
   }
 };

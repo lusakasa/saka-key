@@ -1,5 +1,5 @@
-import { initInputTrie, resetInputTrie, advanceInputTrie } from './command_manager';
-import { initScrolling, cancelScroll } from './scroll_commands';
+import { initInputTrie, resetInputTrie, advanceInputTrie } from './trie';
+import { initScrolling, cancelScroll } from './commands/scroll/utils';
 import { setKeyboardSettings, isModifierKey } from 'lib/keys';
 
 export default {
