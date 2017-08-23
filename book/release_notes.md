@@ -1,6 +1,12 @@
 # Release Notes
 
+## 1.19.0
+
+* Firefox bug fix: opening links in foreground/background/new window now works
+* Chrome bug fix: After this release, updating/reloading Saka Key will not break commands in existing tabs 
+
 ## 1.18
+
 * Integration with [Saka](https://saka.io) - an elegant Omnibar replacement extension
 * Headers are back in the Options page
 * New command **Toggle Saka** <kbd>l</kbd> (requires installing [Saka](https://saka.io))
