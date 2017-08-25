@@ -2,7 +2,7 @@
 
 ## Modes Overview
 
-Saka Key is architected as a state machine in which the states are Saka Key's various modes. At any given time, exactly one mode is active. Each mode defines handlers for events (like keypresses, clicks, and messages) that 1) perform an action (like scrolling or switching tabs) and 2) return the next active mode.
+Saka Key's client is a state machine in which the states are Saka Key's various modes. At any given time, exactly one mode is active. Each mode defines handlers for events (like keypresses, clicks, and messages) that 1) perform an action (like scrolling or switching tabs) and 2) return the next active mode.
 
 A Saka Key "client" is loaded into every frame of every page. This client comprises:
   1. the set of modes contained within this directory and
@@ -34,33 +34,27 @@ If a mode is simple and has no background page component or settings, it might b
 * **mode/**
   * **client.js**
 
-## Mode Client Component
+## Client Modes
 
-A mode client is an object with the following properties, all of which are optional. Note that message handling is asynchronous and DOM event handling is synchronous.
+A mode is an object with the following properties, all of which are optional. Note that message handling is asynchronous and DOM event handling is synchronous.
 
 ```typescript
-interface ModeClient {
+interface Client {
   // called when mode is entered, passed event that triggered mode change
   onEnter?: (event: Event) => void,
   // called when mode is exited, passed event that triggered mode change
   onExit?: (event: Event) => void,
   // called on all existing modes (not just the active mode) when an option is changed
   onOptionsChange?: ({ [key: string]: any }) => void,
-  // called on every keydown event, passed keydown event, returns next mode
+  // DOM event handler that return the next mode
   keydown?: (event: KeyboardEvent) => string,
-  // called on every keypress event, passed keypress event, returns next mode
   keypress?: (event: KeyboardEvent) => string,
-  // called on every keyup event, passed keyup event, returns next mode
   keyup?: (event: KeyboardEvent) => string,
-  // called on every blur event, passed blur event, returns next mode
   blur?: (event: FocusEvent) => string,
-  // called on every focus event, passed focus event, returns next mode
   focus?: (event: FocusEvent) => string,
-  // called on every keydown event, passed keydown event, returns next mode
   click?: (event: MouseEvent) => string,
-  // called on every keydown event, passed keydown event, returns next mode
   mousedown?: (event: MouseEvent) => string,
-  // contains message callbacks which return either
+  // Async message callbacks that return either
   // 1. the Mosi get() value https://github.com/eejdoowad/mosi or
   // 2. an object containg the nextMode and the Mosi get() value
   messages?: {

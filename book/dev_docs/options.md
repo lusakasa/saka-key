@@ -1,4 +1,4 @@
-# mode options
+# Options
 
 ## Visibility Specification
 
