@@ -27,10 +27,14 @@ export default {
     processKey: async (event, src) => {
       if (!isModifierKey(event)) {
         const currentTabTarget = `tab[${meta(src).tabId}]|id[${src}]`;
-        const results = await get(currentTabTarget, 'advanceHints', event.key);
-        if (results.every(({ v }) => v === 'Filtered')) {
-          msg(currentTabTarget, 'exitHintsMode');
-        }
+        try {
+          const results = await get(currentTabTarget, 'advanceHints', event.key);
+          if (results.every(({ v }) => v === 'Filtered')) {
+            msg(currentTabTarget, 'exitHintsMode');
+          }
+        // if a link is activated, no response will be received
+        // and a transaction timeout exception will be raised
+        } catch (e) {}
       }
     },
     openLinkInIncognitoWindow: (url) => {
