@@ -144,10 +144,10 @@ export function changeMode (modeChangeEvent) {
 }
 
 /**
- * @param {DocumentEvent} event
+ * @param {Event} event
  */
 function handleDOMEvent (event) {
-  if (enabled) {
+  if (enabled && event.isTrusted) {
     const nextMode = passDOMEventToMiddleware(event) ||
       (modes[currentMode][normalizeEventType(event.type)](event));
     setMode(nextMode, event);
