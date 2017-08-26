@@ -118,6 +118,7 @@ function initInstallListeners () {
       case 'install':
         await storageInstallProcedure();
         await onOptionsChange();
+        await reloadAllClients();
         chrome.tabs.create({ url: 'info.html' });
         break;
       case 'update':
