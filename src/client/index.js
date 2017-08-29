@@ -1,6 +1,5 @@
-import { init } from 'mosi/client';
-import { initModes, setup, changeMode, clientOptions } from './modes';
-import { removeEventListeners } from './eventListeners';
+import { init, msg } from 'mosi/client';
+import { initModes, addEventListeners, removeEventListeners, changeMode, clientOptions } from './modes';
 import Disabled from 'modes/disabled/client';
 import Command from 'modes/command/client';
 import Pass from 'modes/pass/client';
@@ -26,6 +25,8 @@ export function initialize (type, otherActions = {}) {
     clientOptions
   };
 
+  addEventListeners(type);
+
   // Initialize the messaging system
   init({
     log: SAKA_DEBUG,
@@ -34,6 +35,8 @@ export function initialize (type, otherActions = {}) {
     onClientDisconnect: removeEventListeners
   });
 
+  msg(1, 'clientOptions');
+
   initModes('Disabled', {
     Disabled,
     Command,
@@ -41,6 +44,4 @@ export function initialize (type, otherActions = {}) {
     Text,
     Hints
   }, actions);
-
-  setup(type);
 }

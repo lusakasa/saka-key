@@ -1,4 +1,13 @@
 {
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"],
+      "all_frames": true,
+      "run_at": "document_start",
+      "match_about_blank": true
+    }
+  ],
   "applications": {
     "gecko": {
       "id": "{46104586-98c3-407e-a349-290c9ff3594d}"

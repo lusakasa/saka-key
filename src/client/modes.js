@@ -1,6 +1,5 @@
-import { msg } from 'mosi/client';
 import { isTextEditable, deepActiveElement, normalizeEventType } from 'lib/dom';
-import { installEventListeners } from './eventListeners';
+import interceptedEventTypes from './interceptedEventTypes';
 import {
   passDOMEventToMiddleware,
   middlewareOnOptionsChange
@@ -37,12 +36,31 @@ export function initModes (startMode, availableModes, actions) {
   });
 }
 
-export function setup (clientType) {
-  msg(1, 'clientOptions');
-  if (clientType !== 'content_script') {
-    installEventListeners();
+export let removeEventListeners;
+export function addEventListeners (clientType) {
+  // event listeners must be added, except if the client is a content script on Chrome
+  // for which the loader already added event listeners
+  if (SAKA_PLATFORM === 'chrome' && clientType === 'content_script') {
+    window.handleDOMEvent = handleDOMEvent;
+    removeEventListeners = window.removePreloadedDOMEventListener;
+  } else {
+    addNormalEventListeners();
+    removeEventListeners = removeNormalEventListeners;
   }
-  window.handleDOMEvent = handleDOMEvent;
+}
+
+function addNormalEventListeners () {
+  interceptedEventTypes.forEach((eventType, i) => {
+    window.addEventListener(eventType, handleDOMEvent, true);
+  });
+  if (SAKA_DEBUG) console.log('Normal Event Listeners Added');
+}
+
+function removeNormalEventListeners () {
+  interceptedEventTypes.forEach((eventType) => {
+    window.removeEventListener(eventType, handleDOMEvent, true);
+  });
+  if (SAKA_DEBUG) console.log('Normal Event Listeners Removed');
 }
 
 /** Handles when messages containing updated options are received */

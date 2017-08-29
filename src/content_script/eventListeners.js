@@ -1,5 +1,3 @@
-import { fullscreenchange } from 'lib/dom';
-
 // Saka Key installs exactly one listener for each event type of interest.
 //
 // These listeners must be installed as soon as possible, otherwise the
@@ -15,32 +13,23 @@ import { fullscreenchange } from 'lib/dom';
 // detects when messaging is cut off and removes its event listeners. The
 // background page then loads in new clients that can handle events without
 // interference from old event listeners.
+import interceptedEventTypes from 'client/interceptedEventTypes';
 
-const eventTypes = [
-  'keydown',
-  'keypress',
-  'keyup',
-  'blur',
-  'focus',
-  'click',
-  'mousedown',
-  fullscreenchange
-];
-
-function handleDOMEvent (event) {
+function _handleDOMEvent (event) {
   window.handleDOMEvent(event);
 }
 
-export function installEventListeners () {
+export function addPreloadedEventListeners () {
   window.handleDOMEvent = () => {};
-  eventTypes.forEach((eventType, i) => {
-    window.addEventListener(eventType, handleDOMEvent, true);
+  interceptedEventTypes.forEach((eventType, i) => {
+    window.addEventListener(eventType, _handleDOMEvent, true);
   });
-}
-
-export function removeEventListeners () {
-  window.handleDOMEvent = () => {};
-  eventTypes.forEach((eventType) => {
-    window.removeEventListener(eventType, handleDOMEvent, true);
-  });
+  window.removePreloadedDOMEventListener = () => {
+    window.handleDOMEvent = () => {};
+    interceptedEventTypes.forEach((eventType) => {
+      window.removeEventListener(eventType, _handleDOMEvent, true);
+    });
+    if (SAKA_DEBUG) console.log('Preloaded Event Listeners Removed');
+  };
+  if (SAKA_DEBUG) console.log('Preloaded Event Listeners Added');
 }
