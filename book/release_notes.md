@@ -1,5 +1,12 @@
 # Release Notes
 
+## 1.20.0
+
+* Fixed vulnerability that allowed any web page to trigger Saka Key commands by issuing synthetic DOM events.
+* On Chrome, Saka Key now loads into every page automatically on install and on restart, without requiring page refreshes.
+* Silenced unhelpful console log messages
+* Fixed Firefox [bug](https://github.com/lusakasa/saka-key/issues/26) that breaks Saka Key on certain pages
+
 ## 1.19.0
 
 * Firefox bug fix: opening links in foreground/background/new window now works
