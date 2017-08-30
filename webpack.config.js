@@ -14,7 +14,7 @@ module.exports = function (env) {
   console.log(env);
   const [mode, platform, benchmark, firefoxBeta ] = env.split(':');
   let version = require('./manifest/common.json').version;
-  if (firefoxBeta) version += 'rc';
+  if (firefoxBeta) version += 'beta';
 
   const config = {
     entry: {

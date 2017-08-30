@@ -2,6 +2,11 @@ dist
 dist.zip
 dist-chrome.zip
 dist-firefox.zip
+dist-chrome-prod.zip
+dist-firefox-prod.zip
+dist-chrome-debug.zip
+dist-firefox-debug.zip
+dist-firefox-beta.zip
 dist.crx
 dist.pem
 node_modules

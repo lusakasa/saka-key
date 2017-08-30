@@ -4,6 +4,8 @@ node_js: "lts/*"
 script:
   - npm run build:firefox:prod
   - npm run build:chrome:prod
+  - npm run build:chrome:debug:zip
+  - npm run build:firefox:debug:zip
 
 deploy:
   provider: releases
@@ -12,6 +14,8 @@ deploy:
   file:
     - "dist-firefox.zip"
     - "dist-chrome.zip"
+    - "dist-firefox-debug.zip"
+    - "dist-chrome-debug.zip"
   skip_cleanup: true
   on:
     tags: true
