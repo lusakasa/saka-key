@@ -1,5 +1,10 @@
 # Release Notes
 
+## 1.21.0
+
+* Fixed bug that cause Saka Key to stop responding to key presses.
+* If problems persists, try clicking "Reset All Options" on the Options page. If this doesn't help, file an [issue](https://github.com/lusakasa/saka-key/issues.
+
 ## 1.20.0
 
 * Fixed vulnerability that allowed any web page to trigger Saka Key commands by issuing synthetic DOM events.
