@@ -2,7 +2,7 @@ import { getAttributes } from 'lib/util';
 
 export default (options, config) => {
   const backgroundOptions = {};
-  const clientOptions = getAttributes(options, ['hintCSS', 'hintNormalCharCSS', 'hintActiveCharCSS', 'hintDetectByCursorStyle', 'hintHorizontalPlacement', 'hintVerticalPlacement']);
+  const clientOptions = getAttributes(options, ['hintCSS', 'hintNormalCharCSS', 'hintActiveCharCSS', 'hintHorizontalPlacement', 'hintVerticalPlacement']);
   const errors = {};
   if (options.hintUseCustomCSS) {
     clientOptions.hintCSS = `all: initial; position: absolute; z-index: 999999999999; ${options.hintCSS}`;

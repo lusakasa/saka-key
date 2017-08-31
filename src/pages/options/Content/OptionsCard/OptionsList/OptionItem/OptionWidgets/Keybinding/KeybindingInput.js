@@ -33,8 +33,7 @@ export default class KeyBindingInput extends Component {
     });
   }
   render ({ value, setValue, physicalKeys, ignoreModifierKeys }) {
-    return this.state.active
-    ? (
+    return this.state.active ? (
       <div>
         <KeybindingItem
           binding={this.state.keyEvents}

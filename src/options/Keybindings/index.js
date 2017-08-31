@@ -1,12 +1,14 @@
 import { generateCommandTrie } from './trie';
 import { getAttributes } from 'lib/util';
+import { setKeyboardSettings } from 'lib/keys';
 
 export default (options, config) => {
-  const backgroundOptions = getAttributes(options, ['physicalKeys', 'ignoreModifierKeys', 'hintChars']);
-  const clientOptions = getAttributes(options, ['physicalKeys', 'smoothScroll', 'scrollStep', 'physicalKeys', 'ignoreModifierKeys']);
+  const backgroundOptions = getAttributes(options, ['hintChars']);
+  const clientOptions = getAttributes(options, ['physicalKeys', 'ignoreModifierKeys']);
   const errors = {};
-  const keybindings = {};
   if (options.hintChars.length < 2) errors.hintChars = 'A minimum of two hint characters must be specified';
+  setKeyboardSettings(options.physicalKeys, options.ignoreModifierKeys);
+  const keybindings = {};
   config.filter((item) => item.type === 'keybinding').forEach((item) => {
     keybindings[item.key] = options[item.key];
   });

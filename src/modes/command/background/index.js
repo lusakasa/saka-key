@@ -1,4 +1,3 @@
-import { setKeyboardSettings } from 'lib/keys';
 import { paste } from 'lib/dom';
 import * as tabCommands from './tab_commands';
 import {
@@ -10,9 +9,6 @@ import {
 } from './open_commands';
 
 export default {
-  onOptionsChange: (options) => {
-    setKeyboardSettings(options.physicalKeys, options.ignoreModifierKeys);
-  },
   messages: {
     // toggleHelpMenu: () => { msg(0, 'toggleHelpMenu'); },
     ...tabCommands,

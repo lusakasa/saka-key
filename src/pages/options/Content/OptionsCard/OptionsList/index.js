@@ -70,7 +70,6 @@ const mapStateToProps = ({ config, categories, activeProfiles, options }, { cate
   const configList = config[category];
   const values = options[`${category}_${activeProfile}`];
   const visibleOptions = configList.filter((item) => isConfigItemVisible(item.key, configList, values));
-  console.log(configList, visibleOptions);
   const { errors } = transformOptions(allOptions, config);
   const hasErrors = Object.keys(errors).length === 0;
   return {

@@ -7,9 +7,9 @@ export default {
     resetInputTrie();
   },
   onOptionsChange: (options) => {
+    setKeyboardSettings(options.physicalKeys, options.ignoreModifierKeys);
     initInputTrie(options.bindings);
     initScrolling(options.smoothScroll, options.scrollStep);
-    setKeyboardSettings(options.physicalKeys, options.ignoreModifierKeys);
   },
   keydown: (event) => {
     if (event.key !== 'Escape') {
