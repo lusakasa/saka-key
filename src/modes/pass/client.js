@@ -1,34 +1,29 @@
-import { isModifierKey } from 'lib/keys';
+import { initInputTrie, resetInputTrie, advanceInputTrie } from './trie';
 
-let passKeysLeft = 0;
-let seenExitKeys = 0;
+// Notes: The keydown event that enters this mode has a corresponding keyup
+// event that should be ignored. Passing a single key is terminated on the
+// keyup event to ensure any page handlers for the keyup event are triggered.
+
+let passKeysLeft;
 
 export default {
+  onOptionsChange: (options) => {
+    initInputTrie(options.passBindings);
+  },
   onEnter: (event) => {
-    switch (event.passKeyType) {
-      // initialize to 2 instead of 1 to ignore the initial keyup event
-      // from the key that triggered Pass mode
-      case 'one': passKeysLeft = 2; break;
-      // -1 means never exit Pass mode
-      case 'all': passKeysLeft = -1; break;
-      default: console.error('passKeyType was unspecified');
-    }
-    seenExitKeys = 0;
-  },
-  keyup: (event) => {
-    if (passKeysLeft === -1) {
-      seenExitKeys = event.key === 'Alt'
-        ? seenExitKeys + 1
-        : 0;
-      return seenExitKeys === 2
-        ? 'Reset'
-        : 'Same';
+    if (event.passKeyType === 'all') {
+      passKeysLeft = -1;
+      resetInputTrie();
     } else {
-      return isModifierKey(event)
-        ? 'Same'
-        : (--passKeysLeft === 0) ? 'Reset' : 'Same';
+      passKeysLeft = 2;
     }
   },
+  keydown: (event) => passKeysLeft === -1
+    ? advanceInputTrie(event)
+    : 'Same',
+  keyup: (event) => passKeysLeft !== -1 && --passKeysLeft === 0
+    ? 'Reset'
+    : 'Same',
   blur: () => 'Reset',
   focus: () => 'Reset'
 };

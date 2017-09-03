@@ -1,5 +1,12 @@
 # Release Notes
 
+## 1.22.0
+
+* Fixed Pass keys mode so that it is no longer broken on Windows and Linux
+* New binding **Stop Passing Keys to Page** <kbd>ctrl-x</kbd>
+* Fixed bug that caused inputs to become unfocusable when "Prevent pages from stealing focus" is enabled.
+* Fixed typos in options page
+
 ## 1.21.0
 
 * Fixed bug that cause Saka Key to stop responding to key presses.

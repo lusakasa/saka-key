@@ -26,7 +26,6 @@ const middleware = {
       }
     },
     click: (event) => {
-      console.log('meow');
       hasInteractedWithPage = true;
     },
     mousedown: (event) => {

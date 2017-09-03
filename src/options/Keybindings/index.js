@@ -8,17 +8,31 @@ export default (options, config) => {
   const errors = {};
   if (options.hintChars.length < 2) errors.hintChars = 'A minimum of two hint characters must be specified';
   setKeyboardSettings(options.physicalKeys, options.ignoreModifierKeys);
-  const keybindings = {};
-  config.filter((item) => item.type === 'keybinding').forEach((item) => {
-    keybindings[item.key] = options[item.key];
+  const keybindings = keybindingsPerMode(options, config);
+  Object.entries(keybindings).forEach(([mode, bindings]) => {
+    try {
+      clientOptions[mode ? `${mode}Bindings` : 'bindings'] = generateCommandTrie(bindings);
+    } catch (e) {
+      if (e.type === 'conflict') {
+        errors[e.command1] = e.message;
+        errors[e.command2] = e.message;
+      } else throw e;
+    }
   });
-  try {
-    clientOptions.bindings = generateCommandTrie(keybindings);
-  } catch (e) {
-    if (e.type === 'conflict') {
-      errors[e.command1] = e.message;
-      errors[e.command2] = e.message;
-    } else throw e;
-  }
   return { backgroundOptions, clientOptions, errors };
 };
+
+function keybindingsPerMode (options, config) {
+  const keybindings = {};
+  config.forEach((item) => {
+    if (item.type === 'keybinding') {
+      const { mode = 'command', key } = item;
+      if (keybindings[mode]) {
+        keybindings[mode][key] = options[key];
+      } else {
+        keybindings[mode] = { [key]: options[key] };
+      }
+    }
+  });
+  return keybindings;
+}

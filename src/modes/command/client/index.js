@@ -8,7 +8,7 @@ export default {
   },
   onOptionsChange: (options) => {
     setKeyboardSettings(options.physicalKeys, options.ignoreModifierKeys);
-    initInputTrie(options.bindings);
+    initInputTrie(options.commandBindings);
     initScrolling(options.smoothScroll, options.scrollStep);
   },
   keydown: (event) => {

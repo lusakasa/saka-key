@@ -46,7 +46,6 @@ export function activateHint (hint, hintType) {
     default:
       click();
   }
-  console.log('bark');
   hint.element.focus();
   return 'Reset';
 }

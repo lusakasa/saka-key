@@ -175,6 +175,9 @@
         "passAllKeys": [
           [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
         ],
+        "exitPassMode": [
+          [{ "code": "KeyX", "key": "x", "ctrlKey": true }]
+        ],
         "copyURL": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
         ],
@@ -370,6 +373,9 @@
         "passAllKeys": [
           [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
         ],
+        "exitPassMode": [
+          [{ "code": "KeyX", "key": "x", "ctrlKey": true }]
+        ],
         "copyURL": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
         ],
@@ -554,6 +560,9 @@
         "passAllKeys": [
           [{ "code": "Semicolon", "key": ":", "shiftKey": true }]
         ],
+        "exitPassMode": [
+          [{ "code": "KeyX", "key": "x", "ctrlKey": true }]
+        ],
         "copyURL": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
         ],
@@ -722,6 +731,8 @@
         "passOneKey": [
         ],
         "passAllKeys": [
+        ],
+        "exitPassMode": [
         ],
         "copyURL": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
