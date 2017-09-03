@@ -50,14 +50,14 @@ export function addEventListeners (clientType) {
 }
 
 function addNormalEventListeners () {
-  interceptedEventTypes.forEach((eventType, i) => {
+  Object.keys(interceptedEventTypes).forEach((eventType, i) => {
     window.addEventListener(eventType, handleDOMEvent, true);
   });
   if (SAKA_DEBUG) console.log('Normal Event Listeners Added');
 }
 
 function removeNormalEventListeners () {
-  interceptedEventTypes.forEach((eventType) => {
+  Object.keys(interceptedEventTypes).forEach((eventType) => {
     window.removeEventListener(eventType, handleDOMEvent, true);
   });
   if (SAKA_DEBUG) console.log('Normal Event Listeners Removed');
@@ -165,7 +165,7 @@ export function changeMode (modeChangeEvent) {
  * @param {Event} event
  */
 function handleDOMEvent (event) {
-  if (enabled && event.isTrusted) {
+  if (enabled && (event.isTrusted || !interceptedEventTypes[event.type])) {
     const nextMode = passDOMEventToMiddleware(event) ||
       (modes[currentMode][normalizeEventType(event.type)](event));
     setMode(nextMode, event);

@@ -82,7 +82,6 @@ export function mouseEvent (element, type, modifierKeys = {}) {
       detail: 1, // usually the click count
       ...modifierKeys
     });
-    // TODO: # firefox synthetic click events apparently don't trigger default actions
     element.dispatchEvent(event);
   });
 }

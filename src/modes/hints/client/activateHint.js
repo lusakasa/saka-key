@@ -30,12 +30,14 @@ export function activateHint (hint, hintType) {
       }
       break;
     case 'incognitoWindow':
+      click({ shiftKey: true, ctrlKey: !isMac, metaKey: isMac });
       backgroundOpenLink('openLinkInIncognitoWindow', hint);
       break;
     case 'download':
       click({ altKey: true }); break;
       // TODO: handle on firefox
     case 'focusLink':
+      // TODO: make sure this asserts hasInteractedWithPage in middleware
       if (SAKA_DEBUG) {
         console.log(`Hint [${hint.hintString}] targets:`, hint.element);
       }
@@ -44,6 +46,7 @@ export function activateHint (hint, hintType) {
     default:
       click();
   }
+  console.log('bark');
   hint.element.focus();
   return 'Reset';
 }

@@ -24,16 +24,16 @@ const middleware = {
         event.target.blur();
         return 'Same';
       }
-      return undefined;
     },
-    click: (event) => undefined,
+    click: (event) => {
+      console.log('meow');
+      hasInteractedWithPage = true;
+    },
     mousedown: (event) => {
       hasInteractedWithPage = true;
-      return undefined;
     },
     fullscreenchange: (event) => {
       handleFullscreenChange(event);
-      return undefined;
     }
   }
   // NOTE: message middleware doesn't make sense because all messages are targeted

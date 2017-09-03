@@ -21,12 +21,12 @@ function _handleDOMEvent (event) {
 
 export function addPreloadedEventListeners () {
   window.handleDOMEvent = () => {};
-  interceptedEventTypes.forEach((eventType, i) => {
+  Object.keys(interceptedEventTypes).forEach((eventType, i) => {
     window.addEventListener(eventType, _handleDOMEvent, true);
   });
   window.removePreloadedDOMEventListener = () => {
     window.handleDOMEvent = () => {};
-    interceptedEventTypes.forEach((eventType) => {
+    Object.keys(interceptedEventTypes).forEach((eventType) => {
       window.removeEventListener(eventType, _handleDOMEvent, true);
     });
     if (SAKA_DEBUG) console.log('Preloaded Event Listeners Removed');

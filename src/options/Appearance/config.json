@@ -116,7 +116,7 @@
     },
     {
       "type": "number",
-      "label": "Horizontal Padding (rem)",
+      "label": "Horizontal Vertical (rem)",
       "key": "hintVerticalPadding",
       "visible": "hintUseCustomCSS = false",
       "min": 0,

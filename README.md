@@ -6,6 +6,8 @@ Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/sa
 
 Then read the [Saka Key Handbook](https://key.saka.io).
 
+Try my in-progress search bar/tabs replacement extension [Saka](https://saka.io)!
+
 ## Index
 
 * [Intro](#intro)
@@ -75,9 +77,7 @@ Saka Key lets you navigate the web with just your keyboard. It differs from exis
 
 ## Development Tips
 
-Save yourself some trouble and read the [Developer Guide](./notes/developer_guide.md). It explains the basics of how Saka Key works.
-
-Check out the [doc](./doc) folder to learn about Saka Key's design.
+Save yourself some trouble and read the [Developer Documentation](http://key.saka.io/dev_docs/). It explains the basics of how Saka Key works.
 
 Saka Key is developed together with:
 
