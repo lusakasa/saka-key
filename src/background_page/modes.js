@@ -125,7 +125,8 @@ function initInstallListeners () {
         await storageUpdateProcedure(previousVersion);
         await onOptionsChange();
         await reloadAllClients();
-        chrome.tabs.create({ url: 'info.html' });
+        // TODO: Replace with Notification
+        // chrome.tabs.create({ url: 'info.html' });
         break;
       case 'chrome_update':
       case 'shared_module_update':

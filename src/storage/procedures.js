@@ -6,7 +6,7 @@ import {
 } from 'storage/storage';
 import { msg } from 'mosi/client';
 import { categories as installCategories } from 'storage/transform';
-import { saveAs } from 'file-saver';
+import { downloadJSON } from 'lib/dom';
 import compareVersions from 'compare-versions';
 
 // TODO: test this code, lots of room for error, should really have unit tests
@@ -89,11 +89,7 @@ export async function storageExportProcedure () {
       profiles[category][profile] = options[`${category}_${profile}`];
     });
   }
-  const blob = new Blob(
-    [JSON.stringify({ activeProfiles, profiles }, null, 2)],
-    { type: 'application/json;charset=utf-8' }
-  );
-  saveAs(blob, 'saka_key_config.json');
+  await downloadJSON({ activeProfiles, profiles }, 'saka_key_config.json');
 }
 
 export async function storageResetProcedure () {

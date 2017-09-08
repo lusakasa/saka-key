@@ -31,7 +31,8 @@
     "storage",
     "unlimitedStorage",
     "<all_urls>",
-    "clipboardRead"
+    "clipboardRead",
+    "downloads"
   ],
   "web_accessible_resources": [
     "content_script.js",

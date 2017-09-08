@@ -160,3 +160,13 @@ export function paste () {
   document.body.removeChild(textArea);
   return value;
 }
+
+/** Saves the given object to a human-readable JSON file */
+export async function downloadJSON (object, filename) {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(object, null, 2)], { type: 'data:application/json;charset=utf-8' }));
+  await browser.downloads.download({
+    url,
+    filename,
+    saveAs: true
+  });
+}
