@@ -1,5 +1,9 @@
 # Release Notes
 
+# 1.23.0
+
+* Keydown default actions are prevented if the keydown event is part of a keybinding. For example, if you map <kbd>ctrl-r</kbd> to opening links, the page will not refresh. NOTE: some default actions CANNOT be prevented, e.g. <kbd>ctrl-w</kbd> ALWAYS closes the current tab.
+
 # 1.22.1
 
 * New command **Hard Refresh Tab** <kbd>shift-r</kbd><kbd>shift-r</kbd>
