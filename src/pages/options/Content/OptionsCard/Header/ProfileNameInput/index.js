@@ -9,8 +9,13 @@ const Input = ({ activeProfile, profiles, tryRenameProfile, setIsEditingName }) 
       className='mdc-textfield__input mode-card-select'
       value={activeProfile}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === 'Escape') {
+        if (e.key === 'Escape') {
           setIsEditingName(false);
+        }
+        if (e.key === 'Enter') {
+          setIsEditingName(false);
+          // firefox doesn't fire blur events when an element is removed
+          if (SAKA_PLATFORM === 'firefox') tryRenameProfile(e.target.value);
         }
       }}
       onBlur={(e) => tryRenameProfile(e.target.value)}
