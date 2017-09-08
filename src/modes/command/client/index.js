@@ -11,22 +11,9 @@ export default {
     initInputTrie(options.commandBindings);
     initScrolling(options.smoothScroll, options.scrollStep);
   },
-  keydown: (event) => {
-    if (event.key !== 'Escape') {
-      event.stopImmediatePropagation();
-    }
-    if (isModifierKey(event)) {
-      return 'Same';
-    }
-    return advanceInputTrie(event);
-  },
-  keypress: (event) => {
-    // NOTE: do not call event.preventDefault();
-    // this will break built-in shortcuts on firefox as of 3/2017
-    event.stopImmediatePropagation();
-    return 'Same';
-  },
+  keydown: (event) => isModifierKey(event) ? 'Same' : advanceInputTrie(event),
   keyup: (event) => {
+    // TODO: decide whether/how to suppress this
     event.stopImmediatePropagation();
     cancelScroll();
     return 'Same';

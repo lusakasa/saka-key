@@ -13,9 +13,7 @@ export function resetInputTrie () {
 
 export function advanceInputTrie (event) {
   const next = trie.advance(keyboardEventString(event));
-  if (next === undefined) {
-    return 'Same';
-  }
+  if (next === undefined) return 'Same'; // if no next trie node
   event.preventDefault();
   event.stopImmediatePropagation();
   return next === 'exitPassMode' ? 'Reset' : 'Same';
