@@ -1,3 +1,8 @@
+/** Returns the _positive_ modulus */
+export function posMod (n, m) {
+  return ((n % m) + m) % m;
+}
+
 export function getAttributes (object, keys) {
   const output = {};
   keys.forEach((key) => {
