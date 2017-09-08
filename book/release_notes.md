@@ -2,9 +2,12 @@
 
 ## 1.22.0
 
+* Stopped opening info page on every update, so you probably won't read this!
 * Fixed Pass keys mode so that it is no longer broken on Windows and Linux
 * New binding **Stop Passing Keys to Page** <kbd>ctrl-x</kbd>
 * Fixed bug that caused inputs to become unfocusable when "Prevent pages from stealing focus" is enabled.
+* Exporting options now works in Firefox
+* Renaming profiles with <kbd>Enter</kbd> now works in Firefox
 * Fixed typos in options page
 
 ## 1.21.0
