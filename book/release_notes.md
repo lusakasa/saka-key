@@ -1,5 +1,9 @@
 # Release Notes
 
+# 1.22.1
+
+* New command **Hard Refresh Tab** <kbd>shift-r</kbd><kbd>shift-r</kbd>
+
 ## 1.22.0
 
 * Stopped opening info page on every update, so you probably won't read this!

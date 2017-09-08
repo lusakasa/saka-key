@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Getting Started · Saka Key Handbook</title>
+        <title>Adding Commands · Saka Key Handbook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -59,10 +59,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="install.html" />
+    <link rel="next" href="resources.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="debugging.html" />
     
 
     </head>
@@ -104,9 +104,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="../getting_started/">
             
-                <a href="./">
+                <a href="../getting_started/">
             
                     
                     Getting Started
@@ -118,9 +118,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.1" data-path="install.html">
+        <li class="chapter " data-level="1.2.1" data-path="../getting_started/install.html">
             
-                <a href="install.html">
+                <a href="../getting_started/install.html">
             
                     
                     Install
@@ -131,9 +131,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="uninstall.html">
+        <li class="chapter " data-level="1.2.2" data-path="../getting_started/uninstall.html">
             
-                <a href="uninstall.html">
+                <a href="../getting_started/uninstall.html">
             
                     
                     Uninstall
@@ -144,9 +144,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="feedback.html">
+        <li class="chapter " data-level="1.2.3" data-path="../getting_started/feedback.html">
             
-                <a href="feedback.html">
+                <a href="../getting_started/feedback.html">
             
                     
                     Feedback
@@ -157,9 +157,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="help.html">
+        <li class="chapter " data-level="1.2.4" data-path="../getting_started/help.html">
             
-                <a href="help.html">
+                <a href="../getting_started/help.html">
             
                     
                     Help
@@ -382,9 +382,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../dev_docs/">
+        <li class="chapter " data-level="1.6" data-path="./">
             
-                <a href="../dev_docs/">
+                <a href="./">
             
                     
                     Developer Documention
@@ -396,9 +396,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../dev_docs/software_architecture.html">
+        <li class="chapter " data-level="1.6.1" data-path="software_architecture.html">
             
-                <a href="../dev_docs/software_architecture.html">
+                <a href="software_architecture.html">
             
                     
                     Software Architecture
@@ -409,9 +409,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../dev_docs/debugging.html">
+        <li class="chapter " data-level="1.6.2" data-path="debugging.html">
             
-                <a href="../dev_docs/debugging.html">
+                <a href="debugging.html">
             
                     
                     Debugging
@@ -422,9 +422,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="../dev_docs/adding_commands.html">
+        <li class="chapter active" data-level="1.6.3" data-path="adding_commands.html">
             
-                <a href="../dev_docs/adding_commands.html">
+                <a href="adding_commands.html">
             
                     
                     Adding Commands
@@ -435,9 +435,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="../dev_docs/resources.html">
+        <li class="chapter " data-level="1.6.4" data-path="resources.html">
             
-                <a href="../dev_docs/resources.html">
+                <a href="resources.html">
             
                     
                     Resources
@@ -496,7 +496,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Getting Started</a>
+        <a href=".." >Adding Commands</a>
     </h1>
 </div>
 
@@ -511,14 +511,56 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="getting-started">Getting Started</h1>
-<p>This section explains how to install and uninstall Saka Key, leave reviews, report bugs, request features and get help.</p>
+                                <h1 id="adding-commands">Adding Commands</h1>
+<h2 id="intro">Intro</h2>
+<p>Commands in Saka Key are functions that take exactly one argument - the keydown event that triggered the command. For most commands, this argument can be ignored. For example, the command that goes back in history is:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">goBack</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">window</span>.history.go(<span class="hljs-number">-1</span>);
+}
+</code></pre>
+<p>Commands can optionally return the next mode. For example, the command that switches to Hints mode, to open a link in a new window is:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">openLinkInNewWindow</span> (<span class="hljs-params">event</span>) </span>{
+  event.hintType = <span class="hljs-string">&apos;newWindow&apos;</span>;
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;Hints&apos;</span>;
+};
+</code></pre>
+<p>Attaching hintType to the event is useful because the event is passed to the next mode&apos;s (in this case Hints&apos;) <code>onEnter</code> function.</p>
+<h2 id="background-page-commands">Background Page Commands</h2>
+<p>Commands can message the background page if they require access to privileged APIs or persistent data. Saka Key provides a function <code>background</code> explicitly for this purpose. <code>background</code> takes two arguments:</p>
+<ol>
+<li>The name of the function to execute in the background page</li>
+<li>The argument that should be passed to this function, if any</li>
+</ol>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">closeTab</span> (<span class="hljs-params"></span>) </span>{
+  background(<span class="hljs-string">&apos;closeTab&apos;</span>);
+}
+</code></pre>
+<p>The function that is called on the background page takes two arguments:</p>
+<ol>
+<li>The argument passed as the second parameter to <code>background</code></li>
+<li>The id of the message sender (see <a href="https://github.com/eejdoowad/mosi" target="_blank">Mosi</a>)</li>
+</ol>
+<pre><code class="lang-javascript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">closeTab</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> [tab] =  <span class="hljs-keyword">await</span> browser.tabs.query({ currentWindow: <span class="hljs-literal">true</span>, active: <span class="hljs-literal">true</span> });
+  <span class="hljs-keyword">await</span> browser.tabs.remove(tab.id);
+}
+</code></pre>
+<h2 id="useful-directories">Useful Directories</h2>
 <ul>
-<li><a href="install.html">Install</a></li>
-<li><a href="uninstall.html">Uninstall</a></li>
-<li><a href="feedback.html">Feedback</a></li>
-<li><a href="help.html">Help</a></li>
+<li><a href="https://github.com/lusakasa/saka-key/tree/master/src/modes/command" target="_blank"><strong>Command Mode</strong>: /src/modes/command/</a></li>
+<li><a href="https://github.com/lusakasa/saka-key/tree/master/src/modes/command/client/commands" target="_blank"><strong>Client Commands</strong>: /src/modes/command/client/commands</a></li>
+<li><a href="https://github.com/lusakasa/saka-key/tree/master/src/modes/command/background" target="_blank"><strong>Background Commands</strong>: /src/modes/command/background/</a></li>
+<li><a href="https://github.com/lusakasa/saka-key/blob/master/src/options/Keybindings" target="_blank"><strong>Command Bindings</strong>: /src/options/Keybindings</a></li>
 </ul>
+<h2 id="step-by-step">Step-by-step</h2>
+<ol>
+<li>Add a client command</li>
+<li>If needed, add a corresponding background command</li>
+<li>Add a new keybinding option for your command <a href="https://github.com/lusakasa/saka-key/blob/master/src/options/Keybindings/config.json" target="_blank">here</a>
+Add default bindings for your command to the built-in profiles <a href="https://github.com/lusakasa/saka-key/blob/master/src/options/Keybindings/default.json" target="_blank">here</a></li>
+</ol>
+<h2 id="example">Example</h2>
+<p>Commit <a href="https://github.com/lusakasa/saka-key/commit/a640f33a8dfc0a53b3524790c18cccf39bae0bcd" target="_blank">a640f33a8dfc0a53b3524790c18cccf39bae0bcd</a> shows how the &quot;Hard Refresh Tab&quot; command was added.</p>
 
                                 
                                 </section>
@@ -546,12 +588,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="debugging.html" class="navigation navigation-prev " aria-label="Previous page: Debugging">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="install.html" class="navigation navigation-next " aria-label="Next page: Install">
+                <a href="resources.html" class="navigation navigation-next " aria-label="Next page: Resources">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -562,7 +604,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.2","depth":1,"next":{"title":"Install","level":"1.2.1","depth":2,"path":"getting_started/install.md","ref":"getting_started/install.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Sufyan Dawoodjee","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Saka Key Handbook","gitbook":"*"},"file":{"path":"getting_started/index.md","mtime":"2017-05-05T04:08:26.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-08T05:04:11.484Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Adding Commands","level":"1.6.3","depth":2,"next":{"title":"Resources","level":"1.6.4","depth":2,"path":"dev_docs/resources.md","ref":"dev_docs/resources.md","articles":[]},"previous":{"title":"Debugging","level":"1.6.2","depth":2,"path":"dev_docs/debugging.md","ref":"dev_docs/debugging.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Sufyan Dawoodjee","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Saka Key Handbook","gitbook":"*"},"file":{"path":"dev_docs/adding_commands.md","mtime":"2017-09-08T05:00:52.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-09-08T05:04:11.484Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
