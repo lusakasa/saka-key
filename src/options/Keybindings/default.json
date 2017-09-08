@@ -160,6 +160,9 @@
         "refreshAllTabs": [
           [{ "code": "KeyR", "key": "r" }, { "code": "KeyR", "key": "R", "shiftKey": true }]
         ],
+        "hardRefreshTab": [
+          [{ "code": "KeyR", "key": "R", "shiftKey": true }, { "code": "KeyR", "key": "R", "shiftKey": true }]
+        ],
         "toggleMuteTab": [
           [{ "code": "KeyM", "key": "m" }]
         ],
@@ -358,6 +361,9 @@
         "refreshAllTabs": [
           [{ "code": "KeyR", "key": "R", "shiftKey": true }]
         ],
+        "hardRefreshTab": [
+
+        ],
         "toggleMuteTab": [
           [{ "code": "KeyM", "key": "m" }]
         ],
@@ -545,6 +551,8 @@
         "refreshAllTabs": [
           [{ "code": "KeyT", "key": "T", "shiftKey": true }]
         ],
+        "hardRefreshTab": [
+        ],
         "toggleMuteTab": [
           [{ "code": "KeyM", "key": "m" }]
         ],
@@ -719,6 +727,9 @@
           [{ "code": "KeyR", "key": "r" }]
         ],
         "refreshAllTabs": [
+        ],
+        "hardRefreshTab": [
+
         ],
         "toggleMuteTab": [
           [{ "code": "KeyM", "key": "µ", "altKey": true }]

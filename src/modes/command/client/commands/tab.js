@@ -22,6 +22,7 @@ export const zoomOut = background('zoomOut');
 export const zoomReset = background('zoomReset');
 export const refreshTab = background('refreshTab');
 export const refreshAllTabs = background('refreshAllTabs');
+export const hardRefreshTab = background('hardRefreshTab');
 export const toggleMuteTab = background('toggleMuteTab');
 export const toggleMuteAllTabs = background('toggleMuteAllTabs');
 export const togglePinTab = background('togglePinTab');

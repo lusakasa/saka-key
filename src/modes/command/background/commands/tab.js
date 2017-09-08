@@ -152,6 +152,12 @@ export async function refreshAllTabs () {
   }));
 }
 
+/** Hard refreshes the active tab of the current window */
+export async function hardRefreshTab () {
+  const [tab] = await browser.tabs.query({ currentWindow: true, active: true });
+  await browser.tabs.reload(tab.id, { bypassCache: true });
+}
+
 /** Toggle the mute state of the active tab of the current window */
 export async function toggleMuteTab () {
   const [tab] = await browser.tabs.query({ currentWindow: true, active: true });

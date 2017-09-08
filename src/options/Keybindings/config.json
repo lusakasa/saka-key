@@ -306,6 +306,12 @@
       "default": []
     },
     {
+      "type": "keybinding",
+      "label": "Hard Refresh Tab (bypassing cache)",
+      "key": "hardRefreshTab",
+      "default": []
+    },
+    {
       "type": "header",
       "label": "Switch Tabs"
     },
