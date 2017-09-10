@@ -10,6 +10,7 @@ dist-firefox-beta.zip
 dist.crx
 dist.pem
 node_modules
+docs
 npm-debug.log
 debug.log
 .DS_Store
