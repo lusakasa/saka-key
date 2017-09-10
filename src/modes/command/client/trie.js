@@ -15,15 +15,16 @@ export function resetInputTrie () {
 
 export function advanceInputTrie (event) {
   const command = trie.advance(keyboardEventString(event));
-  if (command !== undefined) { // true if intermediate or leaf node
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    if (command !== null) { // true if leaf node
-      const nextMode = commands[command](event);
-      if (nextMode) {
-        return nextMode;
-      }
-    }
+  switch (command) {
+    case Trie.INVALID:
+      return 'Same';
+    case Trie.INTERNAL:
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return 'Same';
+    default:
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return commands[command](event) || 'Same';
   }
-  return 'Same';
 }

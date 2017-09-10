@@ -12,9 +12,17 @@ export function resetInputTrie () {
 }
 
 export function advanceInputTrie (event) {
-  const next = trie.advance(keyboardEventString(event));
-  if (next === undefined) return 'Same'; // if no next trie node
-  event.preventDefault();
-  event.stopImmediatePropagation();
-  return next === 'exitPassMode' ? 'Reset' : 'Same';
+  const command = trie.advance(keyboardEventString(event));
+  switch (command) {
+    case Trie.INVALID:
+      return 'Same';
+    case Trie.INTERNAL:
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return 'Same';
+    default:
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return command === 'exitPassMode' ? 'Reset' : 'Same';
+  }
 }

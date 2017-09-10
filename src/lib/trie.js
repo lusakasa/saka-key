@@ -17,9 +17,7 @@
  *   }
  * }
  */
-
 export default class Trie {
-
   /**
    * Creates a trie
    * @param {Object} root - A simple javascript object representing a trie
@@ -28,34 +26,31 @@ export default class Trie {
     this.root = root;
     this.curNode = root;
   }
-
   /** Sets the root to current node to the root node */
   reset = () => {
     this.curNode = this.root;
   }
-
+  static INTERNAL = Symbol('INTERNAL');
+  static INVALID= Symbol('INVALID');
   /**
-   * Advances the command trie based on the command key event.
-   * Based on the next node that input results in, returns:
-   * 1. undefined, if no valid node
-   * 2. null, if intermediate node
-   * 3. command, if leaf node
+   * Advances the command trie based on the input string. In Saka Key, this
+   * input string is usually the string representation of a keyboard event
+   * @param {string} input
    */
   advance = (input) => {
-    // TODO: Update to use longest viable prefix by trying
-    // longest prefix until a valid path is found
     const next = this.curNode[input];
-    if (next === undefined) {
-      return undefined;
-    }
-    // Case 1. An intermediate node
-    if (typeof next === 'object') {
-      this.curNode = next;
-      return null;
-    // Case 2. A trie leaf corresponding to the command reached
-    } else {
-      this.curNode = this.root;
-      return next;
+    switch (typeof next) {
+      case 'undefined':
+        this.curNode = this.root;
+        return this.root[input] === undefined
+          ? Trie.INVALID
+          : this.advance(input);
+      case 'object':
+        this.curNode = next;
+        return Trie.INTERNAL;
+      default:
+        this.curNode = this.root;
+        return next;
     }
   }
 }
