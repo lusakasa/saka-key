@@ -6,7 +6,7 @@ Saka Key is a Chrome and Firefox extension for keyboard-only web browsing. It di
 
 2. It's not Vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers. You shouldn't need a tutorial, but there is one.
 
-3. It's engineered for configurability. Developers define options with JSON. This JSON is used to genereate the Options Page. Changes to options automatically propogate to all tabs. Options are organized into _profiles_, which are easy to switch between. Sensible default profiles are built-in. Options can be exported and imported.
+3. It's engineered for configurability. Developers define options with JSON. This JSON is used to generate the Options Page. Changes to options automatically propogate to all tabs. Options are organized into _profiles_, which are easy to switch between. Sensible default profiles are built-in. Options can be exported and imported.
 
 4. It's built with modern tools: ES6+, Webpack, Preact.
 
