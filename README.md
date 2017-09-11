@@ -1,94 +1,41 @@
 # Saka Key
 
-A keyboard interface to the web
+Saka Key is a Chrome and Firefox extension for keyboard-only web browsing. It differs from existing extensions because
 
-Install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp). Firefox users should install the  [Development Channel](https://addons.mozilla.org/firefox/downloads/latest-beta/saka-key/addon-795406-latest.xpi?src=dp-btn-devchannel) version of Saka Key, since the [listing on the Firefox Marketplace](https://addons.mozilla.org/en-US/firefox/addon/saka-key/) is hopelessly outdated.
+1. Its state machine [architecture](http://key.saka.io/dev_docs/software_architecture) is modular, extensible, and **SIMPLE**. Its design is inspired by my frustration trying to make sense of the scattered state, confusing event handling, and dubious design of similar extensions.
 
-Then read the [Saka Key Handbook](https://key.saka.io).
+2. It's not Vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers. You shouldn't need a tutorial, but there is one.
 
-Try my in-progress search bar/tabs replacement extension [Saka](https://saka.io)!
+3. It's engineered for configurability. Developers define options with JSON. This JSON is used to genereate the Options Page. Changes to options automatically propogate to all tabs. Options are organized into _profiles_, which are easy to switch between. Sensible default profiles are built-in. Options can be exported and imported.
 
-## Index
+4. It's built with modern tools: ES6+, Webpack, Preact.
 
-* [Intro](#intro)
-* [Install](#install)
-* [Development Tips](#development-tips)
-* [Preview](#preview)
-* [Credits](#credits)
+Saka Key lacks some features other extensions have today, but it has the foundation to reinvent and recreate them better than ever. 
 
-## Intro
-
-Saka Key lets you navigate the web with just your keyboard. It differs from existing vi-inspired Chrome extensions on four fronts:
-
-1. Its state machine [architecture](./notes/developer_guide.md) is modular, extensible, and **SIMPLE**. It is designed to be as easy as possible to add complex features with minimal effort and understanding of the codebase.
-
-2. It's not vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers. You shouldn't need a tutorial, but there is one
-
-3. It's engineered for configurability. The Settings GUI is generated from simple JSON files to encourage authors to make modes configurable. Any changes to a setting are automatically propogated to all tabs without requiring a page refresh. Saka Key supports _settings profiles_ that are easy to switch between and sensible default settings profiles are supported. Per-domain profiles coming soon.
-
-4. It's built with modern web tooling (as of 2017): ES6+, Webpack, Preact... no Coffeescript to be seen. These tools weren't selected just because they're hip and new. Saka Key would be something entirely different without native asynchronous support, ES6 Modules, and a functional UI library.
+Also, read the [Saka Key Handbook](https://key.saka.io) and try my in-progress search bar/tabs replacement extension [Saka](https://saka.io).
 
 ## Install
 
+* **Chrome** - install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp).
+* **Firefox** - install the  [Development Channel](https://addons.mozilla.org/firefox/downloads/latest-beta/saka-key/addon-795406-latest.xpi?src=dp-btn-devchannel) version of Saka Key, since the [normal Firefox Marketplace listing](https://addons.mozilla.org/en-US/firefox/addon/saka-key/) lags far behind.
 
-### Install on Chrome
+### Install from Source
 
-1. Run the following commands in your terminal to clone and build Saka Key. 
-  An extension you can run will be generated in the 'dist' directory.
+Follow the [Development Setup Guide](https://key.saka.io/dev_docs/setup.html) for detailed instructions. Otherwise:
 
-  ```sh
-  git clone https://github.com/lusakasa/saka-key.git
-  cd saka-key
-  npm install
-  npm run build:chrome
-  # or if you want to generate an optimized production build
-  npm run build:chrome:prod
-  ```
-
-2. Navigate to `chrome://extensions`
-
-3. Enable developer mode and click 'Load Unpacked Extension'
-
-4. Select the dist directory, and &#128640;.
-
-5. Refresh existing tabs to load Saka Key into them
-
-### Install on Firefox
-
-1. Run the following commands in your terminal to clone and build Saka Key. 
-  An extension you can run will be generated in the 'dist' directory.
-
-  ```sh
-  git clone https://github.com/lusakasa/saka-key.git
-  cd saka-key
-  npm install
-  npm run build:firefox
-  # or if you want to generate an optimized production build
-  npm run build:firefox:prod
-  ```
-
-2. Navigate to `about:debugging`
-
-3. Enable add-on debugging and click 'Load Temporary Add-on'
-
-4. Select any file within the dist directory, and &#128640;.
-
-5. Firefox will load Saka Key automatically into all valid existing tabs
-
-## Development Tips
-
-Save yourself some trouble and read the [Developer Documentation](http://key.saka.io/dev_docs/). It explains the basics of how Saka Key works.
-
-Saka Key is developed together with:
-
-* Mosi - a messaging library for Chrome extensions: [github](https://github.com/eejdoowad/mosi), [npm](https://www.npmjs.com/package/mosi)
-
-You may have to debug or modify Mosi when contributing to saka key. To use your local copy of Mosi when building Saka Key:
-
-1. Navigate to Mosi's root directories.
-2. Run `npm link`
-3. Navigate to the root of Saka key.
-4. Run `npm link mosi`
+```sh
+git clone https://github.com/lusakasa/saka-key.git
+cd saka-key
+npm install
+# Option 1. Chrome development build
+npm run build:chrome
+# Option 2. Chrome production build
+npm run build:chrome:prod
+# Option 3. Firefox development build
+npm run build:firefox
+# Option 4. Firefox production build
+npm run build:firefox:prod
+```
 
 ## Preview
 

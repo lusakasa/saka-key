@@ -22,6 +22,7 @@
   * [Commands List](commands/commands_list.md)
   * [Javascript Commands](commands/javascript_commands.md)
 * [Developer Documention](dev_docs/index.md)
+  * [Setup](dev_docs/setup.md)
   * [Software Architecture](dev_docs/software_architecture.md)
   * [Debugging](dev_docs/debugging.md)
   * [Adding Commands](dev_docs/adding_commands.md)

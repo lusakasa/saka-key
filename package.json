@@ -64,6 +64,7 @@
     "eslint-plugin-react": "^7.2.0",
     "eslint-plugin-standard": "^3.0.1",
     "generate-json-webpack-plugin": "^0.2.2",
+    "gitbook-cli": "^2.3.2",
     "html-loader": "^0.4.5",
     "husky": "^0.14.3",
     "lint-staged": "^4.1.3",
