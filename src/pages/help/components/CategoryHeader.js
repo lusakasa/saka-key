@@ -1,11 +1,11 @@
-import { Component, h } from 'preact';
+import { Component, h } from 'preact'
 
 export default class CategoryHeader extends Component {
-  render ({ category }) {
+  render({ category }) {
     return (
       <div>
-        <h2>{ category }</h2>
+        <h2>{category}</h2>
       </div>
-    );
+    )
   }
 }

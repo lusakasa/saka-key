@@ -1,9 +1,9 @@
-import friendlyCodeStrings from './friendlyCodeStrings.json';
+import friendlyCodeStrings from './friendlyCodeStrings.json'
 
-export const isMac = navigator.appVersion.indexOf('Mac') !== -1;
+export const isMac = navigator.appVersion.indexOf('Mac') !== -1
 
-let _physicalKeys = true;
-let _ignoreModifierKeys = false;
+let _physicalKeys = true
+let _ignoreModifierKeys = false
 
 /**
  * Configure how keyboard bindings should be interpreted and displayed
@@ -14,9 +14,9 @@ let _ignoreModifierKeys = false;
  * @param {boolean} physicalKeys_
  * @param {boolean} ignoreModifierKeys_
  */
-export function setKeyboardSettings (physicalKeys, ignoreModifierKeys) {
-  _physicalKeys = physicalKeys;
-  _ignoreModifierKeys = ignoreModifierKeys;
+export function setKeyboardSettings(physicalKeys, ignoreModifierKeys) {
+  _physicalKeys = physicalKeys
+  _ignoreModifierKeys = ignoreModifierKeys
 }
 
 /**
@@ -24,15 +24,15 @@ export function setKeyboardSettings (physicalKeys, ignoreModifierKeys) {
  * @param {KeyboardEvent} event
  * @returns {boolean}
  */
-export function isModifierKey (event) {
+export function isModifierKey(event) {
   switch (event.key) {
     case 'Shift':
     case 'Control':
     case 'Alt':
     case 'Meta':
-      return true;
+      return true
     default:
-      return false;
+      return false
   }
 }
 
@@ -41,9 +41,9 @@ export function isModifierKey (event) {
  * @param {KeyboardEvent} event
  * @returns {string}
  */
-function modifierString (event) {
-  const { shiftKey: s, ctrlKey: c, altKey: a, metaKey: m } = event;
-  return `${s ? 's' : ''}${c ? 'c' : ''}${a ? 'a' : ''}${m ? 'm' : ''}`;
+function modifierString(event) {
+  const { shiftKey: s, ctrlKey: c, altKey: a, metaKey: m } = event
+  return `${s ? 's' : ''}${c ? 'c' : ''}${a ? 'a' : ''}${m ? 'm' : ''}`
 }
 
 /**
@@ -53,31 +53,36 @@ function modifierString (event) {
  * @param {boolean} ignoreModifierKeys
  * @returns {string}
  */
-export function keyboardEventString (event,
-  physicalKeys = _physicalKeys, ignoreModifierKeys = _ignoreModifierKeys) {
+export function keyboardEventString(
+  event,
+  physicalKeys = _physicalKeys,
+  ignoreModifierKeys = _ignoreModifierKeys
+) {
   return physicalKeys
     ? `${modifierString(event)}_${event.code}`
     : ignoreModifierKeys
       ? `${event.key}`
-      : `${modifierString(event)}_${event.key}`;
-};
-
-/** Given a keyboard event, returns a string representation of its modifiers
- * @param {KeyboardEvent} event
- * @returns {string}
- */
-function friendlyModifierString (event) {
-  const { shiftKey: s, ctrlKey: c, altKey: a, metaKey: m } = event;
-  return `${s ? 'shift-' : ''}${c ? 'ctrl-' : ''}${a ? 'alt-' : ''}${m ? 'meta-' : ''}`;
+      : `${modifierString(event)}_${event.key}`
 }
 
 /** Given a keyboard event, returns a string representation of its modifiers
  * @param {KeyboardEvent} event
  * @returns {string}
  */
-function friendlyShiftlessModifierString (event) {
-  const { ctrlKey: c, altKey: a, metaKey: m } = event;
-  return `${c ? 'ctrl-' : ''}${a ? 'alt-' : ''}${m ? 'meta-' : ''}`;
+function friendlyModifierString(event) {
+  const { shiftKey: s, ctrlKey: c, altKey: a, metaKey: m } = event
+  return `${s ? 'shift-' : ''}${c ? 'ctrl-' : ''}${a ? 'alt-' : ''}${m
+    ? 'meta-'
+    : ''}`
+}
+
+/** Given a keyboard event, returns a string representation of its modifiers
+ * @param {KeyboardEvent} event
+ * @returns {string}
+ */
+function friendlyShiftlessModifierString(event) {
+  const { ctrlKey: c, altKey: a, metaKey: m } = event
+  return `${c ? 'ctrl-' : ''}${a ? 'alt-' : ''}${m ? 'meta-' : ''}`
 }
 
 /** Converts a KeyboardEvent to a user-friendly string representation.
@@ -86,30 +91,39 @@ function friendlyShiftlessModifierString (event) {
  * @param {boolean} ignoreModifierKeys
  * @returns {string}
  */
-export function friendlyKeyboardEventString (event,
-  physicalKeys = _physicalKeys, ignoreModifierKeys = _ignoreModifierKeys) {
+export function friendlyKeyboardEventString(
+  event,
+  physicalKeys = _physicalKeys,
+  ignoreModifierKeys = _ignoreModifierKeys
+) {
   return physicalKeys
     ? `${friendlyModifierString(event)}${friendlyCodeStrings[event.code]
         ? friendlyCodeStrings[event.code].value
         : event.code}`
     : ignoreModifierKeys
       ? `${event.key}`
-      : `${friendlyShiftlessModifierString(event)}${event.key}`;
-};
+      : `${friendlyShiftlessModifierString(event)}${event.key}`
+}
 
 /**
  * Returns whether a (possibly user-defined) keyboard event is valid
  * @param {KeyboardEvent} event
  * @returns {boolean}
  */
-export function validKeyboardEvent (event) {
+export function validKeyboardEvent(event) {
   return (
     event &&
-    event.key && typeof (event.key) === 'string' &&
-    event.code && typeof (event.code) === 'string' &&
-    (!event.hasOwnProperty('shiftKey') || (event.shiftKey && typeof (event.shiftKey) === 'boolean')) &&
-    (!event.hasOwnProperty('ctrlKey') || (event.ctrlKey && typeof (event.ctrlKey) === 'boolean')) &&
-    (!event.hasOwnProperty('altKey') || (event.altKey && typeof (event.altKey) === 'boolean')) &&
-    (!event.hasOwnProperty('metaKey') || (event.metaKey && typeof (event.metaKey) === 'boolean'))
-  );
+    event.key &&
+    typeof event.key === 'string' &&
+    event.code &&
+    typeof event.code === 'string' &&
+    (!event.hasOwnProperty('shiftKey') ||
+      (event.shiftKey && typeof event.shiftKey === 'boolean')) &&
+    (!event.hasOwnProperty('ctrlKey') ||
+      (event.ctrlKey && typeof event.ctrlKey === 'boolean')) &&
+    (!event.hasOwnProperty('altKey') ||
+      (event.altKey && typeof event.altKey === 'boolean')) &&
+    (!event.hasOwnProperty('metaKey') ||
+      (event.metaKey && typeof event.metaKey === 'boolean'))
+  )
 }

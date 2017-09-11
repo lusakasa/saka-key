@@ -1,4 +1,4 @@
-import { fullscreenchange } from 'lib/dom';
+import { fullscreenchange } from 'lib/dom'
 
 /**
  * Events Saka Key intercepts and whether they must be trusted or not.
@@ -13,5 +13,4 @@ export default {
   click: false,
   mousedown: false,
   [fullscreenchange]: false
-};
-
+}

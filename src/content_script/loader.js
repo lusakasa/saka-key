@@ -9,11 +9,10 @@
  * webpages may install listeners that react to keyboard events before Saka Key
  */
 
-import { msg } from 'mosi/light-client';
-import { addPreloadedEventListeners } from 'content_script/eventListeners';
+import { msg } from 'mosi/light-client'
+import { addPreloadedEventListeners } from 'content_script/eventListeners'
 
 if (window.innerWidth > 5 && window.innerHeight > 5) {
-  addPreloadedEventListeners();
-  msg(1, 'loadClient');
+  addPreloadedEventListeners()
+  msg(1, 'loadClient')
 }
-

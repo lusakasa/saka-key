@@ -7,30 +7,30 @@
  * @param {HTMLElement} element
  * @returns {boolean}
  */
-export function isTextEditable (element) {
+export function isTextEditable(element) {
   if (element) {
     switch (element.nodeName) {
       case 'INPUT':
-        return isEditableHTMLInput(element);
+        return isEditableHTMLInput(element)
       case 'TEXTAREA':
       case 'OBJECT':
-        return true;
+        return true
     }
     switch (true) {
       case element.contentEditable.toUpperCase() === 'TRUE':
       case element.role === 'application':
-        return true;
+        return true
     }
   }
-  return false;
+  return false
 }
 
 /**
  * Returns whether the passed HTML input element is editable
  * @param {HTMLInputElement} element
  */
-function isEditableHTMLInput (element) {
-  if (element.disabled || element.readonly) return false;
+function isEditableHTMLInput(element) {
+  if (element.disabled || element.readonly) return false
   switch (element.type) {
     case undefined:
     case 'text':
@@ -41,9 +41,9 @@ function isEditableHTMLInput (element) {
     case 'password':
     case 'date':
     case 'tel':
-      return true;
+      return true
   }
-  return false;
+  return false
 }
 
 /**
@@ -52,12 +52,12 @@ function isEditableHTMLInput (element) {
  * Click on the input. document.activeElement is different from deepActiveElement()
  * @param {HTMLElement} root
  */
-export function deepActiveElement (root = document) {
-  const activeElement = root.activeElement;
-  const activeElementShadowRoot = activeElement && activeElement.shadowRoot;
+export function deepActiveElement(root = document) {
+  const activeElement = root.activeElement
+  const activeElementShadowRoot = activeElement && activeElement.shadowRoot
   return activeElementShadowRoot
     ? deepActiveElement(activeElementShadowRoot)
-    : activeElement;
+    : activeElement
 }
 
 /**
@@ -67,33 +67,38 @@ export function deepActiveElement (root = document) {
  * @param {'hover' | 'unhover' | 'click'} type
  * @param {{ ctrlKey, shiftKey, altKey, metaKey }} modifierKeys
  */
-export function mouseEvent (element, type, modifierKeys = {}) {
-  let events;
+export function mouseEvent(element, type, modifierKeys = {}) {
+  let events
   switch (type) {
-    case 'hover': events = ['mouseover', 'mouseenter', 'mousemove']; break;
-    case 'unhover': events = ['mousemove', 'mouseout', 'mouseleave']; break;
-    case 'click': events = ['mouseover', 'mousedown', 'mouseup', 'click']; break;
+    case 'hover':
+      events = ['mouseover', 'mouseenter', 'mousemove']
+      break
+    case 'unhover':
+      events = ['mousemove', 'mouseout', 'mouseleave']
+      break
+    case 'click':
+      events = ['mouseover', 'mousedown', 'mouseup', 'click']
+      break
   }
-  events.forEach((type) => {
+  events.forEach(type => {
     const event = new MouseEvent(type, {
       bubbles: true,
       cancelable: true,
       view: window,
       detail: 1, // usually the click count
       ...modifierKeys
-    });
-    element.dispatchEvent(event);
-  });
+    })
+    element.dispatchEvent(event)
+  })
 }
 
 /**
  * TODO: use standard fullscreenchange event when browsers support it
  */
-export const fullscreenchange = SAKA_PLATFORM === 'chrome'
+export const fullscreenchange =
+  SAKA_PLATFORM === 'chrome'
     ? 'webkitfullscreenchange'
-    : SAKA_PLATFORM === 'firefox'
-      ? 'mozfullscreenchange'
-      : 'fullscreenchange';
+    : SAKA_PLATFORM === 'firefox' ? 'mozfullscreenchange' : 'fullscreenchange'
 /**
  * Given a DOM event type that is vendor pre-fixed, e.g. 'mozfullscreenchange',
  * converts it to a standardized event type, e.g. 'fullscreenchange'
@@ -101,12 +106,12 @@ export const fullscreenchange = SAKA_PLATFORM === 'chrome'
  * @param {string} event
  * @returns {string}
  */
-export function normalizeEventType (type) {
+export function normalizeEventType(type) {
   switch (type) {
     case fullscreenchange:
-      return 'fullscreenchange';
+      return 'fullscreenchange'
     default:
-      return type;
+      return type
   }
 }
 
@@ -117,31 +122,32 @@ export function normalizeEventType (type) {
  * penetrating the shadow DOM
  * @param {HTMLElement} root
  */
-export function getAllElementsIncludingShadowDOM (root = document) {
-  const allElements = root.querySelectorAll('*');
-  let shadowDescendents = [];
-  allElements.forEach((element) => {
+export function getAllElementsIncludingShadowDOM(root = document) {
+  const allElements = root.querySelectorAll('*')
+  let shadowDescendents = []
+  allElements.forEach(element => {
     if (element.shadowRoot) {
       shadowDescendents = [
         ...shadowDescendents,
-        ...getAllElementsIncludingShadowDOM(element.shadowRoot)];
+        ...getAllElementsIncludingShadowDOM(element.shadowRoot)
+      ]
     }
-  });
-  return [...allElements, shadowDescendents];
+  })
+  return [...allElements, shadowDescendents]
 }
 
 /**
  * Copies the specified text to the clipboard
  * @param {string} text
  */
-export function copy (text) {
-  const textArea = document.createElement('textarea');
-  textArea.style = 'position:fixed;right:0';
-  textArea.value = text;
-  document.body.appendChild(textArea);
-  textArea.select();
-  document.execCommand('Copy');
-  document.body.removeChild(textArea);
+export function copy(text) {
+  const textArea = document.createElement('textarea')
+  textArea.style = 'position:fixed;right:0'
+  textArea.value = text
+  document.body.appendChild(textArea)
+  textArea.select()
+  document.execCommand('Copy')
+  document.body.removeChild(textArea)
 }
 
 /**
@@ -150,23 +156,27 @@ export function copy (text) {
  * the "clipboardRead" permission to be declared in manifest.json
  * @returns {string}
  */
-export function paste () {
-  const textArea = document.createElement('textarea');
-  textArea.style = 'position:fixed;right:0';
-  document.body.appendChild(textArea);
-  textArea.focus();
-  document.execCommand('Paste');
-  const value = textArea.value;
-  document.body.removeChild(textArea);
-  return value;
+export function paste() {
+  const textArea = document.createElement('textarea')
+  textArea.style = 'position:fixed;right:0'
+  document.body.appendChild(textArea)
+  textArea.focus()
+  document.execCommand('Paste')
+  const value = textArea.value
+  document.body.removeChild(textArea)
+  return value
 }
 
 /** Saves the given object to a human-readable JSON file */
-export async function downloadJSON (object, filename) {
-  const url = URL.createObjectURL(new Blob([JSON.stringify(object, null, 2)], { type: 'data:application/json;charset=utf-8' }));
+export async function downloadJSON(object, filename) {
+  const url = URL.createObjectURL(
+    new Blob([JSON.stringify(object, null, 2)], {
+      type: 'data:application/json;charset=utf-8'
+    })
+  )
   await browser.downloads.download({
     url,
     filename,
     saveAs: true
-  });
+  })
 }

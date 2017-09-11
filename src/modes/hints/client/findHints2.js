@@ -1,12 +1,12 @@
 // TODO: in progress port of VimFX's algorithm for finding hintable elements.
 
 // based on the VimFX algorithm
-function findHints (filter, selector = '*') {
-  const viewport = getWindowViewport();
-  let wrappers = [];
-  getMarkableElements(viewport, wrappers, filter, selector);
-  return wrappers;
-};
+function findHints(filter, selector = '*') {
+  const viewport = getWindowViewport()
+  let wrappers = []
+  getMarkableElements(viewport, wrappers, filter, selector)
+  return wrappers
+}
 
 // `filter` is a function that is given every element in every frame of the page.
 // It should return wrapper objects for markable elements and a falsy value for
@@ -17,72 +17,90 @@ function findHints (filter, selector = '*') {
 // anyway behind the scenes. However, it is possible to pass in a CSS selector,
 // which allows getting markable elements in several passes with different sets
 // of candidates.
-export function getMarkableElements (viewport, wrappers, filter, selector, parents = []) {
-  const hintableElements = [];
-  document.querySelectorAll('*').forEach((element) => {
+export function getMarkableElements(
+  viewport,
+  wrappers,
+  filter,
+  selector,
+  parents = []
+) {
+  const hintableElements = []
+  document.querySelectorAll('*').forEach(element => {
     // `getRects` is fast and filters out most elements, so run it first of all.
-    const rects = getRects(element, viewport);
+    const rects = getRects(element, viewport)
     if (rects.insideViewport.length) {
-      const hintableElement = filter(
-        element,
-        (elementArg, tryRight = 1) => getElementShape(
+      const hintableElement = filter(element, (elementArg, tryRight = 1) =>
+        getElementShape(
           { viewport, parents, element: elementArg },
           tryRight,
           elementArg === element ? rects : null
         )
-      );
+      )
       if (hintableElement) {
-        hintableElements.push(hintableElement);
+        hintableElements.push(hintableElement)
       }
     }
-  });
+  })
 
   for (let frame of Array.from(window.frames)) {
     if (frame.frameElement) {
-      var result;
-      if (!(result = viewportUtils.getFrameViewport(
-        frame.frameElement, viewport
-      ))) { continue; }
-      let {viewport: frameViewport, offset} = result;
+      var result
+      if (
+        !(result = viewportUtils.getFrameViewport(frame.frameElement, viewport))
+      ) {
+        continue
+      }
+      let { viewport: frameViewport, offset } = result
       getMarkableElements(
-        frame, frameViewport, wrappers, filter, selector,
-        parents.concat({window, offset})
-      );
+        frame,
+        frameViewport,
+        wrappers,
+        filter,
+        selector,
+        parents.concat({ window, offset })
+      )
     }
   }
 
-  return hintableElements;
+  return hintableElements
 }
 
-function getRects (element, viewport) {
+function getRects(element, viewport) {
   // `element.getClientRects()` returns a list of rectangles, usually just one,
   // which is identical to the one returned by `element.getBoundingClientRect()`.
   // However, if `element` is inline and line-wrapped, then it returns one
   // rectangle for each line, since each line may be of different length, for
   // example. That allows us to properly add hints to line-wrapped links.
-  const rects = element.getClientRects();
+  const rects = element.getClientRects()
   return {
     all: rects,
-    insideViewport: Array.filter(
-      rects,
-      (rect) => isInsideViewport(rect, viewport)
+    insideViewport: Array.filter(rects, rect =>
+      isInsideViewport(rect, viewport)
     )
-  };
+  }
 }
 
-function getRootElement () {
-  return (document.compatMode === 'BackCompat' && document.body) || document.documentElement;
+function getRootElement() {
+  return (
+    (document.compatMode === 'BackCompat' && document.body) ||
+    document.documentElement
+  )
 }
 
-function getWindowViewport () {
+function getWindowViewport() {
   // clientWidth and clientHeight are viewport size excluding scrollbars
-  const { clientWidth, clientHeight, scrollWidth, scrollHeight } = getRootElement();
+  const {
+    clientWidth,
+    clientHeight,
+    scrollWidth,
+    scrollHeight
+  } = getRootElement()
   // innerWidth and innerHeight are viewport size including scrollbars.
-  const {innerWidth, innerHeight} = window;
+  const { innerWidth, innerHeight } = window
   // When there are no scrollbars `clientWidth` and `clientHeight` might be too
   // small. Then we use `innerWidth` and `innerHeight` instead.
-  const width = scrollWidth > innerWidth ? clientWidth : innerWidth;
-  const height = scrollHeight > innerHeight ? clientHeight : innerHeight;
+  const width = scrollWidth > innerWidth ? clientWidth : innerWidth
+  const height = scrollHeight > innerHeight ? clientHeight : innerHeight
   return {
     left: 0,
     top: 0,
@@ -90,17 +108,17 @@ function getWindowViewport () {
     bottom: height,
     width,
     height
-  };
-};
+  }
+}
 
-const MIN_EDGE_DISTANCE = 4;
-function isInsideViewport (rect, viewport) {
+const MIN_EDGE_DISTANCE = 4
+function isInsideViewport(rect, viewport) {
   return (
     rect.left <= viewport.right - MIN_EDGE_DISTANCE &&
     rect.top <= viewport.bottom - MIN_EDGE_DISTANCE &&
     rect.right >= viewport.left + MIN_EDGE_DISTANCE &&
     rect.bottom >= viewport.top + MIN_EDGE_DISTANCE
-  );
+  )
 }
 
 // Returns the “shape” of an element:
@@ -119,25 +137,37 @@ function isInsideViewport (rect, viewport) {
 //   (which is the case for “cards” with an image to the left and a title as well
 //   as some text to the right (where the entire “card” is a link)). This is used
 //   to place the the marker at the edge of the block.
-function getElementShape (elementData, tryRight, rects = getRects(element, viewport)) {
-  const { viewport, element } = elementData;
-  const result = { nonCoveredPoint: null, area: 0, width: 0, textOffset: null, isBlock: false };
-  let rect, visibleRect;
-  let totalArea = 0;
-  const visibleRects = [];
+function getElementShape(
+  elementData,
+  tryRight,
+  rects = getRects(element, viewport)
+) {
+  const { viewport, element } = elementData
+  const result = {
+    nonCoveredPoint: null,
+    area: 0,
+    width: 0,
+    textOffset: null,
+    isBlock: false
+  }
+  let rect, visibleRect
+  let totalArea = 0
+  const visibleRects = []
   for (let index = 0; index < rects.insideViewport.length; index++) {
-    rect = rects.insideViewport[index];
-    visibleRect = adjustRectToViewport(rect, viewport);
-    if (visibleRect.area === 0) { continue; }
-    visibleRect.index = index;
-    totalArea += visibleRect.area;
-    visibleRects.push(visibleRect);
+    rect = rects.insideViewport[index]
+    visibleRect = adjustRectToViewport(rect, viewport)
+    if (visibleRect.area === 0) {
+      continue
+    }
+    visibleRect.index = index
+    totalArea += visibleRect.area
+    visibleRects.push(visibleRect)
   }
 
   if (visibleRects.length === 0) {
-    if ((rects.all.length === 1) && (totalArea === 0)) {
-      [rect] = Array.from(rects.all);
-      if ((rect.width > 0) || (rect.height > 0)) {
+    if (rects.all.length === 1 && totalArea === 0) {
+      ;[rect] = Array.from(rects.all)
+      if (rect.width > 0 || rect.height > 0) {
         // If we get here, it means that everything inside `element` is floated
         // and/or absolutely positioned (and that `element` hasn’t been made to
         // “contain” the floats). For example, a link in a menu could contain a
@@ -145,48 +175,57 @@ function getElementShape (elementData, tryRight, rects = getRects(element, viewp
         // Those are still clickable. Therefore we return the shape of the first
         // visible child instead. At least in that example, that’s the best bet.
         for (let child of Array.from(element.children)) {
-          let childData = Object.assign({}, elementData, {element: child});
-          let shape = getElementShape(childData, tryRight);
-          if (shape) { return shape; }
+          let childData = Object.assign({}, elementData, { element: child })
+          let shape = getElementShape(childData, tryRight)
+          if (shape) {
+            return shape
+          }
         }
       }
     }
-    return result;
+    return result
   }
 
-  result.area = totalArea;
+  result.area = totalArea
 
   // Even if `element` has a visible rect, it might be covered by other elements.
-  let nonCoveredPoint = null;
-  let nonCoveredPointRect = null;
+  let nonCoveredPoint = null
+  let nonCoveredPointRect = null
   for (visibleRect of Array.from(visibleRects)) {
     nonCoveredPoint = getFirstNonCoveredPoint(
-      elementData, visibleRect, tryRight
-    );
+      elementData,
+      visibleRect,
+      tryRight
+    )
     if (nonCoveredPoint) {
-      nonCoveredPointRect = visibleRect;
-      break;
+      nonCoveredPointRect = visibleRect
+      break
     }
   }
 
-  if (!nonCoveredPoint) { return result; }
-  result.nonCoveredPoint = nonCoveredPoint;
+  if (!nonCoveredPoint) {
+    return result
+  }
+  result.nonCoveredPoint = nonCoveredPoint
 
-  result.width = nonCoveredPointRect.width;
+  result.width = nonCoveredPointRect.width
 
-  let lefts = [];
-  let smallestBottom = Infinity;
-  let hasSingleRect = (rects.all.length === 1);
+  let lefts = []
+  let smallestBottom = Infinity
+  let hasSingleRect = rects.all.length === 1
 
   utils.walkTextNodes(element, function(node) {
     if (node.data.trim() !== '') {
-      for (let {bounds} of Array.from(node.getBoxQuads())) {
-        if ((bounds.width < MIN_TEXTNODE_SIZE) || (bounds.height < MIN_TEXTNODE_SIZE)) {
-          continue;
+      for (let { bounds } of Array.from(node.getBoxQuads())) {
+        if (
+          bounds.width < MIN_TEXTNODE_SIZE ||
+          bounds.height < MIN_TEXTNODE_SIZE
+        ) {
+          continue
         }
 
         if (utils.overlaps(bounds, nonCoveredPointRect)) {
-          lefts.push(bounds.left);
+          lefts.push(bounds.left)
         }
 
         if (hasSingleRect) {
@@ -194,24 +233,25 @@ function getElementShape (elementData, tryRight, rects = getRects(element, viewp
           // the `textOffset` (see the description of `textOffset` at the
           // beginning of the function).
           if (bounds.top > smallestBottom) {
-            result.isBlock = true;
-            return true;
+            result.isBlock = true
+            return true
           }
 
           if (bounds.bottom < smallestBottom) {
-            smallestBottom = bounds.bottom;
+            smallestBottom = bounds.bottom
           }
         }
       }
     }
 
-    return false;
-  });
+    return false
+  })
 
   if (lefts.length > 0) {
-    result.textOffset =
-      Math.round(Math.min(...Array.from(lefts || [])) - nonCoveredPointRect.left);
+    result.textOffset = Math.round(
+      Math.min(...Array.from(lefts || [])) - nonCoveredPointRect.left
+    )
   }
 
-  return result;
-};
+  return result
+}

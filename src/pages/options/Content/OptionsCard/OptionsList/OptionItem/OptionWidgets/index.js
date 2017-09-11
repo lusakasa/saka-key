@@ -1,53 +1,53 @@
-import { Component, h } from 'preact';
-import Header from './Header';
-import Unknown from './Unknown';
-import Keybinding from './Keybinding';
-import Select from './Select';
-import ToggleButton from './ToggleButton';
-import Switch from './Switch';
-import Checkbox from './Checkbox';
-import Color from './Color';
-import Text from './Text';
-import Number from './Number';
-import TextArea from './TextArea';
-import Info from './Info';
+import { Component, h } from 'preact'
+import Header from './Header'
+import Unknown from './Unknown'
+import Keybinding from './Keybinding'
+import Select from './Select'
+import ToggleButton from './ToggleButton'
+import Switch from './Switch'
+import Checkbox from './Checkbox'
+import Color from './Color'
+import Text from './Text'
+import Number from './Number'
+import TextArea from './TextArea'
+import Info from './Info'
 
 // must pass:
 // * value
 // * onValueChange((newValue) => {})
 
-function optionWidgetByType (type) {
+function optionWidgetByType(type) {
   switch (type) {
     case 'header':
-      return Header;
+      return Header
     case 'info':
-      return Info;
+      return Info
     case 'keybinding':
-      return Keybinding;
+      return Keybinding
     case 'select':
-      return Select;
+      return Select
     case 'togglebutton':
-      return ToggleButton;
+      return ToggleButton
     case 'checkbox':
-      return Checkbox;
+      return Checkbox
     case 'switch':
-      return Switch;
+      return Switch
     case 'color':
-      return Color;
+      return Color
     case 'text':
-      return Text;
+      return Text
     case 'number':
-      return Number;
+      return Number
     case 'textarea':
-      return TextArea;
+      return TextArea
     default:
-      return Unknown;
+      return Unknown
   }
 }
 
 export default class OptionWidget extends Component {
-  render (props) {
-    const Widget = optionWidgetByType(props.type);
-    return <Widget {...props} />;
+  render(props) {
+    const Widget = optionWidgetByType(props.type)
+    return <Widget {...props} />
   }
 }

@@ -13,23 +13,23 @@
 // detects when messaging is cut off and removes its event listeners. The
 // background page then loads in new clients that can handle events without
 // interference from old event listeners.
-import interceptedEventTypes from 'client/interceptedEventTypes';
+import interceptedEventTypes from 'client/interceptedEventTypes'
 
-function _handleDOMEvent (event) {
-  window.handleDOMEvent(event);
+function _handleDOMEvent(event) {
+  window.handleDOMEvent(event)
 }
 
-export function addPreloadedEventListeners () {
-  window.handleDOMEvent = () => {};
+export function addPreloadedEventListeners() {
+  window.handleDOMEvent = () => {}
   Object.keys(interceptedEventTypes).forEach((eventType, i) => {
-    window.addEventListener(eventType, _handleDOMEvent, true);
-  });
+    window.addEventListener(eventType, _handleDOMEvent, true)
+  })
   window.removePreloadedDOMEventListener = () => {
-    window.handleDOMEvent = () => {};
-    Object.keys(interceptedEventTypes).forEach((eventType) => {
-      window.removeEventListener(eventType, _handleDOMEvent, true);
-    });
-    if (SAKA_DEBUG) console.log('Preloaded Event Listeners Removed');
-  };
-  if (SAKA_DEBUG) console.log('Preloaded Event Listeners Added');
+    window.handleDOMEvent = () => {}
+    Object.keys(interceptedEventTypes).forEach(eventType => {
+      window.removeEventListener(eventType, _handleDOMEvent, true)
+    })
+    if (SAKA_DEBUG) console.log('Preloaded Event Listeners Removed')
+  }
+  if (SAKA_DEBUG) console.log('Preloaded Event Listeners Added')
 }

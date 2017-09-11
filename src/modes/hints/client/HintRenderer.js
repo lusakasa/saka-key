@@ -1,18 +1,18 @@
-import { Component, render, h } from 'preact';
-import { guiRoot } from 'client/gui';
-import { hintType } from './index';
-import { activateHint } from './activateHint';
+import { Component, render, h } from 'preact'
+import { guiRoot } from 'client/gui'
+import { hintType } from './index'
+import { activateHint } from './activateHint'
 
-export let showHints;
-export let hideHints;
-export let advanceHints;
+export let showHints
+export let hideHints
+export let advanceHints
 
-let fontSize;
-let useTargetSize;
-let horizontalPlacement;
-let verticalPlacement;
+let fontSize
+let useTargetSize
+let horizontalPlacement
+let verticalPlacement
 
-export function setHintRenderSettings ({
+export function setHintRenderSettings({
   hintFontSize,
   hintUseTargetSize,
   hintCSS,
@@ -21,14 +21,16 @@ export function setHintRenderSettings ({
   hintHorizontalPlacement,
   hintVerticalPlacement
 }) {
-  fontSize = hintFontSize;
-  horizontalPlacement = hintHorizontalPlacement;
-  verticalPlacement = hintVerticalPlacement;
-  useTargetSize = hintUseTargetSize;
+  fontSize = hintFontSize
+  horizontalPlacement = hintHorizontalPlacement
+  verticalPlacement = hintVerticalPlacement
+  useTargetSize = hintUseTargetSize
   hintStyle.textContent = `
 @font-face {
   font-family: Roboto; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;
-  font-style: normal; font-weight: normal; src: url(${chrome.runtime.getURL('Roboto-Regular.tff')}) format('tff');
+  font-style: normal; font-weight: normal; src: url(${chrome.runtime.getURL(
+    'Roboto-Regular.tff'
+  )}) format('tff');
 }
 .saka-hint-body {
   ${hintCSS}
@@ -38,78 +40,89 @@ export function setHintRenderSettings ({
 }
 .saka-hint-active-char {
   ${hintActiveCharCSS}
-}`;
+}`
 }
 
 class HintRenderer extends Component {
-  constructor () {
-    super();
+  constructor() {
+    super()
     this.state = {
       hints: [],
       filteredHints: [],
       inputKeys: []
-    };
+    }
   }
-  componentDidMount () {
+  componentDidMount() {
     showHints = (hints, hintStrings) => {
-      const labeledHints = hints.map((hint, i) => Object.assign(hint, { hintString: hintStrings[i] }));
+      const labeledHints = hints.map((hint, i) =>
+        Object.assign(hint, { hintString: hintStrings[i] })
+      )
       this.setState({
         hints: labeledHints,
         filteredHints: labeledHints,
         inputKeys: ''
-      });
-    };
-    advanceHints = (key) => {
-      const hints = this.state.hints;
-      const inputKeys = this.state.inputKeys + key;
-      const filteredHints = this.state.hints.filter((hint) => {
-        return hint.hintString.startsWith(inputKeys);
-      });
-      if (filteredHints.length === 1 && inputKeys === filteredHints[0].hintString) {
-        return activateHint(filteredHints[0], hintType);
+      })
+    }
+    advanceHints = key => {
+      const hints = this.state.hints
+      const inputKeys = this.state.inputKeys + key
+      const filteredHints = this.state.hints.filter(hint => {
+        return hint.hintString.startsWith(inputKeys)
+      })
+      if (
+        filteredHints.length === 1 &&
+        inputKeys === filteredHints[0].hintString
+      ) {
+        return activateHint(filteredHints[0], hintType)
       }
       this.setState({
         hints,
         filteredHints,
         inputKeys
-      });
-      return filteredHints.length === 0 ? 'Filtered' : 'Same';
-    };
+      })
+      return filteredHints.length === 0 ? 'Filtered' : 'Same'
+    }
     hideHints = () => {
       this.setState({
         hints: [],
         filteredHints: [],
         inputKeys: ''
-      });
-    };
+      })
+    }
   }
-  render () {
+  render() {
     return (
       <div style={{ position: 'absolute', left: '0', top: '0' }}>
-        {this.state.filteredHints.map((hint) => (
+        {this.state.filteredHints.map(hint => (
           <Hint
             hintString={hint.hintString}
             rect={hint.rect}
             computedStyle={hint.computedStyle}
             horizontalPlacement={horizontalPlacement}
             verticalPlacement={verticalPlacement}
-            seen={this.state.inputKeys.length} />
+            seen={this.state.inputKeys.length}
+          />
         ))}
       </div>
-    );
+    )
   }
 }
 
-function generateFontSize (computedStyle) {
-  const computedFontSize = parseFloat(computedStyle.fontSize);
-  return useTargetSize && (computedFontSize > 5)
-    ? computedFontSize
-    : fontSize;
+function generateFontSize(computedStyle) {
+  const computedFontSize = parseFloat(computedStyle.fontSize)
+  return useTargetSize && computedFontSize > 5 ? computedFontSize : fontSize
 }
 
-const Hint = ({ hintString, rect, computedStyle, horizontalPlacement, verticalPlacement, seen }) => (
+const Hint = ({
+  hintString,
+  rect,
+  computedStyle,
+  horizontalPlacement,
+  verticalPlacement,
+  seen
+}) => (
   <div
-    className='saka-hint-body'
+    className="saka-hint-body"
     style={{
       left: `${horizontalPlacement === 'left'
         ? window.scrollX + rect.left
@@ -124,23 +137,26 @@ const Hint = ({ hintString, rect, computedStyle, horizontalPlacement, verticalPl
       fontSize: generateFontSize(computedStyle)
     }}
   >
-    { hintString.split('').map((char, i) => (
-      <span
-        className={i >= seen
-          ? 'saka-hint-normal-char'
-          : 'saka-hint-active-char'}
-      >
-        {char}
-      </span>
-    ))}
+    {hintString
+      .split('')
+      .map((char, i) => (
+        <span
+          className={
+            i >= seen ? 'saka-hint-normal-char' : 'saka-hint-active-char'
+          }
+        >
+          {char}
+        </span>
+      ))}
   </div>
-);
+)
 
-const hostElement = document.createElement('div');
-guiRoot.appendChild(hostElement);
-const hintContainer = SAKA_PLATFORM === 'chrome'
-  ? hostElement.attachShadow({ mode: 'open' })
-  : hostElement.appendChild(document.createElement('div'));
-const hintStyle = document.createElement('style');
-hintContainer.appendChild(hintStyle);
-render(<HintRenderer />, hintContainer);
+const hostElement = document.createElement('div')
+guiRoot.appendChild(hostElement)
+const hintContainer =
+  SAKA_PLATFORM === 'chrome'
+    ? hostElement.attachShadow({ mode: 'open' })
+    : hostElement.appendChild(document.createElement('div'))
+const hintStyle = document.createElement('style')
+hintContainer.appendChild(hintStyle)
+render(<HintRenderer />, hintContainer)

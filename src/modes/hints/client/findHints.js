@@ -1,19 +1,19 @@
-let detectByCursorStyle = false;
+let detectByCursorStyle = false
 
-export function setHintFindSettings (settings) {
-  detectByCursorStyle = settings.hintDetectByCursorStyle;
+export function setHintFindSettings(settings) {
+  detectByCursorStyle = settings.hintDetectByCursorStyle
 }
 
 /** @type {WeakMap<HTMLElement, CSSStyleDeclaration>} */
-let computedStyles;
+let computedStyles
 
-function demandComputedStyle (element) {
+function demandComputedStyle(element) {
   if (computedStyles.has(element)) {
-    return computedStyles.get(element);
+    return computedStyles.get(element)
   } else {
-    const computedStyle = getComputedStyle(element);
-    computedStyles.set(element, computedStyle);
-    return computedStyle;
+    const computedStyle = getComputedStyle(element)
+    computedStyles.set(element, computedStyle)
+    return computedStyle
   }
 }
 
@@ -21,49 +21,49 @@ function demandComputedStyle (element) {
  * Finds hints
  * @param {string} hintType - the type of elements to find (currently unused)
  */
-export function findHints (hintType) {
+export function findHints(hintType) {
   // on Firefox, getComputedStyle() may return null for conditions I don't fully understand
   // try-catch block prevents link hints generation from breaking.
   // https://bugzilla.mozilla.org/show_bug.cgi?id=548397
   try {
     // 1. getComputedStyle for every element
-    const allElements = document.querySelectorAll('*');
-    computedStyles = new WeakMap();
+    const allElements = document.querySelectorAll('*')
+    computedStyles = new WeakMap()
     // allElements.forEach((element) => computedStyles.set(element, getComputedStyle(element)));
     // 2. find hintable elements
-    const hintableElements = [];
-    allElements.forEach((element) => {
+    const hintableElements = []
+    allElements.forEach(element => {
       if (isClickable(element)) {
-        const rect = firstVisibleRect(element);
+        const rect = firstVisibleRect(element)
         if (rect) {
-          const computedStyle = demandComputedStyle(element);
+          const computedStyle = demandComputedStyle(element)
           hintableElements.push({
             element,
             rect: removeRectPaddingAndBorders(element, rect, computedStyle),
             computedStyle
-          });
+          })
         }
       }
-    });
-    computedStyles = undefined;
-    console.log(hintableElements);
-    return hintableElements;
+    })
+    computedStyles = undefined
+    console.log(hintableElements)
+    return hintableElements
   } catch (e) {
-    return [];
+    return []
   }
 }
 
 // based on https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
-function isClickable (element, computedStyle) {
+function isClickable(element, computedStyle) {
   // clickable html elements
   switch (element.nodeName) {
     case 'A':
     case 'BUTTON':
     case 'SELECT':
     case 'TEXTAREA':
-      return true;
+      return true
     case 'INPUT':
-      return element.type !== 'hidden';
+      return element.type !== 'hidden'
   }
   // ARIA roles implying clickability
   switch (element.getAttribute('role')) {
@@ -77,25 +77,26 @@ function isClickable (element, computedStyle) {
     case 'radio':
     case 'tab':
     case 'textbox':
-      return true;
+      return true
   }
   // other clickable conditions
-  if (element.hasAttribute('onclick')) return true;
+  if (element.hasAttribute('onclick')) return true
   if (detectByCursorStyle) {
-    const computedStyle = demandComputedStyle(element);
+    const computedStyle = demandComputedStyle(element)
     if (
       computedStyle.cursor === 'pointer' &&
-      (!element.parentElement || demandComputedStyle(element.parentElement).cursor !== 'pointer')
+      (!element.parentElement ||
+        demandComputedStyle(element.parentElement).cursor !== 'pointer')
     ) {
-      return true;
+      return true
     }
   }
-  return false;
+  return false
 }
 
 // based on https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
-function isVisible (element, clientRect) {
-  const computedStyle = demandComputedStyle(element);
+function isVisible(element, clientRect) {
+  const computedStyle = demandComputedStyle(element)
   // remove elements that are barely within the viewport, tiny, or invisible
   switch (true) {
     case !clientRect:
@@ -107,7 +108,7 @@ function isVisible (element, clientRect) {
     case clientRect.height < 3:
     case computedStyle.visibility !== 'visible':
     case computedStyle.display === 'none':
-      return false;
+      return false
   }
 
   // Eliminate elements hidden by another overlapping element.
@@ -122,25 +123,28 @@ function isVisible (element, clientRect) {
   //
   // For elements with a rounded topleft border, the upper left corner lies outside the element.
   // Then, we need an offset to get to the point nearest to the upper left corner, but within border.
-  const coordTruncationOffset = 2; // A value of 1 has been observed not to be enough,
-                                 // so we heuristically choose 2, which seems to work well.
-                                 // We know a value of 2 is still safe (lies within the element) because,
-                                 // from the code above, widht & height are >= 3.
-  const radius = parseFloat(computedStyle.borderTopLeftRadius);
-  const roundedBorderOffset = Math.ceil(radius * (1 - Math.sin(Math.PI / 4)));
-  const offset = Math.max(coordTruncationOffset, roundedBorderOffset);
+  const coordTruncationOffset = 2 // A value of 1 has been observed not to be enough,
+  // so we heuristically choose 2, which seems to work well.
+  // We know a value of 2 is still safe (lies within the element) because,
+  // from the code above, widht & height are >= 3.
+  const radius = parseFloat(computedStyle.borderTopLeftRadius)
+  const roundedBorderOffset = Math.ceil(radius * (1 - Math.sin(Math.PI / 4)))
+  const offset = Math.max(coordTruncationOffset, roundedBorderOffset)
   if (offset >= clientRect.width || offset >= clientRect.height) {
-    return false;
+    return false
   }
-  let el = document.elementFromPoint(clientRect.left + offset, clientRect.top + offset);
+  let el = document.elementFromPoint(
+    clientRect.left + offset,
+    clientRect.top + offset
+  )
   while (el && el !== element) {
-    el = el.parentNode;
+    el = el.parentNode
   }
   if (!el) {
-    return false;
+    return false
   }
 
-  return true;
+  return true
 }
 
 /**
@@ -150,22 +154,22 @@ function isVisible (element, clientRect) {
  * @param {HTMLElement} element
  * @returns {rect?: ClientRect}
  */
-function firstVisibleRect (element) {
+function firstVisibleRect(element) {
   // Case 1. the element itself is visible
   for (const rect of element.getClientRects()) {
     if (isVisible(element, rect)) {
-      return rect;
+      return rect
     }
   }
   // Case 2. a child of the element is visible
   for (const child of element.children) {
-    const childRect = firstVisibleRect(child);
+    const childRect = firstVisibleRect(child)
     if (childRect) {
-      return childRect;
+      return childRect
     }
   }
   // Case 3. there is no bounding rectangle
-  return undefined;
+  return undefined
 }
 
 /**
@@ -176,19 +180,23 @@ function firstVisibleRect (element) {
  * @param {CSSStyleDeclaration} computedStyle
  * @returns {ClientRect}
  */
-function removeRectPaddingAndBorders (element, rect, computedStyle) {
-  const left = rect.left +
+function removeRectPaddingAndBorders(element, rect, computedStyle) {
+  const left =
+    rect.left +
     parseFloat(computedStyle.paddingLeft) +
-    parseFloat(computedStyle.borderLeftWidth);
-  const right = rect.right -
+    parseFloat(computedStyle.borderLeftWidth)
+  const right =
+    rect.right -
     parseFloat(computedStyle.paddingRight) -
-    parseFloat(computedStyle.borderRightWidth);
-  const top = rect.top +
+    parseFloat(computedStyle.borderRightWidth)
+  const top =
+    rect.top +
     parseFloat(computedStyle.paddingTop) +
-    parseFloat(computedStyle.borderTopWidth);
-  const bottom = rect.bottom -
+    parseFloat(computedStyle.borderTopWidth)
+  const bottom =
+    rect.bottom -
     parseFloat(computedStyle.paddingBottom) -
-    parseFloat(computedStyle.borderBottomWidth);
+    parseFloat(computedStyle.borderBottomWidth)
   return {
     left,
     right,
@@ -196,5 +204,5 @@ function removeRectPaddingAndBorders (element, rect, computedStyle) {
     bottom,
     width: right - left,
     height: bottom - top
-  };
+  }
 }

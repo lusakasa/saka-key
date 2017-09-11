@@ -1,3 +1,3 @@
-import { initialize } from 'client';
+import { initialize } from 'client'
 
-initialize('content_script');
+initialize('content_script')

@@ -1,51 +1,52 @@
-import { mouseEvent } from 'lib/dom';
-import { isMac } from 'lib/keys';
-import { msg } from 'mosi/client';
+import { mouseEvent } from 'lib/dom'
+import { isMac } from 'lib/keys'
+import { msg } from 'mosi/client'
 
-function backgroundOpenLink (hintType, hint) {
+function backgroundOpenLink(hintType, hint) {
   if (hint.element.href) {
-    msg(1, hintType, hint.element.href);
+    msg(1, hintType, hint.element.href)
   }
 }
 
-export function activateHint (hint, hintType) {
-  const click = (modifiers) => mouseEvent(hint.element, 'click', modifiers);
+export function activateHint(hint, hintType) {
+  const click = modifiers => mouseEvent(hint.element, 'click', modifiers)
   switch (hintType) {
     case 'backgroundTab':
-      click({ ctrlKey: !isMac, metaKey: isMac });
+      click({ ctrlKey: !isMac, metaKey: isMac })
       if (SAKA_PLATFORM === 'firefox') {
-        backgroundOpenLink('openLinkInBackgroundTab', hint);
+        backgroundOpenLink('openLinkInBackgroundTab', hint)
       }
-      break;
+      break
     case 'foregroundTab':
-      click({ ctrlKey: !isMac, metaKey: isMac, shiftKey: true });
+      click({ ctrlKey: !isMac, metaKey: isMac, shiftKey: true })
       if (SAKA_PLATFORM === 'firefox') {
-        backgroundOpenLink('openLinkInForegroundTab', hint);
+        backgroundOpenLink('openLinkInForegroundTab', hint)
       }
-      break;
+      break
     case 'newWindow':
-      click({ shiftKey: true });
+      click({ shiftKey: true })
       if (SAKA_PLATFORM === 'firefox') {
-        backgroundOpenLink('openLinkInNewWindow', hint);
+        backgroundOpenLink('openLinkInNewWindow', hint)
       }
-      break;
+      break
     case 'incognitoWindow':
-      click({ shiftKey: true, ctrlKey: !isMac, metaKey: isMac });
-      backgroundOpenLink('openLinkInIncognitoWindow', hint);
-      break;
+      click({ shiftKey: true, ctrlKey: !isMac, metaKey: isMac })
+      backgroundOpenLink('openLinkInIncognitoWindow', hint)
+      break
     case 'download':
-      click({ altKey: true }); break;
-      // TODO: handle on firefox
+      click({ altKey: true })
+      break
+    // TODO: handle on firefox
     case 'focusLink':
       // TODO: make sure this asserts hasInteractedWithPage in middleware
       if (SAKA_DEBUG) {
-        console.log(`Hint [${hint.hintString}] targets:`, hint.element);
+        console.log(`Hint [${hint.hintString}] targets:`, hint.element)
       }
-      break;
+      break
     case 'currentTab':
     default:
-      click();
+      click()
   }
-  hint.element.focus();
-  return 'Reset';
+  hint.element.focus()
+  return 'Reset'
 }

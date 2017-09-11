@@ -1,4 +1,4 @@
-export const initConfig = (config) => ({
+export const initConfig = config => ({
   type: 'INIT_CONFIG',
   config
-});
+})

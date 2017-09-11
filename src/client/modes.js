@@ -1,15 +1,15 @@
-import { isTextEditable, deepActiveElement, normalizeEventType } from 'lib/dom';
-import interceptedEventTypes from './interceptedEventTypes';
+import { isTextEditable, deepActiveElement, normalizeEventType } from 'lib/dom'
+import interceptedEventTypes from './interceptedEventTypes'
 import {
   passDOMEventToMiddleware,
   middlewareOnOptionsChange
-} from './middleware';
+} from './middleware'
 
 /** The active mode of the Modes state machine */
-let currentMode;
-let modes = {};
+let currentMode
+let modes = {}
 /** whether saka key is enabled or not */
-let enabled = false;
+let enabled = false
 
 const defaultModeObject = {
   onEnter: () => {},
@@ -24,67 +24,67 @@ const defaultModeObject = {
   mousedown: () => 'Same',
   fullscreenchange: () => 'Same',
   messages: {}
-};
-
-/** Initializes the Modes state machine */
-export function initModes (startMode, availableModes, actions) {
-  if (SAKA_DEBUG) console.log(`Start mode: ${startMode}`);
-  currentMode = startMode;
-  Object.entries(availableModes).map(([name, mode]) => {
-    modes[name] = Object.assign({}, defaultModeObject, mode);
-    Object.assign(actions, wrapModeMessages(modes[name].messages));
-  });
 }
 
-export let removeEventListeners;
-export function addEventListeners (clientType) {
+/** Initializes the Modes state machine */
+export function initModes(startMode, availableModes, actions) {
+  if (SAKA_DEBUG) console.log(`Start mode: ${startMode}`)
+  currentMode = startMode
+  Object.entries(availableModes).map(([name, mode]) => {
+    modes[name] = Object.assign({}, defaultModeObject, mode)
+    Object.assign(actions, wrapModeMessages(modes[name].messages))
+  })
+}
+
+export let removeEventListeners
+export function addEventListeners(clientType) {
   // event listeners must be added, except if the client is a content script on Chrome
   // for which the loader already added event listeners
   if (SAKA_PLATFORM === 'chrome' && clientType === 'content_script') {
-    window.handleDOMEvent = handleDOMEvent;
-    removeEventListeners = window.removePreloadedDOMEventListener;
+    window.handleDOMEvent = handleDOMEvent
+    removeEventListeners = window.removePreloadedDOMEventListener
   } else {
-    addNormalEventListeners();
-    removeEventListeners = removeNormalEventListeners;
+    addNormalEventListeners()
+    removeEventListeners = removeNormalEventListeners
   }
 }
 
-function addNormalEventListeners () {
+function addNormalEventListeners() {
   Object.keys(interceptedEventTypes).forEach((eventType, i) => {
-    window.addEventListener(eventType, handleDOMEvent, true);
-  });
-  if (SAKA_DEBUG) console.log('Normal Event Listeners Added');
+    window.addEventListener(eventType, handleDOMEvent, true)
+  })
+  if (SAKA_DEBUG) console.log('Normal Event Listeners Added')
 }
 
-function removeNormalEventListeners () {
-  Object.keys(interceptedEventTypes).forEach((eventType) => {
-    window.removeEventListener(eventType, handleDOMEvent, true);
-  });
-  if (SAKA_DEBUG) console.log('Normal Event Listeners Removed');
+function removeNormalEventListeners() {
+  Object.keys(interceptedEventTypes).forEach(eventType => {
+    window.removeEventListener(eventType, handleDOMEvent, true)
+  })
+  if (SAKA_DEBUG) console.log('Normal Event Listeners Removed')
 }
 
 /** Handles when messages containing updated options are received */
-export function clientOptions (options) {
+export function clientOptions(options) {
   if (options === undefined) {
     if (SAKA_DEBUG) {
-      console.error('Received undefined client options');
+      console.error('Received undefined client options')
     }
-    return;
+    return
   }
   if (typeof options === 'string') {
-    console.error('Failed to configure client options: ', options);
-    return;
+    console.error('Failed to configure client options: ', options)
+    return
   }
-  enabled = options.enabled;
+  enabled = options.enabled
   Object.entries(modes).forEach(([name, mode]) => {
-    mode.onOptionsChange(options);
-  });
-  middlewareOnOptionsChange(options);
+    mode.onOptionsChange(options)
+  })
+  middlewareOnOptionsChange(options)
   changeMode({
     mode: options.enabled ? 'Reset' : 'Disabled',
     type: 'clientOptions',
     options
-  });
+  })
 }
 
 /**
@@ -98,20 +98,16 @@ export function clientOptions (options) {
  * @param {string} name
  * @returns {string}
  */
-function modeNameTransform (name) {
+function modeNameTransform(name) {
   switch (name) {
     case 'Same':
-      return currentMode;
+      return currentMode
     case 'Reset':
-      return isTextEditable(deepActiveElement())
-        ? 'Text'
-        : 'Command';
+      return isTextEditable(deepActiveElement()) ? 'Text' : 'Command'
     case 'TryText':
-      return isTextEditable(deepActiveElement())
-        ? 'Text'
-        : currentMode;
+      return isTextEditable(deepActiveElement()) ? 'Text' : currentMode
     default:
-      return name;
+      return name
   }
 }
 
@@ -121,24 +117,36 @@ function modeNameTransform (name) {
  * then calls the new active modes's onEnter() function.
  * @param {string} nextMode
  */
-function setMode (nextMode, event) {
-  nextMode = modeNameTransform(nextMode);
+function setMode(nextMode, event) {
+  nextMode = modeNameTransform(nextMode)
   if (SAKA_DEBUG && !nextMode) {
-    throw Error(`Mode ${currentMode} is missing a handler for ${event.type} events`);
+    throw Error(
+      `Mode ${currentMode} is missing a handler for ${event.type} events`
+    )
   }
   if (SAKA_DEBUG && !modes[nextMode]) {
-    throw Error(`Event ${event.type} in mode ${currentMode} results in invalid next mode ${nextMode}`);
+    throw Error(
+      `Event ${event.type} in mode ${currentMode} results in invalid next mode ${nextMode}`
+    )
   }
   if (nextMode !== currentMode) {
     if (SAKA_DEBUG) {
-      const middlewareString = event.middleware ? ` :: via ${event.middleware} middleware` : '';
-      console.log(`%c${event.type}: %c${currentMode} -> %c${nextMode}%c${middlewareString}`,
-        'color: #2196F3;', 'color: grey;', 'color: #4CAF50;', 'color: #FF4500;', event);
+      const middlewareString = event.middleware
+        ? ` :: via ${event.middleware} middleware`
+        : ''
+      console.log(
+        `%c${event.type}: %c${currentMode} -> %c${nextMode}%c${middlewareString}`,
+        'color: #2196F3;',
+        'color: grey;',
+        'color: #4CAF50;',
+        'color: #FF4500;',
+        event
+      )
     }
-    modes[currentMode].onExit(event);
-    modes[nextMode].onEnter(event);
+    modes[currentMode].onExit(event)
+    modes[nextMode].onEnter(event)
   }
-  currentMode = nextMode;
+  currentMode = nextMode
 }
 
 /**
@@ -147,30 +155,31 @@ function setMode (nextMode, event) {
  * mode - the name of the new mode
  * why - a string explaining why the mode was changed
 */
-export function changeMode (modeChangeEvent) {
+export function changeMode(modeChangeEvent) {
   if (SAKA_DEBUG) {
     if (!modeChangeEvent.mode) {
-      throw Error('Called changeMode but failed to provide a new mode');
+      throw Error('Called changeMode but failed to provide a new mode')
     }
     if (!modeChangeEvent.type) {
-      throw Error('Called changeMode but failed to provide a type');
+      throw Error('Called changeMode but failed to provide a type')
     }
   }
   if (enabled) {
-    setMode(modeChangeEvent.mode, modeChangeEvent);
+    setMode(modeChangeEvent.mode, modeChangeEvent)
   }
 }
 
 /**
  * @param {Event} event
  */
-function handleDOMEvent (event) {
+function handleDOMEvent(event) {
   if (enabled && (event.isTrusted || !interceptedEventTypes[event.type])) {
-    const nextMode = passDOMEventToMiddleware(event) ||
-      (modes[currentMode][normalizeEventType(event.type)](event));
-    setMode(nextMode, event);
+    const nextMode =
+      passDOMEventToMiddleware(event) ||
+      modes[currentMode][normalizeEventType(event.type)](event)
+    setMode(nextMode, event)
   }
-};
+}
 
 /**
  * In Mosi, actions are message endpoints that return a single value
@@ -179,22 +188,22 @@ function handleDOMEvent (event) {
  * an object of the form { nextMode: string, value: any }
  * @param {*} modeMessages 
  */
-function wrapModeMessages (modeMessages) {
-  const wrappedMessages = {};
+function wrapModeMessages(modeMessages) {
+  const wrappedMessages = {}
   Object.entries(modeMessages).forEach(([name, message]) => {
-    wrappedMessages[name] = wrapMessage(name, message);
-  });
-  return wrappedMessages;
+    wrappedMessages[name] = wrapMessage(name, message)
+  })
+  return wrappedMessages
 }
 
-function wrapMessage (name, message) {
-  return async function (arg, src) {
+function wrapMessage(name, message) {
+  return async function(arg, src) {
     if (enabled) {
-      const result = await message(arg, src);
+      const result = await message(arg, src)
       if (result && result.nextMode) {
-        setMode(result.nextMode, { type: `message: ${name}` });
+        setMode(result.nextMode, { type: `message: ${name}` })
       }
-      return result && result.value;
+      return result && result.value
     }
-  };
+  }
 }

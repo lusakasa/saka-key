@@ -1,10 +1,16 @@
-import { init, msg } from 'mosi/client';
-import { initModes, addEventListeners, removeEventListeners, changeMode, clientOptions } from './modes';
-import Disabled from 'modes/disabled/client';
-import Command from 'modes/command/client';
-import Pass from 'modes/pass/client';
-import Text from 'modes/text/client';
-import Hints from 'modes/hints/client';
+import { init, msg } from 'mosi/client'
+import {
+  initModes,
+  addEventListeners,
+  removeEventListeners,
+  changeMode,
+  clientOptions
+} from './modes'
+import Disabled from 'modes/disabled/client'
+import Command from 'modes/command/client'
+import Pass from 'modes/pass/client'
+import Text from 'modes/text/client'
+import Hints from 'modes/hints/client'
 
 /**
  * Initializes a Saka key client, making keyboard shortcuts available.
@@ -14,18 +20,18 @@ import Hints from 'modes/hints/client';
  * * 'options' - for options
  * @param {string} type - the type of client
  */
-export function initialize (type, otherActions = {}) {
+export function initialize(type, otherActions = {}) {
   if (SAKA_DEBUG) {
-    console.log(`${type} client loaded for version ${SAKA_VERSION}`);
+    console.log(`${type} client loaded for version ${SAKA_VERSION}`)
   }
 
   const actions = {
     ...otherActions,
     changeMode,
     clientOptions
-  };
+  }
 
-  addEventListeners(type);
+  addEventListeners(type)
 
   // Initialize the messaging system
   init({
@@ -33,15 +39,19 @@ export function initialize (type, otherActions = {}) {
     subscriptions: ['client', type],
     actions,
     onClientDisconnect: removeEventListeners
-  });
+  })
 
-  msg(1, 'clientOptions');
+  msg(1, 'clientOptions')
 
-  initModes('Disabled', {
-    Disabled,
-    Command,
-    Pass,
-    Text,
-    Hints
-  }, actions);
+  initModes(
+    'Disabled',
+    {
+      Disabled,
+      Command,
+      Pass,
+      Text,
+      Hints
+    },
+    actions
+  )
 }

@@ -1,8 +1,8 @@
-import 'lib/browser_polyfill';
-import { render, h } from 'preact';
-import { initialize } from 'client';
-import Main from './Main';
+import 'lib/browser_polyfill'
+import { render, h } from 'preact'
+import { initialize } from 'client'
+import Main from './Main'
 
-initialize('page');
+initialize('page')
 
-render(<Main />, document.body);
+render(<Main />, document.body)

@@ -1,20 +1,21 @@
-import { Component, h } from 'preact';
-import { connect } from 'preact-redux';
-import { friendlyKeyboardEventString } from 'lib/keys';
+import { Component, h } from 'preact'
+import { connect } from 'preact-redux'
+import { friendlyKeyboardEventString } from 'lib/keys'
 
 class KeyBindingItem extends Component {
-  render ({ binding }) {
+  render({ binding }) {
     return (
       <span>
-        { binding.map((key) =>
+        {binding.map(key => (
           <span className={'key-text mdc-typography--body1'}>
             {friendlyKeyboardEventString(key)}
-          </span>) }
+          </span>
+        ))}
       </span>
-    );
+    )
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = state => ({})
 
-export default connect(mapStateToProps)(KeyBindingItem);
+export default connect(mapStateToProps)(KeyBindingItem)
