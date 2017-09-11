@@ -6,7 +6,7 @@ This file contains functions used to interact with persistent storage (and save 
 
 The following is an example of how configuration and options are persisted to local storage.
 
-```json
+```javascript
 {
   // available categories
   "categories": ["General", "Keybindings", "Hints"],
