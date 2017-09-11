@@ -29,7 +29,7 @@ export default (options, config) => {
   return { backgroundOptions, clientOptions, errors }
 }
 
-function keybindingsPerMode(options, config) {
+function keybindingsPerMode (options, config) {
   const keybindings = {}
   config.forEach(item => {
     if (item.type === 'keybinding') {

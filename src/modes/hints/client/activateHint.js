@@ -2,13 +2,13 @@ import { mouseEvent } from 'lib/dom'
 import { isMac } from 'lib/keys'
 import { msg } from 'mosi/client'
 
-function backgroundOpenLink(hintType, hint) {
+function backgroundOpenLink (hintType, hint) {
   if (hint.element.href) {
     msg(1, hintType, hint.element.href)
   }
 }
 
-export function activateHint(hint, hintType) {
+export function activateHint (hint, hintType) {
   const click = modifiers => mouseEvent(hint.element, 'click', modifiers)
   switch (hintType) {
     case 'backgroundTab':

@@ -14,7 +14,7 @@ let _ignoreModifierKeys = false
  * @param {boolean} physicalKeys_
  * @param {boolean} ignoreModifierKeys_
  */
-export function setKeyboardSettings(physicalKeys, ignoreModifierKeys) {
+export function setKeyboardSettings (physicalKeys, ignoreModifierKeys) {
   _physicalKeys = physicalKeys
   _ignoreModifierKeys = ignoreModifierKeys
 }
@@ -24,7 +24,7 @@ export function setKeyboardSettings(physicalKeys, ignoreModifierKeys) {
  * @param {KeyboardEvent} event
  * @returns {boolean}
  */
-export function isModifierKey(event) {
+export function isModifierKey (event) {
   switch (event.key) {
     case 'Shift':
     case 'Control':
@@ -41,7 +41,7 @@ export function isModifierKey(event) {
  * @param {KeyboardEvent} event
  * @returns {string}
  */
-function modifierString(event) {
+function modifierString (event) {
   const { shiftKey: s, ctrlKey: c, altKey: a, metaKey: m } = event
   return `${s ? 's' : ''}${c ? 'c' : ''}${a ? 'a' : ''}${m ? 'm' : ''}`
 }
@@ -53,7 +53,7 @@ function modifierString(event) {
  * @param {boolean} ignoreModifierKeys
  * @returns {string}
  */
-export function keyboardEventString(
+export function keyboardEventString (
   event,
   physicalKeys = _physicalKeys,
   ignoreModifierKeys = _ignoreModifierKeys
@@ -69,7 +69,7 @@ export function keyboardEventString(
  * @param {KeyboardEvent} event
  * @returns {string}
  */
-function friendlyModifierString(event) {
+function friendlyModifierString (event) {
   const { shiftKey: s, ctrlKey: c, altKey: a, metaKey: m } = event
   return `${s ? 'shift-' : ''}${c ? 'ctrl-' : ''}${a ? 'alt-' : ''}${m
     ? 'meta-'
@@ -80,7 +80,7 @@ function friendlyModifierString(event) {
  * @param {KeyboardEvent} event
  * @returns {string}
  */
-function friendlyShiftlessModifierString(event) {
+function friendlyShiftlessModifierString (event) {
   const { ctrlKey: c, altKey: a, metaKey: m } = event
   return `${c ? 'ctrl-' : ''}${a ? 'alt-' : ''}${m ? 'meta-' : ''}`
 }
@@ -91,15 +91,15 @@ function friendlyShiftlessModifierString(event) {
  * @param {boolean} ignoreModifierKeys
  * @returns {string}
  */
-export function friendlyKeyboardEventString(
+export function friendlyKeyboardEventString (
   event,
   physicalKeys = _physicalKeys,
   ignoreModifierKeys = _ignoreModifierKeys
 ) {
   return physicalKeys
     ? `${friendlyModifierString(event)}${friendlyCodeStrings[event.code]
-        ? friendlyCodeStrings[event.code].value
-        : event.code}`
+      ? friendlyCodeStrings[event.code].value
+      : event.code}`
     : ignoreModifierKeys
       ? `${event.key}`
       : `${friendlyShiftlessModifierString(event)}${event.key}`
@@ -110,7 +110,7 @@ export function friendlyKeyboardEventString(
  * @param {KeyboardEvent} event
  * @returns {boolean}
  */
-export function validKeyboardEvent(event) {
+export function validKeyboardEvent (event) {
   return (
     event &&
     event.key &&

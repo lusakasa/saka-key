@@ -3,7 +3,7 @@ import { connect } from 'preact-redux'
 import KeyBindingItem from './KeyBindingItem'
 
 class KeyBindingsMenu extends Component {
-  render({ command, bindings }) {
+  render ({ command, bindings }) {
     return (
       <span>
         {bindings.map((binding, i) => (

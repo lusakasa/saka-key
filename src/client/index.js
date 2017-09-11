@@ -20,7 +20,7 @@ import Hints from 'modes/hints/client'
  * * 'options' - for options
  * @param {string} type - the type of client
  */
-export function initialize(type, otherActions = {}) {
+export function initialize (type, otherActions = {}) {
   if (SAKA_DEBUG) {
     console.log(`${type} client loaded for version ${SAKA_VERSION}`)
   }

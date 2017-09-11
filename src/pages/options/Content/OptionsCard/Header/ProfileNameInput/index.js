@@ -9,13 +9,13 @@ const Input = ({
   setIsEditingName
 }) => (
   <div
-    className="mdc-textfield"
-    style="margin-bottom: 0px"
-    data-demo-no-auto-js=""
+    className='mdc-textfield'
+    style='margin-bottom: 0px'
+    data-demo-no-auto-js=''
   >
     <input
       ref={el => setTimeout(() => el && el.select(), 100)}
-      className="mdc-textfield__input mode-card-select"
+      className='mdc-textfield__input mode-card-select'
       value={activeProfile}
       onKeyDown={e => {
         if (e.key === 'Escape') {

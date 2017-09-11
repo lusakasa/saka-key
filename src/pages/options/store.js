@@ -9,7 +9,7 @@ import { initialize } from './actions'
 import { storageGet, storageSet } from 'storage/storage'
 import { getAttributes } from 'lib/util.js'
 
-async function initializeOptionsPage() {
+async function initializeOptionsPage () {
   const state = await storageGet(null)
   const optionsPageEntries = getAttributes(state, [
     'categories',

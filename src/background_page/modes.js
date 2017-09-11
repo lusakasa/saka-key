@@ -13,7 +13,7 @@ const defaultModeObject = {
   messages: {}
 }
 
-export function initModes(availableModes, actions) {
+export function initModes (availableModes, actions) {
   modes = availableModes
   Object.entries(availableModes).map(([name, mode]) => {
     modes[name] = Object.assign({}, defaultModeObject, mode)
@@ -21,7 +21,7 @@ export function initModes(availableModes, actions) {
   })
 }
 
-export async function loadClient(_, src) {
+export async function loadClient (_, src) {
   const { sender: { frameId, tab: { index: tabIndex, id: tabId } } } = meta(src)
   // tabIndex === -1 indicates the tab is preloaded but not a full tab
   // attempting to execute into it is an error
@@ -46,7 +46,7 @@ export async function loadClient(_, src) {
 }
 
 /** Reloads all Saka Clients, called on extension updates */
-export async function reloadAllClients() {
+export async function reloadAllClients () {
   const tabs = await browser.tabs.query({})
   for (const tab of tabs) {
     try {
@@ -84,11 +84,11 @@ if (SAKA_PLATFORM === 'chrome') {
 
 let cachedClientOptions
 
-export function clientOptions(arg, src) {
+export function clientOptions (arg, src) {
   msg(src, 'clientOptions', cachedClientOptions)
 }
 
-async function onOptionsChange() {
+async function onOptionsChange () {
   if ((await storageGet('ready')).ready) {
     const { backgroundOptions, clientOptions } = transformOptions(
       await getAllActiveProfileOptions(),
@@ -112,12 +112,12 @@ chrome.storage.onChanged.addListener(onOptionsChange)
  * A setup action that should always run whenever the background page starts
  * should NOT be placed in the startup listener.
  */
-export async function setup() {
+export async function setup () {
   await initInstallListeners()
   await onOptionsChange()
 }
 
-function initInstallListeners() {
+function initInstallListeners () {
   chrome.runtime.onInstalled.addListener(
     async ({ reason, previousVersion }) => {
       if (SAKA_DEBUG) console.log('install event: ' + reason)

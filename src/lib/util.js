@@ -1,9 +1,9 @@
 /** Returns the _positive_ modulus */
-export function posMod(n, m) {
+export function posMod (n, m) {
   return (n % m + m) % m
 }
 
-export function getAttributes(object, keys) {
+export function getAttributes (object, keys) {
   const output = {}
   keys.forEach(key => {
     if (object.hasOwnProperty(key)) {
@@ -15,7 +15,7 @@ export function getAttributes(object, keys) {
   return output
 }
 
-export function objectMap(object, map) {
+export function objectMap (object, map) {
   const out = {}
   Object.entries(object).forEach(([attribute, value]) => {
     out[attribute] = map(value)

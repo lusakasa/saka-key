@@ -8,7 +8,7 @@ import './style.css'
 
 export default () => (
   <Provider store={store}>
-    <StandardLayout view="Options">
+    <StandardLayout view='Options'>
       <Drawer />
       <Content />
     </StandardLayout>

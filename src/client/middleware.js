@@ -39,11 +39,11 @@ const middleware = {
   // to a specific mode, whereas DOM events can be handled by any mode
 }
 
-export function middlewareOnOptionsChange(options) {
+export function middlewareOnOptionsChange (options) {
   middleware.onOptionsChange(options)
 }
 
-export function passDOMEventToMiddleware(event) {
+export function passDOMEventToMiddleware (event) {
   const nextMode = middleware.events[normalizeEventType(event.type)](event)
   if (SAKA_DEBUG && nextMode) {
     event.middleware = 'generic'

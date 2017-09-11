@@ -49,15 +49,15 @@ export default {
     ...(SAKA_PLATFORM === 'chrome'
       ? {}
       : {
-          openLinkInBackgroundTab: url => {
-            browser.tabs.create({ url, active: false })
-          },
-          openLinkInForegroundTab: url => {
-            browser.tabs.create({ url, active: true })
-          },
-          openLinkInNewWindow: url => {
-            browser.windows.create({ url })
-          }
-        })
+        openLinkInBackgroundTab: url => {
+          browser.tabs.create({ url, active: false })
+        },
+        openLinkInForegroundTab: url => {
+          browser.tabs.create({ url, active: true })
+        },
+        openLinkInNewWindow: url => {
+          browser.windows.create({ url })
+        }
+      })
   }
 }

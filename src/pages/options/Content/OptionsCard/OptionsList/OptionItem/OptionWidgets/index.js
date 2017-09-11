@@ -16,7 +16,7 @@ import Info from './Info'
 // * value
 // * onValueChange((newValue) => {})
 
-function optionWidgetByType(type) {
+function optionWidgetByType (type) {
   switch (type) {
     case 'header':
       return Header
@@ -46,7 +46,7 @@ function optionWidgetByType(type) {
 }
 
 export default class OptionWidget extends Component {
-  render(props) {
+  render (props) {
     const Widget = optionWidgetByType(props.type)
     return <Widget {...props} />
   }

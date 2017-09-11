@@ -4,9 +4,9 @@ import OptionsCard from './OptionsCard'
 import './style.css'
 
 class SettingsContent extends Component {
-  render({ categories }) {
+  render ({ categories }) {
     return (
-      <main className="settings-content">
+      <main className='settings-content'>
         {categories.map(category => <OptionsCard category={category} />)}
       </main>
     )

@@ -6,10 +6,10 @@ import transformOptions from 'storage/transform'
 import { setOption, setBuiltInOption } from 'pages/options/actions'
 
 class OptionsList extends Component {
-  render({ visibleOptions, values, errors, setOption, isBuiltInProfile }) {
+  render ({ visibleOptions, values, errors, setOption, isBuiltInProfile }) {
     return (
       <ul
-        className="mdc-list mdc-list--dense"
+        className='mdc-list mdc-list--dense'
         style={{
           backgroundColor:
             Object.keys(errors).length === 0
@@ -42,7 +42,7 @@ class OptionsList extends Component {
   }
 }
 
-export function isConfigItemVisible(key, configList, values) {
+export function isConfigItemVisible (key, configList, values) {
   if (key === undefined) return true
   const option = configList.find(o => o.key === key)
   if (!option.hasOwnProperty('visible')) return true

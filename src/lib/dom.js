@@ -7,7 +7,7 @@
  * @param {HTMLElement} element
  * @returns {boolean}
  */
-export function isTextEditable(element) {
+export function isTextEditable (element) {
   if (element) {
     switch (element.nodeName) {
       case 'INPUT':
@@ -29,7 +29,7 @@ export function isTextEditable(element) {
  * Returns whether the passed HTML input element is editable
  * @param {HTMLInputElement} element
  */
-function isEditableHTMLInput(element) {
+function isEditableHTMLInput (element) {
   if (element.disabled || element.readonly) return false
   switch (element.type) {
     case undefined:
@@ -52,7 +52,7 @@ function isEditableHTMLInput(element) {
  * Click on the input. document.activeElement is different from deepActiveElement()
  * @param {HTMLElement} root
  */
-export function deepActiveElement(root = document) {
+export function deepActiveElement (root = document) {
   const activeElement = root.activeElement
   const activeElementShadowRoot = activeElement && activeElement.shadowRoot
   return activeElementShadowRoot
@@ -67,7 +67,7 @@ export function deepActiveElement(root = document) {
  * @param {'hover' | 'unhover' | 'click'} type
  * @param {{ ctrlKey, shiftKey, altKey, metaKey }} modifierKeys
  */
-export function mouseEvent(element, type, modifierKeys = {}) {
+export function mouseEvent (element, type, modifierKeys = {}) {
   let events
   switch (type) {
     case 'hover':
@@ -106,7 +106,7 @@ export const fullscreenchange =
  * @param {string} event
  * @returns {string}
  */
-export function normalizeEventType(type) {
+export function normalizeEventType (type) {
   switch (type) {
     case fullscreenchange:
       return 'fullscreenchange'
@@ -122,7 +122,7 @@ export function normalizeEventType(type) {
  * penetrating the shadow DOM
  * @param {HTMLElement} root
  */
-export function getAllElementsIncludingShadowDOM(root = document) {
+export function getAllElementsIncludingShadowDOM (root = document) {
   const allElements = root.querySelectorAll('*')
   let shadowDescendents = []
   allElements.forEach(element => {
@@ -140,7 +140,7 @@ export function getAllElementsIncludingShadowDOM(root = document) {
  * Copies the specified text to the clipboard
  * @param {string} text
  */
-export function copy(text) {
+export function copy (text) {
   const textArea = document.createElement('textarea')
   textArea.style = 'position:fixed;right:0'
   textArea.value = text
@@ -156,7 +156,7 @@ export function copy(text) {
  * the "clipboardRead" permission to be declared in manifest.json
  * @returns {string}
  */
-export function paste() {
+export function paste () {
   const textArea = document.createElement('textarea')
   textArea.style = 'position:fixed;right:0'
   document.body.appendChild(textArea)
@@ -168,7 +168,7 @@ export function paste() {
 }
 
 /** Saves the given object to a human-readable JSON file */
-export async function downloadJSON(object, filename) {
+export async function downloadJSON (object, filename) {
   const url = URL.createObjectURL(
     new Blob([JSON.stringify(object, null, 2)], {
       type: 'data:application/json;charset=utf-8'

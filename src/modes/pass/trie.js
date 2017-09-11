@@ -3,15 +3,15 @@ import { keyboardEventString } from 'lib/keys'
 
 const trie = new Trie()
 
-export function initInputTrie(root) {
+export function initInputTrie (root) {
   trie.init(root)
 }
 
-export function resetInputTrie() {
+export function resetInputTrie () {
   trie.reset()
 }
 
-export function advanceInputTrie(event) {
+export function advanceInputTrie (event) {
   const command = trie.advance(keyboardEventString(event))
   switch (command) {
     case Trie.INVALID:

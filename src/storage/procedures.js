@@ -11,7 +11,7 @@ import compareVersions from 'compare-versions'
 
 // TODO: test this code, lots of room for error, should really have unit tests
 
-export async function storageInstallProcedure() {
+export async function storageInstallProcedure () {
   try {
     await storageSet({ ready: false })
     await createCategories()
@@ -30,7 +30,7 @@ export async function storageInstallProcedure() {
   }
 }
 
-export async function storageUpdateProcedure(previousVersion) {
+export async function storageUpdateProcedure (previousVersion) {
   try {
     // order matters: e.g. you must delete the old built-in options using the
     // built-in profiles already in storage, not the built-in profiles in the update
@@ -62,7 +62,7 @@ export async function storageUpdateProcedure(previousVersion) {
 }
 
 // TODO: proper import validation
-export async function storeageImportProcedure() {
+export async function storeageImportProcedure () {
   const input = document.createElement('input')
   input.setAttribute('type', 'file')
   input.setAttribute('accept', '.json')
@@ -89,7 +89,7 @@ export async function storeageImportProcedure() {
   input.click()
 }
 
-export async function storageExportProcedure() {
+export async function storageExportProcedure () {
   const { customProfiles, activeProfiles, options } = await storageGet([
     'customProfiles',
     'activeProfiles',
@@ -105,17 +105,17 @@ export async function storageExportProcedure() {
   await downloadJSON({ activeProfiles, profiles }, 'saka_key_config.json')
 }
 
-export async function storageResetProcedure() {
+export async function storageResetProcedure () {
   await storageClear()
   await storageInstallProcedure()
   msg('options_page', 'RERENDER')
 }
 
-async function createCategories() {
+async function createCategories () {
   await storageSet({ categories: installCategories })
 }
 
-async function createConfig() {
+async function createConfig () {
   const { categories } = await storageGet('categories')
   const config = {}
   for (const category of categories) {
@@ -127,7 +127,7 @@ async function createConfig() {
 }
 
 // TODO: define a per-type validation function
-async function validateConfig() {
+async function validateConfig () {
   const { config } = await storageGet('config')
   const allKeys = {}
   for (const [category, _config] of Object.entries(config)) {
@@ -157,7 +157,7 @@ async function validateConfig() {
   }
 }
 
-async function createBuiltInProfiles() {
+async function createBuiltInProfiles () {
   const { categories } = await storageGet('categories')
   const builtInProfiles = {}
   for (const category of categories) {
@@ -168,7 +168,7 @@ async function createBuiltInProfiles() {
   await storageSet({ builtInProfiles })
 }
 
-async function createCustomProfiles() {
+async function createCustomProfiles () {
   const { categories } = await storageGet('categories')
   const customProfiles = {}
   for (const category of categories) {
@@ -177,7 +177,7 @@ async function createCustomProfiles() {
   await storageSet({ customProfiles })
 }
 
-async function createActiveProfiles() {
+async function createActiveProfiles () {
   const { categories } = await storageGet('categories')
   const activeProfiles = {}
   for (const category of categories) {
@@ -190,7 +190,7 @@ async function createActiveProfiles() {
  * If options don't exist, creates them using the built-in profiles.
  * If options exist, adds built-in profile options.
  */
-async function createBuiltInOptions() {
+async function createBuiltInOptions () {
   const { options = {} } = await storageGet('options')
   const { categories } = await storageGet('categories')
   for (const category of categories) {
@@ -203,7 +203,7 @@ async function createBuiltInOptions() {
   await storageSet({ options })
 }
 
-async function deleteBuiltInOptions() {
+async function deleteBuiltInOptions () {
   const { categories, options, builtInProfiles } = await storageGet([
     'categories',
     'options',
@@ -217,11 +217,11 @@ async function deleteBuiltInOptions() {
   await storageSet({ options })
 }
 
-async function deleteBuiltInProfiles() {
+async function deleteBuiltInProfiles () {
   await storageRemove('builtInProfiles')
 }
 
-async function deleteConfig() {
+async function deleteConfig () {
   await storageRemove('config')
 }
 
@@ -230,7 +230,7 @@ async function deleteConfig() {
  * a custom profile already installed. Renames the custom profile, active profile, and action
  * if a conflic is detected.
  */
-async function renameCustomProfilesAndOptions() {
+async function renameCustomProfilesAndOptions () {
   const {
     categories,
     customProfiles,
@@ -267,13 +267,13 @@ async function renameCustomProfilesAndOptions() {
   await storageSet({ customProfiles, activeProfiles, options })
 }
 
-async function deleteCategories() {
+async function deleteCategories () {
   await storageRemove('categories')
 }
 /**
  * Accounts for the case where the active profile has been deleted
  */
-async function correctActiveProfiles() {
+async function correctActiveProfiles () {
   const {
     categories,
     activeProfiles,
@@ -294,7 +294,7 @@ async function correctActiveProfiles() {
   await storageSet({ activeProfiles })
 }
 
-async function correctCustomOptions() {
+async function correctCustomOptions () {
   const { config, options, categories, customProfiles } = await storageGet([
     'config',
     'options',
@@ -310,7 +310,7 @@ async function correctCustomOptions() {
   await storageSet({ options })
 }
 
-function correctedOptions(options, config) {
+function correctedOptions (options, config) {
   const newOptions = {}
   for (const item of config) {
     newOptions[item.key] = correctValue(options[item.key], item)
@@ -322,7 +322,7 @@ function correctedOptions(options, config) {
  * If the value conforms to the constraints defined in the config file,
  * returns the value unchanged. Otherwise returns the default value for the option.
  */
-function correctValue(value, configItem) {
+function correctValue (value, configItem) {
   // TODO
   return value === undefined ? configItem.default : value
 }

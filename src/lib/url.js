@@ -2,7 +2,7 @@
  * Returns true only if str is a valid url
  * @param {string} str
  */
-export function isURL(str) {
+export function isURL (str) {
   try {
     new URL(str)
   } catch (e) {
@@ -11,26 +11,26 @@ export function isURL(str) {
   return true
 }
 
-export function stripProtocol(url) {
+export function stripProtocol (url) {
   return url.replace(/(^\w+:|^)\/\//, '')
 }
 
-export function stripWWW(url) {
+export function stripWWW (url) {
   return url.replace(/^www\./, '')
 }
 
-export function startsWithProtocol(str) {
+export function startsWithProtocol (str) {
   return str.match(/(^\w+:|^)\/\//) !== null
 }
 
-export function startsWithWWW(str) {
+export function startsWithWWW (str) {
   return str.match(/^www\./, '') !== null
 }
 
 /**
  * Based on https://github.com/1995eaton/chromium-vim/blob/aec10cf47943b4674a5bc92c46d3c3c138d3cba3/content_scripts/utils.js#L51
  */
-export function searchURL(
+export function searchURL (
   query,
   queryURLTemplate = 'https://www.google.com/search?q='
 ) {
@@ -42,15 +42,15 @@ export function searchURL(
 /**
  * Based on https://github.com/1995eaton/chromium-vim/blob/aec10cf47943b4674a5bc92c46d3c3c138d3cba3/content_scripts/utils.js#L45
  */
-export function searchEngineQueryURL(query, queryURLTemplate) {
+export function searchEngineQueryURL (query, queryURLTemplate) {
   const encodedSearchQuery = encodeURIComponent(query)
   const i = queryURLTemplate.lastIndexOf('%s')
   return i < 0
     ? `${queryURLTemplate}${encodedSearchQuery}`
     : `${queryURLTemplate.slice(
-        0,
-        i
-      )}${encodedSearchQuery}${queryURLTemplate.slice(i + 2)}`
+      0,
+      i
+    )}${encodedSearchQuery}${queryURLTemplate.slice(i + 2)}`
 }
 
 /**
@@ -58,7 +58,7 @@ export function searchEngineQueryURL(query, queryURLTemplate) {
  * or probably corresponds to a valid URL (e.g. google.com)
  * Based on https://github.com/1995eaton/chromium-vim/blob/aec10cf47943b4674a5bc92c46d3c3c138d3cba3/content_scripts/utils.js#L59
  */
-export function isLikeURL(url) {
+export function isLikeURL (url) {
   url = url.trim()
   if (url.indexOf(' ') !== -1) {
     return false
@@ -904,7 +904,7 @@ const knownTLDs = [
   'zw'
 ]
 /** Returns whether the provided text is a known TLD (top-level domain) */
-export function isTLD(text) {
+export function isTLD (text) {
   return knownTLDs.indexOf(text) !== -1
 }
 
@@ -917,6 +917,6 @@ const knownProtocols = [
   'chrome-extension:'
 ]
 /** Returns whether the provided text is a known protocol */
-export function isProtocol(text) {
+export function isProtocol (text) {
   return knownProtocols.indexOf(text) !== -1
 }

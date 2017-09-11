@@ -1,8 +1,8 @@
-export function toggleHelpMenu() {
+export function toggleHelpMenu () {
   // TODO
 }
 
-export function toggleSaka() {
+export function toggleSaka () {
   try {
     browser.runtime.sendMessage(
       'nbdfpcokndmapcollfpjdpjlabnibjdi',
@@ -14,7 +14,7 @@ export function toggleSaka() {
     )
   }
 }
-export function passOneKey(event) {
+export function passOneKey (event) {
   // preventDefault() to suppress keypress event
   // no way to suppress keyup event, so Pass mode must ignore
   // first keyup event
@@ -23,7 +23,7 @@ export function passOneKey(event) {
   return 'Pass'
 }
 
-export function passAllKeys(event) {
+export function passAllKeys (event) {
   event.preventDefault()
   event.passKeyType = 'all'
   return 'Pass'

@@ -6,7 +6,7 @@ let timers = []
  * Repeatedly issues hover events to video elements so that their controls
  * stay shown
  */
-export function showVideoControls() {
+export function showVideoControls () {
   document.querySelectorAll('video').forEach(video => {
     // TODO: come up with a fix for youtube and netflix so that controlss
     // consistently appear when link hints are rendered, esp. in fullscreen
@@ -25,7 +25,7 @@ export function showVideoControls() {
 /**
  * Cleans up hover event dispatchers from showVideoControls()
  */
-export function hideVideoControls() {
+export function hideVideoControls () {
   timers.forEach(timer => clearInterval(timer))
   timers = []
   document.querySelectorAll('video').forEach(video => {

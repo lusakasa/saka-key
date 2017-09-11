@@ -15,11 +15,11 @@
 // interference from old event listeners.
 import interceptedEventTypes from 'client/interceptedEventTypes'
 
-function _handleDOMEvent(event) {
+function _handleDOMEvent (event) {
   window.handleDOMEvent(event)
 }
 
-export function addPreloadedEventListeners() {
+export function addPreloadedEventListeners () {
   window.handleDOMEvent = () => {}
   Object.keys(interceptedEventTypes).forEach((eventType, i) => {
     window.addEventListener(eventType, _handleDOMEvent, true)

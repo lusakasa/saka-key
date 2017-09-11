@@ -10,18 +10,18 @@ import '../style.css'
 // when @material/toolbar package updates
 
 export default class HelpMenu extends Component {
-  render() {
+  render () {
     return (
       <div className={'help-menu'}>
-        <header class="mdc-toolbar mdc-toolbar--fixed">
-          <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <img src="logo.png" class="saka-logo">
+        <header class='mdc-toolbar mdc-toolbar--fixed'>
+          <section class='mdc-toolbar__section mdc-toolbar__section--align-start'>
+            <img src='logo.png' class='saka-logo'>
               Saka Key
             </img>
-            <span class="mdc-toolbar__title">Saka Key</span>
+            <span class='mdc-toolbar__title'>Saka Key</span>
           </section>
         </header>
-        <main className="mdc-toolbar-fixed-adjust">
+        <main className='mdc-toolbar-fixed-adjust'>
           <CommandMenu />
         </main>
       </div>

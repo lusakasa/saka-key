@@ -12,7 +12,7 @@ let useTargetSize
 let horizontalPlacement
 let verticalPlacement
 
-export function setHintRenderSettings({
+export function setHintRenderSettings ({
   hintFontSize,
   hintUseTargetSize,
   hintCSS,
@@ -44,7 +44,7 @@ export function setHintRenderSettings({
 }
 
 class HintRenderer extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       hints: [],
@@ -52,7 +52,7 @@ class HintRenderer extends Component {
       inputKeys: []
     }
   }
-  componentDidMount() {
+  componentDidMount () {
     showHints = (hints, hintStrings) => {
       const labeledHints = hints.map((hint, i) =>
         Object.assign(hint, { hintString: hintStrings[i] })
@@ -90,7 +90,7 @@ class HintRenderer extends Component {
       })
     }
   }
-  render() {
+  render () {
     return (
       <div style={{ position: 'absolute', left: '0', top: '0' }}>
         {this.state.filteredHints.map(hint => (
@@ -108,7 +108,7 @@ class HintRenderer extends Component {
   }
 }
 
-function generateFontSize(computedStyle) {
+function generateFontSize (computedStyle) {
   const computedFontSize = parseFloat(computedStyle.fontSize)
   return useTargetSize && computedFontSize > 5 ? computedFontSize : fontSize
 }
@@ -122,7 +122,7 @@ const Hint = ({
   seen
 }) => (
   <div
-    className="saka-hint-body"
+    className='saka-hint-body'
     style={{
       left: `${horizontalPlacement === 'left'
         ? window.scrollX + rect.left

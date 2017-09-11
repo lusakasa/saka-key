@@ -3,7 +3,7 @@ import { connect } from 'preact-redux'
 import { friendlyKeyboardEventString } from 'lib/keys'
 
 class KeyBindingItem extends Component {
-  render({ binding }) {
+  render ({ binding }) {
     return (
       <span>
         {binding.map(key => (

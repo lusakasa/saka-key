@@ -13,7 +13,7 @@ export const categories = Object.keys(transforms)
  * @param {{ [key: string]: any }} allOptions
  * @returns {{ backgroundOptions: { [key: string]: any }, clientOptions: { [key: string]: any }, errors: { [key: string]: any } }}
  */
-export default function transformOptions(allOptions, config) {
+export default function transformOptions (allOptions, config) {
   let allBackgroundOptions = {}
   let allClientOptions = {}
   let allErrors = {}

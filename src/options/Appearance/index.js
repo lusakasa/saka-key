@@ -23,7 +23,7 @@ export default (options, config) => {
 /**
  * Given input settings parameters, generates the CSS used to style link hints
  */
-function generateHintCSS({
+function generateHintCSS ({
   hintOpacity,
   hintFontFamily,
   hintFontWeight,

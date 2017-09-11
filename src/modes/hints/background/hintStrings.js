@@ -1,4 +1,4 @@
-export function generateHintStrings(characters, count) {
+export function generateHintStrings (characters, count) {
   const hints = ['']
   let offset = 0
   while (hints.length - offset < count || hints.length === 1) {

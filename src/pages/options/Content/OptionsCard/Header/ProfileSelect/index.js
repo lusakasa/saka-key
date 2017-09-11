@@ -4,7 +4,7 @@ import { setActiveProfile } from 'pages/options/actions'
 
 const Select = ({ profiles, activeProfile, setActiveProfile }) => (
   <select
-    className="mdc-select mode-card-select"
+    className='mdc-select mode-card-select'
     value={activeProfile}
     onChange={e => setActiveProfile(e.target.value)}
   >

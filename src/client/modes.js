@@ -27,7 +27,7 @@ const defaultModeObject = {
 }
 
 /** Initializes the Modes state machine */
-export function initModes(startMode, availableModes, actions) {
+export function initModes (startMode, availableModes, actions) {
   if (SAKA_DEBUG) console.log(`Start mode: ${startMode}`)
   currentMode = startMode
   Object.entries(availableModes).map(([name, mode]) => {
@@ -37,7 +37,7 @@ export function initModes(startMode, availableModes, actions) {
 }
 
 export let removeEventListeners
-export function addEventListeners(clientType) {
+export function addEventListeners (clientType) {
   // event listeners must be added, except if the client is a content script on Chrome
   // for which the loader already added event listeners
   if (SAKA_PLATFORM === 'chrome' && clientType === 'content_script') {
@@ -49,14 +49,14 @@ export function addEventListeners(clientType) {
   }
 }
 
-function addNormalEventListeners() {
+function addNormalEventListeners () {
   Object.keys(interceptedEventTypes).forEach((eventType, i) => {
     window.addEventListener(eventType, handleDOMEvent, true)
   })
   if (SAKA_DEBUG) console.log('Normal Event Listeners Added')
 }
 
-function removeNormalEventListeners() {
+function removeNormalEventListeners () {
   Object.keys(interceptedEventTypes).forEach(eventType => {
     window.removeEventListener(eventType, handleDOMEvent, true)
   })
@@ -64,7 +64,7 @@ function removeNormalEventListeners() {
 }
 
 /** Handles when messages containing updated options are received */
-export function clientOptions(options) {
+export function clientOptions (options) {
   if (options === undefined) {
     if (SAKA_DEBUG) {
       console.error('Received undefined client options')
@@ -98,7 +98,7 @@ export function clientOptions(options) {
  * @param {string} name
  * @returns {string}
  */
-function modeNameTransform(name) {
+function modeNameTransform (name) {
   switch (name) {
     case 'Same':
       return currentMode
@@ -117,7 +117,7 @@ function modeNameTransform(name) {
  * then calls the new active modes's onEnter() function.
  * @param {string} nextMode
  */
-function setMode(nextMode, event) {
+function setMode (nextMode, event) {
   nextMode = modeNameTransform(nextMode)
   if (SAKA_DEBUG && !nextMode) {
     throw Error(
@@ -155,7 +155,7 @@ function setMode(nextMode, event) {
  * mode - the name of the new mode
  * why - a string explaining why the mode was changed
 */
-export function changeMode(modeChangeEvent) {
+export function changeMode (modeChangeEvent) {
   if (SAKA_DEBUG) {
     if (!modeChangeEvent.mode) {
       throw Error('Called changeMode but failed to provide a new mode')
@@ -172,7 +172,7 @@ export function changeMode(modeChangeEvent) {
 /**
  * @param {Event} event
  */
-function handleDOMEvent(event) {
+function handleDOMEvent (event) {
   if (enabled && (event.isTrusted || !interceptedEventTypes[event.type])) {
     const nextMode =
       passDOMEventToMiddleware(event) ||
@@ -188,7 +188,7 @@ function handleDOMEvent(event) {
  * an object of the form { nextMode: string, value: any }
  * @param {*} modeMessages 
  */
-function wrapModeMessages(modeMessages) {
+function wrapModeMessages (modeMessages) {
   const wrappedMessages = {}
   Object.entries(modeMessages).forEach(([name, message]) => {
     wrappedMessages[name] = wrapMessage(name, message)
@@ -196,8 +196,8 @@ function wrapModeMessages(modeMessages) {
   return wrappedMessages
 }
 
-function wrapMessage(name, message) {
-  return async function(arg, src) {
+function wrapMessage (name, message) {
+  return async function (arg, src) {
     if (enabled) {
       const result = await message(arg, src)
       if (result && result.nextMode) {

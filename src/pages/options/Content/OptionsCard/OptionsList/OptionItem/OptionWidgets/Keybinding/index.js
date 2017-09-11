@@ -7,11 +7,11 @@ import './style.css'
 // TODO: This file is messy, redo at some point
 
 export default class Keybinding extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = { active: false }
   }
-  render({
+  render ({
     label,
     key,
     value,
@@ -22,14 +22,14 @@ export default class Keybinding extends Component {
     return this.state.active ? (
       <li
         tabIndex={0}
-        className="mdc-card mdc-list-item"
-        style="height: auto; padding: 12px 0px;"
+        className='mdc-card mdc-list-item'
+        style='height: auto; padding: 12px 0px;'
       >
-        <ul className="command-list">
-          <li className="mdc-list-item" style="justify-content: space-between;">
+        <ul className='command-list'>
+          <li className='mdc-list-item' style='justify-content: space-between;'>
             <label>{label}</label>
             <button
-              className="mdc-button mdc-button--raised mdc-button--secondary mdc-ripple-upgraded"
+              className='mdc-button mdc-button--raised mdc-button--secondary mdc-ripple-upgraded'
               onClick={e => {
                 e.stopPropagation()
                 this.setState({ active: false })
@@ -41,8 +41,8 @@ export default class Keybinding extends Component {
           {bindings &&
             bindings.map(binding => (
               <li
-                className="mdc-list-item"
-                style="justify-content: space-between;"
+                className='mdc-list-item'
+                style='justify-content: space-between;'
               >
                 <KeybindingItem
                   binding={binding}
@@ -51,14 +51,14 @@ export default class Keybinding extends Component {
                 />
                 <button
                   onClick={() => onChange(bindings.filter(b => b !== binding))}
-                  className="mdc-button mdc-button--secondary"
+                  className='mdc-button mdc-button--secondary'
                 >
                   Delete
                 </button>
               </li>
             ))}
         </ul>
-        <span style="width: 90%; display: flex; justify-content: space-between;">
+        <span style='width: 90%; display: flex; justify-content: space-between;'>
           <KeybindingInput
             value={value}
             setValue={onChange}
@@ -70,9 +70,9 @@ export default class Keybinding extends Component {
     ) : (
       <li
         tabIndex={0}
-        className="mdc-list-item"
-        style="justify-content: space-between; cursor: pointer;"
-        role="button"
+        className='mdc-list-item'
+        style='justify-content: space-between; cursor: pointer;'
+        role='button'
         onClick={() => {
           this.setState({ active: true })
         }}

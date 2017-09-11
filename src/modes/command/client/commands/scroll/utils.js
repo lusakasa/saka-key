@@ -9,7 +9,7 @@ let scrollFunction = scrollSmooth
 let lastAnimationFrame
 let currentScrollElement = calculateCurrentScrollElement()
 
-export function initScrolling(_smoothScroll, _scrollStep) {
+export function initScrolling (_smoothScroll, _scrollStep) {
   scrollStep = _scrollStep
   scrollFunction = _smoothScroll ? scrollSmooth : scrollRegular
   behavior = _smoothScroll ? 'smooth' : 'instant'
@@ -19,11 +19,11 @@ export function initScrolling(_smoothScroll, _scrollStep) {
  * cancelScroll should be called when the user releases the scroll key to stop the
  * smooth scrolling process. Otherwise, scrolling would unexpectedly continue.
  */
-export function cancelScroll() {
+export function cancelScroll () {
   cancelAnimationFrame(lastAnimationFrame)
 }
 
-export function scroll(
+export function scroll (
   repeat,
   step,
   direction,
@@ -48,7 +48,7 @@ export function scroll(
  * prevent unexpected scrolling after the user has released the scroll key.
  * Relying on keyup events exclusively to stop scrolling is unreliable.
  */
-function scrollSmooth(element, repeat, step, direction) {
+function scrollSmooth (element, repeat, step, direction) {
   cancelAnimationFrame(lastAnimationFrame)
   let startTime
   const delay = repeat ? 70 : 500
@@ -65,13 +65,13 @@ function scrollSmooth(element, repeat, step, direction) {
 }
 
 /** Scrolls the selected element immediately */
-function scrollRegular(element, repeat, step, direction) {
+function scrollRegular (element, repeat, step, direction) {
   element[direction] += step
 }
 
 // TODO: the implementation below makes me feel guilty... but there's no better way
 /** returns true if an element scrolls vertically, false otherwise */
-export function scrollsVertically(element) {
+export function scrollsVertically (element) {
   const yStart = element.scrollTop
   element.scrollTop += 1
   const yAfterScrollDown = element.scrollTop
@@ -80,7 +80,7 @@ export function scrollsVertically(element) {
   return yStart !== yAfterScrollDown || yStart !== yAfterScrollUp
 }
 
-export function calculateCurrentScrollElement() {
+export function calculateCurrentScrollElement () {
   let scrollElement = largestScrollableElement()
   if (scrollElement === undefined) {
     scrollElement = guessScrollElement()
@@ -93,7 +93,7 @@ export function calculateCurrentScrollElement() {
   return scrollElement
 }
 
-function guessScrollElement() {
+function guessScrollElement () {
   return document.scrollingElement || document.body || document.documentElement
 }
 
@@ -105,11 +105,11 @@ function guessScrollElement() {
  * @param {number} depth - the maximum depth, pass -1 to indicate no limit,
  * depth = 8 is just large enough for gmail
  */
-function largestScrollableElementTopDown(
+function largestScrollableElementTopDown (
   element = guessScrollElement(),
   depth = 8
 ) {
-  function _largestScrollableElementTopDown(element, depth) {
+  function _largestScrollableElementTopDown (element, depth) {
     if (depth === 0) return
     if (!element) return
     if (getComputedStyle(element).overflow === 'hidden') return
@@ -143,10 +143,10 @@ function largestScrollableElementTopDown(
  * its children. Works by finding the element in the middle of the page,
  * tracing it up to the root, then walking down until a scrollable elemnt is found
  */
-function largestScrollableElementBottomUp() {
+function largestScrollableElementBottomUp () {
   const middleChild = document.elementFromPoint(innerWidth / 2, innerHeight / 2)
   if (!middleChild) return
-  function firstScrollingAncestor(element) {
+  function firstScrollingAncestor (element) {
     if (!element) return
     return (
       firstScrollingAncestor(element.parentElement) ||
@@ -156,6 +156,6 @@ function largestScrollableElementBottomUp() {
   return firstScrollingAncestor(middleChild) || undefined
 }
 
-function largestScrollableElement() {
+function largestScrollableElement () {
   return largestScrollableElementTopDown() || largestScrollableElementBottomUp()
 }

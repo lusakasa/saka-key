@@ -11,7 +11,7 @@ pointer-events: none;`
 
 document.documentElement.appendChild(guiRoot)
 
-export function handleFullscreenChange(event) {
+export function handleFullscreenChange (event) {
   if (SAKA_DEBUG) console.log('fullscreenElement changed')
   if (document.webkitIsFullScreen) {
     const fsElement = document.webkitFullscreenElement

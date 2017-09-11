@@ -4,7 +4,7 @@ import { validKeyboardEvent, keyboardEventString } from 'lib/keys'
  * Given an object mapping commands to their key bindings,
  * returns the trie representation.
  */
-export function generateCommandTrie(commandMap) {
+export function generateCommandTrie (commandMap) {
   return JSONTrie(bindingsList(commandMap))
 }
 
@@ -13,7 +13,7 @@ export function generateCommandTrie(commandMap) {
  * returns an array of (commands, binding).
  * A command may have more than one binding, or none at all.
  */
-function bindingsList(bindingsMap) {
+function bindingsList (bindingsMap) {
   const out = []
   for (const [command, bindings] of Object.entries(bindingsMap)) {
     if (bindings === undefined) {
@@ -38,7 +38,7 @@ function bindingsList(bindingsMap) {
  * Given an array of (command, binding),
  * returns the trie representation.
  */
-function JSONTrie(bindings) {
+function JSONTrie (bindings) {
   const trie = {}
   bindings.forEach(([key, value, binding]) => {
     addToTrie(trie, 0, key, value, binding)
@@ -46,7 +46,7 @@ function JSONTrie(bindings) {
   return trie
 }
 
-function addToTrie(trie, i, key, value, binding) {
+function addToTrie (trie, i, key, value, binding) {
   if (key.length === 0) {
     throw Error(`${value} has a 0 length key binding`)
   } else if (i === key.length - 1) {
@@ -80,7 +80,7 @@ function addToTrie(trie, i, key, value, binding) {
   }
 }
 
-function firstLeafValue(trie) {
+function firstLeafValue (trie) {
   return typeof trie === 'object'
     ? firstLeafValue(trie[Object.keys(trie)[0]])
     : trie

@@ -1,13 +1,13 @@
 let detectByCursorStyle = false
 
-export function setHintFindSettings(settings) {
+export function setHintFindSettings (settings) {
   detectByCursorStyle = settings.hintDetectByCursorStyle
 }
 
 /** @type {WeakMap<HTMLElement, CSSStyleDeclaration>} */
 let computedStyles
 
-function demandComputedStyle(element) {
+function demandComputedStyle (element) {
   if (computedStyles.has(element)) {
     return computedStyles.get(element)
   } else {
@@ -21,7 +21,7 @@ function demandComputedStyle(element) {
  * Finds hints
  * @param {string} hintType - the type of elements to find (currently unused)
  */
-export function findHints(hintType) {
+export function findHints (hintType) {
   // on Firefox, getComputedStyle() may return null for conditions I don't fully understand
   // try-catch block prevents link hints generation from breaking.
   // https://bugzilla.mozilla.org/show_bug.cgi?id=548397
@@ -54,7 +54,7 @@ export function findHints(hintType) {
 }
 
 // based on https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
-function isClickable(element, computedStyle) {
+function isClickable (element, computedStyle) {
   // clickable html elements
   switch (element.nodeName) {
     case 'A':
@@ -95,7 +95,7 @@ function isClickable(element, computedStyle) {
 }
 
 // based on https://github.com/guyht/vimari/blob/master/vimari.safariextension/linkHints.js
-function isVisible(element, clientRect) {
+function isVisible (element, clientRect) {
   const computedStyle = demandComputedStyle(element)
   // remove elements that are barely within the viewport, tiny, or invisible
   switch (true) {
@@ -154,7 +154,7 @@ function isVisible(element, clientRect) {
  * @param {HTMLElement} element
  * @returns {rect?: ClientRect}
  */
-function firstVisibleRect(element) {
+function firstVisibleRect (element) {
   // Case 1. the element itself is visible
   for (const rect of element.getClientRects()) {
     if (isVisible(element, rect)) {
@@ -180,7 +180,7 @@ function firstVisibleRect(element) {
  * @param {CSSStyleDeclaration} computedStyle
  * @returns {ClientRect}
  */
-function removeRectPaddingAndBorders(element, rect, computedStyle) {
+function removeRectPaddingAndBorders (element, rect, computedStyle) {
   const left =
     rect.left +
     parseFloat(computedStyle.paddingLeft) +

@@ -11,7 +11,7 @@ class ProfileDropdownMenu extends Component {
   state = {
     visible: false
   }
-  render({
+  render ({
     category,
     isBuiltInProfile,
     setIsEditingName,
@@ -22,11 +22,11 @@ class ProfileDropdownMenu extends Component {
     return (
       <div
         id={`dropdownmenu_${category}`}
-        class="mdc-menu-anchor"
-        style="margin: 0px 10px"
+        class='mdc-menu-anchor'
+        style='margin: 0px 10px'
       >
         <button
-          className="mdc-button mode-card-settings-button"
+          className='mdc-button mode-card-settings-button'
           onClick={() => this.setState({ visible: !this.state.visible })}
         >
           &#8942;
@@ -36,26 +36,26 @@ class ProfileDropdownMenu extends Component {
           className={`mdc-simple-menu settings-card-menu ${this.state.visible
             ? 'mdc-simple-menu--open'
             : ''}`}
-          tabIndex="0"
+          tabIndex='0'
         >
           <ul
-            className="mdc-simple-menu__items mdc-list"
-            role="menu"
-            aria-hidden="true"
+            className='mdc-simple-menu__items mdc-list'
+            role='menu'
+            aria-hidden='true'
           >
             <DropdownItem
-              label="New"
+              label='New'
               onClick={this.hideMenuAndStartEditingNameThen(newProfile)}
             />
             <DropdownItem
-              label="Duplicate"
+              label='Duplicate'
               onClick={this.hideMenuAndStartEditingNameThen(duplicateProfile)}
             />
             {isBuiltInProfile ? (
               undefined
             ) : (
               <DropdownItem
-                label="Rename"
+                label='Rename'
                 onClick={this.hideMenuThen(() => setIsEditingName(true))}
               />
             )}
@@ -63,9 +63,9 @@ class ProfileDropdownMenu extends Component {
               undefined
             ) : (
               <DropdownItem
-                label="Delete"
+                label='Delete'
                 onClick={this.hideMenuThen(deleteProfile)}
-                color="red"
+                color='red'
               />
             )}
           </ul>
@@ -82,7 +82,7 @@ class ProfileDropdownMenu extends Component {
     fn()
     this.props.setIsEditingName(true)
   }
-  componentDidMount() {
+  componentDidMount () {
     document.addEventListener('click', e => {
       if (
         this.state.visible &&

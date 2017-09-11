@@ -3,9 +3,9 @@ import { connect } from 'preact-redux'
 import CommandEntry from './CommandEntry'
 
 class CommandList extends Component {
-  render({ commands, bindings }) {
+  render ({ commands, bindings }) {
     return (
-      <ul className="mdc-list mdc-list--dense command-list">
+      <ul className='mdc-list mdc-list--dense command-list'>
         {commands.map(command => (
           <CommandEntry command={command} bindings={bindings[command]} />
         ))}

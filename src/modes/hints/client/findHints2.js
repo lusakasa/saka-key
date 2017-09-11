@@ -1,7 +1,7 @@
 // TODO: in progress port of VimFX's algorithm for finding hintable elements.
 
 // based on the VimFX algorithm
-function findHints(filter, selector = '*') {
+function findHints (filter, selector = '*') {
   const viewport = getWindowViewport()
   let wrappers = []
   getMarkableElements(viewport, wrappers, filter, selector)
@@ -17,7 +17,7 @@ function findHints(filter, selector = '*') {
 // anyway behind the scenes. However, it is possible to pass in a CSS selector,
 // which allows getting markable elements in several passes with different sets
 // of candidates.
-export function getMarkableElements(
+export function getMarkableElements (
   viewport,
   wrappers,
   filter,
@@ -65,7 +65,7 @@ export function getMarkableElements(
   return hintableElements
 }
 
-function getRects(element, viewport) {
+function getRects (element, viewport) {
   // `element.getClientRects()` returns a list of rectangles, usually just one,
   // which is identical to the one returned by `element.getBoundingClientRect()`.
   // However, if `element` is inline and line-wrapped, then it returns one
@@ -80,14 +80,14 @@ function getRects(element, viewport) {
   }
 }
 
-function getRootElement() {
+function getRootElement () {
   return (
     (document.compatMode === 'BackCompat' && document.body) ||
     document.documentElement
   )
 }
 
-function getWindowViewport() {
+function getWindowViewport () {
   // clientWidth and clientHeight are viewport size excluding scrollbars
   const {
     clientWidth,
@@ -112,7 +112,7 @@ function getWindowViewport() {
 }
 
 const MIN_EDGE_DISTANCE = 4
-function isInsideViewport(rect, viewport) {
+function isInsideViewport (rect, viewport) {
   return (
     rect.left <= viewport.right - MIN_EDGE_DISTANCE &&
     rect.top <= viewport.bottom - MIN_EDGE_DISTANCE &&
@@ -137,7 +137,7 @@ function isInsideViewport(rect, viewport) {
 //   (which is the case for “cards” with an image to the left and a title as well
 //   as some text to the right (where the entire “card” is a link)). This is used
 //   to place the the marker at the edge of the block.
-function getElementShape(
+function getElementShape (
   elementData,
   tryRight,
   rects = getRects(element, viewport)
@@ -214,7 +214,7 @@ function getElementShape(
   let smallestBottom = Infinity
   let hasSingleRect = rects.all.length === 1
 
-  utils.walkTextNodes(element, function(node) {
+  utils.walkTextNodes(element, function (node) {
     if (node.data.trim() !== '') {
       for (let { bounds } of Array.from(node.getBoxQuads())) {
         if (

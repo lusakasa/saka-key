@@ -10,11 +10,11 @@ import '@material/fab/dist/mdc.fab.css'
 import './style.css'
 
 class SettingsCard extends Component {
-  render(props) {
+  render (props) {
     return (
       <div
         id={`settings_card_${props.category}`}
-        class="mdc-card demo-card demo-card--with-avatar mode-card"
+        class='mdc-card demo-card demo-card--with-avatar mode-card'
         style={{ backgroundColor: '#ffffff' }}
       >
         <Header {...props} />

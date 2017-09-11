@@ -16,7 +16,7 @@ const scrollToCard = name => () => {
 
 const ActionButton = ({ label, onClick }) => (
   <a
-    class="mdc-list-item settings-drawer-link"
+    class='mdc-list-item settings-drawer-link'
     style={{ color: 'black' }}
     onClick={onClick}
   >
@@ -29,7 +29,7 @@ class Drawer extends Component {
     // the first card for which its bottom is below the viewport top
     activeCard: SAKA_PLATFORM !== 'firefox' ? 'General' : ''
   }
-  componentDidMount() {
+  componentDidMount () {
     if (SAKA_PLATFORM !== 'firefox') {
       document.addEventListener('scroll', event => {
         const { categories } = this.props
@@ -49,22 +49,22 @@ class Drawer extends Component {
   calculateLinkColor = cardName => {
     return cardName === this.state.activeCard ? '#3f51b5' : '#000000'
   }
-  render({ categories }) {
+  render ({ categories }) {
     return (
       <div
-        class="mdc-card"
+        class='mdc-card'
         style={{
           margin: '20px 20px',
           position: 'fixed',
           overflowY: 'scroll'
         }}
       >
-        <nav class="mdc-permanent-drawer">
-          <div class="mdc-list-group">
-            <nav class="mdc-list">
+        <nav class='mdc-permanent-drawer'>
+          <div class='mdc-list-group'>
+            <nav class='mdc-list'>
               {categories.map(category => (
                 <a
-                  class="mdc-list-item settings-drawer-link"
+                  class='mdc-list-item settings-drawer-link'
                   style={{ color: this.calculateLinkColor(category) }}
                   onClick={scrollToCard(category)}
                 >
@@ -72,8 +72,8 @@ class Drawer extends Component {
                 </a>
               ))}
               <div
-                role="separator"
-                class="mdc-list-divider"
+                role='separator'
+                class='mdc-list-divider'
                 style={{ margin: '20px' }}
               />
               <ActionButton

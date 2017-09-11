@@ -1,22 +1,22 @@
-export function goBack() {
+export function goBack () {
   window.history.go(-1)
 }
 
-export function goForward() {
+export function goForward () {
   window.history.go(1)
 }
 
 /* Goes to the next page (as in 2nd page of a google search) */
-export function nextPage() {
+export function nextPage () {
   console.log('>> Next page')
 }
 
-export function previousPage() {
+export function previousPage () {
   console.log('<< Previous page')
 }
 
 /* Goes up URL hierarchy (from /cookie_recipes/3 to /cookie_recipes) */
-export function goUp() {
+export function goUp () {
   const rawURL = window.location.href
   const url = rawURL.endsWith('/')
     ? rawURL.substring(0, rawURL.length - 1)
@@ -30,6 +30,6 @@ export function goUp() {
   }
 }
 
-export function goToRoot() {
+export function goToRoot () {
   window.location.href = window.location.origin
 }
