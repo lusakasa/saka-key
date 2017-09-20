@@ -46,7 +46,7 @@ export function findHints (hintType) {
       }
     })
     computedStyles = undefined
-    console.log(hintableElements)
+    if (SAKA_DEBUG) console.log(hintableElements)
     return hintableElements
   } catch (e) {
     return []
