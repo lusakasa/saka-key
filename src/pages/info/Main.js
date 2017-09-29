@@ -31,7 +31,7 @@ const MainView = () => (
       />
       <Item
         title='Customize'
-        href='https://key.saka.io/tutorial/settings.html'
+        href='https://key.saka.io/tutorial/options'
         description="Modify keybindings and adjust Saka Key's appearance"
       />
       <Item
