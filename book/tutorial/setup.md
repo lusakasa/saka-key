@@ -8,7 +8,7 @@ Complete the following steps to ensure an optimal experience using Saka Key.
 
 2. **Switch to Power Command Profile**
 
-  If you aren't afraid of accidentally closing a tab or refreshing the page, [change your profile](./settings.md) for Command mode  to `power`. This will enable faster, easier to type keyboard shortcuts.
+  If you aren't afraid of accidentally closing a tab or refreshing the page, [change your profile](./options.md) for Command mode  to `power`. This will enable faster, easier to type keyboard shortcuts.
 
 3. **Enable Saka Key on File URLs**
 
