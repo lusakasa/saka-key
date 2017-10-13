@@ -16,7 +16,7 @@ The following pages in this tutorial explain how to use Saka Key's commands.
 
 To view all the commands Saka Key provides, visit the complete [Commands List](/commands/index.md). 
 
-<!-- TODO: You can view what key each command is bound to by typing <kbd>?</kbd> or equivalently <kbd>Shift + /</kbd>  from any page. -->
+<!-- TODO: You can view what key each command is bound to by typing <kbd>?</kbd> or equivalently <kbd>Shift - /</kbd>  from any page. -->
 
 ## Limitations
 
@@ -26,9 +26,9 @@ PDFs are also troublesome. You can use keyboard shortcuts to close PDF tabs and 
 
 To work around these limitations, I recommend learning the following brower shortcuts.
 
-* <kbd>ctrl+Tab</kbd> - switches to the next tab
-* <kbd>shift+ctrl+Tab</kbd> - switches to the previous tab
-* <kbd>ctrl+w</kbd> - closes the current tab.
+* <kbd>ctrl-Tab</kbd> - switches to the next tab
+* <kbd>shift-ctrl-Tab</kbd> - switches to the previous tab
+* <kbd>ctrl-w</kbd> - closes the current tab.
 
 ## Profiles
 
