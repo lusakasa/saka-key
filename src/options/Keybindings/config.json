@@ -9,7 +9,8 @@
     {
       "type": "checkbox",
       "label": "Ignore modifier keys",
-      "help": "On some platforms, typing a key together with a modifier key doesn't change the character produced. For example, on Windows QWERTY keyboards, typing Alt+f produces the same character as typing f by itself. Enable this option to distinguish between the two.",
+      "help":
+        "On some platforms, typing a key together with a modifier key doesn't change the character produced. For example, on Windows QWERTY keyboards, typing Alt+f produces the same character as typing f by itself. Enable this option to distinguish between the two.",
       "key": "ignoreModifierKeys",
       "visible": "physicalKeys = false",
       "default": false
@@ -34,10 +35,15 @@
     },
     {
       "type": "info",
-      "text": "Saka is an elegant Omnibar replacement extension. Install Saka to use this command.",
+      "text":
+        "Saka is an elegant Omnibar replacement extension. Install Saka to use this command.",
       "links": [
         { "title": "About Saka", "url": "https://saka.io" },
-        { "title": "Add to Chrome", "url": "https://chrome.google.com/webstore/detail/saka/nbdfpcokndmapcollfpjdpjlabnibjdi" },
+        {
+          "title": "Add to Chrome",
+          "url":
+            "https://chrome.google.com/webstore/detail/saka/nbdfpcokndmapcollfpjdpjlabnibjdi"
+        },
         { "title": "Coming to Firefox soon" }
       ]
     },
@@ -398,7 +404,12 @@
       "type": "keybinding",
       "label": "New Window",
       "key": "newWindow",
-      "visible": false,
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "New Incognito Window",
+      "key": "newIncognitoWindow",
       "default": []
     },
     {
