@@ -1,4 +1,4 @@
-# Tabs
+# Tabs and Windows
 
 ** This tutorial uses the default profile's keybindings.**
 
@@ -6,16 +6,21 @@ Saka Key lets you, [create](), [duplicate](), [close](), [restore](), [refresh](
 
 ## Bindings
 
-### Create and Duplicate Tabs
+### Create, Restore, and Duplicate Tabs
 
-* **New Tab** - <kbd>n</kbd>
+* **New Tab** - <kbd>t</kbd>
+* **Restore Tab** - <kbd>shift-t</kbd>
 * **Duplicate Tab** - <kbd>b</kbd>
 
-### Close and Restore Tabs
+### Create Windows
+
+* **New Window** - <kbd>n</kbd>
+* **New Incognito Window** - <kbd>shift-n</kbd>
+
+### Close Tabs
 
 * **Close Tab** - <kbd>x</kbd><kbd>x</kbd>
-* **Restore Tab** - <kbd>shift+x</kbd>
-* **Close Other Tabs** - <kbd>x</kbd><kbd>shift+x</kbd>
+* **Close Other Tabs** - <kbd>x</kbd><kbd>shift-x</kbd>
 * **Close Left Tabs** - <kbd>x</kbd><kbd>[</kbd>
 * **Close Right Tabs** - <kbd>x</kbd><kbd>]</kbd>
 

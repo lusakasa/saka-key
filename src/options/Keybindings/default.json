@@ -136,11 +136,13 @@
             { "code": "BracketRight", "key": "]" }
           ]
         ],
-        "newTab": [[{ "code": "KeyN", "key": "n" }]],
-        "restoreTab": [[{ "code": "KeyX", "key": "X", "shiftKey": true }]],
+        "newTab": [[{ "code": "KeyT", "key": "t" }]],
+        "restoreTab": [[{ "code": "KeyT", "key": "T", "shiftKey": true }]],
         "duplicateTab": [[{ "code": "KeyB", "key": "b" }]],
-        "newWindow": [],
-        "newIncognitoWindow": [],
+        "newWindow": [[{ "code": "KeyN", "key": "n" }]],
+        "newIncognitoWindow": [
+          [{ "code": "KeyN", "key": "N", "shiftKey": true }]
+        ],
         "switchWindow": [[{ "code": "Digit5", "key": "%" }]],
         "zoomIn": [[{ "code": "KeyZ", "key": "z" }]],
         "zoomOut": [[{ "code": "KeyZ", "key": "Z", "shiftKey": true }]],

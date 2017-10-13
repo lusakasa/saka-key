@@ -13,7 +13,7 @@
   * [Scrolling](tutorial/scrolling.md)
   * [Zooming](tutorial/zooming.md)
   * [Navigation](tutorial/navigation.md)
-  * [Tabs](tutorial/tabs.md)
+  * [Tabs and Windows](tutorial/tabs_and_windows.md)
   * [Clicking and Link Hints](tutorial/clicking_and_link_hints.md)
   * [Pass Keys](tutorial/pass_keys.md)
   * [Clipboard](tutorial/clipboard.md)

@@ -1,5 +1,14 @@
 # Release Notes
 
+# 1.24.0
+
+* New command **New Window** <kbd>n</kbd>
+* New command **New Incognito Window** <kbd>shift-n</kbd>
+* Modified binding **New Tab** <kbd>t</kbd>
+* Modified binding **Restore Tab** <kbd>shift-t</kbd>
+* Suppressed printing of link hints to console
+* Fixed broken links
+
 # 1.23.1
 
 * Fixed bug in input trie logic introduced in 1.23.0

@@ -247,12 +247,18 @@
     },
     {
       "type": "header",
-      "label": "Create and Duplicate Tabs"
+      "label": "Create Tabs"
     },
     {
       "type": "keybinding",
       "label": "New Tab",
       "key": "newTab",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Restore Tab",
+      "key": "restoreTab",
       "default": []
     },
     {
@@ -263,7 +269,23 @@
     },
     {
       "type": "header",
-      "label": "Close and Restore Tabs"
+      "label": "Create Windows"
+    },
+    {
+      "type": "keybinding",
+      "label": "New Window",
+      "key": "newWindow",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "New Incognito Window",
+      "key": "newIncognitoWindow",
+      "default": []
+    },
+    {
+      "type": "header",
+      "label": "Close Tabs"
     },
     {
       "type": "keybinding",
@@ -287,12 +309,6 @@
       "type": "keybinding",
       "label": "Close Left Tabs",
       "key": "closeLeftTabs",
-      "default": []
-    },
-    {
-      "type": "keybinding",
-      "label": "Restore Tab",
-      "key": "restoreTab",
       "default": []
     },
     {
@@ -398,18 +414,6 @@
       "type": "keybinding",
       "label": "Toggle Pin Tab",
       "key": "togglePinTab",
-      "default": []
-    },
-    {
-      "type": "keybinding",
-      "label": "New Window",
-      "key": "newWindow",
-      "default": []
-    },
-    {
-      "type": "keybinding",
-      "label": "New Incognito Window",
-      "key": "newIncognitoWindow",
       "default": []
     },
     {
