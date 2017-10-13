@@ -1,7 +1,6 @@
 import { Component, render, h } from 'preact'
 import { guiRoot } from 'client/gui'
-import { hintType } from './index'
-import { activateHint } from './activateHint'
+import { activate } from './activate'
 
 export let showHints
 export let hideHints
@@ -63,24 +62,21 @@ class HintRenderer extends Component {
         inputKeys: ''
       })
     }
-    advanceHints = key => {
+    advanceHints = event => {
       const hints = this.state.hints
-      const inputKeys = this.state.inputKeys + key
+      const inputKeys = this.state.inputKeys + event.key
       const filteredHints = this.state.hints.filter(hint => {
         return hint.hintString.startsWith(inputKeys)
       })
-      if (
-        filteredHints.length === 1 &&
-        inputKeys === filteredHints[0].hintString
-      ) {
-        return activateHint(filteredHints[0], hintType)
-      }
       this.setState({
         hints,
         filteredHints,
         inputKeys
       })
-      return filteredHints.length === 0 ? 'Filtered' : 'Same'
+      return filteredHints.length === 1 &&
+      inputKeys === filteredHints[0].hintString
+        ? activate(event, filteredHints[0].element)
+        : filteredHints.length === 0 ? 'Filtered' : 'Same'
     }
     hideHints = () => {
       this.setState({

@@ -127,3 +127,28 @@ export function validKeyboardEvent (event) {
       (event.metaKey && typeof event.metaKey === 'boolean'))
   )
 }
+
+/**
+ * Extracts the important attributes from a KeyboardEvent so that
+ * the event can be sent as JSON
+ * @param {KeyboardEvent} event
+ */
+export function simplify ({
+  key,
+  code,
+  ctrlKey,
+  altKey,
+  metaKey,
+  shiftKey,
+  repeat
+}) {
+  return {
+    key,
+    code,
+    ctrlKey,
+    altKey,
+    metaKey,
+    shiftKey,
+    repeat
+  }
+}

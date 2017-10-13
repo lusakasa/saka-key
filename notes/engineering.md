@@ -230,3 +230,10 @@ Object.entries(profiles).forEach(([profile, mode]) => {
 Decision: Add visible and validate field to profile options. Specifying visible allows the user to specify a condition that determines whether the option is visibile in the GUI or not. Setting validate to true will send new keyValues to background page for validation, on failure keep the old key value and show an error message to the user.
 
 Motivation:
+
+
+---
+
+Async state changes:
+
+DOM event hander that return a promise result in no state change, instead when the promise resolves the return value corresponds to the next state. There should be some mechanism to timeout state changes resulting from promise resolution, consider a scheme with 1. a counter that increments when the state changes 2. logic that checks that the count hasn't changed in between when the promise was issued and resolved

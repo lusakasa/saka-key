@@ -1,12 +1,30 @@
-const activate = hintType => event => {
-  event.hintType = hintType
-  return 'Hints'
-}
+import { background } from 'lib/msg'
 
-export const openLink = activate('currentTab')
-export const openLinkInBackgroundTab = activate('backgroundTab')
-export const openLinkInForegroundTab = activate('foregroundTab')
-export const openLinkInNewWindow = activate('newWindow')
-export const openLinkInIncognitoWindow = activate('incognitoWindow')
-export const downloadLink = activate('download')
-export const focusLink = activate('focusLink')
+export const openLink = background('findHints', {
+  filter: 'links',
+  activate: 'openLink'
+})
+export const openLinkInBackgroundTab = background('findHints', {
+  filter: 'links',
+  activate: 'openLinkInBackgroundTab'
+})
+export const openLinkInForegroundTab = background('findHints', {
+  filter: 'links',
+  activate: 'openLinkInForegroundTab'
+})
+export const openLinkInNewWindow = background('findHints', {
+  filter: 'links',
+  activate: 'openLinkInNewWindow'
+})
+export const openLinkInIncognitoWindow = background('findHints', {
+  filter: 'links',
+  activate: 'openLinkInIncognitoWindow'
+})
+export const downloadLink = background('findHints', {
+  filter: 'links',
+  activate: 'downloadLink'
+})
+export const focusLink = background('findHints', {
+  fitler: 'links',
+  activate: 'focusLink'
+})

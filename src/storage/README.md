@@ -104,6 +104,39 @@ The following is an example of how configuration and options are persisted to lo
     "clipboardForegroundTab": [],
     "clipboardNewWindow": [],
     "clipboardIncognitoWindow": []
+  },
+  // TODO(not yet implemented): user-defined options
+  "customOptions_General": ["switchToTabN", "moveTabToN", "saveToPocket", "saveToPocketWithTags"],
+  "customOptions_Keybindings": [],
+  "customOptions_Hints": [],
+  "customOptions": {
+    "switchToTabN": {
+      "type": "keybinding",
+      "label": "Switch To Tab N",
+      "key": "switchToTabN",
+      "default": []
+    },
+    "moveTabToN": {
+      "type": "keybinding",
+      "label": "Move Tab To Index N",
+      "key": "moveTabToN",
+      "default": []
+    },
+    "saveToPocket": {
+      "type": "keybinding",
+      "label": "Save To Pocket",
+      "key": "saveToPocket",
+      "default": []
+    },
+    "saveToPocketWithTags": {
+      "type": "keybinding",
+      "label": "Save To Pocket With Tags",
+      "key": "saveToPocketWithTags",
+      "default": []
+    }
+  },
+  "customCommands": {
+    
   }
 }
 ```

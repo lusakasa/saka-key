@@ -1,4 +1,5 @@
 import { msg } from 'mosi/client'
+import { configureActivate } from './activate'
 import { findHints, setHintFindSettings } from './findHints'
 import {
   showHints,
@@ -7,22 +8,13 @@ import {
   setHintRenderSettings
 } from './HintRenderer'
 import { showVideoControls, hideVideoControls } from './video'
+import { isModifierKey, simplify } from 'lib/keys'
 
 let hints
-export let hintType
+export let activator
 
 export default {
-  onEnter: event => {
-    // first frame to enter Hints mode is triggered by a keypress from command mode
-    // all other frames must be notified of mode change via message
-    if (event.type === 'keydown') {
-      msg(1, 'gatherHints', event.hintType)
-    }
-  },
   onExit: event => {
-    if (!event.type.startsWith('message')) {
-      msg('thisTab&otherFrames', 'exitHintsMode')
-    }
     hideHints()
     hideVideoControls()
   },
@@ -32,14 +24,10 @@ export default {
   },
   keydown: event => {
     event.stopImmediatePropagation()
-    msg(1, 'processKey', {
-      key: event.key,
-      code: event.code,
-      shiftKey: event.shiftKey,
-      altKey: event.altKey,
-      ctrlKey: event.ctrlKey,
-      metaKey: event.metaKey
-    })
+    event.preventDefault()
+    if (!isModifierKey(event)) {
+      msg(1, 'processKey', simplify(event))
+    }
     return 'Same'
   },
   keypress: event => {
@@ -49,10 +37,10 @@ export default {
   focus: () => 'TryText',
   mousedown: () => (SAKA_DEBUG ? 'Same' : 'Reset'),
   messages: {
-    findHints: ht => {
+    findHints: ({ filter, activate }) => {
       showVideoControls()
-      hintType = ht
-      hints = findHints(ht)
+      configureActivate(activate)
+      hints = findHints(filter)
       return {
         nextMode: 'Hints',
         value: hints.length
@@ -62,12 +50,12 @@ export default {
       showHints(hints, hintStrings)
       hints = undefined
     },
-    exitHintsMode: () => ({ nextMode: 'Reset' }),
-    advanceHints: key => {
-      const nextMode = advanceHints(key)
+    exitHintsMode: (nextMode = 'Reset') => ({ nextMode }),
+    advanceHints: event => {
+      const status = advanceHints(event)
       return {
-        nextMode: nextMode === 'Filtered' ? 'Same' : nextMode,
-        value: nextMode
+        nextMode: 'Same',
+        value: status
       }
     }
   }

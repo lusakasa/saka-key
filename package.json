@@ -36,6 +36,9 @@
     "book:build": "cd book && npm run build",
     "book:publish": "cd book && npm run publish"
   },
+  "bin": {
+    "keyplug": "keyplug/index.js"
+  },
   "lint-staged": {
     "*.{js,json,css}": ["prettier-eslint --write", "git add"]
   },
