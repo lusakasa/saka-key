@@ -404,7 +404,12 @@
       "type": "keybinding",
       "label": "New Window",
       "key": "newWindow",
-      "visible": false,
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "New Incognito Window",
+      "key": "newIncognitoWindow",
       "default": []
     },
     {

@@ -140,6 +140,7 @@
         "restoreTab": [[{ "code": "KeyX", "key": "X", "shiftKey": true }]],
         "duplicateTab": [[{ "code": "KeyB", "key": "b" }]],
         "newWindow": [],
+        "newIncognitoWindow": [],
         "switchWindow": [[{ "code": "Digit5", "key": "%" }]],
         "zoomIn": [[{ "code": "KeyZ", "key": "z" }]],
         "zoomOut": [[{ "code": "KeyZ", "key": "Z", "shiftKey": true }]],
@@ -326,6 +327,7 @@
         "restoreTab": [[{ "code": "KeyX", "key": "≈", "altKey": true }]],
         "duplicateTab": [[{ "code": "KeyB", "key": "b" }]],
         "newWindow": [[{ "code": "KeyN", "key": "N", "shiftKey": true }]],
+        "newIncognitoWindow": [],
         "switchWindow": [[{ "code": "KeyN", "key": "˜", "altKey": true }]],
         "zoomIn": [[{ "code": "KeyZ", "key": "z" }]],
         "zoomOut": [[{ "code": "KeyZ", "key": "Z", "shiftKey": true }]],
@@ -457,6 +459,7 @@
         "restoreTab": [[{ "code": "KeyX", "key": "X", "shiftKey": true }]],
         "duplicateTab": [[{ "code": "KeyB", "key": "b" }]],
         "newWindow": [[{ "code": "KeyN", "key": "N", "shiftKey": true }]],
+        "newIncognitoWindow": [],
         "switchWindow": [[{ "code": "KeyN", "key": "˜", "altKey": true }]],
         "zoomIn": [[{ "code": "KeyZ", "key": "z" }]],
         "zoomOut": [[{ "code": "KeyZ", "key": "Z", "shiftKey": true }]],
@@ -603,7 +606,10 @@
         "duplicateTab": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyT", "key": "t" }]
         ],
-        "newWindow": [],
+        "newWindow": [[{ "code": "KeyW", "key": "w" }]],
+        "newIncognitoWindow": [
+          [{ "code": "KeyW", "key": "W", "shiftKey": true }]
+        ],
         "switchWindow": [],
         "zoomIn": [],
         "zoomOut": [],

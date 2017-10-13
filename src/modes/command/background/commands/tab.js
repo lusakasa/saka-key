@@ -112,8 +112,12 @@ export async function duplicateTab () {
 
 /** Create a new window */
 export async function newWindow () {
-  // TODO: Implement
-  console.error('newWindow not implemented')
+  await browser.windows.create()
+}
+
+/** Create a new incognito window */
+export async function newIncognitoWindow () {
+  await browser.windows.create({ incognito: true })
 }
 
 /** Activate the next window */
