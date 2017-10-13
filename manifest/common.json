@@ -1,6 +1,6 @@
 {
   "name": "Saka Key",
-  "version": "1.23.1",
+  "version": "1.24.0",
   "author": "Sufyan Dawoodjee",
   "description": "A keyboard interface to the web",
   "manifest_version": 2,
@@ -23,7 +23,7 @@
     "16": "logo.png",
     "48": "logo.png",
     "128": "logo.png"
-    },
+  },
   "permissions": [
     "tabs",
     "activeTab",
@@ -50,5 +50,5 @@
     "default_command.json",
     "default_developer.json",
     "default_hints.json"
-    ]
+  ]
 }
