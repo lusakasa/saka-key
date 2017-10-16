@@ -28,3 +28,25 @@ export function passAllKeys (event) {
   event.passKeyType = 'all'
   return 'Pass'
 }
+
+// TODO: Get from options.
+let customCommands = {
+  toHttps: {
+    preventDefault: true, // The default.
+    code:
+      'document.location = document.location.href.replace(/^http:/, "https:")'
+  }
+}
+
+// TODO reduce amount of visible internal state.
+function trampoline (_src, event) {
+  eval(_src)
+}
+
+export function customCommand (id, event) {
+  let impl = customCommands[id]
+  console.log('Custom command', id, impl)
+
+  if (impl.preventDefault) event.preventDefault()
+  return trampoline(impl.code, event)
+}

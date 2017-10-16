@@ -198,7 +198,8 @@
             { "code": "KeyY", "key": "y" },
             { "code": "KeyN", "key": "N", "shiftKey": true }
           ]
-        ]
+        ],
+        "customCommand_toHttps": []
       }
     },
     {
@@ -373,7 +374,8 @@
             { "code": "KeyY", "key": "y" },
             { "code": "KeyN", "key": "N", "shiftKey": true }
           ]
-        ]
+        ],
+        "customCommand_toHttps": []
       }
     },
     {
@@ -505,7 +507,8 @@
             { "code": "KeyY", "key": "y" },
             { "code": "KeyN", "key": "N", "shiftKey": true }
           ]
-        ]
+        ],
+        "customCommand_toHttps": []
       }
     },
     {
@@ -634,7 +637,8 @@
           [{ "code": "KeyP", "key": "P", "shiftKey": true }]
         ],
         "clipboardNewWindow": [],
-        "clipboardIncognitoWindow": []
+        "clipboardIncognitoWindow": [],
+        "customCommand_toHttps": []
       }
     }
   ]
