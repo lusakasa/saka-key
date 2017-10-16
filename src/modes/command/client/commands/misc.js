@@ -38,15 +38,16 @@ let customCommands = {
   }
 }
 
-// TODO reduce amount of visible internal state.
-function trampoline (_src, event) {
-  eval(_src)
-}
-
 export function customCommand (id, event) {
   let impl = customCommands[id]
   console.log('Custom command', id, impl)
 
   if (impl.preventDefault) event.preventDefault()
-  return trampoline(impl.code, event)
+  let global_eval = eval; // This causes the eval to happen in the global scope.
+  let func = global_eval(`
+    (event) => {
+      ${impl.code}
+    }
+  `);
+  return func(event);
 }
