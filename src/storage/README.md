@@ -9,23 +9,28 @@ The following is an example of how configuration and options are persisted to lo
 ```javascript
 {
   // available categories
-  "categories": ["General", "Keybindings", "Hints"],
+  "categories": ["General", "Keybindings", "Hints", "Custom Commands"],
   // configuration array for each category pulled from config_{category}.json
-  "config_General": [{ "type": "header", "label": "welcome" }],
-  "config_Keybindings": [],
-  "config_Hints": [],
+  "config_General": [ /* see General.json  at https://github.com/lusakasa/saka-key/blob/master/src/options/General/config.json*/ ],
+  "config_Keybindings": [ /* see Keybindings.json */ ],
+  "config_Hints": [ /* see Hints.json */ ],
+  "config_Custom Commands": [ { type: "CustomCommand", "key": "customCommands", label: "Custom Commands"],
+  /* or see Custom Commands.json */
   // built-in profiles for each category
   "builtInProfiles_General": ["default", "power"],
   "builtInProfiles_Keybindings": ["default", "power", "one_hand", "vimium"],
   "builtInProfiles_Hints": ["default", "vimium"],
+  "builtInProfiles_Custom Commands": ["default"],
   // available profiles for each category
   "customProfiles_General": ["test"],
   "customProfiles_Keybindings": ["test", "cat"],
   "customProfiles_Hints": [],
+  "customProfiles_Custom Commands": [],
   // active profile for each category
   "activeProfile_General": "sufyan",
   "activeProfile_Keybindings": "default",
   "activeProfile_Hints": "vimium",
+  "activeProfile_Custom Commands": "default",
   // options for each category+profile
   "options_General_sufyan": {
     "enabled": true,
@@ -105,38 +110,41 @@ The following is an example of how configuration and options are persisted to lo
     "clipboardNewWindow": [],
     "clipboardIncognitoWindow": []
   },
-  // TODO(not yet implemented): user-defined options
-  "customOptions_General": ["switchToTabN", "moveTabToN", "saveToPocket", "saveToPocketWithTags"],
-  "customOptions_Keybindings": [],
+  "options_Custom Commands_default": {
+    // this item is used for rendering the CustomCommands Widget
+    // the "customOptions" key is used to render additional widgets
+    "customCommands": [
+      {
+        "key": "switchToHTTPS",
+        "label": "Switch To HTTPS",
+        "function": "()=>{document.location=document.location.href.replace(/^http:/,'https:')}"
+      },
+      {
+        "key": "toggleYoutubePlay",
+        "label": "Pause/Play Youtube",
+        "function": "()=>{document.querySelector('.ytp-play-button').click()}"
+      }
+    ]
+  },
+  // Custom Config Items
+  "customOptions_General": [],
+  "customOptions_Keybindings": ["switchToHTTPS", "toggleYoutubePlay"],
   "customOptions_Hints": [],
+  "customOptions_Custom Commands": [],
+  // Custom Options
   "customOptions": {
-    "switchToTabN": {
+    "switchToHTTPS": {
       "type": "keybinding",
-      "label": "Switch To Tab N",
-      "key": "switchToTabN",
+      "label": "Switch To HTTPS",
+      "key": "switchToHTTPS",
       "default": []
     },
-    "moveTabToN": {
+    "toggleYoutubePlay": {
       "type": "keybinding",
-      "label": "Move Tab To Index N",
-      "key": "moveTabToN",
-      "default": []
-    },
-    "saveToPocket": {
-      "type": "keybinding",
-      "label": "Save To Pocket",
-      "key": "saveToPocket",
-      "default": []
-    },
-    "saveToPocketWithTags": {
-      "type": "keybinding",
-      "label": "Save To Pocket With Tags",
-      "key": "saveToPocketWithTags",
+      "label": "Pause/Play Youtube",
+      "key": "toggleYoutubePlay",
       "default": []
     }
-  },
-  "customCommands": {
-    
   }
 }
 ```
