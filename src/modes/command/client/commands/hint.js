@@ -1,30 +1,34 @@
 import { background } from 'lib/msg'
 
 export const openLink = background('findHints', {
-  filter: 'links',
+  filter: '*',
   activate: 'openLink'
 })
 export const openLinkInBackgroundTab = background('findHints', {
-  filter: 'links',
+  filter: '*',
   activate: 'openLinkInBackgroundTab'
 })
 export const openLinkInForegroundTab = background('findHints', {
-  filter: 'links',
+  filter: '*',
   activate: 'openLinkInForegroundTab'
 })
 export const openLinkInNewWindow = background('findHints', {
-  filter: 'links',
+  filter: '*',
   activate: 'openLinkInNewWindow'
 })
 export const openLinkInIncognitoWindow = background('findHints', {
-  filter: 'links',
+  filter: '*',
   activate: 'openLinkInIncognitoWindow'
 })
 export const downloadLink = background('findHints', {
-  filter: 'links',
+  filter: '*',
   activate: 'downloadLink'
 })
 export const focusLink = background('findHints', {
-  fitler: 'links',
+  filter: '*',
   activate: 'focusLink'
+})
+export const focusInputs = background('findHints', {
+  filter: 'input',
+  activate: 'openLink'
 })
