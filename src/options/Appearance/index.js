@@ -3,6 +3,8 @@ import { getAttributes } from 'lib/util'
 export default (options, config) => {
   const backgroundOptions = {}
   const clientOptions = getAttributes(options, [
+    'hintFontSize',
+    'hintUseTargetSize',
     'hintCSS',
     'hintNormalCharCSS',
     'hintActiveCharCSS',

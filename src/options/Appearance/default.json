@@ -22,7 +22,8 @@
         "hintBorderWidth": 0,
         "hintBorderRadius": 4,
         "hintShadow": true,
-        "hintCSS": "font-family: Roboto, sans-serif;\nfont-size: 0.8rem;\npadding: 0.15rem 0.25rem;\ncolor: #3f51F5;\nbackground-color: rgb(255, 255, 255);\nborder-radius: 4px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\nbox-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.25);\ntransform: translate3d(0, -50%, 0);\nfont-weight: bold;",
+        "hintCSS":
+          "font-family: Roboto, sans-serif;\nfont-size: 0.8rem;\npadding: 0.15rem 0.25rem;\ncolor: #3f51F5;\nbackground-color: rgb(255, 255, 255);\nborder-radius: 4px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\nbox-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.25);\ntransform: translate3d(0, -50%, 0);\nfont-weight: bold;",
         "hintNormalCharCSS": "",
         "hintActiveCharCSS": "opacity: 0.5;"
       }
@@ -48,7 +49,8 @@
         "hintBorderWidth": 0,
         "hintBorderRadius": 2,
         "hintShadow": true,
-        "hintCSS": "font-family: Roboto, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 0px 1px;\nborder-width: 1px;\nborder-style: solid;\nborder-color: #ff4081;\ncolor: #ff4081;\nbackground-color: #ffffff;\nborder-radius: 4px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\nbox-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12); transform: translate3d(0, -50%, 0);",
+        "hintCSS":
+          "font-family: Roboto, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 0px 1px;\nborder-width: 1px;\nborder-style: solid;\nborder-color: #ff4081;\ncolor: #ff4081;\nbackground-color: #ffffff;\nborder-radius: 4px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\nbox-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12); transform: translate3d(0, -50%, 0);",
         "hintNormalCharCSS": "",
         "hintActiveCharCSS": "opacity: 0.5;"
       }
@@ -74,7 +76,8 @@
         "hintBorderWidth": 1,
         "hintBorderRadius": 4,
         "hintShadow": true,
-        "hintCSS": "font-family: Roboto, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 2px 2px;\nborder-width: 1px;\ncolor: #3f51F5;\nbackground-color: #ffffff;\nborder-color: #ffffff;\nborder-radius: 0px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\nbox-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12); transform: translate3d(0, -50%, 0);",
+        "hintCSS":
+          "font-family: Roboto, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 2px 2px;\nborder-width: 1px;\ncolor: #3f51F5;\nbackground-color: #ffffff;\nborder-color: #ffffff;\nborder-radius: 0px;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\nbox-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12); transform: translate3d(0, -50%, 0);",
         "hintNormalCharCSS": "",
         "hintActiveCharCSS": "opacity: 0.5;"
       }
@@ -100,9 +103,36 @@
         "hintBorderWidth": 1,
         "hintBorderRadius": 4,
         "hintShadow": true,
-        "hintCSS": "font-family: Helvetica, Arial, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 0px 2px;\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785), color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\nborder-radius: 4px;\ncolor: black;\nfont-weight: bold;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\ntext-shadow: rgba(255, 255, 255, 0.6) 0px 1px 0px;\nfont-weight: bold;",
+        "hintCSS":
+          "font-family: Helvetica, Arial, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 0px 2px;\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785), color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\nborder-radius: 4px;\ncolor: black;\nfont-weight: bold;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\ntext-shadow: rgba(255, 255, 255, 0.6) 0px 1px 0px;\nfont-weight: bold;",
         "hintNormalCharCSS": "",
         "hintActiveCharCSS": "opacity: 0.5;"
+      }
+    },
+    {
+      "name": "High Contrast",
+      "options": {
+        "hintActiveCharCSS": "",
+        "hintBackgroundColor": "#000000",
+        "hintBorderColor": "#ffffff",
+        "hintBorderRadius": 4,
+        "hintBorderWidth": 2,
+        "hintCSS": "",
+        "hintFontFamily": "Roboto, sans-serif",
+        "hintFontSize": 14,
+        "hintFontWeight": "900",
+        "hintHorizontalPadding": 0.25,
+        "hintHorizontalPlacement": "left",
+        "hintHorizontalTranslation": 0,
+        "hintNormalCharCSS": "",
+        "hintOpacity": 1,
+        "hintShadow": false,
+        "hintTextColor": "#ffffff",
+        "hintUseCustomCSS": false,
+        "hintUseTargetSize": true,
+        "hintVerticalPadding": 0.15,
+        "hintVerticalPlacement": "center",
+        "hintVerticalTranslation": 0
       }
     }
   ]
