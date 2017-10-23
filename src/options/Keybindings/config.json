@@ -71,6 +71,12 @@
     },
     {
       "type": "keybinding",
+      "label": "Focus Inputs",
+      "key": "focusInputs",
+      "default": []
+    },
+    {
+      "type": "keybinding",
       "label": "Open Link in Foreground Tab",
       "key": "openLinkInForegroundTab",
       "default": []

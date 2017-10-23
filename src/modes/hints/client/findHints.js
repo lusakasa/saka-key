@@ -27,7 +27,7 @@ export function findHints (hintType) {
   // https://bugzilla.mozilla.org/show_bug.cgi?id=548397
   try {
     // 1. getComputedStyle for every element
-    const allElements = document.querySelectorAll('*')
+    const allElements = document.querySelectorAll(hintType)
     computedStyles = new WeakMap()
     // allElements.forEach((element) => computedStyles.set(element, getComputedStyle(element)));
     // 2. find hintable elements
