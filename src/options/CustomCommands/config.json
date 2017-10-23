@@ -1,0 +1,10 @@
+{
+  "name": "Custom Commands",
+  "options": [
+    {
+      "type": "customcommands",
+      "key": "customCommands",
+      "default": []
+    }
+  ]
+}

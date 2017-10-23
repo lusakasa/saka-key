@@ -1,0 +1,11 @@
+{
+  "name": "Custom Commands",
+  "profiles": [
+    {
+      "name": "default",
+      "options": {
+        "customCommands": []
+      }
+    }
+  ]
+}

@@ -55,9 +55,11 @@ export async function storageUpdateProcedure (previousVersion) {
     await storageSet({ ready: true })
   } catch (e) {
     console.error(
-      'FATAL ERROR: UPDATE FAILED. DELETE THEN REINSTALL THE EXTENSION.',
+      'FATAL ERROR: UPDATE FAILED. WIPING STORAGE AND REINITIALIZING.',
       e
     )
+    await storageClear()
+    await storageInstallProcedure()
   }
 }
 
@@ -228,7 +230,7 @@ async function deleteConfig () {
 /**
  * Accounts for the case where a built-in profile introduced in an update conflicts with
  * a custom profile already installed. Renames the custom profile, active profile, and action
- * if a conflic is detected.
+ * if a conflict is detected.
  */
 async function renameCustomProfilesAndOptions () {
   const {
