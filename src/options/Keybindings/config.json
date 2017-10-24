@@ -489,13 +489,6 @@
     {
       "type": "header",
       "label": "Custom"
-    },
-    {
-      "comment": "TODO: generate dynamically",
-      "type": "keybinding",
-      "label": "Custom Command",
-      "key": "customCommand_toHttps",
-      "default": []
     }
   ]
 }

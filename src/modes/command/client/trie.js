@@ -25,13 +25,7 @@ export function advanceInputTrie (event) {
     default:
       event.preventDefault()
       event.stopImmediatePropagation()
-      var cmd
-      if (command.startsWith('customCommand_')) {
-        let id = command.slice(14) // Drop prefix.
-        cmd = commands.customCommand.bind(null, id)
-      } else {
-        cmd = commands[command]
-      }
-      return cmd(event) || 'Same'
+      let implementation = commands[command.command]
+      return implementation(event, command) || 'Same'
   }
 }

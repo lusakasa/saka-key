@@ -39,16 +39,15 @@ export default class Trie {
    */
   advance = input => {
     const next = this.curNode[input]
-    switch (typeof next) {
-      case 'undefined':
+    if (typeof next == 'undefined') {
         this.curNode = this.root
         return this.root[input] === undefined
           ? Trie.INVALID
           : this.advance(input)
-      case 'object':
+    } else if (next._TrieNode === true) {
         this.curNode = next
         return Trie.INTERNAL
-      default:
+    } else {
         this.curNode = this.root
         return next
     }

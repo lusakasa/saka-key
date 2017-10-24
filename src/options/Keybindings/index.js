@@ -30,16 +30,21 @@ export default (options, config) => {
 }
 
 function keybindingsPerMode (options, config) {
-  const keybindings = {}
+  const keybindings = { command: [], pass: [] }
   config.forEach(item => {
     if (item.type === 'keybinding') {
       const { mode = 'command', key } = item
-      if (keybindings[mode]) {
-        keybindings[mode][key] = options[key]
-      } else {
-        keybindings[mode] = { [key]: options[key] }
-      }
+      keybindings[mode].push({ bindings: options[key], command: key })
     }
+  })
+  options.customCommands.forEach((item, i) => {
+    const { mode = 'command', source, bindings } = item
+    keybindings[mode].push({
+      bindings,
+      command: "customCommand",
+      source,
+      preventDefault: true,
+    })
   })
   return keybindings
 }

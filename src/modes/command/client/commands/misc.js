@@ -29,24 +29,13 @@ export function passAllKeys (event) {
   return 'Pass'
 }
 
-// TODO: Get from options.
-let customCommands = {
-  toHttps: {
-    preventDefault: true, // The default.
-    code:
-      'document.location = document.location.href.replace(/^http:/, "https:")'
-  }
-}
+export function customCommand (event, data) {
+  console.log('Custom command', data)
 
-export function customCommand (id, event) {
-  let impl = customCommands[id]
-  console.log('Custom command', id, impl)
-
-  if (impl.preventDefault) event.preventDefault()
   let global_eval = eval; // This causes the eval to happen in the global scope.
   let func = global_eval(`
     (event) => {
-      ${impl.code}
+      ${data.source}
     }
   `);
   return func(event);
