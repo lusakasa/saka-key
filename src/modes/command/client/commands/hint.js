@@ -30,6 +30,6 @@ export const focusLink = background('findHints', {
 })
 export const focusInput = background('findHints', {
   filter:
-    'input:not([type=submit]):not([type=button]):not([type=reset]), textarea, select',
+    'input:not([type=submit]):not([type=button]):not([type=reset]):not([type=file]), textarea, select',
   activate: 'openLink'
 })

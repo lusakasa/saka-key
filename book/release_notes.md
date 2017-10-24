@@ -1,5 +1,9 @@
 # Release Notes
 
+# 1.25.2
+
+* Revised Focus Input command to exclude file inputs.
+
 # 1.25.1
 
 * Made hint auto-activation user-configurable
