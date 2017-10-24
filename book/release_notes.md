@@ -1,5 +1,12 @@
 # Release Notes
 
+# 1.25.0
+
+* New command **Focus Input** <kbd>f</kbd><kbd>i</kbd>
+* Hints mode now auto activates if there is exactly one hintable element and exits if there are none
+* Added new High Contrast Appearance Profile
+* Fixed regression that broke dynamic hint sizing
+
 # 1.24.0
 
 * New command **New Window** <kbd>n</kbd>
