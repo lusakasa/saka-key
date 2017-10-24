@@ -2,10 +2,12 @@ import { msg, get, meta } from 'mosi/core'
 import { generateHintStrings } from './hintStrings'
 
 let hintChars = 'adsfghjkl;'
+let autoActivateHint = false
 
 export default {
-  onOptionsChange: ({ hintChars: hc }) => {
-    hintChars = hc.length >= 2 ? hc : 'bad'
+  onOptionsChange: options => {
+    hintChars = options.hintChars.length >= 2 ? options.hintChars : 'bad'
+    autoActivateHint = options.autoActivateHint
   },
   messages: {
     findHints: async (config, src) => {
@@ -16,8 +18,8 @@ export default {
       // If no hints, immediately exit Hints mode
       if (totalHints === 0) {
         msg(currentTabTarget, 'exitHintsMode')
-        // If exactly one hint, immediately activate it
-      } else if (totalHints === 1) {
+        // If exactly one hint, immediately activate it (if autoactivation enabled by user)
+      } else if (totalHints === 1 && autoActivateHint) {
         const { id } = hintsPerFrame.find(({ v, id }) => v === 1)
         const [{ v: nextMode }] = await get(id, 'activateFirstHint')
         msg(currentTabTarget, 'exitHintsMode', nextMode)

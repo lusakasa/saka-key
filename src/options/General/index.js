@@ -1,7 +1,7 @@
 import { getAttributes } from 'lib/util'
 
 export default (options, config) => {
-  const backgroundOptions = {}
+  const backgroundOptions = getAttributes(options, ['autoActivateHint'])
   const clientOptions = getAttributes(options, [
     'enabled',
     'preventStealFocus',

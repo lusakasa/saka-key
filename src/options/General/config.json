@@ -2,7 +2,8 @@
   "options": [
     {
       "type": "info",
-      "text": "FIREFOX USERS: Don't use this page from the popup. Navigate to about:addons, then click 'Preferences' to open this page in a new tab"
+      "text":
+        "FIREFOX USERS: Don't use this page from the popup. Navigate to about:addons, then click 'Preferences' to open this page in a new tab"
     },
     {
       "type": "switch",
@@ -12,7 +13,7 @@
     },
     {
       "type": "checkbox",
-      "label": "Prevent Pages From Stealing Focus",
+      "label": "Prevent Pages from Stealing Focus",
       "key": "preventStealFocus",
       "default": false
     },
@@ -21,6 +22,12 @@
       "label": "Disable Page Shortcuts (for unmapped keys)",
       "key": "disablePageShortcuts",
       "visible": false,
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "label": "Automatically Active Hint (if there is exactly one)",
+      "key": "autoActivateHint",
       "default": false
     },
     {
