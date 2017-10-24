@@ -9,22 +9,28 @@ export default {
   },
   messages: {
     findHints: async (config, src) => {
-      // 1. Gather the number of link hints in each frame
-      const hintsPerFrame = await get(
-        `tab[${meta(src).tabId}]|id[${src}]`,
-        'findHints',
-        config
-      )
-      // 2. Generate Hint Strings
+      // Gather the number of hintable elements in each frame
+      const currentTabTarget = `tab[${meta(src).tabId}]|id[${src}]`
+      const hintsPerFrame = await get(currentTabTarget, 'findHints', config)
       const totalHints = hintsPerFrame.reduce((total, { v }) => total + v, 0)
-      const hintStrings = generateHintStrings(hintChars, totalHints)
-      // 3. Send each frame the strings for its hints
-      let offset = 0
-      hintsPerFrame.forEach(({ id, v }) => {
-        const nextOffset = offset + v
-        msg(id, 'renderHints', hintStrings.slice(offset, nextOffset))
-        offset = nextOffset
-      })
+      // If no hints, immediately exit Hints mode
+      if (totalHints === 0) {
+        msg(currentTabTarget, 'exitHintsMode')
+        // If exactly one hint, immediately activate it
+      } else if (totalHints === 1) {
+        const { id } = hintsPerFrame.find(({ v, id }) => v === 1)
+        const [{ v: nextMode }] = await get(id, 'activateFirstHint')
+        msg(currentTabTarget, 'exitHintsMode', nextMode)
+        // If multiple hints, trigger hint rendering
+      } else {
+        const hintStrings = generateHintStrings(hintChars, totalHints)
+        let offset = 0
+        hintsPerFrame.forEach(({ id, v }) => {
+          const nextOffset = offset + v
+          msg(id, 'renderHints', hintStrings.slice(offset, nextOffset))
+          offset = nextOffset
+        })
+      }
     },
     processKey: async (event, src) => {
       const currentTabTarget = `tab[${meta(src).tabId}]|id[${src}]`

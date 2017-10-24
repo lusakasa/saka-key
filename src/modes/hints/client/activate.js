@@ -7,8 +7,15 @@ export function configureActivate (_activator = 'openLink') {
   activator = _activator
 }
 
+/**
+ * Calls the appropriate activation function on the target hintable element.
+ * Returns the next mode
+ * @param {KeyboardEvent} event - an object that representing a keyboard event
+ * @param {HTMLElement} target 
+ * @returns {string}
+ */
 export function activate (event, target) {
-  return activators[activator](event, target)
+  return activators[activator](event, target) || 'Reset'
 }
 
 /**

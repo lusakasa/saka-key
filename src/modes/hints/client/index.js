@@ -1,5 +1,5 @@
 import { msg } from 'mosi/client'
-import { configureActivate } from './activate'
+import { configureActivate, activate } from './activate'
 import { findHints, setHintFindSettings } from './findHints'
 import {
   showHints,
@@ -53,6 +53,13 @@ export default {
     exitHintsMode: (nextMode = 'Reset') => ({ nextMode }),
     advanceHints: event => {
       const status = advanceHints(event)
+      return {
+        nextMode: 'Same',
+        value: status
+      }
+    },
+    activateFirstHint: () => {
+      const status = activate({}, hints[0].element)
       return {
         nextMode: 'Same',
         value: status
