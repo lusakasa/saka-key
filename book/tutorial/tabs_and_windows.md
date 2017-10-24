@@ -28,6 +28,7 @@ Saka Key lets you, [create](), [duplicate](), [close](), [restore](), [refresh](
 
 * **Refresh Tab** - <kbd>r</kbd><kbd>r</kbd>
 * **Refresh All Tabs** - <kbd>r</kbd><kbd>shift-r</kbd>
+* **Hard Refresh Tab (bypassing cache)** - <kbd>shift-r</kbd><kbd>shift-r</kbd>
 
 ### Switch Tabs
 
