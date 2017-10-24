@@ -24,6 +24,8 @@ To abort link activation, press <kbd>Escape</kbd> or <kbd>f</kbd> or any key tha
 * **Open Link in New Window** - <kbd>f</kbd><kbd>n</kbd>
 * **Open Link in Incognito Window** - <kbd>f</kbd><kbd>shift-n</kbd>
 * **Download Link** - <kbd>f</kbd><kbd>d</kbd>
+* **Focus Input** - <kbd>f</kbd><kbd>i</kbd>
+* **Focus Link** - <kbd>f</kbd><kbd>l</kbd>
 
 ## Options
 

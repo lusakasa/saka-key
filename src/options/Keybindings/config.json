@@ -71,12 +71,6 @@
     },
     {
       "type": "keybinding",
-      "label": "Focus Inputs",
-      "key": "focusInputs",
-      "default": []
-    },
-    {
-      "type": "keybinding",
       "label": "Open Link in Foreground Tab",
       "key": "openLinkInForegroundTab",
       "default": []
@@ -97,6 +91,12 @@
       "type": "keybinding",
       "label": "Download Link",
       "key": "downloadLink",
+      "default": []
+    },
+    {
+      "type": "keybinding",
+      "label": "Focus Input",
+      "key": "focusInput",
       "default": []
     },
     {

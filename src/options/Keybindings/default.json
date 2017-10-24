@@ -35,7 +35,7 @@
         "focusLink": [
           [{ "code": "KeyF", "key": "f" }, { "code": "KeyL", "key": "l" }]
         ],
-        "focusInputs": [
+        "focusInput": [
           [{ "code": "KeyF", "key": "f" }, { "code": "KeyI", "key": "i" }]
         ],
         "hintChars": "ajskdlgheworuvncm",
@@ -240,7 +240,7 @@
             { "code": "KeyL", "key": "l" }
           ]
         ],
-        "focusInputs": [
+        "focusInput": [
           [
             { "code": "KeyF", "key": "F", "shiftKey": true },
             { "code": "KeyI", "key": "i" }
@@ -426,7 +426,7 @@
             { "code": "KeyL", "key": "l" }
           ]
         ],
-        "focusInputs": [
+        "focusInput": [
           [
             { "code": "KeyF", "key": "ƒ", "altKey": true },
             { "code": "KeyI", "key": "i" }
@@ -539,7 +539,7 @@
         "openLinkInIncognitoWindow": [],
         "downloadLink": [],
         "focusLink": [],
-        "focusInputs": [
+        "focusInput": [
           [{ "code": "KeyG", "key": "g" }, { "code": "KeyI", "key": "i" }]
         ],
         "hintChars": "sadfjklewcmpgh",
