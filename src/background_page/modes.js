@@ -104,6 +104,10 @@ async function onOptionsChange () {
 
 chrome.storage.onChanged.addListener(onOptionsChange)
 
+browser.browserAction.onClicked.addListener(() =>
+  chrome.runtime.openOptionsPage()
+)
+
 /**
  * Sets up startup listener, sets up install listener, and executes setup routine
  * When an extension is installed, only the install listener is executed, not the
