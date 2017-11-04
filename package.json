@@ -30,16 +30,18 @@
       "webpack -w --config webpack.config.js --env=dev:chrome:benchmark --progress --colors",
     "watch:firefox":
       "webpack -w --config webpack.config.js --env=dev:firefox:benchmark --progress --colors",
+    "zip:chrome": "bestzip dev-chrome-benchmark dist/dev-chrome-benchmark/*",
+    "zip:firefox": "bestzip dev-firefox-benchmark dist/dev-firefox-benchmark/*",
     "zip:chrome-prod":
-      "bestzip zip-chrome-prod.zip dist/prod-chrome-nobenchmark/*",
+      "bestzip prod-chrome-nobenchmark dist/prod-chrome-nobenchmark/*",
     "zip:firefox-prod":
-      "bestzip zip-firefox-beta.zip dist/prod-firefox-nobenchmark/*",
+      "bestzip prod-firefox-nobenchmark dist/prod-firefox-nobenchmark/*",
     "zip:firefox-beta":
-      "bestzip zip-firefox-prod.zip dist/prod-firefox-nobenchmark-firefoxBeta/*",
-    "zip:chrome-debug":
-      "bestzip zip-chrome-debug.zip dist/dev-chrome-nobenchmark/*",
-    "zip:firefox-debug":
-      "bestzip zip-firefox-debug.zip dist/dev-firefox-nobenchmark/*",
+      "bestzip prod-firefox-nobenchmark-firefoxBeta dist/prod-firefox-nobenchmark-firefoxBeta/*",
+    "zip:chrome-benchmark":
+      "bestzip prod-chrome-benchmark dist/prod-chrome-benchmark/*",
+    "zip:firefox-benchmark":
+      "bestzip prod-firefox-benchmark dist/prod-firefox-benchmark/*",
     "prezip-all": "npm-run-all --parallel build:*",
     "zip-all": "npm-run-all --parallel zip:*",
     "book:dev": "cd book && npm run dev",
