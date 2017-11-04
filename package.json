@@ -3,6 +3,7 @@
   "description": "A keyboard interface to the web",
   "scripts": {
     "clean": "rimraf dist",
+    "a": "node helper.js dist",
     "format": "prettier-eslint 'src/**/*.js' --write",
     "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,27 +12,36 @@
     "build:prod":
       "echo \"You must specify the target browser (firefox or chrome). Example: npm run build:firefox:prod\"",
     "build:chrome":
-      "npm run clean && webpack --config webpack.config.js --env=dev:chrome:benchmark --progress --colors",
+      "webpack --config webpack.config.js --env=dev:chrome:benchmark --progress --colors",
     "build:firefox":
-      "npm run clean && webpack --config webpack.config.js --env=dev:firefox:benchmark --progress --colors",
+      "webpack --config webpack.config.js --env=dev:firefox:benchmark --progress --colors",
     "build:chrome:prod":
-      "npm run clean && webpack --config webpack.config.js --env=prod:chrome:nobenchmark --progress --colors && npm run",
+      "webpack --config webpack.config.js --env=prod:chrome:nobenchmark --progress --colors",
     "build:firefox:prod":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark --progress --colors && npm run",
+      "webpack --config webpack.config.js --env=prod:firefox:nobenchmark --progress --colors",
     "build:firefox:beta":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark:firefoxBeta --progress --colors",
+      "webpack --config webpack.config.js --env=prod:firefox:nobenchmark:firefoxBeta --progress --colors",
     "build:chrome:benchmark":
-      "npm run clean && webpack --config webpack.config.js --env=prod:chrome:benchmark --progress --colors",
+      "webpack --config webpack.config.js --env=prod:chrome:benchmark --progress --colors",
     "build:firefox:benchmark":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:benchmark --progress --colors",
-    "zip": "bestzip dist.zip dist/*",
-    "zip-chrome-prod": "bestzip dist-chrome-prod.zip dist/*",
-    "zip-firefox-prod": "bestzip dist-firefox-prod.zip dist/*",
-    "zip-firefox-beta": "bestzip dist-firefox-beta.zip dist/*",
-    "zip-chrome-debug": "bestzip dist-chrome-debug.zip dist/*",
-    "zip-firefox-debug": "bestzip dist-firefox-debug.zip dist/*",
-    "zip-all":
-      "npm run build:chrome && npm run zip-chrome-debug && npm run build:firefox && npm run zip-firefox-debug && npm run build:chrome:prod && npm run zip-chrome-prod && npm run build:firefox:prod && npm run zip-firefox-prod && npm run build:firefox:beta && npm run zip-firefox-beta",
+      "webpack --config webpack.config.js --env=prod:firefox:benchmark --progress --colors",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:chrome":
+      "webpack -w --config webpack.config.js --env=dev:chrome:benchmark --progress --colors",
+    "watch:firefox":
+      "webpack -w --config webpack.config.js --env=dev:firefox:benchmark --progress --colors",
+    "zip:chrome-prod":
+      "bestzip zip-chrome-prod.zip dist/prod-chrome-nobenchmark/*",
+    "zip:firefox-prod":
+      "bestzip zip-firefox-beta.zip dist/prod-firefox-nobenchmark/*",
+    "zip:firefox-beta":
+      "bestzip zip-firefox-prod.zip dist/prod-firefox-nobenchmark-firefoxBeta/*",
+    "zip:chrome-debug":
+      "bestzip zip-chrome-debug.zip dist/dev-chrome-nobenchmark/*",
+    "zip:firefox-debug":
+      "bestzip zip-firefox-debug.zip dist/dev-firefox-nobenchmark/*",
+    "prezip-all": "npm-run-all --parallel build:*",
+    "zip-all": "npm-run-all --parallel zip:*",
     "book:dev": "cd book && npm run dev",
     "book:build": "cd book && npm run build",
     "book:publish": "cd book && npm run publish"
@@ -56,6 +66,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.23.0",
     "bestzip": "^1.1.3",
+    "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.6.1",
@@ -72,6 +83,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^4.1.3",
     "markdown-loader": "^2.0.0",
+    "npm-run-all": "^4.1.1",
     "prettier-eslint": "^8.0.0",
     "prettier-eslint-cli": "^4.3.0",
     "rimraf": "^2.5.4",

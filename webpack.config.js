@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MinifyPlugin = require('babel-minify-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const GenerateJsonPlugin = require('generate-json-webpack-plugin')
@@ -12,10 +13,12 @@ const marked = require('marked')
 const renderer = new marked.Renderer()
 
 module.exports = function (env) {
-  console.log(env)
+  console.log('produce: ' + env)
   const [mode, platform, benchmark, firefoxBeta] = env.split(':')
   let version = require('./manifest/common.json').version
   if (firefoxBeta) version += 'beta'
+  const distribution = env.replace(/:/g, '-') // : is is a violation path on Windows
+  const outpath = path.join(__dirname, 'dist', distribution)
 
   const config = {
     entry: {
@@ -29,7 +32,7 @@ module.exports = function (env) {
       // 'popup': './src/popup/index.js',
     },
     output: {
-      path: path.join(__dirname, '/dist'),
+      path: outpath,
       filename: '[name].js',
       sourceMapFilename: '[name].js.map' // always generate source maps
     },
@@ -70,6 +73,9 @@ module.exports = function (env) {
       modules: ['./src', './node_modules']
     },
     plugins: [
+      new CleanWebpackPlugin([outpath], {
+        verbose: true
+      }),
       new webpack.optimize.ModuleConcatenationPlugin(),
       new CopyWebpackPlugin([
         {
