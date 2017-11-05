@@ -666,9 +666,9 @@
         "openLinkInBackgroundTab": [
           [{ "code": "KeyF", "key": "F", "shiftKey": true }]
         ],
-        "openLinkInForegroundTab": [],
-        "openLinkInNewWindow": [],
-        "openLinkInIncognitoWindow": [],
+        "openLinkInForegroundTab": [{ "code": "KeyE", "key": "e"},{ "code": "KeyT", "key": "t"}],
+        "openLinkInNewWindow": [{ "code": "KeyE", "key": "e"},{ "code": "KeyW", "key": "w"}],
+        "openLinkInIncognitoWindow": [{ "code": "KeyE", "key": "e"},{ "code": "KeyP", "key": "p"}],
         "downloadLink": [],
         "focusLink": [],
         "focusInput": [
