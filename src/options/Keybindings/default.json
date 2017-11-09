@@ -670,11 +670,9 @@
         "openLinkInNewWindow": [{ "code": "KeyE", "key": "e"},{ "code": "KeyW", "key": "w"}],
         "openLinkInIncognitoWindow": [{ "code": "KeyE", "key": "e"},{ "code": "KeyP", "key": "p"}],
         "downloadLink": [],
-        "focusLink": [],
-        "focusInput": [
-		  [{ "code": "KeyE", "key": "e" }, { "code": "KeyF", "key": "f" }]
-        ],
-        "hintChars": "sadfjklewcmpgh",
+        "focusLink": [[{ "code": "KeyE", "key": "e" }, { "code": "KeyF", "key": "f" }]],
+        "focusInput": [],
+        "hintChars": "fjdkslaghrueiwoncmv",
         "scrollDown": [
           [{ "code": "KeyJ", "key": "j" }]
         ],
@@ -688,11 +686,10 @@
         "scrollHalfPageDown": [[{ "code": "KeyD", "key": "d" }]],
         "scrollHalfPageUp": [[{ "code": "KeyU", "key": "u" }]],
         "scrollToBottom": [[{ "code": "KeyG", "key": "G", "shiftKey": true }]],
-        "scrollToTop": [
-          [{ "code": "KeyG", "key": "g" }, { "code": "KeyG", "key": "g" }]
+        "scrollToTop": [[{ "code": "KeyG", "key": "g" }, { "code": "KeyG", "key": "g" }]
         ],
-        "scrollToLeft": [],
-        "scrollToRight": [],
+        "scrollToLeft": [[{ "code": "Digit0", "key": "0" }],[{ "code": "Digit6", "key": "^", "shiftKey": true }]],
+        "scrollToRight": [[{ "code": "Digit4", "key": "$", "shiftKey": true }]],
         "goBack": [[{ "code": "KeyH", "key": "H", "shiftKey": true }]],
         "goForward": [[{ "code": "KeyL", "key": "L", "shiftKey": true }]],
         "nextPage": [],
@@ -759,8 +756,7 @@
         "toggleMuteAllTabs": [],
         "togglePinTab": [[{ "code": "KeyG", "key": "g" },{ "code": "KeyP", "key": "p"}]],
         "passOneKey": [[{ "code": "KeyI", "key":"I", "shiftKey": true }]],
-        "passAllKeys": [{ "code": "KeyI", "key":"i"}],
-        "exitPassMode": [],
+        "passAllKeys": [[{ "code": "KeyI", "key":"i"}]],
         "exitPassMode": [[{ "code": "Escape", "key":"Esc"}]],
         "copyURL": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
