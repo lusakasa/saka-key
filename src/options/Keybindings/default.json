@@ -666,9 +666,9 @@
         "openLinkInBackgroundTab": [
           [{ "code": "KeyF", "key": "F", "shiftKey": true }]
         ],
-        "openLinkInForegroundTab": [{ "code": "KeyE", "key": "e"},{ "code": "KeyT", "key": "t"}],
-        "openLinkInNewWindow": [{ "code": "KeyE", "key": "e"},{ "code": "KeyW", "key": "w"}],
-        "openLinkInIncognitoWindow": [{ "code": "KeyE", "key": "e"},{ "code": "KeyP", "key": "p"}],
+        "openLinkInForegroundTab": [[{ "code": "KeyE", "key": "e"}, { "code": "KeyT", "key": "t"}]],
+        "openLinkInNewWindow": [[{ "code": "KeyE", "key": "e"}, { "code": "KeyW", "key": "w"}]],
+        "openLinkInIncognitoWindow": [[{ "code": "KeyE", "key": "e"},{ "code": "KeyP", "key": "p"}]],
         "downloadLink": [],
         "focusLink": [[{ "code": "KeyE", "key": "e" }, { "code": "KeyF", "key": "f" }]],
         "focusInput": [],
@@ -750,7 +750,7 @@
         "zoomOut": [],
         "zoomReset": [],
         "refreshTab": [[{ "code": "KeyR", "key": "r" }]],
-        "refreshAllTab": [[{ "code": "KeyA", "key": "a" }, { "code": "KeyR", "key": "r" } ]],
+        "refreshAllTabs": [[{ "code": "KeyA", "key": "a" }, { "code": "KeyR", "key": "r" } ]],
         "hardRefreshTab": [[{ "code": "KeyR", "key": "R", "shiftKey": true }]],
         "toggleMuteTab": [],
         "toggleMuteAllTabs": [],
