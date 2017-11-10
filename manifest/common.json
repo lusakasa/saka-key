@@ -11,8 +11,7 @@
   "browser_action": {
     "default_icon": {
       "48": "logo.png"
-    },
-    "default_popup": "options.html"
+    }
   },
   "options_ui": {
     "page": "options.html",
