@@ -654,6 +654,119 @@
         "clipboardNewWindow": [],
         "clipboardIncognitoWindow": []
       }
+    },
+    {
+      "name": "VimFx",
+      "options": {
+        "physicalKeys": false,
+        "ignoreModifierKeys": false,
+        "toggleHelpMenu": [[{ "code": "Slash", "key": "?", "shiftKey": true }]],
+        "toggleSaka": [],
+        "openLink": [[{ "code": "KeyF", "key": "f" }]],
+        "openLinkInBackgroundTab": [
+          [{ "code": "KeyF", "key": "F", "shiftKey": true }]
+        ],
+        "openLinkInForegroundTab": [[{ "code": "KeyE", "key": "e"}, { "code": "KeyT", "key": "t"}]],
+        "openLinkInNewWindow": [[{ "code": "KeyE", "key": "e"}, { "code": "KeyW", "key": "w"}]],
+        "openLinkInIncognitoWindow": [[{ "code": "KeyE", "key": "e"},{ "code": "KeyP", "key": "p"}]],
+        "downloadLink": [],
+        "focusLink": [[{ "code": "KeyE", "key": "e" }, { "code": "KeyF", "key": "f" }]],
+        "focusInput": [],
+        "hintChars": "fjdkslaghrueiwoncmv",
+        "scrollDown": [
+          [{ "code": "KeyJ", "key": "j" }]
+        ],
+        "scrollUp": [
+          [{ "code": "KeyK", "key": "k" }]
+        ],
+        "scrollLeft": [[{ "code": "KeyH", "key": "h" }]],
+        "scrollRight": [[{ "code": "KeyL", "key": "l" }]],
+        "scrollPageDown": [[{ "code": "Space", "key": "Space" }]],
+        "scrollPageUp": [[{ "code": "Space", "key": "Space", "shiftKey": true }]],
+        "scrollHalfPageDown": [[{ "code": "KeyD", "key": "d" }]],
+        "scrollHalfPageUp": [[{ "code": "KeyU", "key": "u" }]],
+        "scrollToBottom": [[{ "code": "KeyG", "key": "G", "shiftKey": true }]],
+        "scrollToTop": [[{ "code": "KeyG", "key": "g" }, { "code": "KeyG", "key": "g" }]
+        ],
+        "scrollToLeft": [[{ "code": "Digit0", "key": "0" }],[{ "code": "Digit6", "key": "^", "shiftKey": true }]],
+        "scrollToRight": [[{ "code": "Digit4", "key": "$", "shiftKey": true }]],
+        "goBack": [[{ "code": "KeyH", "key": "H", "shiftKey": true }]],
+        "goForward": [[{ "code": "KeyL", "key": "L", "shiftKey": true }]],
+        "nextPage": [],
+        "previousPage": [],
+        "goUp": [
+          [{ "code": "KeyG", "key": "g" }, { "code": "KeyU", "key": "u" }]
+        ],
+        "goToRoot": [
+          [
+            { "code": "KeyG", "key": "g" },
+            { "code": "KeyU", "key": "U", "shiftKey": true }
+          ]
+        ],
+        "previousTab": [
+          [{ "code": "KeyJ", "key": "J", "shiftKey": true }]
+        ],
+        "nextTab": [
+          [{ "code": "KeyK", "key": "K", "shiftKey": true }]
+        ],
+        "firstTab": [
+          [{ "code": "KeyG", "key": "g" }, { "code": "Digit0", "key": "0" }]
+        ],
+        "lastTab": [
+          [
+            { "code": "KeyG", "key": "g" },
+            { "code": "Digit4", "key": "$", "shiftKey": true }
+          ]
+        ],
+        "moveTabLeft": [
+          [
+            { "code": "KeyG", "key": "g"},
+            { "code": "KeyJ", "key": "J", "shiftKey": true }
+          ]
+        ],
+        "moveTabRight": [
+          [
+            { "code": "KeyG", "key": "g"},
+            { "code": "KeyK", "key": "K", "shiftKey": true }
+          ]
+        ],
+        "moveTabFirst": [],
+        "moveTabLast": [],
+        "closeTab": [[{ "code": "KeyX", "key": "x" }]],
+        "closeOtherTabs": [[{ "code": "KeyG", "key": "g" }, {"code": "KeyX", "key": "x"}, {"code": "KeyA", "key": "a"} ]],
+        "closeRightTabs": [[{ "code": "KeyG", "key": "g" }, {"code": "KeyX", "key": "x"}, {"code": "Digit4", "key": "$", "shiftKey": true } ]],
+        "closeLeftTabs": [[{ "code": "KeyG", "key": "g" }, {"code": "KeyX", "key": "x"}, {"code": "Digit0", "key": "0" } ]],
+        "newTab": [[{ "code": "KeyT", "key": "t" }]],
+        "restoreTab": [[{ "code": "KeyX", "key": "X", "shiftKey": true }]],
+        "duplicateTab": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyT", "key": "t" }]
+        ],
+        "newWindow": [[{ "code": "KeyW", "key": "w" }]],
+        "newIncognitoWindow": [
+          [{ "code": "KeyW", "key": "W", "shiftKey": true }]
+        ],
+        "switchWindow": [],
+        "zoomIn": [],
+        "zoomOut": [],
+        "zoomReset": [],
+        "refreshTab": [[{ "code": "KeyR", "key": "r" }]],
+        "refreshAllTabs": [[{ "code": "KeyA", "key": "a" }, { "code": "KeyR", "key": "r" } ]],
+        "hardRefreshTab": [[{ "code": "KeyR", "key": "R", "shiftKey": true }]],
+        "toggleMuteTab": [],
+        "toggleMuteAllTabs": [],
+        "togglePinTab": [[{ "code": "KeyG", "key": "g" },{ "code": "KeyP", "key": "p"}]],
+        "passOneKey": [[{ "code": "KeyI", "key":"I", "shiftKey": true }]],
+        "passAllKeys": [[{ "code": "KeyI", "key":"i"}]],
+        "exitPassMode": [[{ "code": "Escape", "key":"Esc"}]],
+        "copyURL": [
+          [{ "code": "KeyY", "key": "y" }, { "code": "KeyY", "key": "y" }]
+        ],
+        "clipboardCurrentTab": [],
+        "clipboardBackgroundTab": [],
+        "clipboardForegroundTab": [],
+        "clipboardNewWindow": [],
+        "clipboardIncognitoWindow": []
+      }
     }
   ]
 }
