@@ -85,6 +85,16 @@ const activators = {
   focusLink: (event, target) => {
     target.focus()
     return 'Reset'
+  },
+  yankLink: (event, target) => {
+    const copyText = copyEvent => {
+      copyEvent.clipboardData.setData('text/plain', target)
+      copyEvent.preventDefault()
+    }
+    document.addEventListener('copy', copyText)
+    document.execCommand('Copy')
+    document.removeEventListener('copy', copyText)
+    return 'Reset'
   }
 }
 

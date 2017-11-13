@@ -28,6 +28,10 @@ export const focusLink = background('findHints', {
   filter: '*',
   activate: 'focusLink'
 })
+export const yankLink = background('findHints', {
+  filter: '*',
+  activate: 'yankLink'
+})
 export const focusInput = background('findHints', {
   filter:
     'input:not([type=submit]):not([type=button]):not([type=reset]):not([type=file]), textarea, select',
