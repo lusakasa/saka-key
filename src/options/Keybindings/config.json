@@ -397,6 +397,12 @@
       "default": []
     },
     {
+      "type": "keybinding",
+      "label": "Move Tab New Window",
+      "key": "moveTabNewWindow",
+      "default": []
+    },
+    {
       "type": "header",
       "label": "Mute Tabs"
     },

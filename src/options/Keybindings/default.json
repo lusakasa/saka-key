@@ -118,6 +118,7 @@
           [{ "code": "BracketRight", "key": "‘", "altKey": true }],
           [{ "code": "KeyO", "key": "O", "shiftKey": true }]
         ],
+        "moveTabNewWindow": [],
         "closeTab": [
           [{ "code": "KeyX", "key": "x" }, { "code": "KeyX", "key": "x" }]
         ],
@@ -315,6 +316,7 @@
           [{ "code": "BracketRight", "key": "‘", "altKey": true }],
           [{ "code": "KeyO", "key": "O", "shiftKey": true }]
         ],
+        "moveTabNewWindow": [],
         "closeTab": [[{ "code": "KeyX", "key": "x" }]],
         "closeOtherTabs": [
           [
@@ -468,6 +470,7 @@
         "moveTabRight": [[{ "code": "KeyW", "key": "w" }]],
         "moveTabFirst": [[{ "code": "KeyQ", "key": "Q", "shiftKey": true }]],
         "moveTabLast": [[{ "code": "KeyR", "key": "R", "shiftKey": true }]],
+        "moveTabNewWindow": [],
         "closeTab": [[{ "code": "KeyX", "key": "x" }]],
         "closeOtherTabs": [[{ "code": "KeyO", "key": "O", "shiftKey": true }]],
         "closeRightTabs": [[{ "code": "KeyP", "key": "P", "shiftKey": true }]],
@@ -617,6 +620,7 @@
         ],
         "moveTabFirst": [],
         "moveTabLast": [],
+        "moveTabNewWindow": [],
         "closeTab": [[{ "code": "KeyX", "key": "x" }]],
         "closeOtherTabs": [],
         "closeRightTabs": [],
@@ -732,6 +736,7 @@
         ],
         "moveTabFirst": [],
         "moveTabLast": [],
+        "moveTabNewWindow": [],
         "closeTab": [[{ "code": "KeyX", "key": "x" }]],
         "closeOtherTabs": [[{ "code": "KeyG", "key": "g" }, {"code": "KeyX", "key": "x"}, {"code": "KeyA", "key": "a"} ]],
         "closeRightTabs": [[{ "code": "KeyG", "key": "g" }, {"code": "KeyX", "key": "x"}, {"code": "Digit4", "key": "$", "shiftKey": true } ]],
