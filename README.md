@@ -12,12 +12,12 @@ Saka Key is a Chrome and Firefox extension for keyboard-only web browsing. It di
 
 Saka Key lacks some features other extensions have today, but it has the foundation to reinvent and recreate them better than ever. 
 
-Also, read the [Saka Key Handbook](https://key.saka.io) and try my in-progress search bar/tabs replacement extension [Saka](https://saka.io).
+Try [Saka](https://saka.io), read the [Saka Key Handbook](https://key.saka.io), and ask questions on [Gitter](https://gitter.im/lusakasa/Lobby).
 
 ## Install
 
 * **Chrome** - install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp).
-* **Firefox** - install the  [Development Channel](https://addons.mozilla.org/firefox/downloads/latest-beta/saka-key/addon-795406-latest.xpi?src=dp-btn-devchannel) version of Saka Key, since the [normal Firefox Marketplace listing](https://addons.mozilla.org/en-US/firefox/addon/saka-key/) lags far behind.
+* **Firefox** - install from the [Firefox Marketplace](https://addons.mozilla.org/en-US/firefox/addon/saka-key/)
 
 ### Install from Source
 
