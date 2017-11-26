@@ -15,4 +15,8 @@ To install Saka Key, scroll down to the instructions for your browser.
 
 ## Install on Firefox
 
-Coming soon
+1. Navigate to [Saka Key's page on Firefox Extensions](https://addons.mozilla.org/en-US/firefox/addon/saka-key/)
+
+2. Click `Add to Firefox`. Saka Key is now installed.
+
+3. Follow the [Setup](/tutorial/setup.md) instructions to ensure an optimal experience.
