@@ -118,7 +118,9 @@
           [{ "code": "BracketRight", "key": "‘", "altKey": true }],
           [{ "code": "KeyO", "key": "O", "shiftKey": true }]
         ],
-        "moveTabNewWindow": [],
+        "moveTabNewWindow": [
+          [{ "code": "KeyB", "key": "B", "shiftKey": true }]
+        ],
         "closeTab": [
           [{ "code": "KeyX", "key": "x" }, { "code": "KeyX", "key": "x" }]
         ],
@@ -316,7 +318,9 @@
           [{ "code": "BracketRight", "key": "‘", "altKey": true }],
           [{ "code": "KeyO", "key": "O", "shiftKey": true }]
         ],
-        "moveTabNewWindow": [],
+        "moveTabNewWindow": [
+          [{ "code": "KeyB", "key": "B", "shiftKey": true }]
+        ],
         "closeTab": [[{ "code": "KeyX", "key": "x" }]],
         "closeOtherTabs": [
           [
