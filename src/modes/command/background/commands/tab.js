@@ -56,6 +56,12 @@ export async function moveTabLast () {
   await browser.tabs.move(tab.id, { index: -1 })
 }
 
+/** Move the active tab of the current window to a new window */
+export async function moveTabNewWindow () {
+  const [tab] = await browser.tabs.query({ currentWindow: true, active: true })
+  await browser.windows.create({ tabId: tab.id })
+}
+
 /** Close the active tab of the current window */
 export async function closeTab () {
   const [tab] = await browser.tabs.query({ currentWindow: true, active: true })
