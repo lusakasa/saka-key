@@ -32,6 +32,7 @@
     "unlimitedStorage",
     "<all_urls>",
     "clipboardRead",
+    "clipboardWrite",
     "downloads"
   ],
   "web_accessible_resources": [
