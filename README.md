@@ -1,5 +1,7 @@
 # Saka Key
 
+[![Build Status](https://travis-ci.org/lusakasa/saka-key.svg?branch=master)](https://travis-ci.org/lusakasa/saka-key)
+
 Saka Key is a Chrome and Firefox extension for keyboard-only web browsing. It differs from existing extensions because
 
 1. Its state machine [architecture](http://key.saka.io/dev_docs/software_architecture) is modular, extensible, and **SIMPLE**. Its design is inspired by my frustration trying to make sense of the scattered state, confusing event handling, and dubious design of similar extensions.
