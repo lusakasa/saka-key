@@ -71,6 +71,12 @@
     },
     {
       "type": "keybinding",
+      "label": "Open Multiple Links in Background Tabs",
+      "key": "openMultipleLinksInBackgroundTabs",
+      "default": []
+    },
+    {
+      "type": "keybinding",
       "label": "Open Link in Foreground Tab",
       "key": "openLinkInForegroundTab",
       "default": []

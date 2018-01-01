@@ -1,6 +1,8 @@
 import { msg } from 'mosi/client'
 import { mouseEvent } from 'lib/dom'
 import { isMac } from 'lib/keys'
+import { hideHints } from './HintRenderer'
+import { hideVideoControls } from './video'
 
 let activator
 export function configureActivate (_activator = 'openLink') {
@@ -10,8 +12,8 @@ export function configureActivate (_activator = 'openLink') {
 /**
  * Calls the appropriate activation function on the target hintable element.
  * Returns the next mode
- * @param {KeyboardEvent} event - an object that representing a keyboard event
- * @param {HTMLElement} target 
+ * @param {KeyboardEvent} event - an object representing a keyboard event
+ * @param {HTMLElement} target
  * @returns {string}
  */
 export function activate (event, target) {
@@ -45,6 +47,19 @@ const activators = {
     }
     target.focus()
     return 'Reset'
+  },
+  openMultipleLinksInBackgroundTabs: (event, target) => {
+    mouseEvent(target, 'click', { ctrlKey: !isMac, metaKey: isMac })
+    if (SAKA_PLATFORM === 'firefox') {
+      backgroundOpenLink('openLinkInBackgroundTab', target)
+    }
+    hideHints()
+    hideVideoControls()
+    msg(1, 'findHints', {
+      filter: '*',
+      activate: 'openMultipleLinksInBackgroundTabs'
+    })
+    return 'Same'
   },
   openLinkInForegroundTab: (event, target) => {
     mouseEvent(target, 'click', {
