@@ -1,4 +1,4 @@
-** Saka Key needs a maintainer. Interested? See https://github.com/lusakasa/saka-key/issues/171
+**Saka Key needs a maintainer. Interested? See https://github.com/lusakasa/saka-key/issues/171**
 
 # Saka Key
 
