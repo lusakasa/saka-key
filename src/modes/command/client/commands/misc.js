@@ -28,3 +28,15 @@ export function passAllKeys (event) {
   event.passKeyType = 'all'
   return 'Pass'
 }
+
+export function customCommand (event, data) {
+  console.log('Custom command', data)
+
+  let global_eval = eval; // This causes the eval to happen in the global scope.
+  let func = global_eval(`
+    (event) => {
+      ${data.source}
+    }
+  `);
+  return func(event);
+}

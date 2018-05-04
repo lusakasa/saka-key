@@ -497,6 +497,10 @@
       "label": "Activate Clipboard in Incognito Window",
       "key": "clipboardIncognitoWindow",
       "default": []
+    },
+    {
+      "type": "header",
+      "label": "Custom"
     }
   ]
 }

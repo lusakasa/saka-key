@@ -1,10 +1,12 @@
 import transformGeneral from 'options/General'
 import transformKeybindings from 'options/Keybindings'
 import transformAppearance from 'options/Appearance'
+import transformCustomCommands from 'options/CustomCommands'
 const transforms = {
   General: transformGeneral,
   Keybindings: transformKeybindings,
-  Appearance: transformAppearance
+  Appearance: transformAppearance,
+  CustomCommands: transformCustomCommands
 }
 export const categories = Object.keys(transforms)
 

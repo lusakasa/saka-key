@@ -25,6 +25,7 @@ export function advanceInputTrie (event) {
     default:
       event.preventDefault()
       event.stopImmediatePropagation()
-      return commands[command](event) || 'Same'
+      let implementation = commands[command.command]
+      return implementation(event, command) || 'Same'
   }
 }

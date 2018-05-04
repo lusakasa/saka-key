@@ -7,6 +7,7 @@ import ToggleButton from './ToggleButton'
 import Switch from './Switch'
 import Checkbox from './Checkbox'
 import Color from './Color'
+import CustomCommands from './CustomCommands'
 import Text from './Text'
 import Number from './Number'
 import TextArea from './TextArea'
@@ -34,6 +35,8 @@ function optionWidgetByType (type) {
       return Switch
     case 'color':
       return Color
+    case 'customcommands':
+      return CustomCommands
     case 'text':
       return Text
     case 'number':

@@ -4,8 +4,8 @@ import { validKeyboardEvent, keyboardEventString } from 'lib/keys'
  * Given an object mapping commands to their key bindings,
  * returns the trie representation.
  */
-export function generateCommandTrie (commandMap) {
-  return JSONTrie(bindingsList(commandMap))
+export function generateCommandTrie (commandList) {
+  return JSONTrie(bindingsList(commandList))
 }
 
 /**
@@ -13,13 +13,13 @@ export function generateCommandTrie (commandMap) {
  * returns an array of (commands, binding).
  * A command may have more than one binding, or none at all.
  */
-function bindingsList (bindingsMap) {
+function bindingsList (commandList) {
   const out = []
-  for (const [command, bindings] of Object.entries(bindingsMap)) {
-    if (bindings === undefined) {
-      throw Error(`A profile is missing bindings for command ${command}`)
+  for (const command of commandList) {
+    if (command.bindings === undefined) {
+      throw Error(`A profile is missing bindings for command ${command.command}`)
     }
-    for (const binding of bindings) {
+    for (const binding of command.bindings) {
       const keySequence = binding.map(key => {
         try {
           validKeyboardEvent(key)
@@ -46,11 +46,15 @@ function JSONTrie (bindings) {
   return trie
 }
 
+function isTrieNode (thing) {
+  return typeof thing == 'object' && thing._TrieNode === true
+}
+
 function addToTrie (trie, i, key, value, binding) {
   if (key.length === 0) {
     throw Error(`${value} has a 0 length key binding`)
   } else if (i === key.length - 1) {
-    if (trie.hasOwnProperty(key[i])) {
+    if (isTrieNode(trie[key[i]])) {
       throw {
         message: `${firstLeafValue(
           trie[key[i]]
@@ -63,7 +67,7 @@ function addToTrie (trie, i, key, value, binding) {
       trie[key[i]] = value
     }
   } else {
-    if (trie.hasOwnProperty(key[i])) {
+    if (isTrieNode(trie[key[i]])) {
       if (typeof trie[key[i]] === 'object') {
         addToTrie(trie[key[i]], i + 1, key, value)
       } else {
@@ -75,7 +79,7 @@ function addToTrie (trie, i, key, value, binding) {
         }
       }
     } else {
-      addToTrie((trie[key[i]] = {}), i + 1, key, value)
+      addToTrie((trie[key[i]] = {_TrieNode: true}), i + 1, key, value)
     }
   }
 }
