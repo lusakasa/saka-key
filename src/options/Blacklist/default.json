@@ -4,7 +4,7 @@
     {
       "name": "default",
       "options": {
-        "blacklist": "google.com,duck,.io"
+        "blacklist": ""
       }
     }
   ]
