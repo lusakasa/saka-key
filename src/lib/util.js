@@ -2,7 +2,14 @@
 export function posMod (n, m) {
   return (n % m + m) % m
 }
-
+/**
+ * Return copy of object that contains only the attributes specified in key array 
+ * 
+ * @param {Object} object Object that attributes are copied from
+ * @param {String[]} keys String array of attributes to copy
+ * @throws {Error} Object does not contain attribute key
+ * @returns {Object} Object that contains only the attributes specified in key array
+ */
 export function getAttributes (object, keys) {
   const output = {}
   keys.forEach(key => {

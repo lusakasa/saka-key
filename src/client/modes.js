@@ -4,10 +4,13 @@ import {
   passDOMEventToMiddleware,
   middlewareOnOptionsChange
 } from './middleware'
+import { anyMatch } from '../lib/regex'
+import { storageGet } from '../storage/storage'
 
 /** The active mode of the Modes state machine */
 let currentMode
 let modes = {}
+let currentOptions = {}
 /** whether saka key is enabled or not */
 let enabled = false
 
@@ -164,8 +167,18 @@ export function changeMode (modeChangeEvent) {
       throw Error('Called changeMode but failed to provide a type')
     }
   }
+  let patterns = modeChangeEvent.options.blacklist
+    .split(',')
+    .map(patternStr => {
+      patternStr = patternStr.trim()
+      return new RegExp(patternStr)
+    })
   if (enabled) {
-    setMode(modeChangeEvent.mode, modeChangeEvent)
+    if (anyMatch(patterns, window.location.href) === true) {
+      setMode('Disabled', modeChangeEvent)
+    } else {
+      setMode(modeChangeEvent.mode, modeChangeEvent)
+    }
   }
 }
 

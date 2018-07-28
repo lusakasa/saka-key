@@ -1,0 +1,11 @@
+{
+  "name": "Blacklist",
+  "profiles": [
+    {
+      "name": "default",
+      "options": {
+        "blacklist": ""
+      }
+    }
+  ]
+}
