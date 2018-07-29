@@ -170,8 +170,10 @@ export function changeMode (modeChangeEvent) {
   let patterns = modeChangeEvent.options.blacklist
     .split(',')
     .map(patternStr => {
-      patternStr = patternStr.trim()
-      return new RegExp(patternStr)
+      if (patternStr !== '') {
+        patternStr = patternStr.trim()
+        return new RegExp(patternStr)
+      }
     })
   if (enabled) {
     if (anyMatch(patterns, window.location.href) === true) {
