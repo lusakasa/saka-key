@@ -1,7 +1,5 @@
 # Blacklist
 
- ** Warning: if you have a trailing comma after you last regular expression all webistes will be blacklisted **
-
 Sometimes you may perfer to use a website's default shortcuts without having to first enter [pass mode](https://key.saka.io/tutorial/pass_keys); if this is the case you can blacklist the website. When a url is blacklisted the page will behave as though Saka Key is disabled.
 
 ## Navigating to Blacklist
