@@ -125,14 +125,12 @@
       "type": "keybinding",
       "label": "Next Page",
       "key": "nextPage",
-      "visible": false,
       "default": []
     },
     {
       "type": "keybinding",
       "label": "Previous Page",
       "key": "previousPage",
-      "visible": false,
       "default": []
     },
     {
