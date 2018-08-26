@@ -4,10 +4,12 @@ export function toggleHelpMenu () {
 
 export function toggleSaka () {
   try {
-    browser.runtime.sendMessage(
-      'nbdfpcokndmapcollfpjdpjlabnibjdi',
-      'toggleSaka'
-    )
+    const extensionId =
+      SAKA_PLATFORM === 'chrome'
+        ? 'nbdfpcokndmapcollfpjdpjlabnibjdi'
+        : '{7d7cad35-2182-4457-972d-5a41a2051240}'
+    console.log('ID: ', extensionId)
+    browser.runtime.sendMessage(extensionId, 'toggleSaka')
   } catch (e) {
     console.error(
       'Install Saka at https://chrome.google.com/webstore/detail/saka/nbdfpcokndmapcollfpjdpjlabnibjdi'
