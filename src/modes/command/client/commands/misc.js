@@ -8,7 +8,6 @@ export function toggleSaka () {
       SAKA_PLATFORM === 'chrome'
         ? 'nbdfpcokndmapcollfpjdpjlabnibjdi'
         : '{7d7cad35-2182-4457-972d-5a41a2051240}'
-    console.log('ID: ', extensionId)
     browser.runtime.sendMessage(extensionId, 'toggleSaka')
   } catch (e) {
     console.error(
