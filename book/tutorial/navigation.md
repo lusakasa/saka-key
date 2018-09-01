@@ -18,3 +18,6 @@ For example, if the current URL is `key.saka.io/tutorial/zooming.html`, you can 
 Or you can jump directly to `key.saka.io`.
 
 * **Go To Root** - <kbd>u</kbd><kbd>shift-u</kbd>
+
+* **Next page** - <kbd>g</kbd><kbd>h</kbd>
+* **Previous page** - <kbd>g</kbd><kbd>f</kbd>

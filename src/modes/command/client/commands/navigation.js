@@ -1,3 +1,5 @@
+import { isURL } from '../../../../lib/url'
+
 export function goBack () {
   window.history.go(-1)
 }
@@ -8,11 +10,29 @@ export function goForward () {
 
 /* Goes to the next page (as in 2nd page of a google search) */
 export function nextPage () {
-  console.log('>> Next page')
+  const nextPageURL = document.querySelector('[rel="next"]').href
+
+  if (isURL(nextPageURL)) {
+    window.location.href = document.querySelector('[rel="next"]').href
+  } else if (SAKA_DEBUG) {
+    console.log(
+      'Element with next link does not have a valid URL. Element found: ',
+      document.querySelector('[rel="next"]')
+    )
+  }
 }
 
 export function previousPage () {
-  console.log('<< Previous page')
+  const previousPageURL = document.querySelector('[rel="next"]').href
+
+  if (isURL(previousPageURL)) {
+    window.location.href = document.querySelector('[rel="next"]').href
+  } else if (SAKA_DEBUG) {
+    console.log(
+      'Element with next link does not have a valid URL. Element found: ',
+      document.querySelector('[rel="next"]')
+    )
+  }
 }
 
 /* Goes up URL hierarchy (from /cookie_recipes/3 to /cookie_recipes) */

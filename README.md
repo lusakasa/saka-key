@@ -1,5 +1,3 @@
-**Saka Key needs a maintainer. Interested? See https://github.com/lusakasa/saka-key/issues/171**
-
 # Saka Key
 
 Saka Key is a Chrome and Firefox extension for keyboard-only web browsing. It differs from existing extensions because
@@ -45,7 +43,7 @@ npm run build:firefox:prod
 
 ## Credits
 
-MIT Licensed, Copyright (c) 2017 Sufyan Dawoodjee 
+MIT Licensed, Copyright (c) 2018 Sufyan Dawoodjee, Neil Macintyre
 
 Saka Key is inspired by and derives from
 
