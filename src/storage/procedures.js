@@ -246,8 +246,13 @@ async function renameCustomProfilesAndOptions () {
   ])
   for (const category of categories) {
     const _builtInProfiles = builtInProfiles[category]
-    const _customProfiles = customProfiles[category]
+    let _customProfiles = customProfiles[category]
     const _activeProfile = activeProfiles[category]
+
+    if (_customProfiles === undefined) {
+      _customProfiles = _builtInProfiles
+    }
+
     _customProfiles.forEach((customProfile, i) => {
       if (_builtInProfiles.indexOf(customProfile) !== -1) {
         // rename custom profile
@@ -286,6 +291,9 @@ async function correctActiveProfiles () {
     'customProfiles'
   ])
   for (const category of categories) {
+    if (customProfiles[category] === undefined) {
+      customProfiles[category] = builtInProfiles[category]
+    }
     const profiles = [...builtInProfiles[category], ...customProfiles[category]]
     if (profiles.indexOf(activeProfiles[category]) === -1) {
       activeProfiles[category] = 'default'
@@ -302,6 +310,9 @@ async function correctCustomOptions () {
     'customProfiles'
   ])
   for (const category of categories) {
+    if (customProfiles[category] === undefined) {
+      customProfiles[category] = []
+    }
     for (const profile of customProfiles[category]) {
       const key = `${category}_${profile}`
       options[key] = correctedOptions(options[key], config[category])
