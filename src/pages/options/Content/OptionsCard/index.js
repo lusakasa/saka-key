@@ -28,11 +28,17 @@ class SettingsCard extends Component {
 const mapStateToProps = (
   { builtInProfiles, activeProfiles, customProfiles },
   { category, setIsEditingName }
-) => ({
-  activeProfile: activeProfiles[category],
-  profiles: [...builtInProfiles[category], ...customProfiles[category]],
-  isBuiltInProfile:
-    builtInProfiles[category].indexOf(activeProfiles[category]) !== -1
-})
+) => {
+  if (customProfiles[category] === undefined) {
+    customProfiles[category] = builtInProfiles[category]
+  }
+
+  return {
+    activeProfile: activeProfiles[category],
+    profiles: [...builtInProfiles[category], ...customProfiles[category]],
+    isBuiltInProfile:
+      builtInProfiles[category].indexOf(activeProfiles[category]) !== -1
+  }
+}
 
 export default connect(mapStateToProps)(SettingsCard)
