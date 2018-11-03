@@ -7,6 +7,7 @@ width: 100%;
 height: 100%;
 z-index: 2147483647;
 opacity: 1;
+background-color: transparent;
 pointer-events: none;`
 
 document.documentElement.appendChild(guiRoot)
