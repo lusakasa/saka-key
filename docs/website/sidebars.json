@@ -1,0 +1,31 @@
+{
+  "docs": {
+    "About": [
+      "about/introduction",
+      "about/install",
+      "about/uninstall",
+      "about/feedback",
+      "about/help",
+      "about/release-notes"
+    ],
+    "Tutorial": [
+      "tutorial/setup",
+      "tutorial/basic",
+      "tutorial/scrolling",
+      "tutorial/zooming",
+      "tutorial/navigation",
+      "tutorial/tabs-and-windows",
+      "tutorial/clicking-and-link-hints",
+      "tutorial/pass-keys",
+      "tutorial/clipboard",
+      "tutorial/options"
+    ],
+    "Developer Documentation": [
+      "developers/setup",
+      "developers/software-architecture",
+      "developers/debugging",
+      "developers/adding-commands",
+      "developers/resources"
+    ]
+  }
+}

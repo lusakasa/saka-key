@@ -1,7 +1,7 @@
 import { h, Component } from 'preact'
 import StandardLayout from 'pages/layout/StandardLayout'
 import StandardContentCard from 'pages/layout/StandardContentCard'
-import releaseNotesHTML from '../../../book/release_notes.md'
+import releaseNotesHTML from '../../../docs/docs/about/release-notes.md'
 import './style.css'
 
 const Item = ({ title, href, description }) => (
@@ -78,7 +78,7 @@ class ReleaseNotes extends Component {
         style='margin-top: 40px; text-align: left; max-width: 600px'
         class='mdc-typography--body1'
         ref={e => {
-          e.innerHTML = releaseNotesHTML
+          e.innerHTML = '<h1>Release Notes</h1>' + releaseNotesHTML.substr(89)
         }}
       />
     )

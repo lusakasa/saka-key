@@ -39,7 +39,7 @@ npm run build:firefox:prod
 
 ## Preview
 
-![Saka Key Preview](./book/images/saka-key-preview.gif)
+![Saka Key Preview](./docs/docs/assets/saka-key-preview.gif)
 
 ## Credits
 
