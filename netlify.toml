@@ -1,0 +1,3 @@
+[build]
+  publish = "docs/website/build/saka-key"
+  command = "cd docs/website; npm install; npm run build" 

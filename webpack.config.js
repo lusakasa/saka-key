@@ -1,5 +1,4 @@
 const webpack = require('webpack')
-const MinifyPlugin = require('babel-minify-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const GenerateJsonPlugin = require('generate-json-webpack-plugin')
 const merge = require('webpack-merge')
@@ -110,7 +109,6 @@ module.exports = function (env) {
 
   if (mode === 'prod') {
     config.plugins = config.plugins.concat([
-      new MinifyPlugin(),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
         SAKA_DEBUG: JSON.stringify(false),

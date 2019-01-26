@@ -15,9 +15,9 @@
     "build:firefox":
       "npm run clean && webpack --config webpack.config.js --env=dev:firefox:benchmark --progress --colors",
     "build:chrome:prod":
-      "npm run clean && webpack --config webpack.config.js --env=prod:chrome:nobenchmark --progress --colors && npm run",
+      "npm run clean && webpack --config webpack.config.js --env=prod:chrome:nobenchmark --progress --colors",
     "build:firefox:prod":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark --progress --colors && npm run",
+      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark --progress --colors",
     "build:firefox:beta":
       "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark:firefoxBeta --progress --colors",
     "build:chrome:benchmark":
@@ -31,10 +31,7 @@
     "zip-chrome-debug": "bestzip dist-chrome-debug.zip dist/*",
     "zip-firefox-debug": "bestzip dist-firefox-debug.zip dist/*",
     "zip-all":
-      "npm run build:chrome && npm run zip-chrome-debug && npm run build:firefox && npm run zip-firefox-debug && npm run build:chrome:prod && npm run zip-chrome-prod && npm run build:firefox:prod && npm run zip-firefox-prod && npm run build:firefox:beta && npm run zip-firefox-beta",
-    "book:dev": "cd book && npm run dev",
-    "book:build": "cd book && npm run build",
-    "book:publish": "cd book && npm run publish"
+      "npm run build:chrome && npm run zip-chrome-debug && npm run build:firefox && npm run zip-firefox-debug && npm run build:chrome:prod && npm run zip-chrome-prod && npm run build:firefox:prod && npm run zip-firefox-prod && npm run build:firefox:beta && npm run zip-firefox-beta"
   },
   "bin": {
     "keyplug": "keyplug/index.js"
@@ -49,31 +46,29 @@
   "license": "MIT",
   "devDependencies": {
     "@types/chrome": "0.0.40",
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.26.3",
     "babel-loader": "^7.1.0",
-    "babel-minify-webpack-plugin": "^0.2.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.23.0",
-    "bestzip": "^1.1.3",
+    "bestzip": "^2.1.2",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.6.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-preact": "^1.1.6",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.15.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.2.0",
     "eslint-plugin-standard": "^3.0.1",
     "generate-json-webpack-plugin": "^0.2.2",
-    "gitbook-cli": "^2.3.2",
     "html-loader": "^0.4.5",
     "husky": "^0.14.3",
     "lint-staged": "^4.1.3",
     "markdown-loader": "^2.0.0",
     "prettier-eslint": "^8.0.0",
-    "prettier-eslint-cli": "^4.3.0",
+    "prettier-eslint-cli": "^4.7.1",
     "rimraf": "^2.5.4",
     "style-loader": "^0.18.2",
     "webpack": "^3.0.0",
@@ -81,7 +76,7 @@
   },
   "dependencies": {
     "compare-versions": "^3.0.1",
-    "marked": "^0.3.6",
+    "marked": "^0.6.0",
     "material-components-web": "^0.19.0",
     "mosi": "^1.6.0",
     "preact": "^7.2.0",
