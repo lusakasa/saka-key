@@ -10,15 +10,13 @@ Saka Key is a browser extension that lets you map keys on your keyboard to commo
 
 ## Commands and Bindings
 
-To use commands, you must first bind them to keys on your keyboard. Default bindings are built-in, but you have complete freedom to add, delete, and modify bindings using the [Options Page](./options.md). Commands can be bound to a single key, or a sequence of multiple keys. Commands only execute if a text input is *not* focused so that you can type text as usual.
+To use commands, you must first bind them to keys on your keyboard. Default bindings are built-in, but you have complete freedom to add, delete, and modify bindings using the [Options Page](tutorial/options.md). Commands can be bound to a single key, or a sequence of multiple keys. Commands only execute if a text input is *not* focused so that you can type text as usual.
 
 You can unfocus any text input by pressing <kbd>Escape</kbd>.
 
 ## Resources
 
 The following pages in this tutorial explain how to use Saka Key's commands.
-
-To view all the commands Saka Key provides, visit the complete [Commands List](/commands/index.md). 
 
 <!-- TODO: You can view what key each command is bound to by typing <kbd>?</kbd> or equivalently <kbd>Shift - /</kbd>  from any page. -->
 

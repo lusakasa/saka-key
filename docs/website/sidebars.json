@@ -10,7 +10,7 @@
     ],
     "Tutorial": [
       "tutorial/setup",
-      "tutorial/basic",
+      "tutorial/basics",
       "tutorial/scrolling",
       "tutorial/zooming",
       "tutorial/navigation",
@@ -18,13 +18,15 @@
       "tutorial/clicking-and-link-hints",
       "tutorial/pass-keys",
       "tutorial/clipboard",
-      "tutorial/options"
+      "tutorial/options",
+      "tutorial/blacklist"
     ],
     "Developer Documentation": [
       "developers/setup",
       "developers/software-architecture",
       "developers/debugging",
       "developers/adding-commands",
+      "developers/options",
       "developers/resources"
     ]
   }
