@@ -2,7 +2,7 @@
   "options": [
     {
       "type": "textarea",
-      "label": "Comma Seperated Regex Blacklist",
+      "label": "Comma-Separated Regex Blacklist",
       "key": "blacklist",
       "default": ""
     }
