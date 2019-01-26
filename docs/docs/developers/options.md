@@ -21,6 +21,7 @@ Clauses are combined with &&.
 
 ## Visibility Examples
 
+```json
 {
   "type": "color",
   "label": "Border Color",
@@ -32,4 +33,5 @@ Clauses are combined with &&.
   "label": "Font Size",
   "key": "fontSize",
   "visible": "useCustomCSS = false"
-},
+}
+```
