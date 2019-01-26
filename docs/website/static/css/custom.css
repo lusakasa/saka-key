@@ -20,11 +20,13 @@
 }
 
 kbd {
-  color: #3f51f5;
+  font-size: 1em;
+  line-height: 1em;
   font-family: roboto, sans-serif;
   font-weight: normal;
   letter-spacing: 0.56px;
   -webkit-font-smoothing: antialiased;
+  color: #3f51f5;
   border: 1px solid #3f51f5;
   border-bottom: 5px solid;
   border-left: 3px solid;
