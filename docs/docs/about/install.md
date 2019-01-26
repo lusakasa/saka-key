@@ -24,4 +24,4 @@ Saka Key supports Chrome and Firefox. Follow the instructions for your browser b
 
 ## Install from Source
 
-1. Follow the [Developer Setup instructions](http://key.saka.io/dev_docs/setup).
+1. Follow the [Developer Setup instructions](developers/setup.md).
