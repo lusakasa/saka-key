@@ -33,7 +33,6 @@ export function scrollPageUp () {
 export function scrollHalfPageDown () {
   scrollTo({
     top: window.pageYOffset + window.innerHeight / 2,
-    left: 0,
     behavior: behavior
   })
 }
@@ -41,7 +40,6 @@ export function scrollHalfPageDown () {
 export function scrollHalfPageUp () {
   scrollTo({
     top: window.pageYOffset - window.innerHeight / 2,
-    left: 0,
     behavior: behavior
   })
 }
