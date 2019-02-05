@@ -31,16 +31,18 @@ export function scrollPageUp () {
 }
 
 export function scrollHalfPageDown () {
-  scrollBy({
-    top: innerHeight / 2,
-    behavior
+  scrollTo({
+    top: window.pageYOffset + window.innerHeight / 2,
+    left: 0,
+    behavior: behavior
   })
 }
 
 export function scrollHalfPageUp () {
-  scrollBy({
-    top: -innerHeight / 2,
-    behavior
+  scrollTo({
+    top: window.pageYOffset - window.innerHeight / 2,
+    left: 0,
+    behavior: behavior
   })
 }
 
