@@ -22,11 +22,11 @@ The following pages in this tutorial explain how to use Saka Key's commands.
 
 ## Limitations
 
-Saka Key works on most pages, but cannot run on the Chrome Store/Firefox Marketplace or the brower's built-in pages. This is a limitation imposed by browers for security reasons.
+Saka Key works on most pages, but cannot run on the Chrome Store/Firefox Marketplace or the browser's built-in pages. This is a limitation imposed by browsers for security reasons.
 
 PDFs are also troublesome. You can use keyboard shortcuts to close PDF tabs and switch to other tabs, but you cannot scroll PDFs.
 
-To work around these limitations, I recommend learning the following brower shortcuts.
+To work around these limitations, I recommend learning the following browser shortcuts.
 
 * <kbd>ctrl-Tab</kbd> - switches to the next tab
 * <kbd>shift-ctrl-Tab</kbd> - switches to the previous tab
