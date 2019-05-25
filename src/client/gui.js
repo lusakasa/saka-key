@@ -1,6 +1,7 @@
 export const guiRoot = document.createElement('div')
 guiRoot.id = 'saka-gui-root'
-guiRoot.style = `position: absolute;
+guiRoot.style = `all: unset;
+position: absolute;
 left: 0;
 top: 0;
 width: 100%;
