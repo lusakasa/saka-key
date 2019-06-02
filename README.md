@@ -2,7 +2,7 @@
 
 Saka Key is a Chrome and Firefox extension for keyboard-only web browsing. It differs from existing extensions because
 
-1. Its state machine [architecture](http://key.saka.io/dev_docs/software_architecture) is modular, extensible, and **SIMPLE**. Its design is inspired by my frustration trying to make sense of the scattered state, confusing event handling, and dubious design of similar extensions.
+1. Its state machine [architecture](https://key.saka.io/docs/developers/software-architecture) is modular, extensible, and **SIMPLE**. Its design is inspired by my frustration trying to make sense of the scattered state, confusing event handling, and dubious design of similar extensions.
 
 2. It's not Vim. Aesthetics matter and graphical menus takes preference over text configuration. It's friendly to non-developers. You shouldn't need a tutorial, but there is one.
 
@@ -21,7 +21,7 @@ Try [Saka](https://saka.io), read the [Saka Key Handbook](https://key.saka.io), 
 
 ### Install from Source
 
-Follow the [Development Setup Guide](https://key.saka.io/dev_docs/setup.html) for detailed instructions. Otherwise:
+Follow the [Development Setup Guide](https://key.saka.io/docs/developers/setup.html) for detailed instructions. Otherwise:
 
 ```sh
 git clone https://github.com/lusakasa/saka-key.git
