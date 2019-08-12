@@ -26,17 +26,17 @@ const MainView = () => (
     <ul class='mdc-list mdc-list--two-line'>
       <Item
         title='Tutorial'
-        href='https://key.saka.io/tutorial'
+        href='https://key.saka.io/docs/tutorial'
         description='Learn how to use Saka Key'
       />
       <Item
         title='Customize'
-        href='https://key.saka.io/tutorial/options'
+        href='https://key.saka.io/docs/tutorial/options'
         description="Modify keybindings and adjust Saka Key's appearance"
       />
       <Item
         title='Feedback'
-        href='https://key.saka.io/getting_started/feedback.html'
+        href='https://key.saka.io/docs/about/feedback'
         description='Report bugs, request features, and give 5-star ratings'
       />
       <Item
