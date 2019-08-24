@@ -1,7 +1,7 @@
 import { Component, h } from 'preact'
 import { connect } from 'preact-redux'
 import {
-  storeageImportProcedure,
+  storageImportProcedure,
   storageExportProcedure,
   storageResetProcedure
 } from 'storage/procedures'
@@ -78,7 +78,7 @@ class Drawer extends Component {
               />
               <ActionButton
                 label={'Import Options from File'}
-                onClick={storeageImportProcedure}
+                onClick={storageImportProcedure}
               />
               <ActionButton
                 label={'Export Options To File'}
