@@ -3,7 +3,7 @@
  */
 
 /**
- * Determine if string matches any pattern in patterns array 
+ * Determine if string matches any pattern in patterns array
  *
  * @export
  * @param {Regex[]} patterns Array of regex patterns

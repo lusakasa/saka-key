@@ -894,7 +894,7 @@ const knownTLDs = [
   'ye',
   'yoga',
   'yokohama',
-  'youtube',
+  'YouTube',
   'yt',
   'za',
   'zip',

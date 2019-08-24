@@ -120,15 +120,15 @@ The following is an example of how configuration and options are persisted to lo
         "function": "()=>{document.location=document.location.href.replace(/^http:/,'https:')}"
       },
       {
-        "key": "toggleYoutubePlay",
-        "label": "Pause/Play Youtube",
+        "key": "toggleYouTubePlay",
+        "label": "Pause/Play YouTube",
         "function": "()=>{document.querySelector('.ytp-play-button').click()}"
       }
     ]
   },
   // Custom Config Items
   "customOptions_General": [],
-  "customOptions_Keybindings": ["switchToHTTPS", "toggleYoutubePlay"],
+  "customOptions_Keybindings": ["switchToHTTPS", "toggleYouTubePlay"],
   "customOptions_Hints": [],
   "customOptions_Custom Commands": [],
   // Custom Options
@@ -139,10 +139,10 @@ The following is an example of how configuration and options are persisted to lo
       "key": "switchToHTTPS",
       "default": []
     },
-    "toggleYoutubePlay": {
+    "toggleYouTubePlay": {
       "type": "keybinding",
-      "label": "Pause/Play Youtube",
-      "key": "toggleYoutubePlay",
+      "label": "Pause/Play YouTube",
+      "key": "toggleYouTubePlay",
       "default": []
     }
   }

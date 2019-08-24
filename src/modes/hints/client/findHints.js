@@ -116,17 +116,17 @@ function isVisible (element, clientRect) {
   // and check whether it is the element itself or one of its descendants.
   // The offset is needed to account for coordinates truncation and elements with rounded borders.
   //
-  // Coordinates truncation occcurs when using zoom. In that case, clientRect coords should be float,
+  // Coordinates truncation occurs when using zoom. In that case, clientRect coords should be float,
   // but we get integers instead. That makes so that elementFromPoint(clientRect.left, clientRect.top)
   // sometimes returns an element different from the one clientRect was obtained from.
   // So we introduce an offset to make sure elementFromPoint hits the right element.
   //
-  // For elements with a rounded topleft border, the upper left corner lies outside the element.
-  // Then, we need an offset to get to the point nearest to the upper left corner, but within border.
+  // For elements with a rounded top-left border, the upper-left corner lies outside the element.
+  // Then, we need an offset to get to the point nearest to the upper-left corner, but within border.
   const coordTruncationOffset = 2 // A value of 1 has been observed not to be enough,
   // so we heuristically choose 2, which seems to work well.
   // We know a value of 2 is still safe (lies within the element) because,
-  // from the code above, widht & height are >= 3.
+  // from the code above, width & height are >= 3.
   const radius = parseFloat(computedStyle.borderTopLeftRadius)
   const roundedBorderOffset = Math.ceil(radius * (1 - Math.sin(Math.PI / 4)))
   const offset = Math.max(coordTruncationOffset, roundedBorderOffset)

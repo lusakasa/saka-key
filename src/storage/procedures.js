@@ -62,7 +62,7 @@ export async function storageUpdateProcedure (previousVersion) {
 }
 
 // TODO: proper import validation
-export async function storeageImportProcedure () {
+export async function storageImportProcedure () {
   const input = document.createElement('input')
   input.setAttribute('type', 'file')
   input.setAttribute('accept', '.json')
@@ -228,7 +228,7 @@ async function deleteConfig () {
 /**
  * Accounts for the case where a built-in profile introduced in an update conflicts with
  * a custom profile already installed. Renames the custom profile, active profile, and action
- * if a conflic is detected.
+ * if a conflict is detected.
  */
 async function renameCustomProfilesAndOptions () {
   const {

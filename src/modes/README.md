@@ -17,7 +17,7 @@ See the [developer guide](/notes/developer_guide.md) to learn the details
 
 ## Mode Directory Structure
 
-All logic for a given mode is isolated within one directory here. 
+All logic for a given mode is isolated within one directory here.
 
 For example, Command mode is in *command*, and Hints mode is in  *hints*.
 
@@ -92,7 +92,7 @@ A mode's background component is an object with the following properties.
 interface ModeBackground {
   // called when an option is changed
   onOptionsChange?: ({ [key: string]: any }) => void,
-  // contains message callbacks wich returns the mosi get() value https://github.com/eejdoowad/mosi
+  // contains message callbacks which returns the mosi get() value https://github.com/eejdoowad/mosi
   messages?: {
     [key: string]: async (arg: any, src: number) => any
   }

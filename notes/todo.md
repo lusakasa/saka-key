@@ -36,7 +36,7 @@
     * add final key modifiers
     * Add link activation method that just hovers over a link for use with dropdown on hover menus, example: https://www.numfocus.org/blog/why-is-numpy-only-now-getting-funded/#
     * figure out why the "fork me on github" link on http://www.getferro.com isn't found
-    * revise link hints to get fewer false negatives (e.g. on youtube and other video players at certain resolutions)
+    * revise link hints to get fewer false negatives (e.g. on YouTube and other video players at certain resolutions)
     * link hint types: scroll, frames, inputs, select
     * higher quality link hints https://github.com/philc/vimium/issues/2083
     * cached link hints
@@ -67,9 +67,9 @@
 * add this feature https://www.google.com/patents/US5818423 when the patent expires
 * also add rulers http://redstartsystems.com/videos
 * lots of other cool things http://redstartsystems.com/papers
-* create an API for websites to register custom keybaord/voice events. 
+* create an API for websites to register custom keybaord/voice events.
 * add per domain settings to KeyboardEvent Input Type
-* 
+*
 * interoperation with other accessibility features, see accessibility.md
 * figure out compatibility with touch screens
   * consider pointer api instead of mouse events

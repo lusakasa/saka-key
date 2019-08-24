@@ -96,7 +96,7 @@ export function clientOptions (options) {
  * Reserved mode names:
  * * Same - returns the active mode name
  * * Reset - returns either Command or Text, depending on deepActiveElement
- * * TryText - if deepActiveElement is a text input, returns Text. 
+ * * TryText - if deepActiveElement is a text input, returns Text.
  *   Otherwise returns the active mode name
  * @param {string} name
  * @returns {string}
@@ -117,7 +117,7 @@ function modeNameTransform (name) {
 /**
  * Sets the active mode to a new mode.
  * If the active mode changes calls the old active mode's onExit() function,
- * then calls the new active modes's onEnter() function.
+ * then calls the new active mode's onEnter() function.
  * @param {string} nextMode
  */
 function setMode (nextMode, event) {
@@ -201,7 +201,7 @@ function handleDOMEvent (event) {
  * that is returned to the source node on calls to get().
  * In Saka Key, messages may optionally change the mode by returning
  * an object of the form { nextMode: string, value: any }
- * @param {*} modeMessages 
+ * @param {*} modeMessages
  */
 function wrapModeMessages (modeMessages) {
   const wrappedMessages = {}

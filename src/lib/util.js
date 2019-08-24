@@ -3,8 +3,8 @@ export function posMod (n, m) {
   return (n % m + m) % m
 }
 /**
- * Return copy of object that contains only the attributes specified in key array 
- * 
+ * Return copy of object that contains only the attributes specified in key array
+ *
  * @param {Object} object Object that attributes are copied from
  * @param {String[]} keys String array of attributes to copy
  * @throws {Error} Object does not contain attribute key

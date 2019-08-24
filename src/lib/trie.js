@@ -1,5 +1,5 @@
 /**
- * A Trie datastructure that uses a simple javascript object for its underlying storage.
+ * A Trie data structure that uses a simple javascript object for its underlying storage.
  * It doesn't generate the input tree for you, you MUST generate it yourself.
  * This trie is designed for Saka Key's needs and ISN'T general purpose.
  * An example input tree is:
