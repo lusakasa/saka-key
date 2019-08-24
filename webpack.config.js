@@ -15,7 +15,7 @@ module.exports = function (env) {
   if (firefoxBeta) version += 'beta'
 
   const config = {
-    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+    mode: env.includes('prod') ? 'production' : 'development',
     entry: {
       background_page: './src/background_page/index.js',
       content_script: './src/content_script/index.js',
