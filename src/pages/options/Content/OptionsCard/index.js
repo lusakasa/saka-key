@@ -14,7 +14,7 @@ class SettingsCard extends Component {
     return (
       <div
         id={`settings_card_${props.category}`}
-        class='mdc-card demo-card demo-card--with-avatar mode-card'
+        className='mdc-card demo-card demo-card--with-avatar mode-card'
         style={{ backgroundColor: '#ffffff' }}
       >
         <Header {...props} />

@@ -22,7 +22,7 @@ class ProfileDropdownMenu extends Component {
     return (
       <div
         id={`dropdownmenu_${category}`}
-        class='mdc-menu-anchor'
+        className='mdc-menu-anchor'
         style='margin: 0px 10px'
       >
         <button

@@ -16,7 +16,7 @@ const scrollToCard = name => () => {
 
 const ActionButton = ({ label, onClick }) => (
   <a
-    class='mdc-list-item settings-drawer-link'
+    className='mdc-list-item settings-drawer-link'
     style={{ color: 'black' }}
     onClick={onClick}
   >
@@ -52,19 +52,19 @@ class Drawer extends Component {
   render ({ categories }) {
     return (
       <div
-        class='mdc-card'
+        className='mdc-card'
         style={{
           margin: '20px 20px',
           position: 'fixed',
           overflowY: 'scroll'
         }}
       >
-        <nav class='mdc-permanent-drawer'>
-          <div class='mdc-list-group'>
-            <nav class='mdc-list'>
+        <nav className='mdc-permanent-drawer'>
+          <div className='mdc-list-group'>
+            <nav className='mdc-list'>
               {categories.map(category => (
                 <a
-                  class='mdc-list-item settings-drawer-link'
+                  className='mdc-list-item settings-drawer-link'
                   style={{ color: this.calculateLinkColor(category) }}
                   onClick={scrollToCard(category)}
                 >
@@ -73,7 +73,7 @@ class Drawer extends Component {
               ))}
               <div
                 role='separator'
-                class='mdc-list-divider'
+                className='mdc-list-divider'
                 style={{ margin: '20px' }}
               />
               <ActionButton
