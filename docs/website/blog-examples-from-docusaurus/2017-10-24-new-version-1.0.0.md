@@ -1,7 +1,7 @@
 ---
 title: New Version 1.0.0
 author: Eric Nakagawa
-authorURL: http://twitter.com/ericnakagawa
+authorURL: https://twitter.com/ericnakagawa
 authorFBID: 661277173
 ---
 

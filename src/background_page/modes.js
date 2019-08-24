@@ -22,10 +22,15 @@ export function initModes (availableModes, actions) {
 }
 
 export async function loadClient (_, src) {
-  const { sender: { frameId, tab: { index: tabIndex, id: tabId } } } = meta(src)
+  const {
+    sender: {
+      frameId,
+      tab: { index: tabIndex, id: tabId }
+    }
+  } = meta(src)
   // tabIndex === -1 indicates the tab is preloaded but not a full tab
   // attempting to execute into it is an error
-  // http://stackoverflow.com/questions/43665470/cannot-call-chrome-tabs-executescript-into-preloaded-tab-is-this-a-bug-in-chr
+  // https://stackoverflow.com/questions/43665470/cannot-call-chrome-tabs-executescript-into-preloaded-tab-is-this-a-bug-in-chr
   if (tabIndex === -1) {
     if (SAKA_DEBUG) {
       console.log(
@@ -62,7 +67,7 @@ export async function reloadAllClients () {
 
 // Requests for the full Saka Client by the client loaders of preloaded tabs are
 // denied because attempting to execute within them would cause errors.
-// http://stackoverflow.com/questions/43665470/cannot-call-chrome-tabs-executescript-into-preloaded-tab-is-this-a-bug-in-chr
+// https://stackoverflow.com/questions/43665470/cannot-call-chrome-tabs-executescript-into-preloaded-tab-is-this-a-bug-in-chr
 // Instead, the background page listens for the tabs.onReplaced event and executes
 // content_script_loader.js into all frames, which then launches another request for
 // the full Saka Client
