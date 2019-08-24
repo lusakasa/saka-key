@@ -4,8 +4,6 @@ const GenerateJsonPlugin = require('generate-json-webpack-plugin')
 const merge = require('webpack-merge')
 const path = require('path')
 
-// process.traceDeprecation = true;
-
 // markdown convert to html
 const marked = require('marked')
 const renderer = new marked.Renderer()
@@ -17,15 +15,14 @@ module.exports = function (env) {
   if (firefoxBeta) version += 'beta'
 
   const config = {
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     entry: {
       background_page: './src/background_page/index.js',
       content_script: './src/content_script/index.js',
       content_script_loader: './src/content_script/loader.js',
-      // 'help': './src/help/index.js',
       extensions: './src/pages/extensions/index.js',
       info: './src/pages/info/index.js',
       options: './src/pages/options/index.js'
-      // 'popup': './src/popup/index.js',
     },
     output: {
       path: path.join(__dirname, '/dist'),
@@ -34,16 +31,11 @@ module.exports = function (env) {
     },
     devtool: 'source-map',
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          loader: 'babel-loader',
-          query: {
-            // require.resolve needed to work with linked modules
-            // (e.g. saka-action in development) or build will fail
-            // presets: [require.resolve('babel-preset-stage-3')]
-          }
+          loader: 'babel-loader'
         },
         {
           test: /\.css$/,
@@ -69,7 +61,6 @@ module.exports = function (env) {
       modules: ['./src', './node_modules']
     },
     plugins: [
-      new webpack.optimize.ModuleConcatenationPlugin(),
       new CopyWebpackPlugin([
         {
           from: 'static'

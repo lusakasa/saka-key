@@ -1,8 +1,8 @@
 {
   "sourceMaps": true,
+  "presets": ["@babel/preset-env"],
   "plugins": [
     ["transform-react-jsx", { "pragma":"h" }],
-    ["transform-object-rest-spread"],
-    ["transform-class-properties"]
+    ["@babel/plugin-proposal-class-properties", { "loose": true }]
   ]
 }
