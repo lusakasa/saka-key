@@ -38,7 +38,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/chrome": "0.0.40",
+    "@types/chrome": "0.0.88",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.23.0",
