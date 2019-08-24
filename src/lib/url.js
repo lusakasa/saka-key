@@ -4,6 +4,7 @@
  */
 export function isURL (str) {
   try {
+    // eslint-disable-next-line no-new
     new URL(str)
   } catch (e) {
     return false

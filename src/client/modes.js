@@ -5,12 +5,10 @@ import {
   middlewareOnOptionsChange
 } from './middleware'
 import { anyMatch } from '../lib/regex'
-import { storageGet } from '../storage/storage'
 
 /** The active mode of the Modes state machine */
 let currentMode
 let modes = {}
-let currentOptions = {}
 /** whether saka key is enabled or not */
 let enabled = false
 
