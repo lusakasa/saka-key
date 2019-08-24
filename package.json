@@ -79,6 +79,6 @@
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.3.0",
     "smoothscroll-polyfill": "^0.3.5",
-    "webextension-polyfill": "git+https://github.com/lusakasa/webextension-polyfill.git"
+    "webextension-polyfill": "^0.4.0"
   }
 }
