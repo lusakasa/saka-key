@@ -56,7 +56,7 @@ class Drawer extends Component {
         style={{
           margin: '20px 20px',
           position: 'fixed',
-          overflowY: 'scroll'
+          overflowY: 'auto'
         }}
       >
         <nav className='mdc-permanent-drawer'>
