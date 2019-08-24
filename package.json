@@ -6,38 +6,31 @@
     "format": "prettier-eslint 'src/**/*.js' --write",
     "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":
-      "echo \"You must specify the target browser (firefox or chrome). Example: npm run build:firefox\"",
-    "build:prod":
-      "echo \"You must specify the target browser (firefox or chrome). Example: npm run build:firefox:prod\"",
-    "build:chrome":
-      "npm run clean && webpack --config webpack.config.js --env=dev:chrome:benchmark --progress --colors",
-    "build:firefox":
-      "npm run clean && webpack --config webpack.config.js --env=dev:firefox:benchmark --progress --colors",
-    "build:chrome:prod":
-      "npm run clean && webpack --config webpack.config.js --env=prod:chrome:nobenchmark --progress --colors",
-    "build:firefox:prod":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark --progress --colors",
-    "build:firefox:beta":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark:firefoxBeta --progress --colors",
-    "build:chrome:benchmark":
-      "npm run clean && webpack --config webpack.config.js --env=prod:chrome:benchmark --progress --colors",
-    "build:firefox:benchmark":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:benchmark --progress --colors",
+    "build": "echo \"You must specify the target browser (firefox or chrome). Example: npm run build:firefox\"",
+    "build:prod": "echo \"You must specify the target browser (firefox or chrome). Example: npm run build:firefox:prod\"",
+    "build:chrome": "npm run clean && webpack --config webpack.config.js --env=dev:chrome:benchmark --progress --colors",
+    "build:firefox": "npm run clean && webpack --config webpack.config.js --env=dev:firefox:benchmark --progress --colors",
+    "build:chrome:prod": "npm run clean && webpack --config webpack.config.js --env=prod:chrome:nobenchmark --progress --colors",
+    "build:firefox:prod": "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark --progress --colors",
+    "build:firefox:beta": "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark:firefoxBeta --progress --colors",
+    "build:chrome:benchmark": "npm run clean && webpack --config webpack.config.js --env=prod:chrome:benchmark --progress --colors",
+    "build:firefox:benchmark": "npm run clean && webpack --config webpack.config.js --env=prod:firefox:benchmark --progress --colors",
     "zip": "bestzip dist.zip dist/*",
     "zip-chrome-prod": "bestzip dist-chrome-prod.zip dist/*",
     "zip-firefox-prod": "bestzip dist-firefox-prod.zip dist/*",
     "zip-firefox-beta": "bestzip dist-firefox-beta.zip dist/*",
     "zip-chrome-debug": "bestzip dist-chrome-debug.zip dist/*",
     "zip-firefox-debug": "bestzip dist-firefox-debug.zip dist/*",
-    "zip-all":
-      "npm run build:chrome && npm run zip-chrome-debug && npm run build:firefox && npm run zip-firefox-debug && npm run build:chrome:prod && npm run zip-chrome-prod && npm run build:firefox:prod && npm run zip-firefox-prod && npm run build:firefox:beta && npm run zip-firefox-beta"
+    "zip-all": "npm run build:chrome && npm run zip-chrome-debug && npm run build:firefox && npm run zip-firefox-debug && npm run build:chrome:prod && npm run zip-chrome-prod && npm run build:firefox:prod && npm run zip-firefox-prod && npm run build:firefox:beta && npm run zip-firefox-beta"
   },
   "bin": {
     "keyplug": "keyplug/index.js"
   },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier-eslint --write", "git add"]
+    "*.{js,json,css}": [
+      "prettier-eslint --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -47,45 +40,45 @@
   "devDependencies": {
     "@types/chrome": "0.0.40",
     "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.0",
+    "babel-loader": "^7.1.5",
     "babel-plugin-transform-class-properties": "^6.23.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.23.0",
-    "bestzip": "^2.1.2",
-    "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.4",
+    "bestzip": "^2.1.4",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^0.28.11",
     "eslint": "^4.6.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-preact": "^1.1.6",
-    "eslint-plugin-import": "^2.15.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.2.0",
-    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-standard": "^3.1.0",
     "generate-json-webpack-plugin": "^0.2.2",
     "html-loader": "^0.4.5",
     "husky": "^0.14.3",
-    "lint-staged": "^4.1.3",
-    "markdown-loader": "^2.0.0",
-    "prettier-eslint": "^8.0.0",
+    "lint-staged": "^4.3.0",
+    "markdown-loader": "^2.0.2",
+    "prettier-eslint": "^8.8.2",
     "prettier-eslint-cli": "^4.7.1",
-    "rimraf": "^2.5.4",
+    "rimraf": "^2.7.1",
     "style-loader": "^0.18.2",
-    "webpack": "^3.0.0",
-    "webpack-merge": "^4.1.0"
+    "webpack": "^3.12.0",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "compare-versions": "^3.0.1",
-    "marked": "^0.6.0",
+    "compare-versions": "^3.5.1",
+    "marked": "^0.7.0",
     "material-components-web": "^0.19.0",
     "mosi": "^1.6.0",
     "preact": "^7.2.0",
-    "preact-redux": "^2.0.0",
+    "preact-context": "^1.1.3",
+    "preact-redux": "^2.1.0",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
-    "redux-thunk": "^2.2.0",
+    "redux-thunk": "^2.3.0",
     "smoothscroll-polyfill": "^0.3.5",
-    "webextension-polyfill":
-      "git+https://github.com/lusakasa/webextension-polyfill.git"
+    "webextension-polyfill": "git+https://github.com/lusakasa/webextension-polyfill.git"
   }
 }
