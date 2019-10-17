@@ -14,6 +14,9 @@
         "openLinkInBackgroundTab": [
           [{ "code": "KeyF", "key": "f" }, { "code": "KeyB", "key": "b" }]
         ],
+        "openMultipleLinksInBackgroundTabs": [
+          [{ "code": "KeyF", "key": "f" }, { "code": "KeyM", "key": "m" }]
+        ],
         "openLinkInForegroundTab": [
           [
             { "code": "KeyF", "key": "f" },
@@ -223,6 +226,12 @@
         "toggleSaka": [[{ "code": "KeyL", "key": "l" }]],
         "openLink": [[{ "code": "KeyF", "key": "f" }]],
         "openLinkInBackgroundTab": [[{ "code": "KeyA", "key": "a" }]],
+        "openMultipleLinksInBackgroundTabs": [
+          [
+            { "code": "KeyF", "key": "F", "shiftKey": true },
+            { "code": "KeyM", "key": "m" }
+          ]
+        ],
         "openLinkInForegroundTab": [
           [{ "code": "KeyA", "key": "A", "shiftKey": true }]
         ],
@@ -409,6 +418,7 @@
         "openLinkInBackgroundTab": [
           [{ "code": "KeyF", "key": "F", "shiftKey": true }]
         ],
+        "openMultipleLinksInBackgroundTabs": [],
         "openLinkInForegroundTab": [
           [
             { "code": "KeyF", "key": "ƒ", "altKey": true },
@@ -548,6 +558,7 @@
         "openLinkInBackgroundTab": [
           [{ "code": "KeyF", "key": "F", "shiftKey": true }]
         ],
+        "openMultipleLinksInBackgroundTabs": [],
         "openLinkInForegroundTab": [],
         "openLinkInNewWindow": [],
         "openLinkInIncognitoWindow": [],

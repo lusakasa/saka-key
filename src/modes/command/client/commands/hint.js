@@ -8,6 +8,10 @@ export const openLinkInBackgroundTab = background('findHints', {
   filter: '*',
   activate: 'openLinkInBackgroundTab'
 })
+export const openMultipleLinksInBackgroundTabs = background('findHints', {
+  filter: '*',
+  activate: 'openMultipleLinksInBackgroundTabs'
+})
 export const openLinkInForegroundTab = background('findHints', {
   filter: '*',
   activate: 'openLinkInForegroundTab'
