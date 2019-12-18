@@ -6,7 +6,7 @@ sidebar_label: Feedback
 
 ## Report Bugs and Request Features
 
-* The best way to report a bug or request a feature is to [submit an issue on Github](https://github.com/lusakasa/saka-key/issues).
+* The best way to report a bug or request a feature is to [submit an issue on GitHub](https://github.com/lusakasa/saka-key/issues).
 
 * Otherwise, email [saka.help@gmail.com](mailto:saka.help@gmail.com)
 

@@ -15,7 +15,7 @@ sidebar_label: Introduction
 
 Install Saka Key from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp) or [Firefox Add-ons Marketplace](https://addons.mozilla.org/en-US/firefox/addon/saka-key/).
 
-Support Saka Key by leaving feedback, [reporting bugs](https://github.com/lusakasa/saka-key/issues), or contributing on [Github](https://github.com/lusakasa/saka-key).
+Support Saka Key by leaving feedback, [reporting bugs](https://github.com/lusakasa/saka-key/issues), or contributing on [GitHub](https://github.com/lusakasa/saka-key).
 
 ## Motivation
 
