@@ -28,8 +28,8 @@ export function setHintRenderSettings ({
 @font-face {
   font-family: Roboto; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;
   font-style: normal; font-weight: normal; src: url(${chrome.runtime.getURL(
-    'Roboto-Regular.tff'
-  )}) format('tff');
+    'Roboto-Regular.ttf'
+  )}) format('ttf');
 }
 .saka-hint-body {
   ${hintCSS}
