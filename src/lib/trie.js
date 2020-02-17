@@ -26,10 +26,12 @@ export default class Trie {
     this.root = root
     this.curNode = root
   }
+
   /** Sets the root to current node to the root node */
   reset = () => {
     this.curNode = this.root
   }
+
   static INTERNAL = Symbol('INTERNAL')
   static INVALID = Symbol('INVALID')
   /**

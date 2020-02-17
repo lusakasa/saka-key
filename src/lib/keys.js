@@ -71,9 +71,9 @@ export function keyboardEventString (
  */
 function friendlyModifierString (event) {
   const { shiftKey: s, ctrlKey: c, altKey: a, metaKey: m } = event
-  return `${s ? 'shift-' : ''}${c ? 'ctrl-' : ''}${a ? 'alt-' : ''}${m
-    ? 'meta-'
-    : ''}`
+  return `${s ? 'shift-' : ''}${c ? 'ctrl-' : ''}${a ? 'alt-' : ''}${
+    m ? 'meta-' : ''
+  }`
 }
 
 /** Given a keyboard event, returns a string representation of its modifiers
@@ -97,9 +97,11 @@ export function friendlyKeyboardEventString (
   ignoreModifierKeys = _ignoreModifierKeys
 ) {
   return physicalKeys
-    ? `${friendlyModifierString(event)}${friendlyCodeStrings[event.code]
-      ? friendlyCodeStrings[event.code].value
-      : event.code}`
+    ? `${friendlyModifierString(event)}${
+        friendlyCodeStrings[event.code]
+          ? friendlyCodeStrings[event.code].value
+          : event.code
+      }`
     : ignoreModifierKeys
       ? `${event.key}`
       : `${friendlyShiftlessModifierString(event)}${event.key}`

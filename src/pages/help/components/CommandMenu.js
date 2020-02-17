@@ -12,6 +12,7 @@ class CommandMenu extends Component {
         store.dispatch(initConfig(config))
       })
   }
+
   render ({ loaded, commandCategories }) {
     if (loaded) {
       return (

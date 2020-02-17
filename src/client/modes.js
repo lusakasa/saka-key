@@ -8,7 +8,7 @@ import { anyMatch } from '../lib/regex'
 
 /** The active mode of the Modes state machine */
 let currentMode
-let modes = {}
+const modes = {}
 /** whether saka key is enabled or not */
 let enabled = false
 
@@ -155,7 +155,7 @@ function setMode (nextMode, event) {
  * it can be called by any mode with msg(0, 'changeMode', { mode, why })
  * mode - the name of the new mode
  * why - a string explaining why the mode was changed
-*/
+ */
 export function changeMode (modeChangeEvent) {
   if (SAKA_DEBUG) {
     if (!modeChangeEvent.mode) {
@@ -165,7 +165,7 @@ export function changeMode (modeChangeEvent) {
       throw Error('Called changeMode but failed to provide a type')
     }
   }
-  let patterns = modeChangeEvent.options.blacklist
+  const patterns = modeChangeEvent.options.blacklist
     .split(',')
     .map(patternStr => {
       if (patternStr !== '') {

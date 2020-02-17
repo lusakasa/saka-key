@@ -47,12 +47,16 @@ function generateHintCSS ({
     hintHorizontalTranslation +
     (hintHorizontalPlacement === 'left'
       ? 0
-      : hintHorizontalPlacement === 'right' ? -100 : -50)
+      : hintHorizontalPlacement === 'right'
+        ? -100
+        : -50)
   const translationY =
     hintVerticalTranslation +
     (hintVerticalPlacement === 'top'
       ? 0
-      : hintVerticalPlacement === 'bottom' ? -100 : -50)
+      : hintVerticalPlacement === 'bottom'
+        ? -100
+        : -50)
   return `all: initial;
 position: absolute;
 z-index: 2147483647;
@@ -69,9 +73,11 @@ font-size: ${hintFontSize}px;
 color: ${hintTextColor};
 background-color: ${hintBackgroundColor};
 border-color: ${hintBorderColor};
-${hintShadow
+${
+  hintShadow
     ? 'box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);'
-    : ''}
+    : ''
+}
 border-radius: ${hintBorderRadius}px;
 transform: translate3d(${translationX}%, ${translationY}%, 0)`
 }

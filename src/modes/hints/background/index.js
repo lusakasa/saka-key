@@ -60,7 +60,7 @@ export default {
       ? {}
       : {
         openLinkInBackgroundTab: url => {
-          let arg = {
+          const arg = {
             url: url,
             active: false
           }
@@ -74,7 +74,7 @@ export default {
             })
         },
         openLinkInForegroundTab: url => {
-          let arg = {
+          const arg = {
             url: url,
             active: true
           }
@@ -88,7 +88,7 @@ export default {
             })
         },
         openLinkInNewWindow: url => {
-          let arg = {
+          const arg = {
             url: url
           }
           browser.tabs

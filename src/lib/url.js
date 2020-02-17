@@ -49,9 +49,9 @@ export function searchEngineQueryURL (query, queryURLTemplate) {
   return i < 0
     ? `${queryURLTemplate}${encodedSearchQuery}`
     : `${queryURLTemplate.slice(
-      0,
-      i
-    )}${encodedSearchQuery}${queryURLTemplate.slice(i + 2)}`
+        0,
+        i
+      )}${encodedSearchQuery}${queryURLTemplate.slice(i + 2)}`
 }
 
 /**
@@ -87,7 +87,7 @@ export function isLikeURL (url) {
   }
   return (
     (url.every(e => /^[a-z0-9-]+$/i.test(e)) &&
-      (url.length > 1 && isTLD(url[url.length - 1]))) ||
+      url.length > 1 && isTLD(url[url.length - 1])) ||
     (url.length === 1 && url[0] === 'localhost') ||
     hasPath
   )

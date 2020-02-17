@@ -17,10 +17,9 @@ class OptionsList extends Component {
               : 'rgba(243, 188, 188, 0.44)'
         }}
       >
-        {visibleOptions.length === 0 ? (
-          'No settings to configure'
-        ) : (
-          visibleOptions.map(option => (
+        {visibleOptions.length === 0
+          ? 'No settings to configure'
+          : visibleOptions.map(option => (
             <div>
               {errors && errors[option.key] ? (
                 <ErrorItem message={errors[option.key]} />
@@ -35,8 +34,7 @@ class OptionsList extends Component {
                 setOption={setOption(this)}
               />
             </div>
-          ))
-        )}
+          ))}
       </ul>
     )
   }

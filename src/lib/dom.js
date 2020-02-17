@@ -98,7 +98,9 @@ export function mouseEvent (element, type, modifierKeys = {}) {
 export const fullscreenchange =
   SAKA_PLATFORM === 'chrome'
     ? 'webkitfullscreenchange'
-    : SAKA_PLATFORM === 'firefox' ? 'mozfullscreenchange' : 'fullscreenchange'
+    : SAKA_PLATFORM === 'firefox'
+      ? 'mozfullscreenchange'
+      : 'fullscreenchange'
 /**
  * Given a DOM event type that is vendor pre-fixed, e.g. 'mozfullscreenchange',
  * converts it to a standardized event type, e.g. 'fullscreenchange'

@@ -29,6 +29,7 @@ class Drawer extends Component {
     // the first card for which its bottom is below the viewport top
     activeCard: SAKA_PLATFORM !== 'firefox' ? 'General' : ''
   }
+
   componentDidMount () {
     if (SAKA_PLATFORM !== 'firefox') {
       document.addEventListener('scroll', event => {
@@ -46,9 +47,11 @@ class Drawer extends Component {
       })
     }
   }
+
   calculateLinkColor = cardName => {
     return cardName === this.state.activeCard ? '#3f51b5' : '#000000'
   }
+
   render ({ categories }) {
     return (
       <div

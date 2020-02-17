@@ -6,6 +6,7 @@ export default class Number extends Component {
   _onChange = e => {
     this.props.onChange(parseFloat(e.target.value))
   }
+
   render ({ label, key, value, step, min, max }) {
     const optionalProps = { step, min, max }
     const v = parseFloat(value)
@@ -17,11 +18,11 @@ export default class Number extends Component {
       <div>
         {invalidValue ? (
           <ErrorItem
-            message={`${label} must be${isNotNumber ? ' a number' : ''}${badMin
-              ? ` greater than ${min}`
-              : ''}${badMin && badMax ? ' and' : ''}${badMax
-              ? ` less than ${max}`
-              : ''}`}
+            message={`${label} must be${isNotNumber ? ' a number' : ''}${
+              badMin ? ` greater than ${min}` : ''
+            }${badMin && badMax ? ' and' : ''}${
+              badMax ? ` less than ${max}` : ''
+            }`}
           />
         ) : (
           undefined

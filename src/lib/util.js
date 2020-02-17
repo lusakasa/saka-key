@@ -1,6 +1,6 @@
 /** Returns the _positive_ modulus */
 export function posMod (n, m) {
-  return (n % m + m) % m
+  return ((n % m) + m) % m
 }
 /**
  * Return copy of object that contains only the attributes specified in key array

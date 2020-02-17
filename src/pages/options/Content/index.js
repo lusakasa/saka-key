@@ -7,7 +7,9 @@ class SettingsContent extends Component {
   render ({ categories }) {
     return (
       <main className='settings-content'>
-        {categories.map(category => <OptionsCard category={category} />)}
+        {categories.map(category => (
+          <OptionsCard category={category} />
+        ))}
       </main>
     )
   }

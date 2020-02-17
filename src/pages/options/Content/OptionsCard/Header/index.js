@@ -8,6 +8,7 @@ export default class Header extends Component {
   state = {
     isEditingName: false
   }
+
   render (props) {
     const { isEditingName } = this.state
     return (
@@ -41,6 +42,7 @@ export default class Header extends Component {
       </header>
     )
   }
+
   setIsEditingName = isEditingName => {
     this.setState({ isEditingName })
   }

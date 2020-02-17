@@ -45,8 +45,8 @@ const customProfiles = (state = {}, action) => {
     }
     case 'RENAME_PROFILE': {
       const profiles = { ...state }
-      profiles[action.category] = profiles[action.category].map(
-        profile => (profile === action.oldName ? action.newName : profile)
+      profiles[action.category] = profiles[action.category].map(profile =>
+        profile === action.oldName ? action.newName : profile
       )
       return profiles
     }

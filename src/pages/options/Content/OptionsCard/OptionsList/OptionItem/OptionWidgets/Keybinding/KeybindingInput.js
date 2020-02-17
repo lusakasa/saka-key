@@ -11,6 +11,7 @@ export default class KeyBindingInput extends Component {
       keyEvents: []
     }
   }
+
   finalizeInput = (bindings, setValue) => () => {
     const keyEvents = this.state.keyEvents
     if (keyEvents.length > 0) {
@@ -18,6 +19,7 @@ export default class KeyBindingInput extends Component {
     }
     this.setState({ active: false, keyEvents: [] })
   }
+
   handleKeyDown = (bindings, setValue) => event => {
     event.preventDefault()
     if (isModifierKey(event)) return
@@ -37,6 +39,7 @@ export default class KeyBindingInput extends Component {
       })
     })
   }
+
   render ({ value, setValue, physicalKeys, ignoreModifierKeys }) {
     return this.state.active ? (
       <div>
@@ -51,7 +54,8 @@ export default class KeyBindingInput extends Component {
             input.focus &&
             setTimeout(() => {
               input.focus()
-            }, 0)}
+            }, 0)
+          }
           className='keybinding-key keybinding-input mdc-typography--body1 mdc-elevation--z2'
           type='text'
           onKeyDown={this.handleKeyDown(value, setValue)}
