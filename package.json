@@ -41,7 +41,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/chrome": "0.0.88",
+    "@types/chrome": "0.0.95",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-class-properties": "^6.23.0",
@@ -77,7 +77,7 @@
     "@babel/preset-env": "^7.8.4",
     "ajv": "^6.11.0",
     "compare-versions": "^3.6.0",
-    "marked": "^0.7.0",
+    "marked": "^0.8.0",
     "material-components-web": "^0.19.0",
     "mosi": "^1.6.0",
     "preact": "^8.5.3",
@@ -87,6 +87,6 @@
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.3.0",
     "smoothscroll-polyfill": "^0.4.4",
-    "webextension-polyfill": "^0.4.0"
+    "webextension-polyfill": "^0.6.0"
   }
 }
