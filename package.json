@@ -80,7 +80,7 @@
     "marked": "^0.8.0",
     "material-components-web": "^0.19.0",
     "mosi": "^1.6.0",
-    "preact": "^8.5.3",
+    "preact": "^10.3.2",
     "preact-context": "^1.1.4",
     "preact-redux": "^2.1.0",
     "redux": "^4.0.5",
