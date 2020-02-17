@@ -83,7 +83,7 @@
     "preact": "^8.5.3",
     "preact-context": "^1.1.4",
     "preact-redux": "^2.1.0",
-    "redux": "^3.6.0",
+    "redux": "^4.0.5",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.3.0",
     "smoothscroll-polyfill": "^0.4.4",
