@@ -78,7 +78,7 @@ class ReleaseNotes extends Component {
         style='margin-top: 40px; text-align: left; max-width: 600px'
         className='mdc-typography--body1'
         ref={e => {
-          e.innerHTML = '<h1>Release Notes</h1>' + releaseNotesHTML.substr(89)
+          e.innerHTML = '<h1>Release Notes</h1>' + releaseNotesHTML.substr(84)
         }}
       />
     )
