@@ -1,4 +1,4 @@
-import 'lib/browser_polyfill'
+// import browser from 'lib/browser_polyfill'
 import { init } from 'mosi/core'
 import {
   loadClient,

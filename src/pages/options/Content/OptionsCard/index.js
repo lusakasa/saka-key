@@ -1,5 +1,5 @@
 import { Component, h } from 'preact'
-import { connect } from 'preact-redux'
+import { connect } from 'react-redux'
 import Header from './Header'
 // import Message from './Message';
 import OptionsList from './OptionsList'

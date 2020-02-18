@@ -58,7 +58,11 @@ module.exports = function (env) {
       ]
     },
     resolve: {
-      modules: ['./src', './node_modules']
+      modules: ['./src', './node_modules'],
+      alias: {
+        react: 'preact/compat',
+        'react-dom': 'preact/compat'
+      }
     },
     plugins: [
       new CopyWebpackPlugin([
@@ -74,6 +78,9 @@ module.exports = function (env) {
           context: 'src/options',
           from: '**/config.json',
           to: 'config_[folder].json'
+        },
+        {
+          from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js'
         }
       ]),
       new GenerateJsonPlugin(

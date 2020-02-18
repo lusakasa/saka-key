@@ -1,5 +1,5 @@
 import { render, h } from 'preact'
-import { Provider } from 'preact-redux'
+import { Provider } from 'react-redux'
 import { store } from './reducers'
 import HelpMenu from './components/HelpMenu'
 import { initialize } from 'client'

@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { Provider } from 'preact-redux'
+import { Provider } from 'react-redux'
 import store from './store'
 import StandardLayout from 'pages/layout/StandardLayout'
 import Drawer from './Drawer'

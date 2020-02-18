@@ -1,4 +1,4 @@
-import 'lib/browser_polyfill'
+// import 'lib/browser_polyfill'
 import { applyMiddleware, createStore } from 'redux'
 import { initialize as initClient } from 'client'
 import { msg } from 'mosi/client'

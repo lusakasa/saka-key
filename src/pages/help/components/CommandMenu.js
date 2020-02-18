@@ -1,5 +1,5 @@
 import { Component, h } from 'preact'
-import { connect } from 'preact-redux'
+import { connect } from 'react-redux'
 import { store } from '../reducers'
 import { initConfig } from '../actions'
 import CommandList from './CommandList'
