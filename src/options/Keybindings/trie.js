@@ -1,4 +1,5 @@
 import { validKeyboardEvent, keyboardEventString } from 'lib/keys'
+import { hasProp } from 'lib/util'
 
 /**
  * Given an object mapping commands to their key bindings,
@@ -50,7 +51,8 @@ function addToTrie (trie, i, key, value, binding) {
   if (key.length === 0) {
     throw Error(`${value} has a 0 length key binding`)
   } else if (i === key.length - 1) {
-    if (trie.hasOwnProperty(key[i])) {
+    if (hasProp(trie, key[i])) {
+      // eslint-disable-next-line no-throw-literal
       throw {
         message: `${firstLeafValue(
           trie[key[i]]
@@ -63,10 +65,11 @@ function addToTrie (trie, i, key, value, binding) {
       trie[key[i]] = value
     }
   } else {
-    if (trie.hasOwnProperty(key[i])) {
+    if (hasProp(trie, key[i])) {
       if (typeof trie[key[i]] === 'object') {
         addToTrie(trie[key[i]], i + 1, key, value)
       } else {
+        // eslint-disable-next-line no-throw-literal
         throw {
           message: `${trie[key[i]]} and ${value} have conflicting prefix`,
           type: 'conflict',

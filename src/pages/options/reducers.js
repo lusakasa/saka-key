@@ -33,9 +33,10 @@ const customProfiles = (state = {}, action) => {
     case 'INITIALIZE':
       return action.entries.customProfiles
     case 'NEW_PROFILE':
-    case 'DUPLICATE_PROFILE':
+    case 'DUPLICATE_PROFILE': {
       const profiles = state[action.category]
       return { ...state, [action.category]: [...profiles, action.profile] }
+    }
     case 'DELETE_PROFILE': {
       const profiles = { ...state }
       profiles[action.category] = profiles[action.category].filter(
@@ -83,7 +84,7 @@ const options = (state = {}, action) => {
   switch (action.type) {
     case 'INITIALIZE':
       return action.entries.options
-    case 'NEW_PROFILE':
+    case 'NEW_PROFILE': {
       const defaultOptions = {}
       for (const option of store.getState().config[action.category]) {
         if (option.key) {
@@ -94,21 +95,24 @@ const options = (state = {}, action) => {
         ...state,
         [`${action.category}_${action.profile}`]: defaultOptions
       }
-    case 'DUPLICATE_PROFILE':
+    }
+    case 'DUPLICATE_PROFILE': {
       const options = { ...state[`${action.category}_${action.baseProfile}`] }
       return { ...state, [`${action.category}_${action.profile}`]: options }
+    }
     case 'DELETE_PROFILE': {
       const options = { ...state }
       delete options[`${action.category}_${action.profile}`]
       return options
     }
-    case 'SET_OPTION':
+    case 'SET_OPTION': {
       const optionsKey = `${action.category}_${action.profile}`
       const updatedOptions = {
         ...state[optionsKey],
         [action.key]: action.value
       }
       return { ...state, [optionsKey]: updatedOptions }
+    }
     case 'RENAME_PROFILE': {
       const options = { ...state }
       options[`${action.category}_${action.newName}`] =

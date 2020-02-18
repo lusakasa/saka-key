@@ -1,4 +1,5 @@
 import friendlyCodeStrings from './friendlyCodeStrings.json'
+import { hasProp } from './util'
 
 export const isMac = navigator.appVersion.indexOf('Mac') !== -1
 
@@ -119,13 +120,13 @@ export function validKeyboardEvent (event) {
     typeof event.key === 'string' &&
     event.code &&
     typeof event.code === 'string' &&
-    (!event.hasOwnProperty('shiftKey') ||
+    (!hasProp(event, 'shiftKey') ||
       (event.shiftKey && typeof event.shiftKey === 'boolean')) &&
-    (!event.hasOwnProperty('ctrlKey') ||
+    (!hasProp(event, 'ctrlKey') ||
       (event.ctrlKey && typeof event.ctrlKey === 'boolean')) &&
-    (!event.hasOwnProperty('altKey') ||
+    (!hasProp(event, 'altKey') ||
       (event.altKey && typeof event.altKey === 'boolean')) &&
-    (!event.hasOwnProperty('metaKey') ||
+    (!hasProp(event, 'metaKey') ||
       (event.metaKey && typeof event.metaKey === 'boolean'))
   )
 }

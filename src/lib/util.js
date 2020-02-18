@@ -13,13 +13,22 @@ export function posMod (n, m) {
 export function getAttributes (object, keys) {
   const output = {}
   keys.forEach(key => {
-    if (object.hasOwnProperty(key)) {
+    if (hasProp(object, key)) {
       output[key] = object[key]
     } else {
       throw Error(`object has no attribute ${key}`)
     }
   })
   return output
+}
+
+/**
+ * Check if an object has a given property
+ * @param {Object} object Object to check
+ * @param {String} prop String property to check
+ */
+export function hasProp (object, prop) {
+  return Object.prototype.hasOwnProperty.call(object, prop)
 }
 
 export function objectMap (object, map) {
