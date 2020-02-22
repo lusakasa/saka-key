@@ -1,5 +1,5 @@
 import { Component, h } from 'preact'
-import { connect } from 'preact-redux'
+import { connect } from 'react-redux'
 import Header from './Header'
 // import Message from './Message';
 import OptionsList from './OptionsList'
@@ -14,7 +14,7 @@ class SettingsCard extends Component {
     return (
       <div
         id={`settings_card_${props.category}`}
-        class='mdc-card demo-card demo-card--with-avatar mode-card'
+        className='mdc-card demo-card demo-card--with-avatar mode-card'
         style={{ backgroundColor: '#ffffff' }}
       >
         <Header {...props} />

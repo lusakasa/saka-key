@@ -36,7 +36,7 @@ Understand the following before writing key event handlers:
 ### Scroll Events
 
 * [Scrolling on the web](https://blogs.windows.com/msedgedev/2017/03/08/scrolling-on-the-web/#FfYKZeTKypwBCAAB.97
-http://bl.ocks.org/nolanlawson/raw/dc026a93b91cb448401bb0f1cb3ebad2/)
+https://bl.ocks.org/nolanlawson/raw/dc026a93b91cb448401bb0f1cb3ebad2/)
 
 
 * [Viewport and element widths](https://developer.mozilla.org/en-US/docs/Web/API/Element/clientWidth)
@@ -47,7 +47,7 @@ http://bl.ocks.org/nolanlawson/raw/dc026a93b91cb448401bb0f1cb3ebad2/)
 * https://www.w3.org/TR/DOM-Level-3-Events/#event-flow
 * https://www.w3.org/TR/DOM-Level-3-Events/#event-flow-default-cancel
 * https://javascript.info/tutorial/bubbling-and-capturing
-* http://javascript.info/tutorial/default-browser-action
+* https://javascript.info/tutorial/default-browser-action
 
 Default actions are usually performed after the event dispatch has been completed, but in exceptional cases they may also be performed immediately before the event is dispatched.
 When an event is canceled, then the conditional default actions associated with the event is skipped (or as mentioned above, if the default actions are carried out before the dispatch, their effect is undone).
@@ -109,20 +109,20 @@ https://www.w3.org/TR/html51/editing.html#running-synthetic-click-activation-ste
 
 * iframes: [https://www.w3schools.com/html/html_iframe.asp](https://www.w3schools.com/html/html_iframe.asp)
 
-* scroll box: [http://www.quackit.com/html/codes/html_scroll_box.cfm](http://www.quackit.com/html/codes/html_scroll_box.cfm)
+* scroll box: [https://www.quackit.com/html/codes/html_scroll_box.cfm](https://www.quackit.com/html/codes/html_scroll_box.cfm)
 
 * horizontal scroll: [https://html5up.net/uploads/demos/ethereal/](https://html5up.net/uploads/demos/ethereal/)
 
-* non-standard scroll: [http://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc](http://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc)
+* non-standard scroll: [https://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc](https://androidxref.com/5.0.0_r2/xref/device/htc/flounder/init.flounder.rc)
 
 * lose focus during scroll: [https://github.com/philc/vimium/issues/1526]()
 
 * page that already provides its own bindings [https://groups.google.com/forum/#!forum/buck-build]
 
-* stupid search bar [http://www.macworld.co.uk/apple/](http://www.macworld.co.uk/apple/)
+* stupid search bar [https://www.macworld.co.uk/apple/](https://www.macworld.co.uk/apple/)
 
 * link hints shown behavior for links that appear on hover is erratic (see drawer and main area) [https://contacts.google.com/](https://contacts.google.com/)
 
-* clickable sandwich icon that isn't detected for link hints [http://aging.nautil.us/feature/218/why-you-cant-help-but-act-your-age](http://aging.nautil.us/feature/218/why-you-cant-help-but-act-your-age)
+* clickable sandwich icon that isn't detected for link hints [https://aging.nautil.us/feature/218/why-you-cant-help-but-act-your-age](https://aging.nautil.us/feature/218/why-you-cant-help-but-act-your-age)
 
-* another iframe [http://www.economist.com/news/science-and-technology/21718858-arachnids-eat-much-animal-food-all-humans-earth-ecological](http://www.economist.com/news/science-and-technology/21718858-arachnids-eat-much-animal-food-all-humans-earth-ecological)
+* another iframe [https://www.economist.com/news/science-and-technology/21718858-arachnids-eat-much-animal-food-all-humans-earth-ecological](https://www.economist.com/news/science-and-technology/21718858-arachnids-eat-much-animal-food-all-humans-earth-ecological)

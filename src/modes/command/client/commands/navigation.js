@@ -41,11 +41,11 @@ export function goUp () {
   const url = rawURL.endsWith('/')
     ? rawURL.substring(0, rawURL.length - 1)
     : rawURL
-  const urlsplit = url.split('/')
+  const urlSplit = url.split('/')
   // make sure we haven't hit the base domain yet
-  if (urlsplit.length > 3) {
-    window.location.href = urlsplit
-      .slice(0, Math.max(3, urlsplit.length - 1))
+  if (urlSplit.length > 3) {
+    window.location.href = urlSplit
+      .slice(0, Math.max(3, urlSplit.length - 1))
       .join('/')
   }
 }

@@ -8,11 +8,12 @@ export default class Header extends Component {
   state = {
     isEditingName: false
   }
+
   render (props) {
     const { isEditingName } = this.state
     return (
       <header className='mdc-toolbar saka-toolbar settings-header'>
-        <div class='mdc-toolbar__row'>
+        <div className='mdc-toolbar__row'>
           <section className='mdc-toolbar__section mdc-toolbar__section--align-start'>
             <span className='mdc-toolbar__title'>{props.category}</span>
           </section>
@@ -41,6 +42,7 @@ export default class Header extends Component {
       </header>
     )
   }
+
   setIsEditingName = isEditingName => {
     this.setState({ isEditingName })
   }

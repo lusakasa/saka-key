@@ -1,5 +1,5 @@
 import { Component, h } from 'preact'
-import { connect } from 'preact-redux'
+import { connect } from 'react-redux'
 import { friendlyKeyboardEventString } from 'lib/keys'
 
 class KeyBindingItem extends Component {

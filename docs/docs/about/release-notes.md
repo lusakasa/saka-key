@@ -4,6 +4,16 @@ title: Release Notes
 sidebar_label: Release Notes
 ---
 
+# 1.26.0
+
+* Add cookies permission for Firefox container tab
+* Open Tab in same container as current tab
+* Fix spelling and doc links
+* Fix flash of unstyled content
+* Hide scrollbar unless required
+* Update dependencies
+* Refactor for Preact X
+
 # 1.25.2
 
 * Revised Focus Input command to exclude file inputs.
@@ -65,7 +75,7 @@ sidebar_label: Release Notes
 ## 1.19.0
 
 * Firefox bug fix: opening links in foreground/background/new window now works
-* Chrome bug fix: After this release, updating/reloading Saka Key will not break commands in existing tabs 
+* Chrome bug fix: After this release, updating/reloading Saka Key will not break commands in existing tabs
 
 ## 1.18
 
@@ -117,7 +127,7 @@ sidebar_label: Release Notes
 
 ## 1.13
 
-* Improved performance and smaller bundle size resulting from the move to Webpack 3 and its Module Concatenation Plugin 
+* Improved performance and smaller bundle size resulting from the move to Webpack 3 and its Module Concatenation Plugin
 * Fixed default hint padding
 * New 'power' profile for Basic settings
 
@@ -129,7 +139,7 @@ sidebar_label: Release Notes
 ## 1.11
 
 * Link Hints can now be styled according to the target element's font size. This behavior is now the default
-* Link hint placement now ignores padding and borders 
+* Link hint placement now ignores padding and borders
 * Added settings for specifying the horizontal and vertical translation of link hints. Default is to place link hints directly to the left of the target element
 * Firefox specific bug fixes. Firefox releases will henceforth be published together with Chrome releases.
 
@@ -175,4 +185,4 @@ sidebar_label: Release Notes
 
 * Multi-frame link hints
 * Regenerate clientSettings on startup so that Saka Key doesn't break when you close then reopen your browser
-* change default link hints binding from <kbd>alt-f</kbd> to <kbd>f</kbd><kbd>f</kbd> 
+* change default link hints binding from <kbd>alt-f</kbd> to <kbd>f</kbd><kbd>f</kbd>

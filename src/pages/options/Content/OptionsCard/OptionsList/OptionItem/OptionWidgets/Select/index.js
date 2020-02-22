@@ -6,12 +6,14 @@ export default class Select extends Component {
       <li className='mdc-list-item color-widget'>
         <label>{label}</label>
         <select
-          class='mdc-select'
+          className='mdc-select'
           style='width: 176px; direction: rtl'
           value={value}
           onChange={e => onChange(e.target.value)}
         >
-          {choices.map(choice => <option value={choice}>{choice}</option>)}
+          {choices.map(choice => (
+            <option value={choice}>{choice}</option>
+          ))}
         </select>
       </li>
     )

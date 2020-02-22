@@ -157,7 +157,7 @@ export async function switchWindow () {
   console.error('switchWindow not implemented')
 }
 
-let zoomStep = 10 // for 10%
+const zoomStep = 10 // for 10%
 
 /** Zoom in the active tab of the current window */
 export async function zoomIn () {

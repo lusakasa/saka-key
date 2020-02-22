@@ -17,7 +17,7 @@ export default class TextArea extends Component {
         >
           <textarea
             id='multi-line'
-            class='mdc-textfield__input'
+            className='mdc-textfield__input'
             rows={value.split('\n').length + 3}
             cols='40'
             value={value}

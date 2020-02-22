@@ -3,7 +3,7 @@
 // based on the VimFX algorithm
 function findHints (filter, selector = '*') {
   const viewport = getWindowViewport()
-  let wrappers = []
+  const wrappers = []
   getMarkableElements(viewport, wrappers, filter, selector)
   return wrappers
 }
@@ -42,7 +42,7 @@ export function getMarkableElements (
     }
   })
 
-  for (let frame of Array.from(window.frames)) {
+  for (const frame of Array.from(window.frames)) {
     if (frame.frameElement) {
       var result
       if (
@@ -50,7 +50,7 @@ export function getMarkableElements (
       ) {
         continue
       }
-      let { viewport: frameViewport, offset } = result
+      const { viewport: frameViewport, offset } = result
       getMarkableElements(
         frame,
         frameViewport,
@@ -174,9 +174,9 @@ function getElementShape (
         // span of text floated to the left and an icon floated to the right.
         // Those are still clickable. Therefore we return the shape of the first
         // visible child instead. At least in that example, that’s the best bet.
-        for (let child of Array.from(element.children)) {
-          let childData = Object.assign({}, elementData, { element: child })
-          let shape = getElementShape(childData, tryRight)
+        for (const child of Array.from(element.children)) {
+          const childData = Object.assign({}, elementData, { element: child })
+          const shape = getElementShape(childData, tryRight)
           if (shape) {
             return shape
           }
@@ -210,13 +210,13 @@ function getElementShape (
 
   result.width = nonCoveredPointRect.width
 
-  let lefts = []
+  const lefts = []
   let smallestBottom = Infinity
-  let hasSingleRect = rects.all.length === 1
+  const hasSingleRect = rects.all.length === 1
 
   utils.walkTextNodes(element, function (node) {
     if (node.data.trim() !== '') {
-      for (let { bounds } of Array.from(node.getBoxQuads())) {
+      for (const { bounds } of Array.from(node.getBoxQuads())) {
         if (
           bounds.width < MIN_TEXTNODE_SIZE ||
           bounds.height < MIN_TEXTNODE_SIZE

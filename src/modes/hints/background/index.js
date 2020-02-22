@@ -60,13 +60,45 @@ export default {
       ? {}
       : {
         openLinkInBackgroundTab: url => {
-          browser.tabs.create({ url, active: false })
+          const arg = {
+            url: url,
+            active: false
+          }
+          browser.tabs
+            .query({ currentWindow: true, active: true })
+            .then(t => {
+              arg.cookieStoreId = t[0].cookieStoreId
+            })
+            .finally(() => {
+              browser.tabs.create(arg)
+            })
         },
         openLinkInForegroundTab: url => {
-          browser.tabs.create({ url, active: true })
+          const arg = {
+            url: url,
+            active: true
+          }
+          browser.tabs
+            .query({ currentWindow: true, active: true })
+            .then(t => {
+              arg.cookieStoreId = t[0].cookieStoreId
+            })
+            .finally(() => {
+              browser.tabs.create(arg)
+            })
         },
         openLinkInNewWindow: url => {
-          browser.windows.create({ url })
+          const arg = {
+            url: url
+          }
+          browser.tabs
+            .query({ currentWindow: true, active: true })
+            .then(t => {
+              arg.cookieStoreId = t[0].cookieStoreId
+            })
+            .finally(() => {
+              browser.windows.create(arg)
+            })
         }
       })
   }

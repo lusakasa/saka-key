@@ -18,7 +18,7 @@
   * ChromeVox https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en
   * Aria Landmarks https://github.com/matatk/landmarks
 * redo modes GUI: no more profile menu, all keys global, additional category field, options placed in category card, each card has url selection, clientSettings returns { values: { key: value}, errors: { key: error } } (background page writes errors just like values to localstorage), errors rendered above widget, background page uses per-category LRU cache to store generated clientSettings, object.assigns appropriate category pieces based on client url
-* Add version check to make sure Chrome is new enough to run, http://stackoverflow.com/questions/19294981/how-to-find-the-version-of-chrome-browser-from-my-extension, http://stackoverflow.com/questions/4900436/how-to-detect-the-installed-chrome-version
+* Add version check to make sure Chrome is new enough to run, https://stackoverflow.com/questions/19294981/how-to-find-the-version-of-chrome-browser-from-my-extension, https://stackoverflow.com/questions/4900436/how-to-detect-the-installed-chrome-version
 * add search bar at top of options GUI modes overview
 * modify info.html to show release notes and provide quick profile change
 * install listener that captures keys that will be passed to full client when it loads
@@ -35,8 +35,8 @@
     * add backspace
     * add final key modifiers
     * Add link activation method that just hovers over a link for use with dropdown on hover menus, example: https://www.numfocus.org/blog/why-is-numpy-only-now-getting-funded/#
-    * figure out why the "fork me on github" link on http://www.getferro.com isn't found
-    * revise link hints to get fewer false negatives (e.g. on youtube and other video players at certain resolutions)
+    * figure out why the "fork me on github" link on https://www.getferro.com isn't found
+    * revise link hints to get fewer false negatives (e.g. on YouTube and other video players at certain resolutions)
     * link hint types: scroll, frames, inputs, select
     * higher quality link hints https://github.com/philc/vimium/issues/2083
     * cached link hints
@@ -65,11 +65,11 @@
 * support for vi-like features
 * consider extensibility, e.g. https://github.com/philc/vimium/pull/1980#issuecomment-183223423
 * add this feature https://www.google.com/patents/US5818423 when the patent expires
-* also add rulers http://redstartsystems.com/videos
-* lots of other cool things http://redstartsystems.com/papers
-* create an API for websites to register custom keybaord/voice events. 
+* also add rulers https://redstartsystems.com/videos
+* lots of other cool things https://redstartsystems.com/papers
+* create an API for websites to register custom keybaord/voice events.
 * add per domain settings to KeyboardEvent Input Type
-* 
+*
 * interoperation with other accessibility features, see accessibility.md
 * figure out compatibility with touch screens
   * consider pointer api instead of mouse events
