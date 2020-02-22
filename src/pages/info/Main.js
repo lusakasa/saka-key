@@ -36,7 +36,7 @@ const MainView = () => (
       />
       <Item
         title='Feedback'
-        href='https://key.saka.io/about/feedback'
+        href='https://key.saka.io/docs/about/feedback'
         description='Report bugs, request features, and give 5-star ratings'
       />
       <Item
