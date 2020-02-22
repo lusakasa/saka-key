@@ -6,7 +6,7 @@ Here are some browser inconsistences that affect how it works:
 
 Only chrome supports this. Ideally, link hints will be contained within a shadow dom container to isolate them from page stylesheets. The alternative on firefox and edge is to reset all reset styles on link hints.
 
-# Keybaord events
+# Keyboard events
 
 A nightmare on firefox: https://bugzilla.mozilla.org/show_bug.cgi?id=380637
 ... a 10 year old bug discussion on the right way to handle built-in shortcut behaviors that is still alive

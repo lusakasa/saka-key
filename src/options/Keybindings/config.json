@@ -272,6 +272,12 @@
       "default": []
     },
     {
+      "type": "keybinding",
+      "label": "Duplicate Tab Incognito",
+      "key": "duplicateTabIncognito",
+      "default": []
+    },
+    {
       "type": "header",
       "label": "Create Windows"
     },

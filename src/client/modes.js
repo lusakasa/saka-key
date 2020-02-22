@@ -5,12 +5,10 @@ import {
   middlewareOnOptionsChange
 } from './middleware'
 import { anyMatch } from '../lib/regex'
-import { storageGet } from '../storage/storage'
 
 /** The active mode of the Modes state machine */
 let currentMode
-let modes = {}
-let currentOptions = {}
+const modes = {}
 /** whether saka key is enabled or not */
 let enabled = false
 
@@ -96,7 +94,7 @@ export function clientOptions (options) {
  * Reserved mode names:
  * * Same - returns the active mode name
  * * Reset - returns either Command or Text, depending on deepActiveElement
- * * TryText - if deepActiveElement is a text input, returns Text. 
+ * * TryText - if deepActiveElement is a text input, returns Text.
  *   Otherwise returns the active mode name
  * @param {string} name
  * @returns {string}
@@ -117,7 +115,7 @@ function modeNameTransform (name) {
 /**
  * Sets the active mode to a new mode.
  * If the active mode changes calls the old active mode's onExit() function,
- * then calls the new active modes's onEnter() function.
+ * then calls the new active mode's onEnter() function.
  * @param {string} nextMode
  */
 function setMode (nextMode, event) {
@@ -157,7 +155,7 @@ function setMode (nextMode, event) {
  * it can be called by any mode with msg(0, 'changeMode', { mode, why })
  * mode - the name of the new mode
  * why - a string explaining why the mode was changed
-*/
+ */
 export function changeMode (modeChangeEvent) {
   if (SAKA_DEBUG) {
     if (!modeChangeEvent.mode) {
@@ -167,7 +165,7 @@ export function changeMode (modeChangeEvent) {
       throw Error('Called changeMode but failed to provide a type')
     }
   }
-  let patterns = modeChangeEvent.options.blacklist
+  const patterns = modeChangeEvent.options.blacklist
     .split(',')
     .map(patternStr => {
       if (patternStr !== '') {
@@ -201,7 +199,7 @@ function handleDOMEvent (event) {
  * that is returned to the source node on calls to get().
  * In Saka Key, messages may optionally change the mode by returning
  * an object of the form { nextMode: string, value: any }
- * @param {*} modeMessages 
+ * @param {*} modeMessages
  */
 function wrapModeMessages (modeMessages) {
   const wrappedMessages = {}

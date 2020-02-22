@@ -5,9 +5,9 @@ import releaseNotesHTML from '../../../docs/docs/about/release-notes.md'
 import './style.css'
 
 const Item = ({ title, href, description }) => (
-  <li class='mdc-list-item'>
-    <span class='mdc-list-item__text'>
-      <span class='mdc-list-item__text__primary'>
+  <li className='mdc-list-item'>
+    <span className='mdc-list-item__text'>
+      <span className='mdc-list-item__text__primary'>
         <a
           className='mdc-button mdc-button--primary'
           href={href}
@@ -16,17 +16,17 @@ const Item = ({ title, href, description }) => (
           {title}
         </a>
       </span>
-      <span class='mdc-list-item__text__secondary'>{description}</span>
+      <span className='mdc-list-item__text__secondary'>{description}</span>
     </span>
   </li>
 )
 
 const MainView = () => (
   <section className='content-section'>
-    <ul class='mdc-list mdc-list--two-line'>
+    <ul className='mdc-list mdc-list--two-line'>
       <Item
         title='Tutorial'
-        href='https://key.saka.io/docs/tutorial'
+        href='https://key.saka.io/docs/tutorial/setup'
         description='Learn how to use Saka Key'
       />
       <Item
@@ -51,7 +51,7 @@ const MainView = () => (
 const capitalize = str => str[0].toUpperCase() + str.slice(1)
 
 const Header = () => (
-  <div class='header-section'>
+  <div className='header-section'>
     <img
       alt='Saka Key'
       className='mdc-card__media main-logo-background'
@@ -59,11 +59,11 @@ const Header = () => (
     />
     <section className='info-section'>
       <h1 className='mdc-card__title mdc-card__title--large'>Saka Key</h1>
-      <h2 class='mdc-card__subtitle'>A keyboard interface to the web</h2>
-      <h2 class='mdc-card__subtitle'>
+      <h2 className='mdc-card__subtitle'>A keyboard interface to the web</h2>
+      <h2 className='mdc-card__subtitle'>
         Version {SAKA_VERSION} for {capitalize(SAKA_PLATFORM)}
       </h2>
-      <h2 class='mdc-card__subtitle'>
+      <h2 className='mdc-card__subtitle'>
         By <a href='https://dawoodjee.com'>Sufyan</a>
       </h2>
     </section>
@@ -76,9 +76,9 @@ class ReleaseNotes extends Component {
       <section
         id='release-notes-section'
         style='margin-top: 40px; text-align: left; max-width: 600px'
-        class='mdc-typography--body1'
+        className='mdc-typography--body1'
         ref={e => {
-          e.innerHTML = '<h1>Release Notes</h1>' + releaseNotesHTML.substr(89)
+          e.innerHTML = '<h1>Release Notes</h1>' + releaseNotesHTML.substr(84)
         }}
       />
     )

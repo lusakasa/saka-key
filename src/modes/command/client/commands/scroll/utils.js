@@ -141,7 +141,7 @@ function largestScrollableElementTopDown (
 /**
  * Returns the largest scrollabel element that is the root element or one of
  * its children. Works by finding the element in the middle of the page,
- * tracing it up to the root, then walking down until a scrollable elemnt is found
+ * tracing it up to the root, then walking down until a scrollable element is found
  */
 function largestScrollableElementBottomUp () {
   const middleChild = document.elementFromPoint(innerWidth / 2, innerHeight / 2)

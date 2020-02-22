@@ -28,8 +28,8 @@ export function setHintRenderSettings ({
 @font-face {
   font-family: Roboto; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;
   font-style: normal; font-weight: normal; src: url(${chrome.runtime.getURL(
-    'Roboto-Regular.tff'
-  )}) format('tff');
+    'Roboto-Regular.ttf'
+  )}) format('ttf');
 }
 .saka-hint-body {
   ${hintCSS}
@@ -51,6 +51,7 @@ class HintRenderer extends Component {
       inputKeys: []
     }
   }
+
   componentDidMount () {
     showHints = (hints, hintStrings) => {
       const labeledHints = hints.map((hint, i) =>
@@ -62,6 +63,7 @@ class HintRenderer extends Component {
         inputKeys: ''
       })
     }
+
     advanceHints = event => {
       const hints = this.state.hints
       const inputKeys = this.state.inputKeys + event.key
@@ -74,9 +76,11 @@ class HintRenderer extends Component {
         inputKeys
       })
       return filteredHints.length === 1 &&
-      inputKeys === filteredHints[0].hintString
+        inputKeys === filteredHints[0].hintString
         ? activate(event, filteredHints[0].element)
-        : filteredHints.length === 0 ? 'Filtered' : 'Same'
+        : filteredHints.length === 0
+          ? 'Filtered'
+          : 'Same'
     }
     hideHints = () => {
       this.setState({
@@ -86,6 +90,7 @@ class HintRenderer extends Component {
       })
     }
   }
+
   render () {
     return (
       <div style={{ position: 'absolute', left: '0', top: '0' }}>
@@ -120,30 +125,32 @@ const Hint = ({
   <div
     className='saka-hint-body'
     style={{
-      left: `${horizontalPlacement === 'left'
-        ? window.scrollX + rect.left
-        : horizontalPlacement === 'right'
+      left: `${
+        horizontalPlacement === 'left'
+          ? window.scrollX + rect.left
+          : horizontalPlacement === 'right'
           ? window.scrollX + rect.left + rect.width
-          : window.scrollX + rect.left + rect.width / 2}px`,
-      top: `${verticalPlacement === 'top'
-        ? window.scrollY + rect.top
-        : verticalPlacement === 'bottom'
+          : window.scrollX + rect.left + rect.width / 2
+      }px`,
+      top: `${
+        verticalPlacement === 'top'
+          ? window.scrollY + rect.top
+          : verticalPlacement === 'bottom'
           ? window.scrollY + rect.top + rect.height
-          : window.scrollY + rect.top + rect.height / 2}px`,
+          : window.scrollY + rect.top + rect.height / 2
+      }px`,
       fontSize: generateFontSize(computedStyle)
     }}
   >
-    {hintString
-      .split('')
-      .map((char, i) => (
-        <span
-          className={
-            i >= seen ? 'saka-hint-normal-char' : 'saka-hint-active-char'
-          }
-        >
-          {char}
-        </span>
-      ))}
+    {hintString.split('').map((char, i) => (
+      <span
+        className={
+          i >= seen ? 'saka-hint-normal-char' : 'saka-hint-active-char'
+        }
+      >
+        {char}
+      </span>
+    ))}
   </div>
 )
 

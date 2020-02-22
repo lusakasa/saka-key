@@ -6,38 +6,34 @@
     "format": "prettier-eslint 'src/**/*.js' --write",
     "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":
-      "echo \"You must specify the target browser (firefox or chrome). Example: npm run build:firefox\"",
-    "build:prod":
-      "echo \"You must specify the target browser (firefox or chrome). Example: npm run build:firefox:prod\"",
-    "build:chrome":
-      "npm run clean && webpack --config webpack.config.js --env=dev:chrome:benchmark --progress --colors",
-    "build:firefox":
-      "npm run clean && webpack --config webpack.config.js --env=dev:firefox:benchmark --progress --colors",
-    "build:chrome:prod":
-      "npm run clean && webpack --config webpack.config.js --env=prod:chrome:nobenchmark --progress --colors",
-    "build:firefox:prod":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark --progress --colors",
-    "build:firefox:beta":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:nobenchmark:firefoxBeta --progress --colors",
-    "build:chrome:benchmark":
-      "npm run clean && webpack --config webpack.config.js --env=prod:chrome:benchmark --progress --colors",
-    "build:firefox:benchmark":
-      "npm run clean && webpack --config webpack.config.js --env=prod:firefox:benchmark --progress --colors",
+    "build": "echo \"You must specify the target browser (firefox or chrome). Example: npm run build:firefox\"",
+    "build:prod": "echo \"You must specify the target browser (firefox or chrome). Example: npm run build:firefox:prod\"",
+    "build:chrome": "npm run clean && webpack --env=dev:chrome:benchmark --progress",
+    "build:firefox": "npm run clean && webpack --env=dev:firefox:benchmark --progress",
+    "build:chrome:prod": "npm run clean && webpack --env=prod:chrome:nobenchmark --progress",
+    "build:firefox:prod": "npm run clean && webpack --env=prod:firefox:nobenchmark --progress",
+    "build:firefox:beta": "npm run clean && webpack --env=prod:firefox:nobenchmark:firefoxBeta --progress",
+    "build:chrome:benchmark": "npm run clean && webpack --env=prod:chrome:benchmark --progress",
+    "build:firefox:benchmark": "npm run clean && webpack --env=prod:firefox:benchmark --progress",
     "zip": "bestzip dist.zip dist/*",
     "zip-chrome-prod": "bestzip dist-chrome-prod.zip dist/*",
     "zip-firefox-prod": "bestzip dist-firefox-prod.zip dist/*",
     "zip-firefox-beta": "bestzip dist-firefox-beta.zip dist/*",
     "zip-chrome-debug": "bestzip dist-chrome-debug.zip dist/*",
     "zip-firefox-debug": "bestzip dist-firefox-debug.zip dist/*",
-    "zip-all":
-      "npm run build:chrome && npm run zip-chrome-debug && npm run build:firefox && npm run zip-firefox-debug && npm run build:chrome:prod && npm run zip-chrome-prod && npm run build:firefox:prod && npm run zip-firefox-prod && npm run build:firefox:beta && npm run zip-firefox-beta"
+    "zip-all": "npm run build:chrome && npm run zip-chrome-debug && npm run build:firefox && npm run zip-firefox-debug && npm run build:chrome:prod && npm run zip-chrome-prod && npm run build:firefox:prod && npm run zip-firefox-prod && npm run build:firefox:beta && npm run zip-firefox-beta"
   },
+  "browserslist": [
+    "last 2 chrome version",
+    "last 2 firefox version"
+  ],
   "bin": {
     "keyplug": "keyplug/index.js"
   },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier-eslint --write", "git add"]
+    "*.{js,json,css}": [
+      "prettier-eslint --write"
+    ]
   },
   "repository": {
     "type": "git",
@@ -45,47 +41,51 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/chrome": "0.0.40",
+    "@types/chrome": "0.0.95",
     "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.0",
+    "babel-loader": "^8.0.6",
     "babel-plugin-transform-class-properties": "^6.23.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.23.0",
-    "bestzip": "^2.1.2",
-    "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.4",
-    "eslint": "^4.6.1",
-    "eslint-config-standard": "^10.2.1",
+    "bestzip": "^2.1.5",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-preact": "^1.1.6",
-    "eslint-plugin-import": "^2.15.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.2.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "generate-json-webpack-plugin": "^0.2.2",
-    "html-loader": "^0.4.5",
-    "husky": "^0.14.3",
-    "lint-staged": "^4.1.3",
-    "markdown-loader": "^2.0.0",
-    "prettier-eslint": "^8.0.0",
-    "prettier-eslint-cli": "^4.7.1",
-    "rimraf": "^2.5.4",
-    "style-loader": "^0.18.2",
-    "webpack": "^3.0.0",
-    "webpack-merge": "^4.1.0"
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-standard": "^4.0.1",
+    "generate-json-webpack-plugin": "^0.3.1",
+    "html-loader": "^0.5.5",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "markdown-loader": "^5.1.0",
+    "prettier-eslint": "^9.0.1",
+    "prettier-eslint-cli": "^5.0.0",
+    "rimraf": "^3.0.2",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "compare-versions": "^3.0.1",
-    "marked": "^0.6.0",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "ajv": "^6.11.0",
+    "compare-versions": "^3.6.0",
+    "marked": "^0.8.0",
     "material-components-web": "^0.19.0",
     "mosi": "^1.6.0",
-    "preact": "^7.2.0",
-    "preact-redux": "^2.0.0",
-    "redux": "^3.6.0",
+    "preact": "^10.3.2",
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.5",
     "redux-logger": "^3.0.1",
-    "redux-thunk": "^2.2.0",
-    "smoothscroll-polyfill": "^0.3.5",
-    "webextension-polyfill":
-      "git+https://github.com/lusakasa/webextension-polyfill.git"
+    "redux-thunk": "^2.3.0",
+    "smoothscroll-polyfill": "^0.4.4",
+    "webextension-polyfill": "^0.6.0"
   }
 }

@@ -1,4 +1,4 @@
-import 'lib/browser_polyfill'
+// import 'lib/browser_polyfill'
 import Trie from 'lib/trie'
 import * as commands from './commands'
 import { keyboardEventString } from 'lib/keys'

@@ -11,6 +11,7 @@ export default class Keybinding extends Component {
     super()
     this.state = { active: false }
   }
+
   render ({
     label,
     key,

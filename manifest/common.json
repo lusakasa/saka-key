@@ -1,12 +1,12 @@
 {
   "name": "Saka Key",
-  "version": "1.25.5",
-  "author": "Sufyan Dawoodjee, Neil Macintyre",
+  "version": "1.26.0",
+  "author": "Brandon Kalinowski, Sufyan Dawoodjee, Neil Macintyre",
   "description": "A keyboard interface to the web",
   "manifest_version": 2,
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "background": {
-    "scripts": ["background_page.js"]
+    "scripts": ["browser-polyfill.js","background_page.js"]
   },
   "browser_action": {
     "default_icon": {
@@ -41,7 +41,7 @@
     "content_script_loader.js.map",
     "options.js.map",
     "info.js.map",
-    "Roboto-Regular.tff",
+    "Roboto-Regular.ttf",
     "config_basic.json",
     "config_command.json",
     "config_developer.json",

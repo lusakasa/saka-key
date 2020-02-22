@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { connect } from 'preact-redux'
+import { connect } from 'react-redux'
 import { setActiveProfile } from 'pages/options/actions'
 
 const Select = ({ profiles, activeProfile, setActiveProfile }) => (

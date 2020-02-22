@@ -149,6 +149,9 @@
         "newTab": [[{ "code": "KeyT", "key": "t" }]],
         "restoreTab": [[{ "code": "KeyT", "key": "T", "shiftKey": true }]],
         "duplicateTab": [[{ "code": "KeyB", "key": "b" }]],
+        "duplicateTabIncognito": [
+          [{ "code": "KeyB", "key": "b", "altKey": true }]
+        ],
         "newWindow": [[{ "code": "KeyN", "key": "n" }]],
         "newIncognitoWindow": [
           [{ "code": "KeyN", "key": "N", "shiftKey": true }]

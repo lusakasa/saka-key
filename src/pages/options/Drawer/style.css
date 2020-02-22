@@ -1,3 +1,6 @@
 .settings-drawer-link {
   cursor: pointer;
 }
+:root {
+  overflow-x: hidden;
+}

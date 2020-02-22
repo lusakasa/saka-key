@@ -40,7 +40,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { href: 'https://github.com/lusakasa/saka-key', label: 'Github' },
+    { href: 'https://github.com/lusakasa/saka-key', label: 'GitHub' },
     {
       href:
         'https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp',

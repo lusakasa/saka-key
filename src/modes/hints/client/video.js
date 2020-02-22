@@ -8,7 +8,7 @@ let timers = []
  */
 export function showVideoControls () {
   document.querySelectorAll('video').forEach(video => {
-    // TODO: come up with a fix for youtube and netflix so that controlss
+    // TODO: come up with a fix for YouTube and Netflix so that controls
     // consistently appear when link hints are rendered, esp. in fullscreen
 
     // const rect = video.getBoundingClientRect();

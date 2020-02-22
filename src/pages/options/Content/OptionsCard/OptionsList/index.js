@@ -1,5 +1,5 @@
 import { Component, h } from 'preact'
-import { connect } from 'preact-redux'
+import { connect } from 'react-redux'
 import OptionItem from './OptionItem'
 import ErrorItem from './ErrorItem'
 import transformOptions from 'storage/transform'
@@ -17,10 +17,9 @@ class OptionsList extends Component {
               : 'rgba(243, 188, 188, 0.44)'
         }}
       >
-        {visibleOptions.length === 0 ? (
-          'No settings to configure'
-        ) : (
-          visibleOptions.map(option => (
+        {visibleOptions.length === 0
+          ? 'No settings to configure'
+          : visibleOptions.map(option => (
             <div>
               {errors && errors[option.key] ? (
                 <ErrorItem message={errors[option.key]} />
@@ -35,8 +34,7 @@ class OptionsList extends Component {
                 setOption={setOption(this)}
               />
             </div>
-          ))
-        )}
+          ))}
       </ul>
     )
   }
@@ -45,7 +43,9 @@ class OptionsList extends Component {
 export function isConfigItemVisible (key, configList, values) {
   if (key === undefined) return true
   const option = configList.find(o => o.key === key)
-  if (!option.hasOwnProperty('visible')) return true
+  if (!Object.prototype.hasOwnProperty.call(option, 'visible')) {
+    return true
+  }
   if (option.visible === true) return true
   if (option.visible === false) return false
   return option.visible

@@ -4,6 +4,7 @@
  */
 export function isURL (str) {
   try {
+    // eslint-disable-next-line no-new
     new URL(str)
   } catch (e) {
     return false
@@ -35,7 +36,7 @@ export function searchURL (
   queryURLTemplate = 'https://www.google.com/search?q='
 ) {
   return isLikeURL(query)
-    ? (!/^[a-zA-Z-]+:/.test(query) ? 'http://' : '') + query
+    ? (!/^[a-zA-Z-]+:/.test(query) ? 'https://' : '') + query
     : searchEngineQueryURL(query, queryURLTemplate)
 }
 
@@ -48,13 +49,13 @@ export function searchEngineQueryURL (query, queryURLTemplate) {
   return i < 0
     ? `${queryURLTemplate}${encodedSearchQuery}`
     : `${queryURLTemplate.slice(
-      0,
-      i
-    )}${encodedSearchQuery}${queryURLTemplate.slice(i + 2)}`
+        0,
+        i
+      )}${encodedSearchQuery}${queryURLTemplate.slice(i + 2)}`
 }
 
 /**
- * Returns true if the text is a valid URL (including protocol, e.g. http://hello)
+ * Returns true if the text is a valid URL (including protocol, e.g. https://hello)
  * or probably corresponds to a valid URL (e.g. google.com)
  * Based on https://github.com/1995eaton/chromium-vim/blob/aec10cf47943b4674a5bc92c46d3c3c138d3cba3/content_scripts/utils.js#L59
  */
@@ -86,7 +87,7 @@ export function isLikeURL (url) {
   }
   return (
     (url.every(e => /^[a-z0-9-]+$/i.test(e)) &&
-      (url.length > 1 && isTLD(url[url.length - 1]))) ||
+      url.length > 1 && isTLD(url[url.length - 1])) ||
     (url.length === 1 && url[0] === 'localhost') ||
     hasPath
   )
@@ -894,7 +895,7 @@ const knownTLDs = [
   'ye',
   'yoga',
   'yokohama',
-  'youtube',
+  'YouTube',
   'yt',
   'za',
   'zip',

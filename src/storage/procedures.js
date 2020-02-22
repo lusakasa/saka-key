@@ -4,6 +4,7 @@ import {
   storageRemove,
   storageClear
 } from 'storage/storage'
+import { hasProp } from 'lib/util'
 import { msg } from 'mosi/client'
 import { categories as installCategories } from 'storage/transform'
 import { downloadJSON } from 'lib/dom'
@@ -62,7 +63,7 @@ export async function storageUpdateProcedure (previousVersion) {
 }
 
 // TODO: proper import validation
-export async function storeageImportProcedure () {
+export async function storageImportProcedure () {
   const input = document.createElement('input')
   input.setAttribute('type', 'file')
   input.setAttribute('accept', '.json')
@@ -132,22 +133,22 @@ async function validateConfig () {
   const allKeys = {}
   for (const [category, _config] of Object.entries(config)) {
     for (const item of _config) {
-      if (!item.hasOwnProperty('type')) {
+      if (!hasProp(item, 'type')) {
         throw Error(
           `Config validation failed: item ${category}:${item.key ||
             '[no key]'} has no type`,
           item
         )
       }
-      if (item.hasOwnProperty('key')) {
-        if (allKeys.hasOwnProperty(item.key)) {
+      if (hasProp(item, 'key')) {
+        if (hasProp(allKeys, item.key)) {
           throw Error(
             `Config validation failed: two items share the key ${item.key}`
           )
         } else {
           allKeys[item.key] = true
         }
-        if (!item.hasOwnProperty('default')) {
+        if (!hasProp(item, 'default')) {
           throw Error(
             `Config validation failed: no default value for key ${item.key}`
           )
@@ -228,7 +229,7 @@ async function deleteConfig () {
 /**
  * Accounts for the case where a built-in profile introduced in an update conflicts with
  * a custom profile already installed. Renames the custom profile, active profile, and action
- * if a conflic is detected.
+ * if a conflict is detected.
  */
 async function renameCustomProfilesAndOptions () {
   const {

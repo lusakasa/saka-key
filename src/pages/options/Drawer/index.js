@@ -1,7 +1,7 @@
 import { Component, h } from 'preact'
-import { connect } from 'preact-redux'
+import { connect } from 'react-redux'
 import {
-  storeageImportProcedure,
+  storageImportProcedure,
   storageExportProcedure,
   storageResetProcedure
 } from 'storage/procedures'
@@ -16,7 +16,7 @@ const scrollToCard = name => () => {
 
 const ActionButton = ({ label, onClick }) => (
   <a
-    class='mdc-list-item settings-drawer-link'
+    className='mdc-list-item settings-drawer-link'
     style={{ color: 'black' }}
     onClick={onClick}
   >
@@ -29,6 +29,7 @@ class Drawer extends Component {
     // the first card for which its bottom is below the viewport top
     activeCard: SAKA_PLATFORM !== 'firefox' ? 'General' : ''
   }
+
   componentDidMount () {
     if (SAKA_PLATFORM !== 'firefox') {
       document.addEventListener('scroll', event => {
@@ -46,25 +47,27 @@ class Drawer extends Component {
       })
     }
   }
+
   calculateLinkColor = cardName => {
     return cardName === this.state.activeCard ? '#3f51b5' : '#000000'
   }
+
   render ({ categories }) {
     return (
       <div
-        class='mdc-card'
+        className='mdc-card'
         style={{
           margin: '20px 20px',
           position: 'fixed',
-          overflowY: 'scroll'
+          overflowY: 'auto'
         }}
       >
-        <nav class='mdc-permanent-drawer'>
-          <div class='mdc-list-group'>
-            <nav class='mdc-list'>
+        <nav className='mdc-permanent-drawer'>
+          <div className='mdc-list-group'>
+            <nav className='mdc-list'>
               {categories.map(category => (
                 <a
-                  class='mdc-list-item settings-drawer-link'
+                  className='mdc-list-item settings-drawer-link'
                   style={{ color: this.calculateLinkColor(category) }}
                   onClick={scrollToCard(category)}
                 >
@@ -73,12 +76,12 @@ class Drawer extends Component {
               ))}
               <div
                 role='separator'
-                class='mdc-list-divider'
+                className='mdc-list-divider'
                 style={{ margin: '20px' }}
               />
               <ActionButton
                 label={'Import Options from File'}
-                onClick={storeageImportProcedure}
+                onClick={storageImportProcedure}
               />
               <ActionButton
                 label={'Export Options To File'}

@@ -1,5 +1,5 @@
 import { h, Component } from 'preact'
-import { connect } from 'preact-redux'
+import { connect } from 'react-redux'
 import DropdownItem from './DropdownItem'
 import {
   newProfile,
@@ -11,6 +11,7 @@ class ProfileDropdownMenu extends Component {
   state = {
     visible: false
   }
+
   render ({
     category,
     isBuiltInProfile,
@@ -22,7 +23,7 @@ class ProfileDropdownMenu extends Component {
     return (
       <div
         id={`dropdownmenu_${category}`}
-        class='mdc-menu-anchor'
+        className='mdc-menu-anchor'
         style='margin: 0px 10px'
       >
         <button
@@ -33,9 +34,9 @@ class ProfileDropdownMenu extends Component {
         </button>
 
         <div
-          className={`mdc-simple-menu settings-card-menu ${this.state.visible
-            ? 'mdc-simple-menu--open'
-            : ''}`}
+          className={`mdc-simple-menu settings-card-menu ${
+            this.state.visible ? 'mdc-simple-menu--open' : ''
+          }`}
           tabIndex='0'
         >
           <ul
@@ -73,15 +74,18 @@ class ProfileDropdownMenu extends Component {
       </div>
     )
   }
+
   hideMenuThen = fn => () => {
     this.setState({ visible: false })
     fn()
   }
+
   hideMenuAndStartEditingNameThen = fn => () => {
     this.setState({ visible: false })
     fn()
     this.props.setIsEditingName(true)
   }
+
   componentDidMount () {
     document.addEventListener('click', e => {
       if (
