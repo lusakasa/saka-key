@@ -10,9 +10,8 @@ const renderer = new marked.Renderer()
 
 module.exports = function (env) {
   console.log(env)
-  const [mode, platform, benchmark, firefoxBeta] = env.split(':')
-  let version = require('./manifest/common.json').version
-  if (firefoxBeta) version += 'beta'
+  const [mode, platform, benchmark] = env.split(':')
+  const version = require('./manifest/common.json').version
 
   const config = {
     mode: env.includes('prod') ? 'production' : 'development',
