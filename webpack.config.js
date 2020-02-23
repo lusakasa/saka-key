@@ -10,7 +10,7 @@ const renderer = new marked.Renderer()
 
 module.exports = function (env) {
   console.log(env)
-  const [mode, platform, benchmark] = env.split(':')
+  const [mode, platform] = env.split(':')
   const version = require('./manifest/common.json').version
 
   const config = {
@@ -107,7 +107,6 @@ module.exports = function (env) {
         'process.env.NODE_ENV': JSON.stringify('production'),
         SAKA_DEBUG: JSON.stringify(false),
         SAKA_VERSION: JSON.stringify(version),
-        SAKA_BENCHMARK: JSON.stringify(true),
         SAKA_PLATFORM: JSON.stringify(platform),
         EXTENSION_ID
       })
@@ -118,7 +117,6 @@ module.exports = function (env) {
         'process.env.NODE_ENV': JSON.stringify('development'),
         SAKA_DEBUG: JSON.stringify(true),
         SAKA_VERSION: JSON.stringify(version + ' dev'),
-        SAKA_BENCHMARK: JSON.stringify(benchmark === 'benchmark'),
         SAKA_PLATFORM: JSON.stringify(platform),
         EXTENSION_ID
       })
