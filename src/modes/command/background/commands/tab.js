@@ -1,4 +1,5 @@
 import { posMod } from 'lib/util'
+import browser from 'webextension-polyfill'
 
 /** Activate the tab to the right of the active tab of the current window */
 export async function nextTab () {

@@ -1,5 +1,6 @@
 import { searchURL } from 'lib/url'
 import { paste } from 'lib/dom'
+import browser from 'webextension-polyfill'
 
 export async function clipboardCurrentTab () {
   await browser.tabs.update({ url: searchURL(paste()) })

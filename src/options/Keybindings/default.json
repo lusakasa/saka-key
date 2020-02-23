@@ -350,6 +350,7 @@
         "newTab": [[{ "code": "KeyN", "key": "n" }]],
         "restoreTab": [[{ "code": "KeyX", "key": "≈", "altKey": true }]],
         "duplicateTab": [[{ "code": "KeyB", "key": "b" }]],
+        "duplicateTabIncognito": [],
         "newWindow": [[{ "code": "KeyN", "key": "N", "shiftKey": true }]],
         "newIncognitoWindow": [],
         "switchWindow": [[{ "code": "KeyN", "key": "˜", "altKey": true }]],
@@ -489,6 +490,7 @@
         "newTab": [[{ "code": "KeyN", "key": "n" }]],
         "restoreTab": [[{ "code": "KeyX", "key": "X", "shiftKey": true }]],
         "duplicateTab": [[{ "code": "KeyB", "key": "b" }]],
+        "duplicateTabIncognito": [],
         "newWindow": [[{ "code": "KeyN", "key": "N", "shiftKey": true }]],
         "newIncognitoWindow": [],
         "switchWindow": [[{ "code": "KeyN", "key": "˜", "altKey": true }]],
@@ -641,6 +643,7 @@
         "duplicateTab": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyT", "key": "t" }]
         ],
+        "duplicateTabIncognito": [],
         "newWindow": [[{ "code": "KeyW", "key": "w" }]],
         "newIncognitoWindow": [
           [{ "code": "KeyW", "key": "W", "shiftKey": true }]
@@ -781,6 +784,7 @@
         "duplicateTab": [
           [{ "code": "KeyY", "key": "y" }, { "code": "KeyT", "key": "t" }]
         ],
+        "duplicateTabIncognito": [],
         "newWindow": [[{ "code": "KeyW", "key": "w" }]],
         "newIncognitoWindow": [
           [{ "code": "KeyW", "key": "W", "shiftKey": true }]

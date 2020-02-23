@@ -78,9 +78,6 @@ module.exports = function (env) {
           context: 'src/options',
           from: '**/config.json',
           to: 'config_[folder].json'
-        },
-        {
-          from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js'
         }
       ]),
       new GenerateJsonPlugin(

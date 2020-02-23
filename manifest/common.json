@@ -6,7 +6,7 @@
   "manifest_version": 2,
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "background": {
-    "scripts": ["browser-polyfill.js","background_page.js"]
+    "scripts": ["background_page.js"]
   },
   "browser_action": {
     "default_icon": {

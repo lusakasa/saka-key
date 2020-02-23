@@ -5,6 +5,7 @@ import {
   storageInstallProcedure,
   storageUpdateProcedure
 } from 'storage/procedures'
+import browser from 'webextension-polyfill'
 
 export let modes = {}
 
@@ -42,7 +43,7 @@ export async function loadClient (_, src) {
       console.log(`Loading client: frame: ${frameId}, tab: ${tabId}`)
     }
     await browser.tabs.executeScript(tabId, {
-      file: '/content_script.js',
+      file: 'content_script.js',
       frameId,
       runAt: 'document_start',
       matchAboutBlank: true
@@ -53,16 +54,31 @@ export async function loadClient (_, src) {
 /** Reloads all Saka Clients, called on extension updates */
 export async function reloadAllClients () {
   const tabs = await browser.tabs.query({})
-  for (const tab of tabs) {
-    try {
-      browser.tabs.executeScript(tab.id, {
-        file: '/content_script_loader.js',
-        allFrames: true,
-        runAt: 'document_start',
-        matchAboutBlank: true
-      })
-    } catch (e) {}
+  console.log(tabs)
+  try {
+    await Promise.all(
+      tabs.filter(isTabExecutable).map(tab =>
+        browser.tabs.executeScript(tab.id, {
+          file: 'content_script_loader.js',
+          allFrames: true,
+          runAt: 'document_start',
+          matchAboutBlank: true
+        })
+      )
+    )
+  } catch (error) {
+    // it's normal for certain tabs to not load
+    console.log('Failed to reload client into all tabs')
   }
+}
+
+const EXTENSION_PROTOCOL = browser.runtime.getURL('').split(':')[0] + '://'
+
+function isTabExecutable (tab) {
+  if (tab.url === 'about:blank') return true
+  if (tab.url.startsWith('about:')) return false
+  if (tab.url.startsWith(EXTENSION_PROTOCOL)) return false
+  return true
 }
 
 // Requests for the full Saka Client by the client loaders of preloaded tabs are
@@ -72,14 +88,14 @@ export async function reloadAllClients () {
 // content_script_loader.js into all frames, which then launches another request for
 // the full Saka Client
 if (SAKA_PLATFORM === 'chrome') {
-  chrome.tabs.onReplaced.addListener((addedTabId, removedTabId) => {
+  chrome.tabs.onReplaced.addListener(async (addedTabId, removedTabId) => {
     if (SAKA_DEBUG) {
       console.log(
         `Tab id changed from ${removedTabId} to ${addedTabId}. Reloading content_script_loader.js`
       )
     }
-    browser.tabs.executeScript(addedTabId, {
-      file: '/content_script_loader.js',
+    await browser.tabs.executeScript(addedTabId, {
+      file: 'content_script_loader.js',
       allFrames: true,
       runAt: 'document_start',
       matchAboutBlank: true

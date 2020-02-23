@@ -39,6 +39,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/chrome": "0.0.95",
+    "@types/firefox-webext-browser": "^70.0.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-class-properties": "^6.23.0",

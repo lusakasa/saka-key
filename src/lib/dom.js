@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill'
+
 /**
  * Given a DOM element, returns true if you can edit it with key presses or
  * if the element is of a type that should handle its own keypresses

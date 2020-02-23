@@ -1,3 +1,4 @@
+import browser from 'webextension-polyfill'
 import { msg, get, meta } from 'mosi/core'
 import { generateHintStrings } from './hintStrings'
 

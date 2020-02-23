@@ -1,4 +1,4 @@
-// import 'lib/browser_polyfill'
+import browser from 'webextension-polyfill'
 
 export const storageGet = browser.storage.local.get
 export const storageSet = browser.storage.local.set
