@@ -23,14 +23,14 @@ export function nextPage () {
 }
 
 export function previousPage () {
-  const previousPageURL = document.querySelector('[rel="next"]').href
+  const previousPageURL = document.querySelector('[rel="prev"]').href
 
   if (isURL(previousPageURL)) {
-    window.location.href = document.querySelector('[rel="next"]').href
+    window.location.href = document.querySelector('[rel="prev"]').href
   } else if (SAKA_DEBUG) {
     console.log(
       'Element with next link does not have a valid URL. Element found: ',
-      document.querySelector('[rel="next"]')
+      document.querySelector('[rel="prev"]')
     )
   }
 }
