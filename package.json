@@ -3,8 +3,6 @@
   "description": "A keyboard interface to the web",
   "scripts": {
     "clean": "rimraf dist",
-    "format": "prettier-eslint 'src/**/*.js' --write",
-    "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:chrome": "webpack --mode=development --watch --env=chrome",
     "start:firefox": "webpack --mode=development --watch --env=firefox",
@@ -15,17 +13,12 @@
     "zip-firefox-prod": "bestzip dist-firefox-prod.zip dist/*",
     "zip-chrome-debug": "bestzip dist-chrome-debug.zip dist/*",
     "zip-firefox-debug": "bestzip dist-firefox-debug.zip dist/*",
-    "zip-all": "npm run start:chrome && npm run zip-chrome-debug && npm run start:firefox && npm run zip-firefox-debug && npm run build:chrome && npm run zip-chrome-prod && npm run build:firefox && npm run zip-firefox-prod"
+    "zip-all": "npm run start:chrome -- --watch=0 && npm run zip-chrome-debug && npm run start:firefox -- --watch=0 && npm run zip-firefox-debug && npm run build:chrome && npm run zip-chrome-prod && npm run build:firefox && npm run zip-firefox-prod"
   },
   "browserslist": [
     "last 2 chrome version",
     "last 2 firefox version"
   ],
-  "lint-staged": {
-    "*.{js,json,css}": [
-      "prettier-eslint --write"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lusakasa/saka-key.git"
@@ -42,7 +35,7 @@
     "bestzip": "^2.1.5",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
-    "eslint": "^6.8.0",
+    "eslint": "^7.1.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-preact": "^1.1.6",
     "eslint-plugin-import": "^2.20.1",
@@ -52,14 +45,13 @@
     "eslint-plugin-standard": "^4.0.1",
     "generate-json-webpack-plugin": "^0.3.1",
     "html-loader": "^0.5.5",
-    "husky": "^4.2.3",
-    "lint-staged": "^10.0.7",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.7",
     "markdown-loader": "^5.1.0",
-    "prettier-eslint": "^9.0.1",
-    "prettier-eslint-cli": "^5.0.0",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "style-loader": "^1.1.3",
-    "webpack": "^4.41.6",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-merge": "^4.2.2"
   },
@@ -67,7 +59,6 @@
     "@babel/core": "^7.8.4",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
-    "ajv": "^6.11.0",
     "compare-versions": "^3.6.0",
     "marked": "^0.8.0",
     "material-components-web": "^0.19.0",
@@ -79,5 +70,14 @@
     "redux-thunk": "^2.3.0",
     "smoothscroll-polyfill": "^0.4.4",
     "webextension-polyfill": "^0.6.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }
