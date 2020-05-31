@@ -4,6 +4,10 @@ title: Release Notes
 sidebar_label: Release Notes
 ---
 
+# 1.26.3
+
+- Update Readme and handbooks
+
 # 1.26.2
 
 - Update build and release process
