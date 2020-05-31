@@ -1,6 +1,6 @@
 {
   "name": "Saka Key",
-  "version": "1.26.1",
+  "version": "1.26.2",
   "author": "Brandon Kalinowski, Sufyan Dawoodjee, Neil Macintyre",
   "description": "A keyboard interface to the web",
   "manifest_version": 2,
