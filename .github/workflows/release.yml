@@ -1,0 +1,80 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Build release
+        id: build-release
+        run: |
+          npm ci
+          npm run release
+
+      - name: Create Release
+        id: create-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+
+      - name: Get the version
+        id: get-version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
+      - name: Upload chrome-prod.zip
+        id: upload-chrome-prod
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: ./chrome-prod.zip
+          asset_name: chrome-prod-${{ steps.get-version.outputs.VERSION }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload firefox-prod.zip
+        id: upload-firefox-prod
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: ./firefox-prod.zip
+          asset_name: firefox-prod-${{ steps.get-version.outputs.VERSION }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload chrome-debug.zip
+        id: upload-chrome-debug
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: ./chrome-debug.zip
+          asset_name: chrome-debug-${{ steps.get-version.outputs.VERSION }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload firefox-debug.zip
+        id: upload-firefox-debug
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: ./firefox-debug.zip
+          asset_name: firefox-debug-${{ steps.get-version.outputs.VERSION }}.zip
+          asset_content_type: application/zip
