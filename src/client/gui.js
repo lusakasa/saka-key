@@ -1,6 +1,12 @@
 export const guiRoot = document.createElement('div')
 guiRoot.id = 'saka-gui-root'
-guiRoot.style = `all: unset;
+guiRoot.className = 'saka-gui-root'
+const style = `.saka-gui-root * {
+all: revert;
+}
+
+div#saka-gui-root {
+all: revert;
 position: absolute;
 left: 0;
 top: 0;
@@ -9,8 +15,12 @@ height: 100%;
 z-index: 2147483647;
 opacity: 1;
 background-color: transparent;
-pointer-events: none;`
+pointer-events: none;
+}`
+const styleElem = document.createElement('style')
+styleElem.textContent = style
 
+document.documentElement.appendChild(styleElem)
 document.documentElement.appendChild(guiRoot)
 
 export function handleFullscreenChange (event) {
