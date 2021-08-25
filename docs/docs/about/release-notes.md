@@ -3,6 +3,10 @@ id: release-notes
 title: Release Notes
 sidebar_label: Release Notes
 ---
+# 1.27.0
+
+- Removes **Duplicate tab in incognito** command (sorry!)
+- Fixes permissions for Chrome Webstore listing
 
 # 1.26.3
 

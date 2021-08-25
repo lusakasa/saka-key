@@ -117,30 +117,6 @@ export async function duplicateTab () {
   await browser.tabs.duplicate(tab.id)
 }
 
-/** Duplicate and activate the active tab of the current window incognito */
-export async function duplicateTabIncognito () {
-  const [tab] = await browser.tabs.query({ currentWindow: true, active: true })
-  if (tab.incognito) {
-    await browser.tabs.duplicate(tab.id)
-  } else {
-    const activeWindows = await browser.windows.getAll({
-      windowTypes: ['normal']
-    })
-    const incognitoWindows = activeWindows.filter(w => w.incognito)
-    if (incognitoWindows.length > 0) {
-      await browser.tabs.create({
-        url: tab.url,
-        windowId: incognitoWindows[0].id
-      })
-    } else {
-      await browser.windows.create({
-        url: tab.url,
-        incognito: true,
-        state: 'maximized'
-      })
-    }
-  }
-}
 
 /** Create a new window */
 export async function newWindow () {
