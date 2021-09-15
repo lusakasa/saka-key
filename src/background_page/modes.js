@@ -58,7 +58,7 @@ export async function reloadAllClients () {
   try {
     await Promise.all(
       tabs.map(tab =>
-        await chrome.scripting.executeScript({
+        chrome.scripting.executeScript({
           target: { tabId: tab.id, allFrames: true },
           files: ['content_script_loader.js'],
         })
