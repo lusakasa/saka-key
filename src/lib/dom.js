@@ -62,6 +62,8 @@ export function deepActiveElement (root = document) {
     : activeElement
 }
 
+const firefoxAgentMatch = navigator.userAgent.match(/\bFirefox\/(\d+)/)
+
 /**
  * Dispatch a mouse event to the target element
  * based on cVim's implementation
@@ -79,7 +81,12 @@ export function mouseEvent (element, type, modifierKeys = {}) {
       events = ['mousemove', 'mouseout', 'mouseleave']
       break
     case 'click':
-      events = ['mouseover', 'mousedown', 'mouseup', 'click']
+      // If FF >= 96, skip extraneous click event (causes duplicate tabs).
+      if (firefoxAgentMatch && parseInt(firefoxAgentMatch[1]) >= 96) {
+        events = ['mouseover', 'mousedown', 'mouseup']
+      } else {
+        events = ['mouseover', 'mousedown', 'mouseup', 'click']
+      }
       break
   }
   events.forEach(type => {
