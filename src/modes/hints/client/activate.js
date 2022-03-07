@@ -23,10 +23,14 @@ export function activate (event, target) {
  * is selected using hints mode.
  * @type {{ [key: string]: (event: KeyboardEvent, target: HTMLElement) => string }}
  */
+const firefoxNoNativeClick =
+  SAKA_PLATFORM === 'firefox' &&
+  navigator.userAgent.match(/\bFirefox\/(\d+)/)[1] < 96
+
 const activators = {
   openLink: (event, target) => {
     if (
-      SAKA_PLATFORM === 'firefox' &&
+      firefoxNoNativeClick &&
       target.nodeName === 'A' &&
       target.target === '_blank'
     ) {
@@ -40,7 +44,7 @@ const activators = {
   },
   openLinkInBackgroundTab: (event, target) => {
     mouseEvent(target, 'click', { ctrlKey: !isMac, metaKey: isMac })
-    if (SAKA_PLATFORM === 'firefox') {
+    if (firefoxNoNativeClick) {
       backgroundOpenLink('openLinkInBackgroundTab', target)
     }
     target.focus()
@@ -52,7 +56,7 @@ const activators = {
       metaKey: isMac,
       shiftKey: true
     })
-    if (SAKA_PLATFORM === 'firefox') {
+    if (firefoxNoNativeClick) {
       backgroundOpenLink('openLinkInForegroundTab', target)
     }
     target.focus()
@@ -60,7 +64,7 @@ const activators = {
   },
   openLinkInNewWindow: (event, target) => {
     mouseEvent(target, 'click', { shiftKey: true })
-    if (SAKA_PLATFORM === 'firefox') {
+    if (firefoxNoNativeClick) {
       backgroundOpenLink('openLinkInNewWindow', target)
     }
     target.focus()
