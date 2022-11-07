@@ -1,3 +1,10 @@
+# WARNING: THIS PROJECT IS UNMAINTAINED.
+
+Expect no further fixes or features. Anyone is free to fork, modify, and publish the extension, but please do not reuse the name "Saka Key" without permission. There are many maintained alternatives listed at the bottom.
+
+Why: The original developer does not and will not have the time and motivation to continue.
+
+
 # Saka Key
 
 Saka Key is a Chrome and Firefox extension for keyboard-only web browsing. It's configurable, easy to use, and engineered thoughtfully. Install it from the [Chrome Web Store](https://chrome.google.com/webstore/detail/saka-key/hhhpdkekipnbloiiiiaokibebpdpakdp) or the [Firefox Marketplace](https://addons.mozilla.org/en-US/firefox/addon/saka-key/). Also read the [Saka Key Handbook](https://key.saka.io) and try the accompanying tab search extension [Saka](https://github.com/lusakasa/saka).
