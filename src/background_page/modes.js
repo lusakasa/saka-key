@@ -57,12 +57,10 @@ export async function reloadAllClients () {
   console.log(tabs)
   try {
     await Promise.all(
-      tabs.filter(isTabExecutable).map(tab =>
-        browser.tabs.executeScript(tab.id, {
-          file: 'content_script_loader.js',
-          allFrames: true,
-          runAt: 'document_start',
-          matchAboutBlank: true
+      tabs.map(tab =>
+        chrome.scripting.executeScript({
+          target: { tabId: tab.id, allFrames: true },
+          files: ['content_script_loader.js'],
         })
       )
     )
@@ -72,14 +70,6 @@ export async function reloadAllClients () {
   }
 }
 
-const EXTENSION_PROTOCOL = browser.runtime.getURL('').split(':')[0] + '://'
-
-function isTabExecutable (tab) {
-  if (tab.url === 'about:blank') return true
-  if (tab.url.startsWith('about:')) return false
-  if (tab.url.startsWith(EXTENSION_PROTOCOL)) return false
-  return true
-}
 
 // Requests for the full Saka Client by the client loaders of preloaded tabs are
 // denied because attempting to execute within them would cause errors.
@@ -94,12 +84,14 @@ if (SAKA_PLATFORM === 'chrome') {
         `Tab id changed from ${removedTabId} to ${addedTabId}. Reloading content_script_loader.js`
       )
     }
-    await browser.tabs.executeScript(addedTabId, {
-      file: 'content_script_loader.js',
-      allFrames: true,
-      runAt: 'document_start',
-      matchAboutBlank: true
-    })
+    try {
+      await chrome.scripting.executeScript({
+        target: { tabId: addedTabId, allFrames: true },
+        files: ['content_script_loader.js'],
+      });
+    } catch (error) {
+      console.log('Failed to load client into all tabs');
+    }
   })
 }
 
